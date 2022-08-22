@@ -5,8 +5,104 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTinhLuong365"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1366" Width="1366" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="{DynamicResource #E5E5E5}">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="264"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Margin="0,0,0,0" Height="40" Grid.ColumnSpan="2"
+                VerticalAlignment="Top"
+                Background="#00000000"
+                MouseLeftButtonDown="Grid_MouseDown">
+            <Path VerticalAlignment="Top"   Stretch="Fill" Height="30" Margin="15,7,0,0" HorizontalAlignment="Left" Width="30">
+                <Path.Fill>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,1">
+                        <GradientStop Color="#4250C2"/>
+                        <GradientStop Color="#00a1ff" Offset="1"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+            <TextBlock VerticalAlignment="Top" Text="Phần mềm tính lương" HorizontalAlignment="Left" Margin="50,4,0,0" FontSize="18" Foreground="#FF4C5BD4" FontWeight="Bold"></TextBlock>
+            <TextBlock VerticalAlignment="Top" Text="Timviec365" HorizontalAlignment="Left" Margin="50,23,0,0" FontSize="11" Foreground="#FF4C5BD4" Width="58" Height="13"></TextBlock>
+            <Grid x:Name="Minimimize" Cursor="Hand" Margin="0,14,94,0" HorizontalAlignment="Right" Width="15" Height="15" VerticalAlignment="Top" MouseLeftButtonDown="Minimimize_MouseLeftButtonDown" Background="Transparent" >
+                <Line Cursor="Hand" X1="0" Y1="7" X2="15" Y2="7" StrokeThickness="1.2" Stroke="Black" Fill="#00A52323" />
+            </Grid>
+            <Border Background="Transparent" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,13,55,0" MouseLeftButtonDown="Maximize">
+                <Path Name="pathMax" VerticalAlignment="Center" Stroke="{DynamicResource #474747}">
+                    <Path.Style>
+                        <Style TargetType="Path">
+                            <Setter Property="Data" Value="{StaticResource iconMaximize}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsFull}" Value="1">
+                                    <Setter Property="Data" Value="{StaticResource iconMaximize1}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Path.Style>
+                </Path>
+            </Border>
+            <Grid x:Name="CloseWindow" Cursor="Hand" Width="15" Height="15" Margin="0,13,16,0" HorizontalAlignment="Right" VerticalAlignment="Top" MouseLeftButtonDown="CloseWindow_MouseLeftButtonDown" Background="Transparent" >
+                <Path Data="{DynamicResource iconClose}" Fill="Black" StrokeThickness="1.2" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Fill" Height="15" Margin="0" Width="15" />
+            </Grid>
+        </Grid>
+        <StackPanel Grid.Row="1" Background="{DynamicResource #FFFFFF}">
+            <StackPanel Orientation="Horizontal">
+                <Path Data="{DynamicResource iconTimViec365}" Fill="{DynamicResource #4C5BD4}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="28" Margin="68 14" Width="128"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Background="{DynamicResource #EDEFFB}">
+                <Path Data="{DynamicResource iconHome}" Fill="{DynamicResource #4C5BD4}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
+                <TextBlock Text="{DynamicResource textHome}" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="10"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Path Data="{DynamicResource icon1}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
+                <TextBlock Text="{DynamicResource textProfile}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Path Data="{DynamicResource icon2}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
+                <TextBlock Text="{DynamicResource textSalary}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Path Data="{DynamicResource icon3}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
+                <TextBlock Text="{DynamicResource textTimeKeeping}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Path Data="{DynamicResource icon4}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
+                <TextBlock Text="{DynamicResource textOffer}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Path Data="{DynamicResource icon4}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
+                <TextBlock Text="{DynamicResource textCalendar}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Path Data="{DynamicResource icon5}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
+                <TextBlock Text="{DynamicResource textDigitalConversion}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <Border VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Background="{DynamicResource #FFFFFF}" Height="50" CornerRadius="10" Margin="30 20 20 0">
+            <Grid>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{DynamicResource textHome}" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="15,15,0,0"></TextBlock>
+                    <TextBlock Text="/" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="0,15,0,0"></TextBlock>
+                    <TextBlock Text="{DynamicResource textAccManagement}" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="0,15"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Text="Trang chủ" FontSize="15" Foreground="{DynamicResource #474747}" Margin="0,0,21,0"></TextBlock>
+                    <TextBlock Text="{DynamicResource textGuide}" FontSize="15" Foreground="{DynamicResource #474747}" Margin="0,0,21,0"></TextBlock>
+                    <TextBlock Text="{DynamicResource textNews}" FontSize="15" Foreground="{DynamicResource #474747}" Margin="0,0,25,0"></TextBlock>
+                    <Path Margin="0 0 -10 0" VerticalAlignment="Center" Data="{DynamicResource iconRing}" Fill="{DynamicResource #474747}"></Path>
+                    <Path Height="17" Width="17" Margin="0 0 -12 0" VerticalAlignment="Top" Data="{DynamicResource iconCirle}" Fill="{DynamicResource #F46A6A}"></Path>
+                    <TextBlock Text="2" Foreground="{DynamicResource #FFFFFF}" Margin="0 0 25 0" VerticalAlignment="Top"></TextBlock>
+                    <Border Margin="0 0 10 0 " Width="32" Height="32" CornerRadius="32" Background="Black"></Border>
+                    <TextBlock Margin="0 0 12 0" Text="Nguyễn Văn Thanh" FontSize="15" Foreground="{DynamicResource #474747}" FontWeight="Bold"></TextBlock>
+                    <Path Margin="0 0 22 0" VerticalAlignment="Center" Data="{DynamicResource iconDrop}" Stroke="{DynamicResource #474747}"></Path>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
+
 </Window>

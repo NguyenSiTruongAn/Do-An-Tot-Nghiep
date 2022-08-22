@@ -1,0 +1,84 @@
+﻿<Page x:Class="AppTinhLuong365.Views.ProFile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="1100" d:DesignWidth="1102"
+      Title="ProFile">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" Background="{DynamicResource #FFFFFF}">
+            <Border Height="180" VerticalAlignment="Top" CornerRadius="16 16 0 0" Background="{DynamicResource #505DC7}">
+                <Grid>
+                    <Border Margin="20,30,0,39" CornerRadius="16" Background="Black" Width="111" Height="111" HorizontalAlignment="Left"></Border>
+                    <Path Margin="108 121 0 0" Data="{DynamicResource iconCamera}" Fill="{DynamicResource #FFFFFF}"></Path>
+                    <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" Margin="114 127 0 0"></Path>
+                    <TextBlock Text="Lê Văn Thanh" FontSize="20" Foreground="{DynamicResource #FFFFFF}" Margin="157 65 0 0" FontWeight="Bold"></TextBlock>
+                    <TextBlock Text="Thử việc" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="157 94 0 0"></TextBlock>
+                </Grid>
+            </Border>
+            <Border Margin="20 32 20 0" Background="{DynamicResource #F3F3F3}" CornerRadius="15">
+                <Grid>
+                    <TextBlock Text="Giới thiệu" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource #2E3467}" Margin="19 16 0 19"></TextBlock>
+                    <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 -15 20 0"></Path>
+                </Grid>
+            </Border>
+            <StackPanel Margin="20 40 0 0" Orientation="Vertical">
+                <Grid>
+                    <TextBlock Text="Thông tin cá nhân" FontSize="18" FontWeight="Bold"></TextBlock>
+                    <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" HorizontalAlignment="Right" Margin="0 0 40 0"></Path>
+                    <Line X1="4.37114e-08" Y1="0.5" X2="1060" Y2="0.500066" Stroke="{DynamicResource #DDDDDD}" Margin="0 40 0 0"></Line>
+                    <StackPanel Margin="0 70 0 0" Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Width="550">
+                            <TextBlock Text="Họ và tên: Nguyễn Sĩ Trường An" FontSize="15" Foreground="{DynamicResource #666C7C}"></TextBlock>
+                            <TextBlock Text="Ngày sinh: 06/11/2001" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0"></TextBlock>
+                            <TextBlock Text="Phòng ban: PHÒNG 15 TRUNG TÂM ĐÀO TẠO ỨNG VIÊN MỚI ĐẾN" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0"></TextBlock>
+                            <TextBlock Text="Tình trạng hôn nhân: Độc thân" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0"></TextBlock>
+                            <TextBlock Text="Số điện thoại: 0357365152" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0"></TextBlock>
+                            <TextBlock Text="Ngân hàng nhận lương: Chưa cập nhật" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0"></TextBlock>
+                            <TextBlock Text="Địa chỉ: Đội 8, Vĩnh Ninh, Vĩnh Quỳnh, Thanh Trì, Hà Nội" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="350">
+                            <TextBlock Text="Giới tính: Nam" FontSize="15" Foreground="{DynamicResource #666C7C}"></TextBlock>
+                            <TextBlock Text="Mã nhân viên: 14492" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0"></TextBlock>
+                            <TextBlock Text="Chức vụ: Thử việc" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0"></TextBlock>
+                            <TextBlock Text="Ngày bắt đầu: 18/08/2022" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0"></TextBlock>
+                            <TextBlock Text="Email: nguyensitruongan@gmail.com" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0"></TextBlock>
+                            <TextBlock Text="Số tài khoản ngân hàng: Chưa cập nhật" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+                <Grid Margin="0 40 0 0">
+                    <TextBlock Text="Lương cơ bản" FontSize="18" FontWeight="Bold"></TextBlock>
+                    <Line X1="4.37114e-08" Y1="0.5" X2="1060" Y2="0.500066" Stroke="{DynamicResource #DDDDDD}" Margin="0 40 0 0"></Line>
+                    <Border Background="{DynamicResource #4C5BD4}" CornerRadius="5 0 0 0" Margin="0 70 20 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Lương cơ bản" FontWeight="Bold" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="26 18 0 16"></TextBlock>
+                            <TextBlock Text="Lương đóng bảo hiểm" FontWeight="Bold" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="200 18 0 16"></TextBlock>
+                            <TextBlock Text="Thời gian áp dụng" FontSize="15" VerticalAlignment="Center" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" Margin="200 0 0 0"></TextBlock>
+                            <TextBlock Text="Vị trí" FontSize="15" VerticalAlignment="Center" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" Margin="200 0 0 0"></TextBlock>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid Margin="0 40 0 0">
+                    <TextBlock Text="Hợp đồng việc làm" FontSize="18" FontWeight="Bold"></TextBlock>
+                    <Line X1="4.37114e-08" Y1="0.5" X2="1060" Y2="0.500066" Stroke="{DynamicResource #DDDDDD}" Margin="0 40 0 0"></Line>
+                    <Border Background="{DynamicResource #4C5BD4}" CornerRadius="5 0 0 0" Margin="0 70 20 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Loại hợp đồng" FontWeight="Bold" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="26 18 0 16"></TextBlock>
+                            <TextBlock Text="Ngày hiệu lực" FontWeight="Bold" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="200 18 0 16"></TextBlock>
+                            <TextBlock Text="Ngày hết hạn" FontSize="15" VerticalAlignment="Center" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" Margin="200 0 0 0"></TextBlock>
+                            <TextBlock Text="%lương" FontSize="15" VerticalAlignment="Center" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" Margin="200 0 0 0"></TextBlock>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid Margin="0 40 0 0">
+                    <TextBlock Text="Hợp đồng việc làm" FontSize="18" FontWeight="Bold"></TextBlock>
+                    <Line X1="4.37114e-08" Y1="0.5" X2="1060" Y2="0.500066" Stroke="{DynamicResource #DDDDDD}" Margin="0 40 0 0"></Line>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

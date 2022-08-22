@@ -2,4 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="textXuatCongCTY">Xuất công công ty</system:String>
+    <system:String x:Key="textHome">Home</system:String>
+    <system:String x:Key="textProfile">Hồ sơ cá nhân</system:String>
+    <system:String x:Key="textTimeKeeping">Chấm công</system:String>
+    <system:String x:Key="textSalary">Tính lương</system:String>
+    <system:String x:Key="textOffer">Đề xuất(xin nghỉ, ...)</system:String>
+    <system:String x:Key="textCalendar">Lịch làm việc</system:String>
+    <system:String x:Key="textDigitalConversion">Chuyển đổi số 365</system:String>
+    <system:String x:Key="textAccManagement">Quản lý tài khoản</system:String>
+    <system:String x:Key="textNews">Tin tức</system:String>
+    <system:String x:Key="textGuide">Hướng dẫn</system:String>
 </ResourceDictionary>

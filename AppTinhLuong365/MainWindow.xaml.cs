@@ -23,6 +23,30 @@ namespace AppTinhLuong365
         public MainWindow()
         {
             InitializeComponent();
+
+            var workingArea = System.Windows.SystemParameters.WorkArea;
+            this.Width = workingArea.Right - 180;
+            this.Height = workingArea.Bottom - 100;
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Minimimize_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void CloseWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Maximize(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

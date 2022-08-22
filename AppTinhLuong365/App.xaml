@@ -8,11 +8,9 @@
         <ResourceDictionary>
             <math:MathConvert x:Key="MathConvert"/>
             <ResourceDictionary.MergedDictionaries>
-
-                <ResourceDictionary Source="/Resouces/Color/Default.xaml"/>
-                <ResourceDictionary Source="/Resouces/Icon.xaml"/>
-                <ResourceDictionary Source="/Resouces/language/ResourceString.vi-VN.xaml"/>
-                
+                <ResourceDictionary Source="/Resouce/Color/Default.xaml"/>
+                <ResourceDictionary Source="/Resouce/Icon.xaml"/>
+                <ResourceDictionary Source="/Resouce/language/ResourceString.vi-VN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
