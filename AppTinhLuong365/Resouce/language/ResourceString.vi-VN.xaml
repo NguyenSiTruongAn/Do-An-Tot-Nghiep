@@ -12,4 +12,7 @@
     <system:String x:Key="textAccManagement">Quản lý tài khoản</system:String>
     <system:String x:Key="textNews">Tin tức</system:String>
     <system:String x:Key="textGuide">Hướng dẫn</system:String>
+    <system:String x:Key="textDanhSachNhanVien">Danh sách nhân viên</system:String>
+
+
 </ResourceDictionary>
