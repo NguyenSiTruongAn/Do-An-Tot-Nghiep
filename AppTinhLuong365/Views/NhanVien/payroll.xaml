@@ -52,6 +52,11 @@
                 <TextBlock Text="Số tiền" Margin="200 26 0 13" Foreground="{DynamicResource #FFFFFF}" FontSize="15" FontWeight="Bold"></TextBlock>
                 <TextBlock Text="Đơn vị" Margin="230 26 0 13" Foreground="{DynamicResource #FFFFFF}" FontSize="15" FontWeight="Bold"></TextBlock>
             </StackPanel>
+            <DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{DynamicResource text}"
+                </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
     </Grid>
 </Page>
