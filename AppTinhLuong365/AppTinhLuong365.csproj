@@ -59,6 +59,9 @@
     <Compile Include="Views\DuLieuTinhLuong\ChamCong.xaml.cs">
       <DependentUpon>ChamCong.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NhanVien\Calendar.xaml.cs">
+      <DependentUpon>Calendar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NhanVien\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DuLieuTinhLuong\ChamCong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NhanVien\Calendar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
