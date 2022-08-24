@@ -50,29 +50,36 @@
                         </StackPanel>
                     </StackPanel>
                 </Grid>
-                <Grid Margin="0 40 0 0">
-                    <TextBlock Text="Lương cơ bản" FontSize="18" FontWeight="Bold"></TextBlock>
-                    <Line X1="4.37114e-08" Y1="0.5" X2="1060" Y2="0.500066" Stroke="{DynamicResource #DDDDDD}" Margin="0 40 0 0"></Line>
-                    <Border Background="{DynamicResource #4C5BD4}" CornerRadius="5 0 0 0" Margin="0 70 20 0">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Lương cơ bản" FontWeight="Bold" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="26 18 0 16"></TextBlock>
-                            <TextBlock Text="Lương đóng bảo hiểm" FontWeight="Bold" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="200 18 0 16"></TextBlock>
-                            <TextBlock Text="Thời gian áp dụng" FontSize="15" VerticalAlignment="Center" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" Margin="200 0 0 0"></TextBlock>
-                            <TextBlock Text="Vị trí" FontSize="15" VerticalAlignment="Center" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" Margin="200 0 0 0"></TextBlock>
-                        </StackPanel>
-                    </Border>
+                <Grid Margin="0,40,0.4,0">
+                    <TextBlock Text="{DynamicResource textBasicSalary}" FontSize="18" FontWeight="Bold"/>
+                    <Line X1="4.37114e-08" Y1="0.5" X2="1060" Y2="0.500066" Stroke="{DynamicResource #DDDDDD}" Margin="0 40 0 0"/>
+                    <StackPanel Margin="0 70 0 0">
+                        <DataGrid>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="{DynamicResource textBasicSalary}"/>
+                                <DataGridTextColumn Header="{DynamicResource textPremiumSalary}"/>
+                                <DataGridTextColumn Header="{DynamicResource textTimeUse}"/>
+                                <DataGridTextColumn Header="{DynamicResource textIndex}"/>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    
                 </Grid>
                 <Grid Margin="0 40 0 0">
                     <TextBlock Text="Hợp đồng việc làm" FontSize="18" FontWeight="Bold"></TextBlock>
                     <Line X1="4.37114e-08" Y1="0.5" X2="1060" Y2="0.500066" Stroke="{DynamicResource #DDDDDD}" Margin="0 40 0 0"></Line>
-                    <Border Background="{DynamicResource #4C5BD4}" CornerRadius="5 0 0 0" Margin="0 70 20 0">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Loại hợp đồng" FontWeight="Bold" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="26 18 0 16"></TextBlock>
-                            <TextBlock Text="Ngày hiệu lực" FontWeight="Bold" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="200 18 0 16"></TextBlock>
-                            <TextBlock Text="Ngày hết hạn" FontSize="15" VerticalAlignment="Center" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" Margin="200 0 0 0"></TextBlock>
-                            <TextBlock Text="%lương" FontSize="15" VerticalAlignment="Center" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" Margin="200 0 0 0"></TextBlock>
-                        </StackPanel>
-                    </Border>
+                    <StackPanel Margin="0 70 0 0">
+                        <DataGrid>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="{DynamicResource textBasicSalary}"/>
+                                <DataGridTextColumn Header="{DynamicResource textPremiumSalary}"/>
+                                <DataGridTextColumn Header="{DynamicResource textTimeUse}"/>
+                                <DataGridTextColumn Header="{DynamicResource textIndex}"/>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
                 </Grid>
                 <Grid Margin="0 40 0 0">
                     <TextBlock Text="Hợp đồng việc làm" FontSize="18" FontWeight="Bold"></TextBlock>
