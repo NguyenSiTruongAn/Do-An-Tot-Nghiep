@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views
+namespace AppTinhLuong365.Views.Staff
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for Calendar.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class Calendar : Page
     {
-        public Home()
+        public Calendar()
         {
             InitializeComponent();
         }

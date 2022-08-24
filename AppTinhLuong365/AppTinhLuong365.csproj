@@ -56,14 +56,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\Home.xaml.cs">
+    <Compile Include="Views\Staff\Calendar.xaml.cs">
+      <DependentUpon>Calendar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\payroll.xaml.cs">
+    <Compile Include="Views\Staff\payroll.xaml.cs">
       <DependentUpon>payroll.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProFile.xaml.cs">
+    <Compile Include="Views\Staff\ProFile.xaml.cs">
       <DependentUpon>ProFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff\TimeKeeping.xaml.cs">
+      <DependentUpon>TimeKeeping.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -90,15 +96,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Home.xaml">
+    <Page Include="Views\Staff\Calendar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\payroll.xaml">
+    <Page Include="Views\Staff\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ProFile.xaml">
+    <Page Include="Views\Staff\payroll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Staff\ProFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Staff\TimeKeeping.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
