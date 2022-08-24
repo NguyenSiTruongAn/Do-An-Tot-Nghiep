@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views
+namespace AppTinhLuong365.Views.Staff
 {
     /// <summary>
     /// Interaction logic for ProFile.xaml

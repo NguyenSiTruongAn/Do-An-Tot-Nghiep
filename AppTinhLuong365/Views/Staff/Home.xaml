@@ -1,0 +1,615 @@
+﻿<Page x:Class="AppTinhLuong365.Views.Staff.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.Staff"
+      mc:Ignorable="d" 
+      d:DesignHeight="1292" d:DesignWidth="1102" Background="{DynamicResource #DDDDDD}"
+      Title="Home">
+
+    <Grid>
+        <TextBlock FontSize="18" Margin="30 96 0 0" Text="Xin chào Nguyễn Văn Thanh!" Foreground="{DynamicResource #474747}" HorizontalAlignment="Left"></TextBlock>
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 96 31 0">
+            <Path Margin="0 0 10 0" Data="{DynamicResource iconArrowLeft}" Stroke="{DynamicResource #4C5BD4}"></Path>
+            <TextBlock  Text="Xem bảng lương" Foreground="{DynamicResource #4C5BD4}" FontSize="15px"></TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="36 128 0 0">
+            <StackPanel Orientation="Horizontal">
+                <Border VerticalAlignment="Top" Margin="0 0 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Width="240" Height="122">
+                    <Grid>
+                        <TextBlock Text="24" FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                        <TextBlock Text="Công chuẩn" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="24 75 0 0"></TextBlock>
+                    </Grid>
+                </Border>
+                <Border VerticalAlignment="Top" Margin="27 0 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Width="240" Height="122">
+                    <Grid>
+                        <TextBlock Text="23" FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #68B782}"></TextBlock>
+                        <TextBlock Text="Công thực" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="24 75 0 0"></TextBlock>
+                    </Grid>
+                </Border>
+                <Border VerticalAlignment="Top" Margin="27 0 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Width="240" Height="122">
+                    <Grid>
+                        <TextBlock Text="04" FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #FFA72E}"></TextBlock>
+                        <TextBlock Text="Đi muộn" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="24 75 0 0"></TextBlock>
+                    </Grid>
+                </Border>
+                <Border VerticalAlignment="Top" Margin="27 0 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Width="240" Height="122">
+                    <Grid>
+                        <TextBlock Text="08" FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #9C2B23}"></TextBlock>
+                        <TextBlock Text="Đề xuất chờ duyệt" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="24 75 0 0"></TextBlock>
+                    </Grid>
+                </Border>
+            </StackPanel>
+
+            <Border VerticalAlignment="Top" Margin="0 30 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Width="1042" Height="813">
+                <Grid  VerticalAlignment="Top">
+                    <StackPanel Orientation="Vertical">
+                        <TextBox Text="Bảng công chu kỳ tháng 8/2022" Margin="23 30 0 0" FontWeight="Bold" FontSize="18"></TextBox>
+                        <StackPanel Orientation="Horizontal" Background="{DynamicResource #4C5BD4}" Margin="20 22 20 0">
+                            <StackPanel Width="143">
+                                <TextBox Text="Chủ nhật" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="Thứ hai" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="Thứ ba" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="Thứ tư" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="Thứ năm" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="Thứ sáu" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="Thứ bảy" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center"></TextBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Line X1="0.394531" Y1="-1.02793e-08" X2="0.394558" Y2="600" Stroke="{DynamicResource #BBBBBB}" Margin="20 0 0 0"/>
+                            <StackPanel Margin="0 0 0 0" Orientation="Vertical">
+                                <StackPanel Height="118" Margin="-855 0 0 0" Width="143">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                                <Line X1="0.0078125" Y1="0.75" X2="999.992" Y2="0.75" Stroke="{DynamicResource #BBBBBB}" Margin="0 0 0 0"/>
+                                <StackPanel Height="118" Margin="-855 0 0 0" Width="143">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid>
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <Path.Style>
+                                                    <Style>
+                                                        <Style.Triggers>
+                                                            <DataTrigger>
+                         
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Path.Style>
+                                            </Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                            <CheckBox Name="ckeck">123</CheckBox>
+                                        </Grid>
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Background" Value="{DynamicResource #D0EAE7}"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=check,Path=IsChecked}" Value="true">
+                                                        <Setter Property="Background" Value="{DynamicResource #2E3467}"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <Line X1="0.0078125" Y1="0.75" X2="999.992" Y2="0.75" Stroke="{DynamicResource #BBBBBB}" Margin="0 0 0 0"/>
+                                <StackPanel Height="118" Margin="-855 0 0 0" Width="143">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                                <Line X1="0.0078125" Y1="0.75" X2="999.992" Y2="0.75" Stroke="{DynamicResource #BBBBBB}" Margin="0 0 0 0"/>
+                                <StackPanel Height="118" Margin="-855 0 0 0" Width="143">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                                <Line X1="0.0078125" Y1="0.75" X2="999.992" Y2="0.75" Stroke="{DynamicResource #BBBBBB}" Margin="0 0 0 0"/>
+                                <StackPanel Height="118" Margin="-855 0 0 0" Width="143">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                                <Line X1="0.0078125" Y1="0.75" X2="999.992" Y2="0.75" Stroke="{DynamicResource #BBBBBB}" Margin="0 0 0 0"/>
+                            </StackPanel>
+                            <Line X1="0.394531" Y1="-1.02793e-08" X2="0.394558" Y2="600" Stroke="{DynamicResource #BBBBBB}" Margin="-857 0 0 0"/>
+                            <StackPanel Margin="-1570 0 0 0" Orientation="Vertical" Width="143">
+                                <StackPanel Height="118">
+                                    <TextBlock Text="31" Margin="0 10 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center" FontSize="14" />
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130 " Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #FEE5E5}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconXCheck}" Fill="{DynamicResource #FF5959}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="Ca nghỉ" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="0 0 9 0" HorizontalAlignment="Right"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #FFF3EB}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconTimeCheck}" Fill="{DynamicResource #FF8C44}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <Path Data="{DynamicResource iconCirle}" Fill="blue" HorizontalAlignment="Center" Margin="0 9 0 0"></Path>
+                                    <TextBlock Text="7" Margin="0 -16 0 0" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #FFFFFF}"/>
+                                    
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                            </StackPanel>
+                            <Line X1="0.394531" Y1="-1.02793e-08" X2="0.394558" Y2="600" Stroke="{DynamicResource #BBBBBB}" Margin="-714 0 0 0"/>
+                            <StackPanel Margin="-1285 0 0 0" Orientation="Vertical" Width="143">
+                                <StackPanel Height="118">
+                                    <TextBlock Text="31" Margin="0 10 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center" FontSize="14" />
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>                            </StackPanel>
+                            <Line X1="0.394531" Y1="-1.02793e-08" X2="0.394558" Y2="600" Stroke="{DynamicResource #BBBBBB}" Margin="-571 0 0 0"/>
+                            <StackPanel Margin="-997.5 0 0 0" Orientation="Vertical" Width="143">
+                                <StackPanel Height="118">
+                                    <TextBlock Text="31" Margin="0 10 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center" FontSize="14" />
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel></StackPanel>
+                            <Line X1="0.394531" Y1="-1.02793e-08" X2="0.394558" Y2="600" Stroke="{DynamicResource #BBBBBB}" Margin="-428 0 0 0"/>
+                            <StackPanel Margin="-710.5 0 0 0" Orientation="Vertical" Width="143">
+                                <StackPanel Height="118">
+                                    <TextBlock Text="31" Margin="0 10 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center" FontSize="14" />
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel></StackPanel>
+                            <Line X1="0.394531" Y1="-1.02793e-08" X2="0.394558" Y2="600" Stroke="{DynamicResource #BBBBBB}" Margin="-285 0 0 0"/>
+                            <StackPanel Margin="-425.5 0 0 0" Orientation="Vertical" Width="143">
+                                <StackPanel Height="118">
+                                    <TextBlock Text="31" Margin="0 10 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center" FontSize="14" />
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel></StackPanel>
+                            <Line X1="0.394531" Y1="-1.02793e-08" X2="0.394558" Y2="600" Stroke="{DynamicResource #BBBBBB}" Margin="-142 0 0 0"/>
+                            <StackPanel Margin="-142 0 0 0" Orientation="Vertical" Width="143">
+                                <StackPanel Height="118">
+                                    <TextBlock Text="31" Margin="0 10 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center" FontSize="14" />
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Height="118">
+                                    <TextBlock Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="08:00 - 11:30" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <Grid HorizontalAlignment="Center" Width="130">
+                                            <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                            <TextBlock Text="14:00 - 18:00" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel></StackPanel>
+                            <Line X1="0.394531" Y1="-1.02793e-08" X2="0.394558" Y2="600" Stroke="{DynamicResource #BBBBBB}" Margin="0 0 0 0"/>
+                        </StackPanel>
+                        <StackPanel Margin="20,0,20,0" Background="{DynamicResource #EDEFFB}" Width="1002">
+                            <StackPanel Orientation="Horizontal">
+                                <Line X1="0.394531" Y1="0" X2="0.394558" Y2="47" Stroke="{DynamicResource #BBBBBB}" Margin="0 0 0 0"/>
+                                <StackPanel Width="500" Margin="0 0 0 0"  VerticalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock Text="Công theo lịch: 2" Foreground="{DynamicResource #2E3467}" FontSize="15" Margin="30 0 0 0"></TextBlock>
+                                    <TextBlock Text="Đi muộn/Về sớm: 2 ca" FontSize="15" Margin="50 0 0 0"></TextBlock>
+                                </StackPanel>
+                                <Line X1="0.394531" Y1="0" X2="0.4" Y2="47" Stroke="{DynamicResource #BBBBBB}" Margin="500 0 0 0"/>
+                            </StackPanel>
+                            <Line X1="0.0078125" Y1="0.75" X2="999.992" Y2="0.75" Stroke="{DynamicResource #BBBBBB}" Margin="0 0 0 0"/>
+                        </StackPanel>
+                    </StackPanel>
+
+
+                </Grid>
+            </Border>
+        </StackPanel>
+
+    </Grid>
+</Page>
