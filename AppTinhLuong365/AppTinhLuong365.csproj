@@ -56,20 +56,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\Staff\Calendar.xaml.cs">
-      <DependentUpon>Calendar.xaml</DependentUpon>
+    <Compile Include="Views\DuLieuTinhLuong\ChamCong.xaml.cs">
+      <DependentUpon>ChamCong.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Staff\Home.xaml.cs">
+    <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Staff\payroll.xaml.cs">
+    <Compile Include="Views\PageNhapLuongCoBanVaCheDo.xaml.cs">
+      <DependentUpon>PageNhapLuongCoBanVaCheDo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\payroll.xaml.cs">
       <DependentUpon>payroll.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Staff\ProFile.xaml.cs">
+    <Compile Include="Views\ProFile.xaml.cs">
       <DependentUpon>ProFile.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Staff\TimeKeeping.xaml.cs">
-      <DependentUpon>TimeKeeping.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -96,23 +96,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Staff\Calendar.xaml">
+    <Page Include="Views\DuLieuTinhLuong\ChamCong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Staff\Home.xaml">
+    <Page Include="Views\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Staff\payroll.xaml">
+    <Page Include="Views\PageNhapLuongCoBanVaCheDo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Staff\ProFile.xaml">
+    <Page Include="Views\payroll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Staff\TimeKeeping.xaml">
+    <Page Include="Views\ProFile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

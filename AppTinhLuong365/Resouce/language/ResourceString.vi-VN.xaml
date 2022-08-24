@@ -12,6 +12,9 @@
     <system:String x:Key="textAccManagement">Quản lý tài khoản</system:String>
     <system:String x:Key="textNews">Tin tức</system:String>
     <system:String x:Key="textGuide">Hướng dẫn</system:String>
+    <system:String x:Key="textDanhSachNhanVien">Danh sách nhân viên</system:String>
+
+
     <system:String x:Key="textBasicSalary">Lương cơ bản</system:String>
     <system:String x:Key="textPremiumSalary">Lương đóng bảo hiểm</system:String>
     <system:String x:Key="textExpirationDate">Lương đóng bảo hiểm</system:String>
