@@ -46,20 +46,17 @@
             </Border>
         </StackPanel>
         <StackPanel Margin="19 170 0 0">
-            <StackPanel Orientation="Horizontal" Background="{DynamicResource #4C5BD4}">
-                <TextBlock Text="Số thứ tự" Margin="30 26 0 13" Foreground="{DynamicResource #FFFFFF}" FontSize="15" FontWeight="Bold"></TextBlock>
-                <TextBlock Text="Các khoản lương" Margin="130 26 0 13" Foreground="{DynamicResource #FFFFFF}" FontSize="15" FontWeight="Bold"></TextBlock>
-                <TextBlock Text="Số tiền" Margin="200 26 0 13" Foreground="{DynamicResource #FFFFFF}" FontSize="15" FontWeight="Bold"></TextBlock>
-                <TextBlock Text="Đơn vị" Margin="230 26 0 13" Foreground="{DynamicResource #FFFFFF}" FontSize="15" FontWeight="Bold"></TextBlock>
-            </StackPanel>
+            
             <StackPanel>
                 <DataGrid>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Số thứ tự">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Số thứ tự">
+                        <DataGridTextColumn Header="Các khoản lương">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Số thứ tự">
+                        <DataGridTextColumn Header="Số tiền">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Đơn vị">
                         </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>

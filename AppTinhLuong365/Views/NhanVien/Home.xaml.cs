@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views
+namespace AppTinhLuong365.Views.NhanVien
 {
     /// <summary>
     /// Interaction logic for Home.xaml

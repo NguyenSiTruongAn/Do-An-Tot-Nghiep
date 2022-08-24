@@ -59,16 +59,16 @@
     <Compile Include="Views\DuLieuTinhLuong\ChamCong.xaml.cs">
       <DependentUpon>ChamCong.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Home.xaml.cs">
+    <Compile Include="Views\NhanVien\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PageNhapLuongCoBanVaCheDo.xaml.cs">
       <DependentUpon>PageNhapLuongCoBanVaCheDo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\payroll.xaml.cs">
+    <Compile Include="Views\NhanVien\payroll.xaml.cs">
       <DependentUpon>payroll.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProFile.xaml.cs">
+    <Compile Include="Views\NhanVien\ProFile.xaml.cs">
       <DependentUpon>ProFile.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -100,7 +100,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Home.xaml">
+    <Page Include="Views\NhanVien\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,11 +108,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\payroll.xaml">
+    <Page Include="Views\NhanVien\payroll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ProFile.xaml">
+    <Page Include="Views\NhanVien\ProFile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

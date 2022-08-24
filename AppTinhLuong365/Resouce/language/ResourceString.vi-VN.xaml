@@ -15,4 +15,14 @@
     <system:String x:Key="textDanhSachNhanVien">Danh sách nhân viên</system:String>
 
 
+    <system:String x:Key="textBasicSalary">Lương cơ bản</system:String>
+    <system:String x:Key="textPremiumSalary">Lương đóng bảo hiểm</system:String>
+    <system:String x:Key="textExpirationDate">Lương đóng bảo hiểm</system:String>
+    <system:String x:Key="textSalaryPercent">%lương</system:String>
+    <system:String x:Key="textTimeUse">Thời gian áp dụng</system:String>
+    <system:String x:Key="textIndex">Vị trí</system:String>
+    <system:String x:Key="textTypeOf">Vị trí</system:String>
+    
+
+
 </ResourceDictionary>
