@@ -42,7 +42,7 @@
                     <Setter Property="MinHeight" Value="50"></Setter>
                     <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
                     <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
-                    <Setter Property="BorderThickness" Value="0 0 1 0"></Setter>
+                    <Setter Property="BorderThickness" Value="0 0 0 0"></Setter>
                     <Setter Property="BorderBrush" Value="{DynamicResource #FFFFFF}"></Setter>
                     <Setter Property="ContentTemplate">
                         <Setter.Value>
