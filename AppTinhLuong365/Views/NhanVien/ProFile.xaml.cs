@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views
+namespace AppTinhLuong365.Views.NhanVien
 {
     /// <summary>
-    /// Interaction logic for payroll.xaml
+    /// Interaction logic for ProFile.xaml
     /// </summary>
-    public partial class payroll : Page
+    public partial class ProFile : Page
     {
-        public payroll()
+        public ProFile()
         {
             InitializeComponent();
         }
