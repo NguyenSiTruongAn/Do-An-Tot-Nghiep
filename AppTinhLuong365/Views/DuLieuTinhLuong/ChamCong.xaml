@@ -10,73 +10,43 @@
 
     <Grid>
         <StackPanel>
-            <Border Margin="0 10 0 0">
-                <DockPanel>
-                    <Border Background="#ffff" BorderThickness="1" CornerRadius="10" Width="1032" Height="56">
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <TextBlock Text="Home/" Margin="20 0 10 0 " Foreground="{DynamicResource #68798B}" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold" />
-                                <TextBlock Text="Chấm công" VerticalAlignment="Center" FontSize="15" Foreground="blue" FontWeight="Bold"/>
-                                <Path Data="{DynamicResource iconTamGiac}" Fill="{DynamicResource #2E3467}" VerticalAlignment="Center" Margin="10"></Path>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="180 0 0 0">
-                                <StackPanel Width="83" Height="20" Margin="20 0 0 0">
-                                    <TextBlock Text="Giới Thiệu" Foreground="{DynamicResource #68798B}" FontSize="16" FontWeight="Bold" />
-                                </StackPanel>
-                                <StackPanel Width="83" Height="20" Margin="20 0 0 0">
-                                    <TextBlock Text="Hướng dẫn" Foreground="{DynamicResource #68798B}" FontSize="16" FontWeight="Bold" />
-                                </StackPanel>
-
-                                <StackPanel Width="83" Height="20" Margin="20 0 0 0">
-                                    <TextBlock Text="Tin tức" Foreground="{DynamicResource #68798B}" FontSize="16" FontWeight="Bold" />
-                                </StackPanel>
-
-                                <Grid Width="40" Height="20">
-                                    <Path Data="{DynamicResource notify}"  Fill="{DynamicResource #68798B}" Margin="0 0 0 0"></Path>
-                                    <Path Data="{DynamicResource iconCirle}" Fill="red" Margin="5 -5 0 0"></Path>
-                                    <Path Data="{DynamicResource iconCircel}" Fill="{DynamicResource #474747}" Margin="3 -6 0 -2"></Path>
-                                </Grid>
-
-                                <Grid Width="270" Height="20" Margin="20 0 20 0" >
-                                    <TextBlock Text="Công ty thanh toán Hưng Hà" Foreground="{DynamicResource #68798B}" FontSize="16"  FontWeight="Bold"/>
-                                    <Path Data="{DynamicResource iconTamGiac}" Fill="{DynamicResource #2E3467}" HorizontalAlignment="Right" Margin="0 0 20 0" VerticalAlignment="Center"></Path>
-                                </Grid>
-                            </StackPanel>
-                        </StackPanel>
-
-                    </Border>
-
-                </DockPanel>
-
-            </Border>
-
             <Border Background="#fff" BorderThickness="1" CornerRadius="10" Width="1032" Margin="0 60 0 0" BorderBrush="{DynamicResource #ebebeb}">
                 <StackPanel Margin="10 0 10 0">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel>
                         <StackPanel HorizontalAlignment="Left">
-                            <TextBlock Text="Bảng công 12/2020" FontSize="24" FontWeight="Bold" Foreground="#2E3467" />
-                            <TextBlock Text="Nguyễn Trung Hiếu - Kỹ Thuật - Nhân Viên" FontSize="12" Foreground="#2E3467"/>
+                            <TextBlock Text="Bảng công chu kỳ" FontSize="24" FontWeight="Bold" Foreground="#2E3467" />
                         </StackPanel>
-
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="80 0 0 0">
-                            <TextBlock Text="Vui lòng chọn thông tin: " FontSize="15" FontWeight="Bold" Foreground="#2E3467" VerticalAlignment="Center" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 10 0 10">
+                            
                             <Border CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="10 0 0 0" BorderBrush="{DynamicResource #ebebeb}">
                                 <StackPanel Orientation="Horizontal" >
-                                    <TextBlock Text="Kỹ Thuật" Width="178" Height="38" FontSize="15" VerticalAlignment="Center" Margin="10 20 0 0"/>
-                                    <Path Data="{DynamicResource iconTamGiac}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0"></Path>
+                                    <TextBlock Text="Tháng 8"  Width="178" Height="38" FontSize="15" VerticalAlignment="Center" Margin="10 20 0 0"/>
+                                    <Path Data="{DynamicResource iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0"></Path>
                                 </StackPanel>
 							</Border>
                             <Border CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="10 0 0 0" BorderBrush="{DynamicResource #ebebeb}">
                                 <StackPanel Orientation="Horizontal" >
-                                    <TextBlock Text="Nguyễn Trung Hiếu" Width="178" Height="38" FontSize="15" VerticalAlignment="Center" Margin="10 20 0 0"/>
-                                    <Path Data="{DynamicResource iconTamGiac}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0"></Path>
+                                    <TextBlock Text="Năm 2022" Width="178" Height="38" FontSize="15" VerticalAlignment="Center" Margin="10 20 0 0"/>
+                                    <Path Data="{DynamicResource iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0"></Path>
+                                </StackPanel>
+                            </Border>
+                            <Border CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="10 0 0 0" BorderBrush="{DynamicResource #ebebeb}">
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock Text="Phòng ban ( tất cả)" Width="178" Height="38" FontSize="15" VerticalAlignment="Center" Margin="10 20 0 0"/>
+                                    <Path Data="{DynamicResource  iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0"></Path>
+                                </StackPanel>
+                            </Border>
+                            <Border CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="10 0 0 0" BorderBrush="{DynamicResource #ebebeb}">
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock Text="Tất cả nhân viên" Width="178" Height="38" FontSize="15" VerticalAlignment="Center" Margin="10 20 0 0"/>
+                                    <Path Data="{DynamicResource  iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0"></Path>
                                 </StackPanel>
                             </Border>
                         </StackPanel>
                     </StackPanel>
-                    
-                    <DataGrid >
-                        <DataGrid.Columns >
+
+                    <DataGrid Style="{StaticResource DataGrid1}" >
+                        <DataGrid.Columns>
                             <DataGridTextColumn Header="Chủ Nhật" Width="143">
                             </DataGridTextColumn>
                             <DataGridTextColumn Header="Thứ Hai" Width="143">
@@ -92,7 +62,10 @@
                             <DataGridTextColumn Header="Thứ Bảy" Width="143">
                             </DataGridTextColumn>
                         </DataGrid.Columns>
+                        
+
                     </DataGrid>
+                    
                 </StackPanel>
             </Border>
 
