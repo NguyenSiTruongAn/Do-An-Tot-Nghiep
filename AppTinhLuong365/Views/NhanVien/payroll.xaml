@@ -38,7 +38,7 @@
                     </Border>
                     <Border Width="150" Height="38" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
                         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                            <TextBlock Text="Năm 2022" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #444}" Margin="0 0 40 0"></TextBlock>
+                            <TextBlock Text="Năm 2022" FontWeight="DemiBold" FontSize="14" Foreground="{DynamicResource #444}" Margin="0 0 40 0"></TextBlock>
                             <Path Data="{DynamicResource iconSearch }" Fill="{DynamicResource #888}" Margin="0 0 20 0"></Path>
                         </StackPanel>
                     </Border>
@@ -46,7 +46,7 @@
                         <TextBlock Text="{DynamicResource textstatistical}" Padding="10 20" FontSize="14" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Border>
                 </StackPanel>
-                <StackPanel Margin="20 30 0 0">
+                <StackPanel Margin="20 30 20 0">
                     <DataGrid Style="{StaticResource DataGrid1}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="{DynamicResource textNumericalOrder}"></DataGridTextColumn>

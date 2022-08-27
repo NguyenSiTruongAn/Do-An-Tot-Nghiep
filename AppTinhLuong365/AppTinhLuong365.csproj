@@ -77,8 +77,20 @@
     <Compile Include="Views\ChiTraLuong\ChiTraLuong.xaml.cs">
       <DependentUpon>ChiTraLuong.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\BaoHiem.xaml.cs">
+      <DependentUpon>BaoHiem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\CacKhoanTienKhac.xaml.cs">
+      <DependentUpon>CacKhoanTienKhac.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\ChamCong.xaml.cs">
       <DependentUpon>ChamCong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\HoaHong.xaml.cs">
+      <DependentUpon>HoaHong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\PhucLoi.xaml.cs">
+      <DependentUpon>PhucLoi.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\ThuongPhat.xaml.cs">
       <DependentUpon>ThuongPhat.xaml</DependentUpon>
@@ -126,6 +138,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resouce\Border\Border.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resouce\Color\Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,7 +186,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DuLieuTinhLuong\BaoHiem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\CacKhoanTienKhac.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\ChamCong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\HoaHong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\PhucLoi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -262,6 +294,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\CaiDat\Image\PhatNghiSaiQuyDInh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\CaiDat\Image\danh-sach-nhan-vien.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
