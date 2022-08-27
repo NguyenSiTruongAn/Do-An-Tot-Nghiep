@@ -1,0 +1,141 @@
+﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.CacKhoanTienKhac"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1250" Background="{DynamicResource #F7F8FC}"
+      Title="CacKhoanTienKhac">
+
+    <Grid Margin="20">
+        <StackPanel>
+            <Border Height="38" Width="192" CornerRadius="10" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=tabItem1,Path=IsSelected}" Value="true">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Path Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}" VerticalAlignment="Center"></Path>
+                    <TextBlock Text="{DynamicResource textTaoKhoanTienMoi}" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                </StackPanel>
+            </Border>
+            <TabControl Background="{DynamicResource #F7F8FC}">
+                <TabItem Header="{DynamicResource textCacKhoanTienKhac}" x:Name="tabItem1">
+                    <StackPanel Orientation="Horizontal" Margin="0 20">
+                        <Grid Width="330">
+                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                </Border.Effect>
+                            </Border>
+                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                <StackPanel Orientation="Vertical" Margin="10 0 0 20" VerticalAlignment="Top">
+                                    <Grid Height="61" Margin="0 0 10 0">
+                                        <TextBlock Text="Giảm đi học" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                        <Path Data="{DynamicResource iconBaChamDoc}"  VerticalAlignment="Center" Fill="{DynamicResource #979797}" HorizontalAlignment="Right" Margin="0 0 5 0"></Path>
+                                        <Line X1="0" Y1="60" X2="330" Y2="60" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
+                                    </Grid>
+                                    <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
+                                        <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
+                                        <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 20 0 0" Orientation="Horizontal" HorizontalAlignment="Right" Width="320">
+                                        <Path Data="{DynamicResource iconCachTinh}" Fill="{DynamicResource #5F648D}"></Path>
+                                        <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Cách tính" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                    </StackPanel>
+                                    <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="-(0.5*luong_co_ban)" TextWrapping="WrapWithOverflow"></TextBlock>
+
+                                </StackPanel>
+
+                            </Border>
+                        </Grid>
+                        <Grid Width="330" Margin="20 0 0 0">
+                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                </Border.Effect>
+                            </Border>
+                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                <StackPanel Orientation="Vertical" Margin="10 0 0 20" VerticalAlignment="Top">
+                                    <Grid Height="61" Margin="0 0 10 0">
+                                        <TextBlock Text="Trừ" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                        <Path Data="{DynamicResource iconBaChamDoc}"  VerticalAlignment="Center" Fill="{DynamicResource #979797}" HorizontalAlignment="Right" Margin="0 0 5 0"></Path>
+                                        <Line X1="0" Y1="60" X2="330" Y2="60" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
+                                    </Grid>
+                                    <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
+                                        <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
+                                        <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 20 0 0" Orientation="Horizontal" HorizontalAlignment="Right" Width="320">
+                                        <Path Data="{DynamicResource iconCachTinh}" Fill="{DynamicResource #5F648D}"></Path>
+                                        <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Cách tính" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                    </StackPanel>
+                                    <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="500000" TextWrapping="WrapWithOverflow"></TextBlock>
+
+                                </StackPanel>
+
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="{DynamicResource textDSNhanVienApDung}">
+                    <StackPanel>
+                        <Grid Margin="0 20 0 0">
+                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                </Border.Effect>
+                            </Border>
+                            <Border CornerRadius="16" Background="{DynamicResource #FFFFFF}">
+                                <Grid Margin="20 20 20 40">
+                                    <TextBlock Text="{DynamicResource textDSNhanVienApDungKhoanTienKhac}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Top">
+                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                                            <Grid>
+                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tháng 8" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                            </Grid>
+                                        </Border>
+                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                                            <Grid>
+                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                            </Grid>
+                                        </Border>
+                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                                            <Grid>
+                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tất cả nhân viên" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                            </Grid>
+                                        </Border>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <DataGrid Style="{StaticResource DataGrid1}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="{DynamicResource textChinhSach}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="{DynamicResource textApDungTu}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="{DynamicResource textDenHet}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="{DynamicResource textTien}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="{DynamicResource textXoa}"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Border Width="35" Height="35" CornerRadius="10" Margin="0 20" Background="{DynamicResource #4C5BD4}">
+                            <TextBlock Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                        </Border>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+        
+    </Grid>
+</Page>

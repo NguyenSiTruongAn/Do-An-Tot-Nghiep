@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AppTinhLuong365"
              xmlns:math="clr-namespace:AppTinhLuong365.Core"
-             StartupUri="Views/CaiDat/CaiCaVaLichLamViec.xaml">
+             StartupUri="Views/DuLieuTinhLuong/PhucLoi.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <math:MathConvert x:Key="MathConvert"/>
@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="/Resouce/Icon.xaml"/>
                 <ResourceDictionary Source="/Resouce/language/ResourceString.vi-VN.xaml"/>
                 <ResourceDictionary Source="/Resouce/DataGrid.xaml"/>
+                <ResourceDictionary Source="/Resouce/Border/Border.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

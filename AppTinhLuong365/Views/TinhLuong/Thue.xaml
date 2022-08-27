@@ -91,6 +91,7 @@
                                         <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                                     </Border>
                                 </StackPanel>
+                                <DataGrid Margin="0 20" Style="{StaticResource DataGrid1}"></DataGrid>
                             </StackPanel>
                         </Border>
                     </Grid>
@@ -139,11 +140,11 @@
                                 </StackPanel>
                                 <DataGrid Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Họ và tên "></DataGridTextColumn>
-                                        <DataGridTextColumn Header="Chính sách "></DataGridTextColumn>
-                                        <DataGridTextColumn Header="Cách tính "></DataGridTextColumn>
-                                        <DataGridTextColumn Header="Áp dụng từ tháng "></DataGridTextColumn>
-                                        <DataGridTextColumn Header="Đến tháng "></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textChinhSach}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textCachTinh}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textApDungTuThang}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textDenThang}"></DataGridTextColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </StackPanel>
