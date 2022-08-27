@@ -1,0 +1,132 @@
+﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.NhomLamViec"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat"
+      mc:Ignorable="d" 
+      d:DesignHeight="1600" d:DesignWidth="1042"
+      Title="NhomLamViec">
+
+    <Grid Background="{DynamicResource #F7F8FC}">
+        <StackPanel Margin="20">
+            <Border Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
+                    <TextBlock  VerticalAlignment="Center" Text="Tạo mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                </StackPanel>
+            </Border>
+            <TabControl Background="{DynamicResource #F7F8FC}">
+                <TabItem Header="{DynamicResource textNhomLamViec}">
+                    <Grid  Background="{DynamicResource #F7F8FC}">
+                        <StackPanel Orientation="Vertical" Margin="10 30 0 0" Width="330" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Grid>
+                                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+                                    </Border.Effect>
+                                </Border>
+                                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
+                                        <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
+                                            <StackPanel VerticalAlignment="Center">
+                                                <Grid>
+                                                    <TextBlock Text="Nhóm M1" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                                    <Path Data="{DynamicResource iconBaChamDoc}"  VerticalAlignment="Center" Fill="{DynamicResource #979797}" HorizontalAlignment="Right" Margin="0 0 5 0"></Path>
+                                                </Grid>
+                                                <TextBlock Text="(27 thành viên)" FontSize="15" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                <Line X1="0" Y1="10" X2="330" Y2="10" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
+                                            </StackPanel>
+
+                                        </Border>
+                                        <TextBlock Height="100" Margin="0 10" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #747474}" Text="123454" TextWrapping="WrapWithOverflow"></TextBlock>
+                                        <Border CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Path Data="{DynamicResource iconThemThanhVien}" Fill="{DynamicResource #FFFFFF}" Margin="0 0 5 0"></Path>
+                                                <TextBlock Text="Thêm nhân viên" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{DynamicResource textDSNhanVienChuaNhom}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="253*"/>
+                            <ColumnDefinition Width="27*"/>
+                            <ColumnDefinition Width="474*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.ColumnSpan="3" Margin="0,0,0.4,-0.2">
+                            <Border Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
+                                <ComboBox BorderThickness="0 0 0 0" Height="28" Width="230" HorizontalAlignment="Right" BorderBrush="{DynamicResource #aaa}" Background="{DynamicResource #FFFFFF}" FontSize="14" Foreground="{DynamicResource #444}">
+                                    <ComboBoxItem Background="{DynamicResource #FFFFFF}" IsSelected="True">Nhập tên cần tìm</ComboBoxItem>
+                                </ComboBox>
+                            </Border>
+                            <DataGrid Margin="0 10 0 0" Style="{StaticResource DataGrid1}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{DynamicResource textDSNhanVienCacNhom}">
+                    <Grid>
+                        <StackPanel>
+                            <Border HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
+                                <ComboBox BorderThickness="0 0 0 0" Height="28" Width="230" HorizontalAlignment="Right" BorderBrush="{DynamicResource #aaa}" Background="{DynamicResource #FFFFFF}" FontSize="14" Foreground="{DynamicResource #444}">
+                                    <ComboBoxItem Background="{DynamicResource #FFFFFF}" IsSelected="True">Nhập tên cần tìm</ComboBoxItem>
+                                </ComboBox>
+                            </Border>
+                            <DataGrid Margin="0 10 0 0" Style="{StaticResource DataGrid1}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{DynamicResource textGuide}">
+                    <StackPanel Margin="0 20 0 30">
+                        <TextBlock FontSize="16" Foreground="{DynamicResource #000}" Text="Để theo dõi các nhóm làm việc trong công ty một cách sát sao nhất thì bạn có thể lựa chọn chức năng &quot;Nhóm làm việc&quot; trong menu lựa chọn ở phần Cài đặt. Đây sẽ là công cụ giúp bạn cập nhật dữ liệu và thống kê chính xác về các nhóm làm việc cũng như số thành viên của mỗi nhóm ra sao." TextWrapping="WrapWithOverflow"></TextBlock>
+                        <TextBlock FontSize="16" FontWeight="Bold" Text="1.Nhóm làm việc"></TextBlock>
+                        <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">Với việc tạo dữ liệu nhóm làm việc trong công ty, bạn sẽ tiến hành thao tác như sau:<LineBreak/>- Chọn &quot;Tạo mới&quot; nằm ở góc trên bên phải màn hình >> popup điền thông tin sẽ hiển thị sau đó.<LineBreak/>- Điền thông tin theo biểu mẫu và chọn &quot;Tạo nhóm&quot; để cập nhật nhóm.</TextBlock>
+                        <Image Margin="10" Source="/Views/CaiDat/Image/giao-dien-nhom-lam-viec.png" Width="512" Height="276"></Image>
+                        <TextBlock HorizontalAlignment="Center" Text="Giao diện nhóm làm việc" FontWeight="Bold"></TextBlock>
+                        <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">Sau khi tạo nhóm thành công thì tên nhóm sẽ được hiển thị theo từng ô thông tin bên dưới. Lúc này, bạn sẽ cần tiến hành việc thêm thành viên cho nhóm làm việc. Để thêm thành viên, bạn sẽ có thể thao tác theo 2 cách:
+                            <LineBreak/>- Cách 1: 
+                            <LineBreak/>+ Click “Thêm nhân viên” nằm ở cuối của nhóm làm việc với biểu tượng hình người. Hệ thống sẽ hiển thị popup chọn thành viên. 
+                            <LineBreak/>+ Bạn có thể tìm kiếm nhanh nhân viên muốn đưa vào nhóm bằng cách nhập tên vào thanh công cụ tìm kiếm được cài đặt bên trên danh sách nhân viên lựa chọn >> click vào ô vuông trước tên nhân viên đó để biểu thị nhân viên này được lựa chọn >> click “Chọn”. Các nhân viên được lựa chọn sẽ được thêm vào nhóm làm việc tương ứng thành công. 
+                            <LineBreak/>- Cách 2: 
+                            <LineBreak/>+ Nhấp chuột vào biểu tượng dấu ba chấm nằm ở góc bên phải của ô thông tin nhóm làm việc >> lựa chọn “Thêm thành viên” được hiển thị đầu tiên >> popup lựa chọn thành viên cũng sẽ hiển thị như cách 1. Thao tác tương tự bạn như trên là bạn có thể thêm thành viên cho nhóm thành công.
+                            <LineBreak/>Mỗi một nhân viên sẽ không bị giới hạn trong việc tham gia vào nhiều nhóm làm việc khác nhau. Vì thế, khi thêm thành viên cho các nhóm làm việc đã tạo thì bạn có thể chọn trùng nhân viên.
+                            <LineBreak/>Nhóm làm việc sau khi được thêm thành viên thành công sẽ hiển thị thông tin tổng quát trong từng ô thông tin. Bao gồm tên nhóm, số thành viên bên dưới và mô tả về nhóm làm việc đó (có chức năng, ý nghĩa hay nhiệm vụ chính gì,....). Để xem chi tiết thành viên của một nhóm làm việc bất kỳ thì bạn chỉ cần nhấp chuột vào tên nhóm >> các thành viên trong nhóm sẽ được hiển thị.
+                            <LineBreak/>Trong trường hợp bạn muốn sửa hay xóa nhóm thì sẽ thao tác như sau:
+                            <LineBreak/>- Chọn biểu tượng ba chấm ở góc bên phải ô thông tin của nhóm làm việc tương ứng.
+                            <LineBreak/>- Chọn “Chỉnh sửa” để thực hiện sửa thông tin nhóm (tên nhóm, mô tả) hoặc chọn “Xóa” để xóa nhóm làm việc đã thiết lập.</TextBlock>
+                        <TextBlock FontSize="16" FontWeight="Bold" Text="2.Danh sách nhân viên chưa nhóm"></TextBlock>
+                        <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">Danh sách nhân viên chưa nhóm sẽ thống kê toàn bộ về những nhân viên chưa có trong nhóm làm việc nào. Tại đây, bạn có thể thực hiện việc thêm những nhân viên này vào các nhóm làm việc đã tạo bằng cách như sau:
+                        </TextBlock>
+                        <Image Margin="10" Height="187" Width="512" Source="/Views/CaiDat/Image/Danh-sach-nhan-vien-chua-nhom.png"></Image>
+                        <TextBlock HorizontalAlignment="Center" Text="Danh sách nhân viên chưa nhóm" FontWeight="Bold"></TextBlock>
+                        <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">- Nhấp chuột vào “Thiết lập” >> popup thêm nhóm được hiển thị >> chọn nhóm làm việc cần thêm trong danh sách mà hệ thống cài đặt >> click “Lưu lại”.
+                            <LineBreak/>Lúc này, nhân viên được thêm sẽ xuất hiện trong nhóm đã thêm tương ứng và không còn ở trong danh sách nhân viên chưa nhóm nữa.
+                        </TextBlock>
+                        <TextBlock FontSize="16" FontWeight="Bold" Text="3.Danh sách nhân viên các nhóm"></TextBlock>
+                        <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">Danh sách nhân viên các nhóm sẽ là mục hiển thị danh sách nhân viên ở trong các nhóm làm việc đã được thêm và cài đặt trước đó. Danh sách này sẽ được hiển thị ở bảng bên dưới với họ tên và nhóm làm việc tương ứng.
+                            <LineBreak/>Để tìm kiếm nhanh nhân viên nào đó thì bạn chỉ cần click vào thanh search ở phía trên bên phải của bảng danh sách nhân viên các nhóm >> điền hoặc nhập tên nhân viên đó >> kết quả sẽ được trả lại trong tích tắc.
+                            <LineBreak/>Nếu như bạn muốn xóa nhân viên nào khỏi một nhóm làm việc thì sẽ thực hiện như sau:
+                            <LineBreak/>- Chọn “Thiết lập” nằm ở cuối hàng thông tin nhân viên cần xóa >> popup xóa nhân viên khỏi nhóm được hiển thị >> click vào biểu tượng thùng rác.
+                            <LineBreak/>Nhân viên khi bị xóa sẽ biến mất khỏi nhóm làm việc và danh sách nhân viên có nhóm, cùng với đó là việc xuất hiện trong danh sách nhân viên chưa nhóm trong trường hợp chỉ ở một nhóm làm việc duy nhất.
+                        </TextBlock>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+
+    </Grid>
+</Page>
