@@ -1,0 +1,104 @@
+﻿<Page x:Class="AppTinhLuong365.Views.TinhLuong.BangLuong"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong"
+      mc:Ignorable="d" 
+      d:DesignHeight="801" d:DesignWidth="1042" Background="{DynamicResource #F7F8FC}"
+      Title="BangLuong">
+
+    <Grid Margin="20">
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+            <StackPanel Margin="20 0 20 0">
+                <TextBlock Text="{DynamicResource textPayrollCycle}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 30 0 0" VerticalAlignment="Top">
+                    <TextBlock Text="{DynamicResource textTu}" FontSize="16" Margin="10" Foreground="{DynamicResource #000}" FontWeight="DemiBold"></TextBlock>
+                    <Border Width="144" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                        <DatePicker BorderThickness="0" Foreground="{DynamicResource #68798B}"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Margin="15 0 15 0"></DatePicker>
+                    </Border>
+                    <TextBlock Text="{DynamicResource textDen}" FontSize="16" Margin="10" Foreground="{DynamicResource #000}" FontWeight="DemiBold"></TextBlock>
+                    <Border Width="144" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                        <DatePicker BorderThickness="0" Foreground="{DynamicResource #68798B}"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Margin="15 0 15 0"></DatePicker>
+                    </Border>
+                    <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                        <Grid>
+                            <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" FontWeight="DemiBold" Text="Tháng 8" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                            <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                        </Grid>
+                    </Border>
+                    <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                        <Grid>
+                            <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                            <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 20 0 0" VerticalAlignment="Top">
+                    <TextBlock Text="{DynamicResource textSort}" FontSize="16" Margin="10" Foreground="{DynamicResource #000}" FontWeight="DemiBold"></TextBlock>
+                    <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                        <Grid>
+                            <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                            <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                        </Grid>
+                    </Border>
+                    <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                        <Grid>
+                            <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                            <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                        </Grid>
+                    </Border>
+                    <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                        <Grid>
+                            <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                            <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                        </Grid>
+                    </Border>
+                    <Border Width="104" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0" Background="{DynamicResource #4C5BD4}">
+                        <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    </Border>
+                </StackPanel>
+                <DataGrid Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="{DynamicResource textName}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textDepartment}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textBasicSalary}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textContract}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textStandardDateNumber}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textActualDateNumber}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textCongTheoTien}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textCongDuocGhiNhan}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textCongDuocNghiPhep}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textTongCong}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textLuongThuc}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textLuongSauPhat}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textPremiumSalary}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textPhatDiMuonVeSomTheoCong}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textPhatDiMuonVeSomTheoTien}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textHoaHong}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textTamUng}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textThuong}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textThuongNghiLe}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textPhat}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textNghiNgayKhongDuocNghi}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textNghiSaiQuyDinh}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textPhucLoi}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textPhuCap}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textPhuCapTheoCa}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textBaoHiem}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textKhoanTienKhac}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textTongLuong}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textThue}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textTongLuongThuc}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="{DynamicResource textTongLuongDaTra}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
