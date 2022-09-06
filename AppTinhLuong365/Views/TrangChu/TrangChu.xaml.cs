@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.TrangChu
     /// </summary>
     public partial class TrangChu : Page
     {
-        public TrangChu()
+        public MainWindow Main;
+        public TrangChu(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

@@ -175,4 +175,5 @@
     <system:String x:Key="textDSNhanVienChuaThietLapLichLamViec">Danh sách nhân viên chưa thiết lập lịch làm việc</system:String>
     <system:String x:Key="textChucVu">Chức vụ</system:String>
     <system:String x:Key="textLienHe">Liên hệ</system:String>
+    <system:String x:Key="textTrangChu">Trang Chủ</system:String>
 </ResourceDictionary>

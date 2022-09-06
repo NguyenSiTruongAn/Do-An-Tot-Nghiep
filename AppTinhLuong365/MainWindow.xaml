@@ -5,16 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTinhLuong365"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1366" Width="1366" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="{DynamicResource #E5E5E5}">
+        Title="MainWindow" MinWidth="768" Height="888" Width="1520" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" SizeChanged="Window_SizeChanged">
+    <Window.Resources>
+        <Style x:Key="SideBarItemStyle" TargetType="ListViewItem">
+            <Setter Property="Width" Value="auto"></Setter>
+            <Setter Property="Height" Value="47"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Visibility" Value="{Binding Vis}"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border SnapsToDevicePixels="True" x:Name="Bd" Background="{StaticResource #FFFFFF}" BorderThickness="0" Padding="0" CornerRadius="0">
+                            <Grid VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Path Width="30" Grid.Column="0" HorizontalAlignment="Left" Data="{Binding Icon}" Fill="{DynamicResource #666c7c}"  Margin="26 0 0 0"></Path>
+                                <TextBlock Margin="0 0 0 0" Grid.Column="1" Text="{Binding Name}" Foreground="{DynamicResource #666c7c}" FontSize="16"></TextBlock>
+                                <Grid Grid.Column="1" HorizontalAlignment="Right">
+                                    <Path Data="{DynamicResource iconMore}" Fill="{DynamicResource #666c7c}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 0">
+                                        <Path.Style>
+                                            <Style TargetType="Path">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding HadSubMenu}" Value="true">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Path.Style>
+                                    </Path>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource #F3F8FB}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource #F3F8FB}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding bool}" Value="true"></Condition>
+                        <Condition Binding="{Binding OpenSubMenu}" Value="true"></Condition>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.2" Storyboard.TargetProperty="Width" From="0" To="256"></DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </MultiDataTrigger.EnterActions>
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="264"/>
+            <ColumnDefinition Width="256"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="47"/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Margin="0,0,0,0" Height="40" Grid.ColumnSpan="2"
                 VerticalAlignment="Top"
@@ -51,19 +112,23 @@
                 <Path Data="{DynamicResource iconClose}" Fill="Black" StrokeThickness="1.2" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Fill" Height="15" Margin="0" Width="15" />
             </Grid>
         </Grid>
-        <StackPanel Grid.Row="1" Background="{DynamicResource #FFFFFF}">
-            <StackPanel Orientation="Horizontal">
-                <Path Data="{DynamicResource iconTimViec365}" Fill="{DynamicResource #4C5BD4}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="28" Margin="68 14" Width="128"/>
-            </StackPanel>
-            
-        </StackPanel>
-        <Grid Grid.Row="2">
-                <!--<ListView Name="sidebar" Margin="0 7" ItemsSource="{Binding SideBarItems}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItem1}" SelectedIndex="{Binding SideBarIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
-                <ListView Name="sidebarNV" Margin="0 7" ItemsSource="{Binding SideBarItemsNV}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItem1}" SelectedIndex="{Binding SideBarIndexNV}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>-->
+        <Path Grid.Row="1" Data="{DynamicResource iconTimViec365}" Fill="{DynamicResource #4C5BD4}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="28" Margin="68 14" Width="128"/>
+        <Line Grid.Row="1" Margin="10 0" X1="-4.37114e-08" Y1="0.5" X2="236" Y2="0.499979" Width="236" Stroke="{DynamicResource #DDDDDD}" HorizontalAlignment="Left" VerticalAlignment="Bottom"></Line>
+
+        <Grid x:Name="gridTop" Grid.Column="1" Grid.Row="1">
+           
         </Grid>
-        <Border VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Background="{DynamicResource #FFFFFF}" Height="50" CornerRadius="10" Margin="30 20 20 0">
-            
-        </Border>
+
+        <Grid Grid.Row="2">
+                <ListView Name="sidebar" Margin="0 7" ItemsSource="{Binding SideBarItems}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItemStyle}" SelectedIndex="{Binding SideBarIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                <!--<ListView Name="sidebarNV" Margin="0 7" ItemsSource="{Binding SideBarItemsNV}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItem1}" SelectedIndex="{Binding SideBarIndexNV}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>-->
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Background="{DynamicResource #F7F8FC}">
+            <ScrollViewer x:Name="scrollMain" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <Frame Margin="40" x:Name="HomeSelectionPage" NavigationUIVisibility="Hidden" BorderThickness="0" IsVisibleChanged="HomeSelectionPage_IsVisibleChanged"></Frame>
+            </ScrollViewer>
+        </Grid>
+        <Frame Visibility="Collapsed" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3" x:Name="PopupSelection" NavigationUIVisibility="Hidden" BorderThickness="0"></Frame>
     </Grid>
 
 </Window>
