@@ -125,6 +125,9 @@
     <Compile Include="Views\TinhLuong\Thue.xaml.cs">
       <DependentUpon>Thue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TrangChu\TrangChu.xaml.cs">
+      <DependentUpon>TrangChu.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -250,6 +253,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TrangChu\TrangChu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -297,6 +304,87 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\CaiDat\Image\danh-sach-nhan-vien.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\app1651713915_favicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\bg_per.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\cau-hinh-cham-cong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\cai-dat-danh-sach-nhan-vien-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\them-nhan-vien-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\dang-ky-nhan-vien-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\them-hop-dong-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\xuat-file-luong-7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\them-ca-lam-viec-8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\them-lich-lam-viec-8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\chon-lich-10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\chon-ca-11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\them-nhan-vien-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\cai-ca-lam-viec-13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\quan-ly-de-xuat-13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\thiet-lap-nhom-14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\nhom-du-kien-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\them-nhan-vien-nhom-15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\xoa-nhan-vien-nhom-17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\cai-dat-hoa-hong-18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\di-muon-ve-som-19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\them-nhan-vien-phuc-loi-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\thu-nhap-21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\thuong-phat-22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\sua-xoa-thuong-phat-23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\cai-dat-bao-hiem-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\TrangChu\Image\cai-dat-ngay-nghi-le-25.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

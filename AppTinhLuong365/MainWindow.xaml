@@ -55,58 +55,14 @@
             <StackPanel Orientation="Horizontal">
                 <Path Data="{DynamicResource iconTimViec365}" Fill="{DynamicResource #4C5BD4}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="28" Margin="68 14" Width="128"/>
             </StackPanel>
-            <!--<StackPanel Orientation="Horizontal" Background="{DynamicResource #EDEFFB}">
-                <Path Data="{DynamicResource iconHome}" Fill="{DynamicResource #4C5BD4}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
-                <TextBlock Text="{DynamicResource textHome}" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="10"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Path Data="{DynamicResource icon1}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
-                <TextBlock Text="{DynamicResource textProfile}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Path Data="{DynamicResource icon2}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
-                <TextBlock Text="{DynamicResource textSalary}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Path Data="{DynamicResource icon3}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
-                <TextBlock Text="{DynamicResource textTimeKeeping}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Path Data="{DynamicResource icon4}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
-                <TextBlock Text="{DynamicResource textOffer}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Path Data="{DynamicResource icon4}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
-                <TextBlock Text="{DynamicResource textCalendar}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Path Data="{DynamicResource icon5}" Stroke="{DynamicResource #68798B}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="15" Margin="15 10" Width="15"/>
-                <TextBlock Text="{DynamicResource textDigitalConversion}" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="10"></TextBlock>
-            </StackPanel>-->
+            
         </StackPanel>
         <Grid Grid.Row="2">
                 <!--<ListView Name="sidebar" Margin="0 7" ItemsSource="{Binding SideBarItems}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItem1}" SelectedIndex="{Binding SideBarIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
                 <ListView Name="sidebarNV" Margin="0 7" ItemsSource="{Binding SideBarItemsNV}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItem1}" SelectedIndex="{Binding SideBarIndexNV}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>-->
         </Grid>
         <Border VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Background="{DynamicResource #FFFFFF}" Height="50" CornerRadius="10" Margin="30 20 20 0">
-            <Grid>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{DynamicResource textHome}" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="15,15,0,0"></TextBlock>
-                    <TextBlock Text="/" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="0,15,0,0"></TextBlock>
-                    <TextBlock Text="{DynamicResource textAccManagement}" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="0,15"></TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <TextBlock Text="Trang chủ" FontSize="15" Foreground="{DynamicResource #474747}" Margin="0,0,21,0"></TextBlock>
-                    <TextBlock Text="{DynamicResource textGuide}" FontSize="15" Foreground="{DynamicResource #474747}" Margin="0,0,21,0"></TextBlock>
-                    <TextBlock Text="{DynamicResource textNews}" FontSize="15" Foreground="{DynamicResource #474747}" Margin="0,0,25,0"></TextBlock>
-                    <Path Margin="0 0 -10 0" VerticalAlignment="Center" Data="{DynamicResource iconRing}" Fill="{DynamicResource #474747}"></Path>
-                    <Path Height="17" Width="17" Margin="0 0 -12 0" VerticalAlignment="Top" Data="{DynamicResource iconCirle}" Fill="{DynamicResource #F46A6A}"></Path>
-                    <TextBlock Text="2" Foreground="{DynamicResource #FFFFFF}" Margin="0 0 25 0" VerticalAlignment="Top"></TextBlock>
-                    <Border Margin="0 0 10 0 " Width="32" Height="32" CornerRadius="32" Background="Black"></Border>
-                    <TextBlock Margin="0 0 12 0" Text="Nguyễn Văn Thanh" FontSize="15" Foreground="{DynamicResource #474747}" FontWeight="Bold"></TextBlock>
-                    <Path Margin="0 0 22 0" VerticalAlignment="Center" Data="{DynamicResource iconDrop}" Stroke="{DynamicResource #474747}"></Path>
-                </StackPanel>
-            </Grid>
+            
         </Border>
     </Grid>
 

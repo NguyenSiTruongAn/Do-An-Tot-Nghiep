@@ -38,19 +38,19 @@
 
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 40 20 0 " >
-                <Border Width="150" Height="40" Background="{DynamicResource #4C5BD4}" CornerRadius="10" Margin="0 0 20 0">
-                    <TextBlock Text="Biến động lương" VerticalAlignment="Center" Margin="10" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />
+                <Border Width="152" Height="40" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Margin="0 0 20 0">
+                    <TextBlock Text="Biến động lương" FontWeight="DemiBold" VerticalAlignment="Center" Margin="10" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />
                 </Border>
-                <Border Width="150" Height="40" Background="{DynamicResource #4C5BD4}" CornerRadius="10" Margin="0 0 20 0">
-                    <TextBlock Text="Nhập lương cơ bản" VerticalAlignment="Center" Margin="10" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />
+                <Border Width="168" Height="40" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Margin="0 0 20 0">
+                    <TextBlock Text="Nhập lương cơ bản" FontWeight="DemiBold" VerticalAlignment="Center" Margin="10" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />
                 </Border>
-                <Border Width="150" Height="40" Background="{DynamicResource #4C5BD4}" CornerRadius="10">
-                    <TextBlock Text="Xuất lương cơ bản" VerticalAlignment="Center" Margin="10" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />
+                <Border Width="164" Height="40" Background="{DynamicResource #4C5BD4}" CornerRadius="5">
+                    <TextBlock Text="Xuất lương cơ bản" FontWeight="DemiBold" VerticalAlignment="Center" Margin="10" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />
                 </Border>
 			
             </StackPanel>
                 
-                <DataGrid Style="{StaticResource DataGrid1}">
+            <DataGrid Style="{StaticResource DataGrid1}" Margin="0 20 0 0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="{DynamicResource textHoTen}">
                     </DataGridTextColumn>
@@ -58,13 +58,12 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="{DynamicResource textHopDongApDung}">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Phòng ban">
+                    <DataGridTextColumn Header="{DynamicResource textPhongBan}">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Chức vụ">
+                    <DataGridTextColumn Header="{DynamicResource textChucVu}">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Liên hệ">
+                    <DataGridTextColumn Header="{DynamicResource textLienHe}">
                     </DataGridTextColumn>
-					 
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

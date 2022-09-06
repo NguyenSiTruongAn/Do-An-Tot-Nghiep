@@ -168,4 +168,11 @@
     <system:String x:Key="textTienBaoHiem">Tiền bảo hiểm</system:String>
     <system:String x:Key="textCachTinh">Cách tính</system:String>
     <system:String x:Key="textHopDongApDung">Hợp đồng áp dụng</system:String>
+    <system:String x:Key="textHeThongDeXuat">Hệ thống đề xuất</system:String>
+    <system:String x:Key="textTongQuanHeThong">Tổng quan hệ thống</system:String>
+    <system:String x:Key="textBieuMauDeXuat">Biểu mẫu đề xuất</system:String>
+    <system:String x:Key="textBangLuong">Bảng lương</system:String>
+    <system:String x:Key="textDSNhanVienChuaThietLapLichLamViec">Danh sách nhân viên chưa thiết lập lịch làm việc</system:String>
+    <system:String x:Key="textChucVu">Chức vụ</system:String>
+    <system:String x:Key="textLienHe">Liên hệ</system:String>
 </ResourceDictionary>
