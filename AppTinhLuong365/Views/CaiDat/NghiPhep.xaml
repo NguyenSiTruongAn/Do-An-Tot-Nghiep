@@ -1,0 +1,253 @@
+﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.NghiPhep"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat"
+      mc:Ignorable="d" 
+      d:DesignHeight="2450" d:DesignWidth="1242"
+      Title="NghiPhep">
+
+    <Grid Background="{DynamicResource #F7F8FC}">
+        <StackPanel Margin="20">
+            <Border Height="38" Width="118" CornerRadius="16" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
+                    <TextBlock  VerticalAlignment="Center" Text="Tạo mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                </StackPanel>
+            </Border>
+            <TabControl Background="{DynamicResource #F7F8FC}">
+                <TabItem Header="{DynamicResource textChinhSachNghiPhep}">
+                    <Grid  Background="{DynamicResource #F7F8FC}">
+                        <StackPanel Orientation="Horizontal" Margin="10 30 0 0"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="3">
+                            <Grid HorizontalAlignment="Left" Width="330">
+                                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+                                    </Border.Effect>
+                                </Border>
+                                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
+                                        <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
+                                            <StackPanel VerticalAlignment="Center">
+                                                <TextBlock Text="Nghỉ phép có lương" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                                <Line X1="0" Y1="10" X2="330" Y2="10" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
+                                            </StackPanel>
+                                        </Border>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
+                                            <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                        </StackPanel>
+                                        <TextBlock Margin="20 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="Là nghỉ phép trong 1 số trường hợp đặc biệt được quy định trong bộ luật lao..." TextWrapping="WrapWithOverflow"></TextBlock>
+                                        <TextBlock Text="(Xem thêm)" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                    </StackPanel>
+
+                                </Border>
+                            </Grid>
+                            <Grid HorizontalAlignment="Left" Width="330" Margin="20 0 0 0">
+                                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+                                    </Border.Effect>
+                                </Border>
+                                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
+                                        <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
+                                            <StackPanel VerticalAlignment="Center">
+                                                <TextBlock Text="Nghỉ phép không lương" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                                <Line X1="0" Y1="10" X2="330" Y2="10" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
+                                            </StackPanel>
+                                        </Border>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
+                                            <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                        </StackPanel>
+                                        <TextBlock Margin="20 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="Là nghỉ phép có xin phép theo đúng quy định của doanh nghiệp, khi người lao..." TextWrapping="WrapWithOverflow"></TextBlock>
+                                        <TextBlock Text="(Xem thêm)" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                    </StackPanel>
+
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{DynamicResource textNghiSaiQuyDinh}">
+                    <Grid Margin="20">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="7">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="16" Opacity="0.1"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="7">
+                            <StackPanel Margin="20">
+                                <Grid>
+                                    <TextBlock Text="{DynamicResource textNghiSaiQuyDinh}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                                    <Border Height="38" Width="160" BorderThickness="1" HorizontalAlignment="Right" CornerRadius="10" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}">
+                                        <DatePicker VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" Foreground="{DynamicResource #68798B}"></DatePicker>
+                                    </Border>
+                                </Grid>
+                                <TextBlock Text="Nghỉ không có đơn xin phép hoặc có đơn xon phép nhưng bị sếp &quot;hủy đơn&quot;" FontStyle="Italic" Foreground="{DynamicResource #000}" FontWeight="DemiBold"></TextBlock>
+                                <Border Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #FFFFFF}" Text="Cài đặt mức phạt"></TextBlock>
+                                </Border>
+                                <DataGrid Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="{DynamicResource textCaLamViec}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textMucPhatDangApDung}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textNgayBatDauApDung}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{DynamicResource textNghiNgayKhongDuocNghi}">
+                    <Grid Margin="20">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="7">
+                            <StackPanel Margin="20">
+                                <Grid>
+                                    <TextBlock Text="{DynamicResource textNghiSaiQuyDinh}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                                    <Border Height="38" Width="160" BorderThickness="1" HorizontalAlignment="Right" CornerRadius="10" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}">
+                                        <DatePicker VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" Foreground="{DynamicResource #68798B}"></DatePicker>
+                                    </Border>
+                                </Grid>
+                                <TextBlock TextWrapping="WrapWithOverflow" Width="680" HorizontalAlignment="Left" Text="Là trường hợp nhân viên có đơn xin nghỉ phép nhưng sếp không duyệt và lệnh nhân viên không được nghỉ những ngày đó bắt buộc phải đi làm vì các ngày đó công ty có việc trọng đại như ngày hoàn thành dự án, ngày đối ngoại của công ty… Trường hợp này nhân viên bắt buộc phải đi làm nếu cố ý nghỉ sẽ ảnh hưởng nghiêm trọng đến hoạt động của công ty." FontStyle="Italic" Foreground="{DynamicResource #000}" FontWeight="DemiBold"></TextBlock>
+                                <Border Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #FFFFFF}" Text="Cài đặt mức phạt"></TextBlock>
+                                </Border>
+                                <DataGrid Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="{DynamicResource textCaLamViec}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textMucPhatDangApDung}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textNgayBatDauApDung}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{DynamicResource textTheoDoiNghiPhep}">
+                    <Grid Margin="20">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <Border CornerRadius="16" Background="{DynamicResource #FFFFFF}">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="20 20 20 0">
+                                <Grid>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{DynamicResource textDSNhanVienNghiPhep}" Foreground="{DynamicResource #2E3467}" FontSize="24" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{DynamicResource textQuanLyNhanVienNghiPhep}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                                            <Grid>
+                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tháng 8" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                            </Grid>
+                                        </Border>
+                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                                            <Grid>
+                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                            </Grid>
+                                        </Border>
+                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                                            <Grid>
+                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tất cả nhân viên" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                            </Grid>
+                                        </Border>
+
+                                    </StackPanel>
+                                </Grid>
+                                <DataGrid Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textNgayXinNghi}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textCaXinNghi}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textTrangThai}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textLoaiHinh}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                    
+                </TabItem>
+                <TabItem Header="{DynamicResource textGuide}">
+                    <Grid Margin="20">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                            <StackPanel Margin="20">
+                                <TextBlock FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">Nghỉ phép sẽ là mục thống kê lại toàn bộ chính sách nghỉ phép của công ty. Cùng với đó chính là việc theo dõi vấn đề nghỉ phép và quản lý mức phạt với các trường hợp nghỉ sai quy định.</TextBlock>
+                                <TextBlock FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}"><LineBreak/>1. Chính sách nghỉ phép</TextBlock>
+                                <TextBlock FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">
+                            <LineBreak/>Chính sách nghỉ phép là những chế độ nghỉ phép mà công ty hiện đang áp dụng cho toàn bộ nhân viên. Khi click vào “nghỉ phép” từ menu lựa chọn, giao diện sẽ hiển thị luôn Chính sách nghỉ phép với 2 chế độ nghỉ phép phổ biến hiện nay:
+                            <LineBreak/>
+                            - Nghỉ phép có lương: Là chế độ nghỉ phép theo quy định của pháp luật. Khi nghỉ vào những trường hợp được cho phép này, người lao động vẫn được tính công như bình thường khi đi làm.
+                            <LineBreak/>
+                            - Nghỉ phép không lương: Là chế độ nghỉ phép đúng theo quy định của công ty. Tuy nhiên, khi nghỉ trong những trường hợp này, người lao động sẽ không được tính công.
+                            <LineBreak/>
+                            Tùy vào việc xin nghỉ phép với lý do trong trường hợp nào mà người lao động sẽ được xét nghỉ phép có lương hay không lương. Điều này sẽ ảnh hưởng tới số công và mức lương sau này nhận được.
+                            <LineBreak/>
+                                </TextBlock>
+                                <TextBlock FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}">2. Phạt nghỉ sai quy định</TextBlock>
+                                <TextBlock FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">
+                            <LineBreak/>Đây sẽ là mục thiết lập mức phạt cho nhân viên trong công ty trong trường hợp nghỉ phép sai quy định. Có thể là cố tính nghỉ khi không được phê duyệt đơn xin nghỉ phép hoặc là nghỉ sai so với thời gian được duyệt,....
+                                <LineBreak></LineBreak>
+                                Đầu tiên, bạn sẽ cần cài đặt mức phạt theo các bước như sau:
+                                <LineBreak></LineBreak>
+                                - Chọn “cài đặt mức phạt” nằm ở góc trên bên phải màn hình giao diện hiển thị.
+                                <LineBreak></LineBreak>
+                                - Chọn tên nhân viên, có thể tìm kiếm nhanh với thanh search được cung cấp nếu như nhân viên đó không hiển thị ở top đầu. Ở đây, nếu như nhiều nhân viên có cùng một mức phạt thì bạn có thể chọn nhiều nhân viên cùng một lúc.
+                                <LineBreak></LineBreak>
+                                - Nhập số tiền phạt: Ví dụ 100000, 200000,... (chú ý định dạng của số tiền khi nhập).
+                                <LineBreak></LineBreak>
+                                - Chọn thời gian áp dụng mức phạt >> click “Áp dụng”.
+                                <LineBreak></LineBreak>
+                                Sau khi hoàn thiện các thao tác trên, nhân viên được cài đặt mức phạt sẽ được cập nhật ở bảng danh sách bên dưới. Các thông tin được thể hiện bao gồm: Họ tên, mức phạt đang áp dụng, thời gian áp dụng.
+                                </TextBlock>
+                                <Image Width="1100" Height="607" Source="/Views/CaiDat/Image/PhatNghiSaiQuyDInh.png"></Image>
+                                <TextBlock FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center">Phạt nghỉ sai quy định</TextBlock>
+                                <TextBlock FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">Để xem chi tiết, chỉnh sửa hay xóa mức phạt của nhân viên nào thì bạn sẽ click vào “Xem mức phạt” nằm ở cuối thông tin phạt của nhân viên đó >> popup chi tiết về mức phạt được hiển thị với số tiền và thời gian áp dụng. Khi đó, để chỉnh sửa bạn sẽ click vào biểu tượng chiếc bút >> chỉnh sửa số tiền >> ấn vào biểu tượng lưu để hệ thống cập nhật dữ liệu phạt mới sau khi chỉnh sửa. Còn nếu như muốn xóa thì bạn sẽ click vào biểu tượng thùng rác >> popup xác nhận thông tin xóa >> lựa chọn “Ok” hoặc “Hủy” để kết thúc thao tác.
+                            <LineBreak></LineBreak>
+                            Trong trường hợp bạn muốn tra cứu nhanh thông tin phạt của một nhân viên nào đó thì chỉ cần nhập hoặc chọn tên nhân viên đó trên thanh tìm kiếm nằm ở góc trên bên phải màn hình. Hệ thống ngay lập tức sẽ hiển thị thông tin phạt của nhân viên đó trong bảng danh sách bên dưới. Nếu như nhân viên bạn tìm chưa được thiết lập mức phạt thì hệ thống sẽ hiển thị dữ liệu trống.
+                            <LineBreak></LineBreak>
+                                </TextBlock>
+                                <TextBlock FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}">3. Theo dõi nghỉ phép</TextBlock>
+                                <TextBlock FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">
+                            <LineBreak/>Để theo dõi và quản lý tốt hơn về danh sách nhân viên nghỉ phép trong công ty thì “Theo dõi nghỉ phép” sẽ giúp bạn có thể rõ ràng hơn rất nhiều. Tất cả những nhân viên có đơn xin nghỉ phép (được duyệt, chưa được duyệt, hay quá hạn duyệt,...) đều sẽ được thống kê ở dưới bảng danh sách.
+                            <LineBreak/>Các trường thông tin tương ứng bao gồm: Họ tên, Ngày xin nghỉ, Trạng thái, Loại hình và Phạt nếu nghỉ sai quy định. Với thông tin “Phạt nếu nghỉ sai quy định”, đây sẽ mục cập nhật mức phạt tương ứng khi nhân viên có đơn xin nghỉ phép nghỉ sai quy định của công ty. 
+                            <LineBreak></LineBreak>
+                            Mức phạt thông thường sẽ được cập nhật dựa trên việc thiết lập tiền phạt ở mục Phạt nghỉ sai quy định. Tuy nhiên, thực tế, trong nhiều trường hợp, hoàn cảnh khác nhau thì việc thay đổi mức phạt khác so với mức đã cài đặt là điều có thể xảy ra. Khi đó, nếu như bạn muốn thay đổi mức phạt của một nhân viên bất kỳ thì có thể thao tác như sau:
+                            <LineBreak></LineBreak>
+                            - Click vào biểu tượng chiếc bút ở cột Phạt nếu nghỉ sai quy định.
+                            <LineBreak></LineBreak>
+                            - Thiết lập mức phạt bằng cách nhập số tiền phạt tương ứng.
+                            <LineBreak></LineBreak>
+                            - Lựa chọn biểu tượng tích xanh để lưu thông tin phạt hoặc chọn biểu tượng chữ X để hủy việc thiết lập mức phạt này.
+                            <LineBreak></LineBreak>
+                            Mức phạt mới sau khi được thiết lập sẽ hiển thị bằng màu đỏ và khi đưa chuột vào con số đó thì sẽ hiển thị nội dung “mức phạt đã chỉnh sửa”. Điều này nhằm giúp bạn phân biệt được mức phạt nghỉ sai quy định đã được cài đặt và mức phạt mới được chỉnh sửa.
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                    
+                    
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+
+    </Grid>
+</Page>

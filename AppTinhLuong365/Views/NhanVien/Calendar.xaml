@@ -1,0 +1,592 @@
+﻿<Page x:Class="AppTinhLuong365.Views.NhanVien.Calendar"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.NhanVien"
+      mc:Ignorable="d" 
+      d:DesignHeight="1292" d:DesignWidth="1102" Background="{DynamicResource #F7F8FC}"
+      Title="Calendar">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="36 20 0 0">
+            <Grid>
+                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16" Grid.ColumnSpan="2" Margin="0,0,-0.4,0.4">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                    </Border.Effect>
+                </Border>
+                <Border VerticalAlignment="Top" Margin="0,30,-0.4,0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Width="1042" Height="992" Grid.ColumnSpan="2">
+                    <StackPanel  VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal" Margin="0 10 0 0" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right">
+                            <Border CornerRadius="10" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" Width="150" Height="30" VerticalAlignment="Center" Margin="0 0 10 0">
+                                <Grid>
+                                    <TextBlock Text="Tháng 8" FontSize="15" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource #444}"></TextBlock>
+                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"></Path>
+                                </Grid>
+                            </Border>
+                            <Border CornerRadius="10" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" Width="150" Height="30" VerticalAlignment="Center" Margin="0 0 10 0">
+                                <Grid>
+                                    <TextBlock Text="Năm 2022" FontSize="15" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource #444}"></TextBlock>
+                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"></Path>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                        <Grid  Margin="20 10 0 0">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Lịch làm việc tháng 8/2022" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                                    <Border CornerRadius="5" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Center" Height="38" Width="188" Margin="10 0 0 0">
+                                        <TextBlock Text="{DynamicResource textSuggestedWorkSchedule}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold"></TextBlock>
+                                    </Border>
+                                </StackPanel>
+                                <TextBlock Text="{DynamicResource textDetailsOfShiftsByDay}" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" FontSize="15"></TextBlock>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Top" Orientation="Vertical" Margin="0 0 20 0" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{DynamicResource textName}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
+                                    <TextBlock Text="Nguyễn Sĩ Trường An" FontSize="15" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="ID: " FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
+                                    <TextBlock Text="14492 " FontSize="15" Foreground="{DynamicResource #000}" FontWeight="DemiBold"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel Orientation="Horizontal" Background="{DynamicResource #4C5BD4}" Margin="20 22 20 0">
+                            <StackPanel Width="143">
+                                <TextBox Text="{DynamicResource textSunday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="{DynamicResource textMonday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="{DynamicResource textTuesday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="{DynamicResource textWednesday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="{DynamicResource textThursday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="{DynamicResource textFriday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                            </StackPanel>
+                            <StackPanel Width="143">
+                                <TextBox Text="{DynamicResource textSaturday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <Border  Margin="20 0 20 0" BorderBrush="{DynamicResource #BBBBBB}" BorderThickness="1 1 1 1">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Margin="0 0 0 0" Orientation="Vertical">
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock Text="Ca sáng -" FontWeight="DemiBold" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock Text="Phòng 15" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Margin="0 0 0 0" Orientation="Vertical" Width="143">
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock Text="Ca sáng -" FontWeight="DemiBold" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock Text="Phòng 15" FontWeight="DemiBold" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Margin="0 0 0 0" Orientation="Vertical" Width="143">
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Margin="0 0 0 0" Orientation="Vertical" Width="143">
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 1 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Margin="0 0 0 0" Orientation="Vertical" Width="143">
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+
+                                </StackPanel>
+                                <StackPanel Margin="0 0 0 0" Orientation="Vertical" Width="143">
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Margin="0 0 0 0" Orientation="Vertical" Width="143">
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Height="163" Margin="0 0 0 0" Width="143" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="7" Margin="0 9 0 0" Foreground="{DynamicResource #989898}" HorizontalAlignment="Center"/>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Width="120" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                <StackPanel HorizontalAlignment="Right" Margin="9 6" Height="36">
+                                                    <TextBlock FontWeight="DemiBold" Text="Ca sáng -" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                    <TextBlock FontWeight="DemiBold" Text="Phòng 15" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 0 0"></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+
+    </Grid>
+</Page>

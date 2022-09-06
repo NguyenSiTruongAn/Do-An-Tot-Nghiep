@@ -26,6 +26,17 @@
     <SolidColorBrush Color="#FFF3EB" x:Key="#FFF3EB"/>
     <SolidColorBrush Color="#505DC7" x:Key="#505DC7"/>
     <SolidColorBrush Color="#F3F3F3" x:Key="#F3F3F3"/>
-
+    <SolidColorBrush Color="#444" x:Key="#444"/>
+    <SolidColorBrush Color="#888" x:Key="#888"/>
+    <SolidColorBrush Color="#000" x:Key="#000"/>
+    <SolidColorBrush Color="#979797" x:Key="#979797"/>
+    <SolidColorBrush Color="#F7F8FC" x:Key="#F7F8FC"/>
+    <SolidColorBrush Color="#5F648D" x:Key="#5F648D"/>
+    <SolidColorBrush Color="#747474" x:Key="#747474"/>
+    <SolidColorBrush Color="#aaa" x:Key="#aaa"/>
+    <SolidColorBrush Color="#777777" x:Key="#777777"/>
+    <SolidColorBrush Color="#CCCCCC" x:Key="#CCCCCC"/>
+    <SolidColorBrush Color="#EFF7FE" x:Key="#EFF7FE"/>
+    
 
 </ResourceDictionary>

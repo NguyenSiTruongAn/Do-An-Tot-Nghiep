@@ -56,11 +56,53 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\BaoCaoCongLuong\BaoCaoCongLuong.xaml.cs">
+      <DependentUpon>BaoCaoCongLuong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\CaiCaVaLichLamViec.xaml.cs">
+      <DependentUpon>CaiCaVaLichLamViec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\DiMuonVeSom.xaml.cs">
+      <DependentUpon>DiMuonVeSom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\NghiLe.xaml.cs">
+      <DependentUpon>NghiLe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\NghiPhep.xaml.cs">
+      <DependentUpon>NghiPhep.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\NhomLamViec.xaml.cs">
+      <DependentUpon>NhomLamViec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChiTraLuong\ChiTraLuong.xaml.cs">
+      <DependentUpon>ChiTraLuong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\BaoHiem.xaml.cs">
+      <DependentUpon>BaoHiem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\CacKhoanTienKhac.xaml.cs">
+      <DependentUpon>CacKhoanTienKhac.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\ChamCong.xaml.cs">
       <DependentUpon>ChamCong.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\HoaHong.xaml.cs">
+      <DependentUpon>HoaHong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\PhucLoi.xaml.cs">
+      <DependentUpon>PhucLoi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\ThuongPhat.xaml.cs">
+      <DependentUpon>ThuongPhat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NhanVien\Calendar.xaml.cs">
+      <DependentUpon>Calendar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NhanVien\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NhanVien\TimeKeeping.xaml.cs">
+      <DependentUpon>TimeKeeping.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PageNhapLuongCoBanVaCheDo.xaml.cs">
       <DependentUpon>PageNhapLuongCoBanVaCheDo.xaml</DependentUpon>
@@ -70,6 +112,18 @@
     </Compile>
     <Compile Include="Views\NhanVien\ProFile.xaml.cs">
       <DependentUpon>ProFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PhanQuyen\PhanQuyen.xaml.cs">
+      <DependentUpon>PhanQuyen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\BangLuong.xaml.cs">
+      <DependentUpon>BangLuong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\TamUng.xaml.cs">
+      <DependentUpon>TamUng.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\Thue.xaml.cs">
+      <DependentUpon>Thue.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +138,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resouce\Border\Border.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resouce\Color\Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,11 +158,67 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\BaoCaoCongLuong\BaoCaoCongLuong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\CaiCaVaLichLamViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\DiMuonVeSom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\NghiLe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\NghiPhep.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\NhomLamViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChiTraLuong\ChiTraLuong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\BaoHiem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\CacKhoanTienKhac.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\ChamCong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DuLieuTinhLuong\HoaHong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\PhucLoi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\ThuongPhat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NhanVien\Calendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NhanVien\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NhanVien\TimeKeeping.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,6 +231,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NhanVien\ProFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PhanQuyen\PhanQuyen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\BangLuong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\TamUng.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\Thue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,6 +277,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Views\CaiDat\Image\llv.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\CaiDat\Image\giao-dien-nhom-lam-viec.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\CaiDat\Image\danh-sach-nhan-vien-chua-nhom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\CaiDat\Image\tnv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\CaiDat\Image\cc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\CaiDat\Image\PhatNghiSaiQuyDInh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\CaiDat\Image\danh-sach-nhan-vien.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

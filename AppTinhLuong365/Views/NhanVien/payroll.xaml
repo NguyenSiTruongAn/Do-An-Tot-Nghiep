@@ -5,53 +5,59 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.NhanVien"
       mc:Ignorable="d" 
-      d:DesignHeight="920" d:DesignWidth="1042" Background="{DynamicResource #FFFFFF}"
+      d:DesignHeight="920" d:DesignWidth="1042" Background="{DynamicResource #F7F8FC}"
       Title="payroll">
 
-    <Grid>
-        <StackPanel>
-            <TextBlock Text="Bảng lương chu kỳ" Margin="19 25 0 0" FontSize="24" Foreground="{DynamicResource #2E3467}" FontWeight="Bold"></TextBlock>
-            <TextBlock Text="Nguyễn Sĩ Trường An - ID 14492" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="19 3 0 0"></TextBlock>
-            <TextBlock Text="PHÒNG 15: TRUNG TÂM ĐÀO TẠO ỨNG VIÊN MỚI ĐẾN" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="19 3 0 0"></TextBlock>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 120 0 0" Height="30" VerticalAlignment="Top">
-            <TextBlock Text="Từ" FontSize="14" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center"></TextBlock>
-            <Border Width="150" Height="30" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock Text="01/08/2022" FontSize="14" Foreground="{DynamicResource #666C7C}" Margin="0 0 10 0"></TextBlock>
-                    <Path Data="{DynamicResource iconCalendar}" Fill="Black" Margin="0 0 20 0"></Path>
+    <Grid Margin="20">
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16" Grid.ColumnSpan="2" Margin="0,0,-0.4,0">
+            <StackPanel>
+                <StackPanel VerticalAlignment="Top" Margin="20 0 0 0">
+                    <TextBlock Text="Bảng lương chu kỳ" Margin="0 25 0 0" FontSize="24" Foreground="{DynamicResource #2E3467}" FontWeight="Bold"></TextBlock>
+                    <TextBlock Text="Nguyễn Sĩ Trường An - ID 14492" FontWeight="DemiBold" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="0 3 0 0"></TextBlock>
+                    <TextBlock Text="PHÒNG 15: TRUNG TÂM ĐÀO TẠO ỨNG VIÊN MỚI ĐẾN" FontWeight="DemiBold" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="0 3 0 0"></TextBlock>
                 </StackPanel>
-            </Border>
-            <TextBlock Text="Đến" FontSize="14" FontWeight="Bold" Foreground="Black" Margin="20 0 0 0" VerticalAlignment="Center"></TextBlock>
-            <Border Width="150" Height="30" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock Text="31/08/2022" FontSize="14" Foreground="{DynamicResource #666C7C}" Margin="0 0 10 0"></TextBlock>
-                    <Path Data="{DynamicResource iconCalendar}" Fill="Black" Margin="0 0 20 0"></Path>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 20 0 0" Height="38" VerticalAlignment="Top">
+                    <TextBlock Text="Từ" FontSize="14" FontWeight="DemiBold" Foreground="Black" VerticalAlignment="Center"></TextBlock>
+                    <Border Width="150" Height="38" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
+                        <DatePicker VerticalAlignment="Center" BorderThickness="0"></DatePicker>
+                    </Border>
+                    <TextBlock Text="Đến" FontSize="14" FontWeight="DemiBold" Foreground="Black" Margin="20 0 0 0" VerticalAlignment="Center"></TextBlock>
+                    <Border Width="150" Height="38" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
+                        <DatePicker VerticalAlignment="Center" BorderThickness="0"></DatePicker>
+                    </Border>
+                    <Border Width="150" Height="38" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
+                        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Text="Tháng 8" FontSize="14" Foreground="{DynamicResource #444}" Margin="0 0 50 0" FontWeight="DemiBold"></TextBlock>
+                            <Path Data="{DynamicResource iconSearch }" Fill="{DynamicResource #888}" Margin="0 0 20 0"></Path>
+                        </StackPanel>
+                    </Border>
+                    <Border Width="150" Height="38" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
+                        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Text="Năm 2022" FontWeight="DemiBold" FontSize="14" Foreground="{DynamicResource #444}" Margin="0 0 40 0"></TextBlock>
+                            <Path Data="{DynamicResource iconSearch }" Fill="{DynamicResource #888}" Margin="0 0 20 0"></Path>
+                        </StackPanel>
+                    </Border>
+                    <Border Background="{DynamicResource #4C5BD4}" CornerRadius="10"  Height="38" Width="100" Margin="10 0 20 0">
+                        <TextBlock Text="{DynamicResource textstatistical}" Padding="10 20" FontSize="14" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    </Border>
                 </StackPanel>
-            </Border>
-            <Border Width="150" Height="30" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock Text="Tháng 8" FontSize="14" Foreground="{DynamicResource #666C7C}" Margin="0 0 50 0"></TextBlock>
-                    <Path Data="{DynamicResource iconSearch }" Fill="Black" Margin="0 0 20 0"></Path>
+                <StackPanel Margin="20 30 20 0">
+                    <DataGrid Style="{StaticResource DataGrid1}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{DynamicResource textNumericalOrder}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textSalaries}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textMoney}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textUnit}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </StackPanel>
-            </Border>
-            <Border Width="150" Height="30" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock Text="Năm 2022" FontSize="14" Foreground="{DynamicResource #666C7C}" Margin="0 0 40 0"></TextBlock>
-                    <Path Data="{DynamicResource iconSearch }" Fill="Black" Margin="0 0 20 0"></Path>
-                </StackPanel>
-            </Border>
-            <Border Background="{DynamicResource #4C5BD4}" CornerRadius="10"  Height="30" Width="100" Margin="10 0 20 0">
-                <TextBlock Text="Thống kê" FontSize="14" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-            </Border>
-        </StackPanel>
-        <StackPanel Margin="19 170 0 0">
-            <StackPanel Orientation="Horizontal" Background="{DynamicResource #4C5BD4}">
-                <TextBlock Text="Số thứ tự" Margin="30 26 0 13" Foreground="{DynamicResource #FFFFFF}" FontSize="15" FontWeight="Bold"></TextBlock>
-                <TextBlock Text="Các khoản lương" Margin="130 26 0 13" Foreground="{DynamicResource #FFFFFF}" FontSize="15" FontWeight="Bold"></TextBlock>
-                <TextBlock Text="Số tiền" Margin="200 26 0 13" Foreground="{DynamicResource #FFFFFF}" FontSize="15" FontWeight="Bold"></TextBlock>
-                <TextBlock Text="Đơn vị" Margin="230 26 0 13" Foreground="{DynamicResource #FFFFFF}" FontSize="15" FontWeight="Bold"></TextBlock>
             </StackPanel>
-        </StackPanel>
+        </Border>
+
     </Grid>
 </Page>

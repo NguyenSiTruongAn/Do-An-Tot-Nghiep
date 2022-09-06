@@ -50,13 +50,13 @@
 			
             </StackPanel>
                 
-                <DataGrid >
+                <DataGrid Style="{StaticResource DataGrid1}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Họ và tên">
+                    <DataGridTextColumn Header="{DynamicResource textHoTen}">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Lương cơ bản">
+                    <DataGridTextColumn Header="{DynamicResource textBasicSalary}">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Hợp đồng áp dụng">
+                    <DataGridTextColumn Header="{DynamicResource textHopDongApDung}">
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Phòng ban">
                     </DataGridTextColumn>
@@ -64,7 +64,7 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Liên hệ">
                     </DataGridTextColumn>
-					
+					 
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

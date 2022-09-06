@@ -1,0 +1,113 @@
+﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.PhucLoi"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong"
+      mc:Ignorable="d" 
+      d:DesignHeight="1450" d:DesignWidth="1042" Background="{DynamicResource #F7F8FC}"
+      Title="PhucLoi">
+
+    <Grid Margin="20">
+        <TabControl Background="{DynamicResource #F7F8FC}">
+            <TabItem Header="{DynamicResource textPhucLoi}">
+                <StackPanel>
+                    <Grid Margin="0 20" Background="{DynamicResource #F7F8FC}" VerticalAlignment="Top">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10" VerticalAlignment="Top">
+                            <StackPanel Margin="20">
+                                <Grid>
+                                    <StackPanel>
+                                        <TextBlock Text="{DynamicResource textDanhSachPhuLoi}" Foreground="{DynamicResource #2E3467}" FontWeight="Bold" FontSize="24"></TextBlock>
+                                        <TextBlock Text="{DynamicResource textPhucLoiDuocTinhThepThang}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
+                                    </StackPanel>
+                                    <Border Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Margin="10 0 15 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
+                                            <TextBlock  VerticalAlignment="Center" Text="Thêm mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <DataGrid Margin="0 30 0 0" Style="{StaticResource DataGrid1}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="{DynamicResource textTenPhucLoi}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textTienPhuLoi}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textLoaiThuNhap}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textApDungTuThang}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textDenThang}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                    <Grid Margin="0 20" Background="{DynamicResource #F7F8FC}" VerticalAlignment="Top">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10" VerticalAlignment="Top">
+                            <StackPanel Margin="20">
+                                <StackPanel>
+                                        <TextBlock Text="{DynamicResource textDSPhuCap}" Foreground="{DynamicResource #2E3467}" FontWeight="Bold" FontSize="24"></TextBlock>
+                                        <TextBlock Text="Mức phụ cấp tương ứng với tổng ngày công trong tháng. Tổng tiền phụ cấp hưởng được tính theo số ngày công thực tế đi làm trong tháng" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
+                                    </StackPanel>
+                                <Border Margin="0 30 0 30" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Path Margin="10 0 15 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
+                                        <TextBlock  VerticalAlignment="Center" Text="Thêm mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                                    </StackPanel>
+                                </Border>
+                                <DataGrid Style="{StaticResource DataGrid1}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="{DynamicResource textTenPhuCap}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textMucPhuCap}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textLoaiThuNhap}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textApDungTuNgay}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textDenNgay}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                    <Grid Margin="0 20" Background="{DynamicResource #F7F8FC}" VerticalAlignment="Top">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10" VerticalAlignment="Top">
+                            <StackPanel Margin="20">
+                                <Grid>
+                                    <StackPanel>
+                                        <TextBlock Text="{DynamicResource textPhuCapTheoCa}" Foreground="{DynamicResource #2E3467}" FontWeight="Bold" FontSize="24"></TextBlock>
+                                        <TextBlock Text="Phụ cấp theo ca được tính tại thời điểm áp dụng tương ứng. Phụ cấp theo ca được miễn thuế." FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
+                                    </StackPanel>
+                                    <Border Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Margin="10 0 15 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
+                                            <TextBlock  VerticalAlignment="Center" Text="Thêm mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <DataGrid Margin="0 30 0 0" Style="{StaticResource DataGrid1}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="{DynamicResource textTenCa}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textTienPhuCap}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textApDungTuThang}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textDenThang}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>
