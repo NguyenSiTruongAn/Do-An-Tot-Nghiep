@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
     /// </summary>
     public partial class CacKhoanTienKhac : Page
     {
-        public CacKhoanTienKhac()
+        public MainWindow Main;
+        public CacKhoanTienKhac(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

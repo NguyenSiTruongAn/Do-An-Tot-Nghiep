@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.ChiTraLuong
     /// </summary>
     public partial class ChiTraLuong : Page
     {
-        public ChiTraLuong()
+        public MainWindow Main;
+        public ChiTraLuong(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

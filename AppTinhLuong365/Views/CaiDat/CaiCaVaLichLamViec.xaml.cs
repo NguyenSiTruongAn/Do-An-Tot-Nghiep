@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.CaiDat
     /// </summary>
     public partial class CaiCaVaLichLamViec : Page
     {
-        public CaiCaVaLichLamViec()
+        public MainWindow Main;
+        public CaiCaVaLichLamViec(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

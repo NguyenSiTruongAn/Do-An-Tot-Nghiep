@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.TinhLuong
     /// </summary>
     public partial class TamUng : Page
     {
-        public TamUng()
+        public MainWindow Main;
+        public TamUng(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

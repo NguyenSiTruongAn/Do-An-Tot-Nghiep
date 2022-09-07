@@ -176,4 +176,24 @@
     <system:String x:Key="textChucVu">Chức vụ</system:String>
     <system:String x:Key="textLienHe">Liên hệ</system:String>
     <system:String x:Key="textTrangChu">Trang Chủ</system:String>
+    <system:String x:Key="textQuanLyTaiKhoanNhanSu">Quản lý tài khoản nhân sự</system:String>
+    <system:String x:Key="textNhapLuongCoBanVaCheDo">Nhập lương cơ bản và chế độ</system:String>
+    <system:String x:Key="textDuLieuTinhLuong">Dữ liệu tính lương</system:String>
+    <system:String x:Key="textChamCong">Chấm công</system:String>
+    <system:String x:Key="textThuongPhat">Thưởng phạt</system:String>
+    <system:String x:Key="textChiTraLuong">Chi trả lương</system:String>
+    <system:String x:Key="textBaoCaoCongLuong">Báo cáo công lương</system:String>
+    <system:String x:Key="textCaiDat">Cài đặt</system:String>
+    <system:String x:Key="textCaiCaVaLichLamViec">Cài ca và lịch làm việc</system:String>
+    <system:String x:Key="textDiMuonVeSom">Đi muộn về sớm</system:String>
+    <system:String x:Key="textNghiPhep">Nghỉ phép</system:String>
+    <system:String x:Key="textNgayNghiLe">Ngày nghỉ lễ</system:String>
+    <system:String x:Key="textPhucLoiVaPhuCap">Phúc lợi và phụ cấp</system:String>
+    <system:String x:Key="textChamCongNhanVien">Chấm công nhân viên</system:String>
+    <system:String x:Key="textBangLuongNhanVien">Bảng lương nhân viên</system:String>
+    <system:String x:Key="textNghiLe">Nghỉ lễ</system:String>
+    <system:String x:Key="textPhanQuyenTaiKhoan">Phân quyền tài khoản</system:String>
+    <system:String x:Key="textBienDongLuong">Biến động lương</system:String>
+    <system:String x:Key="textNhapLuongCoBan">Nhập lương cơ bản</system:String>
+    <system:String x:Key="textXuatLuongCoBan">Xuất lương cơ bản</system:String>
 </ResourceDictionary>

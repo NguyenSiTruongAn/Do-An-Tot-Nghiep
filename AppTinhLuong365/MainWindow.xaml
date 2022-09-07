@@ -21,8 +21,21 @@
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Path Width="30" Grid.Column="0" HorizontalAlignment="Left" Data="{Binding Icon}" Fill="{DynamicResource #666c7c}"  Margin="26 0 0 0"></Path>
-                                <TextBlock Margin="0 0 0 0" Grid.Column="1" Text="{Binding Name}" Foreground="{DynamicResource #666c7c}" FontSize="16"></TextBlock>
+                                <Path x:Name="path" Width="30" Grid.Column="0" HorizontalAlignment="Left" Data="{Binding Icon}" Margin="26 0 0 0">
+                                    <Path.Style>
+                                        <Style TargetType="Path">
+                                            <Setter Property="Fill" Value="{DynamicResource #666c7c}"/>
+                                            <Setter Property="Stroke" Value="Transparent"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding typePath}" Value="1">
+                                                    <Setter Property="Fill" Value="Transparent"/>
+                                                    <Setter Property="Stroke" Value="{DynamicResource #666c7c}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Path.Style>
+                                </Path>
+                                <TextBlock x:Name="text" Margin="0 0 0 0" Grid.Column="1" Text="{Binding Name}" Foreground="{DynamicResource #666c7c}" FontSize="16"></TextBlock>
                                 <Grid Grid.Column="1" HorizontalAlignment="Right">
                                     <Path Data="{DynamicResource iconMore}" Fill="{DynamicResource #666c7c}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 0">
                                         <Path.Style>
@@ -42,9 +55,13 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" TargetName="Bd" Value="{DynamicResource #F3F8FB}"/>
+                                <Setter TargetName="text" Property="TextBlock.Foreground" Value="{DynamicResource #4C5BD4}"/>
+                                <Setter TargetName="path" Property="Fill" Value="{DynamicResource #4C5BD4}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" TargetName="Bd" Value="{DynamicResource #F3F8FB}"/>
+                                <Setter TargetName="text" Property="TextBlock.Foreground" Value="{DynamicResource #4C5BD4}"/>
+                                <Setter TargetName="path" Property="Fill" Value="{DynamicResource #4C5BD4}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -69,7 +86,7 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="256"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -112,15 +129,36 @@
                 <Path Data="{DynamicResource iconClose}" Fill="Black" StrokeThickness="1.2" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Fill" Height="15" Margin="0" Width="15" />
             </Grid>
         </Grid>
-        <Path Grid.Row="1" Data="{DynamicResource iconTimViec365}" Fill="{DynamicResource #4C5BD4}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="28" Margin="68 14" Width="128"/>
-        <Line Grid.Row="1" Margin="10 0" X1="-4.37114e-08" Y1="0.5" X2="236" Y2="0.499979" Width="236" Stroke="{DynamicResource #DDDDDD}" HorizontalAlignment="Left" VerticalAlignment="Bottom"></Line>
+        <Path Grid.Row="1" Data="{DynamicResource iconTimViec365}" Fill="{DynamicResource #4C5BD4}" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Uniform" Height="28" Margin="58 14" Width="128"/>
+        <Line Grid.Row="1" Margin="10 0" X1="-4.37114e-08" Y1="0.5" X2="290" Y2="0.499979" Width="236" Stroke="{DynamicResource #DDDDDD}" HorizontalAlignment="Left" VerticalAlignment="Bottom"></Line>
 
-        <Grid x:Name="gridTop" Grid.Column="1" Grid.Row="1">
-           
+        <Grid x:Name="gridTop" Grid.Column="1" Grid.Row="1" Background="{DynamicResource #F7F8FC}">
+            <Border CornerRadius="10" Style="{DynamicResource ShadowBorder1}" Margin="20 20 20 0" Height="60">
+                <Grid Margin="20 0 0 0" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="15" Foreground="{DynamicResource #4C5BD4}" Text="{DynamicResource textHome}"></TextBlock>
+                        <TextBlock Margin="5 0" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Text="/"></TextBlock>
+                        <TextBlock x:Name="title" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Text="{DynamicResource textQuanLyTaiKhoanNhanSu}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource textTrangChu}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0"></TextBlock>
+                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource textGuide}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0"></TextBlock>
+                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource textNews}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0"></TextBlock>
+                        <Grid Margin="0 0 21 0" VerticalAlignment="Center">
+                            <Path Data="{DynamicResource iconRing}" Fill="{DynamicResource #68798B}"></Path>
+                            <Path Data="{DynamicResource iconCirle}" Fill="{DynamicResource #F46A6A}" Margin="8 -8 0 0"></Path>
+                            <TextBlock Text="2" FontSize="14" Foreground="{DynamicResource #FFFFFF}" Margin="12.5 -10.5 0 0"></TextBlock>
+                        </Grid>
+                        <Image VerticalAlignment="Center" Source="/Views/TrangChu/Image/app1651713915_favicon.png" Width="32" Height="32" Margin="0 0 10 0"></Image>
+                        <TextBlock Margin="0 0 12 0" FontSize="15" Foreground="{DynamicResource #2E3467}" Text="Công ty TNHH 124 ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" Width="270" VerticalAlignment="Center"></TextBlock>
+                        <Path Data="{DynamicResource iconDrop}" VerticalAlignment="Center" Fill="{DynamicResource #2E3467}" Margin="0 0 22 0"></Path>
+                    </StackPanel>
+                </Grid>
+            </Border>
         </Grid>
 
         <Grid Grid.Row="2">
-                <ListView Name="sidebar" Margin="0 7" ItemsSource="{Binding SideBarItems}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItemStyle}" SelectedIndex="{Binding SideBarIndex}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                <ListView Name="sidebar" Margin="0 7" ItemsSource="{Binding SideBarItems}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItemStyle}" SelectedIndex="{Binding SideBarIndex,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
                 <!--<ListView Name="sidebarNV" Margin="0 7" ItemsSource="{Binding SideBarItemsNV}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItem1}" SelectedIndex="{Binding SideBarIndexNV}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>-->
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Background="{DynamicResource #F7F8FC}">

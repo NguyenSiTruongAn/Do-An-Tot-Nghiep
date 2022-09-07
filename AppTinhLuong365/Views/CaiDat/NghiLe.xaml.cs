@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.CaiDat
     /// </summary>
     public partial class NghiLe : Page
     {
-        public NghiLe()
+        public MainWindow Main;
+        public NghiLe(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

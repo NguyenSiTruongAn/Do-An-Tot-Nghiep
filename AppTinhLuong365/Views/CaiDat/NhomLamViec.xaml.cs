@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.CaiDat
     /// </summary>
     public partial class NhomLamViec : Page
     {
-        public NhomLamViec()
+        public MainWindow Main;
+        public NhomLamViec(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }
