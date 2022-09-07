@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.TinhLuong
     /// </summary>
     public partial class BangLuong : Page
     {
-        public BangLuong()
+        public MainWindow Main;
+        public BangLuong(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

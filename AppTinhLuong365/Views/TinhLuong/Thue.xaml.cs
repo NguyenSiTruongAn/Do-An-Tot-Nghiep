@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.TinhLuong
     /// </summary>
     public partial class Thue : Page
     {
-        public Thue()
+        public MainWindow Main;
+        public Thue(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

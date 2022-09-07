@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
     /// </summary>
     public partial class PhucLoi : Page
     {
-        public PhucLoi()
+        public MainWindow Main;
+        public PhucLoi(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

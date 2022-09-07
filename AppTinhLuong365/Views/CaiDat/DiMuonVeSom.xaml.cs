@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.CaiDat
     /// </summary>
     public partial class DiMuonVeSom : Page
     {
-        public DiMuonVeSom()
+        public MainWindow Main;
+        public DiMuonVeSom(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

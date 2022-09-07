@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.PhanQuyen
     /// </summary>
     public partial class PhanQuyen : Page
     {
-        public PhanQuyen()
+        public MainWindow Main;
+        public PhanQuyen(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

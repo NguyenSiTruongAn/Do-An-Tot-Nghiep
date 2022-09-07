@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
     /// </summary>
     public partial class BaoHiem : Page
     {
-        public BaoHiem()
+        public MainWindow Main;
+        public BaoHiem(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

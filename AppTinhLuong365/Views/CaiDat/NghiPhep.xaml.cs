@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.CaiDat
     /// </summary>
     public partial class NghiPhep : Page
     {
-        public NghiPhep()
+        public MainWindow Main;
+        public NghiPhep(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

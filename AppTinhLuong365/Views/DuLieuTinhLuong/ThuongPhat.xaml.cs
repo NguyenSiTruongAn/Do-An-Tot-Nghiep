@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
     /// </summary>
     public partial class ThuongPhat : Page
     {
-        public ThuongPhat()
+        public MainWindow Main;
+        public ThuongPhat(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

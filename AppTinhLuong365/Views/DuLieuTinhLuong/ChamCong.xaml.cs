@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
     /// </summary>
     public partial class ChamCong : Page
     {
-        public ChamCong()
+        public MainWindow Main;
+        public ChamCong(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }

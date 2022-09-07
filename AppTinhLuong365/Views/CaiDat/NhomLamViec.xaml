@@ -37,7 +37,6 @@
                                                 <TextBlock Text="(27 thành viên)" FontSize="15" Foreground="{DynamicResource #68798B}"></TextBlock>
                                                 <Line X1="0" Y1="10" X2="330" Y2="10" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
                                             </StackPanel>
-
                                         </Border>
                                         <TextBlock Height="100" Margin="0 10" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #747474}" Text="123454" TextWrapping="WrapWithOverflow"></TextBlock>
                                         <Border CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
@@ -55,12 +54,7 @@
                 </TabItem>
                 <TabItem Header="{DynamicResource textDSNhanVienChuaNhom}">
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="253*"/>
-                            <ColumnDefinition Width="27*"/>
-                            <ColumnDefinition Width="474*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.ColumnSpan="3" Margin="0,0,0.4,-0.2">
+                        <StackPanel>
                             <Border Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
                                 <ComboBox BorderThickness="0 0 0 0" Height="28" Width="230" HorizontalAlignment="Right" BorderBrush="{DynamicResource #aaa}" Background="{DynamicResource #FFFFFF}" FontSize="14" Foreground="{DynamicResource #444}">
                                     <ComboBoxItem Background="{DynamicResource #FFFFFF}" IsSelected="True">Nhập tên cần tìm</ComboBoxItem>

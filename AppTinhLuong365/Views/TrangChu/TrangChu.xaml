@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.TrangChu"
       mc:Ignorable="d" 
-      d:DesignHeight="25550" d:DesignWidth="1250" Background="{DynamicResource #F7F8FC}"
+      d:DesignHeight="23350" d:DesignWidth="1250" Background="{DynamicResource #F7F8FC}"
       Title="TrangChu">
 
     <Grid Margin="20">
@@ -94,7 +94,7 @@
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Những mong muốn làm sao để tính lương dễ hơn, nhanh hơn và để đỡ vất vả, tránh sai sót sẽ được tinhluong.timviec365.vn hỗ trợ giúp bạn tối ưu hóa quá trình tính lương thủ công. Làm theo các bước đơn giản dưới đây để nhanh chóng nhận được sự hỗ trợ tốt nhất cho khâu tính lương hàng tháng đỡ cực nhọc nhé.</TextBlock>
                     <TextBlock Margin="0 15 0 0" FontSize="24" FontWeight="Bold" FontFamily="roboto">Bước 1: Cài đặt cấu hình chấm công, cài đặt danh sách nhân viên công ty</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Ở bước này, người thiết lập có 2 nhiệm vụ chính phải thực hiện:</TextBlock>
-                    <TextBlock FontStyle="Italic" TextDecorations="Underline" FontWeight="Bold" Margin="0 20 0 0">1. Cài đặt tài khoản công ty:</TextBlock>
+                    <TextBlock FontSize="18.72" FontStyle="Italic" TextDecorations="Underline" FontWeight="Bold" Margin="0 20 0 0">1. Cài đặt tài khoản công ty:</TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">- Đầu tiên bạn truy cập vào đường link chính của phần mềm:</TextBlock>
                         <TextBlock FontSize="15" Foreground="{DynamicResource #551A8B}" TextDecorations="Underline" FontFamily="roboto">https://tinhluong.timviec365.vn/</TextBlock>
@@ -129,7 +129,7 @@
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">điền thông tin để đăng ký tài khoản cho nhân viên được phân quyền gồm Họ và tên, số điện thoại, email, địa chỉ nơi ở, mật khẩu.</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Như vậy, qua 3 bước trên, bạn đã hoàn thành thiết lập tài khoản công ty, có thể sử dụng để hỗ trợ bạn thực hiện mọi thao tác chuyển đổi số, trong đó có mục đích tính lương của bạn.</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Để tính lương, bạn chú ý đọc kỹ những hướng dẫn tiếp theo. Điều kiện tiên quyết để tính được lương bằng phần mềm này đó chính là có tài khoản chấm công của nhân viên công ty. Những hướng dẫn bên dưới sẽ giúp bạn nhanh chóng giải quyết vấn đề này.</TextBlock>
-                    <TextBlock FontStyle="Italic" TextDecorations="Underline" FontWeight="Bold" Margin="0 20 0 0">2. Cài đặt cấu hình chấm công</TextBlock>
+                    <TextBlock FontSize="18.72" FontStyle="Italic" TextDecorations="Underline" FontWeight="Bold" Margin="0 20 0 0">2. Cài đặt cấu hình chấm công</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Chấm công là cơ sở đầu vào để hệ thống có thể lấy dữ liệu phục vụ việc tính lương. Do đó, trước tiên công ty bạn cần thực hiện một vài thao tác cài đặt tại page chấm công trước khi tiến hành thiết lập các vấn đề về tính lương.</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" FontStyle="Italic" TextWrapping="WrapWithOverflow">Hướng dẫn thực hiện chi tiết:</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">- Truy cập page chấm công tại đường dẫn:</TextBlock>
@@ -142,7 +142,7 @@
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">+ Chấm công trên website: có thể cài chế độ chấm công bằng tài khoản nhân viên hoặc chấm công bằng tài khoản công ty. Có thể mở IP hoặc giới hạn IP, chỉ cho phép nhân viên được chấm công bằng địa chỉ IP nhất định để dễ kiểm soát.</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">+ Chấm công bằng mã QR: Để thiết lập mã QR, bạn sẽ phải thiết lập cài đặt để áp dụng. Các thiết lập này bao gồm: thêm vị trí, giới hạn bán kính chấm công. Sau khi ghim cài đặt này, tọa độ chấm công và mã QR được xác định. Bạn hướng dẫn nhân viên quét mã QRCode để được chấm công.</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Đến đây, cấu hình chấm công đã được thiết lập để đưa vào sử dụng chấm công trong thực tế. Nhiệm vụ tiếp theo cần làm là cài đặt tài khoản chấm công cho nhân viên</TextBlock>
-                    <TextBlock FontStyle="Italic" TextDecorations="Underline" FontWeight="Bold" Margin="0 20 0 0">3. Cài đặt tài khoản chấm công và danh sách nhân viên công ty</TextBlock>
+                    <TextBlock FontSize="18.72" FontStyle="Italic" TextDecorations="Underline" FontWeight="Bold" Margin="0 20 0 0">3. Cài đặt tài khoản chấm công và danh sách nhân viên công ty</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">* Cách 1: Nhân viên tự đăng ký tài khoản chấm công cho mình</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">- Bạn cần gửi ID công ty cho nhân viên.</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">- Hướng dẫn nhân viên truy cập page: https://chamcong.timviec365.vn/, thực hiện đăng ký tài khoản nhân viên theo hướng dẫn của hệ thống.</TextBlock>
@@ -177,7 +177,7 @@
                         <TextBlock FontSize="15" Margin="0 0 3 0" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">- Truy cập đường dẫn:</TextBlock>
                         <TextBlock FontSize="15" Foreground="{DynamicResource #0563C1}" TextDecorations="Underline" FontFamily="roboto">https://chamcong.timviec365.vn/quan-ly-cong-ty.html</TextBlock>
                     </StackPanel>
-                    <TextBlock FontSize="18" FontWeight="Bold" Text="1. Cách 1: Nhập trực tiếp lương cơ bản"></TextBlock>
+                    <TextBlock FontSize="18.72" FontWeight="Bold" Text="1. Cách 1: Nhập trực tiếp lương cơ bản"></TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">- Chọn mục</TextBlock>
                         <TextBlock FontSize="15" Margin="3 0" FontStyle="Italic" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Nhập lương cơ bản và chế độ,</TextBlock>
@@ -226,7 +226,7 @@
                         <TextBlock FontSize="15" FontStyle="Italic" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Lưu ý:</TextBlock>
                         <TextBlock FontSize="15" Margin="3 0" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Nếu không thiết lập hợp đồng thì mặc định nhân viên sẽ ở trạng thái hưởng 100% lương cơ bản.</TextBlock>
                     </StackPanel>
-                    <TextBlock Margin="0 20 0 0" FontSize="18" FontWeight="Bold" Text="2. Cách 2: Xuất file lương mẫu và add file"></TextBlock>
+                    <TextBlock Margin="0 20 0 0" FontSize="18.72" FontWeight="Bold" Text="2. Cách 2: Xuất file lương mẫu và add file"></TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Nhập lương thủ công sẽ khiến bạn mất nhiều thời gian cho các thao tác, nhất là khi công ty có nhiều nhân sự. Vậy nên, có thể chọn cách thứ hai để nhập một lần áp dụng cho tất cả danh sách nhân viên trên hệ thống.</TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Tại mục</TextBlock>
@@ -253,7 +253,7 @@
                         <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">trong phần Cài đặt tại thanh menu bên trái màn hình. Các bước tiến hành sau sẽ là quy trình thiết lập ca và lịch</TextBlock>
                     </StackPanel>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow"> làm việc cho công ty bạn.</TextBlock>
-                    <TextBlock Margin="0 20 0 0" FontSize="18" FontWeight="Bold" Text="1. Cài ca làm việc"></TextBlock>
+                    <TextBlock Margin="0 20 0 0" FontSize="18.72" FontWeight="Bold" Text="1. Cài ca làm việc"></TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Chọn</TextBlock>
                         <TextBlock FontSize="15" FontWeight="DemiBold" Margin="3 0 3 0" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Ca làm việc >> Thêm ca</TextBlock>
@@ -274,7 +274,7 @@
                     <Image Width="800" Height="675" Margin="0 20 0 5" Source="/Views/TrangChu/Image/them-ca-lam-viec-8.png"></Image>
                     <TextBlock Margin="0 0 0 10" FontSize="16" HorizontalAlignment="Center" FontFamily="roboto" Foreground="{DynamicResource #68798B}" FontStyle="Italic" TextWrapping="WrapWithOverflow">Thêm ca làm việc rất đơn giản</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Sau khi đã thiết lập đủ tất cả các ca làm việc đang được công ty áp dụng, bạn cần tiếp tục thiết lập lịch làm việc.</TextBlock>
-                    <TextBlock Margin="0 20 0 0" FontSize="18" FontWeight="Bold" Text="2. Cài đặt lịch làm việc"></TextBlock>
+                    <TextBlock Margin="0 20 0 0" FontSize="18.72" FontWeight="Bold" Text="2. Cài đặt lịch làm việc"></TextBlock>
                     <TextBlock Margin="0 20 0 0" FontSize="16" FontWeight="Bold" FontStyle="Italic" Text="2.1 Setup lịch như thế nào?"></TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Chọn danh mục</TextBlock>
@@ -393,7 +393,7 @@
                         <TextBlock FontSize="15" Margin="3 0 5 0 " FontStyle="Italic" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Sao chép lịch</TextBlock>
                         <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">và hệ thống sẽ sao chép lại toàn bộ dữ liệu cho tháng áp dụng.</TextBlock>
                     </StackPanel>
-                    <TextBlock Margin="0 20 0 0" FontSize="18" FontWeight="Bold" Text="3. Cài đặt công chuẩn"></TextBlock>
+                    <TextBlock Margin="0 20 0 0" FontSize="18.72" FontWeight="Bold" Text="3. Cài đặt công chuẩn"></TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Là cài đặt số ngày công tiêu chuẩn để tính lương cho toàn bộ nhân viên công ty trong một tháng.</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Mỗi tháng có số công chuẩn không giống nhau hoàn toàn. Do đó bạn cần xem lịch trước khi nhập để nắm rõ có bao nhiêu ngày công đi làm tại tháng cần nhập. Sau đó, thực hiện cài đặt công chuẩn như sau:</TextBlock>
                     <StackPanel Orientation="Horizontal">
@@ -521,7 +521,7 @@
                     <Image Source="/Views/TrangChu/Image/xoa-nhan-vien-nhom-17.png" Width="1066" Height="375" Margin="0 20 0 5"></Image>
                     <TextBlock Margin="0 0 0 10" FontSize="16" HorizontalAlignment="Center" FontFamily="roboto" Foreground="{DynamicResource #68798B}" FontStyle="Italic" TextWrapping="WrapWithOverflow">Xóa nhân viên khỏi nhóm</TextBlock>
                     <TextBlock Margin="0 15 0 0" FontSize="24" FontWeight="Bold" FontFamily="roboto">Bước 6: Cài đặt hoa hồng và tạm ứng</TextBlock>
-                    <TextBlock Margin="0 20 0 0" FontSize="18" FontWeight="Bold" Text="1. Cài đặt hoa hồng"></TextBlock>
+                    <TextBlock Margin="0 20 0 0" FontSize="18.72" FontWeight="Bold" Text="1. Cài đặt hoa hồng"></TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Hệ thống phân chia đầy đủ các loại hoa hồng bao gồm:</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">- Hoa hồng tiền</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">- Hoa hồng doanh thu</TextBlock>
@@ -618,7 +618,7 @@
                         <TextBlock Margin="15 0 0 0" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Chọn Thêm hoa hồng để lưu lại dữ liệu đã nhập.</TextBlock>
                     </StackPanel>
                     <TextBlock Margin="15 0 0 0" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">- Mục "Hoa hồng được nhận" cho phép bạn thống kê danh sách nhân viên và các mức hoa hồng của họ theo thời gian. Phần này cho phép bạn thống kê tình hình doanh thu của nhân viên theo thời gian chi tiết từng tháng, năm và từng tên nhân viên. Có thể xuất file thống kê bằng cách nhấn vào lệnh Xuất file thống kê (file xuất dạng excel), sau khi file thống kê được tải về máy, bạn mở file sẽ nhận được một thông báo, cần chọn vào lệnh Yes để mở được file.</TextBlock>
-                    <TextBlock Margin="0 20 0 0" FontSize="18" FontWeight="Bold" Text="2. Cài đặt Tạm ứng lương"></TextBlock>
+                    <TextBlock Margin="0 20 0 0" FontSize="18.72" FontWeight="Bold" Text="2. Cài đặt Tạm ứng lương"></TextBlock>
                     <TextBlock Margin="15 0 0 0" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Khi nhân viên có nhu cầu được tạm ứng lương thì bạn cần hướng dẫn cho người đó tạo đơn xin tạm ứng ở trong page Văn thư lưu trữ. Đề xuất tạm ứng được tạo và gửi đến tài khoản của người lãnh đạo/người có thẩm quyền duyệt đơn, nếu đơn đủ điều kiện theo quy định tạm ứng của công ty sẽ được duyệt và hiển thị thông tin trong Phần Tạm ứng.</TextBlock>
                     <TextBlock Margin="15 0 0 0" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Việc duyệt đơn sẽ được hệ thống lương ghi nhận và tự động trừ số tiền tạm ứng đó trong tổng lương của nhân viên. Phía kế toán cũng sẽ xuất số tiền đúng bằng số tiền tạm ứng để gửi cho nhân viên.</TextBlock>
                     <TextBlock Margin="0 15 0 0" FontSize="24" FontWeight="Bold" FontFamily="roboto">Bước 7: Cài đặt nghỉ không phép</TextBlock>
@@ -817,7 +817,7 @@
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">+ Những thông tin bạn kiểm tra được gồm danh sách tất cả các nhân viên đã được thiết lập vào chính sách thuế, loại chính sách thuế áp dụng cho từng người và thời gian áp dụng bắt đầu - kết thúc cụ thể khi nào.</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Khi cần tra cứu trong danh sách này, bạn sử dụng thanh công cụ tìm kiếm ở phía trên danh sách. Có thể tra cứu theo thời gian gồm tháng và năm hoặc tra cứu theo tên nhân sự.</TextBlock>
                     <TextBlock Margin="0 15 0 0" FontSize="24" FontWeight="Bold" FontFamily="roboto">Bước 12: Thiết lập bảo hiểm</TextBlock>
-                    <TextBlock Margin="0 20 0 0" FontSize="18" FontWeight="Bold" FontStyle="Italic" Text="1. Chính sách bảo hiểm"></TextBlock>
+                    <TextBlock Margin="0 20 0 0" FontSize="18.72" FontWeight="Bold" FontStyle="Italic" Text="1. Chính sách bảo hiểm"></TextBlock>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontSize="15" Margin="0 0 3 0" FontStyle="Italic" TextDecorations="Underline" FontWeight="DemiBold" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">* Mô tả:</TextBlock>
                         <TextBlock FontSize="15" FontFamily="roboto" FontStyle="Italic" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Trong chính sách bảo hiểm có 3 mục được thiết lập gồm: Nhập tiền bảo hiểm, BHXH tính theo lương cơ bản, BHXH theo mức lương nhập vào. Cả 3 chính sách này đều</TextBlock>
@@ -848,7 +848,7 @@
                         <TextBlock FontSize="15" Margin="3 0 5 0" FontStyle="Italic" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Lưu lại</TextBlock>
                         <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">để hoàn tất</TextBlock>
                     </StackPanel>
-                    <TextBlock Margin="0 20 0 0" FontSize="18" FontWeight="Bold" FontStyle="Italic" Text="2. Kiểm tra việc thiết lập bảo hiểm"></TextBlock>
+                    <TextBlock Margin="0 20 0 0" FontSize="18.72" FontWeight="Bold" FontStyle="Italic" Text="2. Kiểm tra việc thiết lập bảo hiểm"></TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Bạn có thể nắm bắt danh sách nhân viên đã được thiết lập và chưa được thiết lập tại các danh mục tương ứng. Bạn có thể xóa nhân sự đã được thiết lập bảo hiểm hoặc thiết lập thêm nhân sự cần áp dụng chính sách bảo hiểm thông qua những lệnh tương ứng.</TextBlock>
                     <TextBlock Margin="0 15 0 0" FontSize="24" FontWeight="Bold" FontFamily="roboto">Bước 13: Chế độ nghỉ lễ</TextBlock>
                     <TextBlock FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" TextWrapping="WrapWithOverflow">Một số ngày nghỉ lễ trong năm sẽ có thưởng nghỉ lễ. Bạn cần thiết lập chế độ cho những ngày nghỉ lễ này trên hệ thống tính lương để số tiền thưởng nghỉ lễ vẫn được hệ thống ghi nhận và cộng vào tổng lương tháng được nhận.</TextBlock>
