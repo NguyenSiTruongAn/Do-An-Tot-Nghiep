@@ -9,14 +9,24 @@
       Title="Thue" SizeChanged="Page_SizeChanged" d:DesignWidth="1096.6">
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
-            <Border Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
+            <Border x:Name="btnTaoMoi" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=tabItem1,Path=IsSelected}" Value="true">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
                 <StackPanel Orientation="Horizontal">
                     <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
                     <TextBlock  VerticalAlignment="Center" Text="Tạo mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
             <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0">
-                <TabItem Header="{DynamicResource textChinhSachThue}" Background="Transparent" BorderThickness="0">
+                <TabItem x:Name="tabItem1" Header="{DynamicResource textChinhSachThue}" Background="Transparent" BorderThickness="0">
                     <TabItem.Style>
                         <Style TargetType="TabItem">
                             <Style.Triggers>
@@ -52,9 +62,7 @@
                                             <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Cách tính" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
                                         </StackPanel>
                                         <TextBlock Margin="20 0" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #5F648D}" Text="Theo hệ số cố định dựa trên quy định mới nhất về cách tính thuế thu nhập cá nhân của Nhà nước năm 2021." TextWrapping="WrapWithOverflow"></TextBlock>
-
                                     </StackPanel>
-
                                 </Border>
                             </Grid>
                         </StackPanel>
@@ -119,7 +127,7 @@
                                             </Border>
                                             <Border Style="{DynamicResource Style_Border}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
                                                 <Grid>
-                                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Phòng ban" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                    <TextBlock HorizontalAlignment="Left" Foreground="{DynamicResource #444}" Margin="10 0 0 0" Width="130" TextTrimming="CharacterEllipsis" Text="Phòng ban (tất cả phòng ban)" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
                                                     <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
                                                 </Grid>
                                             </Border>
@@ -218,7 +226,6 @@
                                             </Border>
                                         </WrapPanel>
                                     </DockPanel>
-
                                     <DockPanel Style="{DynamicResource Style_Grid_Wrap1}">
                                         <TextBlock Text="Danh sách nhân viên đã áp dụng thuế" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}" TextWrapping="WrapWithOverflow"></TextBlock>
                                     </DockPanel>
