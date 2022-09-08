@@ -65,7 +65,7 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0">
+        <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0" ItemContainerStyle="{StaticResource TabItem1}">
             <TabItem Header="{DynamicResource textChinhSachBaoHiem}" BorderThickness="0" Background="Transparent">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 20">
