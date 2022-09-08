@@ -3,10 +3,58 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:core="clr-namespace:AppTinhLuong365.Core"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat"
       mc:Ignorable="d" 
-      d:DesignHeight="2450" d:DesignWidth="1242"
-      Title="NghiPhep">
+      Title="NghiPhep" SizeChanged="Page_SizeChanged">
+
+    <Page.Resources>
+        <core:MathConvert x:Key="math"></core:MathConvert>
+        <Style x:Key="Style_Border_Wrap1" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter= {StaticResource math}, ConverterParameter=(@VALUE/2)-20}"/>
+            <Setter Property="Margin" Value="10 10 10 10"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_Border_Wrap" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter= {StaticResource math}, ConverterParameter=(@VALUE/2)-20}"/>
+            <Setter Property="Margin" Value="10 10 10 10"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_Border_Wrap2" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border2,Converter= {StaticResource math}, ConverterParameter=(@VALUE/2)-20}"/>
+            <Setter Property="Margin" Value="10 10 10 10"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border2,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border2,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_Border_Wrap3" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border3,Converter= {StaticResource math}, ConverterParameter=(@VALUE/3)-20}"/>
+            <Setter Property="Margin" Value="10 10 10 10"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border3,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
@@ -72,7 +120,7 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="{DynamicResource textNghiSaiQuyDinh}">
-                    <Grid Margin="20">
+                    <DockPanel Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="7">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="16" Opacity="0.1"></DropShadowEffect>
@@ -80,13 +128,19 @@
                         </Border>
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="7">
                             <StackPanel Margin="20">
-                                <Grid>
-                                    <TextBlock Text="{DynamicResource textNghiSaiQuyDinh}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
-                                    <Border Height="38" Width="160" BorderThickness="1" HorizontalAlignment="Right" CornerRadius="10" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}">
-                                        <DatePicker VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" Foreground="{DynamicResource #68798B}"></DatePicker>
+                                <WrapPanel x:Name="Wrap_Border">
+                                    <Border Style="{DynamicResource Style_Border_Wrap}">
+                                        <StackPanel>
+                                            <TextBlock Text="{DynamicResource textNghiSaiQuyDinh}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                                            <TextBlock TextWrapping="WrapWithOverflow" Text="Nghỉ không có đơn xin phép hoặc có đơn xon phép nhưng bị sếp &quot;hủy đơn&quot;" FontStyle="Italic" Foreground="{DynamicResource #000}" FontWeight="DemiBold"></TextBlock>
+                                        </StackPanel>
                                     </Border>
-                                </Grid>
-                                <TextBlock Text="Nghỉ không có đơn xin phép hoặc có đơn xon phép nhưng bị sếp &quot;hủy đơn&quot;" FontStyle="Italic" Foreground="{DynamicResource #000}" FontWeight="DemiBold"></TextBlock>
+                                    <Border Style="{DynamicResource Style_Border_Wrap}" Height="38" Background="{DynamicResource #FFFFFF}">
+                                        <Border Width="161" HorizontalAlignment="Right" BorderThickness="1" CornerRadius="10" BorderBrush="{DynamicResource #ebebeb}">
+                                            <DatePicker Padding="20 0 15 0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" Foreground="{DynamicResource #68798B}"></DatePicker>
+                                        </Border>
+                                    </Border>
+                                </WrapPanel>
                                 <Border Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8">
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #FFFFFF}" Text="Cài đặt mức phạt"></TextBlock>
                                 </Border>
@@ -99,24 +153,30 @@
                                 </DataGrid>
                             </StackPanel>
                         </Border>
-                    </Grid>
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="{DynamicResource textNghiNgayKhongDuocNghi}">
-                    <Grid Margin="20">
-                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                    <DockPanel Margin="20">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="7">
                             <Border.Effect>
-                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="16" Opacity="0.1"></DropShadowEffect>
                             </Border.Effect>
                         </Border>
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="7">
                             <StackPanel Margin="20">
-                                <Grid>
-                                    <TextBlock Text="{DynamicResource textNghiSaiQuyDinh}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
-                                    <Border Height="38" Width="160" BorderThickness="1" HorizontalAlignment="Right" CornerRadius="10" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}">
-                                        <DatePicker VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" Foreground="{DynamicResource #68798B}"></DatePicker>
+                                <WrapPanel x:Name="Wrap_Border1">
+                                    <Border Style="{DynamicResource Style_Border_Wrap1}">
+                                        <StackPanel>
+                                            <TextBlock Text="{DynamicResource textNghiSaiQuyDinh}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                                            <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Text="Là trường hợp nhân viên có đơn xin nghỉ phép nhưng sếp không duyệt và lệnh nhân viên không được nghỉ những ngày đó bắt buộc phải đi làm vì các ngày đó công ty có việc trọng đại như ngày hoàn thành dự án, ngày đối ngoại của công ty… Trường hợp này nhân viên bắt buộc phải đi làm nếu cố ý nghỉ sẽ ảnh hưởng nghiêm trọng đến hoạt động của công ty." FontStyle="Italic" Foreground="{DynamicResource #000}" FontWeight="DemiBold"></TextBlock>
+                                        </StackPanel>
                                     </Border>
-                                </Grid>
-                                <TextBlock TextWrapping="WrapWithOverflow" Width="680" HorizontalAlignment="Left" Text="Là trường hợp nhân viên có đơn xin nghỉ phép nhưng sếp không duyệt và lệnh nhân viên không được nghỉ những ngày đó bắt buộc phải đi làm vì các ngày đó công ty có việc trọng đại như ngày hoàn thành dự án, ngày đối ngoại của công ty… Trường hợp này nhân viên bắt buộc phải đi làm nếu cố ý nghỉ sẽ ảnh hưởng nghiêm trọng đến hoạt động của công ty." FontStyle="Italic" Foreground="{DynamicResource #000}" FontWeight="DemiBold"></TextBlock>
+                                    <Border Style="{DynamicResource Style_Border_Wrap1}" Height="38" Background="{DynamicResource #FFFFFF}">
+                                        <Border Width="161" HorizontalAlignment="Right" BorderThickness="1" CornerRadius="10" BorderBrush="{DynamicResource #ebebeb}">
+                                            <DatePicker Padding="20 0 15 0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" Foreground="{DynamicResource #68798B}"></DatePicker>
+                                        </Border>
+                                    </Border>
+                                </WrapPanel>
                                 <Border Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8">
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #FFFFFF}" Text="Cài đặt mức phạt"></TextBlock>
                                 </Border>
@@ -129,7 +189,7 @@
                                 </DataGrid>
                             </StackPanel>
                         </Border>
-                    </Grid>
+                    </DockPanel>
                 </TabItem>
                 <TabItem Header="{DynamicResource textTheoDoiNghiPhep}">
                     <Grid Margin="20">
@@ -140,33 +200,37 @@
                         </Border>
                         <Border CornerRadius="16" Background="{DynamicResource #FFFFFF}">
                             <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="20 20 20 0">
-                                <Grid>
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="{DynamicResource textDSNhanVienNghiPhep}" Foreground="{DynamicResource #2E3467}" FontSize="24" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="{DynamicResource textQuanLyNhanVienNghiPhep}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                                            <Grid>
-                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tháng 8" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                                            </Grid>
-                                        </Border>
-                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                                            <Grid>
-                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                                            </Grid>
-                                        </Border>
-                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                                            <Grid>
-                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tất cả nhân viên" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                                            </Grid>
-                                        </Border>
+                                <WrapPanel x:Name="Wrap_Border2">
+                                    <Border Style="{DynamicResource Style_Border_Wrap2}">
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock TextWrapping="WrapWithOverflow" Text="{DynamicResource textDSNhanVienNghiPhep}" Foreground="{DynamicResource #2E3467}" FontSize="24" FontWeight="Bold"></TextBlock>
+                                            <TextBlock TextWrapping="WrapWithOverflow" Text="{DynamicResource textQuanLyNhanVienNghiPhep}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Style="{DynamicResource Style_Border_Wrap2}">
+                                        <WrapPanel HorizontalAlignment="Right" x:Name="Wrap_Border3">
+                                            <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
+                                                <Grid>
+                                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tháng 8" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                                </Grid>
+                                            </Border>
+                                            <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
+                                                <Grid>
+                                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                                </Grid>
+                                            </Border>
+                                            <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
+                                                <Grid>
+                                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tất cả nhân viên" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                                </Grid>
+                                            </Border>
 
-                                    </StackPanel>
-                                </Grid>
+                                        </WrapPanel>
+                                    </Border>
+                                </WrapPanel>
                                 <DataGrid Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
@@ -181,7 +245,7 @@
                     </Grid>
                     
                 </TabItem>
-                <TabItem Header="{DynamicResource textGuide}">
+                <TabItem Header="{DynamicResource textGuide}" Height="22" VerticalAlignment="Top">
                     <Grid Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                             <Border.Effect>
@@ -243,11 +307,8 @@
                             </StackPanel>
                         </Border>
                     </Grid>
-                    
-                    
                 </TabItem>
             </TabControl>
         </StackPanel>
-
     </Grid>
 </Page>

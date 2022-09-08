@@ -3,10 +3,38 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:core="clr-namespace:AppTinhLuong365.Core"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.ChiTraLuong"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1042" Background="{DynamicResource #F7F8FC}"
-      Title="ChiTraLuong">
+      Title="ChiTraLuong" SizeChanged="Page_SizeChanged">
+
+    <Page.Resources>
+        <core:MathConvert x:Key="math"></core:MathConvert>
+        <Style x:Key="Style_Border_Wrap" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter= {StaticResource math}, ConverterParameter=(@VALUE/3)-20}"/>
+            <Setter Property="Margin" Value="10 10 10 10"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_StackPanel" TargetType="{x:Type StackPanel}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter= {StaticResource math}, ConverterParameter=(@VALUE/2)}"/>
+            <Setter Property="Margin" Value="0 10 0 10"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="{DynamicResource #F7F8FC}" Margin="20">
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
@@ -16,26 +44,28 @@
         </Border>
         <Border CornerRadius="16" Background="{DynamicResource #FFFFFF}" Margin="20">
             <StackPanel VerticalAlignment="Top" Margin="20">
-                <TextBlock Text="Bảng chi trả lương" FontWeight="Bold" FontSize="24" Foreground="{DynamicResource #2E3467}"></TextBlock>
-                <Grid Margin="0 20 0 0">
-                    <StackPanel Orientation="Horizontal">
-                        <Border Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                            <Grid>
-                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                            </Grid>
-                        </Border>
-                        <Border Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                            <Grid>
-                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tháng 8" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                            </Grid>
-                        </Border>
-                        <Border Width="104" CornerRadius="10" Height="38" Margin="0 0 9 0" Background="{DynamicResource #4C5BD4}">
-                            <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                        </Border>
+                <TextBlock TextWrapping="WrapWithOverflow" Text="Bảng chi trả lương" FontWeight="Bold" FontSize="24" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                <WrapPanel x:Name="Wrap_StackPanel">
+                    <StackPanel Style="{DynamicResource Style_StackPanel}" Orientation="Horizontal">
+                        <WrapPanel x:Name="Wrap_Border">
+                            <Border Style="{DynamicResource Style_Border_Wrap}" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
+                                <Grid>
+                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                </Grid>
+                            </Border>
+                            <Border Style="{DynamicResource Style_Border_Wrap}" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
+                                <Grid>
+                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tháng 8" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                </Grid>
+                            </Border>
+                            <Border Style="{DynamicResource Style_Border_Wrap}" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
+                                <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                            </Border>
+                        </WrapPanel>
                     </StackPanel>
-                    <StackPanel HorizontalAlignment="Right">
+                    <StackPanel VerticalAlignment="Center" Style="{DynamicResource Style_StackPanel}" HorizontalAlignment="Right">
                         <Border Height="38" Width="138" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
                             <StackPanel Orientation="Horizontal">
                                 <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
@@ -43,7 +73,7 @@
                             </StackPanel>
                         </Border>
                     </StackPanel>
-                </Grid>
+                </WrapPanel>
                 <DataGrid Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Bảng chi trả lương"></DataGridTextColumn>
