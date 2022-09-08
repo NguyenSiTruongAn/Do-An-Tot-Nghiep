@@ -54,6 +54,10 @@ namespace AppTinhLuong365.Views
             {
                 IsSmallSize = 2;
             }
+            if (this.ActualWidth > 1330)
+                DockPanel.SetDock(wrapLCBVCD, Dock.Right);
+            else
+                DockPanel.SetDock(wrapLCBVCD, Dock.Bottom);
         }
     }
 }

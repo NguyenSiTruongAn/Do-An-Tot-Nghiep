@@ -4,10 +4,43 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong"
+      xmlns:math="clr-namespace:AppTinhLuong365.Core"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1250" Background="{DynamicResource #F7F8FC}"
+      SizeChanged="Page_SizeChanged" Background="{DynamicResource #F7F8FC}"
       Title="CacKhoanTienKhac">
-
+    <Page.Resources>
+        <math:MathConvert x:Key="math"></math:MathConvert>
+        <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type DockPanel}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE-20)/2}"/>
+            <Setter Property="Margin" Value="0 0 0 0"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                    <Setter Property="Margin" Value="0 10"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                    <Setter Property="Margin" Value="0 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_StackPanel" TargetType="StackPanel">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math},ConverterParameter=(@VALUE)/4}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_Border" TargetType="Border">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math},ConverterParameter=(@VALUE/5) - 9}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
     <Grid Margin="20">
         <StackPanel>
             <Border Height="38" Width="192" CornerRadius="10" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top" HorizontalAlignment="Right">
@@ -86,6 +119,39 @@
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="{DynamicResource textDSNhanVienApDung}">
+                    <TabItem.Resources>
+                        <math:MathConvert x:Key="math"></math:MathConvert>
+                        <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type DockPanel}">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE-20)/2}"/>
+                            <Setter Property="Margin" Value="0 0 0 0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                                    <Setter Property="Margin" Value="0 10"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                                    <Setter Property="Margin" Value="0 10"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style x:Key="Style_StackPanel" TargetType="StackPanel">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math},ConverterParameter=(@VALUE)/4}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style x:Key="Style_Border" TargetType="Border">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math},ConverterParameter=(@VALUE/3) - 9}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TabItem.Resources>
                     <StackPanel>
                         <Grid Margin="0 20 0 0">
                             <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
@@ -94,29 +160,33 @@
                                 </Border.Effect>
                             </Border>
                             <Border CornerRadius="16" Background="{DynamicResource #FFFFFF}">
-                                <Grid Margin="20 20 20 40">
-                                    <TextBlock Text="{DynamicResource textDSNhanVienApDungKhoanTienKhac}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Top">
-                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                                            <Grid>
-                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tháng 8" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                                            </Grid>
-                                        </Border>
-                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                                            <Grid>
-                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                                            </Grid>
-                                        </Border>
-                                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                                            <Grid>
-                                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tất cả nhân viên" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                                            </Grid>
-                                        </Border>
-                                    </StackPanel>
-                                </Grid>
+                                <DockPanel Margin="20 20 20 40">
+                                    <DockPanel x:Name="dockCacKhoanTienKhac" DockPanel.Dock="Right" Style="{DynamicResource Style_Grid_Wrap}" HorizontalAlignment="Right"  VerticalAlignment="Top">
+                                        <WrapPanel Name="Wrap_Border" HorizontalAlignment="Right">
+                                            <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                                                <Grid>
+                                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tháng 8" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                                </Grid>
+                                            </Border>
+                                            <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                                                <Grid>
+                                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                                </Grid>
+                                            </Border>
+                                            <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
+                                                <Grid>
+                                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tất cả nhân viên" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
+                                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
+                                                </Grid>
+                                            </Border>
+                                        </WrapPanel>
+                                    </DockPanel>
+                                    <DockPanel Style="{DynamicResource Style_Grid_Wrap}">
+                                        <TextBlock Text="{DynamicResource textDSNhanVienApDungKhoanTienKhac}" TextWrapping="WrapWithOverflow" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                                    </DockPanel>
+                                </DockPanel>
                             </Border>
                         </Grid>
                         <DataGrid Style="{StaticResource DataGrid1}">
