@@ -196,4 +196,6 @@
     <system:String x:Key="textBienDongLuong">Biến động lương</system:String>
     <system:String x:Key="textNhapLuongCoBan">Nhập lương cơ bản</system:String>
     <system:String x:Key="textXuatLuongCoBan">Xuất lương cơ bản</system:String>
+    <system:String x:Key="textTDDMVS">Theo dõi đi muộn về sớm</system:String>
+    <system:String x:Key="textQLNVRV">Quản lý nhân viên ra về</system:String>
 </ResourceDictionary>
