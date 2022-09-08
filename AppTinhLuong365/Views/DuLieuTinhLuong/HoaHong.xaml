@@ -4,8 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong"
+      xmlns:math="clr-namespace:AppTinhLuong365.Core"
       mc:Ignorable="d" 
-      d:DesignHeight="1450" d:DesignWidth="1242" Background="{DynamicResource #F7F8FC}"
+      Background="{DynamicResource #F7F8FC}"
+      SizeChanged="Page_SizeChanged"
       Title="HoaHong">
 
     <Grid>
@@ -204,6 +206,39 @@
                 </Grid>
             </TabItem>
             <TabItem Header="{DynamicResource textHoaHongDuocNhan}" Background="Transparent">
+                <TabItem.Resources>
+                    <math:MathConvert x:Key="math"></math:MathConvert>
+                    <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type DockPanel}">
+                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE-20)/2}"/>
+                        <Setter Property="Margin" Value="0 0 0 0"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                                <Setter Property="Margin" Value="0 10"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                                <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                                <Setter Property="Margin" Value="0 10"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style x:Key="Style_StackPanel" TargetType="StackPanel">
+                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math},ConverterParameter=(@VALUE)/4}"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style x:Key="Style_Border" TargetType="Border">
+                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math},ConverterParameter=(@VALUE/4) - 9}"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TabItem.Resources>
                 <StackPanel Margin="20" Background="{DynamicResource #F7F8FC}" VerticalAlignment="Top">
                     <Grid>
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
@@ -213,33 +248,37 @@
                         </Border>
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10" VerticalAlignment="Top">
                             <StackPanel Margin="20">
-                                <StackPanel>
-                                    <TextBlock Text="{DynamicResource textDSNhanVienVaHoaHong}" Foreground="{DynamicResource #2E3467}" FontWeight="Bold" FontSize="24"></TextBlock>
-                                    <TextBlock Text="{DynamicResource textQLTheoDoiNhanVienDuocGanHoaHong}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 10 0 10">
-                                    <Border  Width="160" Height="38" CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="10 0 0 0" BorderBrush="{DynamicResource #ebebeb}">
-                                        <Grid>
-                                            <TextBlock FontWeight="DemiBold" Text="Tháng 8" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
-                                            <Path Data="{DynamicResource iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0" HorizontalAlignment="Right"></Path>
-                                        </Grid>
-                                    </Border>
-                                    <Border  Width="160" Height="38" CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="10 0 0 0" BorderBrush="{DynamicResource #ebebeb}">
-                                        <Grid>
-                                            <TextBlock FontWeight="DemiBold" Text="Năm 2022" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
-                                            <Path Data="{DynamicResource iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0" HorizontalAlignment="Right"></Path>
-                                        </Grid>
-                                    </Border>
-                                    <Border  Width="160" Height="38" CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="10 0 0 0" BorderBrush="{DynamicResource #ebebeb}">
-                                        <Grid>
-                                            <TextBlock FontWeight="DemiBold" Text="Tất cả nhân viên" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
-                                            <Path Data="{DynamicResource iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0" HorizontalAlignment="Right"></Path>
-                                        </Grid>
-                                    </Border>
-                                    <Border Background="{DynamicResource #4C5BD4}" CornerRadius="10"  Height="38" Width="104" Margin="10 0 0 0">
-                                        <TextBlock Text="{DynamicResource textstatistical}" Padding="10 20" FontSize="14" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </StackPanel>
+                                <DockPanel>
+                                    <DockPanel x:Name="dockHoaHong" DockPanel.Dock="Right" Style="{DynamicResource Style_Grid_Wrap}" VerticalAlignment="Center">
+                                        <WrapPanel Name="Wrap_Border" HorizontalAlignment="Right">
+                                            <Border Style="{DynamicResource Style_Border}" Width="160" Height="38" CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="0 0 9 0" BorderBrush="{DynamicResource #ebebeb}">
+                                                <Grid>
+                                                    <TextBlock FontWeight="DemiBold" Text="Tháng 8" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                                    <Path Data="{DynamicResource iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0" HorizontalAlignment="Right"></Path>
+                                                </Grid>
+                                            </Border>
+                                            <Border Style="{DynamicResource Style_Border}" Width="160" Height="38" CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="0 0 9 0" BorderBrush="{DynamicResource #ebebeb}">
+                                                <Grid>
+                                                    <TextBlock FontWeight="DemiBold" Text="Năm 2022" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                                    <Path Data="{DynamicResource iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0" HorizontalAlignment="Right"></Path>
+                                                </Grid>
+                                            </Border>
+                                            <Border Style="{DynamicResource Style_Border}" Width="160" Height="38" CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="0 0 9 0" BorderBrush="{DynamicResource #ebebeb}">
+                                                <Grid>
+                                                    <TextBlock FontWeight="DemiBold" Text="Tất cả nhân viên" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                                                    <Path Data="{DynamicResource iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0" HorizontalAlignment="Right"></Path>
+                                                </Grid>
+                                            </Border>
+                                            <Border Style="{DynamicResource Style_Border}" Background="{DynamicResource #4C5BD4}" CornerRadius="10"  Height="38" Width="104" Margin="0 0 9 0">
+                                                <TextBlock Text="{DynamicResource textstatistical}" Padding="10 20" FontSize="14" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                            </Border>
+                                        </WrapPanel>
+                                    </DockPanel>
+                                    <StackPanel>
+                                        <TextBlock Text="{DynamicResource textDSNhanVienVaHoaHong}" Foreground="{DynamicResource #2E3467}" FontWeight="Bold" FontSize="24" TextWrapping="WrapWithOverflow"></TextBlock>
+                                        <TextBlock Text="{DynamicResource textQLTheoDoiNhanVienDuocGanHoaHong}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"></TextBlock>
+                                    </StackPanel>
+                                </DockPanel>
                                 <DataGrid Margin="0 30 0 0" Style="{StaticResource DataGrid1}">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
@@ -273,15 +312,15 @@
                     <Border>
                         <StackPanel Margin="20">
                             <TextBlock FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">Mục hoa hồng &amp; tạm ứng sẽ là chức năng giúp các công ty, doanh nghiệp, các nhà quản lý có thể dễ dàng hơn trong việc thống kê và áp dụng các khoản hoa hồng, tạm ứng với từng đối tượng hay nhóm đối tượng nhân viên phù hợp nhất.</TextBlock>
-                            <TextBlock Margin="0 10 0 0" Text="1. Cài đặt hoa hồng" FontSize="18" FontWeight="Bold"></TextBlock>
+                            <TextBlock Margin="0 10 0 0" TextWrapping="WrapWithOverflow" Text="1. Cài đặt hoa hồng" FontSize="18" FontWeight="Bold"></TextBlock>
                             <TextBlock Margin="0 10 0 0" FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">Khi click vào mục Hoa hồng &amp; tạm ứng, hệ thống sẽ hiển thị giao diện của Cài đặt hoa hồng. Ở mục này, sẽ có 5 loại hoa hồng được hệ thống thiết lập và cài đặt sẵn. Bao gồm: Hoa hồng tiền, Hoa hồng doanh thu, Hoa hồng lợi nhuận, Hoa hồng lệ phí vị trí và Hoa hồng kế hoạch.</TextBlock>
                             <TextBlock Margin="0 10 0 0" FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">Chọn "Thêm hoa hồng" để xem chi tiết và thiết lập thông tin ở Hoa hồng tiền. Với 4 loại hoa hồng còn lại, chọn "Nhập" để thực hiện việc cài đặt và xem thông tin chi tiết của từng loại hoa hồng tương ứng.</TextBlock>
-                            <TextBlock Margin="0 10 0 0" Text="2. Danh sách nhân viên" FontSize="18" FontWeight="Bold"></TextBlock>
+                            <TextBlock TextWrapping="WrapWithOverflow" Margin="0 10 0 0" Text="2. Danh sách nhân viên" FontSize="18" FontWeight="Bold"></TextBlock>
                             <TextBlock Margin="0 10 0 0" FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">Danh sách nhân viên chính là mục tổng hợp để quản lý và theo dõi nhân viên được gán hoa hồng của toàn công ty trong tháng nhất định. Khi click vào danh mục này, hệ thống sẽ hiển thị những nhân viên được hưởng hoa hồng trong tháng mặc định là thời điểm mà bạn thực hiện thao tác. Các thông tin được hiển thị sẽ gồm có Họ tên và Tổng hoa hồng nhận được. Những nhân viên được nhận nhiều loại hoa hồng khác nhau sẽ được hệ thống cộng lại và hiển thị tại đây.</TextBlock>
                             <TextBlock Margin="0 10 0 0" FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">Để xem danh sách nhân viên được gán hoa hồng trong tháng nào đó thì bạn chỉ cần lựa chọn THÁNG, NĂM theo nhu cầu của mình. CHỌN hoặc NHẬP tên nhân viên cụ thể để tìm kiếm nhanh và xem chi tiết tiền hoa hồng của nhân viên đó.</TextBlock>
                             <Image Source="/Views/CaiDat/Image/danh-sach-nhan-vien.png" Width="1068" Height="630" Margin="0 10"></Image>
-                            <TextBlock Margin="0 10 0 0" Text="Danh sách nhân viên" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
-                            <TextBlock Margin="0 10 0 0" Text="3. Tạm ứng" FontSize="18" FontWeight="Bold"></TextBlock>
+                            <TextBlock Margin="0 10 0 0" Text="Danh sách nhân viên" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                            <TextBlock Margin="0 10 0 0" Text="3. Tạm ứng" FontSize="18" FontWeight="Bold" TextWrapping="WrapWithOverflow"></TextBlock>
                             <TextBlock Margin="0 10 0 0" FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">Tạm ứng là mục hiển thị danh sách nhân viên đã có đề xuất tạm ứng tiền lương. Việc tạo đơn đề xuất sẽ được thực hiện tại mục Đề xuất (xin nghỉ) ở tài khoản nhân viên và thể hiện trạng thái cũng như nội dung chi tiết ở tài khoản công ty.</TextBlock>
                             <TextBlock Margin="0 10 0 0" FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">Những nhân viên tạm ứng sẽ được hiển thị trong bảng với các trường thông tin như: Họ tên, tiền tạm ứng, trạng thái, thời gian và ghi chú. Trạng thái sẽ hiển thị mẫu đơn tạm ứng của nhân viên đó được duyệt hay chưa được duyệt, tiền tạm ứng sẽ hiển thị số tiền mà nhân viên tạm ứng là bao nhiêu. Mục ghi chú sẽ thể hiện ghi chú kèm theo của đơn tạm ứng đó.</TextBlock>
                             <TextBlock Margin="0 10 0 0" FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">Với những đơn tạm ứng được phê duyệt thì nhân viên sẽ được thực hiện việc tạm ứng lương. Còn nếu ở các trạng thái khác thì sẽ tùy theo tình hình thời gian cụ thể để biết được nhân viên đó có được tạm ứng hay không.</TextBlock>
