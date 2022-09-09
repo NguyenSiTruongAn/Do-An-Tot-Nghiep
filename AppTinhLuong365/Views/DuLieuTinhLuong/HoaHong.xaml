@@ -11,7 +11,7 @@
       Title="HoaHong">
 
     <Grid>
-        <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0">
+        <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0" ItemContainerStyle="{StaticResource TabItem1}">
             <TabItem Header="{DynamicResource textCaiDatHoaHong}" Background="Transparent">
                 <Grid  Background="{DynamicResource #F7F8FC}">
                     <StackPanel>
@@ -303,6 +303,11 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="{DynamicResource textGuide}" Background="Transparent">
+                <TabItem.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{DynamicResource #000}"></Setter>
+                    </Style>
+                </TabItem.Resources>
                 <Grid Background="{DynamicResource #F7F8FC}" Margin="20">
                     <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                         <Border.Effect>
