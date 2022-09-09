@@ -32,13 +32,19 @@
                                         <TextBlock TextWrapping="WrapWithOverflow"  Text="{DynamicResource textPhucLoiDuocTinhThepThang}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
                                     </StackPanel>
                                 </DockPanel>
-                                <DataGrid Margin="0 30 0 0" Style="{StaticResource DataGrid1}">
+                                <DataGrid Margin="0 30 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding Test}">
+                                    <DataGrid.RowStyle>
+                                        <Style>
+                                            
+                                        </Style>
+                                    </DataGrid.RowStyle>
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="{DynamicResource textTenPhucLoi}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textTienPhuLoi}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textLoaiThuNhap}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textApDungTuThang}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textDenThang}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textTenPhucLoi}" Binding="{Binding}">
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textTienPhuLoi}" Binding="{Binding}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textLoaiThuNhap}" Binding="{Binding}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textApDungTuThang}" Binding="{Binding}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="{DynamicResource textDenThang}" Binding="{Binding}"></DataGridTextColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </StackPanel>
