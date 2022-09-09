@@ -16,7 +16,7 @@
                     <TextBlock  VerticalAlignment="Center" Text="Tạo mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
-            <TabControl Background="{DynamicResource #F7F8FC}">
+            <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
                 <TabItem Header="{DynamicResource textNhomLamViec}">
                     <Grid  Background="{DynamicResource #F7F8FC}">
                         <StackPanel Orientation="Vertical" Margin="10 30 0 0" Width="330" HorizontalAlignment="Left" VerticalAlignment="Top">

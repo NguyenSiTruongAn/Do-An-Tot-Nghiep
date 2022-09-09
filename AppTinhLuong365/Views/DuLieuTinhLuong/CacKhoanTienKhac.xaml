@@ -61,62 +61,88 @@
             </Border>
             <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
                 <TabItem Header="{DynamicResource textCacKhoanTienKhac}" x:Name="tabItem1">
-                    <StackPanel Orientation="Horizontal" Margin="0 20">
-                        <Grid Width="330">
-                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
-                                <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
-                                </Border.Effect>
-                            </Border>
-                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
-                                <StackPanel Orientation="Vertical" Margin="10 0 0 20" VerticalAlignment="Top">
-                                    <Grid Height="61" Margin="0 0 10 0">
-                                        <TextBlock Text="Giảm đi học" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
-                                        <Path Data="{DynamicResource iconBaChamDoc}"  VerticalAlignment="Center" Fill="{DynamicResource #979797}" HorizontalAlignment="Right" Margin="0 0 5 0"></Path>
-                                        <Line X1="0" Y1="60" X2="330" Y2="60" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
-                                    </Grid>
-                                    <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
-                                        <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
-                                        <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel Margin="0 20 0 0" Orientation="Horizontal" HorizontalAlignment="Right" Width="320">
-                                        <Path Data="{DynamicResource iconCachTinh}" Fill="{DynamicResource #5F648D}"></Path>
-                                        <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Cách tính" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
-                                    </StackPanel>
-                                    <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="-(0.5*luong_co_ban)" TextWrapping="WrapWithOverflow"></TextBlock>
+                    <ListView Margin="35 0 0 0" Name="lv" ItemsSource="{Binding}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-105)/3}"></Setter>
+                                <Setter Property="Margin" Value="0 0 35 35"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListViewItem">
+                                            <Grid Width="330">
+                                                    <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                                                        <Border.Effect>
+                                                            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                                        </Border.Effect>
+                                                    </Border>
+                                                    <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                                        <StackPanel Orientation="Vertical" Margin="10 0 0 20" VerticalAlignment="Top">
+                                                            <Grid Height="61" Margin="0 0 10 0">
+                                                                <TextBlock Text="{Binding}" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                                                <Path Data="{DynamicResource iconBaChamDoc}"  VerticalAlignment="Center" Fill="{DynamicResource #979797}" HorizontalAlignment="Right" Margin="0 0 5 0"></Path>
+                                                                <Line X1="0" Y1="60" X2="330" Y2="60" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
+                                                            </Grid>
+                                                            <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
+                                                                <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
+                                                                <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                                            </StackPanel>
+                                                        <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="{Binding}" TextWrapping="WrapWithOverflow"></TextBlock>
+                                                        <StackPanel Margin="0 20 0 0" Orientation="Horizontal" HorizontalAlignment="Right" Width="320">
+                                                                <Path Data="{DynamicResource iconCachTinh}" Fill="{DynamicResource #5F648D}"></Path>
+                                                                <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Cách tính" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                                            </StackPanel>
+                                                            <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="{Binding}" TextWrapping="WrapWithOverflow"></TextBlock>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </Grid>
+                                                <!--<Grid Width="330" Margin="20 0 0 0">
+                                                    <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                                                        <Border.Effect>
+                                                            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                                        </Border.Effect>
+                                                    </Border>
+                                                    <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                                        <StackPanel Orientation="Vertical" Margin="10 0 0 20" VerticalAlignment="Top">
+                                                            <Grid Height="61" Margin="0 0 10 0">
+                                                                <TextBlock Text="Trừ" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                                                <Path Data="{DynamicResource iconBaChamDoc}"  VerticalAlignment="Center" Fill="{DynamicResource #979797}" HorizontalAlignment="Right" Margin="0 0 5 0"></Path>
+                                                                <Line X1="0" Y1="60" X2="330" Y2="60" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
+                                                            </Grid>
+                                                            <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
+                                                                <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
+                                                                <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                                            </StackPanel>
+                                                            <StackPanel Margin="0 20 0 0" Orientation="Horizontal" HorizontalAlignment="Right" Width="320">
+                                                                <Path Data="{DynamicResource iconCachTinh}" Fill="{DynamicResource #5F648D}"></Path>
+                                                                <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Cách tính" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                                            </StackPanel>
+                                                            <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="500000" TextWrapping="WrapWithOverflow"></TextBlock>
 
-                                </StackPanel>
+                                                        </StackPanel>
 
-                            </Border>
-                        </Grid>
-                        <Grid Width="330" Margin="20 0 0 0">
-                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
-                                <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
-                                </Border.Effect>
-                            </Border>
-                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
-                                <StackPanel Orientation="Vertical" Margin="10 0 0 20" VerticalAlignment="Top">
-                                    <Grid Height="61" Margin="0 0 10 0">
-                                        <TextBlock Text="Trừ" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
-                                        <Path Data="{DynamicResource iconBaChamDoc}"  VerticalAlignment="Center" Fill="{DynamicResource #979797}" HorizontalAlignment="Right" Margin="0 0 5 0"></Path>
-                                        <Line X1="0" Y1="60" X2="330" Y2="60" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
-                                    </Grid>
-                                    <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
-                                        <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
-                                        <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
-                                    </StackPanel>
-                                    <StackPanel Margin="0 20 0 0" Orientation="Horizontal" HorizontalAlignment="Right" Width="320">
-                                        <Path Data="{DynamicResource iconCachTinh}" Fill="{DynamicResource #5F648D}"></Path>
-                                        <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Cách tính" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
-                                    </StackPanel>
-                                    <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="500000" TextWrapping="WrapWithOverflow"></TextBlock>
+                                                    </Border>
+                                                </Grid>-->
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <!--<Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=Text, ElementName=PBWitdhItems}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-70)/2}"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Text, ElementName=PBWitdhItems}" Value="2">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-35)}"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>-->
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="{Binding RelativeSource={RelativeSource AncestorType=ListView,Mode=FindAncestor},Path=ActualWidth}"></WrapPanel>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
 
-                                </StackPanel>
-
-                            </Border>
-                        </Grid>
-                    </StackPanel>
+                    
                 </TabItem>
                 <TabItem Header="{DynamicResource textDSNhanVienApDung}">
                     <TabItem.Resources>

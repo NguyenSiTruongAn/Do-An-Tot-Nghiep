@@ -16,7 +16,7 @@
                     <TextBlock  VerticalAlignment="Center" Text="Tạo mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
-            <TabControl Background="{DynamicResource #F7F8FC}">
+            <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
                 <TabItem Header="Năm 2022">
                     <Grid HorizontalAlignment="Left" Width="330" Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">

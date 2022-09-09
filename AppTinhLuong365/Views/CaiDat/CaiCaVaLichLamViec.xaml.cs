@@ -46,5 +46,10 @@ namespace AppTinhLuong365.Views.CaiDat
                 IsSmallSize = 2;
             }
         }
+
+        private void lv_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+
+        }
     }
 }

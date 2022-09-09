@@ -125,6 +125,9 @@
     <Compile Include="Views\TinhLuong\Thue.xaml.cs">
       <DependentUpon>Thue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TrangChu\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TrangChu\TrangChu.xaml.cs">
       <DependentUpon>TrangChu.xaml</DependentUpon>
     </Compile>
@@ -254,6 +257,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TinhLuong\Thue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TrangChu\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -392,6 +399,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\CaiDat\Image\bg-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\CaiDat\Image\ms.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

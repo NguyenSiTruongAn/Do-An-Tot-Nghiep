@@ -64,7 +64,7 @@
                     <TextBlock  VerticalAlignment="Center" Text="Tạo mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
-            <TabControl Background="{DynamicResource #F7F8FC}">
+            <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
                 <TabItem Header="{DynamicResource textChinhSachNghiPhep}">
                     <Grid  Background="{DynamicResource #F7F8FC}">
                         <StackPanel Orientation="Horizontal" Margin="10 30 0 0"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="3">
@@ -245,7 +245,7 @@
                     </Grid>
                     
                 </TabItem>
-                <TabItem Header="{DynamicResource textGuide}" Height="22" VerticalAlignment="Top">
+                <TabItem Header="{DynamicResource textGuide}" VerticalAlignment="Top">
                     <Grid Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                             <Border.Effect>
@@ -283,7 +283,7 @@
                                 Sau khi hoàn thiện các thao tác trên, nhân viên được cài đặt mức phạt sẽ được cập nhật ở bảng danh sách bên dưới. Các thông tin được thể hiện bao gồm: Họ tên, mức phạt đang áp dụng, thời gian áp dụng.
                                 </TextBlock>
                                 <Image Width="1100" Height="607" Source="/Views/CaiDat/Image/PhatNghiSaiQuyDInh.png"></Image>
-                                <TextBlock FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center">Phạt nghỉ sai quy định</TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}" FontWeight="DemiBold" HorizontalAlignment="Center">Phạt nghỉ sai quy định</TextBlock>
                                 <TextBlock FontSize="16" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource #000}">Để xem chi tiết, chỉnh sửa hay xóa mức phạt của nhân viên nào thì bạn sẽ click vào “Xem mức phạt” nằm ở cuối thông tin phạt của nhân viên đó >> popup chi tiết về mức phạt được hiển thị với số tiền và thời gian áp dụng. Khi đó, để chỉnh sửa bạn sẽ click vào biểu tượng chiếc bút >> chỉnh sửa số tiền >> ấn vào biểu tượng lưu để hệ thống cập nhật dữ liệu phạt mới sau khi chỉnh sửa. Còn nếu như muốn xóa thì bạn sẽ click vào biểu tượng thùng rác >> popup xác nhận thông tin xóa >> lựa chọn “Ok” hoặc “Hủy” để kết thúc thao tác.
                             <LineBreak></LineBreak>
                             Trong trường hợp bạn muốn tra cứu nhanh thông tin phạt của một nhân viên nào đó thì chỉ cần nhập hoặc chọn tên nhân viên đó trên thanh tìm kiếm nằm ở góc trên bên phải màn hình. Hệ thống ngay lập tức sẽ hiển thị thông tin phạt của nhân viên đó trong bảng danh sách bên dưới. Nếu như nhân viên bạn tìm chưa được thiết lập mức phạt thì hệ thống sẽ hiển thị dữ liệu trống.

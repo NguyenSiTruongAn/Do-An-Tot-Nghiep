@@ -120,5 +120,6 @@
         <PathGeometry Figures="M0.5 5.63672H17.5"/>
     </GeometryGroup>
     <RectangleGeometry x:Key="iconSubMenu" Rect="5,0,2,36"></RectangleGeometry>
+    <PathGeometry x:Key="iconNext" Figures="M0.0984383 10.7498L4.34844 6.4998L0.0984383 2.2498L0.948438 0.549805L6.89844 6.4998L0.948438 12.4498L0.0984383 10.7498Z"/>
 
 </ResourceDictionary>
