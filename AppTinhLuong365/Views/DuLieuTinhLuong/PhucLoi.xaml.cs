@@ -40,6 +40,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             this.DataContext = this;
             Main = main;
         }
+        public List<string> Test { get; set; } = new List<string>(){"aaaaa","bb","cc" };
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (this.ActualWidth > 980)

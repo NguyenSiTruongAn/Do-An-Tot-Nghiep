@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views"
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
       mc:Ignorable="d" 
@@ -41,10 +42,7 @@
                             </DockPanel>
                         </Border>
                         <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                            <Grid VerticalAlignment="Center">
-                                <TextBlock HorizontalAlignment="Left" Margin="10 0 0 0" Width="130" Text="Phòng ban (tất cả phòng ban)" FontSize="16" TextTrimming="CharacterEllipsis"/>
-                                <Path VerticalAlignment="Center" Margin="0 0 10 0" Data="{StaticResource iconSearch}" Fill="{DynamicResource #68798B}" HorizontalAlignment="Right"></Path>
-                            </Grid>
+                            <tool:SearchBar/>
                         </Border>
                         <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 20 0">
                             <DockPanel VerticalAlignment="Center" >
