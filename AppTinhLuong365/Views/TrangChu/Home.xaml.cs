@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -15,12 +16,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.DuLieuTinhLuong
+namespace AppTinhLuong365.Views.TrangChu
 {
     /// <summary>
-    /// Interaction logic for CacKhoanTienKhac.xaml
+    /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class CacKhoanTienKhac : Page, INotifyPropertyChanged
+    public partial class Home : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
         public int IsSmallSize
@@ -34,7 +35,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public CacKhoanTienKhac(MainWindow main)
+        public Home(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -54,18 +55,17 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 IsSmallSize = 2;
             }
-            if(this.ActualWidth > 1380)
-            {
-                DockPanel.SetDock(dockCacKhoanTienKhac, Dock.Right);
-            }
-            else
-                DockPanel.SetDock(dockCacKhoanTienKhac, Dock.Bottom);
-
         }
 
-        private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            NavigationService.Navigate(new Views.PhanQuyen.PhanQuyen(Main));
+            Main.SideBarIndex = 22;
+        }
 
+        private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("https://vanthu.timviec365.vn/mau-de-xuat.html");
         }
     }
 }

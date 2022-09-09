@@ -52,22 +52,83 @@
                     <TextBlock  VerticalAlignment="Center" Text="Thêm lịch" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
+            <Border Height="38" Width="154" CornerRadius="10" Background="{DynamicResource #4C5BD4}" Margin="10 0 0 0">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=tabItem2,Path=IsSelected}" Value="true">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <DockPanel>
+                    <Path Margin="10 0 15 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
+                    <TextBlock Margin="0 0 20 0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Sao chép lịch" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                </DockPanel>
+            </Border>
         </WrapPanel>
-        <TabControl Background="{DynamicResource #F7F8FC}">
+        <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{DynamicResource TabItem1}">
             <TabItem Header="{DynamicResource textCaLamViec}">
-
             </TabItem>
             <TabItem IsSelected="True" x:Name="tabItem2" Header="{DynamicResource textCalendar}">
-                <Grid>
-                    <StackPanel>
-                        <TextBlock Text="Lịch làm việc chung" FontSize="22" FontWeight="DemiBold" TextDecorations="Underline" Foreground="{DynamicResource #000}"></TextBlock>
-                        <StackPanel Orientation="Horizontal">
-                            <Border Background="{DynamicResource #000}" Margin="0 20 30 0" CornerRadius="5" Width="310" Height="230"></Border>
-                            <Border Background="{DynamicResource #000}" Margin="0 20 30 0" CornerRadius="5" Width="310" Height="230"></Border>
-                            <Border Background="{DynamicResource #000}" Margin="0 20 0 0" CornerRadius="5" Width="310" Height="230"></Border>
-                        </StackPanel>
-                    </StackPanel>
-                </Grid>
+                <ListView Margin="35 0 0 0" Name="lv" ItemsSource="{Binding}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-105)/3}"></Setter>
+                            <Setter Property="Margin" Value="0 0 35 35"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Grid>
+                                            <StackPanel>
+                                                <TextBlock Text="Lịch làm việc chung" FontSize="22" FontWeight="DemiBold" TextDecorations="Underline" Foreground="{DynamicResource #000}"></TextBlock>
+                                                <Border Margin="0 20 0 0" Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" VerticalAlignment="Top" HorizontalAlignment="Left" CornerRadius="10">
+                                                    <StackPanel>
+                                                        <Border Width="250">
+                                                            <Grid>
+                                                                <Image Source="/Views/CaiDat/Image/bg-1.png"></Image>
+                                                                <TextBlock Text="..." FontSize="16" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" HorizontalAlignment="Right" Margin="0 0 10 0"></TextBlock>
+                                                                <TextBlock FontWeight="DemiBold" Margin="10" TextAlignment="Center" Text="{Binding}" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"></TextBlock>
+                                                            </Grid>
+                                                        </Border>
+                                                        <StackPanel Margin="10 20">
+                                                            <DockPanel>
+                                                                <Path Width="18" VerticalAlignment="Center" Data="{DynamicResource iconTimeCircle}" Stroke="{DynamicResource #68798B}"></Path>
+                                                                <TextBlock Text="{Binding}" FontSize="15" Foreground="{DynamicResource #666666}" Margin="10 0 0 0"></TextBlock>
+                                                            </DockPanel>
+                                                            <DockPanel>
+                                                                <Path Width="18" VerticalAlignment="Center" Data="{DynamicResource iconNhapLuongCoBanVaCheDo}" Fill="{DynamicResource #68798B}"></Path>
+                                                                <TextBlock Text="{Binding}" FontSize="15" Foreground="{DynamicResource #666666}" Margin="10 0 0 0"></TextBlock>
+                                                            </DockPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </Border>
+                                            </StackPanel>
+                                        </Grid>
+                                        
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <!--<Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=Text, ElementName=PBWitdhItems}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-70)/2}"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Text, ElementName=PBWitdhItems}" Value="2">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-35)}"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>-->
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding RelativeSource={RelativeSource AncestorType=ListView,Mode=FindAncestor},Path=ActualWidth}"></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+
+                
             </TabItem>
             <TabItem Header="{DynamicResource textCauDatCongChuan}">
                 <Grid Margin="0 30">

@@ -136,14 +136,14 @@
             <Border CornerRadius="10" Style="{DynamicResource ShadowBorder1}" Margin="20 20 20 0" Height="60">
                 <Grid Margin="20 0 0 0" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock FontSize="15" Foreground="{DynamicResource #4C5BD4}" Text="{DynamicResource textHome}"></TextBlock>
+                        <TextBlock Cursor="Hand" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Text="{DynamicResource textHome}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3"></TextBlock>
                         <TextBlock Margin="5 0" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Text="/"></TextBlock>
                         <TextBlock x:Name="title" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Text="{DynamicResource textQuanLyTaiKhoanNhanSu}"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource textTrangChu}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0"></TextBlock>
-                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource textGuide}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0"></TextBlock>
-                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource textNews}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0"></TextBlock>
+                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource textTrangChu}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Cursor="Hand"/>
+                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource textGuide}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" Cursor="Hand"></TextBlock>
+                        <TextBlock VerticalAlignment="Center" Text="{DynamicResource textNews}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2" Cursor="Hand"></TextBlock>
                         <Grid Margin="0 0 21 0" VerticalAlignment="Center">
                             <Path Data="{DynamicResource iconRing}" Fill="{DynamicResource #68798B}"></Path>
                             <Path Data="{DynamicResource iconCirle}" Fill="{DynamicResource #F46A6A}" Margin="8 -8 0 0"></Path>

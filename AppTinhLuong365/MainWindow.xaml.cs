@@ -151,8 +151,9 @@ namespace AppTinhLuong365
                 switch (value)
                 {
                     case 0:
-                        HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.TrangChu(this));
+                        HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(this));
                         this.Title = App.Current.Resources["textTrangChu"] as string;
+                        title.Text = "Quản lý tài khoản nhân sự";
                         break;
                     case 1:
                         HomeSelectionPage.NavigationService.Navigate(new Views.PageNhapLuongCoBanVaCheDo(this));
@@ -319,6 +320,30 @@ namespace AppTinhLuong365
             {
                 PopupSelection.NavigationService.Navigate(null);
             }
+        }
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(this));
+            this.Title = App.Current.Resources["textTrangChu"] as string;
+            SideBarIndex = 0;
+        }
+
+        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("https://tinhluong.timviec365.vn/huong-dan.html");
+        }
+
+        private void TextBlock_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("https://timviec365.vn/blog/c105/cac-van-de-ve-luong");
+        }
+
+        private void TextBlock_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
+        {
+            HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(this));
+            this.Title = App.Current.Resources["textTrangChu"] as string;
+            title.Text = "Quản lý tài khoản nhân sự";
+            SideBarIndex = 0;
         }
     }
 }
