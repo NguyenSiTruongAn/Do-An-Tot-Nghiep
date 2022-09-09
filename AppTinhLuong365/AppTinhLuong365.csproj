@@ -390,5 +390,8 @@
   <ItemGroup>
     <Resource Include="Views\TrangChu\Image\cai-dat-ngay-nghi-le-25.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\CaiDat\Image\bg-1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

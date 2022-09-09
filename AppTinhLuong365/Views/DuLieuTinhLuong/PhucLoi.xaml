@@ -9,8 +9,8 @@
       Title="PhucLoi" SizeChanged="Page_SizeChanged">
 
     <Grid Margin="20">
-        <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0">
-            <TabItem Header="{DynamicResource textPhucLoi}" Background="Transparent" BorderThickness="0">
+        <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0" ItemContainerStyle="{StaticResource TabItem1}">
+            <TabItem Header="{DynamicResource textPhucLoi}" Background="Transparent">
                 <StackPanel>
                     <Grid Margin="0 20" Background="{DynamicResource #F7F8FC}" VerticalAlignment="Top">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">

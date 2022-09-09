@@ -14,7 +14,7 @@
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=tabItem1,Path=IsSelected}" Value="true">
+                            <DataTrigger Binding="{Binding ElementName=tabItemx,Path=IsSelected}" Value="true">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -25,17 +25,8 @@
                     <TextBlock  VerticalAlignment="Center" Text="Tạo mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
-            <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0">
-                <TabItem x:Name="tabItem1" Header="{DynamicResource textChinhSachThue}" Background="Transparent" BorderThickness="0">
-                    <TabItem.Style>
-                        <Style TargetType="TabItem">
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="{DynamicResource #F7F8FC}"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TabItem.Style>
+            <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0" ItemContainerStyle="{StaticResource TabItem1}">
+                <TabItem x:Name="tabItemx" Header="{DynamicResource textChinhSachThue}" Background="Transparent">
                     <Grid  Background="{DynamicResource #F7F8FC}">
                         <StackPanel Orientation="Vertical" Margin="10 30 0 0" Width="330" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Grid>

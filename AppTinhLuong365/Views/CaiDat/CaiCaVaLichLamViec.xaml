@@ -100,36 +100,40 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Lưu công chuẩn" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                             </Border>
                         </StackPanel>
-
-                    </Border>
-                </Grid>
-            </TabItem>
-            <TabItem Header="{DynamicResource textGuide}">
-                <Grid Margin="20">
-                    <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
-                        <Border.Effect>
-                            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
-                        </Border.Effect>
-                    </Border>
-                    <Border CornerRadius="10" Background="{DynamicResource #FFFFFF}">
-                        <StackPanel Margin="20">
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{DynamicResource textGuide}">
+                    <TabItem.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Style>
+                    </TabItem.Resources>
+                    <Grid Margin="20">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <Border CornerRadius="10" Background="{DynamicResource #FFFFFF}">
+                            <StackPanel Margin="20">
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">
                                     Để giúp các nhà quản lý doanh nghiệp có thể dễ dàng cài đặt và theo dõi chính xác được lịch làm việc của nhân viên một cách đồng bộ, phần mềm tính lương timviec365.vn mang đến chức năng lịch làm việc.
-                            </TextBlock>
-                            <TextBlock Margin="0 10 0 10" Text="1. Lịch làm việc" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}"></TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">
-                                    Lịch làm việc hỗ trợ tạo thông báo và hiển thị ca chấm công phù hợp cho từng đối tượng nhân viên theo lịch mà nhân sự đã thiết lập từ đầu tháng. Chức năng này cho phép nhân sự và bộ phận quản lý thực hiện các tác vụ sau:</TextBlock>
-                            <Image Margin="0 10 0 10" Source="/Views/CaiDat/Image/llv.jpeg" Width="512" Height="242"></Image>
-                            <TextBlock Margin="0 0 0 10" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold" Text="Chức năng lịch làm việc"></TextBlock>
-                            <TextBlock TextWrapping="WrapWithOverflow" FontSize="16">- Thêm lịch làm việc
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 10" TextWrapping="WrapWithOverflow" Text="1. Lịch làm việc" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}"></TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">
+                                    Lịch làm việc hỗ trợ tạo thông báo và hiển thị ca chấm công phù hợp cho từng đối tượng nhân viên theo lịch mà nhân sự đã thiết lập từ đầu tháng. Chức năng này cho phép nhân sự và bộ phận quản lý thực hiện các tác vụ sau:                                </TextBlock>
+                                <Image Margin="0 10 0 10" Source="/Views/CaiDat/Image/llv.jpeg" Width="512" Height="242"></Image>
+                                <TextBlock TextWrapping="WrapWithOverflow" Margin="0 0 0 10" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold" Text="Chức năng lịch làm việc"></TextBlock>
+                                <TextBlock TextWrapping="WrapWithOverflow" FontSize="16">- Thêm lịch làm việc
                                     <LineBreak/>- Xem danh sách làm việc
                                     <LineBreak/>- Thêm nhân viên vào lịch làm việc
                                     <LineBreak/>- Quản lý lý lịch làm việc của Nhân viên 
                                     <LineBreak/>- Cài đặt số ngày công chuẩn. 
                                     <LineBreak/>Trên giao diện của lịch làm việc sẽ giúp bạn theo dõi lịch làm việc của nhân viên trong bộ phận trong công ty đã được thiết lập trước đó theo tháng và năm cụ thể.
-                            </TextBlock>
-                            <TextBlock Text="1.1 Đầu tiên, chúng ta sẽ đi thực hiện thao tác thêm lịch làm việc" FontSize="14" Foreground="{DynamicResource #000}" FontWeight="Bold"></TextBlock>
-                            <TextBlock FontSize="16" Padding="0 5 0 5" TextWrapping="WrapWithOverflow">- Bước 1: Để thêm lịch làm việc bạn chọn THÊM LỊCH ở góc bên phải màn hình
+                                </TextBlock>
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="1.1 Đầu tiên, chúng ta sẽ đi thực hiện thao tác thêm lịch làm việc" FontSize="14" Foreground="{DynamicResource #000}" FontWeight="Bold"></TextBlock>
+                                <TextBlock FontSize="16" Padding="0 5 0 5" TextWrapping="WrapWithOverflow">- Bước 1: Để thêm lịch làm việc bạn chọn THÊM LỊCH ở góc bên phải màn hình
                                     <LineBreak/>- Bước 2: Nhập tên lịch làm việc
                                     <LineBreak/>- Lựa chọn lịch làm việc, bạn có thể lựa chọn đã được thiết lập sẵn gồm:
                                     <LineBreak/>+ Thứ 2 - Thứ 6
@@ -141,28 +145,28 @@
                                     <LineBreak/>-Bước 5: Trong Popup tiếp theo, hệ thống sẽ hiển thị một lịch làm việc đầy đủ của nhân viên công ty trong tháng đã chọn. Trong lịch này chỉ những ngày được đánh dấu số ca ở đây thì khi nhân viên đi làm mới được tính công. Những ngày không được đánh dấu thì nhân viên đó có đi làm cũng không được tính. 
                                     <LineBreak/>Ngoài ra, bạn cũng có thể tùy chỉnh ca làm việc đã cài đặt ban đầu của một ngày làm việc bất kỳ bằng thao tác: Chọn ngày làm việc đó, tiến hành điều chỉnh thêm hoặc bớt ca bằng cách tick xanh vào những ô trống đặt trước những ca sao cho phù hợp. Sau đó, kết thúc bằng cách nhấn vào TẠO CHU KỲ.
                                     <LineBreak/>Đây chính là cách để cài đặt hay thêm lịch làm việc.</TextBlock>
-                            <TextBlock Text="1.2 Đầu tiên, chúng ta sẽ đi thực hiện thao tác thêm lịch làm việc" FontSize="14" Foreground="{DynamicResource #000}" FontWeight="Bold"></TextBlock>
-                            <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">Sau khi tạo xong, tất cả những lịch làm việc của nhân viên công ty sẽ xuất hiện trong màn hình đầu tiên khi mở chức năng này. Để thêm được nhân viên vào những lịch làm việc và xem danh sách nhân viên đã được thiết lập lịch làm việc, bạn làm như sau:</TextBlock>
-                            <Image Margin="10" Source="/Views/CaiDat/Image/tnv.png" Height="287" Width="512"></Image>
-                            <TextBlock Text="Thêm nhân viên" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
-                            <TextBlock TextWrapping="WrapWithOverflow" FontSize="16" Foreground="{DynamicResource #000}">Trên từng ô lịch làm việc đã thiết lập, chọn dấu “ba chấm” ở góc phải của ô. Tại đây có 4 chức năng nhỏ hơn, bạn có thể sử dụng ngay bao gồm: Thêm nhân viên, xem danh sách nhân viên, chỉnh sửa lịch làm việc và xóa chu kỳ đã thiết lập. 
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="1.2 Đầu tiên, chúng ta sẽ đi thực hiện thao tác thêm lịch làm việc" FontSize="14" Foreground="{DynamicResource #000}" FontWeight="Bold"></TextBlock>
+                                <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">Sau khi tạo xong, tất cả những lịch làm việc của nhân viên công ty sẽ xuất hiện trong màn hình đầu tiên khi mở chức năng này. Để thêm được nhân viên vào những lịch làm việc và xem danh sách nhân viên đã được thiết lập lịch làm việc, bạn làm như sau:</TextBlock>
+                                <Image Margin="10" Source="/Views/CaiDat/Image/tnv.png" Height="287" Width="512"></Image>
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="Thêm nhân viên" HorizontalAlignment="Center" FontSize="16" FontWeight="DemiBold"></TextBlock>
+                                <TextBlock TextWrapping="WrapWithOverflow" FontSize="16" Foreground="{DynamicResource #000}">Trên từng ô lịch làm việc đã thiết lập, chọn dấu “ba chấm” ở góc phải của ô. Tại đây có 4 chức năng nhỏ hơn, bạn có thể sử dụng ngay bao gồm: Thêm nhân viên, xem danh sách nhân viên, chỉnh sửa lịch làm việc và xóa chu kỳ đã thiết lập. 
                                     <LineBreak/>- Để thêm nhân viên, bạn chọn làm như sau: 
                                     <LineBreak/> Bước 1: Nhấn chọn thêm nhân viên 
                                     <LineBreak/>Bước 2: Nhập tên nhân viên cần thêm vào lịch làm việc trong phần tìm kiếm 
                                     <LineBreak/>Bước 3: Đánh dấu tick xanh vào ô trống đặt trước tên nhân viên 
                                     <LineBreak/> Bước 4: Nhấp vào CHỌN để kết thúc thao tác.</TextBlock>
-                            <TextBlock Text="1.3 Xem danh sách nhân viên" FontSize="14" Foreground="{DynamicResource #000}" FontWeight="Bold"></TextBlock>
-                            <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="1.3 Xem danh sách nhân viên" FontSize="14" Foreground="{DynamicResource #000}" FontWeight="Bold"></TextBlock>
+                                <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">
                                     - Để theo dõi chi tiết nhân viên đã được thiết lập lịch làm việc theo tháng, bạn chọn Danh sách nhân viên. Nếu muốn xóa nhân viên, hãy chọn vào biểu tượng thùng rác nằm bên phải địa chỉ email nhé. 
                                     <LineBreak/>
                                     - Để tiến hành chỉnh sửa lịch làm việc theo tháng cho từng nhóm nhân viên đã thiết lập, bạn chọn 3 dấu chấm tròn ở phía bên phải của từng lịch làm việc trong danh sách >> CHỈNH SỬA >> Chỉnh sửa tên chu kỳ >> Chỉnh sửa các ca làm việc >> LƯU LẠI để kết thúc thao tác. 
                                     <LineBreak/>-Trong trường hợp bạn muốn xóa chu kỳ hay lịch làm việc của một nhóm nhân viên nào đó thì chỉ cần chọn vào biểu tượng ba chấm ở góc trên bên phải ô lịch làm việc đó >> Xóa chu kỳ >> popup xác nhận xóa sẽ hiển thị >> Xác nhận để xóa hoặc chọn vào chữ X ở trên trên bên phải popup để hủy thao tác.
-                            </TextBlock>
-                            <TextBlock Margin="0 10 0 10" Text="2. Cài đặt công chuẩn" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}"></TextBlock>
-                            <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">Phần cài đặt công chuẩn là mục mà công ty hay bộ phận nhân sự sẽ thiết lập số công làm việc chuẩn trong từng tháng. Điều này có tác động đến việc chấm công cũng như hiển thị số ngày công của nhân viên trong tháng đó.</TextBlock>
-                            <Image Width="512" Height="276" Source="/Views/CaiDat/Image/cc.png" Margin="10"></Image>
-                            <TextBlock Text="Cài đặt công chuẩn" FontWeight="DemiBold" FontSize="16" HorizontalAlignment="Center"></TextBlock>
-                            <TextBlock TextWrapping="WrapWithOverflow" FontSize="16">
+                                </TextBlock>
+                                <TextBlock TextWrapping="WrapWithOverflow" Margin="0 10 0 10" Text="2. Cài đặt công chuẩn" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}"></TextBlock>
+                                <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">Phần cài đặt công chuẩn là mục mà công ty hay bộ phận nhân sự sẽ thiết lập số công làm việc chuẩn trong từng tháng. Điều này có tác động đến việc chấm công cũng như hiển thị số ngày công của nhân viên trong tháng đó.</TextBlock>
+                                <Image Width="512" Height="276" Source="/Views/CaiDat/Image/cc.png" Margin="10"></Image>
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="Cài đặt công chuẩn" FontWeight="DemiBold" FontSize="16" HorizontalAlignment="Center"></TextBlock>
+                                <TextBlock TextWrapping="WrapWithOverflow" FontSize="16">
                                     Để thực hiện việc cài đặt này, bạn chỉ cần chọn tháng >> nhập số công chuẩn của tháng đó vào ô tương ứng >> chọn “Lưu" để lưu thông tin về công chuẩn được thiết lập của tháng.
                                     <LineBreak/>
                                     Bên cạnh đó, bạn có thể thực hiện việc theo dõi và tìm kiếm công chuẩn của các tháng với thanh công cụ tìm kiếm. Lựa chọn tháng muốn xem và hệ thống sẽ trả lại kết quả về công chuẩn của tháng đó.
