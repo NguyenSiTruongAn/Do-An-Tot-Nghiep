@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:core="clr-namespace:AppTinhLuong365.Core"
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat"
       mc:Ignorable="d" 
       Title="NghiPhep" SizeChanged="Page_SizeChanged">
@@ -113,7 +114,6 @@
                                         <TextBlock Margin="20 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="Là nghỉ phép có xin phép theo đúng quy định của doanh nghiệp, khi người lao..." TextWrapping="WrapWithOverflow"></TextBlock>
                                         <TextBlock Text="(Xem thêm)" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                     </StackPanel>
-
                                 </Border>
                             </Grid>
                         </StackPanel>
@@ -137,7 +137,7 @@
                                     </Border>
                                     <Border Style="{DynamicResource Style_Border_Wrap}" Height="38" Background="{DynamicResource #FFFFFF}">
                                         <Border Width="161" HorizontalAlignment="Right" BorderThickness="1" CornerRadius="10" BorderBrush="{DynamicResource #ebebeb}">
-                                            <DatePicker Padding="20 0 15 0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" Foreground="{DynamicResource #68798B}"></DatePicker>
+                                            <tool:DatePicker Foreground="{DynamicResource #68798B}" Background="{DynamicResource #FFFFFF}" Margin="3"/>
                                         </Border>
                                     </Border>
                                 </WrapPanel>

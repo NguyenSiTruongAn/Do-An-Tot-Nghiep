@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       xmlns:core="clr-namespace:AppTinhLuong365.Core"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.BaoCaoCongLuong"
       mc:Ignorable="d" 
@@ -53,16 +54,10 @@
                     <Border Style="{DynamicResource Style_Border_Wrap}">
                         <WrapPanel x:Name="Wrap_Border1"  HorizontalAlignment="Right">
                             <Border Width="148" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                <Grid>
-                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tháng 8" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                                </Grid>
+                                <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
                             <Border Width="148" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                <Grid>
-                                    <TextBlock Background="{DynamicResource #FFFFFF}" Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                                </Grid>
+                                <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
                             <Border Width="105" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
                                 <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
@@ -103,9 +98,7 @@
                                 </Border>
                             </Grid>
                         </Border>
-
                     </Grid>
-
                 </StackPanel>
             </StackPanel>
         </Border>

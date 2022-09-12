@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,10 +19,24 @@ namespace AppTinhLuong365.Views.CaiDat
 
         public CaiCaVaLichLamViec(MainWindow main)
         {
+            ItemList = new ObservableCollection<string>();
+            for (var i = 1; i <= 12; i++)
+            {
+                ItemList.Add($"Tháng {i}");
+            }
+            YearList = new ObservableCollection<string>();
+            for (var i = 2022; i <= 2025; i++)
+            {
+                YearList.Add($"Năm {i}");
+            }
             InitializeComponent();
             this.DataContext = this;
             Main = main;
         }
+
+        public ObservableCollection<string> ItemList { get; set; }
+        public ObservableCollection<string> YearList { get; set; }
+
         public MainWindow Main;
 
         private int _IsSmallSize;
