@@ -217,4 +217,5 @@
     <system:String x:Key="textCTC">Chọn tất cả</system:String>
     <system:String x:Key="textTMMDMVS">Thêm mới mức phạt đi muộn về sớm</system:String>
     <system:String x:Key="textLDP">Lý do phạt</system:String>
+    <system:String x:Key="textNhapTenChinhSachThue">Nhập tên chính sách thuế</system:String>
 </ResourceDictionary>

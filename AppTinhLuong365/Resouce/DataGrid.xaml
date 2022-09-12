@@ -20,10 +20,11 @@
         </Setter>
     </Style>
     <Style TargetType="DataGrid" x:Key="DataGrid1">
-        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="BorderThickness" Value="1 0 1 0"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource #ebebeb}"/>
         <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
-        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource #CCCCCC}"></Setter>
-        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource #CCCCCC}"></Setter>
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource #ebebeb}"></Setter>
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource #FFFFFF}"></Setter>
         <Setter Property="RowHeight" Value="50"></Setter>
         <Setter Property="RowHeaderWidth" Value="0"></Setter>
         <Setter Property="IsReadOnly" Value="True"></Setter>
@@ -213,6 +214,13 @@
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         <Setter Property="Margin" Value="10 0"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource #474747}"></Setter>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="TextRowCenter1">
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Margin" Value="10 0"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource #FF5959}"></Setter>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="TextRowLeft">
