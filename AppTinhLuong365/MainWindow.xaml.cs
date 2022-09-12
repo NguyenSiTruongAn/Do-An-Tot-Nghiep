@@ -345,5 +345,16 @@ namespace AppTinhLuong365
             title.Text = "Quản lý tài khoản nhân sự";
             SideBarIndex = 0;
         }
+
+        private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.PopupSelection.NavigationService.Navigate(new Views.TrangChu.PopupTaiKhoan(this));
+            this.PopupSelection.Visibility = this.PopupSelection.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            this.PopupSelection.Width = 200;
+            this.PopupSelection.Height = 193;
+            this.PopupSelection.HorizontalAlignment = HorizontalAlignment.Right;
+            this.PopupSelection.VerticalAlignment = VerticalAlignment.Top;
+            this.PopupSelection.Margin = new Thickness(0,70,20,0);
+        }
     }
 }

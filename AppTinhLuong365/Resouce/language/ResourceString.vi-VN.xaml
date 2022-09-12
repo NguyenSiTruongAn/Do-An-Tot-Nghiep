@@ -198,4 +198,5 @@
     <system:String x:Key="textXuatLuongCoBan">Xuất lương cơ bản</system:String>
     <system:String x:Key="textTDDMVS">Theo dõi đi muộn về sớm</system:String>
     <system:String x:Key="textQLNVRV">Quản lý nhân viên ra về</system:String>
+    <system:String x:Key="textNhapTenChinhSachThue">Nhập tên chính sách thuế</system:String>
 </ResourceDictionary>

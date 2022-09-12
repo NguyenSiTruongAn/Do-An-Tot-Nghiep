@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong"
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       mc:Ignorable="d" 
       d:DesignHeight="801" d:DesignWidth="1042" Background="{DynamicResource #F7F8FC}"
       Title="BangLuong">
@@ -64,17 +65,11 @@
                         <Border Width="144" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
                             <DatePicker BorderThickness="0" Foreground="{DynamicResource #68798B}"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Margin="15 0 15 0"></DatePicker>
                         </Border>
-                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                            <Grid>
-                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" FontWeight="DemiBold" Text="Tháng 8" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                            </Grid>
+                        <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                            <tool:SearchBar Cursor="Hand"/>
                         </Border>
-                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                            <Grid>
-                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                            </Grid>
+                        <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                            <tool:SearchBar Cursor="Hand"/>
                         </Border>
                     </WrapPanel>
                 </DockPanel>
@@ -83,62 +78,330 @@
                         <Border>
                             <TextBlock Text="{DynamicResource textSort}" FontSize="16" Margin="10" Foreground="{DynamicResource #000}" FontWeight="DemiBold"></TextBlock>
                         </Border>
-                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                            <Grid>
-                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                            </Grid>
+                        <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                            <tool:SearchBar Cursor="Hand"/>
                         </Border>
-                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                            <Grid>
-                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                            </Grid>
+                        <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                            <tool:SearchBar Cursor="Hand"/>
                         </Border>
-                        <Border Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0">
-                            <Grid>
-                                <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                            </Grid>
+                        <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                            <tool:SearchBar Cursor="Hand"/>
                         </Border>
                         <Border Width="104" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0" Background="{DynamicResource #4C5BD4}">
                             <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </WrapPanel>
                 </DockPanel>
-                <DataGrid Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
+                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="0 40 0 0">
+                    <DataGrid.OpacityMask>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Border Width="{Binding ElementName=dataGrid1,Path=ActualWidth}" Height="{Binding ElementName=dataGrid1,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </DataGrid.OpacityMask>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="{DynamicResource textName}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textDepartment}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textBasicSalary}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textContract}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textStandardDateNumber}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textActualDateNumber}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textCongTheoTien}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textCongDuocGhiNhan}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textCongDuocNghiPhep}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textTongCong}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textLuongThuc}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textLuongSauPhat}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textPremiumSalary}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textPhatDiMuonVeSomTheoCong}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textPhatDiMuonVeSomTheoTien}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textHoaHong}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textTamUng}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textThuong}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textThuongNghiLe}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textPhat}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textNghiNgayKhongDuocNghi}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textNghiSaiQuyDinh}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textPhucLoi}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textPhuCap}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textPhuCapTheoCa}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textBaoHiem}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textKhoanTienKhac}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textTongLuong}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textThue}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textTongLuongThuc}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="{DynamicResource textTongLuongDaTra}"></DataGridTextColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid x:Name="gridHoTen" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                            </Border.Background>
+                                        </Border>
+                                        <DockPanel Margin="50 0 0 0" Cursor="Hand" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
+                                            <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                            <Border Background="Transparent"  MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                                <Path x:Name="iconEdit" Data="{DynamicResource iconEdit}" Fill="{DynamicResource #4C5BD4}" Margin="10 0 0 0">
+                                                    <Path.Style>
+                                                        <Style TargetType="Path">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding hover}" Value="1">
+                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Path.Style>
+                                                </Path>
+                                            </Border>
+                                        </DockPanel>
+                                        <TextBlock Text="{Binding name}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textPhongBan}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textBasicSalary}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textContract}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textStandardDateNumber}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textActualDateNumber}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textCongTheoTien}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textCongDuocGhiNhan}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textCongDuocNghiPhep}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textTongCong}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textLuongThuc}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textLuongSauPhat}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textPremiumSalary}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textPhatDiMuonVeSomTheoCong}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textPhatDiMuonVeSomTheoTien}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textHoaHong}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textTamUng}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textThuong}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textThuongNghiLe}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textPhat}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textNghiNgayKhongDuocNghi}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textNghiSaiQuyDinh}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textPhucLoi}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textPhuCap}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textPhuCapTheoCa}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textBaoHiem}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textKhoanTienKhac}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textTongLuong}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textThue}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textTongLuongThuc}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textTongLuongDaTra}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
+                                        <TextBlock Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
