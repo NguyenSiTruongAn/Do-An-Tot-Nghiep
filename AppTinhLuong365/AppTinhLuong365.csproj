@@ -80,6 +80,18 @@
     <Compile Include="Views\CaiDat\NhomLamViec.xaml.cs">
       <DependentUpon>NhomLamViec.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupDiMuonVeSom.xaml.cs">
+      <DependentUpon>PopupDiMuonVeSom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupNhomLamViec.xaml.cs">
+      <DependentUpon>PopupNhomLamViec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupSaoChepLich.xaml.cs">
+      <DependentUpon>PopupSaoChepLich.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupThemLichLamViec.xaml.cs">
+      <DependentUpon>PopupThemLichLamViec.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChiTraLuong\ChiTraLuong.xaml.cs">
       <DependentUpon>ChiTraLuong.xaml</DependentUpon>
     </Compile>
@@ -207,6 +219,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CaiDat\NhomLamViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupDiMuonVeSom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupNhomLamViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupSaoChepLich.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupThemLichLamViec.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
