@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="472" d:DesignWidth="495"
       Title="NhapLuongCoBan">
-
     <Grid>
         <Border Style="{StaticResource ShadowBorder2}" Background="{DynamicResource #FFFFFF}" CornerRadius="8">
             <StackPanel>

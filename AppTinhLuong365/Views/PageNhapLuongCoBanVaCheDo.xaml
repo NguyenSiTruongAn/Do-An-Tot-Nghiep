@@ -14,7 +14,6 @@
         <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type DockPanel}">
             <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE-20)/2}"/>
             <Setter Property="Margin" Value="0 0 0 0"/>
-            
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
                     <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>

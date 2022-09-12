@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="200" d:DesignWidth="193"
       Title="TaiKhoan">
-
     <Grid>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="5" Style="{StaticResource ShadowBorder1}">
             <StackPanel>

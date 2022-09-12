@@ -310,6 +310,5 @@
                 <TabItem Header="{DynamicResource textGuide}" Background="Transparent"></TabItem>
             </TabControl>
         </StackPanel>
-        
     </Grid>
 </Page>

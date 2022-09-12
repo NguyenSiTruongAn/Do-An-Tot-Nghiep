@@ -9,6 +9,7 @@
       mc:Ignorable="d" 
       Background="{DynamicResource #F7F8FC}"
       Title="TamUng" SizeChanged="Page_SizeChanged" d:DesignWidth="913.415">
+    
     <Page.Resources>
         <math:MathConvert x:Key="math"></math:MathConvert>
         <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type DockPanel}">
