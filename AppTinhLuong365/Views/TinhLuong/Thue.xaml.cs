@@ -14,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AppTinhLuong365.Core;
 
 namespace AppTinhLuong365.Views.TinhLuong
 {
@@ -40,12 +39,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
-            dataGrid1.AutoReponsiveColumn(1);
-            dataGrid2.AutoReponsiveColumn(0);
         }
-
-        public List<string> Test { get; set; } = new List<string>() { "aa" ,"bb" ,"cc"  };
-
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (this.ActualWidth > 980)
@@ -71,35 +65,6 @@ namespace AppTinhLuong365.Views.TinhLuong
                 DockPanel.SetDock(dockThueNSCTL, Dock.Bottom);
                 DockPanel.SetDock(dockThueNSDTL, Dock.Bottom);
             }
-        }
-
-        private void btnTaoMoi_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThue(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
-            Main.PopupSelection.Width = 495;
-            Main.PopupSelection.Height = 433;
-        }
-
-        private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset-e.Delta);
-        }
-
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThietLapThue(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
-            Main.PopupSelection.Width = 495;
-            Main.PopupSelection.Height = 482;
-        }
-
-        private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
-        {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupTGADThue(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
-            Main.PopupSelection.Width = 495;
-            Main.PopupSelection.Height = 327;
         }
     }
 }
