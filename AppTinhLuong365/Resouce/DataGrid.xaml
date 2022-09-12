@@ -150,56 +150,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="DataGrid" x:Key="DataGrid4">
-        <Setter Property="BorderThickness" Value="0"></Setter>
-        <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
-        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource #CCCCCC}"></Setter>
-        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource #CCCCCC}"></Setter>
-        <Setter Property="RowHeight" Value="50"></Setter>
-        <Setter Property="RowHeaderWidth" Value="0"></Setter>
-        <Setter Property="IsReadOnly" Value="True"></Setter>
-        <Setter Property="AutoGenerateColumns" Value="False"></Setter>
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"></Setter>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="False"></Setter>
-        <Setter Property="AlternationCount" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=ItemsSource.Count}"></Setter>
-        <Setter Property="ColumnHeaderStyle">
-            <Setter.Value>
-                <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
-                    <Setter Property="Foreground" Value="{DynamicResource #777777}"></Setter>
-                    <Setter Property="FontWeight" Value="Medium"></Setter>
-                    <Setter Property="FontWeight" Value="Medium"></Setter>
-                    <Setter Property="FontSize" Value="16"></Setter>
-                    <Setter Property="MinHeight" Value="50"></Setter>
-                    <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
-                    <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
-                    <Setter Property="BorderThickness" Value="0 0 0 0"></Setter>
-                    <Setter Property="BorderBrush" Value="{DynamicResource #FFFFFF}"></Setter>
-                    <Setter Property="ContentTemplate">
-                        <Setter.Value>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding}" Margin="20 5" TextWrapping="NoWrap"/>
-                            </DataTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="CellStyle">
-            <Setter.Value>
-                <Style TargetType="DataGridCell">
-                    <Setter Property="Foreground" Value="Black" />
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="{x:Null}" />
-                            <Setter Property="BorderBrush" Value="{x:Null}" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style TargetType="DataGridRow" x:Key="RowStyle1">
         <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
         <Style.Triggers>

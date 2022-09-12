@@ -198,24 +198,5 @@
     <system:String x:Key="textXuatLuongCoBan">Xuất lương cơ bản</system:String>
     <system:String x:Key="textTDDMVS">Theo dõi đi muộn về sớm</system:String>
     <system:String x:Key="textQLNVRV">Quản lý nhân viên ra về</system:String>
-    <system:String x:Key="textTMNLV">Thêm mới nhóm làm việc</system:String>
-    <system:String x:Key="textTN">Tên nhóm</system:String>
-    <system:String x:Key="textNTN">Nhập tên nhóm</system:String>
-    <system:String x:Key="textMT">Mô tả</system:String>
-    <system:String x:Key="textNMT">Nhập mô tả</system:String>
-    <system:String x:Key="textCreateTeam">Tạo nhóm</system:String>
-    <system:String x:Key="textTMLLV">Thêm mới lịch làm việc</system:String>
-    <system:String x:Key="textTLLV">Tên lịch làm việc</system:String>
-    <system:String x:Key="textNTLLV">Nhập tên lịch làm việc</system:String>
-    <system:String x:Key="textCLLV">Chọn lịch làm việc</system:String>
-    <system:String x:Key="textTAD">Tháng áp dụng</system:String>
-    <system:String x:Key="textNBDLV">Ngày bắt đầu làm việc</system:String>
-    <system:String x:Key="textContinue">Tiếp tục</system:String>
-    <system:String x:Key="textSCLLV">Sao chép lịch làm việc</system:String>
-    <system:String x:Key="textSCL">Sao chép lịch</system:String>
-    <system:String x:Key="textCTADLLV">Chọn tháng áp dụng lịch làm việc</system:String>
-    <system:String x:Key="textCTC">Chọn tất cả</system:String>
-    <system:String x:Key="textTMMDMVS">Thêm mới mức phạt đi muộn về sớm</system:String>
-    <system:String x:Key="textLDP">Lý do phạt</system:String>
     <system:String x:Key="textNhapTenChinhSachThue">Nhập tên chính sách thuế</system:String>
 </ResourceDictionary>
