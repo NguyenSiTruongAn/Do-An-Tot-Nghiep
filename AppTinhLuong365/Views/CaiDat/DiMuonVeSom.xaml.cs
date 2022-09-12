@@ -61,5 +61,11 @@ namespace AppTinhLuong365.Views.CaiDat
                 IsSmallSize = 2;
             }
         }
+
+        private void Border_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupDiMuonVeSom(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
     }
 }

@@ -23,7 +23,7 @@
         </Style>
     </Page.Resources>
 
-    <StackPanel Background="{DynamicResource #F7F8FC}" Margin="20">
+    <StackPanel Width="1000" Background="{DynamicResource #F7F8FC}" Margin="20">
         <WrapPanel x:Name="Wrap_Border1" HorizontalAlignment="Right">
             <Border Style="{DynamicResource Style_Border_Wrap1}" Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
                 <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
@@ -32,7 +32,7 @@
                 <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
 
             </Border>
-            <Border Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}">
+            <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -48,7 +48,7 @@
                     <TextBlock  VerticalAlignment="Center" Text="Thêm lịch" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
-            <Border Height="38" Width="154" CornerRadius="10" Background="{DynamicResource #4C5BD4}" Margin="10 0 0 0">
+            <Border MouseLeftButtonDown="Border_MouseLeftButtonDown_1" Height="38" Width="154" CornerRadius="10" Background="{DynamicResource #4C5BD4}" Margin="10 0 0 0">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>

@@ -173,7 +173,7 @@
                                     </Border>
                                     <Border Style="{DynamicResource Style_Border_Wrap1}" Height="38" Background="{DynamicResource #FFFFFF}">
                                         <Border Width="161" HorizontalAlignment="Right" BorderThickness="1" CornerRadius="10" BorderBrush="{DynamicResource #ebebeb}">
-                                            <DatePicker Padding="20 0 15 0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" BorderThickness="0" Foreground="{DynamicResource #68798B}"></DatePicker>
+                                            <tool:DatePicker Foreground="{DynamicResource #68798B}" Background="{DynamicResource #FFFFFF}" Margin="3"/>
                                         </Border>
                                     </Border>
                                 </WrapPanel>
@@ -210,22 +210,13 @@
                                     <Border Style="{DynamicResource Style_Border_Wrap2}">
                                         <WrapPanel HorizontalAlignment="Right" x:Name="Wrap_Border3">
                                             <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                                <Grid>
-                                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tháng 8" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                                                </Grid>
+                                                <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                                             </Border>
                                             <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                                <Grid>
-                                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                                                </Grid>
+                                                <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                                             </Border>
                                             <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                                <Grid>
-                                                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tất cả nhân viên" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                                                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                                                </Grid>
+                                                <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
                                             </Border>
 
                                         </WrapPanel>

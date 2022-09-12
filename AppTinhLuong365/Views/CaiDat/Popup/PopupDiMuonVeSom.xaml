@@ -1,0 +1,45 @@
+﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.Popup.PopupDiMuonVeSom"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat.Popup"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PopupDiMuonVeSom">
+
+    <StackPanel Width="616" Height="739">
+        <Border Height="47" Background="{DynamicResource #4C5BD4}" CornerRadius="10 10 0 0">
+            <Grid>
+                <TextBlock Text="{DynamicResource textTMMDMVS}" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+                <Path Data="{DynamicResource iconClose}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0" Fill="{DynamicResource #FFFFFF}" MouseLeftButtonDown="Path_MouseLeftButtonDown"/>
+            </Grid>
+        </Border>
+        <Border Background="{DynamicResource #FFFFFF}">
+            <StackPanel Margin="20 30">
+                <Grid>
+                    <TextBlock FontWeight="DemiBold" Text="{DynamicResource textLDP}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                    <Path Margin="80 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                </Grid>
+                <ComboBox FontSize="16" Foreground="{DynamicResource #777777}" Margin="0 5 0 0" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                    <ComboBoxItem IsSelected="True">Chọn lý do</ComboBoxItem>
+                    <ComboBoxItem>Đi muộn</ComboBoxItem>
+                    <ComboBoxItem>Về sớm</ComboBoxItem>
+                </ComboBox>
+                <Grid Margin="0 15 0 0">
+                    <TextBlock FontWeight="DemiBold" Text="{DynamicResource textCaLamViecApDung}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                    <Path Margin="150 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                </Grid>
+                <ComboBox FontSize="16" Foreground="{DynamicResource #777777}" Margin="0 5 0 0" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                    <ComboBoxItem IsSelected="True">Tất cả các ca</ComboBoxItem>
+                    <ComboBoxItem>Ca sáng LƯƠNG &lt;= 5TR</ComboBoxItem>
+                    <ComboBoxItem>Ca chiều LƯƠNG &lt;= 5TR</ComboBoxItem>
+                    <ComboBoxItem>Ca sáng 5TR &lt;LƯƠNG &lt;= 7TR</ComboBoxItem>
+                    <ComboBoxItem>Ca chiều LƯƠNG &lt;= 5TR</ComboBoxItem>
+                    <ComboBoxItem>Ca chiều LƯƠNG &lt;= 5TR</ComboBoxItem>
+                    <ComboBoxItem>Ca chiều LƯƠNG &lt;= 5TR</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</Page>
