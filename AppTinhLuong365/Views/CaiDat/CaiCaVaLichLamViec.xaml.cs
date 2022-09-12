@@ -66,5 +66,17 @@ namespace AppTinhLuong365.Views.CaiDat
         {
 
         }
+
+        private void Border_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupThemLichLamViec(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void Border_MouseLeftButtonDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupSaoChepLich(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
     }
 }

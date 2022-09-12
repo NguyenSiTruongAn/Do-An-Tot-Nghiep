@@ -13,25 +13,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.CaiDat
+namespace AppTinhLuong365.Views.CaiDat.Popup
 {
     /// <summary>
-    /// Interaction logic for NhomLamViec.xaml
+    /// Interaction logic for PopupDiMuonVeSom.xaml
     /// </summary>
-    public partial class NhomLamViec : Page
+    public partial class PopupDiMuonVeSom : Page
     {
-        public MainWindow Main;
-        public NhomLamViec(MainWindow main)
+        public PopupDiMuonVeSom(MainWindow main)
         {
-            InitializeComponent();
             this.DataContext = this;
+            InitializeComponent();
             Main = main;
         }
+        MainWindow Main;
 
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupNhomLamViec(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }
