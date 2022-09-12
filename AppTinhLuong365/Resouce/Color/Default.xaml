@@ -43,6 +43,5 @@
     <SolidColorBrush Color="#0563C1" x:Key="#0563C1"/>
     <SolidColorBrush Color="#F3F8FB" x:Key="#F3F8FB"/>
     <SolidColorBrush Color="#666666" x:Key="#666666"/>
-
-
+    <SolidColorBrush Color="#FF0000" x:Key="#FF0000"/>
 </ResourceDictionary>
