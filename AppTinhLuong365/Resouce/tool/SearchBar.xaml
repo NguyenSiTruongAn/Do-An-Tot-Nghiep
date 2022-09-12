@@ -38,7 +38,7 @@
                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity=".08" RenderingBias="Quality"></DropShadowEffect>
             </Border.Effect>
         </Border>
-        <ComboBox Grid.Column="1" IsEditable="False" Focusable="false" ForceCursor="False" IsTabStop="False" Foreground="{Binding Foreground}" Cursor="Arrow" SnapsToDevicePixels="True" OverridesDefaultStyle="True">
+        <ComboBox Grid.Column="1" IsEditable="False" Focusable="false" ForceCursor="False" IsTabStop="False" Foreground="{Binding Foreground}" Cursor="Hand" SnapsToDevicePixels="True" OverridesDefaultStyle="True">
             <ComboBox.Style>
                 <Style TargetType="{x:Type ComboBox}">
                     <Setter Property="IsDropDownOpen" Value="{Binding IsDropDownOpen}"/>
