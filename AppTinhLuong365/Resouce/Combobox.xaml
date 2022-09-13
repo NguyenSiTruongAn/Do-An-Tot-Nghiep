@@ -314,7 +314,7 @@
     </Style>
     <Style x:Key="ComboboxItem2" TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
-        <Setter Property="Foreground" Value="#474747"/>
+        <Setter Property="Foreground" Value="#777777"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="MinWidth" Value="138"/>
@@ -334,7 +334,7 @@
                             <Setter TargetName="Border" Property="Background" Value="#EEEEEE"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value=" #FFFFFF"/>
+                            <Setter Property="Foreground" Value=" #777777"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

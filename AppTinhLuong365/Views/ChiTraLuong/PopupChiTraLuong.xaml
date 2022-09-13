@@ -1,0 +1,110 @@
+﻿<Page x:Class="AppTinhLuong365.Views.ChiTraLuong.PopupChiTraLuong"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.ChiTraLuong"
+      mc:Ignorable="d" 
+      d:DesignHeight="558" d:DesignWidth="609"
+      Title="PopupChiTraLuong">
+
+    <Grid Width="609" Height="558">
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+        <StackPanel>
+            <Border Height="47" CornerRadius="10 10 0 0" Background="{DynamicResource #4C5BD4}">
+                <Grid>
+                    <TextBlock Text="{DynamicResource textTMBCTL}" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+                    <Path Data="{DynamicResource iconClose}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0" Fill="{DynamicResource #FFFFFF}" MouseLeftButtonDown="Path_MouseLeftButtonDown"/>
+                </Grid>
+            </Border>
+            <Border CornerRadius="0 0 10 10" Background="{DynamicResource #FFFFFF}">
+                <StackPanel Margin="75 30 76 0">
+                    <Grid>
+                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTBCT}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                        <Path Margin="120 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid Height="38" Margin="10 0 10 0">
+                            <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                            <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="{DynamicResource textNTBCT}" IsHitTestVisible="False">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=tbInput,Path=Text}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                    <Grid Margin="0 14 0 0">
+                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTAD}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                        <Path Margin="115 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid>
+                            <TextBlock Margin="14 0 0 0" Text="September  2022" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Path Data="{DynamicResource iconLich}" VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                        </Grid>
+                    </Border>
+                    <Grid Margin="0 14 0 0">
+                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textKCT}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                        <Path Margin="145 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                    </Grid>
+                    <WrapPanel>
+                        <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                            <tool:DatePicker Width="218" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                        </Border>
+                        <Border Margin="18 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                            <tool:DatePicker Width="218" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                        </Border>
+                    </WrapPanel>
+                    <Grid Margin="0 14 0 0">
+                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textHTTT}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                        <Path Margin="160 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ComboBox FontSize="16" Foreground="{DynamicResource #777777}" Margin="0 5 0 0" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                        <ComboBoxItem IsSelected="True">Tiền mặt</ComboBoxItem>
+                        <ComboBoxItem>Chuyển khoản</ComboBoxItem>
+                    </ComboBox>
+                    <TextBlock Margin="0 28 0 0" FontWeight="DemiBold" Text="{DynamicResource textDVAP}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                    <ComboBox FontSize="16" Foreground="{DynamicResource #777777}" Margin="0 5 0 0" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                        <ComboBoxItem IsSelected="True">Toàn bộ nhân viên</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 1: PHÒNG THAM MƯU VÀ SÁNG TẠO - Đ/C THU TRANG</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 2: PHÒNG ĐÀO TẠO VÀ PHÁT TRIỂN - Đ/C LẠI TRANG</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 3: PHÒNG MARKETING - Đ/C TUẤN</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 4: PHÒNG CODE APP VÀ ỨNG DỤNG AI - Đ/C ĐOÀN</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 5: PHÒNG NHÂN SỰ TỔNG HỢP - Đ/c MAI</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 6: PHÒNG BIÊN TẬP NỘI DUNG 1 - Đ/C PHƯỢNG</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 7: PHÒNG KỸ THUẬT SỐ 1 - Đ/C DUY</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 8: PHÒNG KỸ THUẬT SỐ 2 - Đ/C LÂM</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 9: PHÒNG KỸ THUẬT SỐ 3 - Đ/C HIỆP</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 10: PHÒNG KINH DOANH SỐ 1 - Đ/C THÙY DUNG</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 11: PHÒNG KINH DOANH SỐ 2 - Đ/C THẢO</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 12: PHÒNG KINH DOANH SỐ 3 - Đ/C HOA</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 13: PHÒNG KINH DOANH SỐ 4 - Đ/C HOÀNG LINH</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 14: PHÒNG KINH DOANH SỐ 5 - Đ/C MAI HƯƠNG</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 15: PHÒNG BIÊN TẬP NỘI DUNG 2 - Đ/C PHƯƠNG ANH</ComboBoxItem>
+                        <ComboBoxItem>PHÒNG 16: TRUNG TÂM ĐÀO TẠO ỨNG VIÊN MỚI ĐẾN</ComboBoxItem>
+                    </ComboBox>
+                    <WrapPanel Margin="0 28 0 0">
+                        <Border Width="224" Height="42" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource #659FE5}">
+                            <TextBlock Text="{DynamicResource textHB}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #4C5BD4}"/>
+                        </Border>
+                        <Border Margin="10 0 0 0" Width="224" Height="42" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
+                            <TextBlock Text="{DynamicResource textADD}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #FFFFFF}"/>
+                        </Border>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>

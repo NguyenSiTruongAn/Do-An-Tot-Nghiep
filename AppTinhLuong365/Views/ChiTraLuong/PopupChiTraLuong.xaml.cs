@@ -13,25 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.CaiDat
+namespace AppTinhLuong365.Views.ChiTraLuong
 {
     /// <summary>
-    /// Interaction logic for NghiLe.xaml
+    /// Interaction logic for PopupChiTraLuong.xaml
     /// </summary>
-    public partial class NghiLe : Page
+    public partial class PopupChiTraLuong : Page
     {
-        public MainWindow Main;
-        public NghiLe(MainWindow main)
+        public PopupChiTraLuong(MainWindow main)
         {
-            InitializeComponent();
             this.DataContext = this;
+            InitializeComponent();
             Main = main;
         }
 
-        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        MainWindow Main;
+
+        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupNghiLe(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }
