@@ -23,7 +23,7 @@
         </Style>
     </Page.Resources>
 
-    <StackPanel Width="1000" Background="{DynamicResource #F7F8FC}" Margin="20">
+    <StackPanel Background="{DynamicResource #F7F8FC}" Margin="20">
         <WrapPanel x:Name="Wrap_Border1" HorizontalAlignment="Right">
             <Border Style="{DynamicResource Style_Border_Wrap1}" Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
                 <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
@@ -68,7 +68,7 @@
         <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{DynamicResource TabItem1}">
             <TabItem Header="{DynamicResource textCaLamViec}">
             </TabItem>
-            <TabItem IsSelected="True" x:Name="tabItem2" Header="{DynamicResource textCalendar}">
+            <TabItem  IsSelected="True" x:Name="tabItem2" Header="{DynamicResource textCalendar}">
                 <ListView Margin="35 0 0 0" Name="lv" ItemsSource="{Binding}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">

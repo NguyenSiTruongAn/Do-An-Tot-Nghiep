@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AppTinhLuong365.Views.CaiDat
 {
@@ -58,6 +59,16 @@ namespace AppTinhLuong365.Views.CaiDat
             {
                 IsSmallSize = 2;
             }
+        }
+
+        private void OpenDes(object sender, MouseButtonEventArgs e)
+        {
+            borderes.Visibility = borderes.Visibility == Visibility.Visible ? Visibility.Collapsed: Visibility.Visible;
+        }
+
+        private void OpenDes1(object sender, MouseButtonEventArgs e)
+        {
+            borderes1.Visibility = borderes1.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
         }
     }
 }

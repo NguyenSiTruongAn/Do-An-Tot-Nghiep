@@ -60,5 +60,11 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                 IsSmallSize = 2;
             }
         }
+
+        private void Border_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.ChiTraLuong.PopupChiTraLuong(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
     }
 }

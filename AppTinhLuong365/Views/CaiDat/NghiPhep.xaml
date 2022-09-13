@@ -55,16 +55,30 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="Style_Border_Wrap4" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border4,Converter= {StaticResource math}, ConverterParameter=(@VALUE/2)}"/>
+            <Setter Property="Margin" Value="0 10 0 10"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border4,Converter={StaticResource math}, ConverterParameter=(@VALUE/2)}"/>
+                    <Setter Property="Margin" Value="0 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_Border_Wrap5" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border5,Converter= {StaticResource math}, ConverterParameter=(@VALUE/2)}"/>
+            <Setter Property="Margin" Value="0 10 0 10"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border5,Converter={StaticResource math}, ConverterParameter=(@VALUE/2)}"/>
+                    <Setter Property="Margin" Value="0 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Page.Resources>
 
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
-            <Border Height="38" Width="118" CornerRadius="16" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
-                <StackPanel Orientation="Horizontal">
-                    <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
-                    <TextBlock  VerticalAlignment="Center" Text="Tạo mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
-                </StackPanel>
-            </Border>
             <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
                 <TabItem Header="{DynamicResource textChinhSachNghiPhep}">
                     <Grid  Background="{DynamicResource #F7F8FC}">
@@ -141,8 +155,56 @@
                                         </Border>
                                     </Border>
                                 </WrapPanel>
-                                <Border Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8">
+                                <Border Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8" MouseLeftButtonDown="OpenDes">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Visibility" Value="Visible"></Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=borderes,Path=Visibility}" Value="Visible">
+                                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #FFFFFF}" Text="Cài đặt mức phạt"></TextBlock>
+                                </Border>
+                                <Border x:Name="borderes" Visibility="Collapsed" Margin="0 20 0 0" Height="390" BorderThickness="1" BorderBrush="{DynamicResource #e1e1e1}">
+                                    <WrapPanel x:Name="Wrap_Border4" Margin="20">
+                                        <Border Style="{DynamicResource Style_Border_Wrap4}" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource #e1e1e1}">
+                                            <ScrollViewer>
+                                            </ScrollViewer>
+                                        </Border>
+                                        <Border Style="{DynamicResource Style_Border_Wrap4}">
+                                            <StackPanel Margin="72 0 0 0">
+                                                <TextBlock TextWrapping="Wrap" Text="{DynamicResource textNMTP}" Foreground="{DynamicResource #666666}" FontSize="16"/>
+                                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Grid Height="38" Margin="10 0 10 0">
+                                                        <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                                        <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="{DynamicResource textNSTP}" IsHitTestVisible="False">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding ElementName=tbInput,Path=Text}" Value="">
+                                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Border>
+                                                <TextBlock TextWrapping="Wrap" Margin="0 10 0 0" Text="{DynamicResource textCNBDAPMP}" Foreground="{DynamicResource #666666}" FontSize="16"/>
+                                                <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <tool:DatePicker FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                                </Border>
+                                                <Border Height="45" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Margin="0 15 0 0">
+                                                    <TextBlock Text="{DynamicResource textApDung}" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
+                                                </Border>
+                                                <TextBlock FontSize="16" Foreground="Black" Margin="0 20 0 0" TextWrapping="WrapWithOverflow" Text="Lưu ý: Mức phạt sẽ được áp dụng từ ngày được chọn, điều này có thể ảnh hưởng đến kết quả tính lương của các tháng trước. Vui lòng chắc chắn về mốc thời gian áp dụng mức phạt."/>
+                                            </StackPanel>
+                                        </Border>
+                                    </WrapPanel>
                                 </Border>
                                 <DataGrid Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
                                     <DataGrid.Columns>
@@ -177,9 +239,58 @@
                                         </Border>
                                     </Border>
                                 </WrapPanel>
-                                <Border Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8">
+                                <Border Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8" MouseLeftButtonDown="OpenDes1">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Visibility" Value="Visible"></Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=borderes1,Path=Visibility}" Value="Visible">
+                                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #FFFFFF}" Text="Cài đặt mức phạt"></TextBlock>
                                 </Border>
+                                <Border x:Name="borderes1" Visibility="Collapsed" Margin="0 20 0 0" Height="390" BorderThickness="1" BorderBrush="{DynamicResource #e1e1e1}">
+                                    <WrapPanel x:Name="Wrap_Border5" Margin="20">
+                                        <Border Style="{DynamicResource Style_Border_Wrap5}" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource #e1e1e1}">
+                                            <ScrollViewer>
+                                            </ScrollViewer>
+                                        </Border>
+                                        <Border Style="{DynamicResource Style_Border_Wrap5}">
+                                            <StackPanel Margin="72 0 0 0">
+                                                <TextBlock TextWrapping="Wrap" Text="{DynamicResource textNMTP}" Foreground="{DynamicResource #666666}" FontSize="16"/>
+                                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Grid Height="38" Margin="10 0 10 0">
+                                                        <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                                        <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="{DynamicResource textNSTP}" IsHitTestVisible="False">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding ElementName=tbInput1,Path=Text}" Value="">
+                                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Border>
+                                                <TextBlock TextWrapping="Wrap" Margin="0 10 0 0" Text="{DynamicResource textCNBDAPMP}" Foreground="{DynamicResource #666666}" FontSize="16"/>
+                                                <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <tool:DatePicker FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                                </Border>
+                                                <Border Height="45" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Margin="0 15 0 0">
+                                                    <TextBlock Text="{DynamicResource textApDung}" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
+                                                </Border>
+                                                <TextBlock FontSize="16" Foreground="Black" Margin="0 20 0 0" TextWrapping="WrapWithOverflow" Text="Lưu ý: Mức phạt sẽ được áp dụng từ ngày được chọn, điều này có thể ảnh hưởng đến kết quả tính lương của các tháng trước. Vui lòng chắc chắn về mốc thời gian áp dụng mức phạt."/>
+                                            </StackPanel>
+                                        </Border>
+                                    </WrapPanel>
+                                </Border>
+
                                 <DataGrid Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="{DynamicResource textCaLamViec}"></DataGridTextColumn>
@@ -234,7 +345,7 @@
                             </StackPanel>
                         </Border>
                     </Grid>
-                    
+
                 </TabItem>
                 <TabItem Header="{DynamicResource textGuide}" VerticalAlignment="Top">
                     <Grid Margin="20">

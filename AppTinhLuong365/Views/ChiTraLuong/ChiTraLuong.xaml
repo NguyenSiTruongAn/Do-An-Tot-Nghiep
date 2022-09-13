@@ -61,7 +61,7 @@
                         </WrapPanel>
                     </Border>
                     <Border VerticalAlignment="Center" Style="{DynamicResource Style_Border}" HorizontalAlignment="Right">
-                        <Border Height="38" Width="138" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
+                        <Border Height="38" Width="138" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" MouseLeftButtonDown="Border_MouseLeftButtonDown">
                             <StackPanel Orientation="Horizontal">
                                 <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
                                 <TextBlock  VerticalAlignment="Center" Text="Thêm mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>

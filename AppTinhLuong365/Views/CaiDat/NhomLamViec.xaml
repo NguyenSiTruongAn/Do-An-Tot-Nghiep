@@ -117,6 +117,5 @@
                 </TabItem>
             </TabControl>
         </StackPanel>
-
     </Grid>
 </Page>

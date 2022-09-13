@@ -1,0 +1,100 @@
+﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.Popup.PopupNghiLe"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat.Popup"
+      mc:Ignorable="d" 
+      d:DesignHeight="415" d:DesignWidth="528"
+      Title="PopupNghiLe">
+
+    <Grid Width="528" Height="415">
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+        <StackPanel>
+
+            <Border Background="{DynamicResource #4C5BD4}" Height="47" CornerRadius="10 10 0 0">
+                <Grid>
+                    <TextBlock Text="{DynamicResource textTMKNL}" Foreground="{DynamicResource #FFFFFF}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Path Data="{DynamicResource iconClose}" VerticalAlignment="Center" Fill="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 0 10 0" MouseLeftButtonDown="Path_MouseLeftButtonDown"/>
+                </Grid>
+            </Border>
+            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="0 0 10 10">
+                <StackPanel Margin="20 30">
+                    <Grid>
+                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTKNL}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                        <Path Margin="105 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid Height="38" Margin="10 0 10 0">
+                            <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                            <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="{DynamicResource textNTKNL}" IsHitTestVisible="False">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=tbInput,Path=Text}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                    <WrapPanel Margin="0 11 0 0">
+                        <StackPanel>
+                            <Grid>
+                                <TextBlock FontWeight="DemiBold" Text="{DynamicResource textNBDN}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Path Margin="140 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                            </Grid>
+                            <Border Width="230" Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                <tool:DatePicker FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Margin="28 0 0 0">
+                            <Grid>
+                                <TextBlock FontWeight="DemiBold" Text="{DynamicResource textNKTN}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Path Margin="145 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                            </Grid>
+                            <Border Width="230" Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                <tool:DatePicker FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                            </Border>
+                        </StackPanel>
+                    </WrapPanel>
+                    <TextBlock Text="{DynamicResource textThuongNghiLe}" Foreground="{DynamicResource #666666}" FontSize="16" Margin="0 11 0 0" FontWeight="DemiBold"/>
+                    <WrapPanel Margin="0 5 0 0">
+                        <ComboBox FontSize="16" Foreground="{DynamicResource #777777}" Width="230" Height="42" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                            <ComboBoxItem IsSelected="True">Tiền Lương</ComboBoxItem>
+                            <ComboBoxItem>Số công</ComboBoxItem>
+                        </ComboBox>
+                        <Border Margin="28 0 0 0" Height="42" Width="230" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                            <Grid Height="38" Margin="10 0 10 0">
+                                <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="{DynamicResource textNTC}" IsHitTestVisible="False">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=tbInput1,Path=Text}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+                    </WrapPanel>
+                    <Border Margin="0 39 0 0" Height="45" Background="{DynamicResource #4C5BD4}" CornerRadius="5">
+                        <TextBlock Text="{DynamicResource textTaoKNL}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #FFFFFF}" FontSize="15"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
