@@ -8,6 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="801" d:DesignWidth="1042" Background="{DynamicResource #F7F8FC}"
       Title="BangLuong">
+    
     <Page.Resources>
         <math:MathConvert x:Key="math"></math:MathConvert>
         <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type DockPanel}">

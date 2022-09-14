@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -16,12 +15,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.PhanQuyen
+namespace AppTinhLuong365.Views.TinhLuong
 {
     /// <summary>
-    /// Interaction logic for PhanQuyen.xaml
+    /// Interaction logic for PopupDSNhanVienADThue.xaml
     /// </summary>
-    public partial class PhanQuyen : Page, INotifyPropertyChanged
+    public partial class PopupDSNhanVienADThue : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
         public int IsSmallSize
@@ -35,15 +34,21 @@ namespace AppTinhLuong365.Views.PhanQuyen
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public PhanQuyen(MainWindow main)
+        public PopupDSNhanVienADThue(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
         }
-
         public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
-
+        private void BtnThemNhanVien_Click(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.TinhLuong.PopupThemNhanVienVaoThue(Main);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+            pop.Width = 616;
+            pop.Height = 462;
+        }
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (this.ActualWidth > 980)
@@ -58,19 +63,26 @@ namespace AppTinhLuong365.Views.PhanQuyen
             {
                 IsSmallSize = 2;
             }
-            if (this.ActualWidth > 550)
-                DockPanel.SetDock(borderPhanQuyen, Dock.Right);
+            if (Main.ActualWidth > 1025)
+            {
+                DockPanel.SetDock(btnThemNhanVien, Dock.Right);
+                this.Width = 1024;
+            }
             else
-                DockPanel.SetDock(borderPhanQuyen, Dock.Bottom);
+            {
+                DockPanel.SetDock(btnThemNhanVien, Dock.Bottom);
+                this.Width = 725;
+            }
+        }
+
+        private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Views.PhanQuyen.PopupPQTuyChon pop=new Views.PhanQuyen.PopupPQTuyChon(Main);
-            var z=Mouse.GetPosition(Main.PopupSelection);
-            pop.Margin = new Thickness(z.X-250,z.Y+15,0,0);
-            Main.PopupSelection.NavigationService.Navigate(pop);
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }

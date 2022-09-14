@@ -9,7 +9,6 @@
       Background="{DynamicResource #F7F8FC}"
       SizeChanged="Page_SizeChanged"
       Title="Home">
-
     <Page.Resources>
         <math:MathConvert x:Key="math"></math:MathConvert>
         <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type DockPanel}">
