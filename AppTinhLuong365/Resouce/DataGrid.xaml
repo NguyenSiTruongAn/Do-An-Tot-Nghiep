@@ -135,6 +135,7 @@
         <Setter Property="HeadersVisibility" Value="None"></Setter>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"></Setter>
         <Setter Property="ScrollViewer.CanContentScroll" Value="False"></Setter>
+        <Setter Property="AlternationCount" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=ItemsSource.Count}"></Setter>
         <Setter Property="CellStyle">
             <Setter.Value>
                 <Style TargetType="DataGridCell">
@@ -263,6 +264,13 @@
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         <Setter Property="Margin" Value="10 0"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource #474747}"></Setter>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="TextRowCenter1">
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Margin" Value="10 0"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource #FF5959}"></Setter>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="TextRowLeft">
