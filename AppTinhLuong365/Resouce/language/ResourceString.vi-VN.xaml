@@ -244,4 +244,6 @@
     <system:String x:Key="textHTTT">Hình thức thanh toán</system:String>
     <system:String x:Key="textDVAP">Đơn vị áp dụng</system:String>
     <system:String x:Key="textHB">Hủy bỏ</system:String>
+    <system:String x:Key="textApDungNgay">Áp dụng ngày</system:String>
+    <system:String x:Key="textLyDo">Lý do</system:String>
 </ResourceDictionary>

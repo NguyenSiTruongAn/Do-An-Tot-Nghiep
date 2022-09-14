@@ -117,6 +117,9 @@
     <Compile Include="Views\DuLieuTinhLuong\PhucLoi.xaml.cs">
       <DependentUpon>PhucLoi.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThuongPhat.xaml.cs">
+      <DependentUpon>PopupThuongPhat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\ThuongPhat.xaml.cs">
       <DependentUpon>ThuongPhat.xaml</DependentUpon>
     </Compile>
@@ -211,6 +214,10 @@
     <Page Include="Resouce\checkbox\CheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThuongPhat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NhapLuongCoBan.xaml">
       <SubType>Designer</SubType>

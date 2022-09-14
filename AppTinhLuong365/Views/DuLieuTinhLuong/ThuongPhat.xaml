@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong"
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       SizeChanged="Page_SizeChanged"
       mc:Ignorable="d" 
       Background="{DynamicResource #F7F8FC}"
@@ -24,28 +25,16 @@
                             <DockPanel x:Name="dockThuongPhat" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 10 0 0">
                                 <WrapPanel>
                                     <Border CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="10 0 0 0" BorderBrush="{DynamicResource #ebebeb}" Width="178" Height="38">
-                                        <DockPanel >
-                                            <TextBlock FontWeight="DemiBold" Text="Tháng 8" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"/>
-                                            <Path HorizontalAlignment="Right" Data="{DynamicResource iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="20 0 20 0"></Path>
-                                        </DockPanel>
+                                        <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                                     </Border>
                                     <Border CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="10 0 0 0" BorderBrush="{DynamicResource #ebebeb}" Width="178" Height="38">
-                                        <DockPanel>
-                                            <TextBlock FontWeight="DemiBold" Text="Năm 2022"  FontSize="15" VerticalAlignment="Center"  Margin="10 0 0 0"/>
-                                            <Path HorizontalAlignment="Right" Data="{DynamicResource iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="20 0 20 0"></Path>
-                                        </DockPanel>
+                                        <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                                     </Border>
                                     <Border CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="10 0 0 0" BorderBrush="{DynamicResource #ebebeb}" Width="178" Height="38">
-                                        <Grid>
-                                            <TextBlock FontWeight="DemiBold" HorizontalAlignment="Left" Width="130" Text="Phòng ban (tất cả phòng ban)" TextTrimming="CharacterEllipsis" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0" />
-                                            <Path HorizontalAlignment="Right" Data="{DynamicResource  iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0"></Path>
-                                        </Grid>
+                                        <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Phòng ban(Tất cả phòng ban)" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                                     </Border>
                                     <Border CornerRadius="10" BorderThickness="1" Background="Transparent" Margin="10 0 0 0" BorderBrush="{DynamicResource #ebebeb}"  Width="178" Height="38">
-                                        <DockPanel>
-                                            <TextBlock FontWeight="DemiBold" Text="Tất cả nhân viên" FontSize="15" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"  Margin="10 0 0 0"/>
-                                            <Path HorizontalAlignment="Right" Data="{DynamicResource  iconSearch}" Fill="#68798B" VerticalAlignment="Center" Margin="0 0 20 0"></Path>
-                                        </DockPanel>
+                                        <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                                     </Border>
                                     <Border Width="105" Height="38" Background="{DynamicResource #4C5BD4}" CornerRadius="10" Margin="10 0 0 0">
                                         <TextBlock FontWeight="DemiBold" Text="Thống kê"  VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />
@@ -57,11 +46,66 @@
                                 <TextBlock TextWrapping="WrapWithOverflow" FontWeight="DemiBold" Text="Quản lí theo dõi thưởng phạt nhân viên" FontSize="15" Foreground="{DynamicResource #68798B }" />
                             </StackPanel>
                         </DockPanel>
-                        <DataGrid Margin="0 20" Style="{StaticResource DataGrid1}">
+                        <DataGrid x:Name="dataGrid1" Margin="0 20" Style="{StaticResource DataGrid1}" ItemsSource="{Binding Test}">
+                            <DataGrid.OpacityMask>
+                                <VisualBrush>
+                                    <VisualBrush.Visual>
+                                        <Border Width="{Binding ElementName=dataGrid1,Path=ActualWidth}" Height="{Binding ElementName=dataGrid1,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </DataGrid.OpacityMask>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="{DynamicResource textTienThuong}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="{DynamicResource textTienPhat}"></DataGridTextColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid x:Name="gridHoTen">
+                                                <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
+                                                    <Border.Background>
+                                                        <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                                    </Border.Background>
+                                                </Border>
+                                                <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Tiền thưởng">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Cursor="Hand" HorizontalAlignment="Right" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="30" Width="90">
+                                                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
+                                                    <TextBlock Text="{Binding}" FontSize="15" Foreground="{DynamicResource #666666}"></TextBlock>
+                                                </DockPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="Tiền phạt">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Cursor="Hand" HorizontalAlignment="Right" Background="{DynamicResource #FFECEC}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="30" Width="90">
+                                                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
+                                                    <TextBlock Text="{Binding}" FontSize="15" Foreground="{DynamicResource #666666}"></TextBlock>
+                                                </DockPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Cursor="Hand" MouseLeftButtonDown="TuyChinhThuongPhat_Click" HorizontalAlignment="Right" Background="{DynamicResource #EDEFFB}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="30" Width="133">
+                                                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
+                                                    <TextBlock Text="Thưởng phạt" FontSize="15" Foreground="{DynamicResource #666666}"></TextBlock>
+                                                </DockPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <Border Width="210" Height="40" CornerRadius="5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Left">
