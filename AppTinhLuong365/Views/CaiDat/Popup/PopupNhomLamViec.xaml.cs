@@ -13,16 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TrangChu
+namespace AppTinhLuong365.Views.CaiDat.Popup
 {
     /// <summary>
-    /// Interaction logic for TaiKhoan.xaml
+    /// Interaction logic for PopupNhomLamViec.xaml
     /// </summary>
-    public partial class TaiKhoan : Page
+    public partial class PopupNhomLamViec : Page
     {
-        public TaiKhoan()
+        public PopupNhomLamViec(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
+        }
+
+        MainWindow Main;
+
+        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       xmlns:core="clr-namespace:AppTinhLuong365.Core"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat"
       mc:Ignorable="d" 
@@ -25,18 +26,13 @@
     <StackPanel Background="{DynamicResource #F7F8FC}" Margin="20">
         <WrapPanel x:Name="Wrap_Border1" HorizontalAlignment="Right">
             <Border Style="{DynamicResource Style_Border_Wrap1}" Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                <Grid>
-                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Tháng 8" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                </Grid>
+                <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
             </Border>
             <Border Style="{DynamicResource Style_Border_Wrap1}" Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                <Grid>
-                    <TextBlock Foreground="{DynamicResource #444}" Margin="10 0 0 0" Text="Năm 2022" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"></TextBlock>
-                    <Path Data="{DynamicResource iconSearch}" Fill="{DynamicResource #888}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0"></Path>
-                </Grid>
+                <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+
             </Border>
-            <Border Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}">
+            <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -52,7 +48,7 @@
                     <TextBlock  VerticalAlignment="Center" Text="Thêm lịch" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
-            <Border Height="38" Width="154" CornerRadius="10" Background="{DynamicResource #4C5BD4}" Margin="10 0 0 0">
+            <Border MouseLeftButtonDown="Border_MouseLeftButtonDown_1" Height="38" Width="154" CornerRadius="10" Background="{DynamicResource #4C5BD4}" Margin="10 0 0 0">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -72,7 +68,7 @@
         <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{DynamicResource TabItem1}">
             <TabItem Header="{DynamicResource textCaLamViec}">
             </TabItem>
-            <TabItem IsSelected="True" x:Name="tabItem2" Header="{DynamicResource textCalendar}">
+            <TabItem  IsSelected="True" x:Name="tabItem2" Header="{DynamicResource textCalendar}">
                 <ListView Margin="35 0 0 0" Name="lv" ItemsSource="{Binding}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">

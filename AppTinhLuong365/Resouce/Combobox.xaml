@@ -116,6 +116,7 @@
         <!--<Setter Property="FontSize" Value="16"/>-->
         <Setter Property="Foreground" Value="#474747"/>
         <Setter Property="BorderBrush" Value="#CCCCCC"/>
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -124,14 +125,14 @@
                         <ToggleButton Name="ToggleButton" Grid.Column="2" Focusable="false" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press">
                             <ToggleButton.Template>
                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                                    <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="5">
+                                    <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
                                                 <ColumnDefinition Width="20" />
                                             </Grid.ColumnDefinitions>
                                             <Border x:Name="Border" Grid.ColumnSpan="2" CornerRadius="5" Background="#FFFFFF" BorderThickness="0"/>
-                                            <Path Grid.Column="1" Data="{StaticResource iconDrop}" Stroke="#474747" VerticalAlignment="Center"/>
+                                            <Path Grid.Column="1" Data="{StaticResource iconMore}" Stroke="#777777" VerticalAlignment="Center"/>
                                         </Grid>
                                     </Border>
                                 </ControlTemplate>
@@ -161,7 +162,7 @@
                                             </VisualBrush.Visual>
                                         </VisualBrush>
                                     </Grid.OpacityMask>
-                                    <Border Background="White" CornerRadius="5">
+                                    <Border Background="White" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                                         <Border.Effect>
                                             <DropShadowEffect Color="Black" Opacity=".2" BlurRadius="10" ShadowDepth="0"></DropShadowEffect>
                                         </Border.Effect>
@@ -305,6 +306,35 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value=" #FFFFFF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ComboboxItem2" TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="Foreground" Value="#777777"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="MinWidth" Value="138"/>
+        <Setter Property="MinHeight" Value="16"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Margin" Value="15 0 0 0"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                    <Border Name="Border" SnapsToDevicePixels="true">
+                        <ContentPresenter/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted" Value="true">
+                            <Setter TargetName="Border" Property="Background" Value="#EEEEEE"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value=" #777777"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

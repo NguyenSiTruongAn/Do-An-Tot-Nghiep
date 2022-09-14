@@ -56,9 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\Extention.cs" />
-    <Compile Include="Views\NhapLuongCoBan.xaml.cs">
-      <DependentUpon>NhapLuongCoBan.xaml</DependentUpon>
+	  <Compile Include="Resouce\tool\DatePicker.xaml.cs">
+		  <DependentUpon>DatePicker.xaml</DependentUpon>
+	  </Compile>
     </Compile>
     <Compile Include="Resouce\tool\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
@@ -81,8 +81,26 @@
     <Compile Include="Views\CaiDat\NhomLamViec.xaml.cs">
       <DependentUpon>NhomLamViec.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupDiMuonVeSom.xaml.cs">
+      <DependentUpon>PopupDiMuonVeSom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupNghiLe.xaml.cs">
+      <DependentUpon>PopupNghiLe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupNhomLamViec.xaml.cs">
+      <DependentUpon>PopupNhomLamViec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupSaoChepLich.xaml.cs">
+      <DependentUpon>PopupSaoChepLich.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupThemLichLamViec.xaml.cs">
+      <DependentUpon>PopupThemLichLamViec.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChiTraLuong\ChiTraLuong.xaml.cs">
       <DependentUpon>ChiTraLuong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChiTraLuong\PopupChiTraLuong.xaml.cs">
+      <DependentUpon>PopupChiTraLuong.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\BaoHiem.xaml.cs">
       <DependentUpon>BaoHiem.xaml</DependentUpon>
@@ -165,12 +183,6 @@
     <Compile Include="Views\TrangChu\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TrangChu\PopupTaiKhoan.xaml.cs">
-      <DependentUpon>PopupTaiKhoan.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TrangChu\TaiKhoan.xaml.cs">
-      <DependentUpon>TaiKhoan.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\TrangChu\TrangChu.xaml.cs">
       <DependentUpon>TrangChu.xaml</DependentUpon>
     </Compile>
@@ -223,6 +235,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resouce\tool\DatePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resouce\tool\SearchBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -251,7 +267,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CaiDat\Popup\PopupDiMuonVeSom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupNghiLe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupNhomLamViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupSaoChepLich.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupThemLichLamViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ChiTraLuong\ChiTraLuong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChiTraLuong\PopupChiTraLuong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -360,14 +400,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TrangChu\Home.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TrangChu\PopupTaiKhoan.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TrangChu\TaiKhoan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -509,9 +541,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\CaiDat\Image\ms.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\TrangChu\Image\logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

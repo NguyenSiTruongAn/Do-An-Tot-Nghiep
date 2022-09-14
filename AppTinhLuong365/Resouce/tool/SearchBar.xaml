@@ -38,7 +38,7 @@
                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity=".08" RenderingBias="Quality"></DropShadowEffect>
             </Border.Effect>
         </Border>
-        <ComboBox Grid.Column="1" IsEditable="False" Focusable="false" ForceCursor="False" IsTabStop="False" Foreground="{Binding Foreground}" Cursor="Hand" SnapsToDevicePixels="True" OverridesDefaultStyle="True">
+        <ComboBox Grid.Column="1" IsEditable="False" Focusable="false" ForceCursor="False" IsTabStop="False" Foreground="{Binding Foreground}" Cursor="Arrow" SnapsToDevicePixels="True" OverridesDefaultStyle="True">
             <ComboBox.Style>
                 <Style TargetType="{x:Type ComboBox}">
                     <Setter Property="IsDropDownOpen" Value="{Binding IsDropDownOpen}"/>
@@ -57,7 +57,7 @@
                                                             <ColumnDefinition Width="auto"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Border x:Name="Border" Grid.ColumnSpan="2" CornerRadius="10" Background="{DynamicResource #FFFFFF}" BorderThickness="0">
-                                                            <TextBlock VerticalAlignment="Center" Margin="10" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" TextTrimming="WordEllipsis">
+                                                            <TextBlock VerticalAlignment="Center" Margin="10 0" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" TextTrimming="WordEllipsis">
                                                                 <TextBlock.Style>
                                                                     <Style TargetType="TextBlock">
                                                                         <Setter Property="Text" Value="{Binding Text}"></Setter>
@@ -86,7 +86,7 @@
                                     <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" MinHeight="95" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding RelativeSource={RelativeSource AncestorType=UserControl},Path=ActualWidth}" Width="{Binding PopupMaxWith}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide" Opened="Popup_Opened">
                                         <Grid Name="DropDown" SnapsToDevicePixels="True">
                                             <Grid Margin="0 8">
-                                                <Border Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #D7DCE0}" BorderThickness="1" CornerRadius="10">
+                                                <Border Background="{DynamicResource #FFFFFF}" BorderBrush="black" BorderThickness="1" CornerRadius="10">
                                                     <DockPanel Margin="10">
                                                         <Border DockPanel.Dock="Top" BorderThickness="0 0 0 1" Loaded="SearchbarLoaded">
                                                             <Border.Style>

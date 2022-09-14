@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,10 +19,24 @@ namespace AppTinhLuong365.Views.CaiDat
 
         public CaiCaVaLichLamViec(MainWindow main)
         {
+            ItemList = new ObservableCollection<string>();
+            for (var i = 1; i <= 12; i++)
+            {
+                ItemList.Add($"Tháng {i}");
+            }
+            YearList = new ObservableCollection<string>();
+            for (var i = 2022; i <= 2025; i++)
+            {
+                YearList.Add($"Năm {i}");
+            }
             InitializeComponent();
             this.DataContext = this;
             Main = main;
         }
+
+        public ObservableCollection<string> ItemList { get; set; }
+        public ObservableCollection<string> YearList { get; set; }
+
         public MainWindow Main;
 
         private int _IsSmallSize;
@@ -50,6 +65,18 @@ namespace AppTinhLuong365.Views.CaiDat
         private void lv_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
 
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupThemLichLamViec(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void Border_MouseLeftButtonDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupSaoChepLich(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

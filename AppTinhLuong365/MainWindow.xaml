@@ -140,21 +140,19 @@
                         <TextBlock Margin="5 0" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Text="/"></TextBlock>
                         <TextBlock x:Name="title" FontSize="15" Foreground="{DynamicResource #4C5BD4}" Text="{DynamicResource textQuanLyTaiKhoanNhanSu}"></TextBlock>
                     </StackPanel>
-                    <DockPanel HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <TextBlock VerticalAlignment="Center" Text="{DynamicResource textTrangChu}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Cursor="Hand"/>
                         <TextBlock VerticalAlignment="Center" Text="{DynamicResource textGuide}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" Cursor="Hand"></TextBlock>
                         <TextBlock VerticalAlignment="Center" Text="{DynamicResource textNews}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2" Cursor="Hand"></TextBlock>
-                        <Grid Margin="0 0 21 0" VerticalAlignment="Center" Cursor="Hand">
+                        <Grid Margin="0 0 21 0" VerticalAlignment="Center">
                             <Path Data="{DynamicResource iconRing}" Fill="{DynamicResource #68798B}"></Path>
                             <Path Data="{DynamicResource iconCirle}" Fill="{DynamicResource #F46A6A}" Margin="8 -8 0 0"></Path>
                             <TextBlock Text="2" FontSize="14" Foreground="{DynamicResource #FFFFFF}" Margin="12.5 -10.5 0 0"></TextBlock>
                         </Grid>
                         <Image VerticalAlignment="Center" Source="/Views/TrangChu/Image/app1651713915_favicon.png" Width="32" Height="32" Margin="0 0 10 0"></Image>
-                        <DockPanel MouseLeftButtonDown="DockPanel_MouseLeftButtonDown" Cursor="Hand">
-                            <TextBlock Margin="0 0 12 0" FontSize="15" Foreground="{DynamicResource #2E3467}" Text="Công ty TNHH 124 ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" Width="270" VerticalAlignment="Center"></TextBlock>
-                            <Path Data="{DynamicResource iconDrop}" VerticalAlignment="Center" Fill="{DynamicResource #2E3467}" Margin="0 0 22 0"></Path>
-                        </DockPanel>
-                    </DockPanel>
+                        <TextBlock Margin="0 0 12 0" FontSize="15" Foreground="{DynamicResource #2E3467}" Text="Công ty TNHH 124 ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" Width="270" VerticalAlignment="Center"></TextBlock>
+                        <Path Data="{DynamicResource iconDrop}" VerticalAlignment="Center" Fill="{DynamicResource #2E3467}" Margin="0 0 22 0"></Path>
+                    </StackPanel>
                 </Grid>
             </Border>
         </Grid>

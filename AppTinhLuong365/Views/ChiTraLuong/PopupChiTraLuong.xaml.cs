@@ -13,22 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.ChiTraLuong
 {
     /// <summary>
-    /// Interaction logic for PopupThue.xaml
+    /// Interaction logic for PopupChiTraLuong.xaml
     /// </summary>
-    public partial class PopupThue : Page
+    public partial class PopupChiTraLuong : Page
     {
-        MainWindow Main;
-        public PopupThue(MainWindow main)
+        public PopupChiTraLuong(MainWindow main)
         {
-            InitializeComponent();
             this.DataContext = this;
+            InitializeComponent();
             Main = main;
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        MainWindow Main;
+
+        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
         }

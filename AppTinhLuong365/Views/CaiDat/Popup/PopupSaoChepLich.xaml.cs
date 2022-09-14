@@ -13,24 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views
+namespace AppTinhLuong365.Views.CaiDat.Popup
 {
     /// <summary>
-    /// Interaction logic for NhapLuongCoBan.xaml
+    /// Interaction logic for PopupSaoChepLich.xaml
     /// </summary>
-    public partial class NhapLuongCoBan : Page
+    public partial class PopupSaoChepLich : Page
     {
-        MainWindow Main;
-        public NhapLuongCoBan(MainWindow main)
+        public PopupSaoChepLich(MainWindow main)
         {
-            InitializeComponent();
             this.DataContext = this;
+            InitializeComponent();
             Main = main;
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        MainWindow Main;
+
+        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.Visibility = Visibility.Collapsed;
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }

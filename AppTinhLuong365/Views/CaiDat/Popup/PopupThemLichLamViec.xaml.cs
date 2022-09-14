@@ -13,22 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.CaiDat.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupTGADThue.xaml
+    /// Interaction logic for PopupThemLichLamViec.xaml
     /// </summary>
-    public partial class PopupTGADThue : Page
+    public partial class PopupThemLichLamViec : Page
     {
-        MainWindow Main;
-        public PopupTGADThue(MainWindow main)
+        public PopupThemLichLamViec(MainWindow main)
         {
-            InitializeComponent();
             this.DataContext = this;
+            InitializeComponent();
             Main = main;
         }
+        MainWindow Main;
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
         }
