@@ -11,15 +11,15 @@
 
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
-            <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
+            <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">
                     <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
                     <TextBlock  VerticalAlignment="Center" Text="Tạo mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
             <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
-                <TabItem Header="{DynamicResource textNhomLamViec}">
-                    <Grid  Background="{DynamicResource #F7F8FC}">
+                <TabItem Cursor="Hand" Header="{DynamicResource textNhomLamViec}">
+                    <Grid Cursor="Arrow" Background="{DynamicResource #F7F8FC}">
                         <StackPanel Orientation="Vertical" Margin="10 30 0 0" Width="330" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Grid>
                                 <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
@@ -43,7 +43,7 @@
                                         <Border CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Path Data="{DynamicResource iconThemThanhVien}" Fill="{DynamicResource #FFFFFF}" Margin="0 0 5 0"></Path>
-                                                <TextBlock Text="Thêm nhân viên" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                                                <TextBlock Cursor="Hand" Text="Thêm nhân viên" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                                             </StackPanel>
                                         </Border>
                                     </StackPanel>
@@ -52,8 +52,8 @@
                         </StackPanel>
                     </Grid>
                 </TabItem>
-                <TabItem Header="{DynamicResource textDSNhanVienChuaNhom}">
-                    <Grid>
+                <TabItem Cursor="Hand" Header="{DynamicResource textDSNhanVienChuaNhom}">
+                    <Grid Cursor="Arrow">
                         <StackPanel>
                             <Border Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
                                 <tool:SearchBar Height="28" Width="229" Foreground="Black"  PlaceHolder="Nhập tên cần tìm" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
@@ -66,8 +66,8 @@
                         </StackPanel>
                     </Grid>
                 </TabItem>
-                <TabItem Header="{DynamicResource textDSNhanVienCacNhom}" HorizontalAlignment="Left" Width="200">
-                    <Grid>
+                <TabItem Cursor="Hand" Header="{DynamicResource textDSNhanVienCacNhom}" HorizontalAlignment="Left" Width="200">
+                    <Grid Cursor="Arrow">
                         <StackPanel>
                             <Border Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
                                 <tool:SearchBar Height="28" Width="229" Foreground="Black"  PlaceHolder="Nhập tên cần tìm" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
@@ -80,8 +80,8 @@
                         </StackPanel>
                     </Grid>
                 </TabItem>
-                <TabItem Header="{DynamicResource textGuide}">
-                    <StackPanel Margin="0 20 0 30">
+                <TabItem Cursor="Hand" Header="{DynamicResource textGuide}">
+                    <StackPanel Cursor="Arrow" Margin="0 20 0 30">
                         <TextBlock FontSize="16" Foreground="{DynamicResource #000}" Text="Để theo dõi các nhóm làm việc trong công ty một cách sát sao nhất thì bạn có thể lựa chọn chức năng &quot;Nhóm làm việc&quot; trong menu lựa chọn ở phần Cài đặt. Đây sẽ là công cụ giúp bạn cập nhật dữ liệu và thống kê chính xác về các nhóm làm việc cũng như số thành viên của mỗi nhóm ra sao." TextWrapping="WrapWithOverflow"></TextBlock>
                         <TextBlock FontSize="16" FontWeight="Bold" Text="1.Nhóm làm việc"></TextBlock>
                         <TextBlock FontSize="16" TextWrapping="WrapWithOverflow">Với việc tạo dữ liệu nhóm làm việc trong công ty, bạn sẽ tiến hành thao tác như sau:<LineBreak/>- Chọn &quot;Tạo mới&quot; nằm ở góc trên bên phải màn hình >> popup điền thông tin sẽ hiển thị sau đó.<LineBreak/>- Điền thông tin theo biểu mẫu và chọn &quot;Tạo nhóm&quot; để cập nhật nhóm.</TextBlock>

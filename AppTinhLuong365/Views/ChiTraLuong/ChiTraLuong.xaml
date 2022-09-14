@@ -55,13 +55,13 @@
                             <Border Style="{DynamicResource Style_Border_Wrap}" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
                                 <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
-                            <Border Style="{DynamicResource Style_Border_Wrap}" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
+                            <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap}" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
                                 <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                             </Border>
                         </WrapPanel>
                     </Border>
                     <Border VerticalAlignment="Center" Style="{DynamicResource Style_Border}" HorizontalAlignment="Right">
-                        <Border Height="38" Width="138" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                        <Border Cursor="Hand" Height="38" Width="138" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" MouseLeftButtonDown="Border_MouseLeftButtonDown">
                             <StackPanel Orientation="Horizontal">
                                 <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
                                 <TextBlock  VerticalAlignment="Center" Text="Thêm mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>

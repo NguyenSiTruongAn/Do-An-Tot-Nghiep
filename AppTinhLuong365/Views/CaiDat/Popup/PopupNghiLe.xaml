@@ -20,7 +20,7 @@
             <Border Background="{DynamicResource #4C5BD4}" Height="47" CornerRadius="10 10 0 0">
                 <Grid>
                     <TextBlock Text="{DynamicResource textTMKNL}" Foreground="{DynamicResource #FFFFFF}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <Path Data="{DynamicResource iconClose}" VerticalAlignment="Center" Fill="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 0 10 0" MouseLeftButtonDown="Path_MouseLeftButtonDown"/>
+                    <Path Cursor="Hand" Data="{DynamicResource iconClose}" VerticalAlignment="Center" Fill="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 0 10 0" MouseLeftButtonDown="Path_MouseLeftButtonDown"/>
                 </Grid>
             </Border>
             <Border Background="{DynamicResource #FFFFFF}" CornerRadius="0 0 10 10">
@@ -90,7 +90,7 @@
                             </Grid>
                         </Border>
                     </WrapPanel>
-                    <Border Margin="0 39 0 0" Height="45" Background="{DynamicResource #4C5BD4}" CornerRadius="5">
+                    <Border Cursor="Hand" Margin="0 39 0 0" Height="45" Background="{DynamicResource #4C5BD4}" CornerRadius="5">
                         <TextBlock Text="{DynamicResource textTaoKNL}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #FFFFFF}" FontSize="15"/>
                     </Border>
                 </StackPanel>

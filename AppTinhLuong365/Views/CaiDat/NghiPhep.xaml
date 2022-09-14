@@ -80,8 +80,8 @@
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
             <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
-                <TabItem Header="{DynamicResource textChinhSachNghiPhep}">
-                    <Grid  Background="{DynamicResource #F7F8FC}">
+                <TabItem Cursor="Hand" Header="{DynamicResource textChinhSachNghiPhep}">
+                    <Grid Cursor="Arrow" Background="{DynamicResource #F7F8FC}">
                         <StackPanel Orientation="Horizontal" Margin="10 30 0 0"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="3">
                             <Grid HorizontalAlignment="Left" Width="330">
                                 <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
@@ -133,8 +133,8 @@
                         </StackPanel>
                     </Grid>
                 </TabItem>
-                <TabItem Header="{DynamicResource textNghiSaiQuyDinh}">
-                    <DockPanel Margin="20">
+                <TabItem Cursor="Hand" Header="{DynamicResource textNghiSaiQuyDinh}">
+                    <DockPanel Cursor="Arrow" Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="7">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="16" Opacity="0.1"></DropShadowEffect>
@@ -155,7 +155,7 @@
                                         </Border>
                                     </Border>
                                 </WrapPanel>
-                                <Border Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8" MouseLeftButtonDown="OpenDes">
+                                <Border Cursor="Hand" Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8" MouseLeftButtonDown="OpenDes">
                                     <Border.Style>
                                         <Style TargetType="Border">
                                             <Setter Property="Visibility" Value="Visible"></Setter>
@@ -217,8 +217,8 @@
                         </Border>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="{DynamicResource textNghiNgayKhongDuocNghi}">
-                    <DockPanel Margin="20">
+                <TabItem Cursor="Hand" Header="{DynamicResource textNghiNgayKhongDuocNghi}">
+                    <DockPanel Cursor="Arrow" Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="7">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="16" Opacity="0.1"></DropShadowEffect>
@@ -239,7 +239,7 @@
                                         </Border>
                                     </Border>
                                 </WrapPanel>
-                                <Border Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8" MouseLeftButtonDown="OpenDes1">
+                                <Border Cursor="Hand" Margin="0 20 0 0" Width="147" Height="35.5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" CornerRadius="8" MouseLeftButtonDown="OpenDes1">
                                     <Border.Style>
                                         <Style TargetType="Border">
                                             <Setter Property="Visibility" Value="Visible"></Setter>
@@ -302,8 +302,8 @@
                         </Border>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="{DynamicResource textTheoDoiNghiPhep}">
-                    <Grid Margin="20">
+                <TabItem Cursor="Hand" Header="{DynamicResource textTheoDoiNghiPhep}">
+                    <Grid Cursor="Arrow" Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
@@ -347,8 +347,8 @@
                     </Grid>
 
                 </TabItem>
-                <TabItem Header="{DynamicResource textGuide}" VerticalAlignment="Top">
-                    <Grid Margin="20">
+                <TabItem Cursor="Hand" Header="{DynamicResource textGuide}" VerticalAlignment="Top">
+                    <Grid Cursor="Arrow" Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>

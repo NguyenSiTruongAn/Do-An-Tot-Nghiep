@@ -17,7 +17,7 @@
             <Border Height="47" Background="{DynamicResource #4C5BD4}" CornerRadius="10 10 0 0">
                 <Grid>
                     <TextBlock Text="{DynamicResource textTMMDMVS}" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold" HorizontalAlignment="Center"/>
-                    <Path Data="{DynamicResource iconClose}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0" Fill="{DynamicResource #FFFFFF}" MouseLeftButtonDown="Path_MouseLeftButtonDown"/>
+                    <Path Cursor="Hand" Data="{DynamicResource iconClose}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0" Fill="{DynamicResource #FFFFFF}" MouseLeftButtonDown="Path_MouseLeftButtonDown"/>
                 </Grid>
             </Border>
             <Border Background="{DynamicResource #FFFFFF}" CornerRadius="0 0 10 10">
@@ -121,7 +121,7 @@
                             <Path Data="{DynamicResource iconLich}" VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Right" Margin="0 0 10 0"/>
                         </Grid>
                     </Border>
-                    <Border Margin="0 14 0 0" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Height="45">
+                    <Border Cursor="Hand" Margin="0 14 0 0" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Height="45">
                         <TextBlock Text="{DynamicResource textSave}" Foreground="{DynamicResource #FFFFFF}" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Border>
                 </StackPanel>

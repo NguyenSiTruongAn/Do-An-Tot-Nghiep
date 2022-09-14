@@ -19,7 +19,7 @@
             <Border Height="47" CornerRadius="10 10 0 0" Background="{DynamicResource #4C5BD4}">
                 <Grid>
                     <TextBlock Text="{DynamicResource textTMLLV}" Foreground="{DynamicResource #FFFFFF}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <Path MouseLeftButtonDown="Path_MouseLeftButtonDown" Margin="0 0 10 0" Data="{DynamicResource iconClose}" Fill="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <Path Cursor="Hand" MouseLeftButtonDown="Path_MouseLeftButtonDown" Margin="0 0 10 0" Data="{DynamicResource iconClose}" Fill="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                 </Grid>
             </Border>
             <Border Background="{DynamicResource #FFFFFF}" CornerRadius="0 0 10 10">
@@ -68,7 +68,7 @@
                     <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <tool:DatePicker Background="{DynamicResource #FFFFFF}" FontSize="16" Foreground="{DynamicResource #777777}"/>
                     </Border>
-                    <Border Margin="0 30 0 0" Height="37" CornerRadius="3" Background="{DynamicResource #4C5BD4}">
+                    <Border Cursor="Hand" Margin="0 30 0 0" Height="37" CornerRadius="3" Background="{DynamicResource #4C5BD4}">
                         <TextBlock Text="{DynamicResource textContinue}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold" FontSize="15"/>
                     </Border>
                 </StackPanel>
