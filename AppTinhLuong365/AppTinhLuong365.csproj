@@ -129,6 +129,9 @@
     <Compile Include="Views\NhanVien\TimeKeeping.xaml.cs">
       <DependentUpon>TimeKeeping.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NhapLuongCoBan.xaml.cs">
+      <DependentUpon>NhapLuongCoBan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PageNhapLuongCoBanVaCheDo.xaml.cs">
       <DependentUpon>PageNhapLuongCoBanVaCheDo.xaml</DependentUpon>
     </Compile>

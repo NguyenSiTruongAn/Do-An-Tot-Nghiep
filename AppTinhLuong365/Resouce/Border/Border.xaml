@@ -9,6 +9,15 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="Border" x:Key="ShadowBorder2">
+        <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
+        <Setter Property="CornerRadius" Value="10"></Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.2" RenderingBias="Quality"></DropShadowEffect>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="Border" x:Key="BorderMask1">
         <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>
@@ -31,6 +40,30 @@
                     <DrawingBrush.Drawing>
                         <DrawingGroup>
                             <GeometryDrawing Brush="{DynamicResource #4C5BD4}">
+                                <GeometryDrawing.Geometry>
+                                    <GeometryGroup>
+                                        <RectangleGeometry Rect="0,0,50,50" />
+                                        <RectangleGeometry Rect="50,50,50,50" />
+                                    </GeometryGroup>
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Border" x:Key="DashedBoder1">
+        <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
+        <Setter Property="CornerRadius" Value="10"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <DrawingBrush Viewport="0,0,8,8" ViewportUnits="Absolute" TileMode="Tile">
+                    <DrawingBrush.Drawing>
+                        <DrawingGroup>
+                            <GeometryDrawing Brush="{DynamicResource #969696}">
                                 <GeometryDrawing.Geometry>
                                     <GeometryGroup>
                                         <RectangleGeometry Rect="0,0,50,50" />
