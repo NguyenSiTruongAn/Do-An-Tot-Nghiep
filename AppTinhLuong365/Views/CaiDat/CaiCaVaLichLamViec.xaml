@@ -32,7 +32,7 @@
                 <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
 
             </Border>
-            <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}">
+            <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -48,7 +48,7 @@
                     <TextBlock  VerticalAlignment="Center" Text="Thêm lịch" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
-            <Border MouseLeftButtonDown="Border_MouseLeftButtonDown_1" Height="38" Width="154" CornerRadius="10" Background="{DynamicResource #4C5BD4}" Margin="10 0 0 0">
+            <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1" Height="38" Width="154" CornerRadius="10" Background="{DynamicResource #4C5BD4}" Margin="10 0 0 0">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -66,10 +66,10 @@
             </Border>
         </WrapPanel>
         <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{DynamicResource TabItem1}">
-            <TabItem Header="{DynamicResource textCaLamViec}">
+            <TabItem Cursor="Hand" Header="{DynamicResource textCaLamViec}">
             </TabItem>
-            <TabItem  IsSelected="True" x:Name="tabItem2" Header="{DynamicResource textCalendar}">
-                <ListView Margin="35 0 0 0" Name="lv" ItemsSource="{Binding}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
+            <TabItem Cursor="Hand" IsSelected="True" x:Name="tabItem2" Header="{DynamicResource textCalendar}">
+                <ListView Cursor="Arrow" Margin="35 0 0 0" Name="lv" ItemsSource="{Binding}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-105)/3}"></Setter>
@@ -103,7 +103,6 @@
                                                 </Border>
                                             </StackPanel>
                                         </Grid>
-                                        
                                     </ControlTemplate>
                                 </Setter.Value>
                             </Setter>
@@ -126,8 +125,8 @@
 
                 
             </TabItem>
-            <TabItem Header="{DynamicResource textCauDatCongChuan}">
-                <Grid Margin="0 30">
+            <TabItem Cursor="Hand" Header="{DynamicResource textCauDatCongChuan}">
+                <Grid Cursor="Arrow" Margin="0 30">
                     <Border HorizontalAlignment="Left" Width="350" Height="380" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
@@ -160,13 +159,13 @@
                         </Border>
                     </Grid>
                 </TabItem>
-                <TabItem Header="{DynamicResource textGuide}">
+                <TabItem Cursor="Hand" Header="{DynamicResource textGuide}">
                     <TabItem.Resources>
                         <Style TargetType="TextBlock">
                             <Setter Property="Foreground" Value="Black"/>
                         </Style>
                     </TabItem.Resources>
-                    <Grid Margin="20">
+                <Grid Cursor="Arrow" Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>

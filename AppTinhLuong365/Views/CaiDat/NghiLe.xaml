@@ -10,15 +10,15 @@
 
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
-            <Border Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Border Cursor="Hand" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right" MouseLeftButtonDown="Border_MouseLeftButtonDown">
                 <StackPanel Orientation="Horizontal">
                     <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
                     <TextBlock  VerticalAlignment="Center" Text="Tạo mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
             <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
-                <TabItem Header="Năm 2022">
-                    <Grid HorizontalAlignment="Left" Width="330" Margin="20">
+                <TabItem Cursor="Hand" Header="Năm 2022">
+                    <Grid Cursor="Arrow" HorizontalAlignment="Left" Width="330" Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
@@ -47,8 +47,8 @@
                         </Border>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Năm 2021">
-                    <StackPanel Orientation="Horizontal">
+                <TabItem Cursor="Hand" Header="Năm 2021">
+                    <StackPanel Cursor="Arrow" Orientation="Horizontal">
                         <Grid HorizontalAlignment="Left" Width="330" Margin="20">
                             <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                                 <Border.Effect>

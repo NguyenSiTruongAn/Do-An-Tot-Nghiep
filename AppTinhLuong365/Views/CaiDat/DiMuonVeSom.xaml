@@ -53,8 +53,8 @@
     
     <Grid Background="{DynamicResource #F7F8FC}">
         <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
-            <TabItem Header="Đi sớm về muộn">
-                <StackPanel>
+            <TabItem Cursor="Hand" Header="Đi sớm về muộn">
+                <StackPanel Cursor="Arrow">
                     <Grid Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                             <Border.Effect>
@@ -84,7 +84,7 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
                                                 <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
                                             </Border>
-                                            <Border Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
+                                            <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
                                                 <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                                             </Border>
                                         </WrapPanel>
@@ -103,7 +103,7 @@
                             </StackPanel>
                         </Border>
                     </Grid>
-                    <Border Margin="20 0 0 0" Width="210" Height="40" CornerRadius="5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Left">
+                    <Border Cursor="Hand" Margin="20 0 0 0" Width="210" Height="40" CornerRadius="5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Left">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Path Margin="0 0 10 0" Data="{DynamicResource iconThongke}" Fill="{DynamicResource #FFFFFF}"></Path>
                             <TextBlock Text="Xuất file thống kê" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
@@ -111,8 +111,8 @@
                     </Border>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Cài đặt đi sớm về muộn" Background="{DynamicResource #F7F8FC}">
-                <StackPanel Orientation="Vertical" Margin="20" Background="{DynamicResource #F7F8FC}">
+            <TabItem Cursor="Hand" Header="Cài đặt đi sớm về muộn" Background="{DynamicResource #F7F8FC}">
+                <StackPanel Cursor="Arrow" Orientation="Vertical" Margin="20" Background="{DynamicResource #F7F8FC}">
                     <WrapPanel x:Name="Wrap_Border2" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
                             <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
@@ -120,10 +120,10 @@
                         <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
                             <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                         </Border>
-                        <Border Style="{DynamicResource Style_Border_Wrap2}" Width="104" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
+                        <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap2}" Width="104" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
                             <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
-                        <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" Style="{DynamicResource Style_Border_Wrap2}" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}">
+                        <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Style="{DynamicResource Style_Border_Wrap2}" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}">
                             <StackPanel Orientation="Horizontal">
                                 <Path Margin="10 0 15 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
                                 <TextBlock  VerticalAlignment="Center" Text="Thêm mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
@@ -155,8 +155,8 @@
                     </DataGrid>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Hướng dẫn">
-                <Grid Margin="20">
+            <TabItem Cursor="Hand" Header="Hướng dẫn">
+                <Grid Cursor="Arrow" Margin="20">
                     <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
