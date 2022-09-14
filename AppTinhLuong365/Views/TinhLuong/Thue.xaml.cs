@@ -75,10 +75,11 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void btnTaoMoi_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThue(Main));
+            var pop = new Views.TinhLuong.PopupThue(Main);
+            Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-            Main.PopupSelection.Width = 495;
-            Main.PopupSelection.Height = 433;
+            pop.Width = 495;
+            pop.Height = 433;
         }
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -88,18 +89,29 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThietLapThue(Main));
+            var pop = new Views.TinhLuong.PopupThietLapThue(Main);
+            Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-            Main.PopupSelection.Width = 495;
-            Main.PopupSelection.Height = 482;
+            pop.Width = 495;
+            pop.Height = 482;
         }
 
         private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupTGADThue(Main));
+            var pop = new Views.TinhLuong.PopupTGADThue(Main);
+            Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-            Main.PopupSelection.Width = 495;
-            Main.PopupSelection.Height = 327;
+            pop.Width = 495;
+            pop.Height = 327;
+        }
+
+        private void TuyChonChinhSachThue_MouseLeftDown(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.TinhLuong.PopupTuyChonCSThue(Main);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

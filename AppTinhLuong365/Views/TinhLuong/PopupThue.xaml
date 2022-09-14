@@ -56,7 +56,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
-                    <DockPanel Background="Transparent" Cursor="Hand" HorizontalAlignment="Left">
+                    <DockPanel Background="Transparent" Cursor="Hand" HorizontalAlignment="Left" MouseLeftButtonDown="ThietLapCongThuc_MouseLeftDown">
                         <TextBlock Text="Thiết lập công thức" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                         <Path Margin="5 0 0 0" VerticalAlignment="Center" Data="{DynamicResource iconArrowRight}" Fill="{DynamicResource #4C5BD4}"></Path>
                     </DockPanel>

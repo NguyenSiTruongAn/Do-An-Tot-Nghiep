@@ -12,34 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppTinhLuong365.Core;
 
 namespace AppTinhLuong365.Views.TinhLuong
 {
     /// <summary>
-    /// Interaction logic for PopupThue.xaml
+    /// Interaction logic for PopupThemNhanVienVaoThue.xaml
     /// </summary>
-    public partial class PopupThue : Page
+    public partial class PopupThemNhanVienVaoThue : Page
     {
         MainWindow Main;
-        public PopupThue(MainWindow main)
+        public PopupThemNhanVienVaoThue(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            dataGrid1.AutoReponsiveColumn(0);
         }
-
+        public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
-        }
-
-        private void ThietLapCongThuc_MouseLeftDown(object sender, MouseButtonEventArgs e)
-        {
-            var pop = new Views.TinhLuong.PopupChinhSuaThue(Main);
-            Main.PopupSelection.NavigationService.Navigate(pop);
-            Main.PopupSelection.Visibility = Visibility.Visible;
-            pop.Width = 565;
-            pop.Height = 481;
         }
     }
 }

@@ -16,12 +16,12 @@ using System.Windows.Shapes;
 namespace AppTinhLuong365.Views.TinhLuong
 {
     /// <summary>
-    /// Interaction logic for PopupThue.xaml
+    /// Interaction logic for PopupChinhSuaThue.xaml
     /// </summary>
-    public partial class PopupThue : Page
+    public partial class PopupChinhSuaThue : Page
     {
         MainWindow Main;
-        public PopupThue(MainWindow main)
+        public PopupChinhSuaThue(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -33,13 +33,10 @@ namespace AppTinhLuong365.Views.TinhLuong
             this.Visibility = Visibility.Collapsed;
         }
 
-        private void ThietLapCongThuc_MouseLeftDown(object sender, MouseButtonEventArgs e)
+        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.TinhLuong.PopupChinhSuaThue(Main);
-            Main.PopupSelection.NavigationService.Navigate(pop);
-            Main.PopupSelection.Visibility = Visibility.Visible;
-            pop.Width = 565;
-            pop.Height = 481;
+            TextBlock text = sender as TextBlock;
+            tbInput1.Text += text.Text;
         }
     }
 }

@@ -13,15 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.PhanQuyen
 {
     /// <summary>
-    /// Interaction logic for PopupThue.xaml
+    /// Interaction logic for PopupPQTK.xaml
     /// </summary>
-    public partial class PopupThue : Page
+    public partial class PopupPQTK : Page
     {
         MainWindow Main;
-        public PopupThue(MainWindow main)
+        public PopupPQTK(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -31,15 +31,6 @@ namespace AppTinhLuong365.Views.TinhLuong
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
-        }
-
-        private void ThietLapCongThuc_MouseLeftDown(object sender, MouseButtonEventArgs e)
-        {
-            var pop = new Views.TinhLuong.PopupChinhSuaThue(Main);
-            Main.PopupSelection.NavigationService.Navigate(pop);
-            Main.PopupSelection.Visibility = Visibility.Visible;
-            pop.Width = 565;
-            pop.Height = 481;
         }
     }
 }

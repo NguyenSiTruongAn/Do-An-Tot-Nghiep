@@ -13,33 +13,28 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.PhanQuyen
 {
     /// <summary>
-    /// Interaction logic for PopupThue.xaml
+    /// Interaction logic for PopupPQTuyChon.xaml
     /// </summary>
-    public partial class PopupThue : Page
+    public partial class PopupPQTuyChon : Page
     {
         MainWindow Main;
-        public PopupThue(MainWindow main)
+        public PopupPQTuyChon(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
-        }
-
-        private void ThietLapCongThuc_MouseLeftDown(object sender, MouseButtonEventArgs e)
-        {
-            var pop = new Views.TinhLuong.PopupChinhSuaThue(Main);
+            Views.PhanQuyen.PopupPQTK pop = new Views.PhanQuyen.PopupPQTK(Main);
+            pop.Width = 495;
+            pop.Height = 320;
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-            pop.Width = 565;
-            pop.Height = 481;
         }
     }
 }

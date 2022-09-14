@@ -348,13 +348,20 @@ namespace AppTinhLuong365
 
         private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.PopupSelection.NavigationService.Navigate(new Views.TrangChu.PopupTaiKhoan(this));
-            this.PopupSelection.Visibility = this.PopupSelection.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            this.PopupSelection.Width = 200;
-            this.PopupSelection.Height = 193;
-            this.PopupSelection.HorizontalAlignment = HorizontalAlignment.Right;
-            this.PopupSelection.VerticalAlignment = VerticalAlignment.Top;
-            this.PopupSelection.Margin = new Thickness(0,70,20,0);
+            var pop = new Views.TrangChu.PopupTaiKhoan(this);
+            pop.Width = 200;
+            pop.Height = 193;
+            pop.HorizontalAlignment = HorizontalAlignment.Right;
+            pop.VerticalAlignment = VerticalAlignment.Top;
+            pop.Margin = new Thickness(0,70,20,0);
+            this.PopupSelection.NavigationService.Navigate(pop);
+            this.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void ClickPutSidePopup(object sender, MouseButtonEventArgs e)
+        {
+            this.PopupSelection.NavigationService.Navigate(null);
+            this.PopupSelection.Visibility = Visibility.Hidden;
         }
     }
 }
