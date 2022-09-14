@@ -35,19 +35,14 @@
             <StackPanel Margin="10 20">
                 <DockPanel>
                     <WrapPanel x:Name="wrapLCBVCD" DockPanel.Dock="Right" HorizontalAlignment="Right">
-                        <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                            <DockPanel>
-                                <DatePicker BorderThickness="0" VerticalAlignment="Center"></DatePicker>
-                            </DockPanel>
+                        <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="38" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                            <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
                         </Border>
                         <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                            <tool:SearchBar/>
+                            <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Phòng ban (tất cả)"/>
                         </Border>
                         <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 20 0">
-                            <DockPanel VerticalAlignment="Center" >
-                                <TextBlock Margin="10 0 0 0" Text="Tất cả nhân viên" FontSize="16"/>
-                                <Path Margin="0 0 10 0" Data="{StaticResource iconSearch}" Fill="{DynamicResource #68798B}" HorizontalAlignment="Right" VerticalAlignment="Center"></Path>
-                            </DockPanel>
+                            <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
                         </Border>
                         <Border Width="105" Height="40" Background="{DynamicResource #4C5BD4}" CornerRadius="10">
                             <TextBlock Text="{DynamicResource textstatistical}" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />

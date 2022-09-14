@@ -49,10 +49,10 @@
                 <WrapPanel x:Name="Wrap_Border1">
                     <Border Style="{DynamicResource Style_Border}">
                         <WrapPanel x:Name="Wrap_Border">
-                            <Border Style="{DynamicResource Style_Border_Wrap}" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
+                            <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap}" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
                                 <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
-                            <Border Style="{DynamicResource Style_Border_Wrap}" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
+                            <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap}" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
                                 <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
                             <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap}" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">

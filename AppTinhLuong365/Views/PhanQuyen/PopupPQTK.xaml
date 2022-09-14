@@ -28,8 +28,8 @@
                         <Run Text="Quyền áp dụng" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                     </TextBlock>
-                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="3" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                        <ComboBox Cursor="Hand" FontSize="16" Foreground="{DynamicResource #777777}" Style="{StaticResource Combobox2}">
+                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="3" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 5 0 0">
+                        <ComboBox Cursor="Hand" FontSize="16" Foreground="{DynamicResource #777777}" Style="{StaticResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
                             <ComboBoxItem IsSelected="True">Nhân viên</ComboBoxItem>
                             <ComboBoxItem>Owner</ComboBoxItem>
                         </ComboBox>

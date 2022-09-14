@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -42,7 +43,21 @@ namespace AppTinhLuong365.Views.TinhLuong
             Main = main;
             dataGrid1.AutoReponsiveColumn(1);
             dataGrid2.AutoReponsiveColumn(0);
+            ItemList = new ObservableCollection<string>();
+            for (var i = 1; i <= 12; i++)
+            {
+                ItemList.Add($"Tháng {i}");
+            }
+            YearList = new ObservableCollection<string>();
+            for (var i = 2022; i <= 2025; i++)
+            {
+                YearList.Add($"Năm {i}");
+            }
+            
+            Main = main;
         }
+        public ObservableCollection<string> ItemList { get; set; }
+        public ObservableCollection<string> YearList { get; set; }
 
         public List<string> Test { get; set; } = new List<string>() { "aa" ,"bb" ,"cc"  };
 
