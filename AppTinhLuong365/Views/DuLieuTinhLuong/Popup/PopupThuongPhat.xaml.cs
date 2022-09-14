@@ -14,14 +14,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AppTinhLuong365.Core;
 
-namespace AppTinhLuong365.Views.DuLieuTinhLuong
+namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for ThuongPhat.xaml
+    /// Interaction logic for PopupThuongPhat.xaml
     /// </summary>
-    public partial class ThuongPhat : Page, INotifyPropertyChanged
+    public partial class PopupThuongPhat : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
         public int IsSmallSize
@@ -35,15 +34,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public ThuongPhat(MainWindow main)
+        public PopupThuongPhat(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
-            dataGrid1.AutoReponsiveColumn(0);
         }
-
-        public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -59,20 +55,22 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 IsSmallSize = 2;
             }
-            if (this.ActualWidth > 2100)
-            {
-                DockPanel.SetDock(dockThuongPhat, Dock.Right);
-            }
-            else
-                DockPanel.SetDock(dockThuongPhat, Dock.Bottom);
         }
 
-        private void TuyChinhThuongPhat_Click(object sender, MouseButtonEventArgs e)
+        public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupThuongPhat(Main);
-            Main.PopupSelection.NavigationService.Navigate(pop);
-            Main.PopupSelection.Visibility = Visibility.Visible;
-            pop.MaxWidth = 888;
+            this.Visibility = Visibility.Collapsed;
+        }
+
+        private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+
+        }
+
+        private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
