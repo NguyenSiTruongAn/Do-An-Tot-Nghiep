@@ -8,13 +8,13 @@
       d:DesignHeight="472" d:DesignWidth="495"
       Title="NhapLuongCoBan">
     <Grid>
-        <Border Style="{StaticResource ShadowBorder2}" Background="{DynamicResource #FFFFFF}" CornerRadius="8">
+        <Border Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="8">
             <StackPanel>
                 <Border Cursor="Hand" CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
                     <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" HorizontalAlignment="Right" Padding="0 3 17 0" FontWeight="Bold" FontFamily="roboto" Text="x" FontSize="28" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </Border>
                 <StackPanel Width="450">
-                    <Border Margin="0 30 0 0" Style="{StaticResource DashedBoder1}" Width="450" Height="213">
+                    <Border Margin="0 30 0 0" Style="{StaticResource DashedBoder}" Width="450" Height="213">
                         <StackPanel>
                             <Path HorizontalAlignment="Center" Margin="0 30 0 0" Data="{DynamicResource iconDamMay}" Fill="{DynamicResource #4C5BD4}"></Path>
                             <TextBlock FontSize="16" Foreground="{DynamicResource #777777}" FontWeight="DemiBold" Text="Thả hoặc kéo vào đây hoặc" HorizontalAlignment="Center"></TextBlock>

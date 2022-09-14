@@ -56,9 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-	  <Compile Include="Resouce\tool\DatePicker.xaml.cs">
-		  <DependentUpon>DatePicker.xaml</DependentUpon>
-	  </Compile>
+    <Compile Include="Core\Extention.cs" />
+    <Compile Include="Resouce\tool\DatePicker.xaml.cs">
+      <DependentUpon>DatePicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resouce\tool\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
@@ -182,6 +182,12 @@
     </Compile>
     <Compile Include="Views\TrangChu\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrangChu\PopupTaiKhoan.xaml.cs">
+      <DependentUpon>PopupTaiKhoan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrangChu\TaiKhoan.xaml.cs">
+      <DependentUpon>TaiKhoan.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TrangChu\TrangChu.xaml.cs">
       <DependentUpon>TrangChu.xaml</DependentUpon>
@@ -402,6 +408,14 @@
     <Page Include="Views\TrangChu\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TrangChu\PopupTaiKhoan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TrangChu\TaiKhoan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\TrangChu\TrangChu.xaml">
       <SubType>Designer</SubType>
