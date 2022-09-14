@@ -35,16 +35,15 @@
             <StackPanel Margin="10 20">
                 <DockPanel>
                     <WrapPanel x:Name="wrapLCBVCD" DockPanel.Dock="Right" HorizontalAlignment="Right">
-                        <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                            <DockPanel>
-                                <DatePicker BorderThickness="0" VerticalAlignment="Center"></DatePicker>
-                            </DockPanel>
+                        <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="38" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                            <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
                         </Border>
-                        <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                            <tool:SearchBar Cursor="Hand"/>
+                        <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                            <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Phòng ban (tất cả)"/>
                         </Border>
-                        <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 20 0">
-                            <tool:SearchBar Cursor="Hand" />
+                        <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 20 0">
+                            <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
+
                         </Border>
                         <Border MouseLeftButtonDown="Border_MouseLeftButtonDown_2" Cursor="Hand" Width="105" Height="40" Background="{DynamicResource #4C5BD4}" CornerRadius="10">
                             <TextBlock Text="{DynamicResource textstatistical}" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />

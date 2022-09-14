@@ -26,11 +26,10 @@
     <StackPanel Background="{DynamicResource #F7F8FC}" Margin="20">
         <WrapPanel x:Name="Wrap_Border1" HorizontalAlignment="Right">
             <Border Style="{DynamicResource Style_Border_Wrap1}" Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                <tool:SearchBar Cursor="Hand" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
             </Border>
             <Border Style="{DynamicResource Style_Border_Wrap1}" Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
-
+                <tool:SearchBar Cursor="Hand" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
             </Border>
             <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}">
                 <Border.Style>

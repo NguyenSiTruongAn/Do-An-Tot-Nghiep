@@ -52,8 +52,8 @@
         <Border CornerRadius="10" Background="{DynamicResource #FFFFFF}" Padding="10">
             <StackPanel VerticalAlignment="Top">
                 <DockPanel>
-                    <Border Width="180" Height="38" x:Name="borderPhanQuyen" DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
-                        <tool:SearchBar/>
+                    <Border Width="180" Height="38" x:Name="borderPhanQuyen" DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="4">
+                        <tool:SearchBar PlaceHolder="Nhập tên cần tìm" Foreground="{DynamicResource #444}" FontSize="16" />
                     </Border>
                     <StackPanel Orientation="Vertical" Margin="0 0 0 0" HorizontalAlignment="Left">
                         <TextBlock Text="{DynamicResource textPhanQuyen}" Foreground="{DynamicResource #2E3467}" FontSize="24" FontWeight="Bold" TextWrapping="WrapWithOverflow"></TextBlock>

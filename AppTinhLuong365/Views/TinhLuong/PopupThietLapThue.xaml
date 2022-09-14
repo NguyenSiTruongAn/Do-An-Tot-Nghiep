@@ -28,14 +28,18 @@
                         <Run Text="Áp dụng từ tháng" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                     </TextBlock>
-                    <DatePicker BorderThickness="1" FontSize="16" Foreground="{DynamicResource #777777}" Margin="0 5" Padding="15 10"></DatePicker>
+                    <Border Margin="0 5 0 0" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" CornerRadius="3" Height="43">
+                        <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
+                    </Border>
                     <TextBlock Text="Đến tháng(Không bắt buộc)" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold" Margin="0 5"></TextBlock>
-                    <DatePicker FontSize="16" Foreground="{DynamicResource #777777}" Padding="15 10" Height="43" Margin="0 5 0 10"></DatePicker>
+                    <Border Margin="0 5 0 0" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" CornerRadius="3" Height="43">
+                        <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
+                    </Border>
                     <TextBlock Margin="0 0 0 0">
                         <Run Text="Loại thuế" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                     </TextBlock>
-                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="3" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="3" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 5 0 0">
                         <ComboBox Style="{StaticResource Combobox2}"></ComboBox>
                     </Border>
                     <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">

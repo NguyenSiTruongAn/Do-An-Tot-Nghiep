@@ -55,13 +55,13 @@
                     <DockPanel x:Name="dockTamUng" DockPanel.Dock="Right" Style="{DynamicResource Style_Grid_Wrap}" HorizontalAlignment="Stretch">
                         <WrapPanel Name="Wrap_Border" HorizontalAlignment="Right">
                             <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                <tool:SearchBar Cursor="Hand" Foreground="{DynamicResource #888}"/>
+                                <tool:SearchBar FontSize="16" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>    
                             </Border>
                             <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                <tool:SearchBar Cursor="Hand" Foreground="{DynamicResource #888}"/>
+                                <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
                             <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                <tool:SearchBar Cursor="Hand" Foreground="{DynamicResource #888}"/>
+                                <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
                             <Border Cursor="Hand" Style="{DynamicResource Style_Border}" Width="104" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0" Background="{DynamicResource #4C5BD4}">
                                 <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>

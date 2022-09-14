@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -36,10 +37,23 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         }
         public CacKhoanTienKhac(MainWindow main)
         {
+            ItemList = new ObservableCollection<string>();
+            for (var i = 1; i <= 12; i++)
+            {
+                ItemList.Add($"Tháng {i}");
+            }
+            YearList = new ObservableCollection<string>();
+            for (var i = 2022; i <= 2025; i++)
+            {
+                YearList.Add($"Năm {i}");
+            }
             InitializeComponent();
             this.DataContext = this;
             Main = main;
         }
+        public ObservableCollection<string> ItemList { get; set; }
+        public ObservableCollection<string> YearList { get; set; }
+
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (this.ActualWidth > 980)
