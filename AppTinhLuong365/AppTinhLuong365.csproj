@@ -126,9 +126,6 @@
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiPhuCap.xaml.cs">
       <DependentUpon>PopupThemMoiPhuCap.xaml</DependentUpon>
     </Compile>
-	  <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiPhuCapTheoCa.xaml.cs">
-		  <DependentUpon>PopupThemMoiPhuCapTheoCa.xaml</DependentUpon>
-	  </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiPhuCapTheoCa.xaml.cs">
       <DependentUpon>PopupThemMoiPhuCapTheoCa.xaml</DependentUpon>
     </Compile>
@@ -284,9 +281,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiPhuCapTheoCa.xaml">
-		  <SubType>Designer</SubType>
-		  <Generator>MSBuild:Compile</Generator>
-	  </Page>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\HoaHongTien.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
