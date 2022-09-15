@@ -246,4 +246,5 @@
     <system:String x:Key="textHB">Hủy bỏ</system:String>
     <system:String x:Key="textApDungNgay">Áp dụng ngày</system:String>
     <system:String x:Key="textLyDo">Lý do</system:String>
+    <system:String x:Key="textBoPhan">Bộ phận</system:String>
 </ResourceDictionary>

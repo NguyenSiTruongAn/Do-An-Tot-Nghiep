@@ -13,23 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.CaiDat.Popup
+namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupNghiLe.xaml
+    /// Interaction logic for PopupThongBaoXoaCKTK.xaml
     /// </summary>
-    public partial class PopupNghiLe : Page
+    public partial class PopupThongBaoXoaCKTK : Page
     {
-        public PopupNghiLe(MainWindow main)
+        MainWindow Main;
+        public PopupThongBaoXoaCKTK(MainWindow main)
         {
-            this.DataContext = this;
             InitializeComponent();
+            this.DataContext = this;
             Main = main;
         }
 
-        MainWindow Main;
-
-        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Close_Click(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
         }
