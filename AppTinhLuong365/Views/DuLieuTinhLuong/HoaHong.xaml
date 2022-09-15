@@ -43,37 +43,39 @@
                     </Style>
                 </TabItem.Resources>
                 <DockPanel Style="{StaticResource Style_Grid_Wrap}">
-                    <WrapPanel x:Name="Style_Grid_Wrap">
-                        <StackPanel Width="330" Margin="0 30 20 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Border Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
-                                <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
-                                    <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
-                                        <StackPanel VerticalAlignment="Center">
-                                            <TextBlock Text="Hoa hồng tiền" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
-                                            <Line X1="0" Y1="20" X2="330" Y2="20" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
+                    <WrapPanel x:Name="Wrap_Border1">
+                        <Border Style="{DynamicResource Style_Border_Wrap1}">
+                            <StackPanel Margin="0 30 20 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Border Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
+                                        <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
+                                            <StackPanel VerticalAlignment="Center">
+                                                <TextBlock Text="Hoa hồng tiền" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                                <Line X1="0" Y1="20" X2="330" Y2="20" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
+                                            </StackPanel>
+                                        </Border>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
+                                            <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
                                         </StackPanel>
-                                    </Border>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
-                                        <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                        <Border>
+                                            <TextBlock Margin="20 10 0 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #747474}" TextWrapping="WrapWithOverflow">Nhập hoặc tải trực tiếp từ excel hoa hồng cho nhân viên</TextBlock>
+                                        </Border>
+                                        <Border Background="{DynamicResource #EFF7FE}" HorizontalAlignment="Stretch" Height="80" Style="{DynamicResource DashedBoder}" BorderThickness="1.5">
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <Path VerticalAlignment="Center" HorizontalAlignment="Center" Data="{DynamicResource iconDamMay}" Fill="{DynamicResource #4C5BD4}"></Path>
+                                                <TextBlock Margin="10 0 0 0" Text="File excel" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                        <TextBlock Text="or" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                        <Border Cursor="Hand" MouseLeftButtonDown="btn_ThemHoaHong_Click" CornerRadius="5" HorizontalAlignment="Stretch" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Thêm hoa hồng" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                                        </Border>
                                     </StackPanel>
-                                    <Border>
-                                        <TextBlock Margin="20 10 0 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #747474}" TextWrapping="WrapWithOverflow">Nhập hoặc tải trực tiếp từ excel hoa hồng cho nhân viên</TextBlock>
-                                    </Border>
-                                    <Border Background="{DynamicResource #EFF7FE}" HorizontalAlignment="Stretch" Height="80" Style="{DynamicResource DashedBoder}" BorderThickness="1.5">
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <Path VerticalAlignment="Center" HorizontalAlignment="Center" Data="{DynamicResource iconDamMay}" Fill="{DynamicResource #4C5BD4}"></Path>
-                                            <TextBlock Margin="10 0 0 0" Text="File excel" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                                        </StackPanel>
-                                    </Border>
-                                    <TextBlock Text="or" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                                    <Border Cursor="Hand" MouseLeftButtonDown="btn_ThemHoaHong_Click" CornerRadius="5" HorizontalAlignment="Stretch" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
-                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Thêm hoa hồng" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
-                                    </Border>
-                                    
-                                </StackPanel>
-                            </Border>
-                        </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{DynamicResource Style_Border_Wrap1}">
                         <StackPanel Width="330" HorizontalAlignment="Center" Orientation="Vertical" Margin="0 30 20 0" VerticalAlignment="Stretch">
                             <Border Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10" VerticalAlignment="Stretch">
                                 <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
