@@ -246,6 +246,16 @@
     <system:String x:Key="textHB">Hủy bỏ</system:String>
     <system:String x:Key="textApDungNgay">Áp dụng ngày</system:String>
     <system:String x:Key="textLyDo">Lý do</system:String>
+    <system:String x:Key="textDH">Đến hết (không bắt buộc)</system:String>
+    <system:String x:Key="textCL">Chọn loại</system:String>
+    <system:String x:Key="textTNCT">Thu nhập chịu thuế</system:String>
+    <system:String x:Key="textTNMT">Thu nhập miễn thuế</system:String>
+    <system:String x:Key="textNGC">Nhập ghi chú ( nếu có )</system:String>
+    <system:String x:Key="textTMPL">Thêm mới phúc lợi</system:String>
+    <system:String x:Key="textTMPC">Thêm mới phụ cấp</system:String>
+    <system:String x:Key="textNTPC">Nhập tên phụ cấp</system:String>
+    <system:String x:Key="textNTienPC">Nhập tiền phụ cấp</system:String>
+    <system:String x:Key="textTMPCTC">Thêm mới phụ cấp theo ca</system:String>
     <system:String x:Key="textBoPhan">Bộ phận</system:String>
     <system:String x:Key="textSoTien">Số tiền</system:String>
     <system:String x:Key="textHoaHongCaNhan">Hoa hồng cá nhân</system:String>
@@ -253,4 +263,6 @@
     <system:String x:Key="textNhomNhanVien">Nhóm nhân viên</system:String>
     <system:String x:Key="textChuKy">Chu kỳ</system:String>
     <system:String x:Key="textTongTien">Tổng tiền</system:String>
+    <system:String x:Key="textNTPL">Nhập tên phúc lợi</system:String>
+    <system:String x:Key="textNhapTienPhucLoi">Nhập tiền phúc lợi</system:String>
 </ResourceDictionary>
