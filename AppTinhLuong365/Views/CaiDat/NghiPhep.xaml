@@ -102,7 +102,7 @@
                                             <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
                                         </StackPanel>
                                         <TextBlock Margin="20 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="Là nghỉ phép trong 1 số trường hợp đặc biệt được quy định trong bộ luật lao..." TextWrapping="WrapWithOverflow"></TextBlock>
-                                        <TextBlock Text="(Xem thêm)" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                        <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="(Xem thêm)" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                     </StackPanel>
 
                                 </Border>
@@ -126,7 +126,7 @@
                                             <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
                                         </StackPanel>
                                         <TextBlock Margin="20 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="Là nghỉ phép có xin phép theo đúng quy định của doanh nghiệp, khi người lao..." TextWrapping="WrapWithOverflow"></TextBlock>
-                                        <TextBlock Text="(Xem thêm)" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                        <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" Text="(Xem thêm)" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                     </StackPanel>
                                 </Border>
                             </Grid>
