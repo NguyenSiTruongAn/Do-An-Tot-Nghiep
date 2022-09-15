@@ -70,6 +70,7 @@
                                     <Border Cursor="Hand" MouseLeftButtonDown="btn_ThemHoaHong_Click" CornerRadius="5" HorizontalAlignment="Stretch" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
                                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Thêm hoa hồng" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                                     </Border>
+                                    
                                 </StackPanel>
                             </Border>
                         </StackPanel>
