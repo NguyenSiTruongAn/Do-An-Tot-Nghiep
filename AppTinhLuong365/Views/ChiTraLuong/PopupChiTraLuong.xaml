@@ -97,10 +97,10 @@
                     </ComboBox>
                     <WrapPanel Margin="0 28 0 0">
                         <Border Cursor="Hand" Width="224" Height="42" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource #659FE5}">
-                            <TextBlock Text="{DynamicResource textHB}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #4C5BD4}"/>
+                            <TextBlock  FontWeight="DemiBold" FontSize="14" Text="{DynamicResource textHB}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #4C5BD4}"/>
                         </Border>
                         <Border Cursor="Hand" Margin="10 0 0 0" Width="224" Height="42" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
-                            <TextBlock Text="{DynamicResource textADD}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #FFFFFF}"/>
+                            <TextBlock  FontWeight="DemiBold" FontSize="14" Text="{DynamicResource textADD}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #FFFFFF}"/>
                         </Border>
                     </WrapPanel>
                 </StackPanel>

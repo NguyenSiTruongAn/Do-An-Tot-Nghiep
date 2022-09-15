@@ -18,7 +18,7 @@
         <Border VerticalAlignment="Top" Margin="0 0 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Width="1042" Height="813">
             <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                 <Grid>
-                    <TextBox BorderThickness="0" Text="Bảng công chu kỳ" Margin="20 30 0 0" FontWeight="Bold" FontSize="24" Foreground="{DynamicResource #2E3467}"></TextBox>
+                    <TextBlock Height="40" Text="Bảng công chu kỳ" Margin="20 30 0 0" FontWeight="Bold" FontSize="24" Foreground="{DynamicResource #2E3467}"></TextBlock>
                     <StackPanel Orientation="Horizontal" Margin="0 30 20 0" HorizontalAlignment="Right">
                         <Border Width="150" Height="38" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="10" Margin="10 0 0 0">
                             <tool:SearchBar Cursor="Hand" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
@@ -30,25 +30,25 @@
                 </Grid>
                 <StackPanel Orientation="Horizontal" Background="{DynamicResource #4C5BD4}" Margin="20 22 20 0">
                     <StackPanel Width="143">
-                        <TextBox BorderThickness="0" Text="{DynamicResource textSunday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                        <TextBlock Height="40" FontSize="15" Text="{DynamicResource textSunday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
                     </StackPanel>
                     <StackPanel Width="143">
-                        <TextBox BorderThickness="0" Text="{DynamicResource textMonday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                        <TextBlock Height="40" FontSize="15" Text="{DynamicResource textMonday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
                     </StackPanel>
                     <StackPanel Width="143">
-                        <TextBox BorderThickness="0" Text="{DynamicResource textTuesday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                        <TextBlock Height="40" FontSize="15" Text="{DynamicResource textTuesday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
                     </StackPanel>
                     <StackPanel Width="143">
-                        <TextBox BorderThickness="0" Text="{DynamicResource textWednesday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                        <TextBlock Height="40" FontSize="15" Text="{DynamicResource textWednesday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
                     </StackPanel>
                     <StackPanel Width="143">
-                        <TextBox BorderThickness="0" Text="{DynamicResource textThursday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                        <TextBlock Height="40" FontSize="15" Text="{DynamicResource textThursday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
                     </StackPanel>
                     <StackPanel Width="143">
-                        <TextBox BorderThickness="0" Text="{DynamicResource textFriday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                        <TextBlock Height="40" FontSize="15" Text="{DynamicResource textFriday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
                     </StackPanel>
                     <StackPanel Width="143">
-                        <TextBox BorderThickness="0" Text="{DynamicResource textSaturday}" Margin="0 0 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBox>
+                        <TextBlock Height="40" FontSize="15" Text="{DynamicResource textSaturday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
                     </StackPanel>
                 </StackPanel>
                 <Border  Margin="20 0 20 0" BorderBrush="{DynamicResource #BBBBBB}" BorderThickness="1 1 1 1">

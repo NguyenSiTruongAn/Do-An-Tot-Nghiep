@@ -81,5 +81,23 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 DockPanel.SetDock(borderPhuCapTheoCa, Dock.Bottom);
             }
         }
+
+        private void borderPhucLoi_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupPhucLoi(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void borderPhuCap_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThemMoiPhuCap(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void borderPhuCapTheoCa_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThemMoiPhuCapTheoCa(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
     }
 }
