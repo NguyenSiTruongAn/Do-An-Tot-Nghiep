@@ -158,7 +158,7 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <ListView Name="sidebar" Margin="0 7" ItemsSource="{Binding SideBarItems}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItemStyle}" SelectedIndex="{Binding SideBarIndex,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+            <ListView Name="sidebar" Margin="0 7" ItemsSource="{Binding SideBarItems}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItemStyle}" SelectedIndex="{Binding SideBarIndex ,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
             <!--<ListView Name="sidebarNV" Margin="0 7" ItemsSource="{Binding SideBarItemsNV}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItem1}" SelectedIndex="{Binding SideBarIndexNV}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>-->
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Background="{DynamicResource #F7F8FC}">

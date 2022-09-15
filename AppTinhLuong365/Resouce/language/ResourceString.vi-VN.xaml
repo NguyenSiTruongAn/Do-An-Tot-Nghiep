@@ -247,4 +247,10 @@
     <system:String x:Key="textApDungNgay">Áp dụng ngày</system:String>
     <system:String x:Key="textLyDo">Lý do</system:String>
     <system:String x:Key="textBoPhan">Bộ phận</system:String>
+    <system:String x:Key="textSoTien">Số tiền</system:String>
+    <system:String x:Key="textHoaHongCaNhan">Hoa hồng cá nhân</system:String>
+    <system:String x:Key="textHoaHongNhom">Hoa hồng nhóm</system:String>
+    <system:String x:Key="textNhomNhanVien">Nhóm nhân viên</system:String>
+    <system:String x:Key="textChuKy">Chu kỳ</system:String>
+    <system:String x:Key="textTongTien">Tổng tiền</system:String>
 </ResourceDictionary>

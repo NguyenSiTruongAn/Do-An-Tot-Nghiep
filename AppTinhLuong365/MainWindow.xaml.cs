@@ -150,6 +150,24 @@ namespace AppTinhLuong365
             {
                 switch (value)
                 {
+                    case -1:
+                        SideBarItems[3].Vis = Visibility.Collapsed;
+                        SideBarItems[4].Vis = Visibility.Collapsed;
+                        SideBarItems[5].Vis = Visibility.Collapsed;
+                        SideBarItems[6].Vis = Visibility.Collapsed;
+                        SideBarItems[7].Vis = Visibility.Collapsed;
+                        SideBarItems[8].Vis = Visibility.Collapsed;
+                        SideBarItems[10].Vis = Visibility.Collapsed;
+                        SideBarItems[11].Vis = Visibility.Collapsed;
+                        SideBarItems[12].Vis = Visibility.Collapsed;
+                        SideBarItems[16].Vis = Visibility.Collapsed;
+                        SideBarItems[17].Vis = Visibility.Collapsed;
+                        SideBarItems[18].Vis = Visibility.Collapsed;
+                        SideBarItems[19].Vis = Visibility.Collapsed;
+                        SideBarItems[20].Vis = Visibility.Collapsed;
+                        SideBarItems[21].Vis = Visibility.Collapsed;
+                        OpenSubMenu = false;
+                        break;
                     case 0:
                         HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(this));
                         this.Title = App.Current.Resources["textTrangChu"] as string;
@@ -278,14 +296,17 @@ namespace AppTinhLuong365
                     default:
                         break;
                 }
-                var z = new List<int>() {0, 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23 };
+                var z = new List<int>() { -1, 0, 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23 };
                 if (z.Contains(value)) _SideBarIndex = value;
                 else if (value != 5)
                 {
                     var h = sidebar.SelectedIndex;
-                    SideBarIndex = h;
+                    if (h > -1)
+                    {
+                        SideBarIndex = h;
+                    }
                 }
-                OnPropertyChanged("SideBarIndex");
+                OnPropertyChanged();
             }
         }
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -353,7 +374,7 @@ namespace AppTinhLuong365
             pop.Height = 193;
             pop.HorizontalAlignment = HorizontalAlignment.Right;
             pop.VerticalAlignment = VerticalAlignment.Top;
-            pop.Margin = new Thickness(0,70,20,0);
+            pop.Margin = new Thickness(0, 70, 20, 0);
             this.PopupSelection.NavigationService.Navigate(pop);
             this.PopupSelection.Visibility = Visibility.Visible;
         }

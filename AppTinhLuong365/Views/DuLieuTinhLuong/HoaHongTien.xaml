@@ -1,0 +1,376 @@
+﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.HoaHongTien"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong"
+      xmlns:math="clr-namespace:AppTinhLuong365.Core"
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
+      mc:Ignorable="d" 
+      SizeChanged="Page_SizeChanged"
+      Title="HoaHongTien">
+
+    <Grid Background="{DynamicResource #F7F8FC}">
+        <StackPanel Margin="20">
+            <DockPanel>
+                <Border DockPanel.Dock="Right" Cursor="Hand" MouseLeftButtonDown="btnThemMoi_MouseLeftButtonDown" x:Name="btnThemMoi" Height="38" Width="132" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
+                    <DockPanel>
+                        <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
+                        <TextBlock  VerticalAlignment="Center" Text="Thêm mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                    </DockPanel>
+                </Border>
+                <Border Margin="0 0 10 0" BorderThickness="1" BorderBrush="{DynamicResource #666666}" Cursor="Hand" MouseLeftButtonDown="btnQuayLai_MouseLeftButtonDown" x:Name="btnQuayLai" Height="38" Width="117.5" CornerRadius="10" Background="Transparent" HorizontalAlignment="Right">
+                    <DockPanel>
+                        <Path Margin="10 0 5 0" VerticalAlignment="Center" Data="{DynamicResource iconArrowLeft}" Stroke="{DynamicResource #666666}"></Path>
+                        <TextBlock  VerticalAlignment="Center" Text="Quay lại" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #666666}"></TextBlock>
+                    </DockPanel>
+                </Border>
+            </DockPanel>
+            <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0" ItemContainerStyle="{StaticResource TabItem1}">
+                <TabItem IsSelected="True" Header="{DynamicResource textHoaHongCaNhan}" Background="Transparent">
+                    <TabItem.Resources>
+                        <math:MathConvert x:Key="math"></math:MathConvert>
+                        <Style x:Key="Style_Grid_Wrap1" TargetType="{x:Type DockPanel}">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid1,Converter={StaticResource math}, ConverterParameter=(@VALUE-20)/2}"/>
+                            <Setter Property="Margin" Value="0 0 0 0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid1,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                                    <Setter Property="Margin" Value="0 10"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid1,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                                    <Setter Property="Margin" Value="0 10"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style x:Key="Style_StackPanel1" TargetType="StackPanel">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel1,Converter={StaticResource math},ConverterParameter=(@VALUE)/4}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel1,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style x:Key="Style_Border1" TargetType="Border">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter={StaticResource math},ConverterParameter=(@VALUE/3) - 9}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TabItem.Resources>
+                    <StackPanel Margin="20">
+                        <DockPanel>
+                            <DockPanel x:Name="dockHoaHongCaNhan" DockPanel.Dock="Right" Style="{DynamicResource Style_Grid_Wrap1}">
+                                <WrapPanel Name="Wrap_Border1" HorizontalAlignment="Right">
+                                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                                        <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                    </Border>
+                                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                                        <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                    </Border>
+                                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                                        <tool:SearchBar FontSize="16" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
+                                    </Border>
+                                </WrapPanel>
+                            </DockPanel>
+                            <DockPanel Style="{DynamicResource Style_Grid_Wrap1}">
+                                <TextBlock DockPanel.Dock="Bottom" TextWrapping="WrapWithOverflow" Text="Quản lý theo dõi nhân viên hưởng hoa hồng tiền" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="Danh sách nhân viên hưởng hoa hồng tiền" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                            </DockPanel>
+                        </DockPanel>
+                        <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                            <DataGrid.OpacityMask>
+                                <VisualBrush>
+                                    <VisualBrush.Visual>
+                                        <Border Width="{Binding ElementName=dataGrid3,Path=ActualWidth}" Height="{Binding ElementName=dataGrid3,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </DataGrid.OpacityMask>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid x:Name="gridHoTen">
+                                                <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
+                                                    <Border.Background>
+                                                        <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                                    </Border.Background>
+                                                </Border>
+                                                <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textThoiGian}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <TextBlock Text="{Binding}" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textSoTien}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textGhiChu}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <TextBlock Text="{Binding}" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <DockPanel>
+                                                    <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
+                                                        <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>
+                                                    </Border>
+                                                    <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
+                                                        <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
+                                                    </Border>
+                                                </DockPanel>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="{DynamicResource textHoaHongNhom}" Background="Transparent">
+                    <TabItem.Resources>
+                        <math:MathConvert x:Key="math"></math:MathConvert>
+                        <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type DockPanel}">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE-20)/2}"/>
+                            <Setter Property="Margin" Value="0 0 0 0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                                    <Setter Property="Margin" Value="0 10"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                                    <Setter Property="Margin" Value="0 10"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style x:Key="Style_StackPanel" TargetType="StackPanel">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math},ConverterParameter=(@VALUE)/4}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style x:Key="Style_Border" TargetType="Border">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math},ConverterParameter=(@VALUE/3) - 9}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TabItem.Resources>
+                    <Grid Margin="20">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <Border CornerRadius="16">
+                            <StackPanel Margin="20">
+                                <DockPanel>
+                                    <DockPanel x:Name="dockHoaHongNhom" DockPanel.Dock="Right" Style="{DynamicResource Style_Grid_Wrap}">
+                                        <WrapPanel Name="Wrap_Border" HorizontalAlignment="Right">
+                                            <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                                                <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                            </Border>
+                                            <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                                                <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                            </Border>
+                                            <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                                                <tool:SearchBar FontSize="16" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm"/>
+                                            </Border>
+                                        </WrapPanel>
+                                    </DockPanel>
+                                    <DockPanel Style="{DynamicResource Style_Grid_Wrap}">
+                                        <TextBlock TextWrapping="WrapWithOverflow" Text="Danh sách nhân viên chưa thiết lập thuế" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                                    </DockPanel>
+                                </DockPanel>
+                                <DataGrid x:Name="dataGrid1" Margin="0 20" Style="{StaticResource DataGrid1}" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                                    <DataGrid.OpacityMask>
+                                        <VisualBrush>
+                                            <VisualBrush.Visual>
+                                                <Border Width="{Binding ElementName=dataGrid1,Path=ActualWidth}" Height="{Binding ElementName=dataGrid1,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </DataGrid.OpacityMask>
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn Header="{DynamicResource textNhomNhanVien}">
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textThoiGian}">
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textSoTien}">
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textGhiChu}">
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{DynamicResource textTongHoaHong}" Background="Transparent">
+                    <TabItem.Resources>
+                        <math:MathConvert x:Key="math"></math:MathConvert>
+                        <Style x:Key="Style_Grid_Wrap1" TargetType="{x:Type DockPanel}">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid1,Converter={StaticResource math}, ConverterParameter=(@VALUE-20)/2}"/>
+                            <Setter Property="Margin" Value="0 0 0 0"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid1,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                                    <Setter Property="Margin" Value="0 10"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid1,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                                    <Setter Property="Margin" Value="0 10"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style x:Key="Style_StackPanel1" TargetType="StackPanel">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel1,Converter={StaticResource math},ConverterParameter=(@VALUE)/4}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel1,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style x:Key="Style_Border1" TargetType="Border">
+                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border2,Converter={StaticResource math},ConverterParameter=(@VALUE/3) - 9}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border2,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TabItem.Resources>
+                    <StackPanel Margin="20">
+                        <DockPanel>
+                            <DockPanel x:Name="dockTongHoaHong" DockPanel.Dock="Right" Style="{DynamicResource Style_Grid_Wrap1}">
+                                <WrapPanel Name="Wrap_Border2" HorizontalAlignment="Right">
+                                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                                        <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                    </Border>
+                                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                                        <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                    </Border>
+                                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                                        <tool:SearchBar FontSize="16" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
+                                    </Border>
+                                </WrapPanel>
+                            </DockPanel>
+                            <DockPanel Style="{DynamicResource Style_Grid_Wrap1}">
+                                <TextBlock DockPanel.Dock="Bottom" TextWrapping="WrapWithOverflow" Text="Quản lý theo dõi nhân viên hưởng hoa hồng tiền" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="Danh sách nhân viên hưởng hoa hồng tiền" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                            </DockPanel>
+                        </DockPanel>
+                        <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                            <DataGrid.OpacityMask>
+                                <VisualBrush>
+                                    <VisualBrush.Visual>
+                                        <Border Width="{Binding ElementName=dataGrid2,Path=ActualWidth}" Height="{Binding ElementName=dataGrid2,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </DataGrid.OpacityMask>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid x:Name="gridHoTen">
+                                                <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
+                                                    <Border.Background>
+                                                        <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                                    </Border.Background>
+                                                </Border>
+                                                <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textChuKy}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <TextBlock Text="{Binding}" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textTongTien}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="{DynamicResource textGuide}" Background="Transparent">
+                    <TabItem.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="{DynamicResource #000}"/>
+                        </Style>
+                    </TabItem.Resources>
+                    <Border CornerRadius="10" Background="{DynamicResource #FFFFFF}" Style="{StaticResource ShadowBorder1}" Margin="20" Padding="20">
+                        <StackPanel>
+                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">Hoa hồng tiền chính là khoản hoa hồng bằng tiền mặt mà nhân viên có thể nhận được dựa trên công việc mà mình đảm nhận. Tùy vào từng vị trí việc làm nhất định trong công ty mà sẽ có thêm khoản hoa hồng tương ứng, ví dụ như nhân sự hay nhân viên kinh doanh sẽ là đối tượng có thêm hoa hồng trong khoản lương của mình.</TextBlock>
+                            <TextBlock Text="1. Thêm nhân viên áp dụng" FontSize="18" FontWeight="Bold" Margin="0 10"></TextBlock>
+                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">Với hoa hồng tiền, đây sẽ thường là danh sách những người có hoa hồng và được xác định bằng con số cụ thể. Vì thế mà các công ty, doanh nghiệp có thể tải lên bằng file excel để cập nhật dữ liệu. Bên cạnh đó, việc thêm thông tin về nhân sự được nhận hoa hồng tiền có thể thao tác như sau:</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">- Bước 1: Chọn Thêm hoa hồng >> hệ thống sẽ hiển thị giao diện với các mục nội dung như: Hoa hồng cá nhân, Hoa hồng nhóm và Tổng hoa hồng.</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">Trong đó, hoa hồng cá nhân sẽ hiển thị danh sách các nhân viên được hoa hồng, hoa hồng nhóm sẽ biểu hiện danh sách các nhóm nhận được hoa hồng. Tổng hoa hồng chình là danh sách tổng hợp của hoa hồng cá nhân và hoa hồng nhóm.</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">- Bước 2: Chọn “Thêm mới” để tạo dữ liệu cho Hoa hồng cá nhân và Hoa hồng nhóm ở mục Hoa hồng tiền >> popup điền thông tin sẽ được hiển thị trên màn hình.</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">+ Chọn nhân viên/ nhóm nhân viên</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">+ Chọn thời gian áp dụng cho hoa hồng tiền được thiết lập.</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">+ Nhập số tiền tương ứng với hoa hồng nhận được.</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">+ Điền ghi chú (nếu có)</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">- Bước 3: Chọn “thêm hoa hồng” >> hệ thống sẽ cập nhật dữ liệu vào Hoa hồng cá nhân/ Hoa hồng nhóm và Tổng hoa hồng dựa theo đối tượng mà bạn nhập dữ liệu.</TextBlock>
+                            <Image Margin="0 5" Width="512" Source="/Views/DuLieuTinhLuong/Image/hoa-hong-tien.png"></Image>
+                            <TextBlock FontWeight="DemiBold" HorizontalAlignment="Center" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">Hoa hồng tiền</TextBlock>
+                            <TextBlock Text="2. Xem nhân viên áp dụng" FontSize="18" FontWeight="Bold" Margin="0 10"></TextBlock>
+                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">Danh sách nhân viên/ nhóm nhân viên được hưởng hoa hồng sẽ được thống kê theo dạng bảng với các trường thông tin bao gồm: Họ và tên/ Nhóm nhân viên, Thời gian, Số tiền và Ghi chú. Riêng với Tổng hoa hồng tiền thì sẽ được hiển thị với 3 trường thông tin: Họ tên, Chu kỳ và Tổng tiền. Với những nhân viên vừa được hưởng hoa hồng cá nhân, vừa được hưởng hoa hồng theo nhóm thì bảng Tổng hoa hồng tiền sẽ hiển thị tổng số tiền hoa hồng mà nhân viên đó nhận được trong tháng.</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">Ở bảng danh sách hoa hồng cá nhân và hoa hồng nhóm sẽ có mục Tùy chỉnh bao gồm thao tác chỉnh sửa và xóa. Điều này cho phép nhân sự hay nhà quản lý có thể thực hiện việc sửa đổi thông tin về hoa hồng hay xóa nhân viên đó ra khỏi danh sách nhận hoa hồng tiền. Để thực hiện thao tác này thì bạn sẽ làm như sau:</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">- Chọn nhân viên/ nhóm cần chỉnh sửa/ xóa thông tin về hoa hồng.</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">- Click vào biểu tượng chiếc bút/ thùng rác tại cuối mỗi dòng thông tin của nhân viên/ nhóm đó.</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">- Đối với thao tác chỉnh sửa, bạn có thể chỉnh sửa thời gian áp dụng, số tiền hoa hồng và ghi chú >> Lưu hoa hồng để hệ thống cập nhật thông tin mới.</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">Trong trường hợp xóa >> popup xác nhận thao tác xóa được hiển thị >> tiến hành xác nhận thao tác và xóa nhân viên/ nhóm đó khỏi danh sách hoa hồng.</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">Để xem ghi chú hoa hồng của nhân viên hay nhóm thì bạn chỉ cần nhấp chuột vào “Xem thêm” ở cột ghi chú của hàng thông tin về nhân viên/ nhóm cụ thể >> hệ thống sẽ hiển thị popup chi tiết ghi chú về hoa hồng của nhân viên/ nhóm nếu được cập nhật khi thêm thông tin.</TextBlock>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">Trên mỗi bảng danh sách hoa hồng cá nhân, Hoa hồng nhóm hay Tổng hoa hồng đều có bộ lọc thanh search tương ứng. Chỉ cần lựa chọn tháng, năm, tên nhân viên hay nhóm là hệ thống sẽ trả lại kết quả ngay sau đó. Đặc biệt, bạn không cần phải nhập hết các trường thông tin trên thanh search mà chỉ cần lựa chọn ở ô thông tin tùy theo nhu cầu tìm kiếm của mình. Nếu không có sự lựa chọn ở trường thông tin nào thì hệ thống sẽ hiển thị mặc định ở thời điểm hiện tại mà bạn truy cập và sử dụng phần mềm Tính lương 365.</TextBlock>
+                            <TextBlock Margin="0 5 0 10" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow">Để quay trở lại giao diện cài đặt hoa hồng ban đầu thì bạn sẽ click chuột vào “Quay lại” >> hệ thống sẽ trở về giao diện là 5 loại hoa hồng được thiết lập mặc định.</TextBlock>
+                        </StackPanel>
+                    </Border>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Grid>
+
+</Page>
