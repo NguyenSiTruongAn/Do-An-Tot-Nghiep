@@ -206,7 +206,14 @@
                                         </Border>
                                     </WrapPanel>
                                 </Border>
-                                <DataGrid Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                                <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                                    <DataGrid.OpacityMask>
+                                        <VisualBrush>
+                                            <VisualBrush.Visual>
+                                                <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}" Height="{Binding ElementName=dataGrid,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="{DynamicResource textCaLamViec}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="{DynamicResource textMucPhatDangApDung}"></DataGridTextColumn>
@@ -291,7 +298,14 @@
                                     </WrapPanel>
                                 </Border>
 
-                                <DataGrid Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                                    <DataGrid.OpacityMask>
+                                        <VisualBrush>
+                                            <VisualBrush.Visual>
+                                                <Border Width="{Binding ElementName=dataGrid1,Path=ActualWidth}" Height="{Binding ElementName=dataGrid1,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="{DynamicResource textCaLamViec}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="{DynamicResource textMucPhatDangApDung}"></DataGridTextColumn>
@@ -333,7 +347,14 @@
                                         </WrapPanel>
                                     </Border>
                                 </WrapPanel>
-                                <DataGrid Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
+                                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
+                                    <DataGrid.OpacityMask>
+                                        <VisualBrush>
+                                            <VisualBrush.Visual>
+                                                <Border Width="{Binding ElementName=dataGrid2,Path=ActualWidth}" Height="{Binding ElementName=dataGrid2,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="{DynamicResource textNgayXinNghi}"></DataGridTextColumn>

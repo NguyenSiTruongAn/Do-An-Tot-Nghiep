@@ -117,6 +117,15 @@
     <Compile Include="Views\DuLieuTinhLuong\PhucLoi.xaml.cs">
       <DependentUpon>PhucLoi.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupPhucLoi.xaml.cs">
+      <DependentUpon>PopupPhucLoi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiPhuCap.xaml.cs">
+      <DependentUpon>PopupThemMoiPhuCap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiPhuCapTheoCa.xaml.cs">
+      <DependentUpon>PopupThemMoiPhuCapTheoCa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThuongPhat.xaml.cs">
       <DependentUpon>PopupThuongPhat.xaml</DependentUpon>
     </Compile>
@@ -214,6 +223,18 @@
     <Page Include="Resouce\checkbox\CheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupPhucLoi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiPhuCap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiPhuCapTheoCa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupThuongPhat.xaml">
       <SubType>Designer</SubType>

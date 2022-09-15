@@ -16,10 +16,9 @@
             </Border.Effect>
         </Border>
         <StackPanel>
-
             <Border Background="{DynamicResource #4C5BD4}" Height="47" CornerRadius="10 10 0 0">
                 <Grid>
-                    <TextBlock Text="{DynamicResource textTMKNL}" Foreground="{DynamicResource #FFFFFF}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTMKNL}" Foreground="{DynamicResource #FFFFFF}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <Path Cursor="Hand" Data="{DynamicResource iconClose}" VerticalAlignment="Center" Fill="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 0 10 0" MouseLeftButtonDown="Path_MouseLeftButtonDown"/>
                 </Grid>
             </Border>

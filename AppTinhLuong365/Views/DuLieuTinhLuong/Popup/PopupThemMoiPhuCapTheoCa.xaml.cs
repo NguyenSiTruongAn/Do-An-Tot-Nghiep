@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.CaiDat.Popup
+namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupNghiLe.xaml
+    /// Interaction logic for PopupThemMoiPhuCapTheoCa.xaml
     /// </summary>
-    public partial class PopupNghiLe : Page
+    public partial class PopupThemMoiPhuCapTheoCa : Page
     {
-        public PopupNghiLe(MainWindow main)
+        public PopupThemMoiPhuCapTheoCa(MainWindow main)
         {
             this.DataContext = this;
             InitializeComponent();

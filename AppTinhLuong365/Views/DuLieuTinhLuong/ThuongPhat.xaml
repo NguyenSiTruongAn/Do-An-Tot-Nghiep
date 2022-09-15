@@ -6,7 +6,6 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong"
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
-      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       SizeChanged="Page_SizeChanged"
       mc:Ignorable="d" 
       Background="{DynamicResource #F7F8FC}"

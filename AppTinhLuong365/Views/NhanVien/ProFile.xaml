@@ -93,7 +93,14 @@
                     <Border VerticalAlignment="Top" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="0 0 0 1">
                         <TextBlock Text="{DynamicResource textBasicSalary}" Padding="0 0 0 15" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
                     </Border>
-                    <DataGrid Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
+                    <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}" Height="{Binding ElementName=dataGrid,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </DataGrid.OpacityMask>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="{DynamicResource textBasicSalary}"></DataGridTextColumn>
                             <DataGridTextColumn Header="{DynamicResource textPremiumSalary}"></DataGridTextColumn>
@@ -106,7 +113,14 @@
                     <Border VerticalAlignment="Top" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #DDDDDD}">
                         <TextBlock Text="{DynamicResource textEmploymentContract}" Padding="0 0 0 15" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
                     </Border>
-                    <DataGrid Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
+                    <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Border Width="{Binding ElementName=dataGrid1,Path=ActualWidth}" Height="{Binding ElementName=dataGrid1,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </DataGrid.OpacityMask>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="{DynamicResource textTypeOfContract}"></DataGridTextColumn>
                             <DataGridTextColumn Header="{DynamicResource textEffectiveStartDate}"></DataGridTextColumn>
