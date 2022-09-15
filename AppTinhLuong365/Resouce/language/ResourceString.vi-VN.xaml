@@ -265,6 +265,4 @@
     <system:String x:Key="textNhomNhanVien">Nhóm nhân viên</system:String>
     <system:String x:Key="textChuKy">Chu kỳ</system:String>
     <system:String x:Key="textTongTien">Tổng tiền</system:String>
-    <system:String x:Key="textNTPL">Nhập tên phúc lợi</system:String>
-    <system:String x:Key="textNhapTienPhucLoi">Nhập tiền phúc lợi</system:String>
 </ResourceDictionary>
