@@ -15,12 +15,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupDSNhanVienADThue.xaml
+    /// Interaction logic for DSNhanVienADVaoCKTK.xaml
     /// </summary>
-    public partial class PopupDSNhanVienADThue : Page, INotifyPropertyChanged
+    public partial class DSNhanVienADVaoCKTK : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
         public int IsSmallSize
@@ -34,21 +34,34 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public PopupDSNhanVienADThue(MainWindow main)
+        public DSNhanVienADVaoCKTK(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
         }
+
         public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
+
         private void BtnThemNhanVien_Click(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.TinhLuong.PopupThemNhanVienVaoThue(Main);
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemNhanVienCKTK(Main);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 616;
-            pop.Height = 462;
+            pop.Height = 495;
         }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
+        }
+
+        private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+
+        }
+
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (this.ActualWidth > 980)
@@ -65,16 +78,6 @@ namespace AppTinhLuong365.Views.TinhLuong
             }
             if (this.ActualWidth < 925)
                 DockPanel.SetDock(btnThemNhanVien, Dock.Bottom);
-        }
-
-        private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-
-        }
-
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
         }
     }
 }

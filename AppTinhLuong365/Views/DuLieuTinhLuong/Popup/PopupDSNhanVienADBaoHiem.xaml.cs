@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -16,12 +15,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.DuLieuTinhLuong
+namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for CacKhoanTienKhac.xaml
+    /// Interaction logic for PopupDSNhanVienADBaoHiem.xaml
     /// </summary>
-    public partial class CacKhoanTienKhac : Page, INotifyPropertyChanged
+    public partial class PopupDSNhanVienADBaoHiem : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
         public int IsSmallSize
@@ -35,26 +34,33 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public CacKhoanTienKhac(MainWindow main)
+        public PopupDSNhanVienADBaoHiem(MainWindow main)
         {
-            ItemList = new ObservableCollection<string>();
-            for (var i = 1; i <= 12; i++)
-            {
-                ItemList.Add($"Tháng {i}");
-            }
-            YearList = new ObservableCollection<string>();
-            for (var i = 2022; i <= 2025; i++)
-            {
-                YearList.Add($"Năm {i}");
-            }
             InitializeComponent();
             this.DataContext = this;
             Main = main;
         }
-        public ObservableCollection<string> ItemList { get; set; }
-        public ObservableCollection<string> YearList { get; set; }
 
         public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
+        }
+
+        private void BtnThemNhanVien_Click(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemNhanVienVaoBaoHiem(Main);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+            pop.Width = 616;
+            pop.Height = 495;
+        }
+
+        private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+
+        }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -70,36 +76,17 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 IsSmallSize = 2;
             }
-            if(this.ActualWidth > 1380)
-            {
-                DockPanel.SetDock(dockCacKhoanTienKhac, Dock.Right);
-            }
-            else
-                DockPanel.SetDock(dockCacKhoanTienKhac, Dock.Bottom);
-
+            if (this.ActualWidth < 925)
+                DockPanel.SetDock(btnThemNhanVien, Dock.Bottom);
         }
 
-        private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        private void ChinhSuabaoHiemNhanVien_click(object sender, MouseButtonEventArgs e)
         {
-
-        }
-
-        private void ThemKhoanTienKhac_Click(object sender, MouseButtonEventArgs e)
-        {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemKhoanTienKhac(Main);
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupChinhSuaBHNV(Main);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 495;
-            pop.Height = 433;
-        }
-
-        private void TuyChinhCKTK_Click(object sender, MouseButtonEventArgs e)
-        {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupTuyChonCacKhoanTienKhac(Main);
-            var z = Mouse.GetPosition(Main.PopupSelection);
-            pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
-            Main.PopupSelection.NavigationService.Navigate(pop);
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            pop.Height = 394;
         }
     }
 }
