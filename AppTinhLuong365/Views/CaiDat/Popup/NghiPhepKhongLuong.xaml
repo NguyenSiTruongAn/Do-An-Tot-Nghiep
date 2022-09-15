@@ -1,0 +1,33 @@
+﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.Popup.NghiPhepKhongLuong"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat.Popup"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NghiPhepKhongLuong">
+
+    <Grid Width="500" Height="305">
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+        <StackPanel>
+            <Border Height="47" Background="{DynamicResource #4C5BD4}" CornerRadius="10 10 0 0">
+                <Path MouseLeftButtonDown="Path_MouseLeftButtonDown" Cursor="Hand" Data="{DynamicResource iconClose}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0" Fill="{DynamicResource #FFFFFF}"/>
+            </Border>
+            <Border CornerRadius="0 0 10 10" Background="{DynamicResource #FFFFFF}">
+                <StackPanel Margin="22.5 30">
+                    <TextBlock Text="Miêu tả" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                    <Border Margin="0 20 0 20" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="0 1 0 0"/>
+                    <TextBlock FontSize="15" Foreground="#555555" TextWrapping="Wrap" Text="Là nghỉ phép có xin phép theo đúng quy định của doanh nghiệp, khi người lao động nghỉ sẽ không được tính lương đối với ngày nghỉ đó"/>
+                    <Border CornerRadius="5" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="42" Margin="0 20 0 0" Background="{DynamicResource #4C5BD4}">
+                        <TextBlock Text="Đóng" FontSize="16" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
