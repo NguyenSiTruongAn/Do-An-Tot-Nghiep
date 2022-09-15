@@ -82,7 +82,7 @@
                                             </StackPanel>
                                         </Border>
                                         <TextBlock Text="or" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
+                                        <Border Cursor="Hand" MouseLeftButtonDown="btn_ThemHoaHong_Click" CornerRadius="5" HorizontalAlignment="Stretch" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
                                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Thêm hoa hồng" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                                         </Border>
                                     </StackPanel>
@@ -98,35 +98,33 @@
                                                 <TextBlock Text="Hoa hồng doanh thu" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
                                                 <Line X1="0" Y1="20" X2="330" Y2="20" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
                                             </StackPanel>
-                                    <Border>
-                                        <TextBlock Margin="20 10 0 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #747474}" TextWrapping="WrapWithOverflow">Nhập hoặc tải trực tiếp từ excel hoa hồng cho nhân viên</TextBlock>
-                                    </Border>
-                                    <Border Background="{DynamicResource #EFF7FE}" HorizontalAlignment="Stretch" Height="80" Style="{DynamicResource DashedBoder}" BorderThickness="1.5">
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <Path VerticalAlignment="Center" HorizontalAlignment="Center" Data="{DynamicResource iconDamMay}" Fill="{DynamicResource #4C5BD4}"></Path>
-                                            <TextBlock Margin="10 0 0 0" Text="File excel" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                                        </StackPanel>
-                                    </Border>
-                                    <TextBlock Text="or" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                                    <Border Cursor="Hand" MouseLeftButtonDown="btn_ThemHoaHong_Click" CornerRadius="5" HorizontalAlignment="Stretch" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
-                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Thêm hoa hồng" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
-                                    </Border>
-                                    
-                                </StackPanel>
-                            </Border>
-                        </StackPanel>
-                        <StackPanel Width="330" HorizontalAlignment="Center" Orientation="Vertical" Margin="0 30 20 0" VerticalAlignment="Stretch">
-                            <Border Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10" VerticalAlignment="Stretch">
-                                <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
-                                    <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
-                                        <StackPanel VerticalAlignment="Center">
-                                            <TextBlock Text="Hoa hồng doanh thu" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
-                                            <Line X1="0" Y1="20" X2="330" Y2="20" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
-                                        </StackPanel>
                                         </Border>
                                         <StackPanel Orientation="Horizontal">
                                             <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
                                             <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                        </StackPanel>
+                                        <Border>
+                                            <TextBlock Height="100" Margin="20 10 0 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #747474}" TextWrapping="WrapWithOverflow">Hoa hồng doanh thu được tính là một tỷ lệ phần trăm nhất định trong tổng doanh thu do nhân viên bán hàng tạo ra (Xem thêm)</TextBlock>
+                                        </Border>
+                                        <DockPanel Margin="0 20 0 20" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+                                            <Border Width="31" CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
+                                                <Path HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #FFFFFF}"></Path>
+                                            </Border>
+                                            <Border CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="20 20 0 0">
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Nhập" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                                            </Border>
+                                        </DockPanel>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                        <StackPanel Width="330" HorizontalAlignment="Right" Orientation="Vertical" Margin="0 30 20 0" VerticalAlignment="Stretch">
+                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
+                                    <Border Style="{StaticResource ShadowBorder1}" BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
+                                        <StackPanel VerticalAlignment="Center">
+                                            <TextBlock Text="Hoa hồng lợi nhuận" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                            <Line X1="0" Y1="20" X2="330" Y2="20" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
                                         </StackPanel>
                                         <Border>
                                             <TextBlock Height="100" Margin="20 10 0 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #747474}" TextWrapping="WrapWithOverflow">Hoa hồng doanh thu được tính là một tỷ lệ phần trăm nhất định trong tổng doanh thu do nhân viên bán hàng tạo ra (Xem thêm)</TextBlock>

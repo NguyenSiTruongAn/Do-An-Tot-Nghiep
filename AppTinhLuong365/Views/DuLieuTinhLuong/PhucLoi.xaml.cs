@@ -40,7 +40,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             this.DataContext = this;
             Main = main;
         }
-        public List<string> Test { get; set; } = new List<string>(){"aaaaa","bb","cc" };
+        public List<string> Test { get; set; } = new List<string>() { "aaaaa", "bb", "cc" };
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (this.ActualWidth > 980)
@@ -56,9 +56,9 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 IsSmallSize = 2;
             }
 
-            if (this.ActualWidth>615)
+            if (this.ActualWidth > 615)
             {
-                DockPanel.SetDock(borderPhucLoi,Dock.Right);
+                DockPanel.SetDock(borderPhucLoi, Dock.Right);
             }
             else
             {
@@ -101,3 +101,4 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         }
     }
 }
+
