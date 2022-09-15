@@ -67,7 +67,7 @@
                                         </StackPanel>
                                     </Border>
                                     <TextBlock Text="or" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                                    <Border CornerRadius="5" HorizontalAlignment="Stretch" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
+                                    <Border Cursor="Hand" MouseLeftButtonDown="btn_ThemHoaHong_Click" CornerRadius="5" HorizontalAlignment="Stretch" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
                                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Thêm hoa hồng" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                                     </Border>
                                 </StackPanel>
@@ -253,7 +253,14 @@
                                         <TextBlock Text="{DynamicResource textQLTheoDoiNhanVienDuocGanHoaHong}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"></TextBlock>
                                     </StackPanel>
                                 </DockPanel>
-                                <DataGrid Margin="0 30 0 0" Style="{StaticResource DataGrid1}">
+                                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding Test}">
+                                    <DataGrid.OpacityMask>
+                                        <VisualBrush>
+                                            <VisualBrush.Visual>
+                                                <Border Width="{Binding ElementName=dataGrid2,Path=ActualWidth}" Height="{Binding ElementName=dataGrid2,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
                                         <DataGridTextColumn Header="{DynamicResource textHoaHongTien}"></DataGridTextColumn>
