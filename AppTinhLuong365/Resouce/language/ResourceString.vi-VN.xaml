@@ -258,4 +258,11 @@
     <system:String x:Key="textNTPC">Nhập tên phụ cấp</system:String>
     <system:String x:Key="textNTienPC">Nhập tiền phụ cấp</system:String>
     <system:String x:Key="textTMPCTC">Thêm mới phụ cấp theo ca</system:String>
+    <system:String x:Key="textBoPhan">Bộ phận</system:String>
+    <system:String x:Key="textSoTien">Số tiền</system:String>
+    <system:String x:Key="textHoaHongCaNhan">Hoa hồng cá nhân</system:String>
+    <system:String x:Key="textHoaHongNhom">Hoa hồng nhóm</system:String>
+    <system:String x:Key="textNhomNhanVien">Nhóm nhân viên</system:String>
+    <system:String x:Key="textChuKy">Chu kỳ</system:String>
+    <system:String x:Key="textTongTien">Tổng tiền</system:String>
 </ResourceDictionary>

@@ -51,4 +51,56 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="TabItem" x:Key="TabItem2">
+        <Setter Property="Foreground" Value="{DynamicResource #666c7c}"/>
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                        <TextBlock Name="head" Text="{Binding}" Margin="5 15 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=TabItem,Mode=FindAncestor},Path=Tag,StringFormat={}({0})}" Margin="5 0 0 0" VerticalAlignment="Bottom" FontSize="14"  Foreground="{Binding RelativeSource={RelativeSource AncestorType=TabItem,Mode=FindAncestor},Path=Foreground}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabItem,Mode=FindAncestor},Path=Tag,StringFormat={}({0})}" Value="">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabItem,Mode=FindAncestor},Path=Tag,StringFormat={}({0})}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Grid Name="Panel" Cursor="Hand">
+                        <Border Name="abc" BorderBrush="{DynamicResource #4C5BD4}" BorderThickness="0,0,0,3">
+                            <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="10 3"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="abc" Property="BorderThickness" Value="0 0 0 3" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="abc" Property="BorderThickness" Value="0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource #4C5BD4}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>

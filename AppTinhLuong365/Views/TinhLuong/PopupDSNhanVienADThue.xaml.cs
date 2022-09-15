@@ -63,16 +63,8 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 IsSmallSize = 2;
             }
-            if (Main.ActualWidth > 1025)
-            {
-                DockPanel.SetDock(btnThemNhanVien, Dock.Right);
-                this.Width = 1024;
-            }
-            else
-            {
+            if (this.ActualWidth < 925)
                 DockPanel.SetDock(btnThemNhanVien, Dock.Bottom);
-                this.Width = 725;
-            }
         }
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

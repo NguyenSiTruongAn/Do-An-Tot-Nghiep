@@ -15,13 +15,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppTinhLuong365.Core;
 
 namespace AppTinhLuong365.Views.DuLieuTinhLuong
 {
     /// <summary>
-    /// Interaction logic for CacKhoanTienKhac.xaml
+    /// Interaction logic for HoaHongTien.xaml
     /// </summary>
-    public partial class CacKhoanTienKhac : Page, INotifyPropertyChanged
+    public partial class HoaHongTien : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
         public int IsSmallSize
@@ -35,8 +36,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public CacKhoanTienKhac(MainWindow main)
+        public HoaHongTien(MainWindow main)
         {
+            InitializeComponent();
+            this.DataContext = this;
+            Main = main;
+            dataGrid1.AutoReponsiveColumn(1);
             ItemList = new ObservableCollection<string>();
             for (var i = 1; i <= 12; i++)
             {
@@ -47,8 +52,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 YearList.Add($"Năm {i}");
             }
-            InitializeComponent();
-            this.DataContext = this;
+
             Main = main;
         }
         public ObservableCollection<string> ItemList { get; set; }
@@ -70,35 +74,43 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 IsSmallSize = 2;
             }
-            if(this.ActualWidth > 1380)
+            if (this.ActualWidth > 1630)
             {
-                DockPanel.SetDock(dockCacKhoanTienKhac, Dock.Right);
+                DockPanel.SetDock(dockHoaHongCaNhan, Dock.Right);
+                DockPanel.SetDock(dockHoaHongNhom, Dock.Right);
+
             }
             else
-                DockPanel.SetDock(dockCacKhoanTienKhac, Dock.Bottom);
-
+            {
+                DockPanel.SetDock(dockHoaHongCaNhan, Dock.Bottom);
+                DockPanel.SetDock(dockHoaHongNhom, Dock.Bottom);
+            }
         }
 
-        private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        private void btnThemMoi_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
-        }
-
-        private void ThemKhoanTienKhac_Click(object sender, MouseButtonEventArgs e)
-        {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemKhoanTienKhac(Main);
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemMoiHoaHongTien(Main);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-            pop.Width = 495;
-            pop.Height = 433;
+            if (pop.tabitem1.IsSelected == true)
+                pop.Height = 571;
+            else
+                pop.Height = 728;
         }
 
-        private void TuyChinhCKTK_Click(object sender, MouseButtonEventArgs e)
+        private void btnQuayLai_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupTuyChonCacKhoanTienKhac(Main);
-            var z = Mouse.GetPosition(Main.PopupSelection);
-            pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
-            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.HoaHong(Main));
+        }
+
+        private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+
+        }
+
+        private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaHoaHongTien(Main));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }

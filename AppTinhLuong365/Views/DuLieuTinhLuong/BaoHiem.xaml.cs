@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppTinhLuong365.Core;
 
 namespace AppTinhLuong365.Views.DuLieuTinhLuong
 {
@@ -50,9 +51,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            dataGrid1.AutoReponsiveColumn(0);
         }
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
+
+        public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -68,6 +72,38 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 IsSmallSize = 2;
             }
+        }
+
+        private void NhapTienBaoHiem_Click(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemNhanVienVaoBaoHiem(Main);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+            pop.Width = 616;
+            pop.Height = 495;
+        }
+
+        private void BtnTuyChonBaoHiem_Click(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupTuyChonBaoHiem(Main);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThietLapBaoHiem(Main);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+            pop.Width = 495;
+            pop.Height = 482;
+        }
+
+        private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+
         }
     }
 }

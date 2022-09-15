@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -16,12 +15,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.DuLieuTinhLuong
+namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for HoaHong.xaml
+    /// Interaction logic for DSNhanVienADVaoCKTK.xaml
     /// </summary>
-    public partial class HoaHong : Page, INotifyPropertyChanged
+    public partial class DSNhanVienADVaoCKTK : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
         public int IsSmallSize
@@ -35,26 +34,33 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public HoaHong(MainWindow main)
+        public DSNhanVienADVaoCKTK(MainWindow main)
         {
-            ItemList = new ObservableCollection<string>();
-            for (var i = 1; i <= 12; i++)
-            {
-                ItemList.Add($"Tháng {i}");
-            }
-            YearList = new ObservableCollection<string>();
-            for (var i = 2022; i <= 2025; i++)
-            {
-                YearList.Add($"Năm {i}");
-            }
             InitializeComponent();
             this.DataContext = this;
             Main = main;
         }
-        public ObservableCollection<string> ItemList { get; set; }
-        public ObservableCollection<string> YearList { get; set; }
 
         public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
+
+        private void BtnThemNhanVien_Click(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemNhanVienCKTK(Main);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+            pop.Width = 616;
+            pop.Height = 495;
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
+        }
+
+        private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+
+        }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -70,19 +76,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 IsSmallSize = 2;
             }
-            if (this.ActualWidth > 1650)
-            {
-                DockPanel.SetDock(dockHoaHong, Dock.Right);
-            }
-            else
-                DockPanel.SetDock(dockHoaHong, Dock.Bottom);
-        }
-
-        private void btn_ThemHoaHong_Click(object sender, MouseButtonEventArgs e)
-        {
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.HoaHongTien(Main));
-            Main.title.Text = "Hoa hồng/ Hoa hồng tiền";
-            Main.SideBarIndex = -1;
+            if (this.ActualWidth < 925)
+                DockPanel.SetDock(btnThemNhanVien, Dock.Bottom);
         }
     }
 }
