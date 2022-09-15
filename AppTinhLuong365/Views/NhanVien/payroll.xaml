@@ -42,7 +42,14 @@
                     </Border>
                 </StackPanel>
                 <StackPanel Margin="20 30 20 0">
-                    <DataGrid Style="{StaticResource DataGrid1}">
+                    <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}" Height="{Binding ElementName=dataGrid,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </DataGrid.OpacityMask>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="{DynamicResource textNumericalOrder}"></DataGridTextColumn>
                             <DataGridTextColumn Header="{DynamicResource textSalaries}"></DataGridTextColumn>

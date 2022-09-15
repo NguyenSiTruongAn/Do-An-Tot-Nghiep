@@ -132,7 +132,9 @@
     <system:String x:Key="textDanhSachPhuLoi">Danh sách phúc lợi</system:String>
     <system:String x:Key="textPhucLoiDuocTinhThepThang">Phúc lợi được tính theo tháng</system:String>
     <system:String x:Key="textTenPhucLoi">Tên phúc lợi</system:String>
-    <system:String x:Key="textTienPhuLoi">Tiền phúc lợi</system:String>
+    <system:String x:Key="textNTPL">Nhập tên phúc lợi</system:String>
+    <system:String x:Key="textTienPhucLoi">Tiền phúc lợi</system:String>
+    <system:String x:Key="textNhapTienPhucLoi">Nhập tiền phúc lợi</system:String>
     <system:String x:Key="textLoaiThuNhap">Loại thu nhập</system:String>
     <system:String x:Key="textApDungTuThang">Áp dụng từ tháng</system:String>
     <system:String x:Key="textDenThang">Đến tháng</system:String>
