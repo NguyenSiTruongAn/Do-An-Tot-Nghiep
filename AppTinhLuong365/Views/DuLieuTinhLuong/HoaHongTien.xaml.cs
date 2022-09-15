@@ -113,5 +113,14 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaHoaHongTien(Main));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
+
+        private void btnXoaHoaHongTien_Click(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThongBaoXoaHHT(Main);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+            pop.Width = 616;
+            pop.Height = 203;
+        }
     }
 }
