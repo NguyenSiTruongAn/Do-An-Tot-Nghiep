@@ -1,4 +1,4 @@
-﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.Popup.PopupNhomLamViec"
+﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.Popup.PopupChinhSuaNhomLamViec"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat.Popup"
       mc:Ignorable="d" 
       d:DesignHeight="391" d:DesignWidth="495"
-      Title="PopupNhomLamViec">
+      Title="PopupChinhSuaNhomLamViec">
 
     <Grid Width="495" Height="391">
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
@@ -17,7 +17,7 @@
         <StackPanel>
             <Border Height="47" Background="{DynamicResource #4C5BD4}" CornerRadius="10 10 0 0">
                 <Grid>
-                    <TextBlock Text="{DynamicResource textTMNLV}" FontSize="16" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="Chỉnh sửa nhóm làm việc" FontSize="16" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
                     <Path Cursor="Hand" MouseLeftButtonDown="Path_MouseLeftButtonDown" Data="{DynamicResource iconClose}" Fill="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
                 </Grid>
             </Border>

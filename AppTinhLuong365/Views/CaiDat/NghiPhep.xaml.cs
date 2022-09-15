@@ -70,5 +70,17 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             borderes1.Visibility = borderes1.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
         }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupNghiPhepCoLuong(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.NghiPhepKhongLuong(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
     }
 }
