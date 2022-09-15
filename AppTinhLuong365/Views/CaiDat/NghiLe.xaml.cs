@@ -33,5 +33,14 @@ namespace AppTinhLuong365.Views.CaiDat
             Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupNghiLe(Main));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
+
+        private void TuyChonNghiLe_Click(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.CaiDat.Popup.PopupTuyChinhNgayNghiLe(Main);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
     }
 }

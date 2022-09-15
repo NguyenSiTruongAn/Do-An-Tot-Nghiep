@@ -81,6 +81,9 @@
     <Compile Include="Views\CaiDat\NhomLamViec.xaml.cs">
       <DependentUpon>NhomLamViec.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupChinhSuaNgayNghiLe.xaml.cs">
+      <DependentUpon>PopupChinhSuaNgayNghiLe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CaiDat\Popup\NghiPhepKhongLuong.xaml.cs">
       <DependentUpon>NghiPhepKhongLuong.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,9 @@
     <Compile Include="Views\CaiDat\Popup\PopupNghiLe.xaml.cs">
       <DependentUpon>PopupNghiLe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupNhanVienADNghiLe.xaml.cs">
+      <DependentUpon>PopupNhanVienADNghiLe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CaiDat\Popup\PopupNghiPhepCoLuong.xaml.cs">
       <DependentUpon>PopupNghiPhepCoLuong.xaml</DependentUpon>
     </Compile>
@@ -104,6 +110,12 @@
     </Compile>
     <Compile Include="Views\CaiDat\Popup\PopupThemLichLamViec.xaml.cs">
       <DependentUpon>PopupThemLichLamViec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupThemNVADNghiLe.xaml.cs">
+      <DependentUpon>PopupThemNVADNghiLe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupThongBaoXoaNNL.xaml.cs">
+      <DependentUpon>PopupThongBaoXoaNNL.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CaiDat\Popup\PopupThemNhanVien.xaml.cs">
       <DependentUpon>PopupThemNhanVien.xaml</DependentUpon>
@@ -183,8 +195,14 @@
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaCKTK.xaml.cs">
       <DependentUpon>PopupThongBaoXoaCKTK.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaHHT.xaml.cs">
+      <DependentUpon>PopupThongBaoXoaHHT.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThuongPhat.xaml.cs">
       <DependentUpon>PopupThuongPhat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupTuyChinhNgayNghiLe.xaml.cs">
+      <DependentUpon>PopupTuyChinhNgayNghiLe.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupTuyChonBaoHiem.xaml.cs">
       <DependentUpon>PopupTuyChonBaoHiem.xaml</DependentUpon>
@@ -290,6 +308,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\CaiDat\Popup\PopupChinhSuaNgayNghiLe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupNhanVienADNghiLe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupThemNVADNghiLe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupThongBaoXoaNNL.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CaiDat\Popup\NghiPhepKhongLuong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -378,7 +412,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaHHT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupThuongPhat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupTuyChinhNgayNghiLe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

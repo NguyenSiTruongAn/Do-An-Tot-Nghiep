@@ -140,7 +140,7 @@
                                                     <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
                                                         <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>
                                                     </Border>
-                                                    <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
+                                                    <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="btnXoaHoaHongTien_Click">
                                                         <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
                                                     </Border>
                                                 </DockPanel>
