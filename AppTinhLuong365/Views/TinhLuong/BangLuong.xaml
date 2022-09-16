@@ -7,8 +7,8 @@
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       mc:Ignorable="d" 
-      d:DesignHeight="801" d:DesignWidth="1042" Background="{DynamicResource #F7F8FC}"
-      Title="BangLuong">
+      Background="{DynamicResource #F7F8FC}"
+      Title="BangLuong" SizeChanged="Page_SizeChanged">
 
     <Page.Resources>
         <math:MathConvert x:Key="math"></math:MathConvert>

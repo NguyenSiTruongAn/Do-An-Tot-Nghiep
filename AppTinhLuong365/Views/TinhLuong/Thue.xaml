@@ -7,7 +7,7 @@
       xmlns:math= "clr-namespace:AppTinhLuong365.Core"
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       mc:Ignorable="d" 
-      Title="Thue" SizeChanged="Page_SizeChanged" d:DesignWidth="1096.6">
+      Title="Thue" SizeChanged="Page_SizeChanged">
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
             <Border Cursor="Hand" MouseLeftButtonDown="btnTaoMoi_MouseLeftButtonDown" x:Name="btnTaoMoi" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
