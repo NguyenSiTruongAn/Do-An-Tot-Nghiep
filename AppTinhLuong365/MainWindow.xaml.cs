@@ -174,7 +174,7 @@ namespace AppTinhLuong365
                         title.Text = "Quản lý tài khoản nhân sự";
                         break;
                     case 1:
-                        HomeSelectionPage.NavigationService.Navigate(new Views.PageNhapLuongCoBanVaCheDo(this));
+                        HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(this));
                         this.Title = App.Current.Resources["textNhapLuongCoBanVaCheDo"] as string;
                         title.Text = "Danh sách nhân viên";
                         break;

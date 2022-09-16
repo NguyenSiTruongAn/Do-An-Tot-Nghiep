@@ -249,6 +249,12 @@
     <Compile Include="Views\TinhLuong\BangLuong.xaml.cs">
       <DependentUpon>BangLuong.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TinhLuong\ChiTietLuong.xaml.cs">
+      <DependentUpon>ChiTietLuong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\HoSoNhanVien.xaml.cs">
+      <DependentUpon>HoSoNhanVien.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TinhLuong\PopupChinhSuaThue.xaml.cs">
       <DependentUpon>PopupChinhSuaThue.xaml</DependentUpon>
     </Compile>
@@ -258,8 +264,20 @@
     <Compile Include="Views\TinhLuong\PopupTGADThue.xaml.cs">
       <DependentUpon>PopupTGADThue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TinhLuong\PopupThemDongGop.xaml.cs">
+      <DependentUpon>PopupThemDongGop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\PopupThemHopDong.xaml.cs">
+      <DependentUpon>PopupThemHopDong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\PopupThemLuong.xaml.cs">
+      <DependentUpon>PopupThemLuong.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TinhLuong\PopupThemNhanVienVaoThue.xaml.cs">
       <DependentUpon>PopupThemNhanVienVaoThue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\PopupThemPhuThuoc.xaml.cs">
+      <DependentUpon>PopupThemPhuThuoc.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TinhLuong\PopupThietLapThue.xaml.cs">
       <DependentUpon>PopupThietLapThue.xaml</DependentUpon>
@@ -269,6 +287,9 @@
     </Compile>
     <Compile Include="Views\TinhLuong\PopupThue.xaml.cs">
       <DependentUpon>PopupThue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\PopupTuyChonBangLuong.xaml.cs">
+      <DependentUpon>PopupTuyChonBangLuong.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TinhLuong\PopupTuyChonCSThue.xaml.cs">
       <DependentUpon>PopupTuyChonCSThue.xaml</DependentUpon>
@@ -592,6 +613,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TinhLuong\ChiTietLuong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\HoSoNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TinhLuong\PopupChinhSuaThue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -604,7 +633,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TinhLuong\PopupThemDongGop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\PopupThemHopDong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\PopupThemLuong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TinhLuong\PopupThemNhanVienVaoThue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\PopupThemPhuThuoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -617,6 +662,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TinhLuong\PopupThue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\PopupTuyChonBangLuong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

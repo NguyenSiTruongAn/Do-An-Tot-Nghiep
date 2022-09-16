@@ -1,0 +1,96 @@
+﻿<Page x:Class="AppTinhLuong365.Views.TinhLuong.PopupThemDongGop"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong"
+      mc:Ignorable="d" 
+      d:DesignHeight="477" d:DesignWidth="615"
+      Title="PopupThemDongGop">
+
+    <Grid Width="615" Height="477">
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+        <StackPanel>
+            <Border Background="{DynamicResource #4C5BD4}" Height="47" CornerRadius="10 10 0 0">
+                <Grid>
+                    <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTKDG}" Foreground="{DynamicResource #FFFFFF}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Path MouseLeftButtonDown="Path_MouseLeftButtonDown" Cursor="Hand" Data="{DynamicResource iconClose}" VerticalAlignment="Center" Fill="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                </Grid>
+            </Border>
+            <Border CornerRadius="0 0 10 10" Background="{DynamicResource #FFFFFF}">
+                <StackPanel Margin="27 30 28 0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTenKDG}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                        <Path Margin="2 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid Height="38" Margin="10 0 10 0">
+                            <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                            <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="{DynamicResource textTenKDG}" IsHitTestVisible="False">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=tbInput,Path=Text}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                    <StackPanel Margin="0 14 0 0" Orientation="Horizontal">
+                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textSTDG}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                        <Path Margin="2 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid Height="38" Margin="10 0 10 0">
+                            <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                            <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="{DynamicResource textSTDGVND}" IsHitTestVisible="False">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=tbInput1,Path=Text}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                    <StackPanel Orientation="Horizontal" Margin="0 14 0 0">
+                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTBD}" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                        <Path Margin="2 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid>
+                            <TextBlock Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Path Data="{DynamicResource iconLich}" VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                        </Grid>
+                    </Border>
+                    <StackPanel Orientation="Horizontal" Margin="0 14 0 0">
+                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTKT}" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                        <Path Margin="2 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid>
+                            <TextBlock Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Path Data="{DynamicResource iconLich}" VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                        </Grid>
+                    </Border>
+                    <Border Cursor="Hand" Margin="0 19 0 0" Height="45" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
+                        <TextBlock Text="{DynamicResource textSave}" FontSize="15" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
