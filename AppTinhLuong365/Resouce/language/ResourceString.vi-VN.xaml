@@ -303,4 +303,10 @@
     <system:String x:Key="textTenKDG">Tên khoản đóng góp</system:String>
     <system:String x:Key="textSTDG">Số tiền đóng góp</system:String>
     <system:String x:Key="textSTDGVND">Số tiền đóng góp(VND)</system:String>
+    <system:String x:Key="textDSNVTHHDT">Danh sách nhân viên hưởng hoa hồng doanh thu</system:String>
+    <system:String x:Key="textQLTDNVTHHDT">Quản lý theo dõi nhân viên hưởng hoa hồng doanh thu</system:String>
+    <system:String x:Key="textDSNNVHHDT">Danh sách nhóm nhân viên hoa hồng doanh thu</system:String>
+    <system:String x:Key="textQLTDNNVHHDT">Quản lý theo dõi nhóm nhân viên hoa hồng doanh thu</system:String>
+    <system:String x:Key="textTHHDT">Tổng hoa hồng doanh thu</system:String>
+    <system:String x:Key="textQLTDTHHDT">Quản lý theo dõi tổng hoa hồng doanh thu</system:String>
 </ResourceDictionary>

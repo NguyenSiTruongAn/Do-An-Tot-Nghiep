@@ -9,7 +9,7 @@
       Width="616"
       Title="PopupThemMoiHoaHongTien">
 
-    <Grid x:Name="Grid1">
+    <Grid Width="616" Height="571" x:Name="Grid1">
         <Border Style="{StaticResource ShadowBorder2}" Background="{DynamicResource #FFFFFF}" CornerRadius="8">
             <StackPanel>
                 <Border Cursor="Hand" CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
