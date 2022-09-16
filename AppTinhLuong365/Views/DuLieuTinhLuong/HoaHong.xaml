@@ -110,8 +110,8 @@
                                             <Border Width="31" CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
                                                 <Path HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #FFFFFF}"></Path>
                                             </Border>
-                                            <Border CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="20 20 0 0">
-                                                <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Nhập" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                                            <Border Cursor="Hand" CornerRadius="5" MouseLeftButtonDown="Border_MouseLeftButtonDown" Background="{DynamicResource #4C5BD4}" Height="41" Margin="20 20 0 0">
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Nhập" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                                             </Border>
                                         </DockPanel>
                                     </StackPanel>
