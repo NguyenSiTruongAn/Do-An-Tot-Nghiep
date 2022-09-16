@@ -85,7 +85,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             Main.SideBarIndex = -1;
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.HoaHongDoanhThu(Main));
             Main.title.Text = "Hoa hồng/ Hoa doanh thu";
