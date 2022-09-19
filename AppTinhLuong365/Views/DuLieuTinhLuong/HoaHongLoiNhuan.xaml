@@ -1,21 +1,21 @@
-﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.HoaHongDoanhThu"
+﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.HoaHongLoiNhuan"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong"
-      mc:Ignorable="d"
-      Title="HoaHongDoanhThu" SizeChanged="Page_SizeChanged">
+      mc:Ignorable="d" 
+      Title="HoaHongLoiNhuan" SizeChanged="Page_SizeChanged">
 
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
             <DockPanel>
-                <Border DockPanel.Dock="Right" Cursor="Hand" MouseLeftButtonDown="btnThemMoi_MouseLeftButtonDown" x:Name="btnThemMoi" Height="38" Width="132" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
+                <Border DockPanel.Dock="Right" Cursor="Hand" MouseLeftButtonDown="btnThemMoi_MouseLeftButtonDown" x:Name="btnThemMoi" Height="38" Width="170" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
                     <DockPanel>
                         <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
-                        <TextBlock  VerticalAlignment="Center" Text="Thêm mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"/>
+                        <TextBlock  VerticalAlignment="Center" Text="{DynamicResource textTHH}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"/>
                     </DockPanel>
                 </Border>
                 <Border Margin="0 0 10 0" BorderThickness="1" BorderBrush="{DynamicResource #666666}" Cursor="Hand" MouseLeftButtonDown="btnQuayLai_MouseLeftButtonDown" x:Name="btnQuayLai" Height="38" Width="117.5" CornerRadius="10" Background="Transparent" HorizontalAlignment="Right">
@@ -76,8 +76,8 @@
                                 </WrapPanel>
                             </DockPanel>
                             <DockPanel Style="{DynamicResource Style_Grid_Wrap1}">
-                                <TextBlock DockPanel.Dock="Bottom" TextWrapping="WrapWithOverflow" Text="{DynamicResource textQLTDNVTHHDT}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"/>
-                                <TextBlock TextWrapping="WrapWithOverflow" Text="{DynamicResource textDSNVTHHDT}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"/>
+                                <TextBlock DockPanel.Dock="Bottom" TextWrapping="WrapWithOverflow" Text="Quản lý theo dõi nhân viên hưởng hoa hồng lợi nhuận" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"/>
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="Danh sách nhân viên hưởng hoa hồng lợi nhuận" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"/>
                             </DockPanel>
                         </DockPanel>
                         <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
@@ -104,7 +104,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textChuKy}">
+                                <DataGridTemplateColumn Header="{DynamicResource textCKAP}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -113,7 +113,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textLHH}">
+                                <DataGridTemplateColumn Header="{DynamicResource textProduct}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -122,7 +122,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textDT}">
+                                <DataGridTemplateColumn Header="{DynamicResource textAmount}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -131,7 +131,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textHH}">
+                                <DataGridTemplateColumn Header="{DynamicResource textTDT}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -140,7 +140,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textGhiChu}">
+                                <DataGridTemplateColumn Header="{DynamicResource textHoaHongDuocNhan}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -157,7 +157,7 @@
                                                     <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
                                                         <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>
                                                     </Border>
-                                                    <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="btnXoaHoaHongTien_Click">
+                                                    <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
                                                         <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
                                                     </Border>
                                                 </DockPanel>
@@ -226,8 +226,8 @@
                                         </WrapPanel>
                                     </DockPanel>
                                     <DockPanel Style="{DynamicResource Style_Grid_Wrap}">
-                                        <TextBlock DockPanel.Dock="Bottom" TextWrapping="WrapWithOverflow" Text="{DynamicResource textQLTDNNVHHDT}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"/>
-                                        <TextBlock TextWrapping="WrapWithOverflow" Text="{DynamicResource textDSNNVHHDT}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"/>
+                                        <TextBlock DockPanel.Dock="Bottom" TextWrapping="WrapWithOverflow" Text="Quản lý theo dõi nhóm hưởng hoa hồng lợi nhuận" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"/>
+                                        <TextBlock TextWrapping="WrapWithOverflow" Text="Danh sách nhóm hưởng hoa hồng lợi nhuận" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"/>
                                     </DockPanel>
                                 </DockPanel>
                                 <DataGrid x:Name="dataGrid1" Margin="0 20" Style="{StaticResource DataGrid1}" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
@@ -239,17 +239,15 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTemplateColumn Header="{DynamicResource textNhomNhanVien}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textTN}">
                                         </DataGridTemplateColumn>
                                         <DataGridTemplateColumn Header="{DynamicResource textChuKy}">
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textLHH}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textProduct}">
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textDT}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textAmount}">  
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textHH}">
-                                        </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textGhiChu}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textTDT}">
                                         </DataGridTemplateColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
@@ -307,8 +305,8 @@
                                 </WrapPanel>
                             </DockPanel>
                             <DockPanel Style="{DynamicResource Style_Grid_Wrap1}">
-                                <TextBlock DockPanel.Dock="Bottom" TextWrapping="WrapWithOverflow" Text="{DynamicResource textQLTDTHHDT}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"/>
-                                <TextBlock TextWrapping="WrapWithOverflow" Text="{DynamicResource textTHHDT}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"/>
+                                <TextBlock DockPanel.Dock="Bottom" TextWrapping="WrapWithOverflow" Text="Quản lý theo dõi tổng hoa hồng tiền lợi nhuận" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"/>
+                                <TextBlock TextWrapping="WrapWithOverflow" Text="Tổng hoa hồng tiền lợi nhuận" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"/>
                             </DockPanel>
                         </DockPanel>
                         <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
@@ -335,6 +333,15 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textChuKy}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter1}"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTemplateColumn Header="{DynamicResource textTongTien}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -356,61 +363,65 @@
                     </TabItem.Resources>
                     <Border CornerRadius="10" Background="{DynamicResource #FFFFFF}" Style="{StaticResource ShadowBorder1}" Margin="20" Padding="20">
                         <StackPanel>
-                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Hoa hồng doanh thu chính là mức hoa hồng nhận được dựa trên tỷ lệ phần trăm nhất định trong tổng doanh thu do nhân viên bán hàng tạo ra."/>
-                            <TextBlock Text="1. Thêm mức doanh thu" FontSize="18" FontWeight="Bold" Margin="0 10"/>
-                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Việc đầu tiên bạn cần làm chính là thiết lập mức doanh thu với việc xây dựng phần trăm hoa hồng tương ứng cho từng loại doanh thu mà nhân viên bán hàng có thể tạo ra. Các thao tác thực hiện như sau:"/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 1: Nhấp chuột vào biểu tượng răng cưa ở góc dưới bên trái ô thông tin Hoa hồng doanh thu >> chọn &quot;Thêm&quot; ở góc trên bên phải biểu mẫu thông tin được hiển thị."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 2: Điền thông tin vào popup thiết lập doanh thu."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Nhập tên doanh thu"/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Doanh thu nhỏ nhất"/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Doanh thu lớn nhất"/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Hoa hồng (%, phần trăm hoa hồng nhận được)"/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 3: Chọn &quot;Lưu&quot; >> hệ thống sẽ cập nhật doanh thu đó vào bảng doanh thu tương ứng với các trường thông tin như: STT, Tên doanh thu, Doanh thu, Hoa hồng và tùy chỉnh."/>
-                            <Image Margin="0 5" Width="512" Source="/Views/DuLieuTinhLuong/Image/hoa-hong-doanh-thu.png"></Image>
-                            <TextBlock FontWeight="DemiBold" HorizontalAlignment="Center" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="Hoa hồng doanh thu"/>
-                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Trong trường hợp bạn muốn chỉnh sửa hay xóa đi dữ liệu về mức doanh thu nào thì chỉ cần chọn biểu tượng chiếc bút cho việc &quot;chỉnh sửa&quot; hoặc biểu tượng thùng rác cho việc &quot;xóa&quot;."/>
+                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Hoa hồng lợi nhuận chính là phần chênh lệch giữa chi phí bỏ ra để tạo ra một sản phẩm, dịch vụ mới với khoản doanh thu thu lại khi bán sản phẩm, dịch vụ đó. "/>
+                            <TextBlock Text="1. Thêm sản phẩm" FontSize="18" FontWeight="Bold" Margin="0 10"/>
+                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Việc đầu tiên cần thực hiện chính là việc cài đặt và thiết lập sản phẩm, dịch vụ với chi phí bỏ ra để sản xuất và xây dựng. Các bước cài đặt như sau:"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 1: Nhấp chuột vào biểu tượng răng cưa ở cuối góc bên trái ô thông tin Hoa hồng lợi nhuận. Chọn &quot;Thêm&quot;, biểu mẫu điền thông tin sẽ được hiện ra."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 2: Tiến hành nhập thông tin theo yêu cầu."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Nhập tên sản phẩm"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Nhập chi phí bỏ ra để sản xuất"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 3: Chọn &quot;Lưu&quot;, hệ thống sẽ cập nhật thông tin sản phẩm vào bảng danh sách cài đặt hoa hồng lợi nhuận."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Các trường thông tin trong bảng bao gồm: STT, Tên sản phẩm, Chi phí và cuối chính là tùy chỉnh. Trong trường hợp bạn muốn chỉnh sửa thông tin của sản phẩm nào thì chỉ cần click vào biểu tượng chiếc bút, biểu mẫu điền thông tin sẽ hiện ra, tiến hành chỉnh sửa và “Lưu” để hệ thống cập nhật dữ liệu mới. Còn nếu bạn muốn xóa thông tin của sản phẩm nào thì chỉ cần click vào biểu tượng thùng rác, xác nhận xóa và thông tin sản phẩm sẽ biến mất khỏi danh sách."/>
+                            <Image Margin="0 5" Width="512" Source="/Views/DuLieuTinhLuong/Image/hhln(1).png"></Image>
+                            <TextBlock FontWeight="DemiBold" HorizontalAlignment="Center" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="Cài đặt hoa hồng lợi nhuận"/>
+                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Tương tự các bước như trên bạn sẽ cập nhật và bổ sung dữ liệu về các sản phẩm, dịch vụ mà công ty, doanh nghiệp mình đang triển khai."/>
                             <TextBlock Text="2. Thêm nhân viên áp dụng" FontSize="18" FontWeight="Bold" Margin="0 10"/>
-                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Sau khi đã thiết lập các mức doanh thu với phần trăm nhận hoa hồng tương ứng thì bạn sẽ cần thêm nhân viên áp dụng cho từng mức doanh thu cụ thể. Thao tác thực hiện như sau:"/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 1: Chọn &quot;Nhập&quot; nằm ở cuối ô thông tin Hoa hồng doanh thu >> hệ thống hiển thị giao diện với các danh mục: Hoa hồng cá nhân, Hoa hồng nhóm và Tổng hoa hồng."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 2: Chọn &quot;Thêm mới&quot; >> popup cập nhật thông tin sẽ xuất hiện."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Chọn nhân viên/ nhóm tương ứng."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Chọn chu kỳ thời gian."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Nhập doanh thu theo thời điểm"/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Trong trường hợp một chu kỳ có nhiều thời điểm với nhiều khoản doanh thu khác nhau thì bạn sẽ tiến hành nhập từng khoản doanh thu ở từng thời điểm cụ thể bằng cách điền số doanh thu và chọn thời điểm ở ô bên cạnh. Click vào &quot;Thêm doanh thu&quot; để nhập thêm doanh thu ở các thời điểm khác trong chu kỳ."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Nhập tổng doanh thu: Số doanh thu được cộng lại từ tất cả doanh thu ở các thời điểm trong chu kỳ được xét."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Chọn mức doanh thu: Lựa chọn mức doanh thu tương ứng với nhân viên/ nhóm đang được xét dựa trên các mức doanh thu với phần trăm hoa hồng tương ứng mà bạn đã thiết lập đầu tiên."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Nhập ghi chú (nếu có)."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 3: Nhấp chuột chọn &quot;Thêm hoa hồng&quot;, hệ thống sẽ cập nhật và lưu trữ thông tin vào bảng bên dưới của Hoa hồng cá nhân hay Hoa hồng nhóm tùy theo đối tượng mà bạn thiết lập."/>
+                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Sau khi đã xây dựng xong dữ liệu về các sản phẩm, dịch vụ với chi phí tương ứng thì việc tiếp theo bạn cần làm chính là thiết lập danh sách các nhân viên áp dụng với loại hoa hồng này."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Các bước thêm nhân viên được tiến hành theo các bước sau đây:"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 1: Click vào &quot;Nhập&quot; của ô thông tin hoa hồng lợi nhuận. Hệ thống sẽ đưa bạn tới giao diện với các danh mục như: Hoa hồng cá nhân, hoa hồng nhóm và tổng hoa hồng."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 2: Chọn &quot;Thêm hoa hồng&quot;, popup điền thông tin sẽ được hiển thị. Nếu như bạn thiết lập hoa hồng cá nhân thì sẽ chọn biểu mẫu &quot;Nhân viên&quot;. Còn nếu thiết lập cho nhóm nhân viên thì sẽ lựa chọn &quot;nhóm&quot;."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 3: Điền các thông tin theo yêu cầu của biểu mẫu mà hệ thống cung cấp."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Đối với thiết lập dành cho cá nhân thì các thông tin bao gồm:"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Chọn tên nhân viên"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Chọn sản phẩm (sản phẩm được thiết lập ngay từ phần đầu tiên)"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Nhập sản lượng theo ngày: Số lượng, Doanh thu và Thời gian"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="            Để thêm sản lượng của các ngày khác thì bạn sẽ click vào &quot;Thêm doanh thu&quot; ở phía bên dưới. Sau khi hoàn thiện sản lượng theo ngày thì hệ thống sẽ tự cập nhật về tổng sản phẩm và tổng doanh thu tương ứng."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Chọn chu kỳ tương ứng"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Ghi chú: Nhập ghi chú (nếu có)."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    + Đối với thiết lập dành cho nhóm thì các thông tin sẽ cần được cập nhật bao gồm:"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Lựa chọn Nhóm"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Chọn chu kỳ"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Chọn sản phẩm (sản phẩm sẽ là danh sách các sản phẩm được thiết lập từ đầu tiên)"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Nhập sản lượng theo ngày: Số lượng, Doanh thu và Thời gian cụ thể. "/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Để thêm doanh thu của các ngày khác thì bạn sẽ chọn &quot;Thêm doanh thu&quot; và nhập tương tự. Sau khi hoàn thiện thì hệ thống sẽ tổng hợp số sản phẩm và tổng doanh thu mà nhóm đã đạt được."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Ghi chú: Nhập ghi chú nếu có."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    - Bước 4: Sau khi hoàn thiện thông tin trong biểu mẫu thì bạn sẽ chọn &quot;Thêm hoa hồng&quot;. Hệ thống sẽ cập nhật thông tin được cung cấp để tính số tiền hoa hồng nhận được tương ứng."/>
                             <TextBlock Text="3. Xem danh sách nhân viên áp dụng" FontSize="18" FontWeight="Bold" Margin="0 10"/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Đối với danh sách hoa hồng cá nhân, đây sẽ là danh sách hiển thị những nhân viên được hưởng hoa hồng doanh thu. Các trường thông tin trong bảng bao gồm: Họ tên, Chu kỳ, Doanh thu, Hoa hồng và Ghi chú."/>
-                            <Image Margin="0 5" Width="512" Source="/Views/DuLieuTinhLuong/Image/hoa-hong-ca-nhan-doanh-thu.png"></Image>
-                            <TextBlock FontWeight="DemiBold" HorizontalAlignment="Center" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="Hoa hồng cá nhân"/>
-                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Để chỉnh sửa thông tin về phần trăm hoa hồng của nhân viên bất kỳ thì bạn chỉ cần chọn biểu tượng chiếc bút nằm ở cuối dòng thông tin của nhân viên đó >> biểu mẫu chỉnh sửa thông tin sẽ hiện ra >> tiến hành chỉnh sửa về doanh thu thời điểm, thời điểm, mức doanh thu áp dụng và ghi chú >> Lưu hoa hồng >> hệ thống sẽ cập nhật thông tin mới."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Còn nếu muốn xóa nhân viên khỏi danh sách hưởng hoa hồng doanh thu thì bạn sẽ click chuột vào biểu tượng thùng rác >> popup xác nhận thao tác xóa hiển thị >> tiến hành xác nhận và kết thúc thao tác xóa nhân viên khỏi danh sách."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Để xem ghi chú về hoa hồng doanh thu thì bạn chỉ cần chọn  &quot;Xem thêm &quot; ở cột ghi chú, toàn bộ ghi chú được note sẽ hiển thị ở popup trên màn hình sau khi click chọn xem."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Phía trên bảng danh sách sẽ là bộ lọc và thanh search để bạn có thể tìm kiếm nhanh với thông tin mà mình mong muốn. Lựa chọn tháng, năm để xem danh sách những nhân viên hưởng hoa hồng doanh thu của thời điểm đó. Chọn tên nhân viên để xem thông tin cụ thể của nhân viên bất kỳ về việc hưởng hoa hồng doanh thu trong tháng nhất định."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Đối với danh sách hoa hồng nhóm, đây sẽ là danh sách hiển thị các nhóm được hưởng hoa hồng doanh thu. Việc cung cấp danh sách này sẽ giúp công ty, doanh nghiệp và các nhà quản lý sẽ thuận tiện hơn trong việc thống kê, theo dõi, quản lý danh sách nhóm nhân viên hoa hồng doanh thu."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Các nhóm được xây dựng theo bảng với các cột thông tin như: Nhóm nhân viên, Chu kỳ, Doanh thu, Hoa hồng, Ghi chú. Ở cuối mỗi dòng thông tin của từng nhóm nhân viên sẽ có mục chỉnh sửa và xóa."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Khi click vào biểu tượng chiếc bút (thao tác chỉnh sửa) >> biểu mẫu thông tin được hiển thị >> tiến hành cài đặt phần trăm hoa hồng cho từng thành viên trong nhóm, có thể chỉnh sửa doanh thu theo thời điểm và mức doanh thu áp dụng >> Lưu cài đặt >> hệ thống sẽ cập nhật và lưu trữ thông tin mới."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Việc tiến hành cài đặt phần trăm hoa hồng cho từng thành viên trong nhóm là bắt buộc, điều này sẽ ảnh hưởng đến việc tính hoa hồng của từng người và hiển thị ở mục tổng hoa hồng."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Trong trường hợp muốn xóa nhóm nhân viên hưởng hoa hồng doanh thu thì chỉ cần chọn biểu tượng thùng rác >> popup xác nhận >> tiến hành xác nhận và kết thúc việc xóa nhóm nhân viên tương ứng."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Để xem chi tiết ghi chú của nhóm nhân viên hưởng hoa hồng doanh thu thì bạn chỉ cần click vào &quot;Xem thêm&quot; >> ghi chú nếu được note sẽ thể hiện đầy đủ trên màn hình."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Bên cạnh đó, bạn có thể thực hiện việc tìm kiếm hay lọc danh sách nhóm nhân viên hưởng hoa hồng doanh thu thông qua thanh lọc được cung cấp phía trên bảng danh sách. Lựa chọn tháng, lựa chọn năm hoặc lựa chọn tên nhóm, hệ thống sẽ trả lại kết quả tìm kiếm dựa trên thông tin mà bạn chọn."/>
-                            <Image Margin="0 5" Width="512" Source="/Views/DuLieuTinhLuong/Image/hhn-dt.png"></Image>
-                            <TextBlock FontWeight="DemiBold" HorizontalAlignment="Center" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="Hoa hồng nhóm"/>
-                            <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Tổng hoa hồng sẽ là mục cho thấy được chi tiết hoa hồng được hưởng của mỗi nhân viên trong từng tháng nhất định. Nhân viên sẽ được thống kê theo dạng bảng với 2 trường thông tin chính là Họ tên và Tổng tiền. Trong trường hợp một nhân viên trong cùng một tháng nhận được nhiều loại hoa hồng khác nhau thì tổng tiền sẽ chính là tổng các loại hoa hồng nhận được của nhân viên đó."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Đối với số tiền hoa hồng cá nhân thì sẽ dựa vào doanh thu của nhân viên đó cùng với mức doanh thu áp dụng để tính được số tiền hưởng thực tế."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Ví dụ: Nhân viên A trong tháng 10 có tổng doanh thu là 2.500.000 đồng. Mức doanh thu áp dụng là Bán thẻ (500.000 - 5.000.000 đồng, % hoa hồng là 15%). Vậy số tiền hoa hồng nhân viên A nhận được là: 15%*2500000 = 375.000 đồng."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Còn với hoa hồng nhóm thì số tiền được hưởng của mỗi thành viên sẽ dựa trên phần trăm của từng người so với tổng số hoa hồng mà cả nhóm có được."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Ví dụ: Nhóm A có 4 thành viên. Tổng doanh thu của nhóm trong tháng 11 là 2.000.000 đồng. Mức doanh thu áp dụng là Việc làm (1.500.000 - 3.500.000, % hoa hồng là 12%)."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Số tiền hoa hồng của cả nhóm nhận được là: 12%*2000000 = 240000 đồng."/>
-                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Mỗi thành viên có % hoa hồng được cài đặt là 12%. Vậy số tiền hoa hồng của mỗi thành viên trong nhóm A = 12%*240.000 = 28.800 đồng."/>
-                            <TextBlock Margin="0 5 0 20" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Phía trên bảng danh sách về tổng hoa hồng doanh thu sẽ là thanh search. Với thanh tìm kiếm này, bạn có thể lọc được danh sách những nhân viên được hưởng hoa hồng doanh thu trong từng tháng nhất định bằng cách lựa chọn tháng, năm tương ứng. Thêm vào đó, thanh search theo tên sẽ giúp bạn tra cứu nhanh hơn về thông tin hoa hồng doanh thu của một nhân viên nhất định bằng cách nhập hoặc chọn tên nhân viên đó."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Nhân viên sau khi được thiết lập hoa hồng lợi nhuận sẽ xuất hiện thông tin trong bảng danh sách tương ứng. Nếu là cá nhân thì sẽ được cập nhật trong Hoa hồng cá nhân, nếu là nhóm sẽ được cập nhật trong Hoa hồng nhóm, Tổng hoa hồng sẽ là mục thống kê toàn bộ những người được nhận hoa hoa hồng lợi nhuận (bao gồm cả cá nhân và nhóm)."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Với hoa hồng cá nhân, những cá nhân được cập nhật thông tin sẽ được thể hiện trong bảng với các trường thông tin như: Họ tên, Chu kỳ áp dụng, Sản phẩm, Số lượng, Tổng doanh thu, Hoa hồng được nhận. Dựa vào bảng thống kê này, công ty, doanh nghiệp cũng như các nhà quản lý có thể biết được số sản phẩm, doanh thu mang lại và hoa hồng lợi nhuận mà nhân viên nhận được."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Cuối thông tin của mỗi nhân viên sẽ có 2 biểu tượng là chiếc bút và thùng rác. Đây sẽ là phần giúp bạn có thể chỉnh sửa thông tin hoặc xóa thông tin của nhân viên đó với hoa hồng lợi nhuận được áp dụng. Để tiến hành chỉnh sửa thông tin, bạn chọn biểu tượng chiếc bút, hệ thống sẽ hiển thị biểu mẫu nhập thông tin, tiến hành chỉnh sửa và chọn &quot;Lưu hoa hồng&quot; để cập nhật thông tin mới. Nếu muốn xóa nhân viên khỏi danh sách hoa hồng lợi nhuận được áp dụng thì click chọn biểu tượng thùng rác, xác nhận xóa và hệ thống sẽ bỏ đi nhân viên đó trong danh sách tương ứng."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Phía trên bảng quản lý theo dõi nhân viên hưởng hoa hồng lợi nhuận sẽ là thanh search. Dựa vào đó bạn có thể lọc và tìm kiếm nhanh chóng những nhân viên được hưởng hoa hồng lợi nhuận trong tháng bất kỳ. Lựa chọn tháng, chọn năm tương ứng, hệ thống sẽ trả lại danh sách những nhân viên có hoa hồng lợi nhuận của tháng đó. Còn nếu muốn xem thông tin chi tiết về hoa hồng lợi nhuận của một nhân viên bất kỳ thì bạn sẽ lựa chọn hoặc nhập tên nhân viên đó vào thanh search tương ứng, kết quả sẽ được hiển thị ngay sau đó."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Danh sách hoa hồng nhóm sẽ tổng hợp và thống kê các nhóm được hưởng hoa hồng lợi nhuận theo từng tháng. Bảng thống kê được hiển thị với các cột thông tin như: Tên nhóm, Chu kỳ, Sản phẩm, Số lượng, Tổng doanh thu. Cuối mỗi hàng thông tin của từng nhóm sẽ là mục chỉnh sửa và xóa."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Khi click vào biểu tượng chiếc bút, biểu mẫu điền thông tin sẽ được hiển thị. Ở đây, bạn sẽ tiến hành nhập phần trăm hoa hồng mà mỗi thành viên trong nhóm sẽ nhận được dựa trên tổng tiền hoa hồng mà cả nhóm có được. Việc thiết lập này là cần thiết để có thể tính được tiền hoa hồng mà mỗi thành viên trong nhóm nhận được sau này. Bên cạnh đó, bạn có thể thực hiện việc chỉnh sửa về sản phẩm, sản lượng và doanh thu mỗi ngày. Sau đó ấn &quot;Lưu cài đặt&quot;, hệ thống sẽ cập nhật và lưu trữ dữ liệu mới."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Trong trường hợp bạn muốn xóa nhóm nào đó khỏi danh sách hoa hồng lợi nhuận thì chỉ cần click vào biểu tượng thùng rác nằm ở cuối dòng thông tin của nhóm tương ứng, hệ thống sẽ hiển thị popup xác nhận xóa. Tiến hành xác nhận và kết thúc thao tác, nhóm bị xóa sẽ bị mất đi và không còn trong danh sách nữa."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Ngoài ra, phía trên bảng danh sách chính là thanh search. Chỉ cần chọn tháng, năm tương ứng, hệ thống sẽ hiển thị danh sách các nhóm nhận hoa hồng lợi nhuận trong tháng, năm đó. Nếu muốn xem chi tiết một nhóm nhất định thì chỉ cần chọn tên nhóm đó ở ô tìm kiếm cuối cùng. Kết quả sẽ được hệ thống gửi lại cho bạn trong tích tắc."/>
+                            <Image Margin="0 5" Width="512" Source="/Views/DuLieuTinhLuong/Image/thh(1).png"></Image>
+                            <TextBlock FontWeight="DemiBold" HorizontalAlignment="Center" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="Tổng hoa hồng lợi nhuận"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Tổng hoa hồng lợi nhuận sẽ là mục thống kê toàn bộ danh sách những nhân viên được hưởng hoa hồng lợi nhuận. Bao gồm cả cá nhân và nhóm, tuy nhiên, sẽ hiển thị theo từng cá nhân với tổng số tiền hoa hồng lợi nhuận có được. Với những nhân viên được hưởng cả hoa hồng cá nhân và hoa hồng nhóm thì sẽ hiển thị tổng số tiền hoa hồng có được tại Tổng hoa hồng tiền lợi nhuận."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Đối với nhân viên được hưởng hoa hồng lợi nhuận cá nhân thì tổng số tiền hoa hồng nhận được sau cùng sẽ dựa trên số lượng và khoản chênh lệch bán được sản phẩm."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Ví dụ: Nhân viên A trong tháng 10 bán được 5 sản phẩm. Chi phí sản xuất là 20 triệu/ sản phẩm, chi phí bán ra là 30 triệu/ sản phẩm. Số tiền hoa hồng nhân viên A nhận được trong tháng 10 là (30 triệu - 20 triệu)*5 = 50 triệu."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Với nhân viên hưởng hoa hồng lợi nhuận theo nhóm thì số tiền hoa hồng lợi nhuận nhận được sẽ dựa trên phần trăm hoa hồng của mỗi người với tổng số tiền hoa hồng của cả nhóm làm được."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Ví dụ: Nhóm B có 4 thành viên. Trong tháng 10, nhóm B bán được 37 sản phẩm. Chi phí sản xuất là 25 triệu đồng/sản phẩm, chi phí bán ra là 45 triệu/ sản phẩm."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Số tiền hoa hồng của cả nhóm B là: (45 triệu - 25 triệu)*37= 740 triệu đồng."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Phần trăm hoa hồng của mỗi thành viên tương ứng là 15%."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Vậy, số tiền hoa hồng lợi nhuận của mỗi thành viên nhóm B trong tháng 10 là:"/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    15%*740000000 = 111.000.000 đồng."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Phía trên bảng danh sách tổng hoa hồng tiền lợi nhuận sẽ là thanh search. Dựa trên đó, việc lọc danh sách nhân viên hưởng hoa hồng lợi nhuận theo tháng nhất định sẽ dễ dàng hơn. Lựa chọn THÁNG, NĂM tương ứng, hệ thống sẽ hiển thị danh sách theo tháng, năm đó. Nếu như muốn xem thông tin của một nhân viên bất kỳ thì có thể lựa chọn tên nhân viên đó trong ô tìm kiếm tên tương ứng. Kết quả sẽ được trả lại ngay sau đó."/>
+                            <TextBlock Margin="0 5 0 0" FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Để trở về danh sách các loại hoa hồng ban đầu, bạn sẽ click chọn &quot;Quay lại&quot; bên cạnh &quot;Thêm hoa hồng&quot;. Hệ thống sẽ trở về giao diện Cài đặt hoa hồng."/>
                         </StackPanel>
                     </Border>
                 </TabItem>
             </TabControl>
         </StackPanel>
     </Grid>
-
 </Page>
