@@ -147,6 +147,15 @@
     <Compile Include="Views\DuLieuTinhLuong\HoaHongDoanhThu.xaml.cs">
       <DependentUpon>HoaHongDoanhThu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\HoaHongKeHoach.xaml.cs">
+      <DependentUpon>HoaHongKeHoach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\HoaHongLePhiViTri.xaml.cs">
+      <DependentUpon>HoaHongLePhiViTri.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\HoaHongLoiNhuan.xaml.cs">
+      <DependentUpon>HoaHongLoiNhuan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\HoaHongTien.xaml.cs">
       <DependentUpon>HoaHongTien.xaml</DependentUpon>
     </Compile>
@@ -155,6 +164,15 @@
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupPhucLoi.xaml.cs">
       <DependentUpon>PopupPhucLoi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiHoaHongDoanhThu.xaml.cs">
+      <DependentUpon>PopupThemMoiHoaHongDoanhThu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiHoaHongLePhiViTri.xaml.cs">
+      <DependentUpon>PopupThemMoiHoaHongLePhiViTri.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiHoaHongLoiNhuan.xaml.cs">
+      <DependentUpon>PopupThemMoiHoaHongLoiNhuan.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiPhuCap.xaml.cs">
       <DependentUpon>PopupThemMoiPhuCap.xaml</DependentUpon>
@@ -376,7 +394,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DuLieuTinhLuong\HoaHongKeHoach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\HoaHongLePhiViTri.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\HoaHongLoiNhuan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupPhucLoi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiHoaHongDoanhThu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiHoaHongLePhiViTri.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiHoaHongLoiNhuan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -841,6 +883,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\DuLieuTinhLuong\Image\hoa-hong-tien.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\DuLieuTinhLuong\Image\hhn-dt.png" />
+    <Resource Include="Views\DuLieuTinhLuong\Image\hoa-hong-ca-nhan-doanh-thu.png" />
+    <Resource Include="Views\DuLieuTinhLuong\Image\hoa-hong-doanh-thu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\DuLieuTinhLuong\Image\hhln%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\DuLieuTinhLuong\Image\thh%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\DuLieuTinhLuong\Image\lpvt.png" />
+    <Resource Include="Views\DuLieuTinhLuong\Image\nv.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

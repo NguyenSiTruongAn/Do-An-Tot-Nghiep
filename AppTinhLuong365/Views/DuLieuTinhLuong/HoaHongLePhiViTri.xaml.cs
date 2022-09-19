@@ -20,9 +20,9 @@ using System.Windows.Shapes;
 namespace AppTinhLuong365.Views.DuLieuTinhLuong
 {
     /// <summary>
-    /// Interaction logic for HoaHongDoanhThu.xaml
+    /// Interaction logic for HoaHongLePhiViTri.xaml
     /// </summary>
-    public partial class HoaHongDoanhThu : Page, INotifyPropertyChanged
+    public partial class HoaHongLePhiViTri : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
         public int IsSmallSize
@@ -37,7 +37,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public HoaHongDoanhThu(MainWindow main)
+        public HoaHongLePhiViTri(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -90,7 +90,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void btnThemMoi_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemMoiHoaHongDoanhThu(Main);
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemMoiHoaHongLePhiViTri(Main);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             if (pop.tabitem1.IsSelected == true)
@@ -113,15 +113,6 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         {
             Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaHoaHongTien(Main));
             Main.PopupSelection.Visibility = Visibility.Visible;
-        }
-
-        private void btnXoaHoaHongTien_Click(object sender, MouseButtonEventArgs e)
-        {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupThongBaoXoaHHT(Main);
-            Main.PopupSelection.NavigationService.Navigate(pop);
-            Main.PopupSelection.Visibility = Visibility.Visible;
-            pop.Width = 616;
-            pop.Height = 203;
         }
     }
 }
