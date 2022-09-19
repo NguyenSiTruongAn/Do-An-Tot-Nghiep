@@ -11,7 +11,7 @@
       SizeChanged="Page_SizeChanged"
       Title="HoaHong">
 
-    <Grid>
+    <Grid Width="1000">
         <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0" ItemContainerStyle="{StaticResource TabItem1}" Margin="0,0,0,-0.4">
             <TabItem Header="{DynamicResource textCaiDatHoaHong}" Background="Transparent">
                 <TabItem.Resources>
@@ -42,8 +42,8 @@
                         </Style.Triggers>
                     </Style>
                     <Style x:Key="Style_Border_Wrap1" TargetType="{x:Type Border}">
-                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter= {StaticResource math}, ConverterParameter=(@VALUE/3)-10}"/>
-                        <Setter Property="Margin" Value="5 10 5 10"/>
+                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter= {StaticResource math}, ConverterParameter=(@VALUE/3)-20}"/>
+                        <Setter Property="Margin" Value="10 15 10 15"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
                                 <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter={StaticResource math}, ConverterParameter=(@VALUE/2)-20}"/>
@@ -57,15 +57,20 @@
                     </Style>
                 </TabItem.Resources>
                 <DockPanel Style="{StaticResource Style_Grid_Wrap}">
-                    <WrapPanel x:Name="Wrap_Border1">
+                    <WrapPanel x:Name="Wrap_Border1" Margin="0 30 0 0" >
                         <Border Style="{DynamicResource Style_Border_Wrap1}">
-                            <StackPanel Margin="0 30 20 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                <Border Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
-                                    <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
+                            <Grid>
+                                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                    </Border.Effect>
+                                </Border>
+                                <Border Height="354" Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <StackPanel Orientation="Vertical" Margin="17 0 17 25" VerticalAlignment="Top">
                                         <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
                                             <StackPanel VerticalAlignment="Center">
                                                 <TextBlock Text="Hoa hồng tiền" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
-                                                <Line X1="0" Y1="20" X2="330" Y2="20" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
+                                                <Line X1="0" Y1="20" X2="600" Y2="20" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
                                             </StackPanel>
                                         </Border>
                                         <StackPanel Orientation="Horizontal">
@@ -87,12 +92,17 @@
                                         </Border>
                                     </StackPanel>
                                 </Border>
-                            </StackPanel>
+                            </Grid>
                         </Border>
                         <Border Style="{DynamicResource Style_Border_Wrap1}">
-                            <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Margin="0 30 20 0" VerticalAlignment="Stretch">
-                                <Border Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10" VerticalAlignment="Stretch">
-                                    <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
+                            <Grid>
+                                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                    </Border.Effect>
+                                </Border>
+                                <Border Height="354"  Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10" VerticalAlignment="Stretch">
+                                    <StackPanel Orientation="Vertical" Margin="17 0 17 25" VerticalAlignment="Top">
                                         <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
                                             <StackPanel VerticalAlignment="Center">
                                                 <TextBlock Text="Hoa hồng doanh thu" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
@@ -116,13 +126,18 @@
                                         </DockPanel>
                                     </StackPanel>
                                 </Border>
-                            </StackPanel>
+                            </Grid>
                         </Border>
                         <Border Style="{DynamicResource Style_Border_Wrap1}">
-                            <StackPanel HorizontalAlignment="Right" Orientation="Vertical" Margin="0 30 20 0" VerticalAlignment="Stretch">
+                            <Grid>
                                 <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
-                                    <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
-                                        <Border Style="{StaticResource ShadowBorder1}" BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                    </Border.Effect>
+                                </Border>
+                                <Border Height="354" Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <StackPanel Orientation="Vertical" Margin="17 0 17 25" VerticalAlignment="Top">
+                                        <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
                                             <StackPanel VerticalAlignment="Center">
                                                 <TextBlock Text="Hoa hồng lợi nhuận" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
                                                 <Line X1="0" Y1="20" X2="330" Y2="20" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
@@ -140,18 +155,23 @@
                                             <Border Width="31" CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
                                                 <Path HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #FFFFFF}"></Path>
                                             </Border>
-                                            <Border CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="20 20 0 0">
+                                            <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1" CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="20 20 0 0">
                                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Nhập" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                                             </Border>
                                         </DockPanel>
                                     </StackPanel>
                                 </Border>
-                            </StackPanel>
+                            </Grid>
                         </Border>
                         <Border Style="{DynamicResource Style_Border_Wrap1}">
-                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Margin="0 30 20 0" VerticalAlignment="Stretch">
-                                <Border Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
-                                    <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
+                            <Grid>
+                                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                    </Border.Effect>
+                                </Border>
+                                <Border Height="354"  Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <StackPanel Orientation="Vertical" Margin="17 0 17 25" VerticalAlignment="Top">
                                         <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
                                             <StackPanel VerticalAlignment="Center">
                                                 <TextBlock Text="Hoa hồng lệ phí vị trí" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
@@ -170,18 +190,23 @@
                                             <Border Width="31" CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
                                                 <Path HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #FFFFFF}"></Path>
                                             </Border>
-                                            <Border CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="20 20 0 0">
+                                            <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_2" CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="20 20 0 0">
                                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Nhập" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                                             </Border>
                                         </DockPanel>
                                     </StackPanel>
                                 </Border>
-                            </StackPanel>
+                            </Grid>
                         </Border>
                         <Border Style="{DynamicResource Style_Border_Wrap1}">
-                            <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Margin="0 30 20 0" VerticalAlignment="Stretch">
+                            <Grid>
                                 <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
-                                    <StackPanel Orientation="Vertical" Margin="10 0 10 20" VerticalAlignment="Top">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                    </Border.Effect>
+                                </Border>
+                                <Border Height="354" Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                    <StackPanel Orientation="Vertical" Margin="17 0 17 25" VerticalAlignment="Top">
                                         <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0" Height="61" Margin="0 10 0 0">
                                             <StackPanel VerticalAlignment="Center">
                                                 <TextBlock Text="Hoa hồng kế hoạch" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
@@ -200,13 +225,13 @@
                                             <Border Width="31" CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 0">
                                                 <Path HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #FFFFFF}"></Path>
                                             </Border>
-                                            <Border CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="20 20 0 0">
+                                            <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_3" CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="20 20 0 0">
                                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Nhập" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                                             </Border>
                                         </DockPanel>
                                     </StackPanel>
                                 </Border>
-                            </StackPanel>
+                            </Grid>
                         </Border>
                     </WrapPanel>
                 </DockPanel>

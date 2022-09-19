@@ -91,5 +91,26 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             Main.title.Text = "Hoa hồng/ Hoa hồng doanh thu";
             Main.SideBarIndex = -1;
         }
+
+        private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.HoaHongLoiNhuan(Main));
+            Main.title.Text = "Hoa hồng/ Hoa hồng lợi nhuận";
+            Main.SideBarIndex = -1;
+        }
+
+        private void Border_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.HoaHongLePhiViTri(Main));
+            Main.title.Text = "Hoa hồng/ Hoa hồng lệ phí vị trí";
+            Main.SideBarIndex = -1;
+        }
+
+        private void Border_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.HoaHongLePhiViTri(Main));
+            Main.title.Text = "Hoa hồng/ Hoa hồng kế hoạch";
+            Main.SideBarIndex = -1;
+        }
     }
 }

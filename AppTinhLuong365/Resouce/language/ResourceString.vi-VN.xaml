@@ -309,4 +309,17 @@
     <system:String x:Key="textQLTDNNVHHDT">Quản lý theo dõi nhóm nhân viên hoa hồng doanh thu</system:String>
     <system:String x:Key="textTHHDT">Tổng hoa hồng doanh thu</system:String>
     <system:String x:Key="textQLTDTHHDT">Quản lý theo dõi tổng hoa hồng doanh thu</system:String>
+    <system:String x:Key="textLHH">Loại hoa hồng</system:String>
+    <system:String x:Key="textDT">Doanh thu</system:String>
+    <system:String x:Key="textHH">Hoa hồng (%)</system:String>
+    <system:String x:Key="textTMHH">Thêm mới hoa hồng</system:String>
+    <system:String x:Key="textCKAP">Chu kỳ áp dụng</system:String>
+    <system:String x:Key="textProduct">Sản phẩm</system:String>
+    <system:String x:Key="textAmount">Số lượng</system:String>
+    <system:String x:Key="textTDT">Tổng doanh thu</system:String>
+    <system:String x:Key="textTMHHLN">Thêm mới hoa hồng lợi nhuận</system:String>
+    <system:String x:Key="textTHH">Thêm hoa hồng</system:String>
+    <system:String x:Key="textTKH">Tên kế hoạch</system:String>
+    <system:String x:Key="textHHVND">Hoa hồng (VNĐ)</system:String>
+    <system:String x:Key="textEvaluate">Đánh giá</system:String>
 </ResourceDictionary>
