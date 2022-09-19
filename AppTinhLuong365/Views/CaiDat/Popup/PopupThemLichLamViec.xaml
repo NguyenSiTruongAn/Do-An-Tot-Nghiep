@@ -68,7 +68,7 @@
                     <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <tool:DatePicker FontSize="16" Foreground="{DynamicResource #777777}"/>
                     </Border>
-                    <Border Cursor="Hand" Margin="0 30 0 0" Height="37" CornerRadius="3" Background="{DynamicResource #4C5BD4}">
+                    <Border Cursor="Hand" MouseLeftButtonDown="BtnTiepTuc_Click" Margin="0 30 0 0" Height="37" CornerRadius="3" Background="{DynamicResource #4C5BD4}">
                         <TextBlock Text="{DynamicResource textContinue}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold" FontSize="15"/>
                     </Border>
                 </StackPanel>

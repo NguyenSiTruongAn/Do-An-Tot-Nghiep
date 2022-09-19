@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AppTinhLuong365.Views.CaiDat
 {
@@ -76,6 +77,15 @@ namespace AppTinhLuong365.Views.CaiDat
         private void Border_MouseLeftButtonDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupSaoChepLich(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void TuyChon_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var pop = new Views.CaiDat.Popup.PopupTuyChonLichLamViec(Main);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }

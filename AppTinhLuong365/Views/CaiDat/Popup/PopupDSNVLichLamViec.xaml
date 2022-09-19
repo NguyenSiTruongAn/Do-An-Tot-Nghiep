@@ -1,0 +1,96 @@
+﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.Popup.PopupDSNVLichLamViec"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat"
+      xmlns:math="clr-namespace:AppTinhLuong365.Core"
+      mc:Ignorable="d" 
+      SizeChanged="Page_SizeChanged"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PopupDSNVLichLamViec">
+
+    <Grid>
+        <Border Background="{DynamicResource #FFFFFF}" Style="{StaticResource ShadowBorder2}">
+            <StackPanel>
+                <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 3 -50 0"></TextBlock>
+                <StackPanel Margin="20 0">
+                    <TextBlock Text="{Binding}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                    <TextBlock Text="Danh sách nhân viên" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                </StackPanel>
+                <TabControl Margin="20 0" ItemContainerStyle="{StaticResource TabItem2}" BorderThickness="0">
+                    <TabItem Header="Nhân viên" BorderThickness="0">
+                        <StackPanel>
+                            <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 40 0 20" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                                <DataGrid.OpacityMask>
+                                    <VisualBrush>
+                                        <VisualBrush.Visual>
+                                            <Border Width="{Binding ElementName=dataGrid2,Path=ActualWidth}" Height="{Binding ElementName=dataGrid2,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </DataGrid.OpacityMask>
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid x:Name="gridHoTen">
+                                                    <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
+                                                        <Border.Background>
+                                                            <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                                        </Border.Background>
+                                                    </Border>
+                                                    <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                    <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="{DynamicResource textPhongBan}">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Border Background="Transparent">
+                                                    <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                </Border>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="{DynamicResource textSoDienThoai}">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Border Background="Transparent">
+                                                    <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                </Border>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="{DynamicResource textHopThu}">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Border Background="Transparent">
+                                                    <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                </Border>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
+                                                    <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
+                                                </Border>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Border CornerRadius="10" Background="{DynamicResource #4C5BD4}" Width="35" Height="35">
+                                <TextBlock Text="1" FontSize="16" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" VerticalAlignment="Center" TextAlignment="Center"></TextBlock>                                
+                            </Border>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+                
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

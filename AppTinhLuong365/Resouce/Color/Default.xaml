@@ -49,4 +49,9 @@
     <SolidColorBrush Color="#FFECEC" x:Key="#FFECEC"/>
     <SolidColorBrush Color="#EBF0F5" x:Key="#EBF0F5"/>
     <SolidColorBrush Color="#5e5e5e" x:Key="#5e5e5e"/>
+    <SolidColorBrush Color="#D9D9D9" x:Key="#D9D9D9"/>
+    <SolidColorBrush Color="#969696" x:Key="#969696"/>
+    <SolidColorBrush Color="#636e73" x:Key="#636e73"/>
+    <SolidColorBrush Color="#E9E9E9" x:Key="#E9E9E9"/>
+    <SolidColorBrush Color="#495057" x:Key="#495057"/>
 </ResourceDictionary>

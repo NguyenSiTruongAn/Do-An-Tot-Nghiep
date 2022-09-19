@@ -16,24 +16,21 @@ using System.Windows.Shapes;
 namespace AppTinhLuong365.Views.CaiDat.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupThemLichLamViec.xaml
+    /// Interaction logic for PopupTaoChuKyLichLamViec.xaml
     /// </summary>
-    public partial class PopupThemLichLamViec : Page
+    public partial class PopupTaoChuKyLichLamViec : Page
     {
-        public PopupThemLichLamViec(MainWindow main)
+        MainWindow Main;
+        public PopupTaoChuKyLichLamViec(MainWindow main)
         {
-            this.DataContext = this;
             InitializeComponent();
+            this.DataContext = this;
             Main = main;
         }
-        MainWindow Main;
 
-        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
-        }
+        public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc", "dd", "ee", "ff", "gg", "aa", "bb", "cc", "dd", "ee", "ff", "gg" };
 
-        private void BtnTiepTuc_Click(object sender, MouseButtonEventArgs e)
+        private void Btn_QuayLai_Click(object sender, MouseButtonEventArgs e)
         {
             Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupChonCaLamViec(Main));
             Main.PopupSelection.Visibility = Visibility.Visible;
