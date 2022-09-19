@@ -89,10 +89,11 @@ namespace AppTinhLuong365.Views
 
         private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.NhapLuongCoBan(Main));
+            var pop = new Views.NhapLuongCoBan(Main);
+            Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-            Main.PopupSelection.Width = 500;
-            Main.PopupSelection.Height = 500;
+            pop.Width = 500;
+            pop.Height = 500;
         }
 
         private void Border_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)

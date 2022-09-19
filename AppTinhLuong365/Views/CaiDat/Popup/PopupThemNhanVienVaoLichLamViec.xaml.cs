@@ -13,15 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views
+namespace AppTinhLuong365.Views.CaiDat.Popup
 {
     /// <summary>
-    /// Interaction logic for NhapLuongCoBan.xaml
+    /// Interaction logic for PopupThemNhanVienVaoLichLamViec.xaml
     /// </summary>
-    public partial class NhapLuongCoBan : Page
+    public partial class PopupThemNhanVienVaoLichLamViec : Page
     {
         MainWindow Main;
-        public NhapLuongCoBan(MainWindow main)
+        public PopupThemNhanVienVaoLichLamViec(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -30,16 +30,16 @@ namespace AppTinhLuong365.Views
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.Visibility = Visibility.Collapsed;
+            this.Visibility = Visibility.Collapsed;
         }
 
-        private void Add_file_Click(object sender, MouseButtonEventArgs e)
+        private void Add_fileNhanVien_Click(object sender, MouseButtonEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog op = new Microsoft.Win32.OpenFileDialog();
-            if (op.ShowDialog() == true)
-            {
-
-            }
+            var pop = new Views.CaiDat.Popup.PopupAddFileNhanVien(Main);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+            pop.Width = 500;
+            pop.Height = 500;
         }
     }
 }

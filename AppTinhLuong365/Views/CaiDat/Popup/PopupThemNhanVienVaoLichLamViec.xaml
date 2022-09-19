@@ -1,0 +1,82 @@
+﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.Popup.PopupThemNhanVienVaoLichLamViec"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat.Popup"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PopupThemNhanVienVaoLichLamViec">
+
+    <Grid Width="616" Height="495">
+        <Border Style="{StaticResource ShadowBorder2}" Background="{DynamicResource #FFFFFF}" CornerRadius="8">
+            <StackPanel>
+                <Border CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
+                    <Grid>
+                        <TextBlock Text="Thêm nhân viên" FontSize="16" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" HorizontalAlignment="Right" Padding="0 3 17 0" FontWeight="Bold" FontFamily="roboto" Text="x" FontSize="28" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                    </Grid>
+                </Border>
+                <StackPanel Width="450">
+                    <Border Margin="0 20 0 0" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <DockPanel>
+                            <Path Margin="10 0 0 0" Data="{DynamicResource iconSearch}" VerticalAlignment="Center" Fill="{DynamicResource #68798B}"></Path>
+                            <Grid Height="38" Margin="10 0 10 0">
+                                <TextBox VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                <TextBlock VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #68798B}" TextWrapping="Wrap" Text="Nhập từ cần tìm" IsHitTestVisible="False">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=tbInput,Path=Text}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
+                    <Grid>
+                        <TabControl ItemContainerStyle="{StaticResource TabItem2}" BorderThickness="0">
+                            <TabItem Header="Nhân viên" BorderThickness="0">
+                                <DataGrid Height="220" ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="dataGrid1" Style="{StaticResource DataGrid5}" ItemsSource="{Binding Test}">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Style="{StaticResource DashedBoder1}" CornerRadius="0" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch">
+                                                        <Grid>
+                                                            <CheckBox VerticalAlignment="Center">
+                                                            </CheckBox>
+                                                            <Grid Margin="20 0 0 0">
+                                                                <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
+                                                                    <Border.Background>
+                                                                        <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                                                    </Border.Background>
+                                                                </Border>
+                                                                <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                                <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                            </Grid>
+                                                        </Grid>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </TabItem>
+                        </TabControl>
+                        <Border MouseLeftButtonDown="Add_fileNhanVien_Click" Cursor="Hand" Background="{DynamicResource #4C5BD4}" Width="161" CornerRadius="5" HorizontalAlignment="Right" Height="45" Margin="2,-200,0,0">
+                            <TextBlock Text="Add file nhân viên" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                    </Grid>
+                    <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                        <TextBlock Text="Chọn" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
