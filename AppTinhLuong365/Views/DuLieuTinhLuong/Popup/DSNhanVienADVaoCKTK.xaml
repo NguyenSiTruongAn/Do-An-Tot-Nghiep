@@ -10,7 +10,12 @@
       Title="DSNhanVienADVaoCKTK">
 
     <Grid>
-        <Border Background="{DynamicResource #FFFFFF}" Style="{StaticResource ShadowBorder2}">
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+        <Border Background="{DynamicResource #FFFFFF}">
             <StackPanel>
                 <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 3 -50 0"></TextBlock>
                 <DockPanel Margin="20 0">
