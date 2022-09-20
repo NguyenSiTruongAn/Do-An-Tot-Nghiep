@@ -108,7 +108,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void Border_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
         {
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.HoaHongLePhiViTri(Main));
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.HoaHongKeHoach(Main));
             Main.title.Text = "Hoa hồng/ Hoa hồng kế hoạch";
             Main.SideBarIndex = -1;
         }

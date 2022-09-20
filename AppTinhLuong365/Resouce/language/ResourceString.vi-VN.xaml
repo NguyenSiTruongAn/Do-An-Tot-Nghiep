@@ -322,4 +322,5 @@
     <system:String x:Key="textTKH">Tên kế hoạch</system:String>
     <system:String x:Key="textHHVND">Hoa hồng (VNĐ)</system:String>
     <system:String x:Key="textEvaluate">Đánh giá</system:String>
+    <system:String x:Key="textAddNew">Thêm mới</system:String>
 </ResourceDictionary>
