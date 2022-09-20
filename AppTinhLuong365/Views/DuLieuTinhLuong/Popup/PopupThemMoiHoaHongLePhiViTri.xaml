@@ -75,6 +75,9 @@
                                         <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
                                     </Border>
                                 </WrapPanel>
+                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 5 0 0">
+                                    <TextBlock Text="THÊM DOANH THU" FontSize="11" HorizontalAlignment="Right" FontWeight="DemiBold"/>
+                                </Border>
                                 <TextBlock Margin="0 34 0 5">
                                     <Run Text="Tổng sản phẩm:" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                                 </TextBlock>
@@ -185,6 +188,9 @@
                                             <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
                                         </Border>
                                     </WrapPanel>
+                                    <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 5 0 0">
+                                        <TextBlock Text="THÊM DOANH THU" FontSize="11" HorizontalAlignment="Right" FontWeight="DemiBold"/>
+                                    </Border>
                                     <TextBlock Margin="0 34 0 5">
                                     <Run Text="Tổng sản phẩm:" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                                 </TextBlock>

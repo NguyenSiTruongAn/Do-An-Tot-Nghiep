@@ -34,5 +34,19 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             this.Visibility = Visibility.Collapsed;
         }
+
+        private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.ChiTietLuong(Main));
+            this.Visibility = Visibility.Collapsed;
+            Main.title.Text = "Bảng lương nhân viên / Chi tiết lương nhân viên";
+        }
+
+        private void StackPanel_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main));
+            this.Visibility = Visibility.Collapsed;
+            Main.title.Text = "Bảng lương nhân viên / Hồ sơ nhân viên";
+        }
     }
 }

@@ -42,7 +42,7 @@
             </Style.Triggers>
         </Style>
     </Page.Resources>
-    <Grid Width="1000" Margin="20">
+    <Grid Margin="20">
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>

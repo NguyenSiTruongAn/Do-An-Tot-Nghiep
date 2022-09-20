@@ -26,7 +26,7 @@
                                     </Style.Triggers>
                                 </Style>
                             </Border.Style>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
                                 <Path Data="{DynamicResource iconBaoCaoCongLuong}" Stroke="{DynamicResource #666c7c}" VerticalAlignment="Center"/>
                                 <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" Text="Chi tiết lương" FontSize="15"/>
                             </StackPanel>
@@ -44,7 +44,7 @@
                                     </Style.Triggers>
                                 </Style>
                             </Border.Style>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown_1">
                                 <Path Data="{DynamicResource iconThongTinTaoKhoan}" Stroke="{DynamicResource #666c7c}" VerticalAlignment="Center"/>
                                 <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" Text="Hồ sơ nhân viên" FontSize="15"/>
                             </StackPanel>

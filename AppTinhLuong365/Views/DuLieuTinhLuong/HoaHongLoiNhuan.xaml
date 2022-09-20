@@ -361,13 +361,13 @@
                             <Setter Property="Foreground" Value="{DynamicResource #000}"/>
                         </Style>
                     </TabItem.Resources>
-                    <Grid>
+                    <Grid Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
                             </Border.Effect>
                         </Border>
-                        <Border CornerRadius="10" Background="{DynamicResource #FFFFFF}" Style="{StaticResource ShadowBorder1}" Margin="20" Padding="20">
+                        <Border CornerRadius="10" Background="{DynamicResource #FFFFFF}" Padding="20">
                             <StackPanel>
                                 <TextBlock FontSize="16" FontFamily="roboto" TextWrapping="WrapWithOverflow" Text="    Hoa hồng lợi nhuận chính là phần chênh lệch giữa chi phí bỏ ra để tạo ra một sản phẩm, dịch vụ mới với khoản doanh thu thu lại khi bán sản phẩm, dịch vụ đó. "/>
                                 <TextBlock Text="1. Thêm sản phẩm" FontSize="18" FontWeight="Bold" Margin="0 10"/>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -19,8 +21,13 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
     /// <summary>
     /// Interaction logic for PopupThemMoiHoaHongDoanhThu.xaml
     /// </summary>
-    public partial class PopupThemMoiHoaHongDoanhThu : Page
+    public partial class PopupThemMoiHoaHongDoanhThu : Page, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public PopupThemMoiHoaHongDoanhThu(MainWindow main)
         {
             this.DataContext = this;
@@ -29,7 +36,15 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         }
 
         MainWindow Main;
-
+        public class DoanhThu
+        {
+            public string doanhThu { get; set; }
+            public DateTime date { get; set; }
+        }
+        public List<DoanhThu> ttt { get; set; } = new List<DoanhThu>()
+        {
+            new DoanhThu()
+        };
         private static readonly Regex _regex = new Regex(@"^[0-9]\d*(\.\d{0,2})?$");
         private static bool IsTextAllowed(string text)
         {
@@ -70,6 +85,13 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var i = new DoanhThu();
+            ttt.Add(i);
+            tab.ItemsSource = ttt;
         }
     }
 }
