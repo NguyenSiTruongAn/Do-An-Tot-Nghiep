@@ -148,7 +148,8 @@ namespace AppTinhLuong365.Views
 
         private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main));
+            Main.title.Text = " Danh sách nhân viên/ Hồ sơ nhân viên";
         }
     }
 }

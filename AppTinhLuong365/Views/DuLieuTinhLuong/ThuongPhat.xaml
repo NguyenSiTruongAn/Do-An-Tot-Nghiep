@@ -76,7 +76,7 @@
                                         <DataTemplate>
                                             <Border Cursor="Hand" MouseLeftButtonDown="btnTienThuong" HorizontalAlignment="Right" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="30" Width="90">
                                                 <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                    <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
+                                                    <Path Margin="0 0 10 0" Data="{DynamicResource showPass}" Stroke="{DynamicResource #79B685}"></Path>
                                                     <TextBlock Text="{Binding}" FontSize="15" Foreground="{DynamicResource #666666}"></TextBlock>
                                                 </DockPanel>
                                             </Border>
@@ -88,7 +88,7 @@
                                         <DataTemplate>
                                             <Border Cursor="Hand" HorizontalAlignment="Right" Background="{DynamicResource #FFECEC}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="30" Width="90">
                                                 <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                    <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
+                                                    <Path Margin="0 0 10 0" Data="{DynamicResource showPass}" Stroke="{DynamicResource #FFA1A1}"></Path>
                                                     <TextBlock Text="{Binding}" FontSize="15" Foreground="{DynamicResource #666666}"></TextBlock>
                                                 </DockPanel>
                                             </Border>
@@ -100,7 +100,9 @@
                                         <DataTemplate>
                                             <Border Cursor="Hand" MouseLeftButtonDown="TuyChinhThuongPhat_Click" HorizontalAlignment="Right" Background="{DynamicResource #EDEFFB}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="30" Width="133">
                                                 <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                    <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
+                                                    <Border Padding="3" Width="15" Height="15" CornerRadius="15" Background="{DynamicResource #4C5BD4}">
+                                                        <Path HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource iconPlush}" Fill="{DynamicResource #FFFFFF}"></Path>
+                                                    </Border>
                                                     <TextBlock Text="Thưởng phạt" FontSize="15" Foreground="{DynamicResource #666666}"></TextBlock>
                                                 </DockPanel>
                                             </Border>
