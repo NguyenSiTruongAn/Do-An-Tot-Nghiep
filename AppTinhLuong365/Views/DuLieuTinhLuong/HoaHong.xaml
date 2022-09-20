@@ -80,7 +80,7 @@
                                         <Border>
                                             <TextBlock Margin="20 10 0 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #747474}" TextWrapping="WrapWithOverflow">Nhập hoặc tải trực tiếp từ excel hoa hồng cho nhân viên</TextBlock>
                                         </Border>
-                                        <Border Background="{DynamicResource #EFF7FE}" HorizontalAlignment="Stretch" Height="80" Style="{DynamicResource DashedBoder}" BorderThickness="1.5">
+                                        <Border Cursor="Hand" MouseLeftButtonDown="Btn_File_excel_Click" Background="{DynamicResource #EFF7FE}" HorizontalAlignment="Stretch" Height="80" Style="{DynamicResource DashedBoder}" BorderThickness="1.5">
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                                 <Path VerticalAlignment="Center" HorizontalAlignment="Center" Data="{DynamicResource iconDamMay}" Fill="{DynamicResource #4C5BD4}"></Path>
                                                 <TextBlock Margin="10 0 0 0" Text="File excel" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>

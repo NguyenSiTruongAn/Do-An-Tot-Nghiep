@@ -32,5 +32,11 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         {
             this.Visibility = Visibility.Collapsed;
         }
+
+        private void btn_TiepTuc_Click(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThoiGianADBaoHiem(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
     }
 }

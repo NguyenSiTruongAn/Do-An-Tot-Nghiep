@@ -1,0 +1,76 @@
+﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.Popup.PopupThoiGianADBaoHiem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong.Popup"
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
+      mc:Ignorable="d" 
+      Title="PopupThoiGianADBaoHiem">
+
+    <Grid Width="495" Height="454">
+        <Border Style="{StaticResource ShadowBorder1}"></Border>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
+            <StackPanel>
+                <Border CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" Text="Thời gian áp dụng"></TextBlock>
+                        <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" HorizontalAlignment="Right" Padding="0 3 17 0" FontWeight="Bold" FontFamily="roboto" Text="x" FontSize="28" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                    </Grid>
+                </Border>
+                <StackPanel Width="450" Margin="20 0 20 0">
+                    <Border Margin="0 20 0 0" CornerRadius="20" HorizontalAlignment="Left" Height="34" Background="{DynamicResource #EBF0F5}" Width="197">
+                        <DockPanel>
+                            <Border Margin="10 0 0 0" Width="26" Height="26" CornerRadius="40" HorizontalAlignment="Left">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" Margin="10 0 0 0" Text="Nguyễn Huy Quang" FontSize="15" Foreground="{DynamicResource #666c7c}"></TextBlock>
+                        </DockPanel>
+                    </Border>
+                    <TextBlock Margin="0 30 0 0">
+                        <Run Text="Áp dụng từ tháng" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
+                        <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
+                    </TextBlock>
+                    <Border Margin="0 5 0 0" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" CornerRadius="3" Height="43">
+                        <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
+                    </Border>
+                    <TextBlock Text="Đến tháng" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold" Margin="0 5"></TextBlock>
+                    <Border BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" CornerRadius="3" Height="43">
+                        <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
+                    </Border>
+                    <TextBlock Margin="0 10 0 0">
+                        <Run Text="Tiền bảo hiểm" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
+                        <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
+                    </TextBlock>
+                    <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid Height="38" Margin="10 0 10 0">
+                            <TextBox VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                            <TextBlock VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="Nhập số tiền (VNĐ)" IsHitTestVisible="False">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=tbInput,Path=Text}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                    <DockPanel>
+                        <Border Cursor="Hand" MouseLeftButtonDown="Btn_QuayLai_Click" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #B2B2B2}" BorderThickness="1" CornerRadius="5" Width="216" Height="45" Margin="2,20,-2.4,0">
+                            <TextBlock Text="Quay lại" Foreground="{DynamicResource #4C5BD4}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                        <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Right" Width="216" Height="45" Margin="2,20,-2.4,0">
+                            <TextBlock Text="Lưu Lại" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                    </DockPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

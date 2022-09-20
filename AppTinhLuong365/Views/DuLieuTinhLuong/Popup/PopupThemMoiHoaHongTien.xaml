@@ -9,7 +9,7 @@
       Width="616"
       Title="PopupThemMoiHoaHongTien">
 
-    <Grid Width="616" Height="571" x:Name="Grid1">
+    <Grid Width="616" Height="700" x:Name="Grid1">
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>

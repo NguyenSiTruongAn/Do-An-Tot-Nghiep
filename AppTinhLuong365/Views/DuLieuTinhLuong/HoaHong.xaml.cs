@@ -136,5 +136,11 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupCaiDatHoaHongKeHoach(Main));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
+
+        private void Btn_File_excel_Click(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupFileExcel_HoaHongTien(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
     }
 }
