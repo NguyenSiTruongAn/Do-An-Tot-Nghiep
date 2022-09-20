@@ -31,7 +31,8 @@
         </Style>
     </Page.Resources>
     <Grid Background="{DynamicResource #F7F8FC}">
-        <Border CornerRadius="10" Background="{DynamicResource #FFFFFF}" Margin="20" Style="{StaticResource ShadowBorder1}">
+        <Border Style="{StaticResource ShadowBorder2}"></Border>
+        <Border CornerRadius="10" Background="{DynamicResource #FFFFFF}" Margin="20">
             <StackPanel Margin="10 20">
                 <DockPanel>
                     <WrapPanel x:Name="wrapLCBVCD" DockPanel.Dock="Right" HorizontalAlignment="Right">

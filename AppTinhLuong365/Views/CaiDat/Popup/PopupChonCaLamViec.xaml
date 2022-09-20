@@ -7,45 +7,44 @@
       mc:Ignorable="d" 
       Title="PopupChonCaLamViec">
 
-    <Grid>
-        <Grid Width="494" Background="{DynamicResource #FFFFFF}">
-            <StackPanel>
-                <Border Background="{DynamicResource #4C5BD4}" Height="47" CornerRadius="8 8 0 0">
-                    <Border Cursor="Hand" MouseLeftButtonDown="Close_Click" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0">
-                        <TextBlock Text="X" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
-                    </Border>
+    <Grid Width="494" Background="{DynamicResource #FFFFFF}">
+        <Border Style="{StaticResource ShadowBorder2}"></Border>
+        <StackPanel>
+            <Border Background="{DynamicResource #4C5BD4}" Height="47" CornerRadius="8 8 0 0">
+                <Border Cursor="Hand" MouseLeftButtonDown="Close_Click" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0">
+                    <TextBlock Text="X" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </Border>
-                <Border Background="{DynamicResource #FFFFFF}">
-                    <StackPanel Margin="20 0">
-                        <TextBlock Margin="0 20" Text="Chọn ca làm việc" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #636e73}"></TextBlock>
-                        <DataGrid Style="{StaticResource DataGrid5}" ItemsSource="{Binding Test}">
-                            <DataGrid.Columns>
-                                <DataGridTemplateColumn>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <DockPanel>
-                                                <CheckBox Margin="0 0 10 0"></CheckBox>
-                                                <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
-                                            </DockPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                        <DockPanel Margin="0 20">
-                            <Border MouseLeftButtonDown="Btn_QuayLai_Click" BorderThickness="1" BorderBrush="{DynamicResource #666666}" Cursor="Hand" Height="38" Width="215" HorizontalAlignment="Right" Background="Transparent" CornerRadius="4">
-                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Path Data="{DynamicResource iconArrowLeft}" Stroke="{DynamicResource #666666}"></Path>
-                                    <TextBlock Margin="25 0 0 0" Text="Quay lại" FontSize="15" Foreground="{DynamicResource #666666}" FontWeight="Bold"></TextBlock>
-                                </Grid>
-                            </Border>
-                            <Border MouseLeftButtonDown="btnTiepTuc_Click" Cursor="Hand" Height="38" Width="215" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}" CornerRadius="4">
-                                <TextBlock Text="Tiếp tục" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold"></TextBlock>
-                            </Border>
-                        </DockPanel>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
-        </Grid>
+            </Border>
+            <Border Background="{DynamicResource #FFFFFF}">
+                <StackPanel Margin="20 0">
+                    <TextBlock Margin="0 20" Text="Chọn ca làm việc" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #636e73}"></TextBlock>
+                    <DataGrid Style="{StaticResource DataGrid5}" ItemsSource="{Binding Test}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DockPanel>
+                                            <CheckBox Margin="0 0 10 0"></CheckBox>
+                                            <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DockPanel Margin="0 20">
+                        <Border MouseLeftButtonDown="Btn_QuayLai_Click" BorderThickness="1" BorderBrush="{DynamicResource #666666}" Cursor="Hand" Height="38" Width="215" HorizontalAlignment="Right" Background="Transparent" CornerRadius="4">
+                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Data="{DynamicResource iconArrowLeft}" Stroke="{DynamicResource #666666}"></Path>
+                                <TextBlock Margin="25 0 0 0" Text="Quay lại" FontSize="15" Foreground="{DynamicResource #666666}" FontWeight="Bold"></TextBlock>
+                            </Grid>
+                        </Border>
+                        <Border MouseLeftButtonDown="btnTiepTuc_Click" Cursor="Hand" Height="38" Width="215" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}" CornerRadius="4">
+                            <TextBlock Text="Tiếp tục" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold"></TextBlock>
+                        </Border>
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
     </Grid>
 </Page>

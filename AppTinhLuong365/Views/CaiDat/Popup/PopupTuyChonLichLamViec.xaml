@@ -11,9 +11,11 @@
       Title="PopupTuyChonLichLamViec">
 
     <Grid>
-        <Border VerticalAlignment="Bottom" Background="{DynamicResource #FFFFFF}" Width="243" CornerRadius="10" Style="{StaticResource ShadowBorder2}">
+        <Border VerticalAlignment="Bottom" Background="{DynamicResource #FFFFFF}" Width="243" CornerRadius="10">
             <Grid>
-                <Path HorizontalAlignment="Right" Margin="0 -12 20 0" Data="{DynamicResource iconTamGiacHuongLen}" Fill="{DynamicResource #FFFFFF}"></Path>
+                <Border Style="{StaticResource ShadowBorder2}">
+                    <Path HorizontalAlignment="Right" Margin="0 -12 20 0" Data="{DynamicResource iconTamGiacHuongLen}" Fill="{DynamicResource #FFFFFF}"></Path>
+                </Border>
                 <Border  Background="Transparent"  Cursor="Hand" >
                     <StackPanel Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Border MouseLeftButtonDown="ThemNhanVien_ClickMouseLeftDown" Cursor="Hand" Background="Transparent" Height="40" HorizontalAlignment="Stretch">
@@ -84,7 +86,7 @@
                                 </Style>
                             </Border.Style>
                             <DockPanel>
-                                <Path Margin="0 0 10 0" VerticalAlignment="Center" Data="{DynamicResource iconThemNhanVien}" Fill="{DynamicResource #4C5BD4}"></Path>
+                                <Path Margin="0 0 10 0" VerticalAlignment="Center" Data="{DynamicResource iconMaximize1}" Fill="{DynamicResource #666C7C}"></Path>
                                 <TextBlock VerticalAlignment="Center" Text="Sao chép lịch làm việc" FontSize="15"></TextBlock>
                             </DockPanel>
                         </Border>

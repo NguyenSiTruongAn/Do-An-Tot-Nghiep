@@ -74,7 +74,7 @@
                                 <DataGridTemplateColumn Header="Tiền thưởng">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Border Cursor="Hand" HorizontalAlignment="Right" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="30" Width="90">
+                                            <Border Cursor="Hand" MouseLeftButtonDown="btnTienThuong" HorizontalAlignment="Right" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="30" Width="90">
                                                 <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                                                     <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
                                                     <TextBlock Text="{Binding}" FontSize="15" Foreground="{DynamicResource #666666}"></TextBlock>

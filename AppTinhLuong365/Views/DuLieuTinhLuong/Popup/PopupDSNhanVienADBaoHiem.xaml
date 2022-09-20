@@ -10,9 +10,17 @@
       Title="PopupDSNhanVienADBaoHiem">
 
     <Grid>
-        <Border Background="{DynamicResource #FFFFFF}" Style="{StaticResource ShadowBorder2}">
+        <Border Style="{StaticResource ShadowBorder2}"></Border>
+        <Border Background="{DynamicResource #FFFFFF}">
             <StackPanel>
-                <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 3 -50 0"></TextBlock>
+                <Grid>
+                    <Border Background="Transparent" CornerRadius="10" Margin="0 3 -50 0">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.6"></DropShadowEffect>
+                        </Border.Effect>
+                        <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" ></TextBlock>
+                    </Border>
+                </Grid>
                 <DockPanel Margin="20 0">
                     <Border HorizontalAlignment="Right" Cursor="Hand" MouseLeftButtonDown="BtnThemNhanVien_Click" x:Name="btnThemNhanVien" Height="40" Width="156" CornerRadius="10" Background="{DynamicResource #4C5BD4}" DockPanel.Dock="Right">
                         <DockPanel>

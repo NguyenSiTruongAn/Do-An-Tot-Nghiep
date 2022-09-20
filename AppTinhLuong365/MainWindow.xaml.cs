@@ -333,6 +333,33 @@ namespace AppTinhLuong365
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (this.WindowState == WindowState.Maximized) IsFull = 1;
+            if (this.ActualWidth < 1250)
+            {
+                textTitle.Visibility = Visibility.Collapsed;
+                if (this.ActualWidth < 1025)
+                {
+                    gridTop.Visibility = Visibility.Collapsed;
+                    sidebar.Visibility = Visibility.Collapsed;
+                    column1.Width = new GridLength(0);
+                    gridTop1.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    gridTop.Visibility = Visibility.Visible;
+                    sidebar.Visibility = Visibility.Visible;
+                    column1.Width = new GridLength(300);
+                    gridTop1.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                textTitle.Visibility = Visibility.Visible;
+                gridTop.Visibility = Visibility.Visible;
+                gridTop1.Visibility = Visibility.Collapsed;
+                sidebar.Visibility = Visibility.Visible;
+                column1.Width = new GridLength(300);
+            }
+                
         }
 
         private void HomeSelectionPage_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -383,6 +410,12 @@ namespace AppTinhLuong365
         {
             this.PopupSelection.NavigationService.Navigate(null);
             this.PopupSelection.Visibility = Visibility.Hidden;
+        }
+
+        private void btn_OpenMenu_Click(object sender, MouseButtonEventArgs e)
+        {
+            this.PopupSelection.NavigationService.Navigate(new Views.Popup.PopupSideBar(this));
+            this.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

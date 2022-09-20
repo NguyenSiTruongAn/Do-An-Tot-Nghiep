@@ -8,6 +8,7 @@
       Title="PopupChinhSuaLichLamViec">
 
     <Grid Width="494" Background="{DynamicResource #FFFFFF}">
+        <Border Style="{StaticResource ShadowBorder2}"></Border>
         <StackPanel>
             <Border Background="{DynamicResource #4C5BD4}" Height="47" CornerRadius="8 8 0 0">
                 <Grid>

@@ -16,7 +16,7 @@
         <Border>
             <StackPanel Margin="20 30">
                 <Border HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource ShadowBorder2}">
-                    <TextBlock Width="23" Height="32" MouseLeftButtonDown="Close_Click" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" Margin="0 -150 0 0"></TextBlock>
+                    <TextBlock Cursor="Hand" Width="23" Height="32" MouseLeftButtonDown="Close_Click" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" Margin="0 -150 0 0"></TextBlock>
                 </Border>
                 <DockPanel Height="30">
                     <TextBlock VerticalAlignment="Center" Text="Cài đặt hoa hồng doanh thu" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #495057}"></TextBlock>
@@ -40,7 +40,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -49,7 +49,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -67,7 +67,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>

@@ -11,9 +11,12 @@
       Title="PopupDSNVLichLamViec">
 
     <Grid>
-        <Border Background="{DynamicResource #FFFFFF}" Style="{StaticResource ShadowBorder2}">
+        <Border Style="{StaticResource ShadowBorder2}"></Border>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <StackPanel>
-                <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 3 -50 0"></TextBlock>
+                <Border Style="{StaticResource ShadowBorder2}" Background="Transparent">
+                    <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 3 -50 0"></TextBlock>
+                </Border>
                 <StackPanel Margin="20 0">
                     <TextBlock Text="{Binding}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
                     <TextBlock Text="Danh sách nhân viên" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
