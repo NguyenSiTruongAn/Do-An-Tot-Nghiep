@@ -87,5 +87,14 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.MaxWidth = 888;
         }
+
+        private void btnTienThuong(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupTienThuong(Main);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
     }
 }

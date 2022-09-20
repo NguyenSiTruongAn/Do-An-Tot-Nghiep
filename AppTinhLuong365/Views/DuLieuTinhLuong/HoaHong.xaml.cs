@@ -112,5 +112,29 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             Main.title.Text = "Hoa hồng/ Hoa hồng kế hoạch";
             Main.SideBarIndex = -1;
         }
+
+        private void btnCaiDatHoaHongDoanhThu(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.PopupCaiDatHoaHongDoanhThu(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void BtnCaiDatHoaHongLoiNhuan(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupCaiDatHoaHongLoiNhuan(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void btnCaiDatHoaHongLePhiViTri(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupCaiDatHoaHongLePhiViTri(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void btnCaiDatHoaHongKeHoach(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupCaiDatHoaHongKeHoach(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
     }
 }

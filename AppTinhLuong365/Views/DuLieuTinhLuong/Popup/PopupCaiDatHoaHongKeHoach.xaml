@@ -1,0 +1,97 @@
+﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.Popup.PopupCaiDatHoaHongKeHoach"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong.Popup"
+      mc:Ignorable="d" 
+      Title="PopupCaiDatHoaHongKeHoach">
+
+    <Grid Width="900" Margin="0 60">
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+        <Border>
+            <StackPanel Margin="20 30">
+                <Border HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource ShadowBorder2}">
+                    <TextBlock Cursor="Hand" Width="23" Height="32" MouseLeftButtonDown="Close_Click" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" Margin="0 -150 0 0"></TextBlock>
+                </Border>
+                <DockPanel Height="30">
+                    <TextBlock VerticalAlignment="Center" Text="Cài đặt hoa hồng kế hoạch" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #495057}"></TextBlock>
+                    <Border Cursor="Hand" MouseLeftButtonDown="btnThem_Click" CornerRadius="13" Width="88.5" HorizontalAlignment="Right" Background="{DynamicResource #68B782}">
+                        <DockPanel VerticalAlignment="Center">
+                            <Path VerticalAlignment="Center" Margin="10 0" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
+                            <TextBlock Text="Thêm" FontSize="15" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold"></TextBlock>
+                        </DockPanel>
+                    </Border>
+                </DockPanel>
+                <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                    <DataGrid.OpacityMask>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Border Width="{Binding ElementName=dataGrid3,Path=ActualWidth}" Height="{Binding ElementName=dataGrid3,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </DataGrid.OpacityMask>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="STT">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent">
+                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Tên kế hoạch">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent">
+                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Đạt KPI">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent">
+                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Không đạt">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent">
+                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <DockPanel>
+                                            <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
+                                                <Path Data="{DynamicResource iconPenEdit}" Fill="{DynamicResource #4C5BD4}"></Path>
+                                            </Border>
+                                            <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="btnXoaHoaHongTien_Click">
+                                                <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
+                                            </Border>
+                                        </DockPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Page>

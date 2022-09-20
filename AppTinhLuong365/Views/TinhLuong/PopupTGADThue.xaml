@@ -9,7 +9,8 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PopupTGADThue">
     <Grid>
-        <Border Style="{StaticResource ShadowBorder1}" Background="{DynamicResource #FFFFFF}" CornerRadius="8">
+        <Border Style="{StaticResource ShadowBorder1}"></Border>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
             <StackPanel>
                 <Border CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
                     <Grid>

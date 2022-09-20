@@ -8,8 +8,9 @@
       d:DesignWidth="250"
       Title="PopupTuyChonCSThue">
 
-    <Grid>
-        <Border VerticalAlignment="Bottom" Background="{DynamicResource #FFFFFF}" Width="243" CornerRadius="10" Style="{StaticResource ShadowBorder2}">
+    <Grid Width="243">
+        <Border Style="{StaticResource ShadowBorder2}"></Border>
+        <Border VerticalAlignment="Bottom" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Grid>
                 <Path HorizontalAlignment="Right" Margin="0 -12 20 0" Data="{DynamicResource iconTamGiacHuongLen}" Fill="{DynamicResource #FFFFFF}"></Path>
                 <Border  Background="Transparent"  Cursor="Hand" >

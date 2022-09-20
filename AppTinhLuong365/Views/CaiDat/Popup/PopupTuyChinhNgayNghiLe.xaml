@@ -5,16 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong.Popup"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+
       HorizontalAlignment="Left"
       VerticalAlignment="Top"
       Title="PopupTuyChinhNgayNghiLe">
 
-    <Grid>
-        <Border VerticalAlignment="Bottom" Background="{DynamicResource #FFFFFF}" Width="243" CornerRadius="10" Style="{StaticResource ShadowBorder2}">
+    <Grid Width="243">
+        <Border VerticalAlignment="Top" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Grid>
-                <Path HorizontalAlignment="Right" Margin="0 -12 20 0" Data="{DynamicResource iconTamGiacHuongLen}" Fill="{DynamicResource #FFFFFF}"></Path>
-                <Border  Background="Transparent"  Cursor="Hand" >
+                <Border  Style="{StaticResource ShadowBorder2}">
+                    <Path HorizontalAlignment="Right" Margin="0 -10 20 0" Data="{DynamicResource iconTamGiacHuongLen}" Fill="{DynamicResource #FFFFFF}"></Path>
+                </Border>
+                <Border Background="Transparent"  Cursor="Hand" >
                     <StackPanel Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Border Cursor="Hand" CornerRadius="5" Height="40" HorizontalAlignment="Stretch">
                             <Border.Style>

@@ -37,17 +37,20 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaHoaHongDoanhThu(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void btnXoaHoaHongTien_Click(object sender, MouseButtonEventArgs e)
         {
-
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThongBaoXoaHoaHongDoanhThu(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void btnThem_Click(object sender, MouseButtonEventArgs e)
         {
-
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThemHoaHongDoanhThu(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

@@ -9,7 +9,8 @@
       Title="PopupThongBaoXoaCKTK">
 
     <Grid Width="616" Height="252">
-        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8" Style="{StaticResource ShadowBorder2}">
+        <Border  Style="{StaticResource ShadowBorder2}"></Border>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
             <Grid>
                 <TextBlock Cursor="Hand" MouseLeftButtonDown="Close_Click" Margin="0 3 17 0" HorizontalAlignment="Right" Text="x" Foreground="{DynamicResource #666c7c}" FontSize="28" FontWeight="Bold" VerticalAlignment="Top"></TextBlock>
                 <StackPanel Margin="0 35 0 0" HorizontalAlignment="Center">
@@ -19,7 +20,7 @@
                         <Border Cursor="Hand" Background="Transparent" MouseLeftButtonDown="Close_Click" Margin="0 0 10 0" Width="112" Height="43" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource #666666}">
                             <TextBlock Text="Hủy bỏ" TextAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #444}"></TextBlock>
                         </Border>
-                        <Border Cursor="Hand" Width="112" Height="43" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource #666666}" Background="{DynamicResource #4C5BD4}">
+                        <Border Cursor="Hand" Width="112" Height="43" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
                             <TextBlock Text="Tiếp tục" TextAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                         </Border>
                     </DockPanel>

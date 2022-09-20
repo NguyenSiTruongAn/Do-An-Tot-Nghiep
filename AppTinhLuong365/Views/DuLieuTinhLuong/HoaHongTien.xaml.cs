@@ -78,12 +78,14 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 DockPanel.SetDock(dockHoaHongCaNhan, Dock.Right);
                 DockPanel.SetDock(dockHoaHongNhom, Dock.Right);
+                DockPanel.SetDock(dockTongHoaHong, Dock.Right);
 
             }
             else
             {
                 DockPanel.SetDock(dockHoaHongCaNhan, Dock.Bottom);
                 DockPanel.SetDock(dockHoaHongNhom, Dock.Bottom);
+                DockPanel.SetDock(dockTongHoaHong, Dock.Bottom);
             }
         }
 

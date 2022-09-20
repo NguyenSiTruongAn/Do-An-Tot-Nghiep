@@ -9,7 +9,8 @@
       Title="PopupPQTK">
 
     <Grid>
-        <Border Style="{StaticResource ShadowBorder2}" Background="{DynamicResource #FFFFFF}" CornerRadius="8">
+        <Border Style="{StaticResource ShadowBorder2}"></Border>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
             <StackPanel>
                 <Border Cursor="Hand" CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
                     <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" HorizontalAlignment="Right" Padding="0 3 17 0" FontWeight="Bold" FontFamily="roboto" Text="x" FontSize="28" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
