@@ -9,7 +9,12 @@
       Title="PopupThemNhanVienCKTK">
 
     <Grid>
-        <Border Style="{StaticResource ShadowBorder2}" Background="{DynamicResource #FFFFFF}" CornerRadius="8">
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
             <StackPanel>
                 <Border Cursor="Hand" CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
                     <Grid>
