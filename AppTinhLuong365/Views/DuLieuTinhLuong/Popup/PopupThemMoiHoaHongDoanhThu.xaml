@@ -54,28 +54,37 @@
                                     <Run Text="Doanh thu theo thời điểm" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                                     <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                                 </TextBlock>
-                                <WrapPanel>
-                                    <Border Width="269" Height="42" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <Grid Height="42" Margin="10 0 10 0">
-                                            <TextBox PreviewTextInput="Txt_PreviewCurrencyTextInput"  DataObject.Pasting="TextBoxPasting" FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput5" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
-                                            <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="Doanh thu (dạng số)" IsHitTestVisible="False">
-                                                <TextBlock.Style>
-                                                    <Style TargetType="TextBlock">
-                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding ElementName=tbInput5,Path=Text}" Value="">
-                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </TextBlock.Style>
-                                            </TextBlock>
-                                        </Grid>
-                                    </Border>
-                                    <Border Margin="18 0 0 0" Width="269" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" CornerRadius="3" Height="43">
-                                        <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
-                                    </Border>
-                                </WrapPanel>
+                                <ItemsControl x:Name="tab" ItemsSource="{Binding ttt}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <WrapPanel>
+                                                <Border Width="269" Height="42" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Grid Height="42" Margin="10 0 10 0">
+                                                        <TextBox Text="{Binding doanhThu}" PreviewTextInput="Txt_PreviewCurrencyTextInput"  DataObject.Pasting="TextBoxPasting" FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput5" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                                        <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="Doanh thu (dạng số)" IsHitTestVisible="False">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding ElementName=tbInput5,Path=Text}" Value="">
+                                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Border>
+                                                <Border Margin="18 0 0 0" Width="269" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" CornerRadius="3" Height="43">
+                                                    <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
+                                                </Border>
+                                            </WrapPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 5 0 0">
+                                    <TextBlock Text="THÊM DOANH THU" FontSize="11" HorizontalAlignment="Right" FontWeight="DemiBold"/>
+                                </Border>
                                 <WrapPanel>
                                     <StackPanel Width="269" Margin="0 0 18 0">
                                         <TextBlock Margin="0 20 0 5">
@@ -177,6 +186,9 @@
                                             <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
                                         </Border>
                                     </WrapPanel>
+                                    <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 5 0 0">
+                                        <TextBlock Text="THÊM DOANH THU" FontSize="11" HorizontalAlignment="Right" FontWeight="DemiBold"/>
+                                    </Border>
                                     <WrapPanel>
                                         <StackPanel Width="269" Margin="0 0 18 0">
                                             <TextBlock Margin="0 20 0 5">

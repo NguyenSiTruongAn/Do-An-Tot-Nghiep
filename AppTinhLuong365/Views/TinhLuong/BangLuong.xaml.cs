@@ -140,7 +140,11 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 95, z.Y + 15, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }
