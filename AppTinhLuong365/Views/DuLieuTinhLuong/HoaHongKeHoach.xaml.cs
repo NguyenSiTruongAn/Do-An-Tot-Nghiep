@@ -90,7 +90,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void btnThemMoi_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemMoiHoaHongLePhiViTri(Main);
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemMoiHoaHongKeHoach(Main);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             if (pop.tabitem1.IsSelected == true)

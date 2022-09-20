@@ -377,4 +377,5 @@
 
 
     <system:String x:Key="textDangXuat">Đăng xuất</system:String>
+    <system:String x:Key="textAddNew">Thêm mới</system:String>
 </ResourceDictionary>

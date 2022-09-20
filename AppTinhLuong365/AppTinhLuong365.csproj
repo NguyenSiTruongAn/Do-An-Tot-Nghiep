@@ -231,6 +231,9 @@
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiHoaHongDoanhThu.xaml.cs">
       <DependentUpon>PopupThemMoiHoaHongDoanhThu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiHoaHongKeHoach.xaml.cs">
+      <DependentUpon>PopupThemMoiHoaHongKeHoach.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiHoaHongLePhiViTri.xaml.cs">
       <DependentUpon>PopupThemMoiHoaHongLePhiViTri.xaml</DependentUpon>
     </Compile>
@@ -576,6 +579,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiHoaHongDoanhThu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiHoaHongKeHoach.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1093,6 +1100,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\TrangChu\Image\logout.png" />
+    <Resource Include="Views\DuLieuTinhLuong\Image\hoa-hong-ca-nhan%282%29.png" />
+    <Resource Include="Views\DuLieuTinhLuong\Image\hoa-hong-ke-hoach.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
