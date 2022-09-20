@@ -11,7 +11,7 @@
       SizeChanged="Page_SizeChanged"
       Title="HoaHong">
 
-    <Grid Width="1000">
+    <Grid MaxWidth="1920">
         <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0" ItemContainerStyle="{StaticResource TabItem1}" Margin="0,0,0,-0.4">
             <TabItem Header="{DynamicResource textCaiDatHoaHong}" Background="Transparent">
                 <TabItem.Resources>
