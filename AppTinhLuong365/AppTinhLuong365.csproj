@@ -213,6 +213,9 @@
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaHoaHongLoiNhuan.xaml.cs">
       <DependentUpon>PopupChinhSuaHoaHongLoiNhuan.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupFileExcel_HoaHongTien.xaml.cs">
+      <DependentUpon>PopupFileExcel_HoaHongTien.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupPhucLoi.xaml.cs">
       <DependentUpon>PopupPhucLoi.xaml</DependentUpon>
     </Compile>
@@ -278,6 +281,12 @@
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThietLapBaoHiem.xaml.cs">
       <DependentUpon>PopupThietLapBaoHiem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThoiGianADBaoHiem.xaml.cs">
+      <DependentUpon>PopupThoiGianADBaoHiem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThoiGianADCacKhoanTienKhac.xaml.cs">
+      <DependentUpon>PopupThoiGianADCacKhoanTienKhac.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaCKTK.xaml.cs">
       <DependentUpon>PopupThongBaoXoaCKTK.xaml</DependentUpon>
@@ -558,6 +567,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupFileExcel_HoaHongTien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupPhucLoi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -647,6 +660,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupThietLapBaoHiem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThoiGianADBaoHiem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThoiGianADCacKhoanTienKhac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

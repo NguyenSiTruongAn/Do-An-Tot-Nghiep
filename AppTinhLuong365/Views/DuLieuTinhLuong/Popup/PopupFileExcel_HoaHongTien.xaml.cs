@@ -16,27 +16,30 @@ using System.Windows.Shapes;
 namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupThemNhanVienCKTK.xaml
+    /// Interaction logic for PopupFileExcel_HoaHongTien.xaml
     /// </summary>
-    public partial class PopupThemNhanVienCKTK : Page
+    public partial class PopupFileExcel_HoaHongTien : Page
     {
         MainWindow Main;
-        public PopupThemNhanVienCKTK(MainWindow main)
+        public PopupFileExcel_HoaHongTien(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
         }
-        public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc", "dd", "ee", "ff", "gg" };
+
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.Visibility = Visibility.Collapsed;
         }
 
-        private void btnTiepTuc_Click(object sender, MouseButtonEventArgs e)
+        private void Add_file_Click(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThoiGianADCacKhoanTienKhac(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            Microsoft.Win32.OpenFileDialog op = new Microsoft.Win32.OpenFileDialog();
+            if (op.ShowDialog() == true)
+            {
+
+            }
         }
     }
 }
