@@ -96,6 +96,10 @@
       <DependentUpon>Notify.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\APIEntity\API_ListEmployee.cs" />
+    <Compile Include="Model\APIEntity\API_ListEmployeeChuaThietLapThue.cs" />
+    <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
+    <Compile Include="Model\APIEntity\API_ListUserTax.cs" />
+    <Compile Include="Model\APIEntity\API_Payroll.cs" />
     <Compile Include="Model\APIEntity\API_ListGroup.cs" />
     <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
     <Compile Include="Model\APIEntity\API_List_ep_nogroup.cs" />
