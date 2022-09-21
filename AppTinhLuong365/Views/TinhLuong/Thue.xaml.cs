@@ -1,21 +1,15 @@
-﻿using System;
+﻿using AppTinhLuong365.Core;
+using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using AppTinhLuong365.Core;
 
 namespace AppTinhLuong365.Views.TinhLuong
 {
@@ -41,7 +35,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
-            dataGrid1.AutoReponsiveColumn(1);
+            dataGrid1.AutoReponsiveColumn(0);
             dataGrid2.AutoReponsiveColumn(0);
             ItemList = new ObservableCollection<string>();
             for (var i = 1; i <= 12; i++)
@@ -53,13 +47,15 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 YearList.Add($"Năm {i}");
             }
-            
+
             Main = main;
+            getData();
+            getData1();
         }
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
 
-        public List<string> Test { get; set; } = new List<string>() { "aa" ,"bb" ,"cc"  };
+        public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -99,7 +95,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset-e.Delta);
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -127,6 +123,64 @@ namespace AppTinhLuong365.Views.TinhLuong
             pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private List<ItemThue> _listThue;
+
+        public List<ItemThue> listThue
+        {
+            get { return _listThue; }
+            set { _listThue = value; OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDaGFtY29uZzM2NS1UaW12aWVjMzY1IiwiaWF0IjoxNjYzNzI2NDMyLCJleHAiOjE2NjM4MTI4MzIsImRhdGEiOnsiaWQiOiIxNzYxIiwibmFtZSI6IkNcdTAwZjRuZyBUeSBUTkhIIDEyNCBjY2NjY2NjY2NjY2NjY2NjY2NjY2MiLCJlbWFpbCI6ImhpZXB0ZXN0QGdtYWlsLmNvbSIsInBob25lX3RrIjpudWxsLCJ0eXBlIjoyLCJyb2xlIjoiMSIsIm9zIjoxLCJmcm9tIjoiY2MzNjUifX0.l9HaLM067iYlE88CcGSPEIRM41YxYI8WUE0tioL3jY4");
+                web.QueryString.Add("id_comp", "1761");
+                web.QueryString.Add("id_month", "09");
+                web.QueryString.Add("id_year", "2022");
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListEmployeeChuaThietLapThue api = JsonConvert.DeserializeObject<API_ListEmployeeChuaThietLapThue>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listThue = api.data.list;
+                    }
+
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_user_no_tax.php", web.QueryString);
+            }
+        }
+
+        private List<ItemUserTax> _listUserTax;
+
+        public List<ItemUserTax> listUserTax
+        {
+            get { return _listUserTax; }
+            set { _listUserTax = value; OnPropertyChanged(); }
+        }
+
+        private void getData1()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDaGFtY29uZzM2NS1UaW12aWVjMzY1IiwiaWF0IjoxNjYzNzI2NDMyLCJleHAiOjE2NjM4MTI4MzIsImRhdGEiOnsiaWQiOiIxNzYxIiwibmFtZSI6IkNcdTAwZjRuZyBUeSBUTkhIIDEyNCBjY2NjY2NjY2NjY2NjY2NjY2NjY2MiLCJlbWFpbCI6ImhpZXB0ZXN0QGdtYWlsLmNvbSIsInBob25lX3RrIjpudWxsLCJ0eXBlIjoyLCJyb2xlIjoiMSIsIm9zIjoxLCJmcm9tIjoiY2MzNjUifX0.l9HaLM067iYlE88CcGSPEIRM41YxYI8WUE0tioL3jY4");
+                web.QueryString.Add("id_comp", "1761");
+                web.QueryString.Add("page", "1");
+                web.QueryString.Add("id_tax", "2");
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListUserTax api = JsonConvert.DeserializeObject<API_ListUserTax>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listUserTax = api.data.list;
+                    }
+
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_user_tax.php", web.QueryString);
+            }
         }
     }
 }
