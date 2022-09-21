@@ -25,7 +25,7 @@
         <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
         <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource #ebebeb}"></Setter>
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource #FFFFFF}"></Setter>
-        <Setter Property="RowHeight" Value="50"></Setter>
+        <Setter Property="RowHeight" Value="79"></Setter>
         <Setter Property="RowHeaderWidth" Value="0"></Setter>
         <Setter Property="IsReadOnly" Value="True"></Setter>
         <Setter Property="AutoGenerateColumns" Value="False"></Setter>
@@ -58,11 +58,12 @@
         <Setter Property="CellStyle">
             <Setter.Value>
                 <Style TargetType="DataGridCell">
-                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="Foreground" Value="#68798B" />
                     <Style.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Background" Value="{x:Null}" />
                             <Setter Property="BorderBrush" Value="{x:Null}" />
+                            <Setter Property="FontSize" Value="15" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -263,13 +264,17 @@
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         <Setter Property="Margin" Value="10 0"></Setter>
-        <Setter Property="Foreground" Value="{DynamicResource #474747}"></Setter>
+        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontWeight" Value="DemiBold"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource #68798B}"></Setter>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="TextRowCenter1">
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="Margin" Value="10 0"></Setter>
+        <Setter Property="FontWeight" Value="DemiBold"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource #FF5959}"></Setter>
     </Style>
 

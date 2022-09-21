@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +38,33 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        private List<ItemTamUng> _listTamUng;
+
+        public List<ItemTamUng> listTamUng
+        {
+            get { return _listTamUng; }
+            set { _listTamUng = value;OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("id_com", "1761");
+                web.QueryString.Add("date", "2022-01");
+                web.QueryString.Add("page", "1");
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListTamUng api = JsonConvert.DeserializeObject<API_ListTamUng>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listTamUng = api.data.items;
+                    }
+
+                };
+                web.UploadValuesTaskAsync("https://vanthu.timviec365.vn/api/get_dx_tu_tl365.php", web.QueryString);
+            }
+        }
         public TamUng(MainWindow main)
         {
             ItemList = new ObservableCollection<string>();
@@ -50,6 +80,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            getData();
         }
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +73,8 @@ namespace AppTinhLuong365
             this.Height = workingArea.Bottom - 100;
             SideBarIndex = 0;
         }
+
+
         public class SideBarItemCom : INotifyPropertyChanged
         {
             public event PropertyChangedEventHandler PropertyChanged;
@@ -359,7 +364,7 @@ namespace AppTinhLuong365
                 sidebar.Visibility = Visibility.Visible;
                 column1.Width = new GridLength(300);
             }
-                
+
         }
 
         private void HomeSelectionPage_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
