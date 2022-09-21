@@ -89,7 +89,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var i = new DoanhThu();
+            var i = new DoanhThu() {};
             ttt.Add(i);
             tab.ItemsSource = ttt;
         }
