@@ -60,11 +60,51 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core\Extention.cs" />
+    <Compile Include="Login\Entities\API_ComLogin.cs" />
+    <Compile Include="Login\Entities\API_EpLogin.cs" />
+    <Compile Include="Login\Entities\API_Response.cs" />
+    <Compile Include="Login\Entities\Data.cs" />
+    <Compile Include="Login\Entities\Error.cs" />
+    <Compile Include="Login\ForgotPasswordWindow.xaml.cs">
+      <DependentUpon>ForgotPasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Views\Login\ForgotPassword_Email.xaml.cs">
+      <DependentUpon>ForgotPassword_Email.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Views\Login\ForgotPassword_NewPass.xaml.cs">
+      <DependentUpon>ForgotPassword_NewPass.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Views\Login\ForgotPassword_OTP.xaml.cs">
+      <DependentUpon>ForgotPassword_OTP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Views\Login\ForgotPassword_Success.xaml.cs">
+      <DependentUpon>ForgotPassword_Success.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Views\Login\LoginCom.xaml.cs">
+      <DependentUpon>LoginCom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Views\Login\LoginEP.xaml.cs">
+      <DependentUpon>LoginEP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Views\Notify.xaml.cs">
+      <DependentUpon>Notify.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\APIEntity\API_ListEmployee.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployeeChuaThietLapThue.cs" />
     <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
     <Compile Include="Model\APIEntity\API_ListUserTax.cs" />
     <Compile Include="Model\APIEntity\API_Payroll.cs" />
+    <Compile Include="Model\APIEntity\API_ListGroup.cs" />
+    <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
+    <Compile Include="Model\APIEntity\API_List_ep_nogroup.cs" />
+    <Compile Include="Model\APIEntity\API_Login_Company.cs" />
+    <Compile Include="Model\APIEntity\API_Login_Employee.cs" />
     <Compile Include="Model\APIEntity\API_UserInfo.cs" />
     <Compile Include="Resouce\tool\DatePicker.xaml.cs">
       <DependentUpon>DatePicker.xaml</DependentUpon>
@@ -435,6 +475,82 @@
     <Compile Include="Views\TrangChu\TrangChu.xaml.cs">
       <DependentUpon>TrangChu.xaml</DependentUpon>
     </Compile>
+    <Page Include="Login\ForgotPasswordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Resources\CheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Resources\CustomButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Resources\DefaultColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Resources\Icon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Resources\MainDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Resources\Scroll.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Resources\TextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Resources\VI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Resources\ViewBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Views\Login\ForgotPassword_Email.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Views\Login\ForgotPassword_NewPass.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Views\Login\ForgotPassword_OTP.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Views\Login\ForgotPassword_Success.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Views\Login\LoginCom.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Views\Login\LoginEP.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\Views\Notify.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1133,6 +1249,19 @@
     <Resource Include="Views\TrangChu\Image\logout.png" />
     <Resource Include="Views\DuLieuTinhLuong\Image\hoa-hong-ca-nhan%282%29.png" />
     <Resource Include="Views\DuLieuTinhLuong\Image\hoa-hong-ke-hoach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Login\Resources\ChamCong.ico" />
+    <Resource Include="Login\Resources\Images\bg.png" />
+    <Resource Include="Login\Resources\Images\bg1.png" />
+    <Resource Include="Login\Resources\Images\bgr_nentang.png" />
+    <Resource Include="Login\Resources\Images\da_dang_ky_bo_cong_thuong.png" />
+    <Resource Include="Login\Resources\Images\DMCA.png" />
+    <Resource Include="Login\Resources\Images\footer_phone.png" />
+    <Resource Include="Login\Resources\Images\QR_AppChamCong.png" />
+    <Resource Include="Login\Resources\Images\QR_CV365.png" />
+    <Resource Include="Login\Resources\Images\QR_timviec_ntd.png" />
+    <Resource Include="Login\Resources\Images\QR_timviec_uv.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

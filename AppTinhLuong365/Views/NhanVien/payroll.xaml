@@ -52,8 +52,8 @@
                         </DataGrid.OpacityMask>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="{DynamicResource textNumericalOrder}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textSalaries}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textMoney}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Các khoản lương"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Thông số lương"></DataGridTextColumn>
                             <DataGridTextColumn Header="{DynamicResource textUnit}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>

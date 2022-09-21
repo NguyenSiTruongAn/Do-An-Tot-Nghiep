@@ -22,5 +22,53 @@ namespace AppTinhLuong365.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ComEmail {
+            get {
+                return ((string)(this["ComEmail"]));
+            }
+            set {
+                this["ComEmail"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ComPass {
+            get {
+                return ((string)(this["ComPass"]));
+            }
+            set {
+                this["ComPass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EpEmail {
+            get {
+                return ((string)(this["EpEmail"]));
+            }
+            set {
+                this["EpEmail"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EpPass {
+            get {
+                return ((string)(this["EpPass"]));
+            }
+            set {
+                this["EpPass"] = value;
+            }
+        }
     }
 }

@@ -63,7 +63,7 @@ namespace AppTinhLuong365
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public MainWindow()
+        public MainWindow(API_Login_Company api)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -72,8 +72,40 @@ namespace AppTinhLuong365
             this.Width = workingArea.Right - 180;
             this.Height = workingArea.Bottom - 100;
             SideBarIndex = 0;
+            CurrentCompany = api.data;
+            sidebar.Visibility = Visibility.Visible;
+            sidebarNV.Visibility = Visibility.Collapsed;
+            tblUserName.Text = CurrentCompany.com_name;
+            CurrentImage = CurrentCompany.com_logo;
+            MainType = 0;
+
         }
 
+        public MainWindow(API_Login_Employee api)
+        {
+            InitializeComponent();
+            this.DataContext = this;
+
+            var workingArea = System.Windows.SystemParameters.WorkArea;
+            this.Width = workingArea.Right - 180;
+            this.Height = workingArea.Bottom - 100;
+            SideBarIndexNV = 0;
+            CurrentEmployee = api.data;
+            sidebar.Visibility = Visibility.Collapsed;
+            sidebarNV.Visibility = Visibility.Visible;
+            tblUserName.Text = CurrentEmployee.ep_name;
+            CurrentImage = "https://chamcong.24hpay.vn/upload/employee/"+CurrentEmployee.ep_image;
+            MainType = 1;
+        }
+        public DataLogin_Company CurrentCompany { get; set; }
+        public DataLogin_Employee CurrentEmployee { get; set; }
+        public int MainType { get; set; }
+        private string currentImage;
+        public string CurrentImage
+        {
+            get { return currentImage; }
+            set { currentImage = value;OnPropertyChanged(); }
+        }
 
         public class SideBarItemCom : INotifyPropertyChanged
         {
@@ -314,6 +346,63 @@ namespace AppTinhLuong365
                 OnPropertyChanged();
             }
         }
+
+        private int _SideBarIndexNV = 0;
+        public int SideBarIndexNV
+        {
+            get { return _SideBarIndex; }
+            set
+            {
+                switch (value)
+                {
+
+                    case 0:
+                        HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.Home(this));
+                        this.Title = App.Current.Resources["textTrangChu"] as string;
+                        title.Text = "Quản lý tài khoản";
+                        break;
+                    case 1:
+                        HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.ProFile(this));
+                        this.Title = App.Current.Resources["textTrangChu"] as string;
+                        title.Text = "Hồ sơ cá nhân";
+                        break;
+                    case 2:
+                        HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.payroll(this));
+                        this.Title = App.Current.Resources["textTrangChu"] as string;
+                        title.Text = "Bảng lương";
+                        break;
+                    case 3:
+                        HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.TimeKeeping(this));
+                        this.Title = App.Current.Resources["textTrangChu"] as string;
+                        title.Text = "Chấm công";
+                        break;
+                    case 4:
+                        Process.Start("https://vanthu.timviec365.vn/trang-quan-ly-de-xuat.html");
+                        break;
+                    case 5:
+                        HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.Calendar());
+                        this.Title = App.Current.Resources["textTrangChu"] as string;
+                        title.Text = "";
+                        break;
+                    case 6:
+                        Process.Start("https://quanlychung.timviec365.vn/quan-ly-ung-dung-nhan-vien.html");
+                        break;
+                    default:
+                        break;
+                }
+                var z = new List<int>() {0, 1, 2, 3, 5};
+                if (z.Contains(value)) _SideBarIndexNV = value;
+                else if (value != 5)
+                {
+                    var h = sidebarNV.SelectedIndex;
+                    if (h > -1)
+                    {
+                        SideBarIndexNV = h;
+                    }
+                }
+                OnPropertyChanged();
+            }
+        }
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (IsFull == 0) this.DragMove();
@@ -326,7 +415,8 @@ namespace AppTinhLuong365
 
         private void CloseWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            System.Environment.Exit(0);
+            Application.Current.Shutdown();
         }
 
         private void Maximize(object sender, MouseButtonEventArgs e)
