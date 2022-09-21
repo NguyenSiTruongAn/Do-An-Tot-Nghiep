@@ -73,7 +73,7 @@
                         <TextBlock Text="{DynamicResource textQuanLyTheoDoiNhanVienTamUng}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"></TextBlock>
                     </StackPanel>
                 </DockPanel>
-                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
+                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding listTamUng}">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>
@@ -85,14 +85,14 @@
                         <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Grid x:Name="gridHoTen">
+                                    <Grid Margin="10 15 20 15" x:Name="gridHoTen">
                                         <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
                                             <Border.Background>
                                                 <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
                                             </Border.Background>
                                         </Border>
-                                        <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                                        <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                        <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding name_user}" Foreground="{DynamicResource #4C5BD4}"/>
+                                        <TextBlock Text="{Binding id_user}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"/>
                                     </Grid>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -101,7 +101,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Text="{Binding NoiDung.ngay_tam_ung}" Style="{StaticResource TextRowCenter1}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -110,7 +110,10 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextRowCenter}">
+                                            <Run Text="{Binding NoiDung.sotien_tam_ung}"/>
+                                            <Run Text="VND"/>
+                                        </TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -118,8 +121,8 @@
                         <DataGridTemplateColumn Header="{DynamicResource textDuyet}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    <Border Width="150" Background="{DynamicResource #D0EAE7}" CornerRadius="17" Height="36">
+                                        <TextBlock Foreground="{DynamicResource #469F94}" Text="{Binding type_duyet}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -127,8 +130,8 @@
                         <DataGridTemplateColumn Header="{DynamicResource textTrangThai}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    <Border Width="150" Background="{DynamicResource #D0EAE7}" CornerRadius="17" Height="36">
+                                        <TextBlock Foreground="{DynamicResource #469F94}" Text="{Binding active}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -137,7 +140,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Text="{Binding NoiDung.noi_dung}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>

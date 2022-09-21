@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,7 +80,24 @@ namespace AppTinhLuong365.Views.TrangChu
 
         }
         public List<abc> Test { get; set; } = new List<abc>() { new abc { name = "aa" }, new abc { name = "bb" }, new abc { name = "cc" } };
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDaGFtY29uZzM2NS1UaW12aWVjMzY1IiwiaWF0IjoxNjYzNzI1MDYzLCJleHAiOjE2NjM4MTE0NjMsImRhdGEiOnsiaWQiOiIyNjkwIiwibmFtZSI6InBoXHUxZWExbSBtXHUxZWExbmggaFx1MDBmOW5nIiwidHlwZSI6MSwiZW1haWwiOiJ4bHEwMjk5NUBjdW9seS5jb20iLCJwaG9uZV90ayI6bnVsbCwicm9sZSI6IjEiLCJvcyI6MSwiZnJvbSI6ImNjMzY1IiwiY29tX2lkIjoiMTYzNiJ9fQ._PzHqDc8cYCKuq3budRV6DTNN5bwbMWKutM2dN5jEjo");
+                web.QueryString.Add("id", "2690");
+                web.QueryString.Add("id_com", "1636");
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_UserInfo api = JsonConvert.DeserializeObject<API_UserInfo>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                    }
 
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/employe/profile_emp.php", web.QueryString);
+            }
+        }
         private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new Views.PhanQuyen.PhanQuyen(Main));

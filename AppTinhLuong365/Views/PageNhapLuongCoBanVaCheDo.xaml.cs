@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +43,7 @@ namespace AppTinhLuong365.Views
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            getData();
         }
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -60,7 +64,32 @@ namespace AppTinhLuong365.Views
             else
                 DockPanel.SetDock(wrapLCBVCD, Dock.Bottom);
         }
+        private DataListEmployee listNhanVien;
 
+        public DataListEmployee ListNhanVien
+        {
+            get { return listNhanVien; }
+            set { listNhanVien = value;OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDaGFtY29uZzM2NS1UaW12aWVjMzY1IiwiaWF0IjoxNjYzNzI2NDMyLCJleHAiOjE2NjM4MTI4MzIsImRhdGEiOnsiaWQiOiIxNzYxIiwibmFtZSI6IkNcdTAwZjRuZyBUeSBUTkhIIDEyNCBjY2NjY2NjY2NjY2NjY2NjY2NjY2MiLCJlbWFpbCI6ImhpZXB0ZXN0QGdtYWlsLmNvbSIsInBob25lX3RrIjpudWxsLCJ0eXBlIjoyLCJyb2xlIjoiMSIsIm9zIjoxLCJmcm9tIjoiY2MzNjUifX0.l9HaLM067iYlE88CcGSPEIRM41YxYI8WUE0tioL3jY4");
+                web.QueryString.Add("id_comp", "1636");
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        ListNhanVien = api.data;
+                    }
+
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php", web.QueryString);
+            }
+        }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Process.Start("https://phanmemnhansu.timviec365.vn/bien-dong-nhan-su.html");
