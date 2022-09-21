@@ -4,94 +4,309 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.NhanVien"
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
+      xmlns:core="clr-namespace:AppTinhLuong365.Core"
       mc:Ignorable="d" 
       d:DesignHeight="1100" d:DesignWidth="1102"
       Title="ProFile">
 
+    <Page.Resources>
+        <core:MathConvert x:Key="math"></core:MathConvert>
+        <Style x:Key="Style_Border_Wrap1" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter= {StaticResource math}, ConverterParameter=(@VALUE/2)-20}"/>
+            <Setter Property="Margin" Value="10 0"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_Border_Wrap" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter= {StaticResource math}, ConverterParameter=(@VALUE/2)-20}"/>
+            <Setter Property="Margin" Value="10 0"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" Background="{DynamicResource #FFFFFF}">
             <Border Height="180" VerticalAlignment="Top" CornerRadius="16 16 0 0" Background="{DynamicResource #505DC7}">
                 <Grid>
                     <Border Margin="20,30,0,39" CornerRadius="16" Background="Black" Width="111" Height="111" HorizontalAlignment="Left"></Border>
-                    <Path Margin="108 121 0 0" Data="{DynamicResource iconCamera}" Fill="{DynamicResource #FFFFFF}"></Path>
+                    <Path Cursor="Hand" MouseLeftButtonDown="Path_MouseLeftButtonDown" Margin="108 121 0 0" Data="{DynamicResource iconCamera}" Fill="{DynamicResource #FFFFFF}"></Path>
                     <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" Margin="114 127 0 0"></Path>
                     <TextBlock Text="Lê Văn Thanh" FontSize="20" Foreground="{DynamicResource #FFFFFF}" Margin="157 65 0 0" FontWeight="Bold"></TextBlock>
                     <TextBlock Text="Thử việc" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="157 94 0 0"></TextBlock>
+                    <Border Cursor="Hand" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Margin="0 0 15 15" Height="35" Width="176.7" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <TextBlock Text="Thay đổi lịch làm việc" FontSize="14" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #4C5BD4}"/>
+                    </Border>
                 </Grid>
             </Border>
             <Border Margin="20 32 20 0" Background="{DynamicResource #F3F3F3}" CornerRadius="15">
-                <Grid>
-                    <TextBlock Text="Giới thiệu" FontSize="18" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}" Margin="19 16 0 19"></TextBlock>
-                    <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 -15 20 0"></Path>
-                </Grid>
-            </Border>
-            <StackPanel Margin="20 40 0 0" Orientation="Vertical">
-                <Grid>
-                    <TextBlock Text="Thông tin cá nhân" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
-                    <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" HorizontalAlignment="Right" Margin="0 0 40 0"></Path>
-                    <Line X1="4.37114e-08" Y1="0.5" X2="1060" Y2="0.500066" Stroke="{DynamicResource #DDDDDD}" Margin="0 40 0 0"></Line>
-                    <StackPanel Margin="0 70 0 0" Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical" Width="550">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textName}" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text=" Nguyễn Sĩ Trường An" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textDateOfBirth}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text=" 06/11/2001" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textDepartment}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text=" PHÒNG 15: TRUNG TÂM ĐÀO TẠO ỨNG VIÊN MỚI ĐẾN" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textMaritalStatus}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text=" Độc thân" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textPhoneNumber}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text=" 0357365152" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textBankName}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text="Chưa cập nhật" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textAddress}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text="Đội 8, Vĩnh Ninh, Vĩnh Quỳnh, Thanh Trì, Hà Nội" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Width="350">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textGender}" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text=" Nam" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textStaffID}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text=" 14492" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textPosition}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text=" Thử việc" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textDateStartWork}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text=" 18/08/2022" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textEmail}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text=" nguyensitruongan@gmail.com" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{DynamicResource textBankAccountNumber}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                                <TextBlock Text="Chưa cập nhật" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="0 10 0 0" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
+                <StackPanel>
+                    <Grid>
+                        <TextBlock Text="Giới thiệu" FontSize="18" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}" Margin="19 16 0 19"></TextBlock>
+                        <Path Cursor="Hand" MouseLeftButtonDown="OpenDes" Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 -15 20 0">
+                            <Path.Style>
+                                <Style TargetType="Path">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=borderes,Path=Visibility}" Value="Visible">
+                                            <Setter Property="Visibility" Value="Visible"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Path.Style>
+                        </Path>
+                    </Grid>
+                    <StackPanel x:Name="borderes" Visibility="Collapsed" >
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10" BorderThickness="1" BorderBrush="Black" Margin="22.8 0 22.8 18">
+                            <TextBox FontSize="15" TextWrapping="Wrap" Foreground="{DynamicResource #777777}" BorderThickness="0" Background="{DynamicResource #FFFFFF}" Height="127" Margin="4"/>
+                        </Border>
+                        <StackPanel Margin="22.8 0 0 0" Orientation="Horizontal">
+                            <Border Width="84.7" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" Background="{DynamicResource #FFFFFF}" CornerRadius="5" Height="34">
+                                <TextBlock Cursor="Hand" Text="Hủy" MouseLeftButtonDown="OpenDes" FontSize="15" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <Border Margin="5 0 0 0" Width="130.5" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Height="34">
+                                <TextBlock Cursor="Hand" Text="Lưu thông tin" FontSize="15" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
                         </StackPanel>
                     </StackPanel>
-                </Grid>
+                </StackPanel>
+            </Border>
+            <StackPanel Margin="20 40 0 0" Orientation="Vertical">
+                <Border Margin="0 0 20 0" Padding="0 0 0 15" VerticalAlignment="Top" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="0 0 0 1">
+                    <Grid>
+                        <TextBlock Text="Thông tin cá nhân" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                        <Path Cursor="Hand" MouseLeftButtonDown="OpenDes1" Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" HorizontalAlignment="Right" Margin="0 0 20 0">
+                            <Path.Style>
+                                <Style TargetType="Path">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=borderes1,Path=Visibility}" Value="Visible">
+                                            <Setter Property="Visibility" Value="Visible"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=borderes2,Path=Visibility}" Value="Collapsed">
+                                            <Setter Property="Visibility" Value="Visible"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Path.Style>
+                        </Path>
+                    </Grid>
+                </Border>
+                <Border x:Name="borderes2" Visibility="Visible">
+                    <WrapPanel x:Name="Wrap_Border1" Margin="0 30 0 0">
+                        <Border Style="{DynamicResource Style_Border_Wrap1}">
+                            <StackPanel>
+                                <TextBlock FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textHoTen2C}"/>
+                                        <Run Text=" Nguyễn Sĩ Trường An"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textDateOfBirth2C}"/>
+                                        <Run Text="06/11/2001"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textDepartment}"/>
+                                        <Run Text="PHÒNG 15: TRUNG TÂM ĐÀO TẠO ỨNG VIÊN MỚI ĐẾN"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textAddress2C}"/>
+                                        <Run Text="Đội 8, Vĩnh Ninh, Vĩnh Quỳnh, Thanh Trì, Hà Nội"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textPhoneNumber}"/>
+                                        <Run Text="0357365152"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textBankName}"/>
+                                        <Run Text="Chưa cập nhật"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textHSNV}"/>
+                                        <Run Cursor="Hand" Foreground="{DynamicResource #4C5BD4}" Text="Xem chi tiết" Hyperlink.Click="Run_Click"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{DynamicResource Style_Border_Wrap1}">
+                            <StackPanel>
+                                <TextBlock FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textGender}"/>
+                                        <Run Text="Nam"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textStaffID}"/>
+                                        <Run Text="14492"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textPosition}"/>
+                                        <Run Text="Thử việc"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textDateStartWork}"/>
+                                        <Run Text="18/08/2022"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textEmail}"/>
+                                        <Run Text="nguyensitruongan@gmail.com"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textBankAccountNumber}"/>
+                                        <Run Text="Chưa cập nhật"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
+                                    <TextBlock.Inlines>
+                                        <Run Text="{DynamicResource textBDTL}"/>
+                                        <Run Text="Từ ngày bắt đầu làm việc"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </WrapPanel>
+                </Border>
+                <Border x:Name="borderes1" Visibility="Collapsed">
+                    <WrapPanel x:Name="Wrap_Border" Margin="0 30 0 0">
+                        <Border Style="{DynamicResource Style_Border_Wrap}">
+                            <StackPanel>
+                                <TextBlock FontWeight="DemiBold" Text="{DynamicResource textHoTen2C}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                    <TextBox Margin="10 0 0 0" FontWeight="DemiBold" VerticalAlignment="Center" Text="Nguyễn Huy Quang" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                </Border>
+                                <TextBlock Margin="0 46 0 0" FontWeight="DemiBold" Text="{DynamicResource textDateOfBirth2C}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                    <tool:DatePicker FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                </Border>
+                                <TextBlock Margin="0 34 0 0" FontWeight="DemiBold" Text="{DynamicResource textMaritalStatus}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <ComboBox Margin="0 5 0 0" FontSize="16" Foreground="{DynamicResource #777777}" Height="42" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                                    <ComboBoxItem>Chọn tình trạng hôn nhân</ComboBoxItem>
+                                    <ComboBoxItem IsSelected="True">Độc thân</ComboBoxItem>
+                                    <ComboBoxItem>Đã kết hôn</ComboBoxItem>
+                                    <ComboBoxItem>Khác</ComboBoxItem>
+                                </ComboBox>
+                                <TextBlock Margin="0 48 0 0" FontWeight="DemiBold" Text="{DynamicResource textSoDienThoai}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                    <TextBox Margin="10 0 0 0" FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Text="0984471028" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                </Border>
+                                <TextBlock Margin="0 34 0 0" FontWeight="DemiBold" Text="{DynamicResource textDateStartWork}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                    <TextBlock VerticalAlignment="Center" Margin="10 0 0 0" FontWeight="DemiBold" Text="09/09/2022" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                </Border>
+                                <TextBlock Margin="0 48 0 0" FontWeight="DemiBold" Text="{DynamicResource textBankName}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                    <Grid Height="38" Margin="10 0 10 0">
+                                        <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                        <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="{DynamicResource textNNHNL}" IsHitTestVisible="False">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=tbInput,Path=Text}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                                <StackPanel Margin="0 34 0 0 " Orientation="Horizontal">
+                                    <Border Width="84.7" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" Background="{DynamicResource #FFFFFF}" CornerRadius="5" Height="34">
+                                        <TextBlock Cursor="Hand" Text="Hủy" MouseLeftButtonDown="OpenDes1" FontSize="15" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <Border Margin="5 0 0 0" Width="130.5" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Height="34">
+                                        <TextBlock Cursor="Hand" Text="Lưu thông tin" FontSize="15" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{DynamicResource Style_Border_Wrap}">
+                            <StackPanel>
+                                <TextBlock FontWeight="DemiBold" Text="{DynamicResource textGender}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <ComboBox Margin="0 5 0 0" FontSize="16" Foreground="{DynamicResource #777777}" Height="42" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                                    <ComboBoxItem>Chọn giới tính</ComboBoxItem>
+                                    <ComboBoxItem IsSelected="True">Nam</ComboBoxItem>
+                                    <ComboBoxItem>Nữ</ComboBoxItem>
+                                    <ComboBoxItem>Khác</ComboBoxItem>
+                                </ComboBox>
+                                <TextBlock Margin="0 46 0 0" FontWeight="DemiBold" Text="{DynamicResource textMaNhanVien}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                    <TextBlock VerticalAlignment="Center" Margin="10 0 0 0" FontWeight="DemiBold" Text="14953" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                </Border>
+                                <TextBlock Margin="0 34 0 0" FontWeight="DemiBold" Text="{DynamicResource textAddress2C}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                    <TextBox FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Text="14, ngo 296 minh khai" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                </Border>
+                                <TextBlock Margin="0 48 0 0" FontWeight="DemiBold" Text="{DynamicResource textEmail}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                    <TextBox FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Text="Quangtest@gmail.com" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                </Border>
+                                <TextBlock Margin="0 34 0 0" FontWeight="DemiBold" Text="{DynamicResource textBDTL}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                    <tool:DatePicker FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                </Border>
+                                <TextBlock Margin="0 48 0 0" FontWeight="DemiBold" Text="{DynamicResource textBankAccountNumber}" FontSize="16" Foreground="{DynamicResource #666666}"/>
+                                <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                    <Grid Height="38" Margin="10 0 10 0">
+                                        <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                        <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="{DynamicResource textNSTKNL}" IsHitTestVisible="False">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=tbInput1,Path=Text}" Value="">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </WrapPanel>
+                </Border>
                 <Grid Margin="0 40 0 0">
-                    <Border VerticalAlignment="Top" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="0 0 0 1">
-                        <TextBlock Text="{DynamicResource textBasicSalary}" Padding="0 0 0 15" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                    <Border Margin="0 0 20 0" VerticalAlignment="Top" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="0 0 0 1">
+                        <Grid>
+                            <TextBlock Text="{DynamicResource textBasicSalary}" Padding="0 0 0 15" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                            <StackPanel Cursor="Hand" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown" VerticalAlignment="Center"  Orientation="Horizontal" HorizontalAlignment="Right" >
+                                <Path VerticalAlignment="Center" Stroke="{DynamicResource #4C5BD4}" Data="{DynamicResource iconPlus}"/>
+                                <TextBlock FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="5 0 0 0" Text="{DynamicResource textTL}"/>
+                            </StackPanel>
+                        </Grid>
                     </Border>
                     <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
                         <DataGrid.OpacityMask>
@@ -104,14 +319,23 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="{DynamicResource textBasicSalary}"></DataGridTextColumn>
                             <DataGridTextColumn Header="{DynamicResource textPremiumSalary}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textPCDBH}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textTGL}"></DataGridTextColumn>
                             <DataGridTextColumn Header="{DynamicResource textTimeUse}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textIndex}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textSua}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textXoa}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
                 <Grid Margin="0 40 0 0">
-                    <Border VerticalAlignment="Top" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #DDDDDD}">
-                        <TextBlock Text="{DynamicResource textEmploymentContract}" Padding="0 0 0 15" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                    <Border Margin="0 0 20 0" VerticalAlignment="Top" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid>
+                            <TextBlock Text="{DynamicResource textEmploymentContract}" Padding="0 0 0 15" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                            <StackPanel MouseLeftButtonDown="StackPanel_MouseLeftButtonDown_1" Cursor="Hand" VerticalAlignment="Center"  Orientation="Horizontal" HorizontalAlignment="Right" >
+                                <Path VerticalAlignment="Center" Stroke="{DynamicResource #4C5BD4}" Data="{DynamicResource iconPlus}"/>
+                                <TextBlock FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="5 0 0 0" Text="{DynamicResource textTHD}"/>
+                            </StackPanel>
+                        </Grid>
                     </Border>
                     <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
                         <DataGrid.OpacityMask>
@@ -126,12 +350,71 @@
                             <DataGridTextColumn Header="{DynamicResource textEffectiveStartDate}"></DataGridTextColumn>
                             <DataGridTextColumn Header="{DynamicResource textExpirationDate}"></DataGridTextColumn>
                             <DataGridTextColumn Header="{DynamicResource textSalaryPercent}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textTDK}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textSua}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textXoa}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
-                <Border Margin="0 40 0 0" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #DDDDDD}">
-                    <TextBlock Text="{DynamicResource textTaxesAndInsurance}" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}" Padding="0 0 0 15"></TextBlock>
-                </Border>
+                <Grid Margin="0 40 0 0">
+                    <Border Margin="0 0 20 0" VerticalAlignment="Top" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid>
+                            <TextBlock Text="{DynamicResource textTPGD}" Padding="0 0 0 15" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                            <StackPanel MouseLeftButtonDown="StackPanel_MouseLeftButtonDown_2" Cursor="Hand" VerticalAlignment="Center"  Orientation="Horizontal" HorizontalAlignment="Right" >
+                                <Path VerticalAlignment="Center" Stroke="{DynamicResource #4C5BD4}" Data="{DynamicResource iconPlus}"/>
+                                <TextBlock FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="5 0 0 0" Text="{DynamicResource textTPT}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Border Width="{Binding ElementName=dataGrid1,Path=ActualWidth}" Height="{Binding ElementName=dataGrid1,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </DataGrid.OpacityMask>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{DynamicResource textTrangThai}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textDateOfBirth}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textSoDienThoai}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textJob}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textAddress}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textSoDienThoai}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textSua}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textXoa}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Grid Margin="0 40 0 0">
+                    <Border Margin="0 0 20 0" VerticalAlignment="Top" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid>
+                            <TextBlock Text="{DynamicResource textCKDG}" Padding="0 0 0 15" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                            <StackPanel MouseLeftButtonDown="StackPanel_MouseLeftButtonDown_3" Cursor="Hand" VerticalAlignment="Center"  Orientation="Horizontal" HorizontalAlignment="Right" >
+                                <Path VerticalAlignment="Center" Stroke="{DynamicResource #4C5BD4}" Data="{DynamicResource iconPlus}"/>
+                                <TextBlock FontSize="15" Foreground="{DynamicResource #4C5BD4}" Margin="5 0 0 0" Text="{DynamicResource textTDG}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Border Width="{Binding ElementName=dataGrid1,Path=ActualWidth}" Height="{Binding ElementName=dataGrid1,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </DataGrid.OpacityMask>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{DynamicResource textKDG}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textMoney}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textTBD}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textTKT}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textSua}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="{DynamicResource textXoa}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </StackPanel>
         </StackPanel>
     </Grid>

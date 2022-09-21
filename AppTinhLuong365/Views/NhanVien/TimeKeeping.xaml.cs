@@ -21,7 +21,8 @@ namespace AppTinhLuong365.Views.NhanVien
     /// </summary>
     public partial class TimeKeeping : Page
     {
-        public TimeKeeping()
+        MainWindow Main;
+        public TimeKeeping(MainWindow main)
         {
             ItemList = new ObservableCollection<string>();
             for (var i = 1; i <= 12; i++)
@@ -35,6 +36,7 @@ namespace AppTinhLuong365.Views.NhanVien
             }
             InitializeComponent();
             this.DataContext = this;
+            Main = main;
         }
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }

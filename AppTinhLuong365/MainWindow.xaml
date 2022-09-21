@@ -149,9 +149,13 @@
                             <Path Data="{DynamicResource iconCirle}" Fill="{DynamicResource #F46A6A}" Margin="8 -8 0 0"></Path>
                             <TextBlock Text="2" FontSize="14" Foreground="{DynamicResource #FFFFFF}" Margin="12.5 -10.5 0 0"></TextBlock>
                         </Grid>
-                        <Image VerticalAlignment="Center" Source="/Views/TrangChu/Image/app1651713915_favicon.png" Width="32" Height="32" Margin="0 0 10 0"></Image>
+                        <Border Width="32" Height="32" CornerRadius="32">
+                            <Border.Background>
+                                <ImageBrush ImageSource="{Binding CurrentImage}" Stretch="UniformToFill"></ImageBrush>
+                            </Border.Background>
+                        </Border>
                         <DockPanel Cursor="Hand" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
-                            <TextBlock Margin="0 0 12 0" FontSize="15" Foreground="{DynamicResource #2E3467}" Text="Công ty TNHH 124 ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" Width="270" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Name="tblUserName" Margin="0 0 12 0" FontSize="15" Foreground="{DynamicResource #2E3467}" Text="" Width="270" VerticalAlignment="Center"></TextBlock>
                             <Path Data="{DynamicResource iconDrop}" VerticalAlignment="Center" Fill="{DynamicResource #2E3467}" Margin="0 0 22 0"></Path>
                         </DockPanel>
                     </StackPanel>
@@ -170,6 +174,7 @@
 
         <Grid Grid.Row="2">
             <ListView Name="sidebar" Margin="0 7" ItemsSource="{Binding SideBarItems}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItemStyle}" SelectedIndex="{Binding SideBarIndex ,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+            <ListView Name="sidebarNV" Margin="0 7" ItemsSource="{Binding SideBarItemsNV}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItemStyle}" SelectedIndex="{Binding SideBarIndexNV ,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
             <!--<ListView Name="sidebarNV" Margin="0 7" ItemsSource="{Binding SideBarItemsNV}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItem1}" SelectedIndex="{Binding SideBarIndexNV}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>-->
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Background="{DynamicResource #F7F8FC}">

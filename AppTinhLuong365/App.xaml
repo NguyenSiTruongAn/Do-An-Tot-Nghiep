@@ -3,11 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AppTinhLuong365"
              xmlns:math="clr-namespace:AppTinhLuong365.Core"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Login\MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <math:MathConvert x:Key="MathConvert"/>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Login/Resources/Icon.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Login/Resources/DefaultColor.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Login/Resources/Scroll.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Login/Resources/VI.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Login/Resources/ViewBox.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Login/Resources/CustomButton.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Login/Resources/CheckBox.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Login/Resources/TextBlock.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Resouce/Color/Default.xaml"/>
                 <ResourceDictionary Source="/Resouce/Icon.xaml"/>
                 <ResourceDictionary Source="/Resouce/TabControl.xaml"/>

@@ -20,9 +20,12 @@ namespace AppTinhLuong365.Views.NhanVien
     /// </summary>
     public partial class Home : Page
     {
-        public Home()
+        MainWindow Main;
+        public Home(MainWindow main)
         {
             InitializeComponent();
+            this.DataContext = this;
+            Main = main;
         }
     }
 }
