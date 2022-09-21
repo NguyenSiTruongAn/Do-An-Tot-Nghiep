@@ -28,12 +28,4 @@ namespace AppTinhLuong365.Model.APIEntity
         public string ep_id { get; set; }
         public string dep_name { get; set; }
     }
-
-    public class Root
-    {
-        public bool result { get; set; }
-        public int code { get; set; }
-        public DataList_ep_nogroup data { get; set; }
-        public object error { get; set; }
-    }
 }
