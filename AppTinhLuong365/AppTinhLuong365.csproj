@@ -108,6 +108,7 @@
     <Compile Include="Model\APIEntity\API_Login_Employee.cs" />
     <Compile Include="Model\APIEntity\API_SuaNhomLamViec.cs" />
     <Compile Include="Model\APIEntity\API_TaoNhomLamViec.cs" />
+    <Compile Include="Model\APIEntity\API_Tbl_Salary_Manager.cs" />
     <Compile Include="Model\APIEntity\API_UserInfo.cs" />
     <Compile Include="Model\APIEntity\API_XoaNhomLamViec.cs" />
     <Compile Include="Model\APIEntity\List_user_group.cs" />

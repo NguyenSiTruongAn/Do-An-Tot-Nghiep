@@ -137,8 +137,8 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             using (WebClient web = new WebClient())
             {
-                web.QueryString.Add("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDaGFtY29uZzM2NS1UaW12aWVjMzY1IiwiaWF0IjoxNjYzNzI2NDMyLCJleHAiOjE2NjM4MTI4MzIsImRhdGEiOnsiaWQiOiIxNzYxIiwibmFtZSI6IkNcdTAwZjRuZyBUeSBUTkhIIDEyNCBjY2NjY2NjY2NjY2NjY2NjY2NjY2MiLCJlbWFpbCI6ImhpZXB0ZXN0QGdtYWlsLmNvbSIsInBob25lX3RrIjpudWxsLCJ0eXBlIjoyLCJyb2xlIjoiMSIsIm9zIjoxLCJmcm9tIjoiY2MzNjUifX0.l9HaLM067iYlE88CcGSPEIRM41YxYI8WUE0tioL3jY4");
-                web.QueryString.Add("id_comp", "1761");
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.QueryString.Add("id_month", "09");
                 web.QueryString.Add("id_year", "2022");
                 web.UploadValuesCompleted += (s, e) =>
@@ -148,7 +148,13 @@ namespace AppTinhLuong365.Views.TinhLuong
                     {
                         listThue = api.data.list;
                     }
-
+                    foreach (ItemThue item in listThue)
+                    {
+                        if (item.ep_image == "/img/add.png")
+                        {
+                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                        }
+                    }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_user_no_tax.php", web.QueryString);
             }
@@ -166,8 +172,8 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             using (WebClient web = new WebClient())
             {
-                web.QueryString.Add("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDaGFtY29uZzM2NS1UaW12aWVjMzY1IiwiaWF0IjoxNjYzNzI2NDMyLCJleHAiOjE2NjM4MTI4MzIsImRhdGEiOnsiaWQiOiIxNzYxIiwibmFtZSI6IkNcdTAwZjRuZyBUeSBUTkhIIDEyNCBjY2NjY2NjY2NjY2NjY2NjY2NjY2MiLCJlbWFpbCI6ImhpZXB0ZXN0QGdtYWlsLmNvbSIsInBob25lX3RrIjpudWxsLCJ0eXBlIjoyLCJyb2xlIjoiMSIsIm9zIjoxLCJmcm9tIjoiY2MzNjUifX0.l9HaLM067iYlE88CcGSPEIRM41YxYI8WUE0tioL3jY4");
-                web.QueryString.Add("id_comp", "1761");
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.QueryString.Add("page", "1");
                 web.QueryString.Add("id_tax", "2");
                 web.UploadValuesCompleted += (s, e) =>
@@ -176,6 +182,13 @@ namespace AppTinhLuong365.Views.TinhLuong
                     if (api.data != null)
                     {
                         listUserTax = api.data.list;
+                    }
+                    foreach (ItemUserTax item in listUserTax)
+                    {
+                        if (item.ep_image == "/img/add.png")
+                        {
+                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                        }
                     }
 
                 };
