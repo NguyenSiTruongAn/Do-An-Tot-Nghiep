@@ -30,7 +30,7 @@
                     <TextBlock  VerticalAlignment="Center" Text="Tạo mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                 </StackPanel>
             </Border>
-            <TabControl x:Name="tb" Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}" SelectionChanged="tb_SelectionChanged">
+            <TabControl BorderThickness="0" x:Name="tb" Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}" SelectionChanged="tb_SelectionChanged">
                 <TabItem Cursor="Hand" Header="{DynamicResource textNhomLamViec}">
                     <Grid Cursor="Arrow" Background="{DynamicResource #F7F8FC}">
                         <ListView Cursor="Arrow" Margin="35 0 0 0" Name="lv" ItemsSource="{Binding listNhom}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -103,7 +103,7 @@
                     <Grid Cursor="Arrow">
                         <StackPanel>
                             <Border Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
-                                <tool:SearchBar FontSize="16" Height="28" Width="123" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm"/>
+                                <tool:SearchBar ItemsSource="{Binding listNVChuaNhom}" FontSize="16" Height="28" Width="123" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm"/>
                             </Border>
                             <DataGrid x:Name="dataGrid" Margin="0 10 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listNVChuaNhom}">
                                 <DataGrid.OpacityMask>
@@ -120,7 +120,7 @@
                                                 <Grid x:Name="gridHoTen">
                                                     <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
                                                         <Border.Background>
-                                                            <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                                            <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
                                                         </Border.Background>
                                                     </Border>
                                                     <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
@@ -155,7 +155,7 @@
                             <Border Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
                                 <tool:SearchBar FontSize="16" Height="28" Width="123" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm"/>
                             </Border>
-                            <DataGrid x:Name="dataGrid1" Margin="0 10 0 0" Style="{StaticResource DataGrid1}">
+                            <DataGrid x:Name="dataGrid1" Margin="0 10 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listNVCacNhom}">
                                 <DataGrid.OpacityMask>
                                     <VisualBrush>
                                         <VisualBrush.Visual>
@@ -164,13 +164,68 @@
                                     </VisualBrush>
                                 </DataGrid.OpacityMask>
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn></DataGridTextColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid x:Name="gridHoTen" Margin="10 0 0 0">
+                                                    <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
+                                                        <Border.Background>
+                                                            <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
+                                                        </Border.Background>
+                                                    </Border>
+                                                    <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                    <TextBlock Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}">
+                                                    <Run Text="ID:"/>
+                                                    <Run Text="{Binding ep_id}"/>
+                                                    </TextBlock>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Background="Transparent">
+                                                    <ListView ItemsSource="{Binding lgr_name}" BorderThickness="0">
+                                                        <ListView.ItemContainerStyle>
+                                                            <Style TargetType="ListViewItem">
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="ListViewItem">
+                                                                            <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"/>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+                                                        </ListView.ItemContainerStyle>
+                                                    </ListView>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Border MouseLeftButtonDown="BtnThietLapNVCacNhom" Cursor="Hand" HorizontalAlignment="Right" Background="{DynamicResource #EDEFFB}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="33" Width="111">
+                                                    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                        <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
+                                                        <TextBlock Text="Thiết lập" FontSize="15" Foreground="{DynamicResource #666666}"></TextBlock>
+                                                    </DockPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>
                     </Grid>
                 </TabItem>
                 <TabItem Cursor="Hand" Header="{DynamicResource textGuide}">
+                    <TabItem.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Style>
+                    </TabItem.Resources>
                     <StackPanel Cursor="Arrow" Margin="0 20 0 30">
                         <TextBlock FontSize="16" Foreground="{DynamicResource #000}" Text="Để theo dõi các nhóm làm việc trong công ty một cách sát sao nhất thì bạn có thể lựa chọn chức năng &quot;Nhóm làm việc&quot; trong menu lựa chọn ở phần Cài đặt. Đây sẽ là công cụ giúp bạn cập nhật dữ liệu và thống kê chính xác về các nhóm làm việc cũng như số thành viên của mỗi nhóm ra sao." TextWrapping="WrapWithOverflow"></TextBlock>
                         <TextBlock FontSize="16" FontWeight="Bold" Text="1.Nhóm làm việc"></TextBlock>

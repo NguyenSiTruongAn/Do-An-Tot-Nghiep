@@ -20,17 +20,21 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
     /// </summary>
     public partial class PopupTuyChonNhomLamViec : Page
     {
-        public PopupTuyChonNhomLamViec(MainWindow main)
+        private string id, ten, mota;
+        public PopupTuyChonNhomLamViec(MainWindow main, string ID, string name, string note)
         {
             this.DataContext = this;
             InitializeComponent();
-            Main = main; 
+            Main = main;
+            id = ID;
+            ten = name;
+            mota = note;
         }
         MainWindow Main;
 
         private void ThemNhanVien_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.CaiDat.Popup.PopupThemNhanVien(Main);
+            var pop = new Views.CaiDat.Popup.PopupThemNhanVien(Main, id);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 616;
@@ -39,16 +43,14 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void ChinhSuaThue_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.CaiDat.Popup.PopupChinhSuaNhomLamViec(Main);
+            var pop = new Views.CaiDat.Popup.PopupChinhSuaNhomLamViec(Main, id, ten, mota);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-            pop.Width = 495;
-            pop.Height = 433;
         }
 
         private void Xoa_Click(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.CaiDat.Popup.PopupThongBaoXoaNhom(Main);
+            var pop = new Views.CaiDat.Popup.PopupThongBaoXoaNhom(Main, id);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 616;
