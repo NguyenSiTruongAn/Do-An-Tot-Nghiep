@@ -31,12 +31,16 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             get { return _IsSmallSize; }
             set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
         }
+
+        private string id;
+
         public PopupThietLapNhomChoNhanVien(MainWindow main, string name, string ID)
         {
             this.DataContext = this;
             InitializeComponent();
             Main = main;
             txtID.Text = ID;
+            id = ID;
             txtName.Text = name;
             getData();
         }
@@ -80,6 +84,40 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnThemNhanVienVaoNhom_Click(object sender, MouseButtonEventArgs e)
+        {
+            bool allow = true;
+            validateCB.Text = "";
+            if (cbListGroup.SelectedIndex < 0)
+            {
+                allow = false;
+                validateCB.Text = "Vui lòng chọn nhóm";
+            }
+            if (allow)
+            {
+                using (WebClient web = new WebClient())
+                {
+                    if (Main.MainType == 0)
+                    {
+                        web.QueryString.Add("token", Main.CurrentCompany.token);
+                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    }
+                    web.QueryString.Add("id_emp", id);
+                    web.QueryString.Add("id_group", listNhom[cbListGroup.SelectedIndex].lgr_id);
+                    web.UploadValuesCompleted += (s, ee) =>
+                    {
+                        API_TaoNhomLamViec api = JsonConvert.DeserializeObject<API_TaoNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_emp_group_work.php", web.QueryString);
+                }
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NhomLamViec(Main));
+                this.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

@@ -206,7 +206,7 @@
         <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
         <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource #ebebeb}"></Setter>
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource #FFFFFF}"></Setter>
-        <Setter Property="RowHeight" Value="50"></Setter>
+        <Setter Property="RowHeight" Value="100"></Setter>
         <Setter Property="RowHeaderWidth" Value="0"></Setter>
         <Setter Property="IsReadOnly" Value="True"></Setter>
         <Setter Property="AutoGenerateColumns" Value="False"></Setter>
