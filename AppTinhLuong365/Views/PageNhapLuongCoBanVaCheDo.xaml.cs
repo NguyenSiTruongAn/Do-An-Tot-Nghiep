@@ -64,30 +64,39 @@ namespace AppTinhLuong365.Views
             else
                 DockPanel.SetDock(wrapLCBVCD, Dock.Bottom);
         }
-        private DataListEmployee listNhanVien;
+        private List<ItemEmp> _listNhanVien;
 
-        public DataListEmployee ListNhanVien
+        public List<ItemEmp> listNhanVien
         {
-            get { return listNhanVien; }
-            set { listNhanVien = value;OnPropertyChanged(); }
+            get { return _listNhanVien; }
+            set { _listNhanVien = value;OnPropertyChanged(); }
         }
 
         private void getData()
         {
             using (WebClient web = new WebClient())
             {
-                web.QueryString.Add("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDaGFtY29uZzM2NS1UaW12aWVjMzY1IiwiaWF0IjoxNjYzNzI2NDMyLCJleHAiOjE2NjM4MTI4MzIsImRhdGEiOnsiaWQiOiIxNzYxIiwibmFtZSI6IkNcdTAwZjRuZyBUeSBUTkhIIDEyNCBjY2NjY2NjY2NjY2NjY2NjY2NjY2MiLCJlbWFpbCI6ImhpZXB0ZXN0QGdtYWlsLmNvbSIsInBob25lX3RrIjpudWxsLCJ0eXBlIjoyLCJyb2xlIjoiMSIsIm9zIjoxLCJmcm9tIjoiY2MzNjUifX0.l9HaLM067iYlE88CcGSPEIRM41YxYI8WUE0tioL3jY4");
-                web.QueryString.Add("id_comp", "1636");
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("page", "1");
+                web.QueryString.Add("time", "2022-09-14");
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    API_Tbl_Salary_Manager api = JsonConvert.DeserializeObject<API_Tbl_Salary_Manager>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
-                        ListNhanVien = api.data;
+                        listNhanVien = api.data.list_emp;
+                    }
+                    foreach (ItemEmp item in listNhanVien)
+                    {
+                        if (item.ep_image == "/img/add.png")
+                        {
+                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                        }
                     }
 
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_salary_manager.php", web.QueryString);
             }
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

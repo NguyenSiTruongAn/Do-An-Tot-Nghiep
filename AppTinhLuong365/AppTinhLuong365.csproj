@@ -105,6 +105,7 @@
     <Compile Include="Model\APIEntity\API_List_ep_nogroup.cs" />
     <Compile Include="Model\APIEntity\API_Login_Company.cs" />
     <Compile Include="Model\APIEntity\API_Login_Employee.cs" />
+    <Compile Include="Model\APIEntity\API_Tbl_Salary_Manager.cs" />
     <Compile Include="Model\APIEntity\API_UserInfo.cs" />
     <Compile Include="Resouce\tool\DatePicker.xaml.cs">
       <DependentUpon>DatePicker.xaml</DependentUpon>

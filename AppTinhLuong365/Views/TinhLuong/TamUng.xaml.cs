@@ -50,7 +50,7 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             using (WebClient web = new WebClient())
             {
-                web.QueryString.Add("id_com", "1761");
+                web.QueryString.Add("id_com",Main.CurrentCompany.com_id);
                 web.QueryString.Add("date", "2022-01");
                 web.QueryString.Add("page", "1");
                 web.UploadValuesCompleted += (s, e) =>
@@ -60,7 +60,13 @@ namespace AppTinhLuong365.Views.TinhLuong
                     {
                         listTamUng = api.data.items;
                     }
-
+                    //foreach (ItemTamUng item in listTamUng)
+                    //{
+                    //    if (item.ep_image == "/img/add.png")
+                    //    {
+                    //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                    //    }
+                    //}
                 };
                 web.UploadValuesTaskAsync("https://vanthu.timviec365.vn/api/get_dx_tu_tl365.php", web.QueryString);
             }
