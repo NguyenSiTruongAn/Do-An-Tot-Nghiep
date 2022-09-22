@@ -13,4 +13,17 @@
         </Style.Triggers>
     </Style>
 
+    <Style TargetType="TextBlock" x:Key="tblValidate">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{DynamicResource #FF3333}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="0 5 2 0"/>
+        <Setter Property="Visibility" Value="Visible"/>
+        <Style.Triggers>
+            <Trigger Property="Text" Value="">
+                <Setter Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>

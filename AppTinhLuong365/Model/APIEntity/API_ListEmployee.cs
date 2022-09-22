@@ -9,13 +9,18 @@ namespace AppTinhLuong365.Model.APIEntity
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class DataListEmployee
     {
-        public DataListEmployee data { get; set; }
+        public DataListEmployee1 data { get; set; }
         public object error { get; set; }
         public string message { get; set; }
+    }
+
+    public class DataListEmployee1
+    {
         public int itemsPerPage { get; set; }
         public string totalItems { get; set; }
         public List<ListEmployee> items { get; set; }
     }
+
     public class ListEmployee
     {
         public string ep_id { get; set; }
@@ -26,7 +31,7 @@ namespace AppTinhLuong365.Model.APIEntity
         public string ep_address { get; set; }
         public string ep_education { get; set; }
         public string ep_exp { get; set; }
-        public int? ep_birth_day { get; set; }
+        public string ep_birth_day { get; set; }
         public string ep_married { get; set; }
         public string ep_gender { get; set; }
         public string role_id { get; set; }

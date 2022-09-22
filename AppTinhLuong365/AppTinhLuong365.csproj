@@ -95,6 +95,7 @@
     <Compile Include="Login\Views\Notify.xaml.cs">
       <DependentUpon>Notify.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\APIEntity\API_DSThemMoiNhanVienVaoNhom.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployee.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployeeChuaThietLapThue.cs" />
     <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
@@ -105,7 +106,11 @@
     <Compile Include="Model\APIEntity\API_List_ep_nogroup.cs" />
     <Compile Include="Model\APIEntity\API_Login_Company.cs" />
     <Compile Include="Model\APIEntity\API_Login_Employee.cs" />
+    <Compile Include="Model\APIEntity\API_SuaNhomLamViec.cs" />
+    <Compile Include="Model\APIEntity\API_TaoNhomLamViec.cs" />
     <Compile Include="Model\APIEntity\API_UserInfo.cs" />
+    <Compile Include="Model\APIEntity\API_XoaNhomLamViec.cs" />
+    <Compile Include="Model\APIEntity\List_user_group.cs" />
     <Compile Include="Resouce\tool\DatePicker.xaml.cs">
       <DependentUpon>DatePicker.xaml</DependentUpon>
     </Compile>
@@ -147,6 +152,12 @@
     </Compile>
     <Compile Include="Views\CaiDat\Popup\PopupThemNhanVienVaoLichLamViec.xaml.cs">
       <DependentUpon>PopupThemNhanVienVaoLichLamViec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupThietLapNhanVienCacNhom.xaml.cs">
+      <DependentUpon>PopupThietLapNhanVienCacNhom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupThietLapNhomChoNhanVien.xaml.cs">
+      <DependentUpon>PopupThietLapNhomChoNhanVien.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CaiDat\Popup\PopupThongBaoXoaLichLamViec.xaml.cs">
       <DependentUpon>PopupThongBaoXoaLichLamViec.xaml</DependentUpon>
@@ -589,6 +600,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CaiDat\Popup\PopupThemNhanVienVaoLichLamViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupThietLapNhanVienCacNhom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupThietLapNhomChoNhanVien.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

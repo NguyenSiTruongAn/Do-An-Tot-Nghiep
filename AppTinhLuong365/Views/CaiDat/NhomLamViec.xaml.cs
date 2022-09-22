@@ -40,6 +40,7 @@ namespace AppTinhLuong365.Views.CaiDat
             Main = main;
             getData();
             getData1();
+            getData2();
         }
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -102,9 +103,54 @@ namespace AppTinhLuong365.Views.CaiDat
                     {
                         listNVChuaNhom = api.data.list;
                     }
-
+                    foreach(ListEpNoGroup item in listNVChuaNhom)
+                    {
+                        if (item.ep_image == "/img/add.png")
+                        {
+                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                        }
+                    }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_list_emp_nogroup.php", web.QueryString);
+            }
+        }
+
+        private List<EpGroup> _listNVCacNhom = new List<EpGroup>();
+        public List<EpGroup> listNVCacNhom
+        {
+            get { return _listNVCacNhom; }
+            set
+            {
+                _listNVCacNhom = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void getData2()
+        {
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 0)
+                {
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("company", Main.CurrentCompany.com_id);
+                }
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    List_user_group api = JsonConvert.DeserializeObject<List_user_group>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listNVCacNhom = api.data.ep_group;
+                    }
+                    foreach (EpGroup item in listNVCacNhom)
+                    {
+                        if (item.ep_image == "/img/add.png")
+                        {
+                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                        }
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_user_group.php", web.QueryString);
             }
         }
 
@@ -116,13 +162,17 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupThemNhanVien(Main));
+            Border b = sender as Border;
+            ListGroup data = (ListGroup)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupThemNhanVien(Main, data.lgr_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.CaiDat.Popup.PopupTuyChonNhomLamViec(Main);
+            Path p = sender as Path;
+            ListGroup data = (ListGroup)p.DataContext;
+            var pop = new Views.CaiDat.Popup.PopupTuyChonNhomLamViec(Main, data.lgr_id, data.lgr_name, data.lgr_note);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -131,7 +181,14 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void BtnThietLapNVChuaNhom(object sender, MouseButtonEventArgs e)
         {
-
+            Border b = sender as Border;
+            ListEpNoGroup data = (ListEpNoGroup)b.DataContext;
+            if (data != null)
+            {
+                Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupThietLapNhomChoNhanVien(Main, data.ep_name,data.ep_id));
+                Main.PopupSelection.Visibility = Visibility.Visible;
+            }
+     
         }
 
         private void tb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -145,6 +202,12 @@ namespace AppTinhLuong365.Views.CaiDat
                 default:
                     break;
             }
+        }
+
+        private void BtnThietLapNVCacNhom(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupThietLapNhanVienCacNhom(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

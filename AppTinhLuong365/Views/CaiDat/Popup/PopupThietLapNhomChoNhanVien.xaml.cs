@@ -21,9 +21,9 @@ using System.Windows.Shapes;
 namespace AppTinhLuong365.Views.CaiDat.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupThemNhanVien.xaml
+    /// Interaction logic for PopupThietLapNhomChoNhanVien.xaml
     /// </summary>
-    public partial class PopupThemNhanVien : Page, INotifyPropertyChanged
+    public partial class PopupThietLapNhomChoNhanVien : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
         public int IsSmallSize
@@ -31,16 +31,16 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             get { return _IsSmallSize; }
             set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
         }
-        MainWindow Main;
-        private string ID_gr;
-        public PopupThemNhanVien(MainWindow main, string id)
+        public PopupThietLapNhomChoNhanVien(MainWindow main, string name, string ID)
         {
             this.DataContext = this;
             InitializeComponent();
             Main = main;
-            ID_gr = id;
+            txtID.Text = ID;
+            txtName.Text = name;
             getData();
         }
+        MainWindow Main;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -48,44 +48,36 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private List<DSThemMoiNhanVienVaoNhom> _listNV;
+        private List<ListGroup> _listNhom;
 
-        public List<DSThemMoiNhanVienVaoNhom> listNV
+        public List<ListGroup> listNhom
         {
-            get { return _listNV; }
-            set { _listNV = value; OnPropertyChanged(); }
+            get { return _listNhom; }
+            set { _listNhom = value; OnPropertyChanged(); }
         }
 
         private void getData()
         {
             using (WebClient web = new WebClient())
             {
-                web.QueryString.Add("group", ID_gr);
                 if (Main.MainType == 0)
                 {
-                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_DSThemMoiNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_DSThemMoiNhanVienVaoNhom>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    API_ListGroup api = JsonConvert.DeserializeObject<API_ListGroup>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
-                        listNV = api.data.list;
-                    }
-                    foreach (DSThemMoiNhanVienVaoNhom item in listNV)
-                    {
-                        if (item.ep_image == "")
-                        {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                        }
+                        listNhom = api.data.list_group;
                     }
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_add_user_gr.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_group_manager.php", web.QueryString);
             }
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
         }
