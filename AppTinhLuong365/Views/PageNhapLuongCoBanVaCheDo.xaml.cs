@@ -140,7 +140,7 @@ namespace AppTinhLuong365.Views
         }
         private void dataGrid1Hover(object sender, MouseEventArgs e)
         {
-            Border col = sender as Border;
+            /*Border col = sender as Border;
             if (col != null)
             {
                 abc item = (abc)col.DataContext;
@@ -158,12 +158,12 @@ namespace AppTinhLuong365.Views
                 {
                     Test[index].hover = 1;
                 }
-            }
+            }*/
         }
 
         private void dataGrid1Leave(object sender, MouseEventArgs e)
         {
-            Border col = sender as Border;
+            /*Border col = sender as Border;
             if (col != null)
             {
                 abc item = (abc)col.DataContext;
@@ -181,7 +181,7 @@ namespace AppTinhLuong365.Views
                 {
                     Test[index].hover = 0;
                 }
-            }
+            }*/
         }
 
         private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

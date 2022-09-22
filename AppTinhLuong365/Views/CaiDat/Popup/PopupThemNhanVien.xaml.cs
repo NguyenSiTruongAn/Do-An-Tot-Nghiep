@@ -1,4 +1,5 @@
-﻿using AppTinhLuong365.Model.APIEntity;
+﻿using AppTinhLuong365.Core;
+using AppTinhLuong365.Model.APIEntity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,14 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             set { _listNV = value; OnPropertyChanged(); }
         }
 
+        private List<DSThemMoiNhanVienVaoNhom> _listNV1;
+
+        public List<DSThemMoiNhanVienVaoNhom> listNV1
+        {
+            get { return _listNV1; }
+            set { _listNV1 = value; OnPropertyChanged(); }
+        }
+
         private void getData()
         {
             using (WebClient web = new WebClient())
@@ -71,11 +80,11 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     API_DSThemMoiNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_DSThemMoiNhanVienVaoNhom>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
-                        listNV = api.data.list;
+                        listNV = listNV1 = api.data.list;
                     }
                     foreach (DSThemMoiNhanVienVaoNhom item in listNV)
                     {
-                        if (item.ep_image == "")
+                        if (item.ep_image == "/img/add.png")
                         {
                             item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
                         }
@@ -88,6 +97,54 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            listNV1 = listNV.Where(x=>x.ep_name.ToLower().RemoveUnicode().Contains(tbInput.Text.ToLower().RemoveUnicode())).ToList();
+        }
+        private List<string> nv = new List<string>();
+        private void ChonNhanvien(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            DSThemMoiNhanVienVaoNhom data = (DSThemMoiNhanVienVaoNhom)cb.DataContext;
+            nv.Add(data.ep_id);
+        }
+
+        private void ThemNhanVienVaoNhom(object sender, MouseButtonEventArgs e)
+        {
+            bool allow = true;
+            if (nv.Count <= 0)
+            {
+                allow = false;
+            }
+            if (allow)
+            {
+                foreach (var item in nv)
+                {
+                    using (WebClient web = new WebClient())
+                    {
+                        if (Main.MainType == 0)
+                        {
+                            web.QueryString.Add("token", Main.CurrentCompany.token);
+                            web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                        }
+                        web.QueryString.Add("id_emp", item);
+                        web.QueryString.Add("id_group", ID_gr);
+                        web.UploadValuesCompleted += (s, ee) =>
+                        {
+                            API_TaoNhomLamViec api = JsonConvert.DeserializeObject<API_TaoNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                            }
+                        };
+                        web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_emp_group_work.php", web.QueryString);
+                    }
+                }
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NhomLamViec(Main));
+                this.Visibility = Visibility.Collapsed;
+            }
+            
         }
     }
 }

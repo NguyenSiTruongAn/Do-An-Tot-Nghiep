@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppTinhLuong365.Core;
 
 namespace AppTinhLuong365.Views.CaiDat
 {
@@ -38,6 +39,8 @@ namespace AppTinhLuong365.Views.CaiDat
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            dataGrid.AutoReponsiveColumn(0);
+            dataGrid1.AutoReponsiveColumn(1);
             getData();
             getData1();
             getData2();
@@ -204,10 +207,22 @@ namespace AppTinhLuong365.Views.CaiDat
             }
         }
 
+        private void NVChuaNhom_selectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+
+        }
+
         private void BtnThietLapNVCacNhom(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupThietLapNhanVienCacNhom(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            Border b = sender as Border;
+            EpGroup data = (EpGroup)b.DataContext;
+            if (data != null)
+            {
+                Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupThietLapNhanVienCacNhom(Main, data.ep_name, data.ep_id, data.lgr_name));
+                Main.PopupSelection.Visibility = Visibility.Visible;
+            }
+            
         }
     }
 }

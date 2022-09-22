@@ -38,9 +38,10 @@
                         <TextBlock FontWeight="DemiBold" Text="Chọn nhóm" FontSize="16" Foreground="{DynamicResource #666666}"/>
                         <Path Margin="90 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
                     </Grid>
-                    <ComboBox x:Name="cbListGroup" ItemsSource="{Binding listNhom}" DisplayMemberPath="{Binding listNhom.lgr_name}" Height="41" FontSize="16" Foreground="{DynamicResource #777777}" Margin="0 5 0 0" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                    <ComboBox x:Name="cbListGroup" ItemsSource="{Binding listNhom}" DisplayMemberPath="lgr_name" Height="41" FontSize="16" Foreground="{DynamicResource #777777}" Margin="0 5 0 0" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
                     </ComboBox>
-                    <Border Cursor="Hand" Margin="0 20 0 0" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Height="45">
+                    <TextBlock x:Name="validateCB" Style="{StaticResource tblValidate}"/>
+                    <Border MouseLeftButtonDown="btnThemNhanVienVaoNhom_Click" Cursor="Hand" Margin="0 20 0 0" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Height="45">
                         <TextBlock Text="{DynamicResource textSave}" Foreground="{DynamicResource #FFFFFF}" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Border>
                 </StackPanel>
