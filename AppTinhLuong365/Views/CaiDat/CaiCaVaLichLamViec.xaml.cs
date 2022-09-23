@@ -1,6 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Net;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -88,5 +93,7 @@ namespace AppTinhLuong365.Views.CaiDat
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
+
+        
     }
 }

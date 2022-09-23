@@ -1,6 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Net;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -32,6 +37,7 @@ namespace AppTinhLuong365.Views.CaiDat
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            getData();
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -66,6 +72,40 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupDiMuonVeSom(Main));
             Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private List<ItemLate> _listLate;
+
+        public List<ItemLate> listLate
+        {
+            get { return _listLate; }
+            set { _listLate = value; OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("time", "2022-09");
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListLate api = JsonConvert.DeserializeObject<API_ListLate>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listLate = api.data.list_late;
+                    }
+                    //foreach (ItemTamUng item in listTamUng)
+                    //{
+                    //    if (item.ep_image == "/img/add.png")
+                    //    {
+                    //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_late.php", web.QueryString);
+            }
         }
     }
 }
