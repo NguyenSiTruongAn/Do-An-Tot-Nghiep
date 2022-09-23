@@ -51,7 +51,7 @@
         </Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <StackPanel Margin="20 0 20 0">
-                <TextBlock Text="{DynamicResource textPayrollCycle}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                <TextBlock Margin="0 20 0 0" Text="{DynamicResource textPayrollCycle}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
                 <DockPanel HorizontalAlignment="Right" Margin="0 30 0 0" VerticalAlignment="Top">
                     <WrapPanel Name="Wrap_Border">
                         <Border>
@@ -117,7 +117,7 @@
                                                 <Path x:Name="iconEdit" Data="{DynamicResource iconEdit}" Fill="{DynamicResource #4C5BD4}" Margin="10 0 0 0">
                                                     <Path.Style>
                                                         <Style TargetType="Path">
-                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding hover}" Value="1">
                                                                     <Setter Property="Visibility" Value="Visible"/>

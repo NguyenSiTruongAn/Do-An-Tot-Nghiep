@@ -1,9 +1,15 @@
-﻿using System.Collections.ObjectModel;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
+using System.Net;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace AppTinhLuong365.Views.BaoCaoCongLuong
 {
@@ -33,6 +39,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            getData();
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -62,6 +69,48 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             {
                 IsSmallSize = 2;
             }
+        }
+
+        private ItemCongLuong _congLuong;
+
+        public ItemCongLuong congLuong
+        {
+            get { return _congLuong; }
+            set { _congLuong = value; OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                loading.Visibility = Visibility.Visible;
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("company", Main.CurrentCompany.com_id);
+                web.QueryString.Add("month", "9");
+                web.QueryString.Add("year", "2022");
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    Api_CongLuong api = JsonConvert.DeserializeObject<Api_CongLuong>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        congLuong = api.data.list;
+                    }
+                    loading.Visibility = Visibility.Collapsed;
+                    //foreach (ItemTamUng item in listTamUng)
+                    //{
+                    //    if (item.ep_image == "/img/add.png")
+                    //    {
+                    //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_cong_luong.php", web.QueryString);
+            }
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.BaoCaoCongLuong.TongHopLuongNhanVienTheoChuKi(Main));
         }
     }
 }

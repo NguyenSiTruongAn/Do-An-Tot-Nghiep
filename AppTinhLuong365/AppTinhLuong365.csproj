@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -95,9 +96,11 @@
     <Compile Include="Login\Views\Notify.xaml.cs">
       <DependentUpon>Notify.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\APIEntity\Api_CongLuong.cs" />
     <Compile Include="Model\APIEntity\API_DSThemMoiNhanVienVaoNhom.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployee.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployeeChuaThietLapThue.cs" />
+    <Compile Include="Model\APIEntity\API_ListLate.cs" />
     <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
     <Compile Include="Model\APIEntity\API_ListUserTax.cs" />
     <Compile Include="Model\APIEntity\API_Payroll.cs" />
@@ -117,11 +120,17 @@
     <Compile Include="Resouce\tool\DatePicker.xaml.cs">
       <DependentUpon>DatePicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resouce\tool\LoadingSpinner.xaml.cs">
+      <DependentUpon>LoadingSpinner.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resouce\tool\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BaoCaoCongLuong\BaoCaoCongLuong.xaml.cs">
       <DependentUpon>BaoCaoCongLuong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BaoCaoCongLuong\TongHopLuongNhanVienTheoChuKi.xaml.cs">
+      <DependentUpon>TongHopLuongNhanVienTheoChuKi.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CaiDat\CaiCaVaLichLamViec.xaml.cs">
       <DependentUpon>CaiCaVaLichLamViec.xaml</DependentUpon>
@@ -581,6 +590,14 @@
     <Page Include="Resouce\checkbox\CheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resouce\tool\LoadingSpinner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BaoCaoCongLuong\TongHopLuongNhanVienTheoChuKi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CaiDat\Popup\PopupChinhSuaLichLamViec.xaml">
       <SubType>Designer</SubType>
