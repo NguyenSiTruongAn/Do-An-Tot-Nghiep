@@ -15,7 +15,7 @@ namespace AppTinhLuong365.Model.APIEntity
     public class Data_user_group
     {
         public List<EpGroup> ep_group { get; set; }
-        public List<Count> count { get; set; }
+        public int count { get; set; }
         public string message { get; set; }
     }
 

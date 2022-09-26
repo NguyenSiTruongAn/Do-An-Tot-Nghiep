@@ -67,6 +67,7 @@ namespace AppTinhLuong365.Views.CaiDat
                 {
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("id_group", "");
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
@@ -89,6 +90,16 @@ namespace AppTinhLuong365.Views.CaiDat
                 OnPropertyChanged();
             }
         }
+        private List<ListEpNoGroup> _listNVChuaNhom1 = new List<ListEpNoGroup>();
+        public List<ListEpNoGroup> listNVChuaNhom1
+        {
+            get { return _listNVChuaNhom1; }
+            set
+            {
+                _listNVChuaNhom1 = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void getData1()
         {
@@ -104,7 +115,7 @@ namespace AppTinhLuong365.Views.CaiDat
                     API_List_ep_nogroup api = JsonConvert.DeserializeObject<API_List_ep_nogroup>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
-                        listNVChuaNhom = api.data.list;
+                        listNVChuaNhom1 = listNVChuaNhom = api.data.list;
                     }
                     foreach(ListEpNoGroup item in listNVChuaNhom)
                     {
@@ -128,6 +139,16 @@ namespace AppTinhLuong365.Views.CaiDat
                 OnPropertyChanged();
             }
         }
+        private List<EpGroup> _listNVCacNhom1 = new List<EpGroup>();
+        public List<EpGroup> listNVCacNhom1
+        {
+            get { return _listNVCacNhom1; }
+            set
+            {
+                _listNVCacNhom1 = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void getData2()
         {
@@ -137,13 +158,14 @@ namespace AppTinhLuong365.Views.CaiDat
                 {
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.QueryString.Add("company", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("page", "1");
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     List_user_group api = JsonConvert.DeserializeObject<List_user_group>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
-                        listNVCacNhom = api.data.ep_group;
+                        listNVCacNhom1 = listNVCacNhom = api.data.ep_group;
                     }
                     foreach (EpGroup item in listNVCacNhom)
                     {
@@ -209,8 +231,23 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void NVChuaNhom_selectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
 
+            ListEpNoGroup selected = (ListEpNoGroup)(Search_NVChuaThietLap.SelectedItem);
+            if (selected != null)
+            {
+                listNVChuaNhom1 = listNVChuaNhom.Where(x => x.ep_id == selected.ep_id).ToList();
+            }
+            else listNVChuaNhom1 = listNVChuaNhom;
+        }
+        private void Search_DSNVCacNhom(object sender, SelectionChangedEventArgs e)
+        {
+
+            EpGroup selected = (EpGroup)(Search_NVCacNhom.SelectedItem);
+            if (selected != null)
+            {
+                listNVCacNhom1 = listNVCacNhom.Where(x => x.ep_id == selected.ep_id).ToList();
+            }
+            else listNVCacNhom1 = listNVCacNhom;
         }
 
         private void BtnThietLapNVCacNhom(object sender, MouseButtonEventArgs e)

@@ -120,6 +120,7 @@
     <Compile Include="Model\APIEntity\API_SuaNhomLamViec.cs" />
     <Compile Include="Model\APIEntity\API_TaoNhomLamViec.cs" />
     <Compile Include="Model\APIEntity\API_Tbl_Salary_Manager.cs" />
+    <Compile Include="Model\APIEntity\API_ThemNhanVienVaoNhom.cs" />
     <Compile Include="Model\APIEntity\API_ThietLapNhanVienVaoNhom.cs" />
     <Compile Include="Model\APIEntity\API_UserInfo.cs" />
     <Compile Include="Model\APIEntity\API_XoaNhanVienKhoiNhom.cs" />

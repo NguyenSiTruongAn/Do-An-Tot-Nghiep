@@ -133,7 +133,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                         web.QueryString.Add("id_group", ID_gr);
                         web.UploadValuesCompleted += (s, ee) =>
                         {
-                            API_TaoNhomLamViec api = JsonConvert.DeserializeObject<API_TaoNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            API_ThemNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_ThemNhanVienVaoNhom>(UnicodeEncoding.UTF8.GetString(ee.Result));
                             if (api.data != null)
                             {
                             }
