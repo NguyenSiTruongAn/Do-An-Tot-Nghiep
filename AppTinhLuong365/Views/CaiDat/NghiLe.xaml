@@ -3,10 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:core="clr-namespace:AppTinhLuong365.Core"
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="NghiLe">
+
+    <Page.Resources>
+        <core:MathConvert x:Key="math"></core:MathConvert>
+    </Page.Resources>
 
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
@@ -18,35 +23,68 @@
             </Border>
             <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
                 <TabItem Cursor="Hand" Header="Năm 2022">
-                    <Grid Cursor="Arrow" HorizontalAlignment="Left" Width="330" Margin="20">
-                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
-                            </Border.Effect>
-                        </Border>
-                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
-                            <StackPanel Orientation="Vertical" Margin="0 0 0 20" VerticalAlignment="Top">
-                                <Border Background="{DynamicResource #4C5BD4}" Height="61" Margin="0 0 0 0" CornerRadius="10 10 0 0">
-                                    <StackPanel VerticalAlignment="Top" Margin="10 0 10 0">
-                                        <Border Cursor="Hand" HorizontalAlignment="Right" Width="23" Height="23" Background="Transparent" MouseLeftButtonDown="TuyChonNghiLe_Click">
-                                            <TextBlock Text="..." FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" ></TextBlock>
-                                        </Border>
-                                        <TextBlock Text="Ghhh" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold"></TextBlock>
-                                    </StackPanel>
-                                </Border>
-                                <StackPanel Orientation="Horizontal" Margin="10,10,-0.4,0">
-                                    <Path Data="{DynamicResource iconLich}" Stroke="{DynamicResource #5F648D}"></Path>
-                                    <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Nghỉ từ ngày" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
-                                </StackPanel>
-                                <TextBlock Margin="20 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="12/10/2022 - 12/10/2022" TextWrapping="WrapWithOverflow"></TextBlock>
-                                <StackPanel Orientation="Horizontal" Margin="10,0,-0.4,0">
-                                    <Path Data="{DynamicResource iconThemThanhVien}" Stroke="{DynamicResource #5F648D}"></Path>
-                                    <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Thưởng nghỉ lễ" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
-                                </StackPanel>
-                                <TextBlock Margin="20 10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}" Text="0 VNĐ" TextWrapping="WrapWithOverflow"></TextBlock>
-                            </StackPanel>
+                    <Grid Cursor="Arrow" Background="{DynamicResource #F7F8FC}">
+                        <ListView Cursor="Arrow" Margin="35 0 0 0" Name="lv" ItemsSource="{Binding holidayList}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-50)/3}"></Setter>
+                                    <Setter Property="Margin" Value="25 0 25 35"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListViewItem">
+                                                <Grid>
+                                                    <StackPanel Orientation="Vertical" Margin="0 30 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                                        <Grid>
+                                                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                                                <Border.Effect>
+                                                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+                                                                </Border.Effect>
+                                                            </Border>
+                                                            <StackPanel>
+                                                                <Border CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
+                                                                    <Grid>
+                                                                        <TextBlock Text="{Binding lho_name}" FontSize="16" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                                                        <TextBlock Cursor="Hand" HorizontalAlignment="Right" Padding="0 3 17 0" FontWeight="Bold" FontFamily="roboto" Text="..." FontSize="28" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                                                                    </Grid>
+                                                                </Border>
+                                                                <StackPanel>
+                                                                    <Border Margin="0 20 0 0" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                                        <DockPanel>
+                                                                            <Path Margin="10 0 0 0" Data="{DynamicResource iconSearch}" VerticalAlignment="Center" Fill="{DynamicResource #68798B}"></Path>
+                                                                            <Grid Height="38" Margin="10 0 10 0">
+                                                                                <TextBox VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                                                                <TextBlock VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #68798B}" TextWrapping="Wrap" Text="Nhập từ cần tìm" IsHitTestVisible="False">
+                                                                                    <TextBlock.Style>
+                                                                                        <Style TargetType="TextBlock">
+                                                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                                                            <Style.Triggers>
+                                                                                                <DataTrigger Binding="{Binding ElementName=tbInput,Path=Text}" Value="">
+                                                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                                                </DataTrigger>
+                                                                                            </Style.Triggers>
+                                                                                        </Style>
+                                                                                    </TextBlock.Style>
+                                                                                </TextBlock>
+                                                                            </Grid>
+                                                                        </DockPanel>
+                                                                    </Border>
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </StackPanel>
 
-                        </Border>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Width="{Binding RelativeSource={RelativeSource AncestorType=ListView,Mode=FindAncestor},Path=ActualWidth}"></WrapPanel>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                        </ListView>
                     </Grid>
                 </TabItem>
                 <TabItem Cursor="Hand" Header="Năm 2021">

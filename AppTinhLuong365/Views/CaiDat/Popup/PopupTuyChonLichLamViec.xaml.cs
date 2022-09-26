@@ -21,11 +21,13 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
     public partial class PopupTuyChonLichLamViec : Page
     {
         MainWindow Main;
-        public PopupTuyChonLichLamViec(MainWindow main)
+        private string Id;
+        public PopupTuyChonLichLamViec(MainWindow main, string cy_id)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            Id = cy_id;
         }
 
         private void Xoa_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
@@ -57,7 +59,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void ThemNhanVien_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.CaiDat.Popup.PopupThemNhanVienVaoLichLamViec(Main);
+            var pop = new Views.CaiDat.Popup.PopupThemNhanVienVaoLichLamViec(Main, Id);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 616;

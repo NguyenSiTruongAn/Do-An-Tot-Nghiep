@@ -38,6 +38,7 @@ namespace AppTinhLuong365.Views.CaiDat
             this.DataContext = this;
             Main = main;
             getData();
+            getData1();
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -105,6 +106,41 @@ namespace AppTinhLuong365.Views.CaiDat
                     //}
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_late.php", web.QueryString);
+            }
+        }
+
+        private List<EpLate> _listEpLate;
+
+        public List<EpLate> listEpLate
+        {
+            get { return _listEpLate; }
+            set { _listEpLate = value; OnPropertyChanged(); }
+        }
+
+        private void getData1()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("page", "1");
+                web.QueryString.Add("time", "2022-09");
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_List_Ep_Late api = JsonConvert.DeserializeObject<API_List_Ep_Late>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listEpLate = api.data.ep_late;
+                    }
+                    foreach (EpLate item in listEpLate)
+                    {
+                        if (item.ts_image != "/img/add.png")
+                        {
+                            item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                        }
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_late.php", web.QueryString);
             }
         }
     }

@@ -206,7 +206,7 @@
                                         </Border>
                                     </WrapPanel>
                                 </Border>
-                                <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                                <DataGrid x:Name="dataGrid" ItemsSource="{Binding list}" Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -215,9 +215,53 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="{DynamicResource textCaLamViec}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textMucPhatDangApDung}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textNgayBatDauApDung}"></DataGridTextColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textCaLamViec}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">
+                                                            <TextBlock FontSize="15" Foreground="{DynamicResource #4C5BD4}" FontWeight="Bold" Text="{Binding shift_name}"></TextBlock>
+                                                            <TextBlock FontSize="15" FontWeight="Bold">
+                                                                <Run Text="Từ"/>
+                                                                <Run Text="{Binding start_time}"/>
+                                                                <Run Text="-"/>
+                                                                <Run Text="{Binding end_time}"/>
+                                                            </TextBlock>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textMucPhatDangApDung}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock FontSize="15" FontWeight="Bold" Style="{StaticResource TextRowCenter}">
+                                                            <Run Text="{Binding pc_money}"/>
+                                                            <Run Text="VNĐ/ca"/>
+                                                        </TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textNgayBatDauApDung}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding pc_time}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Cursor="Hand" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                                                        <TextBlock FontSize="15" FontWeight="Bold" Text="Xem mức phạt" Style="{StaticResource TextRowCenter}" TextDecorations="Underline"></TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </StackPanel>
@@ -347,7 +391,7 @@
                                         </WrapPanel>
                                     </Border>
                                 </WrapPanel>
-                                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
+                                <DataGrid x:Name="dataGrid2" ItemsSource="{Binding listItemNp}" Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -356,11 +400,74 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textNgayXinNghi}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textCaXinNghi}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textTrangThai}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textLoaiHinh}"></DataGridTextColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid x:Name="gridHoTen">
+                                                        <WrapPanel VerticalAlignment="Center">
+                                                            <Border Margin="10 0 0 0" Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
+                                                                <Border.Background>
+                                                                    <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
+                                                                </Border.Background>
+                                                            </Border>
+                                                            <StackPanel Margin="10 10 0 0">
+                                                                <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                                <TextBlock FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}">
+                                                                    <Run Text="ID:"/>
+                                                                    <Run Text="{Binding ep_id}"/>
+                                                                </TextBlock>
+                                                            </StackPanel>
+                                                        </WrapPanel>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textNgayXinNghi}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}">
+                                                        <Run Text="{Binding ngaybatdau_nghi}"/>
+                                                        <Run Text="-"/>
+                                                        <Run Text="{Binding ngayketthuc_nghi}" />
+                                                    </TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textCaXinNghi}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding CaNghi}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textTrangThai}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent" Width="150" Height="36" CornerRadius="20">
+                                                        <TextBlock x:Name="aaa" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding TrangThai}" FontSize="15" FontWeight="DemiBold">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="Text" Value="Đang chờ duyệt">
+                                                                            <Setter Property="Background" Value="#fff3eb"/>
+                                                                            <Setter Property="FontSize" Value="15"/>
+                                                                            <Setter Property="Foreground" Value="#ff8c44"/>
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textLoaiHinh}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding LoaiNghi}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </StackPanel>

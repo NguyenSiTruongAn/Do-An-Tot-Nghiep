@@ -1,6 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Net;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -33,6 +38,8 @@ namespace AppTinhLuong365.Views.CaiDat
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            getData();
+            getData1();
         }
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
@@ -81,6 +88,82 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.NghiPhepKhongLuong(Main));
             Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private List<List> _list;
+
+        public List<List> list
+        {
+            get { return _list; }
+            set { _list = value; OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("take", "2");
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_List_Np_Improperly api = JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        list = api.data.list;
+                    }
+                    //foreach (EpLate item in list)
+                    //{
+                    //    if (item.ts_image != "/img/add.png")
+                    //    {
+                    //        item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_np_improperly.php", web.QueryString);
+            }
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupDanhSachMucPhat(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private List<ItemNp> _listItemNp;
+
+        public List<ItemNp> listItemNp
+        {
+            get { return _listItemNp; }
+            set { _listItemNp = value; OnPropertyChanged(); }
+        }
+
+        private void getData1()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                //web.QueryString.Add("page", "1");
+                web.QueryString.Add("month", "09");
+                web.QueryString.Add("year", "2022");
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_List_Ep_Np api = JsonConvert.DeserializeObject<API_List_Ep_Np>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listItemNp = api.data.list;
+                    }
+                    //foreach (ItemNp item in list)
+                    //{
+                    //    if (item.ts_image != "/img/add.png")
+                    //    {
+                    //        item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_np.php", web.QueryString);
+            }
         }
     }
 }
