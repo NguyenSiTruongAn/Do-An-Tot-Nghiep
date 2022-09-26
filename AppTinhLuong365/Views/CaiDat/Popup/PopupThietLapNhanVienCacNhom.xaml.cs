@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,8 +24,14 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
     /// <summary>
     /// Interaction logic for PopupThietLapNhanVienCacNhom.xaml
     /// </summary>
-    public partial class PopupThietLapNhanVienCacNhom : Page
+    public partial class PopupThietLapNhanVienCacNhom : Page, INotifyPropertyChanged
     {
+        private int _IsSmallSize;
+        public int IsSmallSize
+        {
+            get { return _IsSmallSize; }
+            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
+        }
         public PopupThietLapNhanVienCacNhom(MainWindow main, string ep_name, string ep_id, List<LgrName> lgr_name)
         {
             InitializeComponent();
@@ -34,8 +42,44 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             textId.Text = ep_id;
             id = ep_id;
             dataGrid1.AutoReponsiveColumn(0);
+            getData();
         }
         MainWindow Main;
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private List<ListGroup> _listNhom;
+
+        public List<ListGroup> listNhom
+        {
+            get { return _listNhom; }
+            set { _listNhom = value; OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 0 && Test.Count>0)
+                {
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("id_group", Test[0].gm_id_group);
+                }
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListGroup api = JsonConvert.DeserializeObject<API_ListGroup>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listNhom = api.data.list_group;
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_group_manager.php", web.QueryString);
+            }
+        }
 
         public List<LgrName> Test { get; set; } = new List<LgrName>();
         private string id;

@@ -103,9 +103,9 @@
                     <Grid Cursor="Arrow">
                         <StackPanel>
                             <Border Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
-                                <tool:SearchBar SelectionChanged="NVChuaNhom_selectionChanged" ItemsSource="{Binding listNVChuaNhom,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="ep_name" FontSize="16" Height="28" Width="123" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm"/>
+                                <tool:SearchBar x:Name="Search_NVChuaThietLap" SelectionChanged="NVChuaNhom_selectionChanged" ItemsSource="{Binding listNVChuaNhom,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="ep_name" FontSize="16" Height="28" Width="123" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm"/>
                             </Border>
-                            <DataGrid x:Name="dataGrid" Margin="0 10 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listNVChuaNhom}">
+                            <DataGrid x:Name="dataGrid" Margin="0 10 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listNVChuaNhom1}">
                                 <DataGrid.OpacityMask>
                                     <VisualBrush>
                                         <VisualBrush.Visual>
@@ -153,9 +153,11 @@
                     <Grid Cursor="Arrow">
                         <StackPanel>
                             <Border Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
-                                <tool:SearchBar ItemsSource="{Binding listNVCacNhom,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="ep_name" FontSize="16" Height="28" Width="123" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm"/>
+                                <tool:SearchBar x:Name="Search_NVCacNhom" SelectionChanged="Search_DSNVCacNhom" ItemsSource="{Binding listNVCacNhom,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="ep_id,ep_name" FontSize="16" Height="28" Width="123" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm">
+                                   
+                                </tool:SearchBar>
                             </Border>
-                            <DataGrid x:Name="dataGrid1" Margin="0 10 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listNVCacNhom}">
+                            <DataGrid x:Name="dataGrid1" Margin="0 10 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listNVCacNhom1}">
                                 <DataGrid.OpacityMask>
                                     <VisualBrush>
                                         <VisualBrush.Visual>
@@ -217,6 +219,21 @@
                                     </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
+                            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 0">
+                                <Border x:Name="PageDau" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                    <TextBlock Text="&lt;&lt;&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                </Border>
+                                <Border x:Name="PageTruoc" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                    <TextBlock Text="&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                </Border>
+                                
+                                <Border x:Name="PageTiep" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                    <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                </Border>
+                                <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                    <TextBlock x:Name="PageCuoi" Text=">>>" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                </Border>
+                            </DockPanel>
                         </StackPanel>
                     </Grid>
                 </TabItem>
