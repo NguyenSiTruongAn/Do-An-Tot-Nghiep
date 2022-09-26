@@ -1,0 +1,67 @@
+﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.Popup.PopupDanhSachMucPhat"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat.Popup"
+      mc:Ignorable="d" 
+      Title="PopupDanhSachMucPhat">
+
+    <Grid Height="338" Width="528">
+        <Border Style="{DynamicResource ShadowBorder1}"/>
+        <StackPanel>
+            <Border CornerRadius="10 10 0 0" Background="{DynamicResource #4C5BD4}" Height="47">
+                <Path MouseLeftButtonDown="Path_MouseLeftButtonDown" Data="{DynamicResource iconClose}" Fill="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 10 10 0"/>
+            </Border>
+            <Border CornerRadius="0 0 10 10" Height="290">
+                <StackPanel Margin="23.75 30 23.75 30">
+                    <TextBlock Text="Danh sách mức phạt qua từng thời điểm" FontSize="16" Foreground="{DynamicResource #4C5BD4}"/>
+                    <DataGrid x:Name="dataGrid" ItemsSource="{Binding list}" Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}" Height="{Binding ElementName=dataGrid,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </DataGrid.OpacityMask>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="{DynamicResource textMucPhat}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent">
+                                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding pc_money}"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Thời điểm áp dụng">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent">
+                                            <TextBlock FontSize="15" Text="{Binding pc_time}" FontWeight="Bold" Style="{StaticResource TextRowCenter}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Cursor="Hand" Background="Transparent">
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"/>
+                                                <Path Margin="10 0 0 0" Data="{DynamicResource iconXoa}" Fill="#f47171"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock Text="Lưu ý: Mức phạt sẽ áp dụng theo ngày được chọn, việc xóa mức phạt có thể ảnh hưởng đến kết quả tính lương của các tháng trước. Hãy chắc chắn về mốc phạt được áp dụng sau khi xóa." FontSize="14" Foreground="#ef5353" TextWrapping="Wrap" Margin="0 20 0 0"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>

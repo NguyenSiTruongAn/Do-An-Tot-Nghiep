@@ -96,13 +96,21 @@
     <Compile Include="Login\Views\Notify.xaml.cs">
       <DependentUpon>Notify.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\APIEntity\API_Add_employee_to_cycle.cs" />
+    <Compile Include="Model\APIEntity\API_CaiDatCongChuan.cs" />
     <Compile Include="Model\APIEntity\Api_CongLuong.cs" />
     <Compile Include="Model\APIEntity\API_DSThemMoiNhanVienVaoNhom.cs" />
+    <Compile Include="Model\APIEntity\API_ListCalendarWork.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployee.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployeeChuaThietLapThue.cs" />
     <Compile Include="Model\APIEntity\API_ListLate.cs" />
     <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
     <Compile Include="Model\APIEntity\API_ListUserTax.cs" />
+    <Compile Include="Model\APIEntity\API_List_employee_not_in_cycle.cs" />
+    <Compile Include="Model\APIEntity\API_List_Ep_Late.cs" />
+    <Compile Include="Model\APIEntity\API_List_Ep_Np.cs" />
+    <Compile Include="Model\APIEntity\API_List_Holiday.cs" />
+    <Compile Include="Model\APIEntity\API_List_Np_Improperly.cs" />
     <Compile Include="Model\APIEntity\API_Payroll.cs" />
     <Compile Include="Model\APIEntity\API_ListGroup.cs" />
     <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
@@ -152,6 +160,9 @@
     </Compile>
     <Compile Include="Views\CaiDat\Popup\PopupChonCaLamViec.xaml.cs">
       <DependentUpon>PopupChonCaLamViec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupDanhSachMucPhat.xaml.cs">
+      <DependentUpon>PopupDanhSachMucPhat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CaiDat\Popup\PopupDSNVLichLamViec.xaml.cs">
       <DependentUpon>PopupDSNVLichLamViec.xaml</DependentUpon>
@@ -604,6 +615,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CaiDat\Popup\PopupChonCaLamViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupDanhSachMucPhat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

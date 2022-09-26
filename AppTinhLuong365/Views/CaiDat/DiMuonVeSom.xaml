@@ -90,7 +90,7 @@
                                         </WrapPanel>
                                     </Border>
                                 </WrapPanel>
-                                <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
+                                <DataGrid x:Name="dataGrid" ItemsSource="{Binding listEpLate}" Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -99,12 +99,73 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textPhongBan}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textThoiGian}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textCa}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textMuonSom}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textPhat}"></DataGridTextColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid x:Name="gridHoTen">
+                                                        <WrapPanel VerticalAlignment="Center" Margin="25 0 0 0">
+                                                            <Border Width="45" Height="48" CornerRadius="40" HorizontalAlignment="Left">
+                                                                <Border.Background>
+                                                                    <ImageBrush ImageSource="{Binding ts_image}"></ImageBrush>
+                                                                </Border.Background>
+                                                            </Border>
+                                                            <StackPanel Margin="10 0 0 0">
+                                                                <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                                <TextBlock Text="{Binding ep_id}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                            </StackPanel>
+                                                        </WrapPanel>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textPhongBan}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding dep_name}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textThoiGian}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ts_date}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textCa}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding shift_name}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textMuonSom}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                                        <Border CornerRadius="20" Background="{DynamicResource #FEE5E5}">
+                                                            <TextBlock Padding="10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FF5959}">
+                                                                <Run Text="Về sớm"/>
+                                                                <Run Text="{Binding early_second}"/>
+                                                            </TextBlock>
+                                                        </Border>
+                                                        <Border CornerRadius="20" Background="{DynamicResource #FEE5E5}">
+                                                            <TextBlock Padding="10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FF5959}">
+                                                                <Run Text="Đi muộn"/>
+                                                                <Run Text="{Binding late_second}"/>
+                                                            </TextBlock>
+                                                        </Border>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textPhat}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding kq_phat}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </StackPanel>

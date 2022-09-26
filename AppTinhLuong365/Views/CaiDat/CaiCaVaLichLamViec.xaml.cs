@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -38,6 +39,9 @@ namespace AppTinhLuong365.Views.CaiDat
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            getData();
+            getData1();
+            //getData2();
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -87,13 +91,113 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void TuyChon_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var pop = new Views.CaiDat.Popup.PopupTuyChonLichLamViec(Main);
+            Border p = sender as Border;
+            GeneralCalendar data = (GeneralCalendar)p.DataContext;
+            var pop = new Views.CaiDat.Popup.PopupTuyChonLichLamViec(Main, data.cy_id);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
-        
+        private List<GeneralCalendar> _listGeneralCalendar;
+
+        public List<GeneralCalendar> listGeneralCalendar
+        {
+            get { return _listGeneralCalendar; }
+            set { _listGeneralCalendar = value; OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListCalendarWork api = JsonConvert.DeserializeObject<API_ListCalendarWork>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listGeneralCalendar = api.data.general_calendar;
+                    }
+                    //foreach (ItemTamUng item in listTamUng)
+                    //{
+                    //    if (item.ep_image == "/img/add.png")
+                    //    {
+                    //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_calendarwork.php", web.QueryString);
+            }
+        }
+
+        private List<PersonalCalendar> _listPersonalCalendar;
+
+        public List<PersonalCalendar> listPersonalCalendar
+        {
+            get { return _listPersonalCalendar; }
+            set { _listPersonalCalendar = value; OnPropertyChanged(); }
+        }
+
+        private void getData1()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListCalendarWork api = JsonConvert.DeserializeObject<API_ListCalendarWork>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listPersonalCalendar = api.data.personal_calendar;
+                    }
+                    //foreach (ItemTamUng item in listTamUng)
+                    //{
+                    //    if (item.ep_image == "/img/add.png")
+                    //    {
+                    //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_calendarwork.php", web.QueryString);
+            }
+        }
+
+        private Item _item;
+
+        public Item item
+        {
+            get { return _item; }
+            set { _item = value; OnPropertyChanged(); }
+        }
+
+        private void getData2()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("date", "2022/09/01");
+                web.Headers.Add("Bearer", Main.CurrentCompany.token);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_CaiDatCongChuan api = JsonConvert.DeserializeObject<API_CaiDatCongChuan>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        item = api.data.item;
+                    }
+                    //foreach (ItemTamUng item in listTamUng)
+                    //{
+                    //    if (item.ep_image == "/img/add.png")
+                    //    {
+                    //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/get_config_workday_of_company.php", web.QueryString);
+            }
+        }
     }
 }
