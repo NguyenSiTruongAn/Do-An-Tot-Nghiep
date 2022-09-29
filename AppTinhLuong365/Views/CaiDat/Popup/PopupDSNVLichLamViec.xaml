@@ -18,14 +18,14 @@
                     <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 3 -50 0"></TextBlock>
                 </Border>
                 <StackPanel Margin="20 0">
-                    <TextBlock Text="{Binding}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                    <TextBlock Text="{Binding listEmps.cy_name}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
                     <TextBlock Text="Danh sách nhân viên" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                 </StackPanel>
                 <TabControl Margin="20 0" ItemContainerStyle="{StaticResource TabItem2}" BorderThickness="0">
                     <TabItem Header="Nhân viên" BorderThickness="0">
                         <ScrollViewer>
                             <StackPanel>
-                                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 20 0 20" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 20 0 20" ItemsSource="{Binding listEmps}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -38,13 +38,17 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Grid x:Name="gridHoTen">
-                                                        <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
-                                                            <Border.Background>
-                                                                <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
-                                                            </Border.Background>
-                                                        </Border>
-                                                        <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                                                        <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                        <WrapPanel VerticalAlignment="Center" Margin="25 0 0 0">
+                                                            <Border Width="45" Height="48" CornerRadius="40" HorizontalAlignment="Left">
+                                                                <Border.Background>
+                                                                    <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
+                                                                </Border.Background>
+                                                            </Border>
+                                                            <StackPanel Margin="10 0 0 0">
+                                                                <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                                <TextBlock Text="{Binding ep_id}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                            </StackPanel>
+                                                        </WrapPanel>
                                                     </Grid>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -53,7 +57,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                        <TextBlock Text="{Binding dep_name}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -62,7 +66,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                        <TextBlock Text="{Binding ep_phone}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -71,7 +75,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                        <TextBlock Text="{Binding ep_email}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -80,7 +84,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
-                                                        <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
+                                                        <Path MouseLeftButtonDown="Path_MouseLeftButtonDown" Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
