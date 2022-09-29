@@ -24,7 +24,7 @@ namespace AppTinhLuong365.Views.CaiDat
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public CaiCaVaLichLamViec(MainWindow main, string ID, string Name)
+        public CaiCaVaLichLamViec(MainWindow main)
         {
             ItemList = new ObservableCollection<string>();
             for (var i = 1; i <= 12; i++)
@@ -39,8 +39,6 @@ namespace AppTinhLuong365.Views.CaiDat
             InitializeComponent();
             this.DataContext = this;
             Main = main;
-            ID = id;
-            tbInput.Text = Name;
             getData();
             getData1();
             getData2();
@@ -204,43 +202,43 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private string id;
 
-        private void ChinhSuaNhom(object sender, MouseButtonEventArgs e)
-        {
-            bool allow = true;
-            validateName.Text = validateDes.Text = "";
-            if (string.IsNullOrEmpty(tbInput.Text))
-            {
-                allow = false;
-                validateName.Text = "Vui lòng nhập đầy đủ";
-            }
-            if (string.IsNullOrEmpty(tbInput1.Text))
-            {
-                allow = false;
-                validateDes.Text = "Vui lòng nhập đầy đủ";
-            }
-            if (allow)
-            {
-                using (WebClient web = new WebClient())
-                {
-                    if (Main.MainType == 0)
-                    {
-                        web.QueryString.Add("token", Main.CurrentCompany.token);
-                    }
-                    web.QueryString.Add("id_group", id);
-                    web.QueryString.Add("name", tbInput.Text);
-                    web.QueryString.Add("des", tbInput1.Text);
-                    web.UploadValuesCompleted += (s, ee) =>
-                    {
-                        API_SuaNhomLamViec api = JsonConvert.DeserializeObject<API_SuaNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
-                        {
-                        }
-                    };
-                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_group_work.php", web.QueryString);
-                }
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NhomLamViec(Main));
-                this.Visibility = Visibility.Collapsed;
-            }
-        }
+        // private void ChinhSuaNhom(object sender, MouseButtonEventArgs e)
+        // {
+        //     bool allow = true;
+        //     validateName.Text = validateDes.Text = "";
+        //     if (string.IsNullOrEmpty(tbInput.Text))
+        //     {
+        //         allow = false;
+        //         validateName.Text = "Vui lòng nhập đầy đủ";
+        //     }
+        //     if (string.IsNullOrEmpty(tbInput1.Text))
+        //     {
+        //         allow = false;
+        //         validateDes.Text = "Vui lòng nhập đầy đủ";
+        //     }
+        //     if (allow)
+        //     {
+        //         using (WebClient web = new WebClient())
+        //         {
+        //             if (Main.MainType == 0)
+        //             {
+        //                 web.QueryString.Add("token", Main.CurrentCompany.token);
+        //             }
+        //             web.QueryString.Add("id_group", id);
+        //             web.QueryString.Add("name", tbInput.Text);
+        //             web.QueryString.Add("des", tbInput1.Text);
+        //             web.UploadValuesCompleted += (s, ee) =>
+        //             {
+        //                 API_SuaNhomLamViec api = JsonConvert.DeserializeObject<API_SuaNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
+        //                 if (api.data != null)
+        //                 {
+        //                 }
+        //             };
+        //             web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_group_work.php", web.QueryString);
+        //         }
+        //         Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NhomLamViec(Main));
+        //         this.Visibility = Visibility.Collapsed;
+        //     }
+        // }
     }
 }
