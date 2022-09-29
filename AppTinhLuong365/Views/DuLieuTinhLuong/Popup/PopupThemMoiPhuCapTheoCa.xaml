@@ -27,20 +27,7 @@
                         <TextBlock FontWeight="DemiBold" Text="{DynamicResource textCaLamViec}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                         <Path Margin="85 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
                     </Grid>
-                    <ComboBox Height="41" FontSize="16" Foreground="{DynamicResource #777777}" Margin="0 5 0 0" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
-                        <ComboBoxItem IsSelected="True">Tất cả các ca</ComboBoxItem>
-                        <ComboBoxItem>Ca sáng LƯƠNG &lt;= 5TR</ComboBoxItem>
-                        <ComboBoxItem>Ca chiều LƯƠNG &lt;= 5TR</ComboBoxItem>
-                        <ComboBoxItem>Ca sáng 5TR &lt;LƯƠNG &lt;= 7TR</ComboBoxItem>
-                        <ComboBoxItem>Ca chiều 5TR &lt;LƯƠNG &lt;= 7TR</ComboBoxItem>
-                        <ComboBoxItem>Ca sáng 7TR &lt;LƯƠNG &lt;= 10TR</ComboBoxItem>
-                        <ComboBoxItem>Ca chiều 7TR &lt;LƯƠNG &lt;= 10TR</ComboBoxItem>
-                        <ComboBoxItem>Ca sáng LƯƠNG &gt; 10TR</ComboBoxItem>
-                        <ComboBoxItem>Ca chiều LƯƠNG &gt; 10TR</ComboBoxItem>
-                        <ComboBoxItem>Ca trưa KD THẺ</ComboBoxItem>
-                        <ComboBoxItem>Ca tối 7TR &lt;LƯƠNG &lt;= 10TR</ComboBoxItem>
-                        <ComboBoxItem>Ca sáng - Phòng 16</ComboBoxItem>
-                        <ComboBoxItem>Ca chiều - Phòng 16</ComboBoxItem>
+                    <ComboBox x:Name="cbCaLamViec" SelectedIndex="0" Height="41" FontSize="16" Foreground="{DynamicResource #777777}" Margin="0 5 0 0" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}" ItemsSource="{Binding listCa}" DisplayMemberPath="shift_name">
                     </ComboBox>
                     <Grid Margin="0 28 0 0">
                         <TextBlock FontWeight="DemiBold" Text="{DynamicResource textApDungTu}" FontSize="16" Foreground="{DynamicResource #777777}"/>
@@ -48,24 +35,35 @@
                     </Grid>
                     <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid>
-                            <TextBlock Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
-                            <Path Data="{DynamicResource iconLich}" VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                            <TextBlock x:Name="textThangAD" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Border Background="Transparent" MouseLeftButtonDown="Select_thang" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
+                            </Border>
                         </Grid>
                     </Border>
+                    <TextBlock x:Name="validateDate" Style="{StaticResource tblValidate}"/>
+                    <Viewbox Width="229" HorizontalAlignment="Stretch">
+                        <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center" DisplayMode="Year" x:Name="dteSelectedMonth" DisplayModeChanged="dteSelectedMonth_DisplayModeChanged"/>
+                    </Viewbox>
                     <TextBlock Margin="0 14 0 0" FontWeight="DemiBold" Text="{DynamicResource textDH}" FontSize="16" Foreground="{DynamicResource #777777}"/>
                     <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid>
-                            <TextBlock Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
-                            <Path Data="{DynamicResource iconLich}" VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                            <TextBlock x:Name="textDenThang" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Border Background="Transparent" MouseLeftButtonDown="Select_thang_end" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
+                            </Border>
                         </Grid>
                     </Border>
+                    <Viewbox Width="229" HorizontalAlignment="Stretch">
+                        <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" DisplayMode="Year" x:Name="dteSelectedMonth1" DisplayModeChanged="dteSelectedMonth1_DisplayModeChanged"/>
+                    </Viewbox>
                     <Grid Margin="0 14 0 0">
                         <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTienPhuCap}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                         <Path Margin="95 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
                     </Grid>
                     <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid Height="38" Margin="10 0 10 0">
-                            <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                            <TextBox PreviewTextInput="tbInput1_PreviewTextInput" FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                             <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="{DynamicResource textNTienPC}" IsHitTestVisible="False">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
@@ -81,11 +79,12 @@
                             <TextBlock Text="(VND)" FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" HorizontalAlignment="Right"/>
                         </Grid>
                     </Border>
+                    <TextBlock x:Name="validateMoney" Style="{StaticResource tblValidate}"/>
                     <WrapPanel Margin="0 14 0 0">
                         <Border Cursor="Hand" Width="224" Height="42" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource #659FE5}">
                             <TextBlock FontWeight="DemiBold" Text="{DynamicResource textHB}" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #4C5BD4}"/>
                         </Border>
-                        <Border Cursor="Hand" Margin="10 0 0 0" Width="224" Height="42" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
+                        <Border MouseLeftButtonDown="ThemMoiPhuCapTheoCa" Cursor="Hand" Margin="10 0 0 0" Width="224" Height="42" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
                             <TextBlock FontWeight="DemiBold" Text="{DynamicResource textSave}" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #FFFFFF}"/>
                         </Border>
                     </WrapPanel>

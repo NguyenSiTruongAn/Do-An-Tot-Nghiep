@@ -293,7 +293,7 @@
         </Border>
         <Popup Name="pop" AllowsTransparency="True" StaysOpen="False" Placement="Bottom" PopupAnimation="Fade" Width="300" MinHeight="278" IsOpen="{Binding ElementName=btn,Path=IsChecked}" Opened="pop_Opened">
             <Grid Margin="2">
-                <Border Background="{Binding Background}" CornerRadius="{Binding CornerRadius}">
+                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="{Binding CornerRadius}">
                     <Border.Effect>
                         <DropShadowEffect  ShadowDepth="0" BlurRadius="10"  Opacity=".3"></DropShadowEffect>
                     </Border.Effect>

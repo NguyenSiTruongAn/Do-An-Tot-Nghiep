@@ -1,0 +1,14 @@
+﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.Popup.PopupCalendar"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong.Popup"
+      mc:Ignorable="d" 
+      d:DesignHeight="225" d:DesignWidth="229"
+      Title="PopupCalendar">
+
+    <Viewbox x:Name="vb" Stretch="Fill" StretchDirection="UpOnly">
+        <Calendar Visibility="Visible" DisplayMode="Year" x:Name="dteSelectedMonth" DisplayModeChanged="dteSelectedMonth_DisplayModeChanged"/>
+    </Viewbox>
+</Page>
