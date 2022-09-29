@@ -1,7 +1,10 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,8 +42,60 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            getData();
         }
-        public List<string> Test { get; set; } = new List<string>() { "aaaaa", "bb", "cc" };
+
+        private List<ListWelfare> _listPhucLoi;
+
+        public List<ListWelfare> listPhucLoi
+        {
+            get { return _listPhucLoi; }
+            set { _listPhucLoi = value; OnPropertyChanged(); }
+        }
+
+        private List<ListAllowance> _listPhuCap;
+
+        public List<ListAllowance> listPhuCap
+        {
+            get { return _listPhuCap; }
+            set { _listPhuCap = value; OnPropertyChanged(); }
+        }
+
+        private List<ListAllowanceShift> _listPhuCapTheoCa;
+
+        public List<ListAllowanceShift> listPhuCapTheoCa
+        {
+            get { return _listPhuCapTheoCa; }
+            set { _listPhuCapTheoCa = value; OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                using (WebClient web = new WebClient())
+                {
+                    if (Main.MainType == 0)
+                    {
+                        web.QueryString.Add("token", Main.CurrentCompany.token);
+                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    }
+                    web.UploadValuesCompleted += (s, e) =>
+                    {
+                        API_PhucLoi api = JsonConvert.DeserializeObject<API_PhucLoi>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listPhucLoi = api.data.list_welfare;
+                            listPhucLoi.Reverse();
+                            listPhuCap = api.data.list_allowance;
+                            listPhuCapTheoCa = api.data.list_allowance_shift;
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_welfare.php", web.QueryString);
+                }
+            });
+        }
+
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (this.ActualWidth > 980)
@@ -98,6 +153,32 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         {
             Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThemMoiPhuCapTheoCa(Main));
             Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void BtnTuyChonDSPL(object sender, MouseButtonEventArgs e)
+        {
+            Border p = sender as Border;
+            ListWelfare data = (ListWelfare)p.DataContext;
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupTuyChonDSPL(Main, data.cl_id, data.cl_name, data.cl_salary, data.cl_note, data.cl_type_tax, data.cl_day, data.cl_day_end);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnXoaHoaHongTien_Click(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void dataGrid2_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
     }
 }

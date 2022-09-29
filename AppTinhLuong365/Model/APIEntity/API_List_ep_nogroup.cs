@@ -18,6 +18,7 @@ namespace AppTinhLuong365.Model.APIEntity
     public class DataList_ep_nogroup
     {
         public List<ListEpNoGroup> list { get; set; }
+        public string total { get; set; }
         public string message { get; set; }
     }
 
