@@ -18,6 +18,68 @@ namespace AppTinhLuong365.Core
         public static void AutoReponsiveColumn(this DataGrid table, int column, string displayMemberPath = null)
         {
             double margin = 25;
+
+            double minwidthz = 0;
+            if (!string.IsNullOrEmpty(displayMemberPath) && table.ItemsSource != null)
+                foreach (var item in table.ItemsSource)
+                {
+                    foreach (var prop in item.GetType().GetProperties())
+                    {
+                        if (prop.Name == displayMemberPath)
+                        {
+                            var val = prop.GetValue(item).ToString();
+                            if (!string.IsNullOrEmpty(val))
+                            {
+                                var formattedText = new FormattedText(
+                                    val,
+                                    CultureInfo.CurrentCulture,
+                                    FlowDirection.LeftToRight,
+                                    new Typeface(table.FontFamily, FontStyles.Normal, FontWeights.Regular, FontStretches.Normal)
+                                    , 16, Brushes.Black, new NumberSubstitution(), 1
+                                );
+
+                                if (minwidthz < formattedText.Width + margin) minwidthz = formattedText.Width + margin;
+                            }
+                        }
+                    }
+                }
+            else if (table.ItemsSource != null && table.ItemsSource.GetType().GetGenericArguments().Single() == typeof(string))
+            {
+                foreach (var item in table.ItemsSource)
+                {
+                    var contentText = new FormattedText(
+                           item.ToString(),
+                           CultureInfo.CurrentCulture,
+                           FlowDirection.LeftToRight,
+                           new Typeface(table.FontFamily, FontStyles.Normal, FontWeights.Regular, FontStretches.Normal)
+                           , 16, Brushes.Black, new NumberSubstitution(), 1
+                       );
+
+                    if (minwidthz < contentText.Width + margin) minwidthz = contentText.Width + margin;
+                }
+            }
+
+            if (table.Columns[column].Header != null)
+            {
+                var headerText = new FormattedText(
+                    table.Columns[column].Header.ToString(),
+                    CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface(table.FontFamily, FontStyles.Normal, FontWeights.Regular, FontStretches.Normal)
+                    , 16, Brushes.Black, new NumberSubstitution(), 1
+                );
+                if (minwidthz < headerText.Width * 2) minwidthz = headerText.Width * 2;
+            }
+
+            table.Columns[column].MinWidth = minwidthz;
+
+            double ww = 0;
+            table.Columns.ToList().ForEach(c =>
+            {
+                if (table.Columns.IndexOf(c) != column) ww += c.ActualWidth;
+            });
+            table.Columns[column].Width = table.ActualWidth - ww;
+
             table.Loaded += (s, e) =>
             {
                 double minwidth = 0;
@@ -147,6 +209,71 @@ namespace AppTinhLuong365.Core
                 table.Columns[column].Width = 0;
                 table.Columns[column].Width = table.ActualWidth - wd;
             };
+        }
+        public static void AutoFitColumn(this DataGrid table, int column, string displayMemberPath = null)
+        {
+            double margin = 25;
+
+            double minwidthz = 0;
+            if (!string.IsNullOrEmpty(displayMemberPath) && table.ItemsSource != null)
+                foreach (var item in table.ItemsSource)
+                {
+                    foreach (var prop in item.GetType().GetProperties())
+                    {
+                        if (prop.Name == displayMemberPath)
+                        {
+                            var val = prop.GetValue(item).ToString();
+                            if (!string.IsNullOrEmpty(val))
+                            {
+                                var formattedText = new FormattedText(
+                                    val,
+                                    CultureInfo.CurrentCulture,
+                                    FlowDirection.LeftToRight,
+                                    new Typeface(table.FontFamily, FontStyles.Normal, FontWeights.Regular, FontStretches.Normal)
+                                    , 16, Brushes.Black, new NumberSubstitution(), 1
+                                );
+
+                                if (minwidthz < formattedText.Width + margin) minwidthz = formattedText.Width + margin;
+                            }
+                        }
+                    }
+                }
+            else if (table.ItemsSource != null && table.ItemsSource.GetType().GetGenericArguments().Single() == typeof(string))
+            {
+                foreach (var item in table.ItemsSource)
+                {
+                    var contentText = new FormattedText(
+                           item.ToString(),
+                           CultureInfo.CurrentCulture,
+                           FlowDirection.LeftToRight,
+                           new Typeface(table.FontFamily, FontStyles.Normal, FontWeights.Regular, FontStretches.Normal)
+                           , 16, Brushes.Black, new NumberSubstitution(), 1
+                       );
+
+                    if (minwidthz < contentText.Width + margin) minwidthz = contentText.Width + margin;
+                }
+            }
+
+            if (table.Columns[column].Header != null)
+            {
+                var headerText = new FormattedText(
+                    table.Columns[column].Header.ToString(),
+                    CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface(table.FontFamily, FontStyles.Normal, FontWeights.Regular, FontStretches.Normal)
+                    , 16, Brushes.Black, new NumberSubstitution(), 1
+                );
+                if (minwidthz < headerText.Width * 2) minwidthz = headerText.Width * 2;
+            }
+
+            table.Columns[column].MinWidth = minwidthz;
+
+            double ww = 0;
+            table.Columns.ToList().ForEach(c =>
+            {
+                if (table.Columns.IndexOf(c) != column) ww += c.ActualWidth;
+            });
+            table.Columns[column].Width = table.ActualWidth - ww;
         }
         public static T GetFirstChildOfType<T>(this DependencyObject dependencyObject) where T : DependencyObject
         {

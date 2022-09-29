@@ -61,23 +61,31 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void getData()
         {
-            using (WebClient web = new WebClient())
+            for (int i = 0; i < Test.Count; i++)
             {
-                if (Main.MainType == 0 && Test.Count>0)
+                using (WebClient web = new WebClient())
                 {
-                    web.QueryString.Add("token", Main.CurrentCompany.token);
-                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                    web.QueryString.Add("id_group", Test[0].gm_id_group);
-                }
-                web.UploadValuesCompleted += (s, e) =>
-                {
-                    API_ListGroup api = JsonConvert.DeserializeObject<API_ListGroup>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    if (Main.MainType == 0 && Test.Count > 0)
                     {
-                        listNhom = api.data.list_group;
+                        web.QueryString.Add("token", Main.CurrentCompany.token);
+                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                        web.QueryString.Add("id_group", Test[i].gm_id_group);
                     }
-                };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_group_manager.php", web.QueryString);
+                    web.UploadValuesCompleted += (s, e) =>
+                    {
+                        API_ListGroup api = JsonConvert.DeserializeObject<API_ListGroup>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            if (listNhom != null)
+                            {
+                                listNhom.Add(api.data.list_group[0]);
+                                listNhom = listNhom.ToList();
+                            }
+                            else listNhom = api.data.list_group;
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_group_manager.php", web.QueryString);
+                }
             }
         }
 
@@ -87,17 +95,17 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         private void XoaNhanVienKhoiNhom(object sender, MouseButtonEventArgs e)
         {
             Border b = sender as Border;
-            LgrName data = (LgrName)b.DataContext;
+            ListGroup data = (ListGroup)b.DataContext;
             bool allow = true;
             if (allow)
             {
                 using (WebClient web = new WebClient())
                 {
                     web.QueryString.Add("id_user", id);
-                    web.QueryString.Add("id_group", data.gm_id_group);
+                    web.QueryString.Add("id_group", data.lgr_id);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_TaoNhomLamViec api = JsonConvert.DeserializeObject<API_TaoNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        API_XoaNhanVienKhoiNhom api = JsonConvert.DeserializeObject<API_XoaNhanVienKhoiNhom>(UnicodeEncoding.UTF8.GetString(ee.Result));
                         if (api.data != null)
                         {
                         }
@@ -105,8 +113,9 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/delete_user_group.php", web.QueryString);
                 }
                 var pop = new Views.CaiDat.NhomLamViec(Main);
-                Main.HomeSelectionPage.NavigationService.Navigate(pop);
                 pop.tb.SelectedIndex = 2;
+                Main.HomeSelectionPage.NavigationService.Navigate(pop);
+                pop.dataGrid1.AutoFitColumn(1);
                 this.Visibility = Visibility.Collapsed;
             }
         }

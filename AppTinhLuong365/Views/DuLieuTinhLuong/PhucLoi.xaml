@@ -32,7 +32,7 @@
                                         <TextBlock TextWrapping="WrapWithOverflow"  Text="{DynamicResource textPhucLoiDuocTinhThepThang}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
                                     </StackPanel>
                                 </DockPanel>
-                                <DataGrid x:Name="dataGrid1" Margin="0 30 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding Test}">
+                                <DataGrid x:Name="dataGrid1" Margin="0 30 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listPhucLoi}" PreviewMouseWheel="dataGrid2_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -41,12 +41,101 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="{DynamicResource textTenPhucLoi}" Binding="{Binding}">
-                                        </DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textTienPhuLoi}" Binding="{Binding}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textLoaiThuNhap}" Binding="{Binding}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textApDungTuThang}" Binding="{Binding}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textDenThang}" Binding="{Binding}"></DataGridTextColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textTenPhucLoi}" MaxWidth="300">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Background="Transparent">
+                                                        <TextBlock Text="{Binding cl_name}" TextWrapping="WrapWithOverflow" Style="{StaticResource TextRowCenter}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                        <TextBlock Text="{Binding cl_note}" TextWrapping="WrapWithOverflow" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+                                        <DataGridTemplateColumn Header="{DynamicResource textTienPhucLoi}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock Text="{Binding cl_salary}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textLoaiThuNhap}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock Name="Text_Type_tax">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                                    <Setter Property="Margin" Value="10 0"/>
+                                                                    <Setter Property="FontSize" Value="15"/>
+                                                                    <Setter Property="FontWeight" Value="DemiBold"/>
+                                                                    <Setter Property="Foreground" Value="{DynamicResource #68798B}"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding cl_type_tax}" Value="0">
+                                                                            <Setter Property="Text" Value="Thu nhập miễn thuế"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding cl_type_tax}" Value="1">
+                                                                            <Setter Property="Text" Value="Thu nhập chịu thuế"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textApDungTuThang}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock Text="{Binding displaycl_day}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textDenThang}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock x:Name="Text_DenThang">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                                    <Setter Property="Margin" Value="10 0"/>
+                                                                    <Setter Property="FontSize" Value="15"/>
+                                                                    <Setter Property="FontWeight" Value="DemiBold"/>
+                                                                    <Setter Property="Foreground" Value="{DynamicResource #68798B}"/>
+                                                                    <Setter Property="Text" Value="{Binding displaycl_day_end}"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding cl_day_end}" Value="">
+                                                                            <Setter Property="Text" Value="---"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding cl_day_end}" Value="{x:Null}">
+                                                                            <Setter Property="Text" Value="---"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border MouseLeftButtonDown="BtnTuyChonDSPL" Cursor="Hand" HorizontalAlignment="Right" Background="Transparent" Height="30" Width="30">
+                                                        <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </StackPanel>
@@ -72,7 +161,7 @@
                                         <TextBlock TextWrapping="WrapWithOverflow" Text="Mức phụ cấp tương ứng với tổng ngày công trong tháng. Tổng tiền phụ cấp hưởng được tính theo số ngày công thực tế đi làm trong tháng" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
                                     </StackPanel>
                                 </DockPanel>
-                                <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}">
+                                <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listPhuCap}" PreviewMouseWheel="dataGrid2_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -81,11 +170,99 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="{DynamicResource textTenPhuCap}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textMucPhuCap}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textLoaiThuNhap}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textApDungTuNgay}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textDenNgay}"></DataGridTextColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textTenPhuCap}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock Text="{Binding cl_name}" Style="{StaticResource TextRowCenter1}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textMucPhuCap}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock Text="{Binding cl_salary}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textLoaiThuNhap}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock Name="Text_Type_tax">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                                    <Setter Property="Margin" Value="10 0"/>
+                                                                    <Setter Property="FontSize" Value="15"/>
+                                                                    <Setter Property="FontWeight" Value="DemiBold"/>
+                                                                    <Setter Property="Foreground" Value="{DynamicResource #68798B}"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding cl_type_tax}" Value="0">
+                                                                            <Setter Property="Text" Value="Thu nhập miễn thuế"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding cl_type_tax}" Value="1">
+                                                                            <Setter Property="Text" Value="Thu nhập chịu thuế"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textApDungTuNgay}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock Text="{Binding displaycl_day}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textDenNgay}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock x:Name="Text_DenThang">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                                    <Setter Property="Margin" Value="10 0"/>
+                                                                    <Setter Property="FontSize" Value="15"/>
+                                                                    <Setter Property="FontWeight" Value="DemiBold"/>
+                                                                    <Setter Property="Foreground" Value="{DynamicResource #68798B}"/>
+                                                                    <Setter Property="Text" Value="{Binding displaycl_day_end}"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding cl_day_end}" Value="">
+                                                                            <Setter Property="Text" Value="---"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding cl_day_end}" Value="{x:Null}">
+                                                                            <Setter Property="Text" Value="---"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border MouseLeftButtonDown="BtnTuyChonDSPL" Cursor="Hand" HorizontalAlignment="Right" Background="Transparent" Height="30" Width="30">
+                                                        <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </StackPanel>
@@ -111,7 +288,7 @@
                                         <TextBlock TextWrapping="WrapWithOverflow" Text="Phụ cấp theo ca được tính tại thời điểm áp dụng tương ứng. Phụ cấp theo ca được miễn thuế." FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
                                     </StackPanel>
                                 </DockPanel>
-                                <DataGrid x:Name="dataGrid2" Margin="0 30 0 0" Style="{StaticResource DataGrid1}">
+                                <DataGrid x:Name="dataGrid2" Margin="0 30 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listPhuCapTheoCa}" PreviewMouseWheel="dataGrid2_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -120,10 +297,78 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="{DynamicResource textTenCa}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textTienPhuCap}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textApDungTuThang}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="{DynamicResource textDenThang}"></DataGridTextColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textTenCa}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock Text="{Binding shift_name}" Style="{StaticResource TextRowCenter1}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textTienPhuCap}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock Text="{Binding wf_money}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textApDungTuThang}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock Text="{Binding displaywf_time}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="{DynamicResource textDenThang}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="Transparent">
+                                                        <TextBlock x:Name="Text_DenThang">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                                    <Setter Property="Margin" Value="10 0"/>
+                                                                    <Setter Property="FontSize" Value="15"/>
+                                                                    <Setter Property="FontWeight" Value="DemiBold"/>
+                                                                    <Setter Property="Foreground" Value="{DynamicResource #68798B}"/>
+                                                                    <Setter Property="Text" Value="{Binding displaywf_time_end}"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding displaywf_time_end}" Value="">
+                                                                            <Setter Property="Text" Value="---"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding displaywf_time_end}" Value="{x:Null}">
+                                                                            <Setter Property="Text" Value="---"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <DockPanel>
+                                                            <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
+                                                                <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>
+                                                            </Border>
+                                                            <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="btnXoaHoaHongTien_Click">
+                                                                <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
+                                                            </Border>
+                                                        </DockPanel>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </StackPanel>
