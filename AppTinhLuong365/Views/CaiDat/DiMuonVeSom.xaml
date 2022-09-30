@@ -1,51 +1,59 @@
 ﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.DiMuonVeSom"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat"
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       xmlns:core="clr-namespace:AppTinhLuong365.Core"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       Title="DiMuonVeSom" SizeChanged="Page_SizeChanged">
 
     <Page.Resources>
         <core:MathConvert x:Key="math"></core:MathConvert>
         <Style x:Key="Style_Border_Wrap" TargetType="{x:Type Border}">
-            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter= {StaticResource math}, ConverterParameter=(@VALUE/2)}"/>
-            <Setter Property="Margin" Value="0 10 0 10"/>
+            <Setter Property="Width"
+                    Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter= {StaticResource math}, ConverterParameter=(@VALUE/2)}" />
+            <Setter Property="Margin" Value="0 10 0 10" />
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
-                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
-                    <Setter Property="Margin" Value="10 10"/>
+                    <Setter Property="Width"
+                            Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}" />
+                    <Setter Property="Margin" Value="10 10" />
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
-                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
-                    <Setter Property="Margin" Value="10 10"/>
+                    <Setter Property="Width"
+                            Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}" />
+                    <Setter Property="Margin" Value="10 10" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
         <Style x:Key="Style_Border_Wrap1" TargetType="{x:Type Border}">
-            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter= {StaticResource math}, ConverterParameter=(@VALUE/5)-10}"/>
-            <Setter Property="Margin" Value="5 10 5 10"/>
+            <Setter Property="Width"
+                    Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter= {StaticResource math}, ConverterParameter=(@VALUE/5)-10}" />
+            <Setter Property="Margin" Value="5 10 5 10" />
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
-                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
-                    <Setter Property="Margin" Value="10 10"/>
+                    <Setter Property="Width"
+                            Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}" />
+                    <Setter Property="Margin" Value="10 10" />
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
-                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
-                    <Setter Property="Margin" Value="10 10"/>
+                    <Setter Property="Width"
+                            Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}" />
+                    <Setter Property="Margin" Value="10 10" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
         <Style x:Key="Style_Border_Wrap2" TargetType="{x:Type Border}">
-            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border2,Converter= {StaticResource math}, ConverterParameter=(@VALUE/4)-20}"/>
-            <Setter Property="Margin" Value="10 10 10 10"/>
+            <Setter Property="Width"
+                    Value="{Binding Path=ActualWidth, ElementName=Wrap_Border2,Converter= {StaticResource math}, ConverterParameter=(@VALUE/4)-20}" />
+            <Setter Property="Margin" Value="10 10 10 10" />
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
-                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border2,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
-                    <Setter Property="Margin" Value="10 10"/>
+                    <Setter Property="Width"
+                            Value="{Binding Path=ActualWidth, ElementName=Wrap_Border2,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}" />
+                    <Setter Property="Margin" Value="10 10" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -66,35 +74,72 @@
                                 <WrapPanel x:Name="Wrap_Border">
                                     <Border Style="{DynamicResource Style_Border_Wrap}">
                                         <StackPanel Orientation="Vertical">
-                                            <TextBlock TextWrapping="WrapWithOverflow" Text="{DynamicResource textTDDMVS}" Foreground="{DynamicResource #2E3467}" FontSize="24" FontWeight="Bold"></TextBlock>
-                                            <TextBlock Text="{DynamicResource textQLNVRV}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
+                                            <TextBlock TextWrapping="WrapWithOverflow"
+                                                       Text="{DynamicResource textTDDMVS}"
+                                                       Foreground="{DynamicResource #2E3467}" FontSize="24"
+                                                       FontWeight="Bold">
+                                            </TextBlock>
+                                            <TextBlock Text="{DynamicResource textQLNVRV}" FontSize="15"
+                                                       Foreground="{DynamicResource #68798B}" FontWeight="DemiBold">
+                                            </TextBlock>
                                         </StackPanel>
                                     </Border>
                                     <Border Style="{DynamicResource Style_Border_Wrap}">
                                         <WrapPanel x:Name="Wrap_Border1">
-                                            <Border Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                                <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                            <Border Style="{DynamicResource Style_Border_Wrap1}"
+                                                    BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
+                                                    CornerRadius="10" Height="38">
+                                                <tool:SearchBar x:Name="searchBarMonth1" Foreground="{DynamicResource #444}" FontSize="16"
+                                                                FontWeight="DemiBold"
+                                                                ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
+                                                                Loaded="SearchBarMonth_OnLoaded" />
                                             </Border>
-                                            <Border Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                                <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                            <Border Style="{DynamicResource Style_Border_Wrap1}"
+                                                    BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
+                                                    CornerRadius="10" Height="38">
+                                                <tool:SearchBar x:Name="searchBarYear1" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
+                                                                ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" Loaded="FrameworkElement_OnLoaded"/>
                                             </Border>
-                                            <Border Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                                <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Phòng ban (tất cả)"/>
+                                            <Border Style="{DynamicResource Style_Border_Wrap1}"
+                                                    BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
+                                                    CornerRadius="10" Height="38">
+                                                <tool:SearchBar SelectedIndex="0" Foreground="{DynamicResource #444}"
+                                                                FontSize="16"
+                                                                FontWeight="DemiBold"
+                                                                ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}"
+                                                                DisplayMemberPath="dep_name" />
                                             </Border>
-                                            <Border Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                                <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
+                                            <Border Style="{DynamicResource Style_Border_Wrap1}"
+                                                    BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
+                                                    CornerRadius="10" Height="38">
+                                                <tool:SearchBar SelectedIndex="0" Foreground="{DynamicResource #444}"
+                                                                FontSize="16"
+                                                                FontWeight="DemiBold"
+                                                                ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}"
+                                                                DisplayMemberPath="ep_name" />
                                             </Border>
-                                            <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
-                                                <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                            <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap1}"
+                                                    BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0"
+                                                    CornerRadius="10" Height="38"
+                                                    Background="{DynamicResource #4C5BD4}">
+                                                <TextBlock Foreground="{DynamicResource #FFFFFF}"
+                                                           Text="{DynamicResource textstatistical}"
+                                                           FontWeight="DemiBold" FontSize="16"
+                                                           VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                </TextBlock>
                                             </Border>
                                         </WrapPanel>
                                     </Border>
                                 </WrapPanel>
-                                <DataGrid x:Name="dataGrid" ItemsSource="{Binding listEpLate}" Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
+                                <DataGrid x:Name="dataGrid" ItemsSource="{Binding listEpLate}"
+                                          Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
-                                                <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}" Height="{Binding ElementName=dataGrid,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                                <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}"
+                                                        Height="{Binding ElementName=dataGrid,Path=ActualHeight}"
+                                                        CornerRadius="10" Background="White">
+                                                </Border>
                                             </VisualBrush.Visual>
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
@@ -104,14 +149,21 @@
                                                 <DataTemplate>
                                                     <Grid x:Name="gridHoTen">
                                                         <WrapPanel VerticalAlignment="Center" Margin="25 0 0 0">
-                                                            <Border Width="45" Height="48" CornerRadius="40" HorizontalAlignment="Left">
+                                                            <Border Width="45" Height="48" CornerRadius="40"
+                                                                    HorizontalAlignment="Left">
                                                                 <Border.Background>
                                                                     <ImageBrush ImageSource="{Binding ts_image}"></ImageBrush>
                                                                 </Border.Background>
                                                             </Border>
                                                             <StackPanel Margin="10 0 0 0">
-                                                                <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                                                                <TextBlock Text="{Binding ep_id}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                                <TextBlock FontSize="15" FontWeight="Bold"
+                                                                           Text="{Binding ep_name}"
+                                                                           Foreground="{DynamicResource #4C5BD4}">
+                                                                </TextBlock>
+                                                                <TextBlock Text="{Binding ep_id}" FontSize="15"
+                                                                           FontWeight="DemiBold"
+                                                                           Foreground="{DynamicResource #68798B}">
+                                                                </TextBlock>
                                                             </StackPanel>
                                                         </WrapPanel>
                                                     </Grid>
@@ -121,38 +173,83 @@
                                         <DataGridTemplateColumn Header="{DynamicResource textPhongBan}">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding dep_name}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                               Text="{Binding dep_name}" FontSize="15"
+                                                               FontWeight="DemiBold"
+                                                               Foreground="{DynamicResource #68798B}">
+                                                    </TextBlock>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridTemplateColumn Header="{DynamicResource textThoiGian}">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ts_date}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                               Text="{Binding ts_date}" FontSize="15"
+                                                               FontWeight="DemiBold"
+                                                               Foreground="{DynamicResource #68798B}">
+                                                    </TextBlock>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridTemplateColumn Header="{DynamicResource textCa}">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding shift_name}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                               Text="{Binding shift_name}" FontSize="15"
+                                                               FontWeight="DemiBold"
+                                                               Foreground="{DynamicResource #68798B}">
+                                                    </TextBlock>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridTemplateColumn Header="{DynamicResource textMuonSom}">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                                        <Border CornerRadius="20" Background="{DynamicResource #FEE5E5}">
-                                                            <TextBlock Padding="10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FF5959}">
-                                                                <Run Text="Về sớm"/>
-                                                                <Run Text="{Binding early_second}"/>
+                                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                        <Border Margin="10 30 10 20" CornerRadius="20"
+                                                                Background="{DynamicResource #FEE5E5}">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding early}"
+                                                                            Value="0">
+                                                                            <Setter Property="Visibility"
+                                                                                Value="Collapsed">
+                                                                            </Setter>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <TextBlock Padding="10" FontSize="15" FontWeight="DemiBold"
+                                                                       Foreground="{DynamicResource #FF5959}">
+                                                                <Run Text="Về sớm" />
+                                                                <Run Text="{Binding early}" />
+                                                                <Run Text="phút" />
+                                                                <Run Text="{Binding early_Second,Mode=OneWay}" />
+                                                                <Run Text="giây" />
                                                             </TextBlock>
                                                         </Border>
-                                                        <Border CornerRadius="20" Background="{DynamicResource #FEE5E5}">
-                                                            <TextBlock Padding="10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FF5959}">
-                                                                <Run Text="Đi muộn"/>
-                                                                <Run Text="{Binding late_second}"/>
+                                                        <Border Margin="10 0 10 25" CornerRadius="20"
+                                                                Background="{DynamicResource #FEE5E5}">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding late}" Value="0">
+                                                                            <Setter Property="Visibility"
+                                                                                Value="Collapsed">
+                                                                            </Setter>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <TextBlock Padding="10" FontSize="15" FontWeight="DemiBold"
+                                                                       Foreground="{DynamicResource #FF5959}">
+                                                                <Run Text="Đi muộn" />
+                                                                <Run Text="{Binding late}" />
+                                                                <Run Text="phút" />
+                                                                <Run Text="{Binding late_Second,Mode=OneWay}" />
+                                                                <Run Text="giây" />
                                                             </TextBlock>
                                                         </Border>
                                                     </StackPanel>
@@ -162,7 +259,11 @@
                                         <DataGridTemplateColumn Header="{DynamicResource textPhat}">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding kq_phat}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                               Text="{Binding kq_phat}" FontSize="15"
+                                                               FontWeight="DemiBold"
+                                                               Foreground="{DynamicResource #68798B}">
+                                                    </TextBlock>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
@@ -171,10 +272,15 @@
                             </StackPanel>
                         </Border>
                     </Grid>
-                    <Border Cursor="Hand" Margin="20 0 0 0" Width="210" Height="40" CornerRadius="5" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Left">
+                    <Border Cursor="Hand" Margin="20 0 0 0" Width="210" Height="40" CornerRadius="5"
+                            Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Left">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Path Margin="0 0 10 0" Data="{DynamicResource iconThongke}" Fill="{DynamicResource #FFFFFF}"></Path>
-                            <TextBlock Text="Xuất file thống kê" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                            <Path Margin="0 0 10 0" Data="{DynamicResource iconThongke}"
+                                  Fill="{DynamicResource #FFFFFF}">
+                            </Path>
+                            <TextBlock Text="Xuất file thống kê" FontSize="15" FontWeight="DemiBold"
+                                       Foreground="{DynamicResource #FFFFFF}">
+                            </TextBlock>
                         </StackPanel>
                     </Border>
                 </StackPanel>
@@ -182,19 +288,40 @@
             <TabItem Cursor="Hand" Header="Cài đặt đi sớm về muộn" Background="{DynamicResource #F7F8FC}">
                 <StackPanel Cursor="Arrow" Orientation="Vertical" Margin="20" Background="{DynamicResource #F7F8FC}">
                     <WrapPanel x:Name="Wrap_Border2" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                            <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                        <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}"
+                                Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
+                                CornerRadius="10" Height="38">
+                            <tool:SearchBar x:Name="searchBarMonth" Foreground="{DynamicResource #444}" FontSize="16"
+                                            FontWeight="DemiBold"
+                                            ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
+                                            Loaded="SearchBarMonth_OnLoaded" />
                         </Border>
-                        <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}" Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                            <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                        <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}"
+                                Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
+                                CornerRadius="10" Height="38">
+                            <tool:SearchBar x:Name="searchBarYear" Foreground="{DynamicResource #444}" FontSize="16"
+                                            FontWeight="DemiBold"
+                                            ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"
+                                            Loaded="FrameworkElement_OnLoaded" />
                         </Border>
-                        <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap2}" Width="104" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
-                            <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                        <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap2}" Width="104"
+                                BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0" CornerRadius="10"
+                                Height="38" Background="{DynamicResource #4C5BD4}">
+                            <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}"
+                                       FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"
+                                       HorizontalAlignment="Center">
+                            </TextBlock>
                         </Border>
-                        <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Style="{DynamicResource Style_Border_Wrap2}" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}">
+                        <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown"
+                                Style="{DynamicResource Style_Border_Wrap2}" Height="38" Width="118" CornerRadius="10"
+                                Background="{DynamicResource #4C5BD4}">
                             <StackPanel Orientation="Horizontal">
-                                <Path Margin="10 0 15 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>
-                                <TextBlock  VerticalAlignment="Center" Text="Thêm mới" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                                <Path Margin="10 0 15 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}"
+                                      Fill="{DynamicResource #FFFFFF}">
+                                </Path>
+                                <TextBlock VerticalAlignment="Center" Text="Thêm mới" FontSize="15"
+                                           FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}">
+                                </TextBlock>
                             </StackPanel>
                         </Border>
                     </WrapPanel>
@@ -204,15 +331,21 @@
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
                             </Border.Effect>
                         </Border>
-                        <Border Height="91" Padding="10 10 0 0" CornerRadius="16" Background="{DynamicResource #FFFFFF}">
-                            <TextBlock FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}" Text="Danh sách mức phạt đi muộn về sớm"></TextBlock>
+                        <Border Height="91" Padding="10 10 0 0" CornerRadius="16"
+                                Background="{DynamicResource #FFFFFF}">
+                            <TextBlock FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"
+                                       Text="Danh sách mức phạt đi muộn về sớm">
+                            </TextBlock>
                         </Border>
                     </Grid>
                     <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listLate}">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
-                                    <Border Width="{Binding ElementName=dataGrid1,Path=ActualWidth}" Height="{Binding ElementName=dataGrid1,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                    <Border Width="{Binding ElementName=dataGrid1,Path=ActualWidth}"
+                                            Height="{Binding ElementName=dataGrid1,Path=ActualHeight}"
+                                            CornerRadius="10" Background="White">
+                                    </Border>
                                 </VisualBrush.Visual>
                             </VisualBrush>
                         </DataGrid.OpacityMask>
@@ -221,7 +354,10 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding pm_type}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                            <TextBlock HorizontalAlignment="Left" Margin="35 0 0 0" FontSize="15"
+                                                       FontWeight="Bold" Text="{Binding display_pm_type}"
+                                                       Style="{StaticResource TextRowCenter}">
+                                            </TextBlock>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -230,7 +366,10 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent">
-                                            <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                            <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
+                                                       Text="{Binding shift_name}"
+                                                       Style="{StaticResource TextRowCenter}">
+                                            </TextBlock>
                                         </Border>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -239,7 +378,10 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent">
-                                            <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding pm_time_begin}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                            <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
+                                                       Text="{Binding display_pm_time_begin}"
+                                                       Style="{StaticResource TextRowCenter}">
+                                            </TextBlock>
                                         </Border>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -248,7 +390,10 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent">
-                                            <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding pm_time_end}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                            <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
+                                                       Text="{Binding display_pm_time_end}"
+                                                       Style="{StaticResource TextRowCenter}">
+                                            </TextBlock>
                                         </Border>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -257,7 +402,10 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent">
-                                            <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding pm_minute}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                            <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
+                                                       Text="{Binding display_phat}"
+                                                       Style="{StaticResource TextRowCenter}">
+                                            </TextBlock>
                                         </Border>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -266,7 +414,10 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent">
-                                            <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding pm_monney}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                            <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
+                                                       Text="{Binding display_pm_monney}"
+                                                       Style="{StaticResource TextRowCenter}">
+                                            </TextBlock>
                                         </Border>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -274,8 +425,9 @@
                             <DataGridTemplateColumn Header="{DynamicResource textSua}">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Border Cursor="Hand" Background="Transparent">
-                                            <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <Border MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" Cursor="Hand" Background="Transparent">
+                                            <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"
+                                                  VerticalAlignment="Center" HorizontalAlignment="Center" />
                                         </Border>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -284,7 +436,8 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Cursor="Hand" Background="Transparent">
-                                            <Path Data="{DynamicResource iconXoa}" Fill="#f46c6c" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <Path Data="{DynamicResource iconXoa}" Fill="#f46c6c"
+                                                  VerticalAlignment="Center" HorizontalAlignment="Center" />
                                         </Border>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -300,25 +453,68 @@
                             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
                         </Border.Effect>
                     </Border>
-                    <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16" Grid.ColumnSpan="2" Margin="0,0,0,-0.4">
+                    <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16" Grid.ColumnSpan="2"
+                            Margin="0,0,0,-0.4">
                         <StackPanel Margin="20">
                             <TextBlock FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}">1. Đi muộn về sớm</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">Đi muộn về sớm sẽ là mục thống kê danh sách những nhân viên bị phạt đi muộn/ về sớm trong từng tháng nhất định. Danh sách này sẽ được thống kê theo dạng bảng, bao gồm: Họ tên, Phòng ban, Thời gian, Ca, Muộn/sớm, Phạt.</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">Việc thống kê rõ ràng và chi tiết sẽ giúp cho công ty, doanh nghiệp có thể quản lý sát sao hơn về vấn đề đi muộn/về sớm của nhân viên. Từ đó có được những chính sách cũng như cách thức quản lý sao  cho phù hợp nhất với tình hình hoạt động của công ty.</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">Thanh tìm kiếm ở phía trên bảng danh sách sẽ là công cụ giúp bạn có thể thực hiện tìm kiếm thông tin đi muộn/về sớm của nhân viên nhanh hơn. Lựa chọn tháng, lựa chọn hoặc nhập tên nhân viên >> hệ thống sẽ trả lại kết quả tương ứng ngay sau đó. Các trường thông tin lựa chọn trên thanh search là không bắt buộc, do vậy bạn có thể tìm kiếm chỉ với 1 trường thông tin duy nhất được điền.</TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                Đi muộn về sớm sẽ là mục thống kê danh sách những nhân viên bị phạt đi muộn/ về sớm trong từng tháng nhất định. Danh sách này sẽ được thống kê theo dạng bảng, bao gồm: Họ tên, Phòng ban, Thời gian, Ca, Muộn/sớm, Phạt.
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                Việc thống kê rõ ràng và chi tiết sẽ giúp cho công ty, doanh nghiệp có thể quản lý sát sao hơn về vấn đề đi muộn/về sớm của nhân viên. Từ đó có được những chính sách cũng như cách thức quản lý sao  cho phù hợp nhất với tình hình hoạt động của công ty.
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                Thanh tìm kiếm ở phía trên bảng danh sách sẽ là công cụ giúp bạn có thể thực hiện tìm kiếm thông tin đi muộn/về sớm của nhân viên nhanh hơn. Lựa chọn tháng, lựa chọn hoặc nhập tên nhân viên >> hệ thống sẽ trả lại kết quả tương ứng ngay sau đó. Các trường thông tin lựa chọn trên thanh search là không bắt buộc, do vậy bạn có thể tìm kiếm chỉ với 1 trường thông tin duy nhất được điền.
+                            </TextBlock>
                             <TextBlock FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}">2. Cài đặt đi muộn về sớm</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">Cài đặt đi muộn về sớm sẽ giúp cho các công ty, doanh nghiệp và nhà quản lý có thể dễ dàng theo dõi tình hình đi làm của nhân viên. Cùng với đó là việc thống kê về những nhân viên đi muộn, về sớm với các mức phạt tương ứng và sự ảnh hưởng tới mức lương sau này.</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">Để cài đặt đi muộn về sớm thì bạn sẽ thực hiện như sau:</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">- Bước 1: Lựa chọn “Thêm mới", popup điền thông tin sẽ được hiện ra.</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">- Bước 2: Điền các thông tin theo yêu cầu của biểu mẫu. Các thông tin được gắn dấu * sẽ là thông tin bắt buộc.</TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                Cài đặt đi muộn về sớm sẽ giúp cho các công ty, doanh nghiệp và nhà quản lý có thể dễ dàng theo dõi tình hình đi làm của nhân viên. Cùng với đó là việc thống kê về những nhân viên đi muộn, về sớm với các mức phạt tương ứng và sự ảnh hưởng tới mức lương sau này.
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                Để cài đặt đi muộn về sớm thì bạn sẽ thực hiện như sau:
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                - Bước 1: Lựa chọn “Thêm mới", popup điền thông tin sẽ được hiện ra.
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                - Bước 2: Điền các thông tin theo yêu cầu của biểu mẫu. Các thông tin được gắn dấu * sẽ là thông tin bắt buộc.
+                            </TextBlock>
                             <Image Width="492" Source="/Views/CaiDat/Image/ms.png" Margin="0 20 0 5"></Image>
-                            <TextBlock FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">Cài đặt đi muộn về sớm</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">Lý do phạt sẽ bao gồm lý do đi muộn hay về sớm. Tuỳ vào việc cài đặt mà doanh nghiệp sẽ chọn lý do tương ứng. Loại phạt sẽ bao gồm 2 phương thức chính là phạt tiền và phạt công. Với phạt công thì khi nhân viên đi muộn, về sớm sẽ bị tính vào số công thực tế đi làm của mình. Còn phạt tiền sẽ là bị trừ đi một con số cụ thể vào lương sau này.</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">- Bước 3: Sau khi hoàn tất thông tin theo yêu cầu thì nhấn chọn “Lưu" để hệ thống cập nhật dữ liệu mới về cài đặt đi muộn về sớm.</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">Quá trình thiết lập cài đặt này sẽ được áp dụng cho toàn thể nhân viên trong công ty. Các cài đặt khi được thêm mới thành công sẽ hiển thị trong bảng bên dưới với các cột thông tin như: Loại phạt, Từ tháng, Đến hết tháng, Thời gian tính phạt, Mức phạt, Sửa và Xoá.</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">Các cài đặt sẽ được hiển thị trong bảng theo thời gian áp dụng, ví dụ là cài đặt đi muộn về sớm áp dụng từ tháng 10 thì để xem được danh sách cài đặt đó, bạn sẽ chọn tháng 10 ở trên thanh search phía trên bảng. Trong khi đó, nếu cài đặt của tháng 10 không được thiết lập tháng kết thúc thì các thông tin vẫn sẽ được lưu và áp dụng cho tháng 11, 12 sau đó. Vì thế mà tuỳ vào tháng áp dụng, kết thúc để xem được danh sách cài đặt đi muộn về sớm tương ứng.</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">Đây cũng là một trong những chức năng của thanh search phía trên bảng danh sách cài đặt. Lựa chọn THÁNG, NĂM nhất định, bạn sẽ xem được các cài đặt đi muộn, về sớm tương ứng với tháng, năm đó.</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">Mục sửa sẽ cho phép bạn điều chỉnh các thông tin của các cài đặt đi muộn, về sớm đã được thiết lập. Click vào biểu tượng chiếc bút, chỉnh sửa thông tin cần thiết, chọn “Lưu" hệ thống sẽ cập nhật dữ liệu mới. Còn nếu muốn xoá cài đặt nào thì bạn sẽ nhấp chuột vào biểu tượng thùng rác, xác nhận thao tác xoá, cài đặt đó sẽ bị mất khỏi danh sách được thiết lập.</TextBlock>
+                            <TextBlock FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center"
+                                       Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">
+                                Cài đặt đi muộn về sớm
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                Lý do phạt sẽ bao gồm lý do đi muộn hay về sớm. Tuỳ vào việc cài đặt mà doanh nghiệp sẽ chọn lý do tương ứng. Loại phạt sẽ bao gồm 2 phương thức chính là phạt tiền và phạt công. Với phạt công thì khi nhân viên đi muộn, về sớm sẽ bị tính vào số công thực tế đi làm của mình. Còn phạt tiền sẽ là bị trừ đi một con số cụ thể vào lương sau này.
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                - Bước 3: Sau khi hoàn tất thông tin theo yêu cầu thì nhấn chọn “Lưu" để hệ thống cập nhật dữ liệu mới về cài đặt đi muộn về sớm.
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                Quá trình thiết lập cài đặt này sẽ được áp dụng cho toàn thể nhân viên trong công ty. Các cài đặt khi được thêm mới thành công sẽ hiển thị trong bảng bên dưới với các cột thông tin như: Loại phạt, Từ tháng, Đến hết tháng, Thời gian tính phạt, Mức phạt, Sửa và Xoá.
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                Các cài đặt sẽ được hiển thị trong bảng theo thời gian áp dụng, ví dụ là cài đặt đi muộn về sớm áp dụng từ tháng 10 thì để xem được danh sách cài đặt đó, bạn sẽ chọn tháng 10 ở trên thanh search phía trên bảng. Trong khi đó, nếu cài đặt của tháng 10 không được thiết lập tháng kết thúc thì các thông tin vẫn sẽ được lưu và áp dụng cho tháng 11, 12 sau đó. Vì thế mà tuỳ vào tháng áp dụng, kết thúc để xem được danh sách cài đặt đi muộn về sớm tương ứng.
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                Đây cũng là một trong những chức năng của thanh search phía trên bảng danh sách cài đặt. Lựa chọn THÁNG, NĂM nhất định, bạn sẽ xem được các cài đặt đi muộn, về sớm tương ứng với tháng, năm đó.
+                            </TextBlock>
+                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                       TextWrapping="WrapWithOverflow">
+                                Mục sửa sẽ cho phép bạn điều chỉnh các thông tin của các cài đặt đi muộn, về sớm đã được thiết lập. Click vào biểu tượng chiếc bút, chỉnh sửa thông tin cần thiết, chọn “Lưu" hệ thống sẽ cập nhật dữ liệu mới. Còn nếu muốn xoá cài đặt nào thì bạn sẽ nhấp chuột vào biểu tượng thùng rác, xác nhận thao tác xoá, cài đặt đó sẽ bị mất khỏi danh sách được thiết lập.
+                            </TextBlock>
                         </StackPanel>
                     </Border>
                 </Grid>

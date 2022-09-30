@@ -117,7 +117,9 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupThongBaoXoaNhanVien(Main, id));
+            Border p = sender as Border;
+            Item_emp data = (Item_emp)p.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupThongBaoXoaNhanVien(Main, id, data.ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
