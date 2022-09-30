@@ -38,5 +38,32 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupChonCaLamViec(Main));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
+
+        private void Select_thang(object sender, MouseButtonEventArgs e)
+        {
+            dteSelectedMonth.Visibility = dteSelectedMonth.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            flag = 1;
+        }
+
+        int flag = 0;
+
+        private void dteSelectedMonth_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
+        {
+            var x = dteSelectedMonth.DisplayDate.ToString("MM/yyyy");
+            if (flag == 0)
+                x = "";
+            else
+                x = dteSelectedMonth.DisplayDate.ToString("MM/yyyy");
+            if (textThang != null && !string.IsNullOrEmpty(x))
+            {
+                textThang.Text = x;
+            }
+            dteSelectedMonth.DisplayMode = CalendarMode.Year;
+            if (dteSelectedMonth.DisplayDate != null && flag > 0)
+            {
+                dteSelectedMonth.Visibility = Visibility.Collapsed;
+            }
+            flag += 1;
+        }
     }
 }

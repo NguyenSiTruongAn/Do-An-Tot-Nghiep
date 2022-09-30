@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="Model\APIEntity\API_Add_congchuan.cs" />
     <Compile Include="Model\APIEntity\API_Add_employee_to_cycle.cs" />
+    <Compile Include="Model\APIEntity\API_Add_late.cs" />
     <Compile Include="Model\APIEntity\API_CaiDatCongChuan.cs" />
     <Compile Include="Model\APIEntity\API_ChinhSuaPhucLoi_PhuCap.cs" />
     <Compile Include="Model\APIEntity\Api_CongLuong.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Model\APIEntity\API_ListLate.cs" />
     <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
     <Compile Include="Model\APIEntity\API_ListUserTax.cs" />
+    <Compile Include="Model\APIEntity\API_List_dep.cs" />
     <Compile Include="Model\APIEntity\API_List_employee_cycle.cs" />
     <Compile Include="Model\APIEntity\API_List_employee_not_in_cycle.cs" />
     <Compile Include="Model\APIEntity\API_List_emp_in_cycle_by_com_id.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="Model\APIEntity\API_List_Ep_Np.cs" />
     <Compile Include="Model\APIEntity\API_List_Holiday.cs" />
     <Compile Include="Model\APIEntity\API_List_Np_Improperly.cs" />
+    <Compile Include="Model\APIEntity\API_List_shift.cs" />
     <Compile Include="Model\APIEntity\API_Payroll.cs" />
     <Compile Include="Model\APIEntity\API_ListGroup.cs" />
     <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
@@ -167,6 +170,9 @@
     </Compile>
     <Compile Include="Views\CaiDat\NhomLamViec.xaml.cs">
       <DependentUpon>NhomLamViec.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupChinhSuaDiMuonVeSom.xaml.cs">
+      <DependentUpon>PopupChinhSuaDiMuonVeSom.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CaiDat\Popup\PopupChinhSuaLichLamViec.xaml.cs">
       <DependentUpon>PopupChinhSuaLichLamViec.xaml</DependentUpon>
@@ -641,6 +647,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\BaoCaoCongLuong\TongHopLuongNhanVienTheoChuKi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupChinhSuaDiMuonVeSom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

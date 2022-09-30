@@ -167,9 +167,9 @@
                     </Style.Triggers>
                 </Style>
             </Border.Style>
-            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 5 0 5" Background="Transparent" Cursor="Hand" MouseLeftButtonDown="RemoveResult">
-                <Path Data="{StaticResource iconClose}" Fill="{Binding Foreground}" Stretch="Uniform"></Path>
-            </Border>
+            <!-- <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 5 0 5" Background="Transparent" Cursor="Hand" MouseLeftButtonDown="RemoveResult"> -->
+            <!--     <Path Data="{StaticResource iconClose}" Fill="{Binding Foreground}" Stretch="Uniform"></Path> -->
+            <!-- </Border> -->
         </Border>
     </Grid>
 </UserControl>

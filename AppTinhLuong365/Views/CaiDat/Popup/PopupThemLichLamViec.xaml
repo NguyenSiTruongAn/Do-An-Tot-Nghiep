@@ -60,10 +60,15 @@
                     </Grid>
                     <Border Margin="0 5 0 0" Height="39" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid>
-                            <TextBlock Margin="15 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
-                            <Path Data="{DynamicResource iconLich}" VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                            <TextBlock x:Name="textThang" Margin="15 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Border Background="Transparent" MouseLeftButtonDown="Select_thang" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
+                            </Border>
                         </Grid>
                     </Border>
+                    <Viewbox Width="229" HorizontalAlignment="Stretch">
+                        <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center" DisplayMode="Year" x:Name="dteSelectedMonth" DisplayModeChanged="dteSelectedMonth_DisplayModeChanged"/>
+                    </Viewbox>
                     <TextBlock Margin="0 15 0 0 " FontWeight="DemiBold" Text="{DynamicResource textNBDLV}" Foreground="{DynamicResource #666666}" FontSize="16"/>
                     <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <tool:DatePicker FontSize="16" Foreground="{DynamicResource #777777}"/>
