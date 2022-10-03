@@ -1,8 +1,10 @@
-﻿using AppTinhLuong365.Model.APIEntity;
+﻿using System;
+using AppTinhLuong365.Model.APIEntity;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -18,6 +20,7 @@ namespace AppTinhLuong365.Views.CaiDat
     public partial class NghiPhep : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -30,26 +33,37 @@ namespace AppTinhLuong365.Views.CaiDat
             {
                 ItemList.Add($"Tháng {i}");
             }
+
             YearList = new ObservableCollection<string>();
             for (var i = 2022; i <= 2025; i++)
             {
                 YearList.Add($"Năm {i}");
             }
+
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            string month = DateTime.Now.ToString("MM");
+            string year = DateTime.Now.ToString("yyyy");
             getData();
-            getData1();
+            getData1(month, year);
+            getData2();
         }
+
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
         public MainWindow Main;
 
         private int _IsSmallSize;
+
         public int IsSmallSize
         {
             get { return _IsSmallSize; }
-            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
+            set
+            {
+                _IsSmallSize = value;
+                OnPropertyChanged("IsSmallSize");
+            }
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -70,12 +84,13 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void OpenDes(object sender, MouseButtonEventArgs e)
         {
-            borderes.Visibility = borderes.Visibility == Visibility.Visible ? Visibility.Collapsed: Visibility.Visible;
+            borderes.Visibility = borderes.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private void OpenDes1(object sender, MouseButtonEventArgs e)
         {
-            borderes1.Visibility = borderes1.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            borderes1.Visibility =
+                borderes1.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -95,7 +110,11 @@ namespace AppTinhLuong365.Views.CaiDat
         public List<List> list
         {
             get { return _list; }
-            set { _list = value; OnPropertyChanged(); }
+            set
+            {
+                _list = value;
+                OnPropertyChanged();
+            }
         }
 
         private void getData()
@@ -107,10 +126,17 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("take", "2");
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_Np_Improperly api = JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    API_List_Np_Improperly api =
+                        JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
                         list = api.data.list;
+                        DateTime aDateTime;
+                        foreach (var a in list)
+                        {
+                            DateTime.TryParse(a.pc_time, out aDateTime);
+                            a.pc_time = aDateTime.ToString("dd/MM/yyyy");
+                        }
                     }
                     //foreach (EpLate item in list)
                     //{
@@ -120,7 +146,8 @@ namespace AppTinhLuong365.Views.CaiDat
                     //    }
                     //}
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_np_improperly.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_np_improperly.php",
+                    web.QueryString);
             }
         }
 
@@ -135,24 +162,51 @@ namespace AppTinhLuong365.Views.CaiDat
         public List<ItemNp> listItemNp
         {
             get { return _listItemNp; }
-            set { _listItemNp = value; OnPropertyChanged(); }
+            set
+            {
+                _listItemNp = value;
+                OnPropertyChanged();
+            }
         }
 
-        private void getData1()
+        private List<ItemNp> _listItemNp1;
+
+        public List<ItemNp> listItemNp1
+        {
+            get { return _listItemNp1; }
+            set
+            {
+                _listItemNp1 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void getData1(string month, string year)
         {
             using (WebClient web = new WebClient())
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 //web.QueryString.Add("page", "1");
-                web.QueryString.Add("month", "09");
-                web.QueryString.Add("year", "2022");
+                web.QueryString.Add("month", month);
+                web.QueryString.Add("year", year);
+                // if (!string.IsNullOrEmpty(id_nv)) web.QueryString.Add("id_user", id_nv);
+
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_Ep_Np api = JsonConvert.DeserializeObject<API_List_Ep_Np>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    API_List_Ep_Np api =
+                        JsonConvert.DeserializeObject<API_List_Ep_Np>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
                         listItemNp = api.data.list;
+                        DateTime aDateTime;
+                        foreach (var a in listItemNp)
+                        {
+                            DateTime.TryParse(a.ngaybatdau_nghi, out aDateTime);
+                            a.ngaybatdau_nghi = aDateTime.ToString("dd/MM/yyyy");
+                            DateTime.TryParse(a.ngayketthuc_nghi, out aDateTime);
+                            a.ngayketthuc_nghi = aDateTime.ToString("dd/MM/yyyy");
+                        }
                     }
                     //foreach (ItemNp item in list)
                     //{
@@ -162,8 +216,106 @@ namespace AppTinhLuong365.Views.CaiDat
                     //    }
                     //}
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_np.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_np.php",
+                    web.QueryString);
             }
+        }
+
+        // private void thongKe(object sender, MouseButtonEventArgs e)
+        // {
+        //     string year = "", month = "", id_nv = "";
+        //     if (Year.SelectedIndex != -1)
+        //         year = Year.SelectedItem.ToString().Split(' ')[1];
+        //     else
+        //         year = DateTime.Now.ToString("yyyy");
+        //     if (Month.SelectedIndex != -1)
+        //         month = (Month.SelectedIndex + 1) + "";
+        //     else month = DateTime.Now.ToString("MM");
+        //     if (Employee.SelectedIndex != -1)
+        //     {
+        //         ListEmployee id1 = (ListEmployee)Employee.SelectedItem;
+        //         string id2 = id1.ep_id;
+        //         if (id2 == "-1")
+        //             id_nv = "";
+        //         else id_nv = id2;
+        //     }
+        //     getData1(month, year, id_nv);
+        // }
+
+        private void Thang(object sender, SelectionChangedEventArgs e)
+        {
+            string month = "", year = "";
+            if (Year.SelectedIndex != -1)
+                year = Year.SelectedItem.ToString().Split(' ')[1];
+            else
+                year = DateTime.Now.ToString("yyyy");
+            if (Month.SelectedIndex != -1)
+                month = (Month.SelectedIndex + 1) + "";
+            else month = DateTime.Now.ToString("MM");
+            getData1(month, year);
+        }
+
+        private void NhanVien(object sender, SelectionChangedEventArgs e)
+        {
+            ListEmployee selected = (ListEmployee)(Employee.SelectedItem);
+            if (selected != null)
+            {
+                listItemNp1 = listItemNp.Where(x => x.ep_id == selected.ep_id).ToList();
+            }
+            else listItemNp1 = listItemNp;
+        }
+
+        private List<ListEmployee> _listEmployee;
+
+        public List<ListEmployee> listEmployee
+        {
+            get { return _listEmployee; }
+            set
+            {
+                if (value == null) value = new List<ListEmployee>();
+                value.Insert(0, new ListEmployee() { ep_id = "-1", ep_name = "Tất cả nhân viên" });
+                _listEmployee = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void getData2()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListEmployee api =
+                        JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listEmployee = api.data.data.items;
+                    }
+                    // foreach (EpLate item in listEpLate)
+                    // {
+                    //     if (item.ts_image != "/img/add.png")
+                    //     {
+                    //         item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                    //     }
+                    // }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php",
+                    web.QueryString);
+            }
+        }
+
+        private void SearchBarMonth_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            int indexMonth = ItemList.ToList().FindIndex(x => x.Contains(DateTime.Now.Month.ToString()));
+            if (indexMonth > -1) Month.SelectedIndex = indexMonth;
+        }
+
+        private void SearchBarYear_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            int indexYear = YearList.ToList().FindIndex(x => x.Contains(DateTime.Now.Year.ToString()));
+            if (indexYear > -1) Year.SelectedIndex = indexYear;
         }
     }
 }

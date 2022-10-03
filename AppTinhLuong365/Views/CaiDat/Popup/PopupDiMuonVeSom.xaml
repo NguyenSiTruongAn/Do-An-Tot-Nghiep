@@ -100,7 +100,7 @@
                         </Grid>
                         <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                             <Grid>
-                                <TextBox BorderThickness="0" x:Name="textThang" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                                <TextBlock x:Name="textThang" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
                                 <Border Background="Transparent" MouseLeftButtonDown="Select_thang" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
                                 </Border>
@@ -112,11 +112,11 @@
                         </Viewbox>
                         <Grid Margin="0 14 0 0">
                             <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTGKT}" FontSize="16" Foreground="{DynamicResource #777777}"/>
-                            <Path Margin="135 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                            <!-- <Path Margin="135 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/> -->
                         </Grid>
                         <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                             <Grid>
-                                <TextBox BorderThickness="0" x:Name="TextThang" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                                <TextBlock x:Name="TextThang" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
                                 <Border Background="Transparent" MouseLeftButtonDown="Select_thang_end" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
                                 </Border>

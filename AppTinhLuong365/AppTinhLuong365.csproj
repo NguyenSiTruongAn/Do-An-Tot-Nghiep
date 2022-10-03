@@ -266,6 +266,9 @@
     <Compile Include="Views\CaiDat\Popup\PopupTuyChonSaoChepLichLamViec.xaml.cs">
       <DependentUpon>PopupTuyChonSaoChepLichLamViec.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupXoaMucPhat.xaml.cs">
+      <DependentUpon>PopupXoaMucPhat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChiTraLuong\ChiTraLuong.xaml.cs">
       <DependentUpon>ChiTraLuong.xaml</DependentUpon>
     </Compile>
@@ -778,6 +781,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CaiDat\Popup\PopupTuyChonSaoChepLichLamViec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupXoaMucPhat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

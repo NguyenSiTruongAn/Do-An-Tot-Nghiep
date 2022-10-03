@@ -91,7 +91,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.Headers.Add("Authorization", Main.CurrentCompany.token);
                 web.QueryString.Add("filter_by[cy_id]", id);
                 // web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                web.QueryString.Add("month_apply", "2022-09-01");
+                web.QueryString.Add("month_apply", "2022-10-01");
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     API_List_emp_in_cycle_by_com_id api = JsonConvert.DeserializeObject<API_List_emp_in_cycle_by_com_id>(UnicodeEncoding.UTF8.GetString(e.Result));
