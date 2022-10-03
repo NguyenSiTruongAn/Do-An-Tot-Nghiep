@@ -88,6 +88,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                             listPhucLoi = api.data.list_welfare;
                             listPhucLoi.Reverse();
                             listPhuCap = api.data.list_allowance;
+                            listPhuCap.Reverse();
                             listPhuCapTheoCa = api.data.list_allowance_shift;
                         }
                     };
@@ -168,17 +169,34 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-
+            Border b = sender as Border;
+            ListAllowanceShift data = (ListAllowanceShift)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupSuaPhuCapTheoCa(Main, data.wf_id, data.wf_money, data.wf_time, data.wf_time_end));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
-        private void btnXoaHoaHongTien_Click(object sender, MouseButtonEventArgs e)
+        private void btnXoaPhuCapTheoCa_Click(object sender, MouseButtonEventArgs e)
         {
-
+            Border b = sender as Border;
+            ListAllowanceShift data = (ListAllowanceShift)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThongBaoXoaPhuCapTheoCa(Main, data.wf_id));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void dataGrid2_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+        }
+
+        private void BtnTuyChonDSPC(object sender, MouseButtonEventArgs e)
+        {
+            Border p = sender as Border;
+            ListAllowance data = (ListAllowance)p.DataContext;
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupTuyChonDSPC(Main, data.cl_id, data.cl_name, data.cl_salary, data.cl_note, data.cl_type_tax, data.cl_day, data.cl_day_end);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

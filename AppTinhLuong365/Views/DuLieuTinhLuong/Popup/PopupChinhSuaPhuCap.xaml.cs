@@ -2,10 +2,8 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Net;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -22,55 +20,33 @@ using System.Windows.Shapes;
 namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupThemMoiPhuCap.xaml
+    /// Interaction logic for PopupChinhSuaPhuCap.xaml
     /// </summary>
-    public partial class PopupThemMoiPhuCap : Page, INotifyPropertyChanged
+    public partial class PopupChinhSuaPhuCap : Page
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private DateTime day1, day_end1;
+        private string de,id1;
+        public PopupChinhSuaPhuCap(MainWindow main, string id, string name, string salary, string type_tax, string day, string day_end, string note)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public PopupThemMoiPhuCap(MainWindow main)
-        {
-            this.DataContext = this;
             InitializeComponent();
+            this.DataContext = this;
             Main = main;
+            tbInput.Text = name;
+            tbInput1.Text = salary;
+            if (type_tax == "0")
+                cb_Loai.SelectedIndex = 1;
+            else cb_Loai.SelectedIndex = 0;
+            DateTime.TryParse(day, out day1);
+            textThangAD.SelectedDate = day1;
+            DateTime.TryParse(day_end, out day_end1);
+            de = day_end;
+            if (!string.IsNullOrEmpty(de)) textDenThang.SelectedDate = day_end1;
+            tbInput2.Text = note;
+            id1 = id;
         }
-
         MainWindow Main;
 
-        private int _IsSmallSize;
-
-        public int IsSmallSize
-        {
-            get { return _IsSmallSize; }
-            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
-        }
-
-        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if (this.ActualWidth > 980)
-            {
-                IsSmallSize = 0;
-            }
-            else if (this.ActualWidth <= 980 && this.ActualWidth > 460)
-            {
-                IsSmallSize = 1;
-            }
-            else /*(this.ActualWidth <= 460)*/
-            {
-                IsSmallSize = 2;
-            }
-        }
-
-        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
-        }
-
-        private void ThemMoiPhuCap(object sender, MouseButtonEventArgs e)
+        private void LuuThayDoi(object sender, MouseButtonEventArgs e)
         {
             bool allow = true;
             validateName.Text = validateMoney.Text = validateDate.Text = validateLoai.Text = "";
@@ -97,7 +73,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             if (allow)
             {
                 string x;
-                if (textDenThang.SelectedDate == null)
+                if (string.IsNullOrEmpty(de))
                     x = "";
                 else x = textDenThang.SelectedDate.Value.ToString("dd/MM/yyyy");
                 using (WebClient web = new WebClient())
@@ -105,8 +81,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     if (Main.MainType == 0)
                     {
                         web.QueryString.Add("token", Main.CurrentCompany.token);
-                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     }
+                    web.QueryString.Add("id_welfare", id1);
                     web.QueryString.Add("name", tbInput.Text);
                     web.QueryString.Add("salary", tbInput1.Text);
                     web.QueryString.Add("type", "4");
@@ -120,12 +96,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     web.QueryString.Add("type_tax", i);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        API_ChinhSuaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_ChinhSuaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
                         if (api.data != null)
                         {
                         }
                     };
-                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/create_welfare.php", web.QueryString);
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_welfare.php", web.QueryString);
                 }
                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
                 Main.sidebar.SelectedIndex = 5;
@@ -137,6 +113,11 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }

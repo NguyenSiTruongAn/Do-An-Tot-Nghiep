@@ -62,7 +62,7 @@
             </Border>
             <TabControl BorderThickness="0" Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
                 <TabItem Header="{DynamicResource textCacKhoanTienKhac}" x:Name="tabItem1">
-                    <ListView Margin="35 0 0 0" Name="lv" ItemsSource="{Binding}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
+                    <ListView Margin="35 0 0 0" Name="lv" ItemsSource="{Binding listCacKhoanTienKhac}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-105)/3}"></Setter>
@@ -70,7 +70,7 @@
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="ListViewItem">
-                                            <Grid Width="330">
+                                            <Grid>
                                                     <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                                                         <Border.Effect>
                                                             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
@@ -79,7 +79,7 @@
                                                     <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                                                         <StackPanel Orientation="Vertical" Margin="10 0 0 20" VerticalAlignment="Top">
                                                             <Grid Height="61" Margin="0 0 10 0">
-                                                                <TextBlock Text="{Binding}" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                                            <TextBlock Text="{Binding cl_name}" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
                                                             <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="TuyChinhCKTK_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Width="19" Height="19">
                                                                 <Path Data="{DynamicResource iconBaChamDoc}" VerticalAlignment="Center" Fill="{DynamicResource #979797}" HorizontalAlignment="Center"></Path>
                                                             </Border>
@@ -89,12 +89,12 @@
                                                                 <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
                                                                 <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
                                                             </StackPanel>
-                                                        <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="{Binding}" TextWrapping="WrapWithOverflow"></TextBlock>
-                                                        <StackPanel Margin="0 20 0 0" Orientation="Horizontal" HorizontalAlignment="Right" Width="320">
-                                                                <Path Data="{DynamicResource iconCachTinh}" Fill="{DynamicResource #5F648D}"></Path>
-                                                                <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Cách tính" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
-                                                            </StackPanel>
-                                                            <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="{Binding}" TextWrapping="WrapWithOverflow"></TextBlock>
+                                                        <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="{Binding cl_note}" TextWrapping="WrapWithOverflow"></TextBlock>
+                                                        <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
+                                                            <Path Data="{DynamicResource iconCachTinh}" Fill="{DynamicResource #5F648D}"></Path>
+                                                            <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Cách tính" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                                        </StackPanel>
+                                                        <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="{Binding fs_repica}" TextWrapping="WrapWithOverflow"></TextBlock>
                                                         </StackPanel>
                                                     </Border>
                                                 </Grid>
@@ -209,7 +209,7 @@
                                 </DockPanel>
                             </Border>
                         </Grid>
-                        <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding Test}">
+                        <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding listNVCacKhoanTienKhac}">
                             <DataGrid.OpacityMask>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
@@ -228,7 +228,7 @@
                                                     </Border.Background>
                                                 </Border>
                                                 <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                                                <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                <TextBlock Text="{Binding cls_id_user}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -237,7 +237,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
-                                                <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                <TextBlock Text="{Binding cl_name}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                             </Border>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -246,7 +246,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
-                                                <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                <TextBlock Text="{Binding displaycls_day}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                             </Border>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -255,7 +255,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
-                                                <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                                <TextBlock Text="{Binding displaycls_day_end}" Style="{StaticResource TextRowCenter1}"></TextBlock>
                                             </Border>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -264,7 +264,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
-                                                <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                <TextBlock Text="{Binding displaycls_day_end}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                             </Border>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>

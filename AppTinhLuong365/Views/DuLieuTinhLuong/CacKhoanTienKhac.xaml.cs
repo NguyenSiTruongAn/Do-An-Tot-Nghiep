@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,11 +53,71 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            getData();
+            getData1();
         }
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
 
-        public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
+        private List<DSCacKhoanTienKhac> _listCacKhoanTienKhac;
+
+        public List<DSCacKhoanTienKhac> listCacKhoanTienKhac
+        {
+            get { return _listCacKhoanTienKhac; }
+            set { _listCacKhoanTienKhac = value; OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 0)
+                {
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                }
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_DSCacKhoanTienKhac api = JsonConvert.DeserializeObject<API_DSCacKhoanTienKhac>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listCacKhoanTienKhac = api.data.other_list;
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_otherMoney.php", web.QueryString);
+            }
+        }
+
+        private List<DSNVCacKhoanThienKhac> _listNVCacKhoanTienKhac;
+
+        public List<DSNVCacKhoanThienKhac> listNVCacKhoanTienKhac
+        {
+            get { return _listNVCacKhoanTienKhac; }
+            set { _listNVCacKhoanTienKhac = value; OnPropertyChanged(); }
+        }
+
+        private void getData1()
+        {
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 0)
+                {
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("page", "0");
+                    web.QueryString.Add("id_user", "0");
+                }
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_DSNVCacKhoanThienKhac api = JsonConvert.DeserializeObject<API_DSNVCacKhoanThienKhac>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listNVCacKhoanTienKhac = api.data.ep_other_list;
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_otherMoney.php", web.QueryString);
+            }
+        }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -81,7 +144,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void ThemKhoanTienKhac_Click(object sender, MouseButtonEventArgs e)

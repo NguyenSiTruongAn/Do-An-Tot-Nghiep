@@ -1,41 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AppTinhLuong365.Model.APIEntity
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    public class DataListEmployee
+    public class DataDSNVThemMoiVaoPhucLoi_PhuCap
     {
-        public DataListEmployee1 data { get; set; }
-        public object error { get; set; }
+        public List<DSNVThemMoiVaoPhucLoi_PhuCap> list { get; set; }
         public string message { get; set; }
     }
 
-    public class DataListEmployee1
+    public class DSNVThemMoiVaoPhucLoi_PhuCap: INotifyPropertyChanged
     {
-        public int itemsPerPage { get; set; }
-        public string totalItems { get; set; }
-        public List<ListEmployee> items { get; set; }
-    }
-
-    public class ListEmployee
-    {
-        public string ep_id { get; set; }
-        public string ep_id_display
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            get
-            {
-                string result;
-                if (ep_id == "-1")
-                    result = ep_name;
-                else
-                    result = "(" + ep_id + ") " + ep_name;
-                return result;
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        public string ep_id { get; set; }
         public string ep_email { get; set; }
         public string ep_name { get; set; }
         public string ep_phone { get; set; }
@@ -60,14 +47,22 @@ namespace AppTinhLuong365.Model.APIEntity
         public string create_time { get; set; }
         public string group_id { get; set; }
         public object shift_id { get; set; }
+        private Boolean _status;
+        public Boolean status
+        {
+            get { return _status; }
+            set
+            {
+                _status = value; OnPropertyChanged();
+            }
+        }
     }
 
-    public class API_ListEmployee
+    public class API_DSNVThemMoiVaoPhucLoi_PhuCap
     {
         public bool result { get; set; }
         public int code { get; set; }
-        public DataListEmployee data { get; set; }
+        public DataDSNVThemMoiVaoPhucLoi_PhuCap data { get; set; }
         public object error { get; set; }
     }
-
 }

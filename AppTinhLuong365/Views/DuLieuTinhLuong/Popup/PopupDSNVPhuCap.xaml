@@ -1,4 +1,4 @@
-﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.Popup.PopupDSNhanVienPhucLoi"
+﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.Popup.PopupDSNVPhuCap"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       VerticalAlignment="Top"
       HorizontalAlignment="Center"
-      Title="PopupDSNhanVienPhucLoi">
+      Title="PopupDSNVPhuCap">
 
     <Grid Margin="0 100 70 0">
         <Border Style="{StaticResource ShadowBorder2}"></Border>
@@ -71,7 +71,7 @@
                                                                     <Setter Property="FontSize" Value="15"/>
                                                                     <Setter Property="FontWeight" Value="DemiBold"/>
                                                                     <Setter Property="Foreground" Value="{DynamicResource #68798B}"/>
-                                                                    <Setter Property="Text" Value="{Binding displaycls_day}"/>
+                                                                    <Setter Property="Text" Value="{Binding displaycls_day1}"/>
                                                                     <Style.Triggers>
                                                                         <DataTrigger Binding="{Binding cls_day}" Value="">
                                                                             <Setter Property="Text" Value="---"/>
@@ -100,7 +100,7 @@
                                                                     <Setter Property="FontSize" Value="15"/>
                                                                     <Setter Property="FontWeight" Value="DemiBold"/>
                                                                     <Setter Property="Foreground" Value="{DynamicResource #68798B}"/>
-                                                                    <Setter Property="Text" Value="{Binding displaycls_day_end}"/>
+                                                                    <Setter Property="Text" Value="{Binding displaycls_day_end1}"/>
                                                                     <Style.Triggers>
                                                                         <DataTrigger Binding="{Binding cls_day_end}" Value="">
                                                                             <Setter Property="Text" Value="---"/>

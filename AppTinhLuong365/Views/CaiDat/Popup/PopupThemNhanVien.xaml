@@ -47,7 +47,7 @@
                                             <DataTemplate>
                                                 <Border Style="{StaticResource DashedBoder1}" CornerRadius="0" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch">
                                                     <Grid>
-                                                        <CheckBox VerticalAlignment="Center" Checked="ChonNhanvien">
+                                                        <CheckBox VerticalAlignment="Center" Unchecked="HuyChon" Checked="ChonNhanvien">
                                                         </CheckBox>
                                                         <Grid Margin="20 0 0 0">
                                                             <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">

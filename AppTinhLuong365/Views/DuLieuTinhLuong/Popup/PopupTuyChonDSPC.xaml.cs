@@ -16,12 +16,12 @@ using System.Windows.Shapes;
 namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupTuyChonDSPL.xaml
+    /// Interaction logic for PopupTuyChonDSPC.xaml
     /// </summary>
-    public partial class PopupTuyChonDSPL : Page
+    public partial class PopupTuyChonDSPC : Page
     {
         private string id1, name1, salary1, note1, type_tax1, day1, day_end1;
-        public PopupTuyChonDSPL(MainWindow main, string id, string name, string salary, string note, string type_tax, string day, string day_end)
+        public PopupTuyChonDSPC(MainWindow main, string id, string name, string salary, string note, string type_tax, string day, string day_end)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -44,19 +44,19 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void ThemNhanVien_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThemNhanVienVaoPhucLoi(Main, id1, day1, day_end1));
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThemNhanVienVaoPhuCap(Main, id1, day1, day_end1));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void ChinhSuaThue_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaPhucLoi(Main, id1, name1, salary1, type_tax1, day1, day_end1, note1));
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaPhuCap(Main, id1, name1, salary1, type_tax1, day1, day_end1, note1));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void DSNhanVien_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupDSNhanVienPhucLoi(Main, id1, name1, day1, day_end1));
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupDSNVPhuCap(Main, id1, name1, day1, day_end1));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
