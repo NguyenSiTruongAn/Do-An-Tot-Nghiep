@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat.Popup"
       mc:Ignorable="d" 
-      Title="PopupChinhSuaLichLamViec">
+      Title="PopupChinhSuaLichLamViec" Loaded="PopupChinhSuaLichLamViec_OnLoaded">
 
     <Grid Width="494" Background="{DynamicResource #FFFFFF}">
         <Border Style="{StaticResource ShadowBorder2}"></Border>
@@ -41,7 +41,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
-                    <TextBlock Margin="0 20" Text="Tháng 09/2022" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource #636e73}"></TextBlock>
+                    <TextBlock Name="tbTitle" Margin="0 20" Text="" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource #636e73}"></TextBlock>
                     <Border CornerRadius="10 10 0 0" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <StackPanel>
                             <Border Background="{DynamicResource #4C5BD4}" CornerRadius="10 10 0 0" Height="45">
@@ -72,7 +72,7 @@
                             <DockPanel Height="55">
                                 <Grid Width="64">
                                     <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="28" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock Name="tbDay1" Text="28" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     </Border>
                                     <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
                                         <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
@@ -102,7 +102,7 @@
                                         <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Grid>
-                                <Grid Width="64">
+                                <Grid Width="64" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown">
                                     <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                                         <TextBlock Text="1" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     </Border>
@@ -110,7 +110,7 @@
                                         <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                     </Border>
                                 </Grid>
-                                <Grid Width="64">
+                                <Grid Width="64"  MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown">
                                     <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                                         <TextBlock Text="2" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     </Border>

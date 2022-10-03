@@ -27,13 +27,19 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
     public partial class PopupThemNhanVienVaoLichLamViec : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
+
         public int IsSmallSize
         {
             get { return _IsSmallSize; }
-            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
+            set
+            {
+                _IsSmallSize = value;
+                OnPropertyChanged("IsSmallSize");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -41,6 +47,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         MainWindow Main;
         private string ID_gr;
+
         public PopupThemNhanVienVaoLichLamViec(MainWindow main, string id)
         {
             InitializeComponent();
@@ -69,7 +76,11 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         public List<Item_employee_not_in_cycle> listNV
         {
             get { return _listNV; }
-            set { _listNV = value; OnPropertyChanged(); }
+            set
+            {
+                _listNV = value;
+                OnPropertyChanged();
+            }
         }
 
         private List<Item_employee_not_in_cycle> _listNV1;
@@ -77,7 +88,11 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         public List<Item_employee_not_in_cycle> listNV1
         {
             get { return _listNV1; }
-            set { _listNV1 = value; OnPropertyChanged(); }
+            set
+            {
+                _listNV1 = value;
+                OnPropertyChanged();
+            }
         }
 
         private void getData()
@@ -91,33 +106,43 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     web.Headers.Add("Authorization", Main.CurrentCompany.token);
                     //web.QueryString.Add("month_apply", "2022-09-01");
                 }
+
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_employee_not_in_cycle api = JsonConvert.DeserializeObject<API_List_employee_not_in_cycle>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    API_List_employee_not_in_cycle api =
+                        JsonConvert.DeserializeObject<API_List_employee_not_in_cycle>(
+                            UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
                         listNV = listNV1 = api.data.items;
                     }
+
                     foreach (Item_employee_not_in_cycle item in listNV)
                     {
                         if (item.ep_image == "")
                         {
                             item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                        } else
+                        }
+                        else
                         {
                             item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
                         }
                     }
                 };
-                web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/get_list_employee_not_in_cycle.php?length=20&month_apply=2022-09-01", web.QueryString);
+                web.UploadValuesTaskAsync(
+                    "https://chamcong.24hpay.vn/service/get_list_employee_not_in_cycle.php?length=20&month_apply=2022-09-01",
+                    web.QueryString);
             }
         }
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            listNV1 = listNV.Where(x => x.ep_name.ToLower().RemoveUnicode().Contains(tbInput.Text.ToLower().RemoveUnicode())).ToList();
+            listNV1 = listNV.Where(x =>
+                x.ep_name.ToLower().RemoveUnicode().Contains(tbInput.Text.ToLower().RemoveUnicode())).ToList();
         }
+
         private List<string> nv = new List<string>();
+
         private void ChonNhanvien(object sender, RoutedEventArgs e)
         {
             CheckBox cb = sender as CheckBox;
@@ -125,6 +150,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             nv.Add(data.ep_id);
         }
 
+        private string Arr_Id_Ep;
         private void ThemNhanVienVaoNhom(object sender, MouseButtonEventArgs e)
         {
             bool allow = true;
@@ -132,30 +158,47 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             {
                 allow = false;
             }
+
             if (allow)
             {
-                foreach (var item in nv)
+                using (WebClient web = new WebClient())
                 {
-                    using (WebClient web = new WebClient())
+                    if (Main.MainType == 0)
                     {
-                        if (Main.MainType == 0)
-                        {
-                            web.QueryString.Add("token", Main.CurrentCompany.token);
-                            web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                        }
-                        web.QueryString.Add("id_emp", item);
-                        web.QueryString.Add("id_group", ID_gr);
-                        web.UploadValuesCompleted += (s, ee) =>
-                        {
-                            API_TaoNhomLamViec api = JsonConvert.DeserializeObject<API_TaoNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                            if (api.data != null)
-                            {
-                            }
-                        };
-                        web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_emp_group_work.php", web.QueryString);
+                        web.Headers.Add("Authorization", Main.CurrentCompany.token);
+
                     }
+
+                    int dem = 0;
+                    foreach (var item in nv)
+                    {
+                        if (dem == nv.Count - 1)
+                        {
+                            Arr_Id_Ep += item.ToString();
+                        }
+                        else
+                        {
+                            Arr_Id_Ep += item.ToString() + ",";
+                        }
+
+                        dem++;
+                    }
+                    web.QueryString.Add("arr_ep_id", Arr_Id_Ep);
+                    web.QueryString.Add("cy_id", ID_gr);
+                    web.UploadValuesCompleted += (s, ee) =>
+                    {
+                        API_Add_employee_to_cycle api =
+                            JsonConvert.DeserializeObject<API_Add_employee_to_cycle>(
+                                UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/add_employee_to_cycle.php",
+                        web.QueryString);
                 }
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NhomLamViec(Main));
+
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
                 this.Visibility = Visibility.Collapsed;
             }
         }

@@ -26,12 +26,40 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            tbTitle.Text = $"Tháng {DateTime.Now.Month}/{DateTime.Now.Year}";
         }
         public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc", "dd", "ee", "ff", "gg" };
-
+        private List<TextBlock> listTextBlock = new List<TextBlock>();
         private void Close_Click(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        
+        }
+
+        private void PopupChinhSuaLichLamViec_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            listTextBlock = new List<TextBlock>() { tbDay1 };
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+
+                }
+            }
+        }
+
+        private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Grid g=sender as Grid;
+            if (g != null)
+            {
+                Border bordeIndex = g.Children[0] as Border;
+                if (bordeIndex != null)
+                {
+                    TextBlock tb= bordeIndex.Child as TextBlock;
+                    MessageBox.Show(tb.Text);
+                }
+            }
         }
     }
 }

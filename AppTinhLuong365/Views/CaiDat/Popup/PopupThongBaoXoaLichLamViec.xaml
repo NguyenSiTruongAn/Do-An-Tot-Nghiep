@@ -18,7 +18,7 @@
                     <TextBlock Margin="0 5 0 0" HorizontalAlignment="Center" Text="Bạn chắc chắn muốn xóa lịch làm việc này?" FontSize="15" FontFamily="roboto" FontWeight="DemiBold"></TextBlock>
                     <DockPanel HorizontalAlignment="Center" Margin="0 20 0 0">
                         <Border Cursor="Hand" Width="112" Height="43" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
-                            <TextBlock Text="Xác nhận" TextAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                            <TextBlock Text="Xác nhận" TextAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown"/>
                         </Border>
                     </DockPanel>
                 </StackPanel>

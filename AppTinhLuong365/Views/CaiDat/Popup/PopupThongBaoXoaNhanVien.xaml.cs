@@ -19,26 +19,24 @@ using Newtonsoft.Json;
 namespace AppTinhLuong365.Views.CaiDat.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupThongBaoXoaLichLamViec.xaml
+    /// Interaction logic for PopupThongBaoXoaNhanVien.xaml
     /// </summary>
-    public partial class PopupThongBaoXoaLichLamViec : Page
+    public partial class PopupThongBaoXoaNhanVien : Page
     {
-        MainWindow Main;
         public string ID;
-        public PopupThongBaoXoaLichLamViec(MainWindow main, string id)
+        public MainWindow Main;
+        public string Ep_ID;
+
+        public PopupThongBaoXoaNhanVien(MainWindow main, string id, string ep_id)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
             ID = id;
+            Ep_ID = ep_id;
         }
 
-        private void Close_Click(object sender, MouseButtonEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
-        }
-
-        private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             using (WebClient web = new WebClient())
             {
@@ -46,18 +44,28 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 {
                     web.Headers.Add("Authorization", Main.CurrentCompany.token);
                 }
-                web.QueryString.Add("cy_id", ID);
-                web.QueryString.Add("id_com", Main.CurrentCompany.com_id);
+
+                web.QueryString.Add("id_com", ID);
+                web.QueryString.Add("id_ep", Ep_ID);
+                web.QueryString.Add("month", "2022-09-01");
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    API_Delete_cycle api = JsonConvert.DeserializeObject<API_Delete_cycle>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                    API_Delete_cycle_of_employee api =
+                        JsonConvert.DeserializeObject<API_Delete_cycle_of_employee>(UnicodeEncoding.UTF8.GetString(ee.Result));
                     if (api.data != null)
                     {
                     }
                 };
-                web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/delete_cycle.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/delete_cycle_of_employee.php",
+                    web.QueryString);
             }
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
+
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.Popup.PopupDSNVLichLamViec(Main, ID));
+            this.Visibility = Visibility.Collapsed;
+        }
+
+        private void Close_Click(object sender, MouseButtonEventArgs e)
+        {
             this.Visibility = Visibility.Collapsed;
         }
     }

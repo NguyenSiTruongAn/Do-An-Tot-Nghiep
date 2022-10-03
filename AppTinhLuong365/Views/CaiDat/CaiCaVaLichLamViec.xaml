@@ -167,7 +167,7 @@
                                                             <Border>
                                                                 <Grid>
                                                                     <Image Source="/Views/CaiDat/Image/bg-1.png"></Image>
-                                                                    <Border Margin="0 10 10 0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="23" Height="23" CornerRadius="23" MouseLeftButtonDown="TuyChon_Click">
+                                                                    <Border Margin="0 10 10 0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="23" Height="23" CornerRadius="23" MouseLeftButtonDown="TuyChon_Click1">
                                                                         <Border.Style>
                                                                             <Style TargetType="Border">
                                                                                 <Setter Property="Background" Value="Transparent"/>
@@ -248,7 +248,7 @@
                             <TextBlock Height="100" Margin="20 10 0 0" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #747474}" TextWrapping="WrapWithOverflow">Cài đặt số ngày công tiêu chuẩn để tính lương cho toàn bộ nhân viên của công ty trong tháng đó. <LineBreak/> Định dạng nhập là số nguyên dương hoặc số thập phân.</TextBlock>
                             <Border CornerRadius="3" Height="41" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                                 <Grid Height="38" Margin="10 0 10 0">
-                                    <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" Text="{Binding item.num_days}" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                    <TextBox PreviewTextInput="Txt_PreviewCurrencyTextInput"  DataObject.Pasting="TextBoxPasting" FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" Text="{Binding item.num_days}" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                                     <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="Nhập công chuẩn tháng 09/2022" IsHitTestVisible="False">
                                         <TextBlock.Style>
                                             <Style TargetType="TextBlock">
@@ -263,7 +263,7 @@
                                     </TextBlock>
                                 </Grid>
                             </Border>
-                            <Border CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 30" VerticalAlignment="Bottom">
+                            <Border MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" CornerRadius="5" Background="{DynamicResource #4C5BD4}" Height="41" Margin="0 20 0 30" VerticalAlignment="Bottom">
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Lưu công chuẩn" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                             </Border>
                         </StackPanel>

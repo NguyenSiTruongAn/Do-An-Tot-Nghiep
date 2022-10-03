@@ -1,13 +1,16 @@
-﻿using AppTinhLuong365.Model.APIEntity;
+﻿using System;
+using AppTinhLuong365.Model.APIEntity;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AppTinhLuong365.Views.CaiDat
 {
@@ -34,11 +37,14 @@ namespace AppTinhLuong365.Views.CaiDat
             {
                 YearList.Add($"Năm {i}");
             }
+
             InitializeComponent();
             this.DataContext = this;
             Main = main;
             getData();
             getData1();
+            getData2();
+            getData3();
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -142,6 +148,105 @@ namespace AppTinhLuong365.Views.CaiDat
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_late.php", web.QueryString);
             }
+        }
+
+        private List<Item_dep> _listItem_dep;
+
+        public List<Item_dep> listItem_dep
+        {
+            get { return _listItem_dep; }
+            set
+            {
+                if (value == null) value = new List<Item_dep>();
+                value.Insert(0,new Item_dep(){dep_id = "-1",dep_name = "Phòng ban (tất cả)" });
+                _listItem_dep = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void getData2()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_List_dep api = JsonConvert.DeserializeObject<API_List_dep>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listItem_dep = api.data.list;
+                    }
+                    // foreach (EpLate item in listEpLate)
+                    // {
+                    //     if (item.ts_image != "/img/add.png")
+                    //     {
+                    //         item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                    //     }
+                    // }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_dep.php", web.QueryString);
+            }
+        }
+
+        private List<ListEmployee> _listEmployee;
+
+        public List<ListEmployee> listEmployee
+        {
+            get { return _listEmployee; }
+            set
+            {
+                if (value == null) value = new List<ListEmployee>();
+                value.Insert(0, new ListEmployee() { ep_id = "-1", ep_name = "Tất cả nhân viên" });
+                _listEmployee = value; OnPropertyChanged();
+            }
+        }
+
+        private void getData3()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listEmployee = api.data.data.items;
+                    }
+                    // foreach (EpLate item in listEpLate)
+                    // {
+                    //     if (item.ts_image != "/img/add.png")
+                    //     {
+                    //         item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                    //     }
+                    // }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php", web.QueryString);
+            }
+        }
+
+        private void SearchBarMonth_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            int indexMonth = ItemList.ToList().FindIndex(x => x.Contains(DateTime.Now.Month.ToString()));
+            if (indexMonth > -1) searchBarMonth.SelectedIndex = indexMonth;
+            if (indexMonth > -1) searchBarMonth1.SelectedIndex = indexMonth;
+        }
+
+        private void FrameworkElement_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            int indexYear = YearList.ToList().FindIndex(x => x.Contains(DateTime.Now.Year.ToString()));
+            if (indexYear > -1) searchBarYear.SelectedIndex = indexYear;
+            if (indexYear > -1) searchBarYear1.SelectedIndex = indexYear;
+        }
+
+        private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Border p = sender as Border;
+            ItemLate data = (ItemLate)p.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupChinhSuaDiMuonVeSom(Main, data.pm_id, data.pm_shift, data.shift_name, data.pm_minute, data.pm_type, data.pm_type_phat, data.pm_monney, data.pm_time_begin, data.pm_time_end));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

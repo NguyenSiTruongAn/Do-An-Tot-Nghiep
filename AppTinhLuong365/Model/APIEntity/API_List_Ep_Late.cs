@@ -33,9 +33,28 @@ namespace AppTinhLuong365.Model.APIEntity
         public string ep_gender { get; set; }
         public int early { get; set; }
         public int early_second { get; set; }
+
+        public int early_Second
+        {
+            get
+            {
+                int a = early_second - early * 60;
+                return a;
+            }
+        }
+
+        public int late_Second
+        {
+            get
+            {
+                int a = late_second - late * 60;
+                return a;
+            }
+        }
+
         public string kq_phat { get; set; }
-        public int? late { get; set; }
-        public int? late_second { get; set; }
+        public int late { get; set; }
+        public int late_second { get; set; }
     }
 
     public class API_List_Ep_Late
@@ -45,6 +64,4 @@ namespace AppTinhLuong365.Model.APIEntity
         public List_Ep_Late data { get; set; }
         public object error { get; set; }
     }
-
-
 }
