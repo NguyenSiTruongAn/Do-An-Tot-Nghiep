@@ -7,21 +7,17 @@ using System.Threading.Tasks;
 namespace AppTinhLuong365.Model.APIEntity
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    public class DataDSNhanVienPhucLoi_PhuCap
+    public class DataDSNVCacKhoanThienKhac
     {
-        public List<DSNhanVienPhucLoi_PhuCap> list { get; set; }
+        public List<DSNVCacKhoanThienKhac> ep_other_list { get; set; }
         public string message { get; set; }
     }
 
-    public class DSNhanVienPhucLoi_PhuCap
+    public class DSNVCacKhoanThienKhac
     {
         public string cls_id { get; set; }
-        public string ep_id { get; set; }
-        public string ep_image { get; set; }
-        public string ep_name { get; set; }
-        public string dep_name { get; set; }
-        public string type { get; set; }
-        public string name_group { get; set; }
+        public string cls_id_user { get; set; }
+        public string cl_name { get; set; }
         public string cls_day { get; set; }
         public string displaycls_day
         {
@@ -32,20 +28,6 @@ namespace AppTinhLuong365.Model.APIEntity
                 if (!string.IsNullOrEmpty(cls_day) && DateTime.TryParse(cls_day, out day))
                 {
                     result = day.ToString("MM/yyyy");
-                }
-
-                return result;
-            }
-        }
-        public string displaycls_day1
-        {
-            get
-            {
-                string result = "";
-                DateTime day;
-                if (!string.IsNullOrEmpty(cls_day) && DateTime.TryParse(cls_day, out day))
-                {
-                    result = day.ToString("dd/MM/yyyy");
                 }
 
                 return result;
@@ -66,27 +48,15 @@ namespace AppTinhLuong365.Model.APIEntity
                 return result;
             }
         }
-        public string displaycls_day_end1
-        {
-            get
-            {
-                string result = "";
-                DateTime day;
-                if (!string.IsNullOrEmpty(cls_day_end) && DateTime.TryParse(cls_day_end, out day))
-                {
-                    result = day.ToString("dd/MM/yyyy");
-                }
-
-                return result;
-            }
-        }
+        public string fs_repica { get; set; }
+        public string cls_id_cl { get; set; }
     }
 
-    public class API_DSNhanVienPhucLoi_PhuCap
+    public class API_DSNVCacKhoanThienKhac
     {
         public bool result { get; set; }
         public int code { get; set; }
-        public DataDSNhanVienPhucLoi_PhuCap data { get; set; }
+        public DataDSNVCacKhoanThienKhac data { get; set; }
         public object error { get; set; }
     }
 }

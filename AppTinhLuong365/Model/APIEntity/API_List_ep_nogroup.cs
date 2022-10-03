@@ -27,6 +27,14 @@ namespace AppTinhLuong365.Model.APIEntity
         public string ep_image { get; set; }
         public string ep_name { get; set; }
         public string ep_id { get; set; }
+        public string ep_id_display
+        {
+            get
+            {
+                string result = "(" + ep_id + ") " + ep_name;
+                return result;
+            }
+        }
         public string dep_name { get; set; }
     }
 }

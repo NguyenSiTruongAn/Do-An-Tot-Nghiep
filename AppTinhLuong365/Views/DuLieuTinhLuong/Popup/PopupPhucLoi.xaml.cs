@@ -72,11 +72,15 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         private void Select_thang(object sender, MouseButtonEventArgs e)
         {
             dteSelectedMonth.Visibility = dteSelectedMonth.Visibility == Visibility.Visible? Visibility.Collapsed: Visibility.Visible;
+            if (dteSelectedMonth1.DisplayDate != null)
+                dteSelectedMonth.DisplayDateEnd = dteSelectedMonth1.DisplayDate;
             flag = 1;
         }
         private void Select_thang_end(object sender, MouseButtonEventArgs e)
         {
             dteSelectedMonth1.Visibility = dteSelectedMonth1.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            if (dteSelectedMonth.DisplayDate != null)
+                dteSelectedMonth1.DisplayDateStart = dteSelectedMonth.DisplayDate;
             flag = 1;
         }
 
@@ -90,6 +94,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             if (textDenThang != null && !string.IsNullOrEmpty(x))
             {
                 textDenThang.Text = x;
+                valuedateDayEnd = dteSelectedMonth1.DisplayDate.ToString("yyyy/MM");
             }
             dteSelectedMonth1.DisplayMode = CalendarMode.Year;
             if (dteSelectedMonth1.DisplayDate != null && flag1 > 0)
@@ -101,6 +106,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         int flag = 0;
         int flag1 = 0;
+        private string valuedateDay = "", valuedateDayEnd = "";
         private void dteSelectedMonth_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
         {
             var x = dteSelectedMonth.DisplayDate.ToString("MM/yyyy");
@@ -111,6 +117,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             if (textThangAD != null && !string.IsNullOrEmpty(x))
             {
                 textThangAD.Text = x;
+                valuedateDay = dteSelectedMonth.DisplayDate.ToString("yyyy/MM");
             }
             dteSelectedMonth.DisplayMode = CalendarMode.Year;
             if (dteSelectedMonth.DisplayDate != null && flag > 0)
@@ -143,6 +150,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             {
                 allow = false;
                 validateLoai.Text = "Vui lòng chọn loại thu nhập";
+            }
+            if(valuedateDayEnd != "" && valuedateDay.CompareTo(valuedateDayEnd) > 0)
+            {
+                allow = false;
+                validateDateEnd.Text = "Tháng kết thúc phải lớn hơn tháng bắt đầu";
+                validateDateEnd.TextTrimming = TextTrimming.CharacterEllipsis;
             }
             if (allow)
             {

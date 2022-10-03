@@ -21,16 +21,10 @@ using System.Windows.Shapes;
 namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupDSNhanVienPhucLoi.xaml
+    /// Interaction logic for PopupDSNVPhuCap.xaml
     /// </summary>
-    public partial class PopupDSNhanVienPhucLoi : Page, INotifyPropertyChanged
+    public partial class PopupDSNVPhuCap : Page, INotifyPropertyChanged
     {
-        private int _IsSmallSize;
-        public int IsSmallSize
-        {
-            get { return _IsSmallSize; }
-            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
-        }
         public MainWindow Main;
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -46,7 +40,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             get { return _name1; }
             set { _name1 = value; OnPropertyChanged(); }
         }
-        public PopupDSNhanVienPhucLoi(MainWindow main, string id, string name, string day, string day_end)
+        public PopupDSNVPhuCap(MainWindow main, string id, string name, string day, string day_end)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -90,28 +84,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                                     item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
                                 else
                                     item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                            }    
+                            }
                         }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/welfare_cate_stf.php", web.QueryString);
                 }
             });
-        }
-
-        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if (this.ActualWidth > 980)
-            {
-                IsSmallSize = 0;
-            }
-            else if (this.ActualWidth <= 980 && this.ActualWidth > 460)
-            {
-                IsSmallSize = 1;
-            }
-            else /*(this.ActualWidth <= 460)*/
-            {
-                IsSmallSize = 2;
-            }
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -136,7 +114,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         {
             Border b = sender as Border;
             DSNhanVienPhucLoi_PhuCap data = (DSNhanVienPhucLoi_PhuCap)b.DataContext;
-            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaNhanVienPhucLoi(Main, data.cls_id, data.cls_day, data.cls_day_end, day1, day_end1));
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaNhanVienPhuCap(Main, data.cls_id, data.cls_day, data.cls_day_end, day1, day_end1));
             Main.Visibility = Visibility.Visible;
         }
     }

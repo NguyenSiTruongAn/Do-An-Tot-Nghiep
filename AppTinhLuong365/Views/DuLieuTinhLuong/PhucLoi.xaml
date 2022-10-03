@@ -257,7 +257,7 @@
                                         <DataGridTemplateColumn>
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Border MouseLeftButtonDown="BtnTuyChonDSPL" Cursor="Hand" HorizontalAlignment="Right" Background="Transparent" Height="30" Width="30">
+                                                    <Border MouseLeftButtonDown="BtnTuyChonDSPC" Cursor="Hand" HorizontalAlignment="Right" Background="Transparent" Height="30" Width="30">
                                                         <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
                                                     </Border>
                                                 </DataTemplate>
@@ -361,7 +361,7 @@
                                                             <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
                                                                 <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>
                                                             </Border>
-                                                            <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="btnXoaHoaHongTien_Click">
+                                                            <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="btnXoaPhuCapTheoCa_Click">
                                                                 <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
                                                             </Border>
                                                         </DockPanel>

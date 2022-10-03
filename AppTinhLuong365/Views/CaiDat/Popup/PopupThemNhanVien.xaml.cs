@@ -146,5 +146,12 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             }
             
         }
+
+        private void HuyChon(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            DSThemMoiNhanVienVaoNhom data = (DSThemMoiNhanVienVaoNhom)cb.DataContext;
+            nv.Remove(data.ep_id);
+        }
     }
 }
