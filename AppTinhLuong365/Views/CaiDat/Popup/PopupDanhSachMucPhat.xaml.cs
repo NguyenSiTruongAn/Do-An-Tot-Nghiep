@@ -32,11 +32,14 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public PopupDanhSachMucPhat(MainWindow main)
+        private string id;
+
+        public PopupDanhSachMucPhat(MainWindow main, string dataShiftId)
         {
             this.DataContext = this;
             InitializeComponent();
             Main = main;
+            id = dataShiftId;
             getData();
         }
 
@@ -62,6 +65,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.QueryString.Add("take", "2");
+                web.QueryString.Add("shift_id", id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     API_List_Np_Improperly api = JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
@@ -77,8 +81,20 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     //    }
                     //}
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_np_improperly.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_mp_shift.php", web.QueryString);
             }
+        }
+
+        private void Sua(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private void Xoa(object sender, MouseButtonEventArgs e)
+        {
+            Path b = sender as Path;
+            List data = (List)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupXoaNghiPhep(Main, data.pc_id));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

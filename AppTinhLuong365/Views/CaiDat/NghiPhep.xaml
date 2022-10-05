@@ -92,7 +92,7 @@
 
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
-            <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
+            <TabControl Name="Control" Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
                 <TabItem Cursor="Hand" Header="{DynamicResource textChinhSachNghiPhep}">
                     <Grid Cursor="Arrow" Background="{DynamicResource #F7F8FC}">
                         <StackPanel Orientation="Horizontal" Margin="10 30 0 0" HorizontalAlignment="Left"
@@ -235,6 +235,38 @@
                                         <Border Style="{DynamicResource Style_Border_Wrap4}" CornerRadius="5"
                                                 BorderThickness="1" BorderBrush="{DynamicResource #e1e1e1}">
                                             <ScrollViewer>
+                                                <ListView Margin="10 20" BorderThickness="0" ItemsSource="{Binding listShift}">
+                                                    <ListView.ItemContainerStyle>
+                                                        <Style TargetType="ListViewItem">
+                                                            <Setter Property="Template">
+                                                                <Setter.Value>
+                                                                    <ControlTemplate TargetType="ListViewItem">
+                                                                        <Border Margin="5 0 0 0">
+                                                                            <StackPanel Margin="0 15" Orientation="Horizontal">
+                                                                                <CheckBox Margin="5 0 0 0" Unchecked="HuyChon" Checked="ChonNhanvien"></CheckBox>
+                                                                                <StackPanel Margin="20 0 0 0">
+                                                                                    <TextBlock FontSize="15"
+                                                                                        Foreground="{DynamicResource #4C5BD4}"
+                                                                                        FontWeight="DemiBold"
+                                                                                        Text="{Binding shift_name}">
+                                                                                    </TextBlock>
+                                                                                    <TextBlock FontSize="15"
+                                                                                        FontWeight="DemiBold" Foreground="{DynamicResource #666666}">
+                                                                                        <Run Text="Từ" />
+                                                                                        <Run
+                                                                                            Text="{Binding start_time}" />
+                                                                                        <Run Text="-" />
+                                                                                        <Run Text="{Binding end_time}" />
+                                                                                    </TextBlock>
+                                                                                </StackPanel>
+                                                                            </StackPanel>
+                                                                        </Border>
+                                                                    </ControlTemplate>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </Style>
+                                                    </ListView.ItemContainerStyle>
+                                                </ListView>
                                             </ScrollViewer>
                                         </Border>
                                         <Border Style="{DynamicResource Style_Border_Wrap4}">
@@ -244,7 +276,7 @@
                                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3"
                                                         BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                                                     <Grid Height="38" Margin="10 0 10 0">
-                                                        <TextBox FontWeight="DemiBold" VerticalAlignment="Center"
+                                                        <TextBox PreviewTextInput="Txt_PreviewCurrencyTextInput"  DataObject.Pasting="TextBoxPasting" FontWeight="DemiBold" VerticalAlignment="Center"
                                                                  x:Name="tbInput" TextWrapping="Wrap" FontSize="16"
                                                                  Foreground="{DynamicResource #777777}"
                                                                  BorderThickness="0" />
@@ -274,10 +306,10 @@
                                                            Foreground="{DynamicResource #666666}" FontSize="16" />
                                                 <Border Margin="0 5 0 0" Height="43" CornerRadius="3"
                                                         BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                                    <tool:DatePicker FontSize="16"
+                                                    <tool:DatePicker x:Name="DatePicker" FontSize="16"
                                                                      Foreground="{DynamicResource #777777}" />
                                                 </Border>
-                                                <Border Height="45" Background="{DynamicResource #4C5BD4}"
+                                                <Border MouseLeftButtonDown="ApDung" Height="45" Background="{DynamicResource #4C5BD4}"
                                                         CornerRadius="5" Margin="0 15 0 0">
                                                     <TextBlock Text="{DynamicResource textApDung}"
                                                                Foreground="{DynamicResource #FFFFFF}"
@@ -312,7 +344,8 @@
                                                                     HorizontalAlignment="Right">
                                                             <TextBlock FontSize="15"
                                                                        Foreground="{DynamicResource #4C5BD4}"
-                                                                       FontWeight="DemiBold" Text="{Binding shift_name}">
+                                                                       FontWeight="DemiBold"
+                                                                       Text="{Binding shift_name}">
                                                             </TextBlock>
                                                             <TextBlock FontSize="15" FontWeight="DemiBold">
                                                                 <Run Text="Từ" />
@@ -342,7 +375,8 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"
+                                                        <TextBlock FontSize="15" FontWeight="DemiBold"
+                                                                   Foreground="{DynamicResource #4C5BD4}"
                                                                    Text="{Binding pc_time}"
                                                                    Style="{StaticResource TextRowCenter}">
                                                         </TextBlock>
@@ -355,7 +389,8 @@
                                                 <DataTemplate>
                                                     <Border Cursor="Hand" Background="Transparent"
                                                             MouseLeftButtonDown="Border_MouseLeftButtonDown">
-                                                        <TextBlock FontSize="15" FontWeight="DemiBold" Text="Xem mức phạt"
+                                                        <TextBlock FontSize="15" FontWeight="DemiBold"
+                                                                   Text="Xem mức phạt"
                                                                    Style="{StaticResource TextRowCenter}"
                                                                    TextDecorations="Underline">
                                                         </TextBlock>
@@ -532,22 +567,27 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar SelectionChanged="Thang" x:Name="Month" Foreground="{DynamicResource #444}" FontSize="16"
+                                                <tool:SearchBar SelectionChanged="Thang" x:Name="Month"
+                                                                Foreground="{DynamicResource #444}" FontSize="16"
                                                                 FontWeight="DemiBold" PlaceHolder="Tháng 8"
-                                                                ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}" Loaded="SearchBarMonth_OnLoaded"/>
+                                                                ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
+                                                                Loaded="SearchBarMonth_OnLoaded" />
                                             </Border>
-                                            <Border  Style="{DynamicResource Style_Border_Wrap3}" Width="160"
+                                            <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar SelectionChanged="Thang" x:Name="Year" Foreground="{DynamicResource #444}" FontSize="16"
+                                                <tool:SearchBar SelectionChanged="Thang" x:Name="Year"
+                                                                Foreground="{DynamicResource #444}" FontSize="16"
                                                                 FontWeight="DemiBold" PlaceHolder="Năm 2022"
                                                                 ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" />
                                             </Border>
                                             <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar SelectionChanged="NhanVien" x:Name="Employee" Foreground="{DynamicResource #444}" FontSize="16"
-                                                                FontWeight="DemiBold" ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}"
+                                                <tool:SearchBar SelectionChanged="NhanVien" x:Name="Employee"
+                                                                Foreground="{DynamicResource #444}" FontSize="16"
+                                                                FontWeight="DemiBold"
+                                                                ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 DisplayMemberPath="ep_id_display" />
                                             </Border>
 
