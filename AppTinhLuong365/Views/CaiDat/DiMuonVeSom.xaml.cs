@@ -578,5 +578,10 @@ namespace AppTinhLuong365.Views.CaiDat
             else month = DateTime.Now.ToString("MM");
             getData(month, year);
         }
+
+        private void DataGrid_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+        }
     }
 }

@@ -79,6 +79,50 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void Sua(object sender, MouseButtonEventArgs e)
         {
+            Border b = sender as Border;
+            List data = (List)b.DataContext;
+            if (data.type1 == 1)
+            {
+                using (WebClient web = new WebClient())
+                {
+                    if (Main.MainType == 0)
+                    {
+                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    }
+                    web.QueryString.Add("id", data.pc_id);
+                    web.QueryString.Add("pc_money", text);
+                    web.UploadValuesCompleted += (s, ee) =>
+                    {
+                        API_SuaNhomLamViec api = JsonConvert.DeserializeObject<API_SuaNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_np.php", web.QueryString);
+                }
+                var pop = new Views.CaiDat.NghiPhep(Main);
+                Main.HomeSelectionPage.NavigationService.Navigate(pop);
+                pop.Control.SelectedIndex = 1;
+                this.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                foreach (var a in list)
+                {
+                    if (a == data)
+                    {
+                        a.type1 = 1;
+                    }
+                }
+            }
+        }
+
+        private string text;
+
+        private void textChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            text = textBox.Text;
         }
 
         private void Xoa(object sender, MouseButtonEventArgs e)

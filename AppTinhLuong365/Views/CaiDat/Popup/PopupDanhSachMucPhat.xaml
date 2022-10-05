@@ -1,27 +1,33 @@
 ﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.Popup.PopupDanhSachMucPhat"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat.Popup"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       VerticalAlignment="Top"
       Title="PopupDanhSachMucPhat">
 
     <Grid Width="528" Margin="0 200 0 0">
-        <Border Style="{DynamicResource ShadowBorder1}"/>
+        <Border Style="{DynamicResource ShadowBorder1}" />
         <StackPanel>
             <Border CornerRadius="10 10 0 0" Background="{DynamicResource #4C5BD4}" Height="47">
-                <Path MouseLeftButtonDown="Path_MouseLeftButtonDown" Data="{DynamicResource iconClose}" Fill="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 10 10 0"/>
+                <Path MouseLeftButtonDown="Path_MouseLeftButtonDown" Data="{DynamicResource iconClose}"
+                      Fill="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 10 10 0" />
             </Border>
             <Border CornerRadius="0 0 10 10">
                 <StackPanel Margin="23.75 30 23.75 30">
-                    <TextBlock Text="Danh sách mức phạt qua từng thời điểm" FontSize="16" Foreground="{DynamicResource #4C5BD4}"/>
-                    <DataGrid Height="auto" x:Name="dataGrid" ItemsSource="{Binding list}" Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                    <TextBlock Text="Danh sách mức phạt qua từng thời điểm" FontSize="16"
+                               Foreground="{DynamicResource #4C5BD4}" />
+                    <DataGrid Height="auto" x:Name="dataGrid" ItemsSource="{Binding list}"
+                              Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
-                                    <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}" Height="{Binding ElementName=dataGrid,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                    <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}"
+                                            Height="{Binding ElementName=dataGrid,Path=ActualHeight}" CornerRadius="10"
+                                            Background="White">
+                                    </Border>
                                 </VisualBrush.Visual>
                             </VisualBrush>
                         </DataGrid.OpacityMask>
@@ -31,11 +37,17 @@
                                     <DataTemplate>
                                         <Border Background="Transparent">
                                             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <TextBox BorderThickness="0" IsReadOnly="True" FontSize="15" FontWeight="Bold" Text="{Binding pc_money}">
+                                                <TextBox TextChanged="textChanged" x:Name="TextBox1" FontSize="15" FontWeight="Bold" Text="{Binding pc_money}">
                                                     <TextBox.Style>
                                                         <Style TargetType="TextBox">
+                                                            <Setter Property="IsReadOnly" Value="True"></Setter>
+                                                            <Setter Property="BorderThickness" Value="0"></Setter>
                                                             <Style.Triggers>
-                                                                <DataTrigger></DataTrigger>
+                                                                <DataTrigger Binding="{Binding type1}" Value="1">
+                                                                    <Setter Property="IsReadOnly" Value="False"></Setter>
+                                                                    <Setter Property="BorderThickness" Value="1"></Setter>
+                                                                    <Setter Property="Focusable" Value="True"></Setter>
+                                                                </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBox.Style>
@@ -49,7 +61,8 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent">
-                                            <TextBlock FontSize="15" Text="{Binding pc_time}" FontWeight="Bold" Style="{StaticResource TextRowCenter}"/>
+                                            <TextBlock FontSize="15" Text="{Binding pc_time}" FontWeight="Bold"
+                                                       Style="{StaticResource TextRowCenter}" />
                                         </Border>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -58,9 +71,26 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Cursor="Hand" Background="Transparent">
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Path MouseLeftButtonDown="Sua" x:Name="sua"  Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"/>
-                                                <Path MouseLeftButtonDown="Xoa" Margin="10 0 0 0" Data="{DynamicResource iconXoa}" Fill="#f47171"/>
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+                                                        HorizontalAlignment="Center">
+                                                <Border Background="Transparent" MouseLeftButtonDown="Sua">
+                                                    <Path  x:Name="sua">
+                                                        <Path.Style>
+                                                            <Style TargetType="Path">
+                                                                <Setter Property="Data" Value="{DynamicResource iconEdit}"></Setter>
+                                                                <Setter Property="Fill" Value="{DynamicResource #68798B}"></Setter>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding type1}" Value="1">
+                                                                        <Setter Property="Data" Value="{DynamicResource iconSave}"></Setter>
+                                                                        <Setter Property="Fill" Value="#79b71f"></Setter>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Path.Style>
+                                                    </Path>
+                                                </Border>
+                                                <Path MouseLeftButtonDown="Xoa" Margin="10 0 0 0"
+                                                      Data="{DynamicResource iconXoa}" Fill="#f47171" />
                                             </StackPanel>
                                         </Border>
                                     </DataTemplate>
@@ -68,7 +98,9 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <TextBlock Text="Lưu ý: Mức phạt sẽ áp dụng theo ngày được chọn, việc xóa mức phạt có thể ảnh hưởng đến kết quả tính lương của các tháng trước. Hãy chắc chắn về mốc phạt được áp dụng sau khi xóa." FontSize="14" Foreground="#ef5353" TextWrapping="Wrap" Margin="0 20 0 0"/>
+                    <TextBlock
+                        Text="Lưu ý: Mức phạt sẽ áp dụng theo ngày được chọn, việc xóa mức phạt có thể ảnh hưởng đến kết quả tính lương của các tháng trước. Hãy chắc chắn về mốc phạt được áp dụng sau khi xóa."
+                        FontSize="14" Foreground="#ef5353" TextWrapping="Wrap" Margin="0 20 0 0" />
                 </StackPanel>
             </Border>
         </StackPanel>

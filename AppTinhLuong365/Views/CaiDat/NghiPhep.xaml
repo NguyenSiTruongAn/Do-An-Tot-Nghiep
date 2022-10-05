@@ -92,7 +92,7 @@
 
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
-            <TabControl Name="Control" Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
+            <TabControl BorderThickness="0" Name="Control" Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
                 <TabItem Cursor="Hand" Header="{DynamicResource textChinhSachNghiPhep}">
                     <Grid Cursor="Arrow" Background="{DynamicResource #F7F8FC}">
                         <StackPanel Orientation="Horizontal" Margin="10 30 0 0" HorizontalAlignment="Left"
@@ -323,7 +323,7 @@
                                         </Border>
                                     </WrapPanel>
                                 </Border>
-                                <DataGrid x:Name="dataGrid" ItemsSource="{Binding list}"
+                                <DataGrid  PreviewMouseWheel="DataGrid_OnPreviewMouseWheel" x:Name="dataGrid" ItemsSource="{Binding list}"
                                           Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
@@ -675,7 +675,7 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar SelectionChanged="NhanVien" x:Name="Employee"
+                                                <tool:SearchBar SelectionChanged="Thang" x:Name="Employee"
                                                                 Foreground="{DynamicResource #444}" FontSize="16"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}"
@@ -685,7 +685,7 @@
                                         </WrapPanel>
                                     </Border>
                                 </WrapPanel>
-                                <DataGrid x:Name="dataGrid2" ItemsSource="{Binding listItemNp1}"
+                                <DataGrid x:Name="dataGrid2" ItemsSource="{Binding listItemNp}"
                                           Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>

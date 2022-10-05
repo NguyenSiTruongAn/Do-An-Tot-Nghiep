@@ -60,7 +60,7 @@
     </Page.Resources>
 
     <Grid Background="{DynamicResource #F7F8FC}">
-        <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
+        <TabControl BorderThickness="0" Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
             <TabItem Cursor="Hand" Header="Đi sớm về muộn">
                 <StackPanel Cursor="Arrow">
                     <Grid Margin="20">
@@ -338,7 +338,7 @@
                             </TextBlock>
                         </Border>
                     </Grid>
-                    <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listLate}">
+                    <DataGrid PreviewMouseWheel="DataGrid_OnPreviewMouseWheel" x:Name="dataGrid1" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listLate}">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
