@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -48,6 +49,7 @@ namespace AppTinhLuong365.Views.CaiDat
             getData();
             getData1(month, year);
             getData2();
+            getData3();
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -153,7 +155,10 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupDanhSachMucPhat(Main));
+            Border b = sender as Border;
+            List data = (List)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(
+                new Views.CaiDat.Popup.PopupDanhSachMucPhat(Main, data.pc_shift));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
@@ -306,6 +311,46 @@ namespace AppTinhLuong365.Views.CaiDat
             }
         }
 
+        private List<Item_shift> _listShift;
+
+        public List<Item_shift> listShift
+        {
+            get { return _listShift; }
+            set
+            {
+                // if (value == null) value = new List<Item_shift>();
+                // value.Insert(0, new Item_shift() { shift_id = "-1", shift_name = "Tất cả các ca" });
+                _listShift = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void getData3()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.Headers.Add("Authorization", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_List_shift api =
+                        JsonConvert.DeserializeObject<API_List_shift>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listShift = api.data.items;
+                    }
+                    // foreach (EpLate item in listEpLate)
+                    // {
+                    //     if (item.ts_image != "/img/add.png")
+                    //     {
+                    //         item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                    //     }
+                    // }
+                };
+                web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/list_shift.php", web.QueryString);
+            }
+        }
+
         private void SearchBarMonth_OnLoaded(object sender, RoutedEventArgs e)
         {
             int indexMonth = ItemList.ToList().FindIndex(x => x.Contains(DateTime.Now.Month.ToString()));
@@ -316,6 +361,107 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             int indexYear = YearList.ToList().FindIndex(x => x.Contains(DateTime.Now.Year.ToString()));
             if (indexYear > -1) Year.SelectedIndex = indexYear;
+        }
+
+        private List<string> ca = new List<string>();
+
+        private void ChonNhanvien(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            Item_shift data = (Item_shift)cb.DataContext;
+            ca.Add(data.shift_id);
+        }
+
+        private void HuyChon(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            Item_shift data = (Item_shift)cb.DataContext;
+            ca.Remove(data.shift_id);
+        }
+
+        private void ApDung(object sender, MouseButtonEventArgs e)
+        {
+            bool allow = true;
+            if (ca.Count <= 0)
+            {
+                allow = false;
+            }
+
+            if (allow)
+            {
+                using (WebClient web = new WebClient())
+                {
+                    if (Main.MainType == 0)
+                    {
+                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    }
+
+                    for (int i = 0; i < ca.Count; i++)
+                    {
+                        string x = ca[i];
+                        web.QueryString.Add("shift_id[" + i + "]", ca[i]);
+                    }
+
+                    web.QueryString.Add("pn_money", tbInput.Text);
+                    if (DatePicker.SelectedDate != null)
+                        web.QueryString.Add("pn_time", DatePicker.SelectedDate.Value.ToString("yyyy-MM-dd"));
+                    web.QueryString.Add("pn_type", "2");
+                    // web.QueryString.Add("id_group", ID_gr);
+                    web.UploadValuesCompleted += (s, ee) =>
+                    {
+                        string x = UnicodeEncoding.UTF8.GetString(ee.Result);
+                        API_ThemNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_ThemNhanVienVaoNhom>(x);
+                        if (api.data != null)
+                        {
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_np.php",
+                        web.QueryString);
+                }
+            }
+
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiPhep(Main));
+            this.Control.SelectedIndex = 1;
+            this.Visibility = Visibility.Collapsed;
+        }
+
+        private static readonly Regex _regex = new Regex(@"^[0-9]\d*(\.\d{0,2})?$");
+
+        private static bool IsTextAllowed(string text)
+        {
+            return _regex.IsMatch(text);
+        }
+
+        private bool IsAllowed(TextBox tb, string text)
+        {
+            bool isAllowed = true;
+            if (tb != null)
+            {
+                string currentText = tb.Text;
+                if (!string.IsNullOrEmpty(tb.SelectedText))
+                    currentText = currentText.Remove(tb.CaretIndex, tb.SelectedText.Length);
+                isAllowed = IsTextAllowed(currentText.Insert(tb.CaretIndex, text));
+            }
+
+            return isAllowed;
+        }
+
+        private void Txt_PreviewCurrencyTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsAllowed(sender as TextBox, e.Text);
+        }
+
+
+        private void TextBoxPasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!IsAllowed(sender as TextBox, text))
+                    e.CancelCommand();
+            }
+            else
+                e.CancelCommand();
         }
     }
 }
