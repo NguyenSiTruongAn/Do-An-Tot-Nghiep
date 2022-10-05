@@ -46,8 +46,9 @@ namespace AppTinhLuong365.Views.CaiDat
             Main = main;
             string month = DateTime.Now.ToString("MM");
             string year = DateTime.Now.ToString("yyyy");
+            string ep_id = "";
             getData();
-            getData1(month, year);
+            getData1(month, year, ep_id);
             getData2();
             getData3();
             getData4();
@@ -156,49 +157,6 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private List<List> _list1;
 
-        public List<List> list1
-        {
-            get { return _list1; }
-            set
-            {
-                _list1 = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private void getData4()
-        {
-            using (WebClient web = new WebClient())
-            {
-                web.QueryString.Add("token", Main.CurrentCompany.token);
-                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                web.QueryString.Add("take", "1");
-                web.UploadValuesCompleted += (s, e) =>
-                {
-                    API_List_Np_Improperly api =
-                        JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
-                    {
-                        list1 = api.data.list;
-                        DateTime aDateTime;
-                        foreach (var a in list1)
-                        {
-                            DateTime.TryParse(a.pc_time, out aDateTime);
-                            a.pc_time = aDateTime.ToString("dd/MM/yyyy");
-                        }
-                    }
-                    //foreach (EpLate item in list)
-                    //{
-                    //    if (item.ts_image != "/img/add.png")
-                    //    {
-                    //        item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
-                    //    }
-                    //}
-                };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_np_improperly.php",
-                    web.QueryString);
-            }
-        }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -242,7 +200,7 @@ namespace AppTinhLuong365.Views.CaiDat
             }
         }
 
-        private void getData1(string month, string year)
+        private void getData1(string month, string year, string ep_id)
         {
             using (WebClient web = new WebClient())
             {
@@ -251,6 +209,7 @@ namespace AppTinhLuong365.Views.CaiDat
                 //web.QueryString.Add("page", "1");
                 web.QueryString.Add("month", month);
                 web.QueryString.Add("year", year);
+                web.QueryString.Add("id_user", ep_id);
                 // if (!string.IsNullOrEmpty(id_nv)) web.QueryString.Add("id_user", id_nv);
 
                 web.UploadValuesCompleted += (s, e) =>
@@ -305,7 +264,7 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void Thang(object sender, SelectionChangedEventArgs e)
         {
-            string month = "", year = "";
+            string month = "", year = "", ep_id = "";
             if (Year.SelectedIndex != -1)
                 year = Year.SelectedItem.ToString().Split(' ')[1];
             else
@@ -313,7 +272,38 @@ namespace AppTinhLuong365.Views.CaiDat
             if (Month.SelectedIndex != -1)
                 month = (Month.SelectedIndex + 1) + "";
             else month = DateTime.Now.ToString("MM");
-            getData1(month, year);
+            if (Employee.SelectedIndex != -1)
+            {
+                ListEmployee id1 = (ListEmployee)Employee.SelectedItem;
+                string id2 = id1.ep_id;
+                if (id2 == "-1")
+                    ep_id = "";
+                else ep_id = id2;
+            }
+
+            getData1(month, year, ep_id);
+        }
+
+        private void Search(object sender, SelectionChangedEventArgs e)
+        {
+            string month = "", year = "", ep_id = "";
+            if (Year.SelectedIndex != -1)
+                year = Year.SelectedItem.ToString().Split(' ')[1];
+            else
+                year = DateTime.Now.ToString("yyyy");
+            if (Month.SelectedIndex != -1)
+                month = (Month.SelectedIndex + 1) + "";
+            else month = DateTime.Now.ToString("MM");
+            if (Employee.SelectedIndex != -1)
+            {
+                ListEmployee id1 = (ListEmployee)Employee.SelectedItem;
+                string id2 = id1.ep_id;
+                if (id2 == "-1")
+                    ep_id = "";
+                else ep_id = id2;
+            }
+
+            getData1(month, year, ep_id);
         }
 
         private void NhanVien(object sender, SelectionChangedEventArgs e)
@@ -404,6 +394,50 @@ namespace AppTinhLuong365.Views.CaiDat
                     // }
                 };
                 web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/list_shift.php", web.QueryString);
+            }
+        }
+
+        public List<List> list1
+        {
+            get { return _list1; }
+            set
+            {
+                _list1 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void getData4()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("take", "1");
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_List_Np_Improperly api =
+                        JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        list1 = api.data.list;
+                        DateTime aDateTime;
+                        foreach (var a in list1)
+                        {
+                            DateTime.TryParse(a.pc_time, out aDateTime);
+                            a.pc_time = aDateTime.ToString("dd/MM/yyyy");
+                        }
+                    }
+                    //foreach (EpLate item in list)
+                    //{
+                    //    if (item.ts_image != "/img/add.png")
+                    //    {
+                    //        item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_np_improperly.php",
+                    web.QueryString);
             }
         }
 
@@ -564,6 +598,11 @@ namespace AppTinhLuong365.Views.CaiDat
             Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiPhep(Main));
             this.Control.SelectedIndex = 2;
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void DataGrid_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
     }
 }

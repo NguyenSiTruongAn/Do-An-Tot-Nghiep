@@ -31,11 +31,17 @@
                                     <DataTemplate>
                                         <Border Background="Transparent">
                                             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <TextBox BorderThickness="0" IsReadOnly="True" FontSize="15" FontWeight="Bold" Text="{Binding pc_money}">
+                                                <TextBox TextChanged="textChanged" x:Name="TextBox1" FontSize="15" FontWeight="Bold" Text="{Binding pc_money}">
                                                     <TextBox.Style>
                                                         <Style TargetType="TextBox">
+                                                            <Setter Property="IsReadOnly" Value="True"></Setter>
+                                                            <Setter Property="BorderThickness" Value="0"></Setter>
                                                             <Style.Triggers>
-                                                                <DataTrigger></DataTrigger>
+                                                                <DataTrigger Binding="{Binding type1}" Value="1">
+                                                                    <Setter Property="IsReadOnly" Value="False"></Setter>
+                                                                    <Setter Property="BorderThickness" Value="1"></Setter>
+                                                                    <Setter Property="Focusable" Value="True"></Setter>
+                                                                </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
                                                     </TextBox.Style>
@@ -59,8 +65,24 @@
                                     <DataTemplate>
                                         <Border Cursor="Hand" Background="Transparent">
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Path MouseLeftButtonDown="Sua" x:Name="sua"  Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"/>
-                                                <Path MouseLeftButtonDown="Xoa" Margin="10 0 0 0" Data="{DynamicResource iconXoa}" Fill="#f47171"/>
+                                                <Border Background="Transparent" MouseLeftButtonDown="Sua">
+                                                    <Path  x:Name="sua">
+                                                        <Path.Style>
+                                                            <Style TargetType="Path">
+                                                                <Setter Property="Data" Value="{DynamicResource iconEdit}"></Setter>
+                                                                <Setter Property="Fill" Value="{DynamicResource #68798B}"></Setter>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding type1}" Value="1">
+                                                                        <Setter Property="Data" Value="{DynamicResource iconSave}"></Setter>
+                                                                        <Setter Property="Fill" Value="#79b71f"></Setter>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Path.Style>
+                                                    </Path>
+                                                </Border>
+                                                <Path MouseLeftButtonDown="Xoa" Margin="10 0 0 0"
+                                                      Data="{DynamicResource iconXoa}" Fill="#f47171" />
                                             </StackPanel>
                                         </Border>
                                     </DataTemplate>
