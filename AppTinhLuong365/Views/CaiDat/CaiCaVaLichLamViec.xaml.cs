@@ -270,7 +270,8 @@ namespace AppTinhLuong365.Views.CaiDat
             }
 
             Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
-            this.Visibility = Visibility.Collapsed;
+            this.Control.SelectedIndex = 2;
+            this.tabItem2.IsSelected = false;
         }
 
         private static readonly Regex _regex = new Regex(@"^[0-9]\d*(\.\d{0,2})?$");
