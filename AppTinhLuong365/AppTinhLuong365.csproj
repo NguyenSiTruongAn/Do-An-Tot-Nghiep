@@ -191,6 +191,9 @@
     <Compile Include="Views\CaiDat\Popup\PopupDanhSachMucPhat.xaml.cs">
       <DependentUpon>PopupDanhSachMucPhat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupDanhSachMucPhat1.xaml.cs">
+      <DependentUpon>PopupDanhSachMucPhat1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CaiDat\Popup\PopupDSNVLichLamViec.xaml.cs">
       <DependentUpon>PopupDSNVLichLamViec.xaml</DependentUpon>
     </Compile>
@@ -704,6 +707,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CaiDat\Popup\PopupDanhSachMucPhat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupDanhSachMucPhat1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

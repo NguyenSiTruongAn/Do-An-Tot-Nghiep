@@ -64,7 +64,7 @@
                 </DockPanel>
             </Border>
         </WrapPanel>
-        <TabControl Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{DynamicResource TabItem1}">
+        <TabControl Name="Control" BorderThickness="0" Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{DynamicResource TabItem1}">
             <TabItem Cursor="Hand" Header="{DynamicResource textCaLamViec}">
             </TabItem>
             <TabItem Cursor="Hand" IsSelected="True" x:Name="tabItem2" Header="{DynamicResource textCalendar}">
@@ -225,7 +225,7 @@
                     </Grid>
                 </StackPanel>
             </TabItem>
-            <TabItem Cursor="Hand" Header="{DynamicResource textCauDatCongChuan}">
+            <TabItem x:Name="TabItem3" Cursor="Hand" Header="{DynamicResource textCauDatCongChuan}">
                 <Grid Cursor="Arrow" Margin="0 30">
                     <Border HorizontalAlignment="Left" Width="350" Height="380" Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                         <Border.Effect>
@@ -248,7 +248,7 @@
                             <TextBlock Height="100" Margin="20 10 0 0" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #747474}" TextWrapping="WrapWithOverflow">Cài đặt số ngày công tiêu chuẩn để tính lương cho toàn bộ nhân viên của công ty trong tháng đó. <LineBreak/> Định dạng nhập là số nguyên dương hoặc số thập phân.</TextBlock>
                             <Border CornerRadius="3" Height="41" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                                 <Grid Height="38" Margin="10 0 10 0">
-                                    <TextBox PreviewTextInput="Txt_PreviewCurrencyTextInput"  DataObject.Pasting="TextBoxPasting" FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" Text="{Binding item.num_days}" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                    <TextBox PreviewTextInput="Txt_PreviewCurrencyTextInput" DataObject.Pasting="TextBoxPasting" FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" Text="{Binding item.num_days}" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                                     <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="Nhập công chuẩn tháng 09/2022" IsHitTestVisible="False">
                                         <TextBlock.Style>
                                             <Style TargetType="TextBlock">
