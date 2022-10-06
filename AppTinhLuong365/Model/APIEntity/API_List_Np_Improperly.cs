@@ -26,6 +26,20 @@ namespace AppTinhLuong365.Model.APIEntity
         public string start_time { get; set; }
         public string end_time { get; set; }
         public string pc_money { get; set; }
+
+        public string display_pm_monney
+        {
+            get
+            {
+                string a = "";
+                if (pc_money != null)
+                {
+                    int m;
+                    if (int.TryParse(pc_money, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                return a;
+            }
+        }
         public string pc_time { get; set; }
         public string pc_shift { get; set; }
         public string pc_id { get; set; }

@@ -20,9 +20,29 @@ namespace AppTinhLuong365.Model.APIEntity
         public string lho_id_created { get; set; }
         public string lho_first_time { get; set; }
         public string lho_last_time { get; set; }
-        public string lho_status { get; set; }
+        public int lho_status { get; set; }
         public string lho_number { get; set; }
+        public string display_pm_monney
+        {
+            get
+            {
+                string a = "";
+                if (lho_status == 1)
+                {
+                    int m;
+                    if (int.TryParse(lho_number, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else if (lho_status == 2)
+                {
+                    a = lho_number;
+                }
+
+                return a;
+            }
+        }
         public string lho_time_created { get; set; }
+        public string time_start { get; set; }
+        public string time_end { get; set; }
     }
 
     public class API_List_Holiday
