@@ -323,7 +323,7 @@
                                         </Border>
                                     </WrapPanel>
                                 </Border>
-                                <DataGrid  PreviewMouseWheel="DataGrid_OnPreviewMouseWheel" x:Name="dataGrid" ItemsSource="{Binding list}"
+                                <DataGrid PreviewMouseWheel="DataGrid_OnPreviewMouseWheel" x:Name="dataGrid" ItemsSource="{Binding list}"
                                           Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
@@ -364,7 +364,7 @@
                                                     <Border Background="Transparent">
                                                         <TextBlock FontSize="15" FontWeight="DemiBold"
                                                                    Style="{StaticResource TextRowCenter}">
-                                                            <Run Text="{Binding pc_money}" />
+                                                            <Run Text="{Binding display_pm_monney, Mode=OneWay}" />
                                                             <Run Text="VNĐ/ca" />
                                                         </TextBlock>
                                                     </Border>
@@ -589,7 +589,7 @@
                                                     <Border Background="Transparent">
                                                         <TextBlock FontSize="15" FontWeight="DemiBold"
                                                                    Style="{StaticResource TextRowCenter}">
-                                                            <Run Text="{Binding pc_money}" />
+                                                            <Run Text="{Binding display_pm_monney, Mode=OneWay}" />
                                                             <Run Text="VNĐ/ca" />
                                                         </TextBlock>
                                                     </Border>

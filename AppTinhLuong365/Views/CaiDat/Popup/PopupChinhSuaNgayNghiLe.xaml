@@ -45,6 +45,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock x:Name="validateName" Style="{StaticResource tblValidate}"/>
                     <WrapPanel Margin="0 11 0 0">
                         <StackPanel>
                             <Grid>
@@ -52,8 +53,9 @@
                                 <Path Margin="140 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
                             </Grid>
                             <Border Width="230" Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                <tool:DatePicker FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                <tool:DatePicker x:Name="DatePickerStart" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
                             </Border>
+                            <TextBlock x:Name="validateStartDate" Style="{StaticResource tblValidate}"/>
                         </StackPanel>
                         <StackPanel Margin="28 0 0 0">
                             <Grid>
@@ -61,13 +63,14 @@
                                 <Path Margin="145 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
                             </Grid>
                             <Border Width="230" Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                <tool:DatePicker FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                <tool:DatePicker x:Name="DatePickerEnd" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
                             </Border>
+                            <TextBlock x:Name="validateEndDate" Style="{StaticResource tblValidate}"/>
                         </StackPanel>
                     </WrapPanel>
                     <TextBlock Text="{DynamicResource textThuongNghiLe}" Foreground="{DynamicResource #666666}" FontSize="16" Margin="0 11 0 0" FontWeight="DemiBold"/>
                     <WrapPanel Margin="0 5 0 0">
-                        <ComboBox FontSize="16" Foreground="{DynamicResource #777777}" Width="230" Height="42" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                        <ComboBox x:Name="BoxSalary" FontSize="16" Foreground="{DynamicResource #777777}" Width="230" Height="42" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
                             <ComboBoxItem IsSelected="True">Tiền Lương</ComboBoxItem>
                             <ComboBoxItem>Số công</ComboBoxItem>
                         </ComboBox>
@@ -89,7 +92,7 @@
                             </Grid>
                         </Border>
                     </WrapPanel>
-                    <Border Cursor="Hand" Margin="0 39 0 0" Height="45" Background="{DynamicResource #4C5BD4}" CornerRadius="5">
+                    <Border MouseLeftButtonDown="Save" Cursor="Hand" Margin="0 39 0 0" Height="45" Background="{DynamicResource #4C5BD4}" CornerRadius="5">
                         <TextBlock Text="Sửa kỳ nghỉ lễ" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #FFFFFF}" FontSize="15"/>
                     </Border>
                 </StackPanel>
