@@ -1,6 +1,7 @@
-﻿using System;
+﻿using AppTinhLuong365.Core;
 using AppTinhLuong365.Model.APIEntity;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,8 +13,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using AppTinhLuong365.Core;
-using Brush = System.Drawing.Brush;
 
 namespace AppTinhLuong365.Views.CaiDat
 {
@@ -167,6 +166,8 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("time", year + "-" + month);
                 if (!string.IsNullOrEmpty(id_nv)) web.QueryString.Add("id_ep", id_nv);
                 if (!string.IsNullOrEmpty(id_pb)) web.QueryString.Add("id_dp", id_pb);
+                // web.QueryString.Add("page", page + "");
+
                 // web.QueryString.Add("page", pageNB + "");
 
                 web.UploadValuesCompleted += (s, e) =>
@@ -176,10 +177,10 @@ namespace AppTinhLuong365.Views.CaiDat
                     if (api.data != null)
                     {
                         listEpLate1 = listEpLate = api.data.ep_late;
-                        // totalNVDiMuon = int.Parse(api.data.total);
-                        // PageNVDiMuon = ListPageNumber(totalNVDiMuon);
-                        // loadPage_ChuaNhom(pageNB, PageNVChuaNhom);
-                        // dataGrid.AutoReponsiveColumn(0);
+                        totalNVDiMuon = int.Parse(api.data.count);
+                        PageNVDiMuon = ListPageNumber(totalNVDiMuon);
+                        // loadPage_ChuaNhom(page, PageNVChuaNhom);
+                        dataGrid.AutoReponsiveColumn(0);
                     }
 
                     foreach (EpLate item in listEpLate)

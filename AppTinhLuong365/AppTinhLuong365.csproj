@@ -122,6 +122,7 @@
     <Compile Include="Model\APIEntity\API_List_employee_cycle.cs" />
     <Compile Include="Model\APIEntity\API_List_employee_not_in_cycle.cs" />
     <Compile Include="Model\APIEntity\API_List_emp_in_cycle_by_com_id.cs" />
+    <Compile Include="Model\APIEntity\API_List_ep_holiday.cs" />
     <Compile Include="Model\APIEntity\API_List_Ep_Late.cs" />
     <Compile Include="Model\APIEntity\API_List_Ep_Np.cs" />
     <Compile Include="Model\APIEntity\API_List_Holiday.cs" />
@@ -277,6 +278,9 @@
     </Compile>
     <Compile Include="Views\CaiDat\Popup\PopupXoaNghiPhep.xaml.cs">
       <DependentUpon>PopupXoaNghiPhep.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupXoaNhanVienNghiLe.xaml.cs">
+      <DependentUpon>PopupXoaNhanVienNghiLe.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ChiTraLuong\ChiTraLuong.xaml.cs">
       <DependentUpon>ChiTraLuong.xaml</DependentUpon>
@@ -806,6 +810,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CaiDat\Popup\PopupXoaNghiPhep.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupXoaNhanVienNghiLe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

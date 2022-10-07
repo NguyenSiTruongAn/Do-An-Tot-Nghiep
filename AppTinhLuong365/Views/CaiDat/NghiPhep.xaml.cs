@@ -40,7 +40,6 @@ namespace AppTinhLuong365.Views.CaiDat
             {
                 YearList.Add($"Năm {i}");
             }
-
             InitializeComponent();
             this.DataContext = this;
             Main = main;
@@ -603,6 +602,11 @@ namespace AppTinhLuong365.Views.CaiDat
         private void DataGrid_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+        }
+
+        private void NghiPhep_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            DatePickerDay.SelectedDate = DateTime.Now;
         }
     }
 }

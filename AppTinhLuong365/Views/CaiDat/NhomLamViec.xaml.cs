@@ -1,25 +1,16 @@
-﻿using AppTinhLuong365.Model.APIEntity;
+﻿using AppTinhLuong365.Core;
+using AppTinhLuong365.Model.APIEntity;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using AppTinhLuong365.Core;
-using System.Net.Http;
 
 namespace AppTinhLuong365.Views.CaiDat
 {
@@ -44,7 +35,7 @@ namespace AppTinhLuong365.Views.CaiDat
             getData1(1);
             getData2(1);
             dataGrid.AutoReponsiveColumn(0);
-            
+
         }
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -75,7 +66,7 @@ namespace AppTinhLuong365.Views.CaiDat
                     API_ListGroup api = JsonConvert.DeserializeObject<API_ListGroup>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
-                        listNhom  = api.data.list_group;
+                        listNhom = api.data.list_group;
                     }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_group_manager.php", web.QueryString);
@@ -126,7 +117,7 @@ namespace AppTinhLuong365.Views.CaiDat
                         PageNVChuaNhom = ListPageNumber(totalNVChuaNhom);
                         loadPage_ChuaNhom(pageNB, PageNVChuaNhom);
                         dataGrid.AutoReponsiveColumn(0);
-                        
+
                     }
                     foreach (ListEpNoGroup item in listNVChuaNhom)
                     {

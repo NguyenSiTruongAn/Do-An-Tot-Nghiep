@@ -10,6 +10,7 @@ namespace AppTinhLuong365.Model.APIEntity
     public class List_Ep_Late
     {
         public List<EpLate> ep_late { get; set; }
+        public string count { get; set; }
         public string message { get; set; }
     }
 

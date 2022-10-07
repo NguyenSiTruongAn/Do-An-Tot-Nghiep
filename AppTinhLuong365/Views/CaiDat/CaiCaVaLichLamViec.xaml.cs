@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -44,10 +45,12 @@ namespace AppTinhLuong365.Views.CaiDat
 
             InitializeComponent();
             this.DataContext = this;
+            string month = DateTime.Now.ToString("MM");
+            string year = DateTime.Now.ToString("yyyy");
             Main = main;
-            getData();
-            getData1();
-            getData2();
+            getData(month, year);
+            getData1(month, year);
+            getData2(month, year);
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -85,6 +88,7 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void lv_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void Border_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -122,12 +126,14 @@ namespace AppTinhLuong365.Views.CaiDat
             }
         }
 
-        private void getData()
+        private void getData(string month, string year)
         {
             using (WebClient web = new WebClient())
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("month", month);
+                web.QueryString.Add("year", year);
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     API_ListCalendarWork api =
@@ -161,12 +167,14 @@ namespace AppTinhLuong365.Views.CaiDat
             }
         }
 
-        private void getData1()
+        private void getData1(string month, string year)
         {
             using (WebClient web = new WebClient())
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("month", month);
+                web.QueryString.Add("year", year);
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     API_ListCalendarWork api =
@@ -201,12 +209,12 @@ namespace AppTinhLuong365.Views.CaiDat
         }
 
         private string cw_id;
-        private void getData2()
+        private void getData2(string month, string year)
         {
             using (WebClient web = new WebClient())
             {
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                web.QueryString.Add("date", "2022/09/01");
+                web.QueryString.Add("date", year + "/" + month + "/01");
                 web.Headers.Add("Authorization", Main.CurrentCompany.token);
                 web.UploadValuesCompleted += (s, e) =>
                 {
@@ -231,6 +239,33 @@ namespace AppTinhLuong365.Views.CaiDat
             }
         }
 
+        private void Load(object sender, SelectionChangedEventArgs e)
+        {
+            string year = "", month = "";
+            if (searchBarYear1.SelectedIndex != -1)
+                year = searchBarYear1.SelectedItem.ToString().Split(' ')[1];
+            else
+                year = DateTime.Now.ToString("yyyy");
+            if (searchBarMonth1.SelectedIndex != -1)
+                month = (searchBarMonth1.SelectedIndex + 1) + "";
+            else month = DateTime.Now.ToString("MM");
+            getData(month, year);
+            getData1(month, year);
+            getData2(month, year);
+        }
+
+        private void SearchBarMonth_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            int indexMonth = ItemList.ToList().FindIndex(x => x.Contains(DateTime.Now.Month.ToString()));
+            if (indexMonth > -1) searchBarMonth1.SelectedIndex = indexMonth;
+        }
+
+        private void FrameworkElement_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            int indexYear = YearList.ToList().FindIndex(x => x.Contains(DateTime.Now.Year.ToString()));
+            if (indexYear > -1) searchBarYear1.SelectedIndex = indexYear;
+        }
+
         private string id;
 
         private void TuyChon_Click1(object sender, MouseButtonEventArgs e)
@@ -248,11 +283,22 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             using (WebClient web = new WebClient())
             {
+                string month="";
+                string year = "";
+                if (searchBarMonth1.SelectedItem != null)
+                {
+                    month = (searchBarMonth1.SelectedItem as string).Replace("Tháng ", "");
+                }
+                if (searchBarYear1.SelectedItem != null)
+                {
+                    year = (searchBarYear1.SelectedItem as string).Replace("Năm ", "");
+                }
+                DateTime date=new DateTime(int.Parse(year),int.Parse(month),1);
                 if (Main.MainType == 0)
                 {
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                    web.QueryString.Add("time_cong", "2022/09/01");
+                    web.QueryString.Add("time_cong", date.ToString("yyyy/MM/dd"));
                     web.QueryString.Add("id", cw_id);
                 }
 

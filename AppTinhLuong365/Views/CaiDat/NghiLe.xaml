@@ -13,7 +13,7 @@
         <core:MathConvert x:Key="math"></core:MathConvert>
     </Page.Resources>
 
-    <Grid MaxWidth="2000" Background="{DynamicResource #F7F8FC}">
+    <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
             <Border Cursor="Hand" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}"
                     HorizontalAlignment="Right" MouseLeftButtonDown="Border_MouseLeftButtonDown">

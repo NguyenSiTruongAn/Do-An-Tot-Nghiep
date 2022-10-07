@@ -6,7 +6,7 @@
       xmlns:core="clr-namespace:AppTinhLuong365.Core"
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat"
-      mc:Ignorable="d"
+      mc:Ignorable="d" Loaded="NghiPhep_OnLoaded"
       Title="NghiPhep" SizeChanged="Page_SizeChanged">
 
     <Page.Resources>
@@ -205,7 +205,7 @@
                                             Background="{DynamicResource #FFFFFF}">
                                         <Border Width="161" HorizontalAlignment="Right" BorderThickness="1"
                                                 CornerRadius="10" BorderBrush="{DynamicResource #ebebeb}">
-                                            <tool:DatePicker Foreground="{DynamicResource #68798B}"
+                                            <tool:DatePicker x:Name="DatePickerDay" Foreground="{DynamicResource #68798B}"
                                                              Background="{DynamicResource #FFFFFF}" Margin="3" />
                                         </Border>
                                     </Border>

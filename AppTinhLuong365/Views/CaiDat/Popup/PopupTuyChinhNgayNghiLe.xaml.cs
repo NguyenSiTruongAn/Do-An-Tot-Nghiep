@@ -50,7 +50,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void btnNhanVienApDung_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.CaiDat.Popup.PopupNhanVienADNghiLe(Main);
+            var pop = new Views.CaiDat.Popup.PopupNhanVienADNghiLe(Main, id, name);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.MaxWidth = 1054;
