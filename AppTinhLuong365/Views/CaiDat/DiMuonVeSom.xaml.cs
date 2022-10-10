@@ -95,7 +95,7 @@ namespace AppTinhLuong365.Views.CaiDat
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                web.QueryString.Add("time", "2022-09");
+                //web.QueryString.Add("time", "2022-09");
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     API_ListLate api = JsonConvert.DeserializeObject<API_ListLate>(UnicodeEncoding.UTF8.GetString(e.Result));

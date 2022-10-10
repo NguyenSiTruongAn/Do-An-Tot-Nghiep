@@ -1,6 +1,9 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,6 +34,52 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void TaoMoi(object sender, MouseButtonEventArgs e)
+        {
+            bool allow = true;
+            validateName.Text = validateKPI.Text = validateKPINo.Text = "";
+            if (string.IsNullOrEmpty(tbInput.Text))
+            {
+                allow = false;
+                validateName.Text = "Vui lòng nhập đầy đủ";
+            }
+            if (string.IsNullOrEmpty(tbInput1.Text))
+            {
+                allow = false;
+                validateKPI.Text = "Vui lòng nhập đầy đủ";
+            }
+            if (string.IsNullOrEmpty(tbInput2.Text))
+            {
+                allow = false;
+                validateKPINo.Text = "Vui lòng chọn thời gian áp dụng";
+            }
+            if (allow)
+            {
+                using (WebClient web = new WebClient())
+                {
+                    if (Main.MainType == 0)
+                    {
+                        web.QueryString.Add("token", Main.CurrentCompany.token);
+                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    }
+                    web.QueryString.Add("tl_kpi_yes", tbInput1.Text);
+                    web.QueryString.Add("tl_kpi_no", tbInput2.Text);
+                    web.QueryString.Add("tl_name", tbInput.Text);
+                    web.UploadValuesCompleted += (s, ee) =>
+                    {
+                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_setting_plan.php", web.QueryString);
+                }
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.HoaHong(Main));
+                Main.sidebar.SelectedIndex = 6;
+                this.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

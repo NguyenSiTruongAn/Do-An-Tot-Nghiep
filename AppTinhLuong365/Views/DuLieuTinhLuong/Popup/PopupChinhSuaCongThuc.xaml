@@ -1,0 +1,178 @@
+﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.Popup.PopupChinhSuaCongThuc"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong.Popup"
+      mc:Ignorable="d"
+      Title="PopupChinhSuaCongThuc">
+
+    <Grid Height="481" Width="582">
+        <Border Style="{StaticResource ShadowBorder2}"></Border>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
+            <StackPanel>
+                <Border CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
+                    <Grid>
+                        <TextBlock Text="Chỉnh sửa công thức" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" HorizontalAlignment="Right" Padding="0 3 17 0" FontWeight="Bold" FontFamily="roboto" Text="x" FontSize="28" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                    </Grid>
+                </Border>
+                <TextBlock Margin="20 20 0 20" Text="Thêm công thức" FontSize="20" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold">
+                </TextBlock>
+                <DockPanel>
+                    <StackPanel Margin="20 0 0 0" Width="300" HorizontalAlignment="Left">
+                        <Border Margin="0 0 0 20" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                            <Grid Height="38" Margin="10 0 10 0">
+                                <Path Data=""></Path>
+                                <TextBox VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                <TextBlock VerticalAlignment="Top" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="Nhập tên công thức" IsHitTestVisible="False" Margin="0,8,0,0">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=tbInput,Path=Text}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+                        <DockPanel>
+                            <RadioButton x:Name="CbCongThuc" GroupName="GrThemCongThuc" IsChecked="True" FontSize="16" Foreground="{DynamicResource #666666}">Công thức</RadioButton>
+                            <RadioButton x:Name="CbHangSo" GroupName="GrThemCongThuc" Margin="20 0 0 0" FontSize="16" Foreground="{DynamicResource #666666}">Hằng số</RadioButton>
+                        </DockPanel>
+                        <Border Margin="0 20 0 0" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Height="164">
+                            <Grid Margin="10">
+                                <TextBox Height="97" VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                            </Grid>
+                        </Border>
+                        <TextBlock Text="" Style="{StaticResource tblValidate}" Name="valuedate"/>
+                        <Border Width="180" Cursor="Hand" MouseLeftButtonDown="ThemCongThuc" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Left" Height="45" Margin="2,20,-2.4,0">
+                            <TextBlock Text="Thêm công thức" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                    </StackPanel>
+                    <Border Height="252" Margin="10 0 20 0" CornerRadius="5" BorderThickness="2" BorderBrush="{DynamicResource #BBBBBB}" VerticalAlignment="Top">
+                        <ScrollViewer Height="252">
+                            <StackPanel Margin="10">
+                                <StackPanel Margin="0 10 0 0">
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{DynamicResource #E5EFFF}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <DockPanel>
+                                        <Path Width="18" Height="18" Margin="0 0 5 0"></Path>
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" FontSize="15" Text="luong_co_ban" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                    </DockPanel>
+                                    <TextBlock Margin="23 0 0 0" Text="Mức lương cơ bản" FontSize="15" Foreground="{DynamicResource #777777}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0 10 0 0">
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{DynamicResource #E5EFFF}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <DockPanel>
+                                        <Path Width="18" Height="18" Margin="0 0 5 0"></Path>
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" FontSize="15" Text="cong_chuan" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                    </DockPanel>
+                                    <TextBlock Margin="23 0 0 0" Text="Số công chuẩn" FontSize="15" Foreground="{DynamicResource #777777}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0 10 0 0">
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{DynamicResource #E5EFFF}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <DockPanel>
+                                        <Path Width="18" Height="18" Margin="0 0 5 0"></Path>
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" FontSize="15" Text="phu_thuoc" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                    </DockPanel>
+                                    <TextBlock Margin="23 0 0 0" Text="Số người phụ thuộc" FontSize="15" Foreground="{DynamicResource #777777}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0 10 0 0">
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{DynamicResource #E5EFFF}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <DockPanel>
+                                        <Path Width="18" Height="18" Margin="0 0 5 0"></Path>
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" FontSize="15" Text="dong_gop" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                    </DockPanel>
+                                    <TextBlock Margin="23 0 0 0" Text="Các khoản đóng góp" FontSize="15" Foreground="{DynamicResource #777777}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0 10 0 0">
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{DynamicResource #E5EFFF}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <DockPanel>
+                                        <Path Width="18" Height="18" Margin="0 0 5 0"></Path>
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" FontSize="15" Text="cong_thuc" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                    </DockPanel>
+                                    <TextBlock Margin="23 0 0 0" Text="Số công thực tế" FontSize="15" Foreground="{DynamicResource #777777}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0 10 0 0">
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{DynamicResource #E5EFFF}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <DockPanel>
+                                        <Path Width="18" Height="18" Margin="0 0 5 0"></Path>
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" FontSize="15" Text="cong_sau_phat" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                    </DockPanel>
+                                    <TextBlock Margin="23 0 0 0" Text="Số công thực tế còn lại sau phạt" FontSize="15" Foreground="{DynamicResource #777777}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="0 10 0 0">
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{DynamicResource #E5EFFF}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <DockPanel>
+                                        <Path Width="18" Height="18" Margin="0 0 5 0"></Path>
+                                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" FontSize="15" Text="luong_bao_hiem" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                    </DockPanel>
+                                    <TextBlock Margin="23 0 0 0" Text="Mức lương đóng bảo hiểm thực tế" FontSize="15" Foreground="{DynamicResource #777777}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </DockPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

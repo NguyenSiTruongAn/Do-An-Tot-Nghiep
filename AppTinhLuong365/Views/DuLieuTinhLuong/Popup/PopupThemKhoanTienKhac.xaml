@@ -44,6 +44,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="txtValuedateName"/>
                     <TextBlock Text="Miêu tả chính sách" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold" Margin="0 5"></TextBlock>
                     <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Height="117">
                         <Grid Margin="10">
@@ -66,7 +67,8 @@
                         <TextBlock Text="Thiết lập công thức" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                         <Path Margin="5 0 0 0" VerticalAlignment="Center" Data="{DynamicResource iconArrowRight}" Fill="{DynamicResource #4C5BD4}"></Path>
                     </DockPanel>
-                    <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" Name="txtValuedate"/>
+                    <Border MouseLeftButtonDown="ThemKhoanTienKhac" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
                         <TextBlock Text="Lưu" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Border>
                 </StackPanel>

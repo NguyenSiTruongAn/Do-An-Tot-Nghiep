@@ -20,7 +20,7 @@
                         <Border Cursor="Hand" Background="Transparent" MouseLeftButtonDown="Close_Click" Margin="0 0 10 0" Width="112" Height="43" CornerRadius="5" BorderThickness="1" BorderBrush="{DynamicResource #666666}">
                             <TextBlock Text="Hủy bỏ" TextAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #444}"></TextBlock>
                         </Border>
-                        <Border Cursor="Hand" Width="112" Height="43" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
+                        <Border Cursor="Hand" MouseLeftButtonDown="TiepTuc" Width="112" Height="43" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
                             <TextBlock Text="Tiếp tục" TextAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                         </Border>
                     </DockPanel>

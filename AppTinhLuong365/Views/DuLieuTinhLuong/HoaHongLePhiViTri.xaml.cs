@@ -111,8 +111,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaHoaHongTien(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            /*Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaHoaHongTien(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;*/
         }
     }
 }

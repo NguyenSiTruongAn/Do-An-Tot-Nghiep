@@ -21,6 +21,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
     public partial class PopupChinhSuaCSBH : Page
     {
         MainWindow Main;
+        private string name1, note1;
         public PopupChinhSuaCSBH(MainWindow main)
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void ThietLapCongThuc_MouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.TinhLuong.PopupChinhSuaThue(Main);
+            var pop = new Views.TinhLuong.PopupChinhSuaThue(Main, "3", name1, note1);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 565;

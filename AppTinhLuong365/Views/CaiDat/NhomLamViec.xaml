@@ -163,45 +163,6 @@
                                 <Border Cursor="Hand" x:Name="Page3_chua_nhom" MouseLeftButtonDown="select_page_click3_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
                                     <TextBlock x:Name="txtpage3_chua_nhom" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
                                 </Border>
-                                <!--<ListView Cursor="Arrow" Margin="0 0 0 0" Name="lv1" SelectedIndex="0" ItemsSource="{Binding PageNVCacNhom}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="ListViewItem">
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="ListViewItem">
-                                                        <DockPanel>
-                                                            <Border x:Name="PageNumber" MouseLeftButtonDown="select_page_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                                                <TextBlock x:Name="tb" Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                                    <TextBlock.Style>
-                                                                        <Style TargetType="TextBlock">
-                                                                            <Setter Property="Foreground" Value="#444"/>
-                                                                            <Style.Triggers>
-                                                                                <DataTrigger Binding="{Binding ElementName=PageNumber, Path=Background}" Value="#4C5BD4">
-                                                                                    <Setter Property="Foreground" Value="{DynamicResource #FFFFFF}"/>
-                                                                                </DataTrigger>
-                                                                            </Style.Triggers>
-                                                                        </Style>
-                                                                    </TextBlock.Style>
-                                                                </TextBlock>
-                                                            </Border>
-                                                        </DockPanel>
-                                                        <ControlTemplate.Triggers>
-                                                            <Trigger Property="IsSelected" Value="True">
-                                                                <Setter Property="Background" TargetName="PageNumber" Value="{DynamicResource #4C5BD4}"/>
-                                                                <Setter Property="Foreground" TargetName="tb" Value="{DynamicResource #FFFFFF}"/>
-                                                            </Trigger>
-                                                        </ControlTemplate.Triggers>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <ListView.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Horizontal"></StackPanel>
-                                        </ItemsPanelTemplate>
-                                    </ListView.ItemsPanel>
-                                </ListView>-->
                                 <Border Cursor="Hand" x:Name="PageTiep_chua_nhom" MouseLeftButtonDown="page_sau_click_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
                                     <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
                                 </Border>
@@ -298,45 +259,6 @@
                                 <Border Cursor="Hand" x:Name="Page3" MouseLeftButtonDown="select_page_click3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
                                     <TextBlock x:Name="txtpage3" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
                                 </Border>
-                                <!--<ListView Cursor="Arrow" Margin="0 0 0 0" Name="lv1" SelectedIndex="0" ItemsSource="{Binding PageNVCacNhom}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="ListViewItem">
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="ListViewItem">
-                                                        <DockPanel>
-                                                            <Border x:Name="PageNumber" MouseLeftButtonDown="select_page_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                                                <TextBlock x:Name="tb" Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                                    <TextBlock.Style>
-                                                                        <Style TargetType="TextBlock">
-                                                                            <Setter Property="Foreground" Value="#444"/>
-                                                                            <Style.Triggers>
-                                                                                <DataTrigger Binding="{Binding ElementName=PageNumber, Path=Background}" Value="#4C5BD4">
-                                                                                    <Setter Property="Foreground" Value="{DynamicResource #FFFFFF}"/>
-                                                                                </DataTrigger>
-                                                                            </Style.Triggers>
-                                                                        </Style>
-                                                                    </TextBlock.Style>
-                                                                </TextBlock>
-                                                            </Border>
-                                                        </DockPanel>
-                                                        <ControlTemplate.Triggers>
-                                                            <Trigger Property="IsSelected" Value="True">
-                                                                <Setter Property="Background" TargetName="PageNumber" Value="{DynamicResource #4C5BD4}"/>
-                                                                <Setter Property="Foreground" TargetName="tb" Value="{DynamicResource #FFFFFF}"/>
-                                                            </Trigger>
-                                                        </ControlTemplate.Triggers>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <ListView.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Horizontal"></StackPanel>
-                                        </ItemsPanelTemplate>
-                                    </ListView.ItemsPanel>
-                                </ListView>-->
                                 <Border Cursor="Hand" x:Name="PageTiep" MouseLeftButtonDown="page_sau_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
                                     <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
                                 </Border>

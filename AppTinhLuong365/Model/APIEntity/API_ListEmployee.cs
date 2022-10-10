@@ -32,7 +32,19 @@ namespace AppTinhLuong365.Model.APIEntity
                 if (ep_id == "-1")
                     result = ep_name;
                 else
-                    result = "(" + ep_id + ") " + ep_name;
+                    result = " (" + ep_id + ") " + ep_name;
+                return result;
+            }
+        }
+        public string ep_id_display1
+        {
+            get
+            {
+                string result;
+                if (ep_id == "-1")
+                    result = ep_name;
+                else
+                    result = ep_name + "(ID " + ep_id + ") ";
                 return result;
             }
         }

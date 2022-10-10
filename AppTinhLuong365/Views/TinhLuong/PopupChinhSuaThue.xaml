@@ -40,15 +40,16 @@
                             </Grid>
                         </Border>
                         <DockPanel>
-                            <RadioButton GroupName="GrThemCongThuc" FontSize="16" Foreground="{DynamicResource #666666}">Công thức</RadioButton>
-                            <RadioButton GroupName="GrThemCongThuc" Margin="20 0 0 0" FontSize="16" Foreground="{DynamicResource #666666}">Hằng số</RadioButton>
+                            <RadioButton x:Name="CbCongThuc" GroupName="GrThemCongThuc" IsChecked="True" FontSize="16" Foreground="{DynamicResource #666666}">Công thức</RadioButton>
+                            <RadioButton x:Name="CbHangSo" GroupName="GrThemCongThuc" Margin="20 0 0 0" FontSize="16" Foreground="{DynamicResource #666666}">Hằng số</RadioButton>
                         </DockPanel>
                         <Border Margin="0 20 0 0" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Height="117">
                             <Grid Margin="10">
                                 <TextBox Height="97" VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                             </Grid>
                         </Border>
-                        <Border Width="180" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Left" Height="45" Margin="2,20,-2.4,0">
+                        <TextBlock Text="" Style="{StaticResource tblValidate}" Name="valuedate"/>
+                        <Border Width="180" Cursor="Hand" MouseLeftButtonDown="ThemCongThuc" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Left" Height="45" Margin="2,20,-2.4,0">
                             <TextBlock Text="Thêm công thức" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                         </Border>
                     </StackPanel>

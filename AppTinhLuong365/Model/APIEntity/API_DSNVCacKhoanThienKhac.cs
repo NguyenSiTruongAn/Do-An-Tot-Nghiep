@@ -10,6 +10,7 @@ namespace AppTinhLuong365.Model.APIEntity
     public class DataDSNVCacKhoanThienKhac
     {
         public List<DSNVCacKhoanThienKhac> ep_other_list { get; set; }
+        public int count { get; set; }
         public string message { get; set; }
     }
 
@@ -50,6 +51,10 @@ namespace AppTinhLuong365.Model.APIEntity
         }
         public string fs_repica { get; set; }
         public string cls_id_cl { get; set; }
+        public string ep_image { get; set; }
+        public string ep_name { get; set; }
+        public string dep_name { get; set; }
+        public string money { get; set; }
     }
 
     public class API_DSNVCacKhoanThienKhac

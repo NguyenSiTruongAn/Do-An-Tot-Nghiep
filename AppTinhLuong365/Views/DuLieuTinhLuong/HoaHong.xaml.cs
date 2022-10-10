@@ -1,8 +1,16 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Microsoft.Win32;
+using Newtonsoft.Json;
+//using OfficeOpenXml;
+//using OfficeOpenXml.Style;
+using Aspose.Cells;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +23,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+//using GroupDocs.Conversion.Options.Convert;
+using System.Net.Http;
 
 namespace AppTinhLuong365.Views.DuLieuTinhLuong
 {
@@ -50,11 +60,101 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            string month = DateTime.Now.ToString("MM");
+            string year = DateTime.Now.ToString("yyyy");
+            cbThang.PlaceHolder = "Tháng " + month;
+            cbNam.PlaceHolder = "Năm " + year;
+            getData(month, year, "");
+            getData1();
         }
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
 
-        public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
+        private List<ThongKeHoaHong> _listThongKeHH;
+
+        public List<ThongKeHoaHong> listThongKeHH
+        {
+            get { return _listThongKeHH; }
+            set { _listThongKeHH = value; OnPropertyChanged(); }
+        }
+
+        private void getData(string month, string year, string user_id)
+        {
+            try
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    using (WebClient web = new WebClient())
+                    {
+                        if (Main.MainType == 0)
+                        {
+                            web.QueryString.Add("token", Main.CurrentCompany.token);
+                            web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                            web.QueryString.Add("time", year + "-" + month);
+                            web.QueryString.Add("id_user", user_id);
+                        }
+                        web.UploadValuesCompleted += (s, e) =>
+                        {
+                            string x = UnicodeEncoding.UTF8.GetString(e.Result);
+                            API_ThongKeHoaHong api = JsonConvert.DeserializeObject<API_ThongKeHoaHong>(x);
+                            if (api.data != null)
+                            {
+                                listThongKeHH = api.data.rose;
+                                foreach (var item in listThongKeHH)
+                                {
+                                    if (item.ep_image == "/img/add.png")
+                                        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                }
+                            }
+                        };
+                        web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_rose_nv.php", web.QueryString);
+                    }
+                });
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private List<ListEmployee> _listNV;
+
+        public List<ListEmployee> listNV
+        {
+            get { return _listNV; }
+            set
+            {
+                if (value == null) value = new List<ListEmployee>();
+                value.Insert(0, new ListEmployee() { ep_id = "-1", ep_name = "Tất cả nhân viên" });
+                _listNV = value; OnPropertyChanged();
+            }
+        }
+
+        private void getData1()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data.data != null)
+                    {
+                        listNV = api.data.data.items;
+                    }
+                    //foreach (ItemTamUng item in listTamUng)
+                    //{
+                    //    if (item.ep_image == "/img/add.png")
+                    //    {
+                    //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php", web.QueryString);
+            }
+        }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -141,6 +241,99 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         {
             Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupFileExcel_HoaHongTien(Main));
             Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void ThongKe(object sender, MouseButtonEventArgs e)
+        {
+            string year = "", month = "", id_nv = "";
+            if (cbNam.SelectedIndex != -1)
+                year = cbNam.SelectedItem.ToString().Split(' ')[1];
+            else
+                year = DateTime.Now.ToString("yyyy");
+            if (cbThang.SelectedIndex != -1)
+                month = (cbThang.SelectedIndex + 1) + "";
+            else month = DateTime.Now.ToString("MM");
+            if (cbListNV.SelectedIndex != -1)
+            {
+                ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+                string id2 = id1.ep_id;
+                if (id2 == "-1")
+                    id_nv = "";
+                else id_nv = id2;
+            }
+            getData(month, year, id_nv);
+        }
+        private void xuatExcel()
+        {
+            string year = "", month = "", id_nv = "";
+            this.Dispatcher.Invoke(() =>
+            {
+                if (cbNam.SelectedIndex != -1)
+                    year = cbNam.SelectedItem.ToString().Split(' ')[1];
+                else
+                    year = DateTime.Now.ToString("yyyy");
+                if (cbThang.SelectedIndex != -1)
+                    month = (cbThang.SelectedIndex + 1) + "";
+                else month = DateTime.Now.ToString("MM");
+                if (cbListNV.SelectedIndex != -1)
+                {
+                    ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+                    string id2 = id1.ep_id;
+                    if (id2 == "-1")
+                        id_nv = "";
+                    else id_nv = id2;
+                }
+            });
+            MultipartFormDataContent content = new MultipartFormDataContent();
+            content.Add(new StringContent(Main.CurrentCompany.com_id), "id_comp");
+            content.Add(new StringContent(Main.CurrentCompany.token), "token");
+            content.Add(new StringContent(month), "m");
+            content.Add(new StringContent(year), "y");
+            content.Add(new StringContent(id_nv), "uid");
+            HttpClient httpClient = new HttpClient();
+            Task<HttpResponseMessage> response = httpClient.PostAsync("https://tinhluong.timviec365.vn/api_app/company/export_rose.php", content);
+            string data = response.Result.Content.ReadAsStringAsync().Result;
+            //File.WriteAllText("../../Views/DuLieuTinhLuong/hoa_hong365.html", data);
+            //var converter = new GroupDocs.Conversion.Converter("../../Views/DuLieuTinhLuong/hoa_hong365.html");
+            //var convertOptions = new SpreadsheetConvertOptions();
+
+            string filePath = "";
+            // tạo SaveFileDialog để lưu file excel
+            SaveFileDialog dialog = new SaveFileDialog();
+
+            // chỉ lọc ra các file có định dạng Excel
+            dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
+            dialog.FileName = "hoa_hong_365";
+            // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
+            if (dialog.ShowDialog() == true)
+            {
+                filePath = dialog.FileName;
+                var workbook = new Workbook("../../Views/DuLieuTinhLuong/hoa_hong365.html");
+                workbook.Save(filePath);
+                //converter.Convert(filePath, convertOptions);
+            }
+        }
+        private void XuatFileThongKe(object sender, MouseButtonEventArgs e)
+        {
+            loading.Visibility = Visibility.Visible;
+            var task = new Task(() =>
+            {
+                xuatExcel();
+            });
+            task.ContinueWith((p) =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    loading.Visibility = Visibility.Collapsed;
+                });
+                task.Dispose();
+            });
+            task.Start();
+        }
+
+        private void dataGrid2_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
     }
 }

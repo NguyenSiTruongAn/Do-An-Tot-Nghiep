@@ -33,18 +33,32 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             this.DataContext = this;
             InitializeComponent();
             Main = main;
+            listDT = listDT;
         }
 
         MainWindow Main;
         public class DoanhThu
         {
+            public int id { get; set; }
             public string doanhThu { get; set; }
             public DateTime date { get; set; }
         }
-        public List<DoanhThu> ttt { get; set; } = new List<DoanhThu>()
+
+        private int dem = 0;
+
+        private List<DoanhThu> _listDT;
+
+        public List<DoanhThu> listDT
         {
-            new DoanhThu()
-        };
+            get { return _listDT; }
+            set
+            {
+                if (value == null) value = new List<DoanhThu>();
+                value.Add(new DoanhThu() { id = dem, doanhThu = "", date = DateTime.Now });
+                dem++;
+                _listDT = value; OnPropertyChanged();
+            }
+        }
         private static readonly Regex _regex = new Regex(@"^[0-9]\d*(\.\d{0,2})?$");
         private static bool IsTextAllowed(string text)
         {
@@ -89,9 +103,27 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var i = new DoanhThu() {};
-            ttt.Add(i);
-            tab.ItemsSource = ttt;
+            listDT = listDT.ToList();
+        }
+
+        private void money_textchanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            DoanhThu data = (DoanhThu)tb.DataContext;
+            foreach(var item in listDT)
+            {
+                if (item.id == data.id)
+                    item.doanhThu = tb.Text;
+            }
+            long tong = 0;
+            foreach (var item in listDT)
+            {
+                if (!string.IsNullOrEmpty(item.doanhThu))
+                {
+                    tong += long.Parse(item.doanhThu);
+                    txttongdoanhthu.Text = tong + "";
+                }
+            }    
         }
     }
 }

@@ -5,10 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong.Popup"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="PopupChinhSuaCKTK">
 
-    <Grid>
+    <Grid Width="495" Height="433">
         <Border Style="{StaticResource ShadowBorder1}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
             <StackPanel>
@@ -40,6 +39,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" Name="txtValuedateName"/>
                     <TextBlock Text="Miêu tả chính sách" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold" Margin="0 5"></TextBlock>
                     <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Height="117">
                         <Grid Margin="10">
@@ -62,7 +62,8 @@
                         <TextBlock Text="Thiết lập công thức" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                         <Path Margin="5 0 0 0" VerticalAlignment="Center" Data="{DynamicResource iconArrowRight}" Fill="{DynamicResource #4C5BD4}"></Path>
                     </DockPanel>
-                    <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" Name="txtValuedate"/>
+                    <Border MouseLeftButtonDown="LuuThayDoi" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
                         <TextBlock Text="Lưu" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Border>
                 </StackPanel>

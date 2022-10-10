@@ -1,6 +1,11 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Net;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,7 +23,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
     /// <summary>
     /// Interaction logic for PopupCaiDatHoaHongLoiNhuan.xaml
     /// </summary>
-    public partial class PopupCaiDatHoaHongLoiNhuan : Page
+    public partial class PopupCaiDatHoaHongLoiNhuan : Page, INotifyPropertyChanged
     {
         MainWindow Main;
         public PopupCaiDatHoaHongLoiNhuan(MainWindow main)
@@ -26,9 +31,49 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            getData();
         }
 
-        public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private List<DSCaiDatHoaHongLoiNhuan> _listDSCaiDatHHLN;
+
+        public List<DSCaiDatHoaHongLoiNhuan> listDSCaiDatHHLN
+        {
+            get { return _listDSCaiDatHHLN; }
+            set { _listDSCaiDatHHLN = value; OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                using (WebClient web = new WebClient())
+                {
+                    if (Main.MainType == 0)
+                    {
+                        web.QueryString.Add("token", Main.CurrentCompany.token);
+                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                        web.QueryString.Add("type", "3");
+                    }
+                    web.UploadValuesCompleted += (s, e) =>
+                    {
+                        API_DSCaiDatHoaHongLoiNhuan api = JsonConvert.DeserializeObject<API_DSCaiDatHoaHongLoiNhuan>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listDSCaiDatHHLN = api.data.list;
+                            for (int i = 1; i <= listDSCaiDatHHLN.Count; i++)
+                                listDSCaiDatHHLN[i - 1].STT = i + "";
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/setting_rose.php", web.QueryString);
+                }
+            });
+        }
 
         private void Close_Click(object sender, MouseButtonEventArgs e)
         {
@@ -37,13 +82,17 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaHoaHongLoiNhuan(Main));
+            Border b = sender as Border;
+            DSCaiDatHoaHongLoiNhuan data = (DSCaiDatHoaHongLoiNhuan)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaHoaHongLoiNhuan(Main, data));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void btnXoaHoaHongTien_Click(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThongBaoXoaHoaHongLoiNhuan(Main));
+            Border b = sender as Border;
+            DSCaiDatHoaHongLoiNhuan data = (DSCaiDatHoaHongLoiNhuan)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThongBaoXoaHoaHongLoiNhuan(Main, data.tl_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
@@ -55,7 +104,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-
+            Main.scrolPopup.ScrollToVerticalOffset(Main.scrolPopup.VerticalOffset - e.Delta);
         }
     }
 }

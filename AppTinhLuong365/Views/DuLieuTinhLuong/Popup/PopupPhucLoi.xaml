@@ -100,7 +100,7 @@
                                     </Grid>
                                 </Border>
                                 <TextBlock x:Name="validateDate" Style="{StaticResource tblValidate}"/>
-                                <Viewbox Width="229" HorizontalAlignment="Stretch">
+                                <Viewbox HorizontalAlignment="Stretch" Width="229">
                                     <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center" DisplayMode="Year" x:Name="dteSelectedMonth" DisplayModeChanged="dteSelectedMonth_DisplayModeChanged"/>
                                 </Viewbox>
                             </StackPanel>

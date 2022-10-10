@@ -1,6 +1,9 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,14 +24,45 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
     public partial class PopupThongBaoXoaHHT : Page
     {
         MainWindow Main;
-        public PopupThongBaoXoaHHT(MainWindow main)
+        private string id, type;
+        public PopupThongBaoXoaHHT(MainWindow main, string ro_id, string type_delete)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            id = ro_id;
+            type = type_delete;
         }
         private void Close_Click(object sender, MouseButtonEventArgs e)
         {
+            this.Visibility = Visibility.Collapsed;
+        }
+
+        private void TiepTuc(object sender, MouseButtonEventArgs e)
+        {
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 0)
+                {
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("id_rose", id);
+                    web.QueryString.Add("id_type", type);
+                }
+                web.UploadValuesCompleted += (s, ee) =>
+                {
+                    API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                    if (api.data != null)
+                    {
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/delete_rose.php", web.QueryString);
+            }
+            var pop = new Views.DuLieuTinhLuong.HoaHongTien(Main);
+            Main.HomeSelectionPage.NavigationService.Navigate(pop);
+            Main.sidebar.SelectedIndex = -1;
+            if (type == "0")
+                pop.tb1.SelectedIndex = 1;
             this.Visibility = Visibility.Collapsed;
         }
     }
