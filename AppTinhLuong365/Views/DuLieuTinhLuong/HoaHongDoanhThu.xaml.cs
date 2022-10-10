@@ -188,10 +188,6 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             var pop = new Views.DuLieuTinhLuong.Popup.PopupThemMoiHoaHongDoanhThu(Main);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-            if (pop.tabitem1.IsSelected == true)
-                pop.Height = 571;
-            else
-                pop.Height = 728;
         }
 
         private void btnQuayLai_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
