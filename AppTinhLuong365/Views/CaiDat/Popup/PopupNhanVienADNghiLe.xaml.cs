@@ -102,7 +102,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         }
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+            Main.scrolPopup.ScrollToVerticalOffset(Main.scrolPopup.VerticalOffset - e.Delta);
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)

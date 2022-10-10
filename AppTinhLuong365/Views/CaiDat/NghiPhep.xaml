@@ -206,7 +206,7 @@
                                         <Border Width="161" HorizontalAlignment="Right" BorderThickness="1"
                                                 CornerRadius="10" BorderBrush="{DynamicResource #ebebeb}">
                                             <tool:DatePicker x:Name="DatePickerDay" Foreground="{DynamicResource #68798B}"
-                                                             Background="{DynamicResource #FFFFFF}" Margin="3" />
+                                                             Background="{DynamicResource #FFFFFF}" Margin="3" SelectionChange="Date"/>
                                         </Border>
                                     </Border>
                                 </WrapPanel>
@@ -430,7 +430,7 @@
                                             Background="{DynamicResource #FFFFFF}">
                                         <Border Width="161" HorizontalAlignment="Right" BorderThickness="1"
                                                 CornerRadius="10" BorderBrush="{DynamicResource #ebebeb}">
-                                            <tool:DatePicker Foreground="{DynamicResource #68798B}"
+                                            <tool:DatePicker x:Name="DatePickerNew" SelectionChange="Select" Foreground="{DynamicResource #68798B}"
                                                              Background="{DynamicResource #FFFFFF}" Margin="3" />
                                         </Border>
                                     </Border>

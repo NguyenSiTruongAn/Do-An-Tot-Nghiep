@@ -40,17 +40,19 @@ namespace AppTinhLuong365.Views.CaiDat
             {
                 YearList.Add($"Năm {i}");
             }
+
             InitializeComponent();
             this.DataContext = this;
             Main = main;
             string month = DateTime.Now.ToString("MM");
             string year = DateTime.Now.ToString("yyyy");
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
             string ep_id = "";
-            getData();
+            getData(date);
             getData1(month, year, ep_id);
             getData2();
             getData3();
-            getData4();
+            getData4(date);
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -120,12 +122,13 @@ namespace AppTinhLuong365.Views.CaiDat
             }
         }
 
-        private void getData()
+        private void getData(string date)
         {
             using (WebClient web = new WebClient())
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("time", date);
                 web.QueryString.Add("take", "2");
                 web.UploadValuesCompleted += (s, e) =>
                 {
@@ -406,12 +409,13 @@ namespace AppTinhLuong365.Views.CaiDat
             }
         }
 
-        private void getData4()
+        private void getData4(string date)
         {
             using (WebClient web = new WebClient())
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("time", date);
                 web.QueryString.Add("take", "1");
                 web.UploadValuesCompleted += (s, e) =>
                 {
@@ -607,6 +611,25 @@ namespace AppTinhLuong365.Views.CaiDat
         private void NghiPhep_OnLoaded(object sender, RoutedEventArgs e)
         {
             DatePickerDay.SelectedDate = DateTime.Now;
+        }
+
+        private void Date()
+        {
+            string date = "";
+            if (DatePickerDay.SelectedDate != null)
+                date = DatePickerDay.SelectedDate.Value.ToString("yyyy-MM-dd");
+            else
+                date = DateTime.Now.ToString("yyyy-MM-dd");
+            getData(date);
+        }
+        private void Select()
+        {
+            string date = "";
+            if (DatePickerNew.SelectedDate != null)
+                date = DatePickerNew.SelectedDate.Value.ToString("yyyy-MM-dd");
+            else
+                date = DateTime.Now.ToString("yyyy-MM-dd");
+            getData4(date);
         }
     }
 }

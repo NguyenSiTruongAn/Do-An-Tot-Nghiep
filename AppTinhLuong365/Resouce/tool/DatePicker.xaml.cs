@@ -105,7 +105,16 @@ namespace AppTinhLuong365.Resouce.tool
         public static readonly DependencyProperty SelectedDateProperty =
             DependencyProperty.Register("SelectedDate", typeof(DateTime?), typeof(DatePicker), new PropertyMetadata(null));
 
-
+        public Action SelectionChange
+        {
+            get { return (Action)GetValue(SelectionChangeProperty); }
+            set
+            {
+                SetValue(SelectionChangeProperty, value);
+            }
+        }
+        public static readonly DependencyProperty SelectionChangeProperty =
+            DependencyProperty.Register("SelectionChange", typeof(Action), typeof(DatePicker));
 
         private void LoadDay(int year, int month)
         {
@@ -354,6 +363,8 @@ namespace AppTinhLuong365.Resouce.tool
                 }
 
                 pop.IsOpen = false;
+
+                if (SelectionChange != null) SelectionChange();
             }
 
         }

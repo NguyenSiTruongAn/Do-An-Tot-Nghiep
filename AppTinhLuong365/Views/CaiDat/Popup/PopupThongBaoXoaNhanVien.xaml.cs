@@ -26,14 +26,16 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         public string ID;
         public MainWindow Main;
         public string Ep_ID;
+        public string month;
 
-        public PopupThongBaoXoaNhanVien(MainWindow main, string id, string ep_id)
+        public PopupThongBaoXoaNhanVien(MainWindow main, string id, string ep_id, string month)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
             ID = id;
             Ep_ID = ep_id;
+            this.month = month;
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -47,11 +49,12 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
                 web.QueryString.Add("id_com", ID);
                 web.QueryString.Add("id_ep", Ep_ID);
-                web.QueryString.Add("month", "2022-09-01");
+                web.QueryString.Add("month", month);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
+                    var a = UnicodeEncoding.UTF8.GetString(ee.Result);
                     API_Delete_cycle_of_employee api =
-                        JsonConvert.DeserializeObject<API_Delete_cycle_of_employee>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        JsonConvert.DeserializeObject<API_Delete_cycle_of_employee>(a);
                     if (api.data != null)
                     {
                     }
