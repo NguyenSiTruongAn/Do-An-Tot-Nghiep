@@ -5,9 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong.Popup"
       mc:Ignorable="d" 
+      VerticalAlignment="Top"
       Title="PopupThemHoaHongDoanhThu">
 
-    <Grid Width="495" Height="493">
+    <Grid Width="495" Margin="0 100 0 0">
         <Border Style="{StaticResource ShadowBorder2}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
             <StackPanel>
@@ -39,6 +40,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" Name="txtValidateName"/>
                     <TextBlock Margin="0 20 0 0">
                         <Run Text="Doanh thu nhỏ nhất" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
@@ -60,6 +62,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="txtValidateTienMin"/>
                     <TextBlock Margin="0 20 0 0">
                         <Run Text="Doanh thu lớn nhất" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
@@ -81,6 +84,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="txtValidateTienMax"/>
                     <TextBlock Margin="0 20 0 0">
                         <Run Text="Hoa hồng (%)" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
@@ -102,7 +106,8 @@
                             </TextBlock>
                         </Grid>
                     </Border>
-                    <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="txtValidateHoaHong"/>
+                    <Border Margin="0 20 0 20" MouseLeftButtonDown="TaoMoiHoaHong" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45">
                         <TextBlock Text="Lưu" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Border>
                 </StackPanel>

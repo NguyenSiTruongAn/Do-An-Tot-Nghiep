@@ -54,13 +54,13 @@
                                     <Run Text="Doanh thu theo thời điểm" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                                     <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                                 </TextBlock>
-                                <ItemsControl x:Name="tab" ItemsSource="{Binding ttt}">
+                                <ItemsControl x:Name="tab" ItemsSource="{Binding listDT}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <WrapPanel>
                                                 <Border Width="269" Height="42" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                                                     <Grid Height="42" Margin="10 0 10 0">
-                                                        <TextBox Text="{Binding doanhThu}" PreviewTextInput="Txt_PreviewCurrencyTextInput"  DataObject.Pasting="TextBoxPasting" FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput5" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                                        <TextBox Text="{Binding doanhThu}" TextChanged="money_textchanged" PreviewTextInput="Txt_PreviewCurrencyTextInput"  DataObject.Pasting="TextBoxPasting" FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput5" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                                                         <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="Doanh thu (dạng số)" IsHitTestVisible="False">
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">
@@ -92,7 +92,7 @@
                                             <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                                         </TextBlock>
                                         <Border Width="269" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                            <TextBox IsReadOnly="True" Margin="10 0 0 0" FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                            <TextBox x:Name="txttongdoanhthu" IsReadOnly="True" Margin="10 0 0 0" FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Width="269">

@@ -40,6 +40,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" Name="validateName"/>
                     <TextBlock Margin="0 20 0 0">
                         <Run Text="Đạt KPI" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
@@ -61,6 +62,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="valiateKPI"/>
                     <TextBlock Margin="0 20 0 0">
                         <Run Text="Không đạt KPI" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
@@ -82,7 +84,8 @@
                             </TextBlock>
                         </Grid>
                     </Border>
-                    <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                    <TextBlock Style="{StaticResource tblValidate}" x:Name="validateKPINo"/>
+                    <Border MouseLeftButtonDown="LuuThayDoi" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
                         <TextBlock Text="Lưu" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Border>
                 </StackPanel>

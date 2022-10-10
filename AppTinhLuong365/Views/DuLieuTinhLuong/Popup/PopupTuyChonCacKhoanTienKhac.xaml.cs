@@ -21,25 +21,31 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
     public partial class PopupTuyChonCacKhoanTienKhac : Page
     {
         MainWindow Main;
-        public PopupTuyChonCacKhoanTienKhac(MainWindow main)
+        private string id1, name1, name_ct1, note1, ct1, ct_hs1, fs_id1;
+        public PopupTuyChonCacKhoanTienKhac(MainWindow main, string id, string name, string mota, string congthuc, string name_ct, string ct_hs, string fs_id)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            id1 = id;
+            name1 = name;
+            note1 = mota;
+            ct1 = congthuc;
+            name_ct1 = name_ct;
+            ct_hs1 = ct_hs;
+            fs_id1 = fs_id;
         }
 
         private void ThemNhanVien_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemNhanVienCKTK(Main);
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemNhanVienCKTK(Main, id1);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-            pop.Width = 616;
-            pop.Height = 495;
         }
 
         private void DSNhanVien_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.DSNhanVienADVaoCKTK(Main);
+            var pop = new Views.DuLieuTinhLuong.Popup.DSNhanVienADVaoCKTK(Main, id1, name1);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.MaxWidth = 1054;
@@ -47,7 +53,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void ChinhSuaThue_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupChinhSuaCKTK(Main);
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupChinhSuaCKTK(Main, id1, name1, note1, name_ct1, ct1, ct_hs1, fs_id1);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 495;
@@ -56,7 +62,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void Xoa_Click(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupThongBaoXoaCKTK(Main);
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThongBaoXoaCKTK(Main, id1);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 616;

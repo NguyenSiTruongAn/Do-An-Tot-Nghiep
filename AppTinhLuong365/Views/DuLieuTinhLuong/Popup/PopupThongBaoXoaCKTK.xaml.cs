@@ -1,6 +1,9 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,11 +24,36 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
     public partial class PopupThongBaoXoaCKTK : Page
     {
         MainWindow Main;
-        public PopupThongBaoXoaCKTK(MainWindow main)
+        string id1;
+        public PopupThongBaoXoaCKTK(MainWindow main, string id)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            id1 = id;
+        }
+        private void TiepTuc(object sender, MouseButtonEventArgs e)
+        {
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 0)
+                {
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("cl_id", id1);
+                }
+                web.UploadValuesCompleted += (s, e1) =>
+                {
+                    API_XoaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_XoaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e1.Result));
+                    if (api.data != null)
+                    {
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/delete_otherMoney.php", web.QueryString);
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.CacKhoanTienKhac(Main));
+                Main.sidebar.SelectedIndex = 7;
+                this.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void Close_Click(object sender, MouseButtonEventArgs e)

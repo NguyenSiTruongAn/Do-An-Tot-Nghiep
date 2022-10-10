@@ -5,10 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong.Popup"
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
+       VerticalAlignment="Top"
       Title="PopupThoiGianADCacKhoanTienKhac">
 
-    <Grid Width="495" Height="375">
+    <Grid Width="495" Margin="0 100 0 0">
         <Border Style="{StaticResource ShadowBorder1}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
             <StackPanel>
@@ -19,32 +20,75 @@
                     </Grid>
                 </Border>
                 <StackPanel Width="450" Margin="20 0 20 0">
-                    <Border Margin="0 20 0 0" CornerRadius="20" HorizontalAlignment="Left" Height="34" Background="{DynamicResource #EBF0F5}" Width="197">
-                        <DockPanel>
-                            <Border Margin="10 0 0 0" Width="26" Height="26" CornerRadius="40" HorizontalAlignment="Left">
-                                <Border.Background>
-                                    <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
-                                </Border.Background>
-                            </Border>
-                            <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" Margin="10 0 0 0" Text="Nguyễn Huy Quang" FontSize="15" Foreground="{DynamicResource #666c7c}"></TextBlock>
-                        </DockPanel>
-                    </Border>
+                    <ListView Margin="10 0 0 0" Name="lv" ItemsSource="{Binding dsnv1}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListViewItem">
+                                            <Border CornerRadius="20" HorizontalAlignment="Left" Height="34" Background="{DynamicResource #EBF0F5}" Padding="10 0">
+                                                <DockPanel>
+                                                    <Border Width="26" Height="26" CornerRadius="40" HorizontalAlignment="Left">
+                                                        <Border.Background>
+                                                            <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
+                                                        </Border.Background>
+                                                    </Border>
+                                                    <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" Margin="10 0 0 0" Text="{Binding ep_name}" FontSize="15" Foreground="{DynamicResource #666c7c}"></TextBlock>
+                                                </DockPanel>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <!--<Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=Text, ElementName=PBWitdhItems}" Value="1">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-70)/2}"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Text, ElementName=PBWitdhItems}" Value="2">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-35)}"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>-->
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="{Binding RelativeSource={RelativeSource AncestorType=ListView,Mode=FindAncestor},Path=ActualWidth}"></WrapPanel>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
                     <TextBlock Margin="0 30 0 0">
                         <Run Text="Áp dụng từ tháng" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                     </TextBlock>
-                    <Border Margin="0 5 0 0" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" CornerRadius="3" Height="43">
-                        <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
+                    <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid>
+                            <TextBlock x:Name="textThangAD" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Border Background="Transparent" MouseLeftButtonDown="Select_thang" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
+                            </Border>
+                        </Grid>
                     </Border>
+                    <TextBlock x:Name="validateDate" Style="{StaticResource tblValidate}"/>
+                    <Viewbox Width="229" HorizontalAlignment="Stretch">
+                        <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center" DisplayMode="Year" x:Name="dteSelectedMonth" DisplayModeChanged="dteSelectedMonth_DisplayModeChanged"/>
+                    </Viewbox>
                     <TextBlock Text="Đến hết tháng (Không bắt buộc)" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold" Margin="0 5"></TextBlock>
-                    <Border BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" CornerRadius="3" Height="43">
-                        <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
+                    <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid>
+                            <TextBlock x:Name="textDenThang" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Border Background="Transparent" MouseLeftButtonDown="Select_thang_end" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
+                            </Border>
+                        </Grid>
                     </Border>
-                    <DockPanel>
+                    <Viewbox Width="229" HorizontalAlignment="Stretch">
+                        <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" DisplayMode="Year" x:Name="dteSelectedMonth1" DisplayModeChanged="dteSelectedMonth1_DisplayModeChanged"/>
+                    </Viewbox>
+                    <TextBlock x:Name="validateDateEnd" Style="{StaticResource tblValidate}"/>
+                    <DockPanel Margin="0 0 0 20">
                         <Border Cursor="Hand" MouseLeftButtonDown="Btn_QuayLai_Click" Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #B2B2B2}" BorderThickness="1" CornerRadius="5" Width="216" Height="45" Margin="2,20,-2.4,0">
                             <TextBlock Text="Quay lại" Foreground="{DynamicResource #4C5BD4}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                         </Border>
-                        <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Right" Width="216" Height="45" Margin="2,20,-2.4,0">
+                        <Border MouseLeftButtonDown="Btn_LuuThayDoi" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Right" Width="216" Height="45" Margin="2,20,-2.4,0">
                             <TextBlock Text="Lưu Lại" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                         </Border>
                     </DockPanel>

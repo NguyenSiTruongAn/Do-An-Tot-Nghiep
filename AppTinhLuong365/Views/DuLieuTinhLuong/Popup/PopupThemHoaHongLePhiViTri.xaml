@@ -39,13 +39,14 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="validateName"/>
                     <TextBlock Margin="0 20 0 0">
                         <Run Text="Hoa hồng (VNĐ)" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                     </TextBlock>
                     <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid Height="38" Margin="10 0 10 0">
-                            <TextBox VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                            <TextBox PreviewTextInput="tbInput1_PreviewTextInput" VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                             <TextBlock VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="Nhập tiền" IsHitTestVisible="False">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
@@ -60,7 +61,8 @@
                             </TextBlock>
                         </Grid>
                     </Border>
-                    <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="validateHoaHong"/>
+                    <Border MouseLeftButtonDown="TaoMoi" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
                         <TextBlock Text="Lưu" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Border>
                 </StackPanel>

@@ -60,18 +60,18 @@
                             </Style.Triggers>
                         </Style>
                     </TabItem.Resources>
-                    <StackPanel Margin="20">
+                    <StackPanel Margin="0 20 0 0">
                         <DockPanel>
                             <DockPanel x:Name="dockHoaHongCaNhan" DockPanel.Dock="Right" Style="{DynamicResource Style_Grid_Wrap1}">
                                 <WrapPanel Name="Wrap_Border1" HorizontalAlignment="Right">
                                     <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                        <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                        <tool:SearchBar SelectionChanged="Select_Thang" x:Name="cbThang" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                                     </Border>
                                     <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                        <tool:SearchBar Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                        <tool:SearchBar SelectionChanged="Select_Thang" x:Name="cbNam" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                                     </Border>
                                     <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                        <tool:SearchBar FontSize="16" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
+                                        <tool:SearchBar SelectionChanged="Select_Thang" x:Name="cbNV" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath ="ep_id_display" FontSize="16" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
                                     </Border>
                                 </WrapPanel>
                             </DockPanel>
@@ -80,7 +80,7 @@
                                 <TextBlock TextWrapping="WrapWithOverflow" Text="{DynamicResource textDSNVTHHDT}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"/>
                             </DockPanel>
                         </DockPanel>
-                        <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                        <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding listNVHHDoanhThu}" ScrollViewer.HorizontalScrollBarVisibility="Visible" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                             <DataGrid.OpacityMask>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
@@ -92,14 +92,19 @@
                                 <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Grid x:Name="gridHoTen">
+                                            <Grid x:Name="gridHoTen" Margin="10 0 0 0">
                                                 <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
                                                     <Border.Background>
-                                                        <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                                        <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
                                                     </Border.Background>
                                                 </Border>
-                                                <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding name}" Foreground="{DynamicResource #4C5BD4}"/>
-                                                <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"/>
+                                                <Grid VerticalAlignment="Center">
+                                                    <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"/>
+                                                    <TextBlock Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}">
+                                                        <Run Text="ID:"/>
+                                                        <Run Text="{Binding ep_id}"/>
+                                                    </TextBlock>
+                                                </Grid>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -108,7 +113,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
-                                                <TextBlock Text="{Binding}" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"/>
+                                                <TextBlock Text="{Binding display_ro_time}" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"/>
                                             </Border>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -117,7 +122,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
-                                                <TextBlock Text="{Binding}" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"/>
+                                                <TextBlock Text="{Binding tl_name}" Style="{StaticResource TextRowCenter}"/>
                                             </Border>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -126,7 +131,10 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
-                                                <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter1}"/>
+                                                <TextBlock Style="{StaticResource TextRowCenter1}">
+                                                    <Run Text="{Binding ro_price}"/>
+                                                    <Run Text="VNĐ"/>
+                                                </TextBlock>
                                             </Border>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -135,7 +143,10 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
-                                                <TextBlock Text="{Binding}" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"/>
+                                                <TextBlock Style="{StaticResource TextRowCenter}">
+                                                    <Run Text="{Binding persent}"/>
+                                                    <Run Text="%"/>
+                                                </TextBlock>
                                             </Border>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -144,7 +155,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
-                                                <TextBlock Text="{Binding}" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"/>
+                                                <TextBlock Text="(Xem chi tiết)" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"/>
                                             </Border>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>

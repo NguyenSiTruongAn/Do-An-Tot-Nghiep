@@ -15,6 +15,8 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,12 +38,45 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=22.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Cells.22.9.0\lib\net40\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -96,6 +131,7 @@
     <Compile Include="Login\Views\Notify.xaml.cs">
       <DependentUpon>Notify.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\APIEntity\API_AddFile.cs" />
     <Compile Include="Model\APIEntity\API_Add_congchuan.cs" />
     <Compile Include="Model\APIEntity\API_Add_employee_to_cycle.cs" />
     <Compile Include="Model\APIEntity\API_Add_late.cs" />
@@ -106,12 +142,22 @@
     <Compile Include="Model\APIEntity\API_DSCacKhoanTienKhac.cs" />
     <Compile Include="Model\APIEntity\API_Delete_cycle.cs" />
     <Compile Include="Model\APIEntity\API_Delete_cycle_of_employee.cs" />
+    <Compile Include="Model\APIEntity\API_DSCaiDatHoaHongDoanhThu.cs" />
+    <Compile Include="Model\APIEntity\API_DSCaiDatHoaHongKeHoach.cs" />
+    <Compile Include="Model\APIEntity\API_DSCaiDatHoaHongLoiNhuan.cs" />
+    <Compile Include="Model\APIEntity\API_DSCaiDatHoaHongVT.cs" />
     <Compile Include="Model\APIEntity\API_DSCaLamViec.cs" />
     <Compile Include="Model\APIEntity\API_DSNhanVienPhucLoi_PhuCap.cs" />
+    <Compile Include="Model\APIEntity\API_DSNhomHoaHongTien.cs" />
+    <Compile Include="Model\APIEntity\API_DSNVADCKTK.cs" />
     <Compile Include="Model\APIEntity\API_DSNVCacKhoanThienKhac.cs" />
+    <Compile Include="Model\APIEntity\API_DSNVHoaHongDoanhThu.cs" />
+    <Compile Include="Model\APIEntity\API_DSNVHoaHongTien.cs" />
     <Compile Include="Model\APIEntity\API_DSNVThemMoiVaoPhucLoi_PhuCap.cs" />
+    <Compile Include="Model\APIEntity\API_DSNVThemVaoCKTK.cs" />
     <Compile Include="Model\APIEntity\API_DSTamUng.cs" />
     <Compile Include="Model\APIEntity\API_DSThemMoiNhanVienVaoNhom.cs" />
+    <Compile Include="Model\APIEntity\API_DSTongHoaHongTien.cs" />
     <Compile Include="Model\APIEntity\API_ListCalendarWork.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployee.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployeeChuaThietLapThue.cs" />
@@ -139,11 +185,13 @@
     <Compile Include="Model\APIEntity\API_SuaNhomLamViec.cs" />
     <Compile Include="Model\APIEntity\API_TaoNhomLamViec.cs" />
     <Compile Include="Model\APIEntity\API_Tbl_Salary_Manager.cs" />
+    <Compile Include="Model\APIEntity\API_ThemCKTK.cs" />
     <Compile Include="Model\APIEntity\API_ThemMoiPhuCaoTheoCa.cs" />
     <Compile Include="Model\APIEntity\API_ThemMoiPhucLoiPhuCap.cs" />
     <Compile Include="Model\APIEntity\API_ThemNhanVienVaoNhom.cs" />
     <Compile Include="Model\APIEntity\API_ThemNhanVienVaoPhucLoi_PhuCap.cs" />
     <Compile Include="Model\APIEntity\API_ThietLapNhanVienVaoNhom.cs" />
+    <Compile Include="Model\APIEntity\API_ThongKeHoaHong.cs" />
     <Compile Include="Model\APIEntity\API_UserInfo.cs" />
     <Compile Include="Model\APIEntity\API_XoaNhanVienKhoiNhom.cs" />
     <Compile Include="Model\APIEntity\API_XoaNhanVienKhoiPhucLoi.cs" />
@@ -333,6 +381,9 @@
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupCalendar.xaml.cs">
       <DependentUpon>PopupCalendar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaCongThuc.xaml.cs">
+      <DependentUpon>PopupChinhSuaCongThuc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaHoaHongDoanhThu.xaml.cs">
       <DependentUpon>PopupChinhSuaHoaHongDoanhThu.xaml</DependentUpon>
     </Compile>
@@ -351,6 +402,9 @@
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhanVienPhucLoi.xaml.cs">
       <DependentUpon>PopupChinhSuaNhanVienPhucLoi.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhomHoaHongTien.xaml.cs">
+      <DependentUpon>PopupChinhSuaNhomHoaHongTien.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaPhuCap.xaml.cs">
       <DependentUpon>PopupChinhSuaPhuCap.xaml</DependentUpon>
     </Compile>
@@ -365,6 +419,9 @@
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupFileExcel_HoaHongTien.xaml.cs">
       <DependentUpon>PopupFileExcel_HoaHongTien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupMieuTaChiTietHoaHongTien.xaml.cs">
+      <DependentUpon>PopupMieuTaChiTietHoaHongTien.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupPhucLoi.xaml.cs">
       <DependentUpon>PopupPhucLoi.xaml</DependentUpon>
@@ -464,6 +521,9 @@
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaHoaHongLoiNhuan.xaml.cs">
       <DependentUpon>PopupThongBaoXoaHoaHongLoiNhuan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaNVKhoiCKTK.xaml.cs">
+      <DependentUpon>PopupThongBaoXoaNVKhoiCKTK.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaPhuCapTheoCa.xaml.cs">
       <DependentUpon>PopupThongBaoXoaPhuCapTheoCa.xaml</DependentUpon>
@@ -853,6 +913,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaCongThuc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaHoaHongDoanhThu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -877,6 +941,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhomHoaHongTien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaPhuCap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -894,6 +962,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupFileExcel_HoaHongTien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupMieuTaChiTietHoaHongTien.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1030,6 +1102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaHoaHongLoiNhuan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaNVKhoiCKTK.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1496,5 +1572,15 @@
     <Resource Include="Login\Resources\Images\QR_timviec_ntd.png" />
     <Resource Include="Login\Resources\Images\QR_timviec_uv.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DuLieuTinhLuong\hoa_hong365.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
+  </Target>
 </Project>

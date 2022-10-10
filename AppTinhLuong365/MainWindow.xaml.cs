@@ -1,4 +1,5 @@
 ﻿using AppTinhLuong365.Model.APIEntity;
+using AppTinhLuong365.Views.DuLieuTinhLuong;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -106,7 +107,7 @@ namespace AppTinhLuong365
             get { return currentImage; }
             set { currentImage = value;OnPropertyChanged(); }
         }
-
+        public CacKhoanTienKhac pageCacKhoanTienKhac;
         public class SideBarItemCom : INotifyPropertyChanged
         {
             public event PropertyChangedEventHandler PropertyChanged;
@@ -245,7 +246,11 @@ namespace AppTinhLuong365
                         title.Text = this.Title;
                         break;
                     case 7:
-                        HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.CacKhoanTienKhac(this));
+                        if (pageCacKhoanTienKhac==null)
+                        {
+                            pageCacKhoanTienKhac = new Views.DuLieuTinhLuong.CacKhoanTienKhac(this);
+                        }
+                        HomeSelectionPage.NavigationService.Navigate(pageCacKhoanTienKhac);
                         this.Title = App.Current.Resources["textCacKhoanTienKhac"] as string;
                         title.Text = App.Current.Resources["textKhoanTienKhac"] as string;
                         break;
