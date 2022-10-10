@@ -334,7 +334,7 @@
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
                                                         <TextBlock Style="{StaticResource TextRowCenter}">
-                                                            <Run Text="{Binding rose_1}"/>
+                                                            <Run Text="{Binding display_rose_1,Mode=OneWay}"/>
                                                             <Run Text="VNĐ"/>
                                                         </TextBlock>
                                                     </Border>
@@ -346,7 +346,7 @@
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
                                                         <TextBlock Style="{StaticResource TextRowCenter}">
-                                                            <Run Text="{Binding rose_2}"/>
+                                                            <Run Text="{Binding display_rose_2,Mode=OneWay}"/>
                                                             <Run Text="VNĐ"/>
                                                         </TextBlock>
                                                     </Border>
@@ -358,7 +358,7 @@
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
                                                         <TextBlock Style="{StaticResource TextRowCenter}">
-                                                            <Run Text="{Binding rose_3}"/>
+                                                            <Run Text="{Binding display_rose_3,Mode=OneWay}"/>
                                                             <Run Text="VNĐ"/>
                                                         </TextBlock>
                                                     </Border>
@@ -370,7 +370,7 @@
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
                                                         <TextBlock Style="{StaticResource TextRowCenter}">
-                                                            <Run Text="{Binding rose_4}"/>
+                                                            <Run Text="{Binding display_rose_4,Mode=OneWay}"/>
                                                             <Run Text="VNĐ"/>
                                                         </TextBlock>
                                                     </Border>
@@ -382,7 +382,7 @@
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
                                                         <TextBlock Style="{StaticResource TextRowCenter}">
-                                                            <Run Text="{Binding rose_5}"/>
+                                                            <Run Text="{Binding display_rose_5,Mode=OneWay}"/>
                                                             <Run Text="VNĐ"/>
                                                         </TextBlock>
                                                     </Border>
@@ -394,7 +394,7 @@
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
                                                         <TextBlock Style="{StaticResource TextRowCenter}">
-                                                            <Run Text="{Binding sum_rose}"/>
+                                                            <Run Text="{Binding display_sum_rose,Mode=OneWay}"/>
                                                             <Run Text="VNĐ"/>
                                                         </TextBlock>
                                                     </Border>

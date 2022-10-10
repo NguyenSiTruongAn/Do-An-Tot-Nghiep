@@ -32,12 +32,60 @@ namespace AppTinhLuong365.Model.APIEntity
         public string id_ep { get; set; }
         public string ep_name { get; set; }
         public string ep_image { get; set; }
-        public double sum_rose { get; set; }
-        public int rose_1 { get; set; }
-        public int rose_2 { get; set; }
-        public double rose_3 { get; set; }
-        public int rose_4 { get; set; }
-        public double rose_5 { get; set; }
+        public string sum_rose { get; set; }
+        public string display_sum_rose
+        {
+            get
+            {
+                string result = sum_rose.Split('.')[0];
+                return result;
+            }
+        }
+        public string rose_1 { get; set; }
+        public string display_rose_1
+        {
+            get
+            {
+                string result = rose_1.Split('.')[0];
+                return result;
+            }
+        }
+        public string rose_2 { get; set; }
+        public string display_rose_2
+        {
+            get
+            {
+                string result = rose_2.Split('.')[0];
+                return result;
+            }
+        }
+        public string rose_3 { get; set; }
+        public string display_rose_3
+        {
+            get
+            {
+                string result = rose_3.Split('.')[0];
+                return result;
+            }
+        }
+        public string rose_4 { get; set; }
+        public string display_rose_4
+        {
+            get
+            {
+                string result = rose_4.Split('.')[0];
+                return result;
+            }
+        }
+        public string rose_5 { get; set; }
+        public string display_rose_5
+        {
+            get
+            {
+                string result = rose_5.Split('.')[0];
+                return result;
+            }
+        }
     }
 
     public class Rose1

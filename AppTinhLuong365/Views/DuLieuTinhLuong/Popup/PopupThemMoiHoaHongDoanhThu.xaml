@@ -33,21 +33,29 @@
                                             <Run Text="Họ và tên" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                                             <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                                         </TextBlock>
-                                        <ComboBox Height="42" Margin="0 5 0 0" FontSize="16" FontWeight="DemiBold" Style="{StaticResource Combobox2}" >
-                                            <ComboBoxItem IsSelected="True">Chọn nhân viên</ComboBoxItem>
-                                        </ComboBox>
+                                        <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="3" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 5 0 0">
+                                            <ComboBox x:Name="cbName" Style="{StaticResource Combobox2}" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath ="ep_id_display1"></ComboBox>
+                                        </Border>
+                                        <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="validateName"/>
                                     </StackPanel>
                                     <StackPanel Width="269">
                                         <TextBlock Margin="0 20 0 5">
                                             <Run Text="Chu kỳ(tháng) áp dụng" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                                             <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                                         </TextBlock>
-                                        <Border Height="42" Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="3" BorderBrush="{DynamicResource #ebebeb}" Margin="0 5 0 0">
+                                        <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="validateChuKy"/>
+                                        <Border Margin="0 5 10 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                                             <Grid>
-                                                <TextBlock Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
-                                                <Path Data="{DynamicResource iconLich}" VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                                                <TextBlock x:Name="textThangAD" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                                                <Border Background="Transparent" MouseLeftButtonDown="Select_thang" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                                    <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
+                                                </Border>
                                             </Grid>
                                         </Border>
+                                        <TextBlock x:Name="validateDate" Style="{StaticResource tblValidate}"/>
+                                        <Viewbox HorizontalAlignment="Stretch" Width="229">
+                                            <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center" DisplayMode="Year" x:Name="dteSelectedMonth" DisplayModeChanged="dteSelectedMonth_DisplayModeChanged"/>
+                                        </Viewbox>
                                     </StackPanel>
                                 </WrapPanel>
                                 <TextBlock Margin="0 20 0 5">
@@ -76,7 +84,7 @@
                                                     </Grid>
                                                 </Border>
                                                 <Border Margin="18 0 0 0" Width="269" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" CornerRadius="3" Height="43">
-                                                    <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
+                                                    <tool:DatePicker FontSize="15" SelectedDate="{Binding date,RelativeSource={RelativeSource AncestorType=Page}}" Foreground="{DynamicResource #777777}"/>
                                                 </Border>
                                             </WrapPanel>
                                         </DataTemplate>
@@ -92,17 +100,18 @@
                                             <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                                         </TextBlock>
                                         <Border Width="269" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                            <TextBox x:Name="txttongdoanhthu" IsReadOnly="True" Margin="10 0 0 0" FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                            <TextBox x:Name="txttongdoanhthu" IsReadOnly="True" Margin="10 0 10 0" FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                                         </Border>
+                                        <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="validateTongDT"/>
                                     </StackPanel>
                                     <StackPanel Width="269">
                                         <TextBlock Margin="0 20 0 5">
                                             <Run Text="Mức doanh thu" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                                             <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                                         </TextBlock>
-                                        <ComboBox Height="41" FontSize="16" FontWeight="DemiBold" Style="{StaticResource Combobox2}" >
-                                            <ComboBoxItem IsSelected="True"></ComboBoxItem>
+                                        <ComboBox x:Name="cbMucDT" Height="41" FontSize="16" FontWeight="DemiBold" Style="{StaticResource Combobox2}" ItemsSource="{Binding listMucDT,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath ="tl_name">
                                         </ComboBox>
+                                        <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="validateMucDT"/>
                                     </StackPanel>
                                 </WrapPanel>
                                 <TextBlock Margin="0 20 0 5">
@@ -247,7 +256,7 @@
                             </ScrollViewer>
                         </TabItem>
                     </TabControl>
-                    <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                    <Border MouseLeftButtonDown="ThemHoaHong" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
                         <TextBlock Text="Thêm hoa hồng" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Border>
                 </StackPanel>
