@@ -237,7 +237,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     else i = "0";
 
                     web.QueryString.Add("pm_type", i);
-                    if (cbDate.SelectedItem!=null)
+                    if (cbDate.SelectedItem != null)
                     {
                         Item_shift selectedShift = cbDate.SelectedItem as Item_shift;
                         if (selectedShift != null && selectedShift.shift_id != "-1")
@@ -269,8 +269,12 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     string day_End = "";
                     if (textThang.Text != "--------- ----")
                         day_End = dteSelectedMonth1.DisplayDate.ToString("yyyy-MM");
+                    else
+                    {
+                        web.QueryString.Add("date_finish", day_End);
+                    }
+
                     web.QueryString.Add("date_start", day_Start);
-                    web.QueryString.Add("date_finish", day_End);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
                         string a = UnicodeEncoding.UTF8.GetString(ee.Result);

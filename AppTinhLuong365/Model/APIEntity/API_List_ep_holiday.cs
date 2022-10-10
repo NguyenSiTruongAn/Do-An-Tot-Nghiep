@@ -7,17 +7,16 @@ using System.Threading.Tasks;
 namespace AppTinhLuong365.Model.APIEntity
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    public class List_Holiday
+    public class List_ep_holiday
     {
-        public List<HolidayList> holiday_list { get; set; }
+        public List<EpHolidayItem> ep_holiday_list { get; set; }
         public string message { get; set; }
     }
 
-    public class HolidayList
+    public class EpHolidayItem
     {
-        public string lho_id { get; set; }
-        public string lho_name { get; set; }
-        public string lho_id_created { get; set; }
+        public string ho_id_user { get; set; }
+        public string ho_id_lho { get; set; }
         public string lho_first_time { get; set; }
         public string lho_last_time { get; set; }
         public int lho_status { get; set; }
@@ -40,16 +39,19 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string lho_time_created { get; set; }
+        public string ep_image { get; set; }
+        public string ep_name { get; set; }
+        public string dep_name { get; set; }
+        public string dep_id { get; set; }
         public string time_start { get; set; }
         public string time_end { get; set; }
     }
 
-    public class API_List_Holiday
+    public class API_List_ep_holiday
     {
         public bool result { get; set; }
         public int code { get; set; }
-        public List_Holiday data { get; set; }
+        public List_ep_holiday data { get; set; }
         public object error { get; set; }
     }
 }

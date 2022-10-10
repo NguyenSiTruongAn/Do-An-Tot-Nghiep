@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
 
 namespace AppTinhLuong365.Views.CaiDat.Popup
 {
@@ -30,17 +33,34 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private string id;
+        private DateTime date, end_date;
 
-        public PopupChinhSuaDiMuonVeSom(MainWindow main , string dataPmId, string dataPmShift, string dataShiftName, string dataPmMinute, int dataPmType, int dataPmTypePhat, string dataPmMonney, string dataPmTimeBegin, string dataPmTimeEnd)
+        private string id, shift, d_e;
+
+        public PopupChinhSuaDiMuonVeSom(MainWindow main, string dataPmId, string dataPmShift, string dataShiftName,
+            string dataPmMinute, int dataPmType, int dataPmTypePhat, string dataPmMonney, string dataPmTimeBegin,
+            string dataPmTimeEnd)
         {
             this.DataContext = this;
             InitializeComponent();
             Main = main;
             id = dataPmId;
             BoxPhat.SelectedIndex = dataPmType;
-            cbDate.SelectedValue = dataPmShift;
+            shift = dataPmShift;
+            // cbDate.SelectedValue = dataPmShift;
             tbInput.Text = dataPmMinute;
+            BoxTypePhat.SelectedIndex = dataPmTypePhat;
+            tbInput1.Text = dataPmMonney;
+            DateTime.TryParse(dataPmTimeBegin, out date);
+            textThang.Text = date.ToString("MM/yyyy");
+            d_e = dataPmTimeEnd;
+            if (!string.IsNullOrEmpty(dataPmTimeEnd))
+            {
+                DateTime.TryParse(dataPmTimeEnd, out end_date);
+                TextThang.Text = end_date.ToString("MM/yyyy");
+            }
+
+            getData();
         }
 
         private MainWindow Main;
@@ -132,7 +152,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         private void dteSelectedMonth_DisplayModeChanged1(object sender, CalendarModeChangedEventArgs e)
         {
             var x = dteSelectedMonth1.DisplayDate.ToString("MM/yyyy");
-            if (flag1 == 0)
+            if (flag1 == 0 && string.IsNullOrEmpty(d_e))
                 x = "";
             else
                 x = dteSelectedMonth1.DisplayDate.ToString("MM/yyyy");
@@ -150,9 +170,179 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             flag1 += 1;
         }
 
+
+        private List<Item_shift> _listShift;
+
+        public List<Item_shift> listShift
+        {
+            get { return _listShift; }
+            set
+            {
+                if (value == null) value = new List<Item_shift>();
+                value.Insert(0, new Item_shift() { shift_id = "-1", shift_name = "Tất cả các ca" });
+                _listShift = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.Headers.Add("Authorization", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_List_shift api =
+                        JsonConvert.DeserializeObject<API_List_shift>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listShift = api.data.items;
+                        foreach (var i in listShift)
+                        {
+                            if (i.shift_id == shift)
+                            {
+                                cbDate.SelectedItem = i;
+                            }
+                        }
+                    }
+                    // foreach (EpLate item in listEpLate)
+                    // {
+                    //     if (item.ts_image != "/img/add.png")
+                    //     {
+                    //         item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                    //     }
+                    // }
+                };
+                web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/list_shift.php", web.QueryString);
+            }
+        }
+
         private void Save(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            bool allow = true;
+            validatePhat.Text = validateMinute.Text =
+                validateTypePhat.Text = validateMoney.Text = validateStartTime.Text = "";
+            if (BoxPhat.Text == "Chọn lý do")
+            {
+                allow = false;
+                validatePhat.Text = "Vui lòng chọn phương thức";
+            }
+
+            if (string.IsNullOrEmpty(tbInput.Text))
+            {
+                allow = false;
+                validateMinute.Text = "Vui lòng nhập số phút để tính phạt";
+            }
+
+            if (BoxTypePhat.Text == "Chọn phương thức")
+            {
+                allow = false;
+                validateTypePhat.Text = "Vui lòng chọn phương thức";
+            }
+
+            if (string.IsNullOrEmpty(tbInput1.Text))
+            {
+                allow = false;
+                validateMoney.Text = "Vui lòng nhập công hoặc tiền";
+            }
+
+            if (textThang.Text == "--------- ----")
+            {
+                allow = false;
+                validateStartTime.Text = "Vui lòng chọn thời gian áp dụng";
+            }
+
+            if (allow)
+            {
+                using (WebClient web = new WebClient())
+                {
+                    if (Main.MainType == 0)
+                    {
+                        web.QueryString.Add("token", Main.CurrentCompany.token);
+                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                        web.QueryString.Add("id_late", id);
+                    }
+
+                    string i;
+                    if (BoxPhat.Text == "Đi muộn")
+                    {
+                        i = "1";
+                    }
+                    else if (BoxPhat.Text == "Về sớm")
+                    {
+                        i = "2";
+                    }
+                    else i = "0";
+
+                    web.QueryString.Add("pm_type", i);
+                    if (cbDate.SelectedItem != null)
+                    {
+                        Item_shift selectedShift = cbDate.SelectedItem as Item_shift;
+                        if (selectedShift != null && selectedShift.shift_id != "-1")
+                        {
+                            web.QueryString.Add("pm_shift", cbDate.SelectedValue.ToString());
+                        }
+                        else
+                        {
+                        }
+                    }
+
+                    string y;
+                    if (BoxTypePhat.Text == "Phạt tiền")
+                    {
+                        y = "1";
+                    }
+                    else if (BoxTypePhat.Text == "Phạt công")
+                    {
+                        y = "2";
+                    }
+                    else y = "0";
+
+                    web.QueryString.Add("pm_type_phat", y);
+                    web.QueryString.Add("pm_monney", tbInput1.Text);
+                    web.QueryString.Add("pm_minute", tbInput.Text);
+                    string day_Start = "";
+                    if (textThang.Text != "--------- ----")
+                    {
+                        string day = textThang.Text;
+                        DateTime aTime;
+                        DateTime.TryParse(day, out aTime);
+                        day_Start = aTime.ToString("yyyy-MM");
+                    }
+
+                    // day_Start = dteSelectedMonth.DisplayDate.ToString("yyyy-MM");
+                    string day_End = "";
+                    if (textThang.Text != "--------- ----")
+                    {
+                        string day_end = TextThang.Text;
+                        DateTime aTime;
+                        DateTime.TryParse(day_end, out aTime);
+                        day_End = aTime.ToString("yyyy-MM");
+                        web.QueryString.Add("date_finish", day_End);
+
+                    }
+
+                    // day_End = dteSelectedMonth1.DisplayDate.ToString("yyyy-MM");
+
+                    web.QueryString.Add("date_start", day_Start);
+                    web.UploadValuesCompleted += (s, ee) =>
+                    {
+                        string a = UnicodeEncoding.UTF8.GetString(ee.Result);
+                        API_Add_late api =
+                            JsonConvert.DeserializeObject<API_Add_late>(
+                                UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_late.php",
+                        web.QueryString);
+                }
+
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.DiMuonVeSom(Main));
+                this.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

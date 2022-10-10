@@ -14,9 +14,9 @@ using List = AppTinhLuong365.Model.APIEntity.List;
 namespace AppTinhLuong365.Views.CaiDat.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupDanhSachMucPhat.xaml
+    /// Interaction logic for PopupDanhSachMucPhat1.xaml
     /// </summary>
-    public partial class PopupDanhSachMucPhat : Page, INotifyPropertyChanged
+    public partial class PopupDanhSachMucPhat1 : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -26,7 +26,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private string id;
 
-        public PopupDanhSachMucPhat(MainWindow main, string dataShiftId)
+        public PopupDanhSachMucPhat1(MainWindow main, string dataShiftId)
         {
             this.DataContext = this;
             InitializeComponent();
@@ -56,7 +56,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                web.QueryString.Add("take", "2");
+                web.QueryString.Add("take", "1");
                 web.QueryString.Add("shift_id", id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
@@ -117,20 +117,20 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             }
         }
 
-        private void Xoa(object sender, MouseButtonEventArgs e)
-        {
-            Path b = sender as Path;
-            List data = (List)b.DataContext;
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupXoaNghiPhep(Main, data.pc_id));
-            Main.PopupSelection.Visibility = Visibility.Visible;
-        }
-
         private string text;
 
         private void textChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
             text = textBox.Text;
+        }
+
+        private void Xoa(object sender, MouseButtonEventArgs e)
+        {
+            Path b = sender as Path;
+            List data = (List)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupXoaNghiPhep(Main, data.pc_id));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

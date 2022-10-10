@@ -21,22 +21,36 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
     public partial class PopupTuyChinhNgayNghiLe : Page
     {
         MainWindow Main;
-        public PopupTuyChinhNgayNghiLe(MainWindow main)
+        private string id;
+        private string name;
+        private string number;
+        private int status;
+        private string start_time;
+        private string end_time;
+
+        public PopupTuyChinhNgayNghiLe(MainWindow main, string dataLhoId, string dataLhoName, string dataLhoNumber,
+            int dataLhoStatus, string dataTimeStart, string dataTimeEnd)
         {
             InitializeComponent();
             this.DataContext = this;
+            id = dataLhoId;
+            name = dataLhoName;
+            number = dataLhoNumber;
+            status = dataLhoStatus;
+            start_time = dataTimeStart;
+            end_time = dataTimeEnd;
             Main = main;
         }
 
         private void ChinhSua_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupChinhSuaNgayNghiLe(Main));
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupChinhSuaNgayNghiLe(Main, id, name, number, status, start_time, end_time));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void btnNhanVienApDung_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.CaiDat.Popup.PopupNhanVienADNghiLe(Main);
+            var pop = new Views.CaiDat.Popup.PopupNhanVienADNghiLe(Main, id, name);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.MaxWidth = 1054;
@@ -44,7 +58,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void Xoa_Click(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.CaiDat.Popup.PopupThongBaoXoaNNL(Main);
+            var pop = new Views.CaiDat.Popup.PopupXoaLichNghi(Main, id);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 616;
