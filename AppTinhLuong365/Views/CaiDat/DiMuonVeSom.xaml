@@ -132,7 +132,7 @@
                                     </Border>
                                 </WrapPanel>
                                 <DataGrid x:Name="dataGrid" ItemsSource="{Binding listEpLate}"
-                                          Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
+                                          Style="{StaticResource DataGrid1}" Margin="0 40 0 0" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -269,29 +269,29 @@
                                         </DataGridTemplateColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
-                                <!-- <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 0"> -->
-                                <!--     <Border Cursor="Hand" MouseLeftButtonDown="ve_page_1_chua_nhom" x:Name="PageDau_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                                <!--         <TextBlock Text="&lt;&lt;&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                                <!--     </Border> -->
-                                <!--     <Border Cursor="Hand" x:Name="PageTruoc_chua_nhom" MouseLeftButtonDown="page_truoc_click_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                                <!--         <TextBlock Text="&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                                <!--     </Border> -->
-                                <!--     <Border Cursor="Hand" x:Name="Page1_chua_nhom" MouseLeftButtonDown="select_page_click1_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                                <!--         <TextBlock x:Name="txtpage1_chua_nhom" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                                <!--     </Border> -->
-                                <!--     <Border Cursor="Hand" x:Name="Page2_chua_nhom" MouseLeftButtonDown="select_page_click2_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                                <!--         <TextBlock x:Name="txtpage2_chua_nhom" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                                <!--     </Border> -->
-                                <!--     <Border Cursor="Hand" x:Name="Page3_chua_nhom" MouseLeftButtonDown="select_page_click3_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                                <!--         <TextBlock x:Name="txtpage3_chua_nhom" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                                <!--     </Border> -->
-                                <!--     <Border Cursor="Hand" x:Name="PageTiep_chua_nhom" MouseLeftButtonDown="page_sau_click_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                                <!--         <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                                <!--     </Border> -->
-                                <!--     <Border Cursor="Hand" x:Name="PageCuoi_chua_nhom" MouseLeftButtonDown="page_cuoi_click_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                                <!--         <TextBlock Text=">>>" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                                <!--     </Border> -->
-                                <!-- </DockPanel> -->
+                                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 0">
+                                    <Border Cursor="Hand" MouseLeftButtonDown="ve_page_1" x:Name="PageDau" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                        <TextBlock Text="&lt;&lt;&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                    </Border>
+                                    <Border Cursor="Hand" x:Name="PageTruoc" MouseLeftButtonDown="page_truoc_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                        <TextBlock Text="&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                    </Border>
+                                    <Border Cursor="Hand" x:Name="Page1" MouseLeftButtonDown="select_page_click1" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                        <TextBlock x:Name="txtpage1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                    </Border>
+                                    <Border Cursor="Hand" x:Name="Page2" MouseLeftButtonDown="select_page_click2" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                        <TextBlock x:Name="txtpage2" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                    </Border>
+                                    <Border Cursor="Hand" x:Name="Page3" MouseLeftButtonDown="select_page_click3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                        <TextBlock x:Name="txtpage3" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                    </Border>
+                                    <Border Cursor="Hand" x:Name="PageTiep" MouseLeftButtonDown="page_sau_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                        <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                    </Border>
+                                    <Border Cursor="Hand" x:Name="PageCuoi" MouseLeftButtonDown="page_cuoi_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                        <TextBlock Text=">>>" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                    </Border>
+                                </DockPanel>
 
                             </StackPanel>
                         </Border>
@@ -481,25 +481,25 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <!-- <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 0"> -->
-                    <!--     <Border Cursor="Hand" MouseLeftButtonDown="ve_page_1_chua_nhom" x:Name="PageDau_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                    <!--     <Border Cursor="Hand" MouseLeftButtonDown="ve_page_1" x:Name="PageDau" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
                     <!--         <TextBlock Text="&lt;&lt;&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
                     <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="PageTruoc_chua_nhom" MouseLeftButtonDown="page_truoc_click_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                    <!--     <Border Cursor="Hand" x:Name="PageTruoc" MouseLeftButtonDown="page_truoc_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
                     <!--         <TextBlock Text="&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
                     <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="Page1_chua_nhom" MouseLeftButtonDown="select_page_click1_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                    <!--         <TextBlock x:Name="txtpage1_chua_nhom" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
+                    <!--     <Border Cursor="Hand" x:Name="Page1" MouseLeftButtonDown="select_page_click1" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                    <!--         <TextBlock x:Name="txtpage1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
                     <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="Page2_chua_nhom" MouseLeftButtonDown="select_page_click2_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                    <!--         <TextBlock x:Name="txtpage2_chua_nhom" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
+                    <!--     <Border Cursor="Hand" x:Name="Page2" MouseLeftButtonDown="select_page_click2" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                    <!--         <TextBlock x:Name="txtpage2" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
                     <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="Page3_chua_nhom" MouseLeftButtonDown="select_page_click3_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                    <!--         <TextBlock x:Name="txtpage3_chua_nhom" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
+                    <!--     <Border Cursor="Hand" x:Name="Page3" MouseLeftButtonDown="select_page_click3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                    <!--         <TextBlock x:Name="txtpage3" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
                     <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="PageTiep_chua_nhom" MouseLeftButtonDown="page_sau_click_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                    <!--     <Border Cursor="Hand" x:Name="PageTiep" MouseLeftButtonDown="page_sau_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
                     <!--         <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
                     <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="PageCuoi_chua_nhom" MouseLeftButtonDown="page_cuoi_click_chua_nhom" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                    <!--     <Border Cursor="Hand" x:Name="PageCuoi" MouseLeftButtonDown="page_cuoi_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
                     <!--         <TextBlock Text=">>>" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
                     <!--     </Border> -->
                     <!-- </DockPanel> -->
