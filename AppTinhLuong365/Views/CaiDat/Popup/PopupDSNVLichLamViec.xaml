@@ -45,7 +45,7 @@
                                                                 </Border.Background>
                                                             </Border>
                                                             <StackPanel Margin="10 0 0 0">
-                                                                <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                                <TextBlock FontSize="15" FontWeight="DemiBold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                                                 <TextBlock Text="{Binding ep_id}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                                                             </StackPanel>
                                                         </WrapPanel>

@@ -10,6 +10,7 @@ namespace AppTinhLuong365.Model.APIEntity
     public class DataListEmployee
     {
         public DataListEmployee1 data { get; set; }
+        public DataListEmployee2 data1 { get; set; }
         public object error { get; set; }
         public string message { get; set; }
     }
@@ -19,6 +20,13 @@ namespace AppTinhLuong365.Model.APIEntity
         public int itemsPerPage { get; set; }
         public string totalItems { get; set; }
         public List<ListEmployee> items { get; set; }
+    }
+
+    public class DataListEmployee2
+    {
+        public int itemsPerPage { get; set; }
+        public string totalItems { get; set; }
+        public ListEmployee itemslist { get; set; }
     }
 
     public class ListEmployee
@@ -59,6 +67,28 @@ namespace AppTinhLuong365.Model.APIEntity
         public string ep_married { get; set; }
         public string ep_gender { get; set; }
         public string role_id { get; set; }
+
+        public string display_role_id
+        {
+            get
+            {
+                string a = "";
+                if (role_id == "1")
+                {
+                    a = "Owner";
+                }
+                else if (role_id == "4")
+                {
+                    a = "Admin";
+                }
+                else if (role_id == "3")
+                {
+                    a = "Nhân viên";
+                }
+                return a;
+            }
+        }
+
         public string position_id { get; set; }
         public string ep_status { get; set; }
         public string update_time { get; set; }

@@ -37,9 +37,12 @@ namespace AppTinhLuong365.Views.CaiDat
             }
 
             YearList = new ObservableCollection<string>();
-            for (var i = 2022; i <= 2025; i++)
+            var c = DateTime.Now.Year;
+            if (c != null)
             {
-                YearList.Add($"Năm {i}");
+                YearList.Add($"Năm {c - 1}");
+                YearList.Add($"Năm {c}");
+                YearList.Add($"Năm {c + 1}");
             }
 
             InitializeComponent();
@@ -51,6 +54,10 @@ namespace AppTinhLuong365.Views.CaiDat
             getData1(1, month, year, "", "");
             getData2();
             getData3();
+            searchBarMonth1.PlaceHolder = "Năm " + year;
+            searchBarYear1.PlaceHolder = "Tháng " + month;
+            searchBarMonth.PlaceHolder = "Năm " + year;
+            searchBarYear.PlaceHolder = "Tháng " + month;
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -578,7 +585,7 @@ namespace AppTinhLuong365.Views.CaiDat
         private void ThongKe(object sender, MouseButtonEventArgs e)
         {
             string year = "", month = "", id_nv = "", id_pb = "";
-            if (searchBarYear1.SelectedIndex != -1)
+            if (searchBarYear1.SelectedItem != null)
                 year = searchBarYear1.SelectedItem.ToString().Split(' ')[1];
             else
                 year = DateTime.Now.ToString("yyyy");
@@ -593,6 +600,10 @@ namespace AppTinhLuong365.Views.CaiDat
                     id_nv = "";
                 else id_nv = id2;
             }
+            else
+            {
+                id_nv = "";
+            }
 
             if (cbPhongBan.SelectedIndex != -1)
             {
@@ -601,6 +612,10 @@ namespace AppTinhLuong365.Views.CaiDat
                 if (id2 == "-1")
                     id_pb = "";
                 else id_pb = id2;
+            }
+            else
+            {
+                id_pb = "";
             }
 
             getData1(1, month, year, id_nv, id_pb);
@@ -723,7 +738,7 @@ namespace AppTinhLuong365.Views.CaiDat
         private void thongKe(object sender, MouseButtonEventArgs e)
         {
             string year = "", month = "";
-            if (searchBarYear.SelectedIndex != -1)
+            if (searchBarYear.SelectedItem != null)
                 year = searchBarYear.SelectedItem.ToString().Split(' ')[1];
             else
                 year = DateTime.Now.ToString("yyyy");
