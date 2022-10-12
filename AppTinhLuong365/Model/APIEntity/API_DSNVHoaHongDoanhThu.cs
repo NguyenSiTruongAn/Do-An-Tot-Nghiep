@@ -33,6 +33,15 @@ namespace AppTinhLuong365.Model.APIEntity
         public string ro_note { get; set; }
         public string persent { get; set; }
         public string ro_price { get; set; }
+        public List<RoDtThoiDiem> ro_dt_thoi_diem { get; set; }
+    }
+
+    public class RoDtThoiDiem
+    {
+        public string dt_rose_id { get; set; }
+        public int id { get; set; }
+        public string dt_money { get; set; }
+        public string dt_time { get; set; }
     }
 
     public class API_DSNVHoaHongDoanhThu
