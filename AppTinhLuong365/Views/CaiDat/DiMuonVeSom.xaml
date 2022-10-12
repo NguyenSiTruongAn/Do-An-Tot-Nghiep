@@ -103,8 +103,8 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar x:Name="cbPhongBan" SelectedIndex="0" Foreground="{DynamicResource #444}"
-                                                                FontSize="16"
+                                                <tool:SearchBar x:Name="cbPhongBan" Foreground="{DynamicResource #444}"
+                                                                FontSize="16" PlaceHolder="Phòng ban (tất cả)"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 DisplayMemberPath="dep_name" />
@@ -112,8 +112,8 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar x:Name="cbListNV" SelectedIndex="0" Foreground="{DynamicResource #444}"
-                                                                FontSize="16"
+                                                <tool:SearchBar x:Name="cbListNV" Foreground="{DynamicResource #444}"
+                                                                FontSize="16" PlaceHolder="Tất cả nhân viên"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 DisplayMemberPath="ep_id_display" />

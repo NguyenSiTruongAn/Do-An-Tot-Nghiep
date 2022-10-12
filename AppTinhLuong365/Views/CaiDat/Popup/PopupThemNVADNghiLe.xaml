@@ -41,7 +41,7 @@
                     </Border>
                     <TabControl ItemContainerStyle="{StaticResource TabItem2}" BorderThickness="0">
                         <TabItem Header="Nhân viên" BorderThickness="0">
-                            <DataGrid Height="220" ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="dataGrid1" Style="{StaticResource DataGrid5}">
+                            <DataGrid Height="220" ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="dataGrid1" Style="{StaticResource DataGrid5}" ItemsSource="{Binding listEmployee1}">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>

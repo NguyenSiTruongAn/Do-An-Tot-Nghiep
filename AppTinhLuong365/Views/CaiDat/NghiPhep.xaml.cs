@@ -36,10 +36,21 @@ namespace AppTinhLuong365.Views.CaiDat
             }
 
             YearList = new ObservableCollection<string>();
-            for (var i = 2022; i <= 2025; i++)
+            var c = DateTime.Now.Year;
+            if (c != null)
             {
-                YearList.Add($"Năm {i}");
+                YearList.Add($"Năm {c - 1}");
+                YearList.Add($"Năm {c}");
+                YearList.Add($"Năm {c + 1}");
             }
+
+
+            // for (var i = DateTime.Now.Year; i <= i + 2; i++)
+            // {
+            //     ItemList.Add($"Tháng {i - 1}");
+            //     ItemList.Add($"Tháng {i}");
+            //     ItemList.Add($"Tháng {i + 1}");
+            // }
 
             InitializeComponent();
             this.DataContext = this;
@@ -53,6 +64,8 @@ namespace AppTinhLuong365.Views.CaiDat
             getData2();
             getData3();
             getData4(date);
+            Year.PlaceHolder = "Năm " + year;
+            Month.PlaceHolder = "Tháng " + month;
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -267,7 +280,7 @@ namespace AppTinhLuong365.Views.CaiDat
         private void Thang(object sender, SelectionChangedEventArgs e)
         {
             string month = "", year = "", ep_id = "";
-            if (Year.SelectedIndex != -1)
+            if (Year.SelectedItem != null)
                 year = Year.SelectedItem.ToString().Split(' ')[1];
             else
                 year = DateTime.Now.ToString("yyyy");
@@ -281,6 +294,10 @@ namespace AppTinhLuong365.Views.CaiDat
                 if (id2 == "-1")
                     ep_id = "";
                 else ep_id = id2;
+            }
+            else
+            {
+                ep_id = "";
             }
 
             getData1(month, year, ep_id);
@@ -608,6 +625,11 @@ namespace AppTinhLuong365.Views.CaiDat
             Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
+        private void ListView_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+        }
+
         private void NghiPhep_OnLoaded(object sender, RoutedEventArgs e)
         {
             DatePickerDay.SelectedDate = DateTime.Now;
@@ -622,6 +644,7 @@ namespace AppTinhLuong365.Views.CaiDat
                 date = DateTime.Now.ToString("yyyy-MM-dd");
             getData(date);
         }
+
         private void Select()
         {
             string date = "";

@@ -21,16 +21,24 @@ namespace AppTinhLuong365.Views.PhanQuyen
     public partial class PopupPQTuyChon : Page
     {
         MainWindow Main;
-        public PopupPQTuyChon(MainWindow main)
+        private string ep_image;
+        private string ep_name;
+        private string ep_id;
+        private string role_id;
+        public PopupPQTuyChon(MainWindow main, string dataEpImage, string dataEpName, string dataEpId, string dataRoleId)
         {
             InitializeComponent();
             this.DataContext = this;
+            ep_image = dataEpImage;
+            ep_name = dataEpName;
+            ep_id = dataEpId;
+            role_id = dataRoleId;
             Main = main;
         }
 
         private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Views.PhanQuyen.PopupPQTK pop = new Views.PhanQuyen.PopupPQTK(Main);
+            Views.PhanQuyen.PopupPQTK pop = new Views.PhanQuyen.PopupPQTK(Main, ep_image, ep_name, ep_id, role_id);
             pop.Width = 495;
             pop.Height = 320;
             Main.PopupSelection.NavigationService.Navigate(pop);

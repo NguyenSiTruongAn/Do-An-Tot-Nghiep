@@ -21,22 +21,53 @@ using Newtonsoft.Json;
 namespace AppTinhLuong365.Views.ChiTraLuong
 {
     /// <summary>
-    /// Interaction logic for PopupChiTraLuong.xaml
+    /// Interaction logic for PopupSua.xaml
     /// </summary>
-    public partial class PopupChiTraLuong : Page, INotifyPropertyChanged
+    public partial class PopupSua : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public PopupChiTraLuong(MainWindow main)
+
+        private string id;
+
+        public PopupSua(MainWindow main, string dataPayId, string dataPayName, string dataPayForTime, string dataPayTimeStart, string dataPayTimeEnd, string dataPayUnit)
         {
             this.DataContext = this;
             InitializeComponent();
+            id = dataPayId;
+            tbInput.Text = dataPayName;
+            textThang.Text = dataPayForTime;
+            DateTime startDate;
+            if (!string.IsNullOrEmpty(dataPayTimeStart) && DateTime.TryParse(dataPayTimeStart, out startDate))
+            {
+                StartDate.SelectedDate = startDate;
+            }
+            DateTime endDate = new DateTime();
+            if (!string.IsNullOrEmpty(dataPayTimeEnd))
+            {
+                string time;
+                time = dataPayTimeEnd.Replace("/", " - ");
+                string[] time1 = time.Split(' ');
+                time = "";
+                for (int j = time1.Length - 1; j > -1; j--)
+                {
+                    time += time1[j];
+                }
+                EndDate.SelectedDate = DateTime.Parse(time);
+            }
+
+            if (dataPayUnit == "1")
+            {
+                ComboBoxPay.SelectedIndex = 0;
+            }
+            else if (dataPayUnit == "2")
+            {
+                ComboBoxPay.SelectedIndex = 1;
+            }
             Main = main;
-            getData();
-            ComboBox.SelectedIndex = 0;
         }
 
         private int _IsSmallSize;
@@ -50,46 +81,6 @@ namespace AppTinhLuong365.Views.ChiTraLuong
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
-        }
-
-        private List<Item_dep> _listDep;
-
-        public List<Item_dep> listDep
-        {
-            get { return _listDep; }
-            set
-            {
-                if (value == null) value = new List<Item_dep>();
-                value.Insert(0, new Item_dep() { dep_id = "0", dep_name = "Toàn bộ nhân viên" });
-                _listDep = value;
-                OnPropertyChanged();
-            }
-        }
-        private void getData()
-        {
-            using (WebClient web = new WebClient())
-            {
-                web.QueryString.Add("token", Main.CurrentCompany.token);
-                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                web.UploadValuesCompleted += (s, e) =>
-                {
-                    API_List_dep api =
-                        JsonConvert.DeserializeObject<API_List_dep>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
-                    {
-                        listDep = api.data.list;
-                    }
-                    //foreach (EpLate item in list)
-                    //{
-                    //    if (item.ts_image != "/img/add.png")
-                    //    {
-                    //        item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
-                    //    }
-                    //}
-                };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_dep.php",
-                    web.QueryString);
-            }
         }
 
         private void Select_thang(object sender, MouseButtonEventArgs e)
@@ -153,8 +144,8 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                 {
                     if (Main.MainType == 0)
                     {
-                        web.QueryString.Add("token", Main.CurrentCompany.token);
                         web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                        web.QueryString.Add("pay_id", id);
                     }
                     web.QueryString.Add("pay_name", tbInput.Text);
                     string date = "";
@@ -183,15 +174,8 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                     {
                         i = "2";
                     }
+
                     web.QueryString.Add("pay_unit", i);
-                    if (ComboBox.SelectedItem != null)
-                    {
-                        Item_dep selectedShift = ComboBox.SelectedItem as Item_dep;
-                        if (selectedShift != null && selectedShift.dep_id != "-1")
-                        {
-                            web.QueryString.Add("pay_for", selectedShift.dep_id);
-                        }
-                    }
                     web.UploadValuesCompleted += (s, ee) =>
                     {
                         string a = UnicodeEncoding.UTF8.GetString(ee.Result);
@@ -202,7 +186,7 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                         {
                         }
                     };
-                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_pay.php",
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_pay.php",
                         web.QueryString);
                 }
 

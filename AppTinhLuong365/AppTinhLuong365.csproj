@@ -153,6 +153,7 @@
     <Compile Include="Model\APIEntity\API_DSNVCacKhoanThienKhac.cs" />
     <Compile Include="Model\APIEntity\API_DSNVHoaHongDoanhThu.cs" />
     <Compile Include="Model\APIEntity\API_DSNVHoaHongTien.cs" />
+    <Compile Include="Model\APIEntity\API_DSNVPQ1Nguoi.cs" />
     <Compile Include="Model\APIEntity\API_DSNVThemMoiVaoPhucLoi_PhuCap.cs" />
     <Compile Include="Model\APIEntity\API_DSNVThemVaoCKTK.cs" />
     <Compile Include="Model\APIEntity\API_DSTamUng.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="Model\APIEntity\API_List_Ep_Np.cs" />
     <Compile Include="Model\APIEntity\API_List_Holiday.cs" />
     <Compile Include="Model\APIEntity\API_List_Np_Improperly.cs" />
+    <Compile Include="Model\APIEntity\API_List_pay.cs" />
     <Compile Include="Model\APIEntity\API_List_shift.cs" />
     <Compile Include="Model\APIEntity\API_Payroll.cs" />
     <Compile Include="Model\APIEntity\API_ListGroup.cs" />
@@ -335,6 +337,12 @@
     </Compile>
     <Compile Include="Views\ChiTraLuong\PopupChiTraLuong.xaml.cs">
       <DependentUpon>PopupChiTraLuong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChiTraLuong\PopupSua.xaml.cs">
+      <DependentUpon>PopupSua.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChiTraLuong\PopupXoa.xaml.cs">
+      <DependentUpon>PopupXoa.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\BaoHiem.xaml.cs">
       <DependentUpon>BaoHiem.xaml</DependentUpon>
@@ -874,6 +882,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CaiDat\Popup\PopupXoaNhanVienNghiLe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChiTraLuong\PopupSua.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChiTraLuong\PopupXoa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

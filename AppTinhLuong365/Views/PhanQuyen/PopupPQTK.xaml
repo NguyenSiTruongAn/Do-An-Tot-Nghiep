@@ -19,28 +19,27 @@
                     <Grid Margin="0 30 0 0">
                         <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
                             <Border.Background>
-                                <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                <ImageBrush x:Name="Image" ImageSource="{Binding ep_image}"></ImageBrush>
                             </Border.Background>
                         </Border>
-                        <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                        <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                        <TextBlock x:Name="Name" Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                        <TextBlock x:Name="Id" Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                     </Grid>
                     <TextBlock Margin="0 10 0 0">
                         <Run Text="Quyền áp dụng" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                     </TextBlock>
                     <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="3" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 5 0 0">
-                        <ComboBox Cursor="Hand" FontSize="16" Foreground="{DynamicResource #777777}" Style="{StaticResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
-                            <ComboBoxItem IsSelected="True">Nhân viên</ComboBoxItem>
+                        <ComboBox x:Name="Role" Cursor="Hand" FontSize="16" Foreground="{DynamicResource #777777}" Style="{StaticResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
                             <ComboBoxItem>Owner</ComboBoxItem>
+                            <ComboBoxItem>Nhân viên</ComboBoxItem>
                         </ComboBox>
                     </Border>
-                    <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                    <Border MouseLeftButtonDown="Save" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
                         <TextBlock Text="Lưu lại" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Border>
                 </StackPanel>
             </StackPanel>
         </Border>
-
     </Grid>
 </Page>

@@ -115,6 +115,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         {
             listEmployee1 = listEmployee.Where(x =>
                 x.ep_name.ToLower().RemoveUnicode().Contains(tbInput.Text.ToLower().RemoveUnicode())).ToList();
+            string v = "";
         }
 
         private List<EpHolidayItem> _epHolidayList = new List<EpHolidayItem>();

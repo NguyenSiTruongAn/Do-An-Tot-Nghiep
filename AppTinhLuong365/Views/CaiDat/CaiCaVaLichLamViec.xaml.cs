@@ -38,9 +38,12 @@ namespace AppTinhLuong365.Views.CaiDat
             }
 
             YearList = new ObservableCollection<string>();
-            for (var i = 2022; i <= 2025; i++)
+            var c = DateTime.Now.Year;
+            if (c != null)
             {
-                YearList.Add($"Năm {i}");
+                YearList.Add($"Năm {c - 1}");
+                YearList.Add($"Năm {c}");
+                YearList.Add($"Năm {c + 1}");
             }
 
             InitializeComponent();
@@ -51,6 +54,8 @@ namespace AppTinhLuong365.Views.CaiDat
             getData(month, year);
             getData1(month, year);
             getData2(month, year);
+            searchBarMonth1.PlaceHolder = "Năm " + year;
+            searchBarYear1.PlaceHolder = "Tháng " + month;
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -242,7 +247,7 @@ namespace AppTinhLuong365.Views.CaiDat
         private void Load(object sender, SelectionChangedEventArgs e)
         {
             string year = "", month = "";
-            if (searchBarYear1.SelectedIndex != -1)
+            if (searchBarYear1.SelectedItem != null)
                 year = searchBarYear1.SelectedItem.ToString().Split(' ')[1];
             else
                 year = DateTime.Now.ToString("yyyy");
