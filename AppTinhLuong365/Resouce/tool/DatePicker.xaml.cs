@@ -116,6 +116,19 @@ namespace AppTinhLuong365.Resouce.tool
         public static readonly DependencyProperty SelectionChangeProperty =
             DependencyProperty.Register("SelectionChange", typeof(Action), typeof(DatePicker));
 
+
+        public SelectionChangedEventHandler SelectedDateChange
+        {
+            get { return (SelectionChangedEventHandler)GetValue(SelectedDateChangeProperty); }
+            set { SetValue(SelectedDateChangeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedDateChangeProperty =
+            DependencyProperty.Register("SelectedDateChange", typeof(SelectionChangedEventHandler), typeof(DatePicker));
+
+
+
         private void LoadDay(int year, int month)
         {
             var start = (int)new DateTime(year, month, 1).DayOfWeek;
@@ -365,6 +378,7 @@ namespace AppTinhLuong365.Resouce.tool
                 pop.IsOpen = false;
 
                 if (SelectionChange != null) SelectionChange();
+                if (SelectedDateChange != null) SelectedDateChange(this,null);
             }
 
         }

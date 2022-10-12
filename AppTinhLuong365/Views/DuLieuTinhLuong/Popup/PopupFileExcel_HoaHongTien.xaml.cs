@@ -77,7 +77,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 }
             }*/
 
-            //uploadFile();
+            uploadFile();
         }
     }
 }
