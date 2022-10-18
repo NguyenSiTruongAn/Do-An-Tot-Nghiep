@@ -120,7 +120,10 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
-                                                <TextBlock Text="{Binding ro_price}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                                <TextBlock Style="{StaticResource TextRowCenter1}">
+                                                    <Run Text="{Binding display_ro_price,Mode=OneWay}"/>
+                                                    <Run Text="VNĐ"/>
+                                                </TextBlock>
                                             </Border>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -249,7 +252,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Style="{StaticResource TextRowCenter1}">
-                                                        <Run Text="{Binding ro_price}"/>
+                                                        <Run Text="{Binding display_ro_price,Mode=OneWay}"/>
                                                         <Run Text="VNĐ"/>
                                                     </TextBlock>
                                                 </DataTemplate>
@@ -380,7 +383,7 @@
                                         <DataTemplate>
                                             <Border Background="Transparent">
                                                 <TextBlock Style="{StaticResource TextRowCenter1}">
-                                                    <Run  Text="{Binding money}"/>
+                                                    <Run  Text="{Binding display_money,Mode=OneWay}"/>
                                                     <Run Text="VNĐ"/>
                                                 </TextBlock>
                                             </Border>

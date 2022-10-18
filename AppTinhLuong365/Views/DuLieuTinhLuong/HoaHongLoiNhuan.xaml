@@ -139,7 +139,7 @@
                                         <DataTemplate>
                                             <Border Background="Transparent">
                                                 <TextBlock Style="{StaticResource TextRowCenter}">
-                                                    <Run Text="{Binding ro_price}"/>
+                                                    <Run Text="{Binding display_ro_price,Mode=OneWay}"/>
                                                     <Run Text="VNĐ"/>
                                                 </TextBlock>
                                             </Border>
@@ -294,7 +294,7 @@
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
                                                         <TextBlock Style="{StaticResource TextRowCenter}">
-                                                    <Run Text="{Binding ro_price}"/>
+                                                    <Run Text="{Binding display_ro_price,Mode=OneWay}"/>
                                                     <Run Text="VNĐ"/>
                                                         </TextBlock>
                                                     </Border>
@@ -306,7 +306,7 @@
                                                 <DataTemplate>
                                                     <Grid>
                                                         <DockPanel>
-                                                            <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
+                                                            <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="ChinhSuaNhom">
                                                                 <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>
                                                             </Border>
                                                             <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="XoaNhom">
@@ -415,7 +415,7 @@
                                         <DataTemplate>
                                             <Border Background="Transparent">
                                                 <TextBlock Style="{StaticResource TextRowCenter1}">
-                                                    <Run Text="{Binding money}"/>
+                                                    <Run Text="{Binding display_money,Mode=OneWay}"/>
                                                     <Run Text="VNĐ"/>
                                                 </TextBlock>
                                             </Border>

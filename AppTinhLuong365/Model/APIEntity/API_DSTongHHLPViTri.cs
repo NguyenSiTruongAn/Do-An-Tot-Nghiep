@@ -7,25 +7,33 @@ using System.Threading.Tasks;
 namespace AppTinhLuong365.Model.APIEntity
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    public class DataDSTongHHDT
+    public class DataDSTongHHLPViTri
     {
-        public List<DSTongHHDT> list { get; set; }
+        public List<DSTongHHLPViTri> list { get; set; }
         public string message { get; set; }
     }
 
-    public class DSTongHHDT
+    public class DSTongHHLPViTri
     {
         public int ep_id { get; set; }
         public string ep_name { get; set; }
         public string ep_image { get; set; }
         public string time { get; set; }
+        public string display_time
+        {
+            get
+            {
+                string result = "Tháng " + DateTime.Parse(time).ToString("MM/yyyy");
+                return result;
+            }
+        }
         public string money { get; set; }
         public string display_money
         {
             get
             {
                 string a = "";
-                if (Convert.ToDouble(money) >= 0)
+                if (Convert.ToInt64(money) >= 0)
                 {
                     double m;
                     if (double.TryParse(money, out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -42,11 +50,11 @@ namespace AppTinhLuong365.Model.APIEntity
         }
     }
 
-    public class API_DSTongHHDT
+    public class API_DSTongHHLPViTri
     {
         public bool result { get; set; }
         public int code { get; set; }
-        public DataDSTongHHDT data { get; set; }
+        public DataDSTongHHLPViTri data { get; set; }
         public object error { get; set; }
     }
 }

@@ -28,6 +28,26 @@ namespace AppTinhLuong365.Model.APIEntity
             }
         }
         public string money { get; set; }
+        public string display_money
+        {
+            get
+            {
+                string a = "";
+                if (Convert.ToInt64(money) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(money, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(money.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
+            }
+        }
     }
 
     public class API_DSTongHoaHongTien

@@ -35,7 +35,6 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         {
             InitializeComponent();
             this.DataContext = this;
-            InitializeComponent();
             Main = main;
             getData();
             txtName.Text = data.ep_name;
@@ -58,12 +57,32 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 listTest.Add(new abc() { selectedDate = dp, id = item.id, dt_money = item.dt_money, dt_rose_id = item.dt_rose_id, dt_time = item.dt_time });
             }
             listTest = listTest.ToList();
-            dteSelectedMonth.DisplayDate = DateTime.Parse(data.ro_time);
-            dteSelectedMonth.SelectedDate = DateTime.Parse(data.ro_time);
+            dteSelectedMonth = new Calendar();
+            dteSelectedMonth.Visibility = Visibility.Collapsed;
+            dteSelectedMonth.DisplayMode = CalendarMode.Year;
+            dteSelectedMonth.MouseLeftButtonDown += Select_thang;
+            dteSelectedMonth.DisplayModeChanged += dteSelectedMonth_DisplayModeChanged;
+            cl = new List<Calendar>();
+            cl.Add(dteSelectedMonth);
+            cl = cl.ToList();
             textThangAD.Text = DateTime.Parse(data.ro_time).ToString("MM/yyyy");
             tbInput1.Text = data.ro_note;
         }
         MainWindow Main;
+
+        Calendar dteSelectedMonth { get; set; }
+
+        private List<Calendar> _cl;
+
+        public List<Calendar> cl
+        {
+            get { return _cl; }
+            set
+            {
+                _cl = value; OnPropertyChanged();
+            }
+        }
+
         private DSNVHoaHongDoanhThu data1;
         private List<RoDtThoiDiem> _listDT;
 

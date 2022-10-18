@@ -132,7 +132,7 @@
                                         <DataTemplate>
                                             <Border Background="Transparent">
                                                 <TextBlock Style="{StaticResource TextRowCenter1}">
-                                                    <Run Text="{Binding ro_price}"/>
+                                                    <Run Text="{Binding display_ro_price,Mode=OneWay}"/>
                                                     <Run Text="VNĐ"/>
                                                 </TextBlock>
                                             </Border>
@@ -289,8 +289,8 @@
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
                                                         <TextBlock Style="{StaticResource TextRowCenter1}">
-                                                    <Run Text="{Binding ro_price}"/>
-                                                    <Run Text="VNĐ"/>
+                                                            <Run Text="{Binding display_ro_price,Mode=OneWay}"/>
+                                                            <Run Text="VNĐ"/>
                                                         </TextBlock>
                                                     </Border>
                                                 </DataTemplate>
@@ -422,7 +422,7 @@
                                         <DataTemplate>
                                             <Border Background="Transparent">
                                                 <TextBlock Style="{StaticResource TextRowCenter1}">
-                                                    <Run Text="{Binding money}"/>
+                                                    <Run Text="{Binding display_money,Mode=OneWay}"/>
                                                     <Run Text="VNĐ"/>
                                                 </TextBlock>
                                             </Border>

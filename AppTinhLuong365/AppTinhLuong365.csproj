@@ -148,11 +148,15 @@
     <Compile Include="Model\APIEntity\API_DSCaiDatHoaHongVT.cs" />
     <Compile Include="Model\APIEntity\API_DSCaLamViec.cs" />
     <Compile Include="Model\APIEntity\API_DSNhanVienPhucLoi_PhuCap.cs" />
+    <Compile Include="Model\APIEntity\API_DSNhomHHKeHoach.cs" />
     <Compile Include="Model\APIEntity\API_DSNhomHHLoiNhuan.cs" />
+    <Compile Include="Model\APIEntity\API_DSNhomHHLPViTri.cs" />
     <Compile Include="Model\APIEntity\API_DSNhomHoaHongDoanhThu.cs" />
     <Compile Include="Model\APIEntity\API_DSNhomHoaHongTien.cs" />
     <Compile Include="Model\APIEntity\API_DSNVADCKTK.cs" />
     <Compile Include="Model\APIEntity\API_DSNVCacKhoanThienKhac.cs" />
+    <Compile Include="Model\APIEntity\API_DSNVHHKeHoach.cs" />
+    <Compile Include="Model\APIEntity\API_DSNVHHLPViTri.cs" />
     <Compile Include="Model\APIEntity\API_DSNVHoaHongDoanhThu.cs" />
     <Compile Include="Model\APIEntity\API_DSNVHoaHongLoiNhuan.cs" />
     <Compile Include="Model\APIEntity\API_DSNVHoaHongTien.cs" />
@@ -162,7 +166,9 @@
     <Compile Include="Model\APIEntity\API_DSTamUng.cs" />
     <Compile Include="Model\APIEntity\API_DSThemMoiNhanVienVaoNhom.cs" />
     <Compile Include="Model\APIEntity\API_DSTongHHDT.cs" />
+    <Compile Include="Model\APIEntity\API_DSTongHHKeHoach.cs" />
     <Compile Include="Model\APIEntity\API_DSTongHHLoiNhuan.cs" />
+    <Compile Include="Model\APIEntity\API_DSTongHHLPViTri.cs" />
     <Compile Include="Model\APIEntity\API_DSTongHoaHongTien.cs" />
     <Compile Include="Model\APIEntity\API_ListCalendarWork.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployee.cs" />
@@ -418,14 +424,29 @@
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhanVienPhucLoi.xaml.cs">
       <DependentUpon>PopupChinhSuaNhanVienPhucLoi.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhomHHKH.xaml.cs">
+      <DependentUpon>PopupChinhSuaNhomHHKH.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhomHHLN.xaml.cs">
+      <DependentUpon>PopupChinhSuaNhomHHLN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhomHHVT.xaml.cs">
+      <DependentUpon>PopupChinhSuaNhomHHVT.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhomHoaHongDT.xaml.cs">
       <DependentUpon>PopupChinhSuaNhomHoaHongDT.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhomHoaHongTien.xaml.cs">
       <DependentUpon>PopupChinhSuaNhomHoaHongTien.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNVHHKH.xaml.cs">
+      <DependentUpon>PopupChinhSuaNVHHKH.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNVHoaHongDoanhThu.xaml.cs">
       <DependentUpon>PopupChinhSuaNVHoaHongDoanhThu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNVHoaHongVT.xaml.cs">
+      <DependentUpon>PopupChinhSuaNVHoaHongVT.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaPhuCap.xaml.cs">
       <DependentUpon>PopupChinhSuaPhuCap.xaml</DependentUpon>
@@ -547,8 +568,14 @@
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaNhanVienHHDT.xaml.cs">
       <DependentUpon>PopupThongBaoXoaNhanVienHHDT.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaNVHHKH.xaml.cs">
+      <DependentUpon>PopupThongBaoXoaNVHHKH.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaNVHHLN.xaml.cs">
       <DependentUpon>PopupThongBaoXoaNVHHLN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaNVHHVT.xaml.cs">
+      <DependentUpon>PopupThongBaoXoaNVHHVT.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaNVKhoiCKTK.xaml.cs">
       <DependentUpon>PopupThongBaoXoaNVKhoiCKTK.xaml</DependentUpon>
@@ -981,6 +1008,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhomHHKH.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhomHHLN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhomHHVT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhomHoaHongDT.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -989,7 +1028,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNVHHKH.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNVHoaHongDoanhThu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNVHoaHongVT.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1157,7 +1204,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaNVHHKH.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaNVHHLN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThongBaoXoaNVHHVT.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

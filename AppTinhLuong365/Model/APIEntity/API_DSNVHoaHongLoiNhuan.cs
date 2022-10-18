@@ -33,6 +33,26 @@ namespace AppTinhLuong365.Model.APIEntity
         public string ro_id_tl { get; set; }
         public string ro_so_luong { get; set; }
         public string ro_price { get; set; }
+        public string display_ro_price
+        {
+            get
+            {
+                string a = "";
+                if (Convert.ToInt64(ro_price) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(ro_price, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(ro_price.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
+            }
+        }
         public string ro_note { get; set; }
         public string ro_time { get; set; }
         public string Display_ro_time

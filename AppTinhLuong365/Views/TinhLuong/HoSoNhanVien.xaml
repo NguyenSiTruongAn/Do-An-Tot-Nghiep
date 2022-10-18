@@ -106,37 +106,37 @@
                                 <TextBlock FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textHoTen2C}"/>
-                                        <Run Text=" Nguyễn Sĩ Trường An"/>
+                                        <Run x:Name="txtName"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textDateOfBirth2C}"/>
-                                        <Run Text="06/11/2001"/>
+                                        <Run x:Name="txtNS"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textDepartment}"/>
-                                        <Run Text="PHÒNG 15: TRUNG TÂM ĐÀO TẠO ỨNG VIÊN MỚI ĐẾN"/>
+                                        <Run x:Name="txtDep"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textAddress2C}"/>
-                                        <Run Text="Đội 8, Vĩnh Ninh, Vĩnh Quỳnh, Thanh Trì, Hà Nội"/>
+                                        <Run x:Name="txtAddress"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textPhoneNumber}"/>
-                                        <Run Text="0357365152"/>
+                                        <Run x:Name="txtPhoneNumber"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textBankName}"/>
-                                        <Run Text="Chưa cập nhật"/>
+                                        <Run x:Name="txtBank"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">

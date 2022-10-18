@@ -1,0 +1,100 @@
+﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.Popup.PopupChinhSuaNhomHHKH"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong.Popup"
+      mc:Ignorable="d" 
+      VerticalAlignment="Top"
+      Title="PopupChinhSuaNhomHHKH">
+
+    <Grid Width="616" x:Name="Grid1" Margin="0 50 0 0">
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+            </Border.Effect>
+        </Border>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
+            <StackPanel>
+                <Border Cursor="Hand" CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
+                    <Grid>
+                        <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Cursor="Hand" HorizontalAlignment="Right" Padding="0 3 17 0" FontWeight="Bold" FontFamily="roboto" Text="x" FontSize="28" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
+                    </Grid>
+                </Border>
+                <StackPanel Margin="27.7 30 27.7 30" Width="560">
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                        <StackPanel>
+                            <DataGrid SelectedIndex="-1" BorderThickness="1" BorderBrush="{DynamicResource #777777}" Height="250" x:Name="dataGrid2" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Style="{StaticResource DataGrid5}" ItemsSource="{Binding listNVNhom}">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <DockPanel Width="560">
+                                                    <Grid x:Name="gridHoTen" Margin="10 0 0 0" Width="230">
+                                                        <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
+                                                            <Border.Background>
+                                                                <ImageBrush ImageSource="{Binding display_ep_image}"></ImageBrush>
+                                                            </Border.Background>
+                                                        </Border>
+                                                        <Grid VerticalAlignment="Center">
+                                                            <TextBlock Margin="50 0 0 0" FontSize="15" TextWrapping="WrapWithOverflow" Text="{Binding ep_name}"/>
+                                                        </Grid>
+                                                    </Grid>
+                                                    <Border Margin="0 0 10 0" DockPanel.Dock="Right" Width="190" Height="42" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                        <Grid Height="42" Margin="10 0 10 0">
+                                                            <TextBox Text="{Binding pr_percent}" PreviewTextInput="Txt_PreviewCurrencyTextInput" TextChanged="Changed_HoaHong" FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbPTHH" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                                            <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="Nhập % hoa hồng" IsHitTestVisible="False">
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding ElementName=tbPTHH,Path=Text}" Value="">
+                                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </TextBlock.Style>
+                                                            </TextBlock>
+                                                        </Grid>
+                                                    </Border>
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <TextBlock Text="" Style="{StaticResource tblValidate}" x:Name="validateNhom"/>
+                            <StackPanel PreviewMouseWheel="TabControl_PreviewMouseWheel" Background="Transparent">
+                                <StackPanel>
+                                    <TextBlock Margin="0 20 0 5">
+                                    <Run Text="Tên kế hoạch" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
+                                    <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
+                                    </TextBlock>
+                                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="3" Height="40" BorderBrush="{DynamicResource #DDDDDD}" Margin="0 5 0 0">
+                                        <ComboBox BorderThickness="0" x:Name="cbKeHoach" Height="42" Margin="0 5 0 0" FontSize="16" FontWeight="DemiBold" Style="{StaticResource Combobox2}" ItemsSource="{Binding listKeHoach,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath ="tl_name">
+                                        </ComboBox>
+                                    </Border>
+                                    <TextBlock x:Name="validateKeHoach" Style="{StaticResource tblValidate}"/>
+                                    <TextBlock Margin="0 20 0 5">
+                                    <Run Text="Đánh giá" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
+                                    <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
+                                    </TextBlock>
+                                    <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="3" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 5 0 0">
+                                        <ComboBox x:Name="cbKpi" FontSize="16" Style="{StaticResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                                            <ComboBoxItem>Không đạt</ComboBoxItem>
+                                            <ComboBoxItem IsSelected="True">Đạt kế hoạch</ComboBoxItem>
+                                        </ComboBox>
+                                    </Border>
+                                </StackPanel>
+                                
+                                <Border MouseLeftButtonDown="LuuHoaHong" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                                    <TextBlock Text="Lưu hoa hồng" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

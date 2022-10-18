@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -36,7 +37,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public HoSoNhanVien(MainWindow main)
+        public HoSoNhanVien(MainWindow main, ItemEmp data)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -53,7 +54,15 @@ namespace AppTinhLuong365.Views.TinhLuong
             }
 
             Main = main;
+            data1 = data;
+            txtName.Text = data.ep_name;
+            txtNS.Text = DateTime.Parse(data.ep_birth_day).ToString("dd/MM/yyyy");
+            txtDep.Text = data.dep_name;
+            txtAddress.Text = data.ep_address;
+            txtPhoneNumber.Text = data.ep_phone;
+            txtBank.Text = data.ep_phone_tk;
         }
+        ItemEmp data1 = new ItemEmp();
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
 

@@ -59,6 +59,46 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             getData();
             getData1();
             getData3();
+            dteSelectedMonth = new Calendar();
+            dteSelectedMonth.Visibility = Visibility.Collapsed;
+            dteSelectedMonth.DisplayMode = CalendarMode.Year;
+            dteSelectedMonth.MouseLeftButtonDown += Select_thang;
+            dteSelectedMonth.DisplayModeChanged += dteSelectedMonth_DisplayModeChanged;
+            cl = new List<Calendar>();
+            cl.Add(dteSelectedMonth);
+            cl = cl.ToList();
+            dteSelectedMonth1 = new Calendar();
+            dteSelectedMonth1.Visibility = Visibility.Collapsed;
+            dteSelectedMonth1.DisplayMode = CalendarMode.Year;
+            dteSelectedMonth1.MouseLeftButtonDown += Select_thang1;
+            dteSelectedMonth1.DisplayModeChanged += dteSelectedMonth_DisplayModeChanged1;
+            cl1 = new List<Calendar>();
+            cl1.Add(dteSelectedMonth1);
+            cl1 = cl1.ToList();
+        }
+        Calendar dteSelectedMonth { get; set; }
+        Calendar dteSelectedMonth1 { get; set; }
+
+        private List<Calendar> _cl;
+
+        public List<Calendar> cl
+        {
+            get { return _cl; }
+            set
+            {
+                _cl = value; OnPropertyChanged();
+            }
+        }
+
+        private List<Calendar> _cl1;
+
+        public List<Calendar> cl1
+        {
+            get { return _cl1; }
+            set
+            {
+                _cl1 = value; OnPropertyChanged();
+            }
         }
 
         MainWindow Main;
@@ -471,7 +511,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 txtThangNhom.Text = x;
             }
             dteSelectedMonth1.DisplayMode = CalendarMode.Year;
-            if (dteSelectedMonth1.DisplayDate != null && flag > 0)
+            if (dteSelectedMonth1.DisplayDate != null && flag1 > 0)
             {
                 dteSelectedMonth1.Visibility = Visibility.Collapsed;
             }
@@ -571,7 +611,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         {
             bool allow = true;
             validateNhom.Text = validateChuKy1.Text = validateDT1.Text = validateSL1.Text = validateSanPham1.Text = "";
-            if (gr_selected == null)
+            if (gr_selected.lgr_id == null)
             {
                 allow = false;
                 validateNhom.Text = "Vui lòng chọn nhân viên";

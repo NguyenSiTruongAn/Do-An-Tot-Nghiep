@@ -182,7 +182,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                             web.QueryString.Add("token", Main.CurrentCompany.token);
                             web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                             web.QueryString.Add("time", year + "-" + month + "-01");
-                            web.QueryString.Add("id_group", gr_id);
+                            web.QueryString.Add("id_gr", gr_id);
                         }
                         web.UploadValuesCompleted += (s, e) =>
                         {
@@ -402,6 +402,14 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             Border b = sender as Border;
             DSNhomHHLoiNhuan data = (DSNhomHHLoiNhuan)b.DataContext;
             Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThongBaoXoaNVHHLN(Main, data.ro_id));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void ChinhSuaNhom(object sender, MouseButtonEventArgs e)
+        {
+            Border b = sender as Border;
+            DSNhomHHLoiNhuan data = (DSNhomHHLoiNhuan)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaNhomHHLN(Main, data));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
