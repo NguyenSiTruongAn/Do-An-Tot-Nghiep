@@ -29,12 +29,15 @@
         <WrapPanel x:Name="Wrap_Border1" HorizontalAlignment="Right">
             <Border Style="{DynamicResource Style_Border_Wrap1}" Background="{DynamicResource #FFFFFF}" Width="160"
                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                <tool:SearchBar SelectionChanged="Load" x:Name="searchBarYear1" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
-                                ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" Loaded="FrameworkElement_OnLoaded"/>
+                <tool:SearchBar SelectionChanged="Load" x:Name="searchBarYear1" Foreground="{DynamicResource #444}"
+                                FontSize="16" FontWeight="DemiBold"
+                                ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"
+                                Loaded="FrameworkElement_OnLoaded" />
             </Border>
             <Border Style="{DynamicResource Style_Border_Wrap1}" Background="{DynamicResource #FFFFFF}" Width="160"
                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                <tool:SearchBar SelectionChanged="Load" x:Name="searchBarMonth1" Foreground="{DynamicResource #444}" FontSize="16"
+                <tool:SearchBar SelectionChanged="Load" x:Name="searchBarMonth1" Foreground="{DynamicResource #444}"
+                                FontSize="16"
                                 FontWeight="DemiBold"
                                 ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
                                 Loaded="SearchBarMonth_OnLoaded" />
@@ -160,7 +163,8 @@
                                                                           Data="{DynamicResource iconTimeCircle}"
                                                                           Stroke="{DynamicResource #68798B}">
                                                                     </Path>
-                                                                    <TextBlock FontWeight="DemiBold" FontSize="15"
+                                                                    <TextBlock TextWrapping="Wrap"
+                                                                               FontWeight="DemiBold" FontSize="15"
                                                                                Foreground="{DynamicResource #666666}"
                                                                                Margin="10 0 0 0">
                                                                         <Run Text="Áp dụng: Tháng " />
@@ -186,14 +190,13 @@
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
-                                    <!--<Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=Text, ElementName=PBWitdhItems}" Value="1">
-                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-70)/2}"></Setter>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Path=Text, ElementName=PBWitdhItems}" Value="2">
-                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-35)}"></Setter>
-                                </DataTrigger>
-                            </Style.Triggers>-->
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                                            <Setter Property="Width"
+                                                    Value="{Binding Path=ActualWidth, ElementName=lv,Converter={StaticResource math}, ConverterParameter=(@VALUE/2)-20}" />
+                                            <Setter Property="Margin" Value="10 10" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
                                 </Style>
                             </ListView.ItemContainerStyle>
                             <ListView.ItemsPanel>
@@ -339,7 +342,7 @@
                                 <TextBlock FontSize="16" VerticalAlignment="Center"
                                            Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold">
                                     <Run Text="Công chuẩn tháng" />
-                                    <Run Text="{Binding item.apply_month}" />
+                                    <Run Text="{Binding item.display_apply_month, Mode=OneWay}" />
                                 </TextBlock>
                                 <Line X1="0" Y1="10" X2="330" Y2="10" Stroke="{DynamicResource #474747}"
                                       StrokeThickness="1" StrokeDashArray="4 1" />
@@ -365,7 +368,9 @@
                                              Foreground="{DynamicResource #777777}" BorderThickness="0" />
                                     <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16"
                                                Foreground="{DynamicResource #777777}" TextWrapping="Wrap"
-                                               Text="Nhập công chuẩn tháng 09/2022" IsHitTestVisible="False">
+                                               IsHitTestVisible="False">
+                                        <Run Text="Nhập công chuẩn tháng"></Run>
+                                        <Run Text="{Binding item.display_apply_month, Mode=OneWay}"></Run>
                                         <TextBlock.Style>
                                             <Style TargetType="TextBlock">
                                                 <Setter Property="Visibility" Value="Collapsed" />

@@ -122,14 +122,14 @@
                 <ControlTemplate TargetType="{x:Type ComboBox}">
                     <Grid>
                         <Border/>
-                        <ToggleButton Name="ToggleButton" Grid.Column="2" Focusable="false" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press">
+                        <ToggleButton Name="ToggleButton" Focusable="false" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press">
                             <ToggleButton.Template>
                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                     <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="3">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
-                                                <ColumnDefinition Width="20" />
+                                                <ColumnDefinition Width="10" />
                                             </Grid.ColumnDefinitions>
                                             <Border x:Name="Border" Grid.ColumnSpan="2" CornerRadius="5" Background="#FFFFFF" BorderThickness="0"/>
                                             <Path Grid.Column="1" Data="{StaticResource iconMore}" Stroke="#777777" VerticalAlignment="Center"/>
@@ -138,7 +138,7 @@
                                 </ControlTemplate>
                             </ToggleButton.Template>
                         </ToggleButton>
-                        <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="15,3,54,3" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                        <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="15,3,20,3" VerticalAlignment="Center" HorizontalAlignment="Left" />
                         <TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox1}" FontSize="16" Foreground="#474747" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}">
                             <!--<TextBox.Style>
                                 <Style TargetType="TextBox">

@@ -678,7 +678,7 @@
                                     </Border>
                                     <Border Style="{DynamicResource Style_Border_Wrap2}">
                                         <WrapPanel HorizontalAlignment="Right" x:Name="Wrap_Border3">
-                                            <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160"
+                                            <Border Style="{DynamicResource Style_Border_Wrap3}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
                                                 <tool:SearchBar SelectionChanged="Thang" x:Name="Month"
@@ -687,7 +687,7 @@
                                                                 ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 Loaded="SearchBarMonth_OnLoaded" />
                                             </Border>
-                                            <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160"
+                                            <Border Style="{DynamicResource Style_Border_Wrap3}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
                                                 <tool:SearchBar SelectionChanged="Thang" x:Name="Year"
@@ -695,7 +695,7 @@
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" />
                                             </Border>
-                                            <Border Style="{DynamicResource Style_Border_Wrap3}" Width="160"
+                                            <Border Style="{DynamicResource Style_Border_Wrap3}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
                                                 <tool:SearchBar SelectionChanged="Thang" x:Name="Employee"
@@ -732,7 +732,7 @@
                                                                     <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
                                                                 </Border.Background>
                                                             </Border>
-                                                            <StackPanel Margin="10 0 0 0">
+                                                            <StackPanel Margin="10 0 20 0">
                                                                 <TextBlock FontSize="15" FontWeight="Bold"
                                                                            Text="{Binding ep_name}"
                                                                            Foreground="{DynamicResource #4C5BD4}">

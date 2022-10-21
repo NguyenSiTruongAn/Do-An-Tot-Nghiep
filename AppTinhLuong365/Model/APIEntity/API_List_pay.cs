@@ -51,6 +51,10 @@ namespace AppTinhLuong365.Model.APIEntity
                 {
                     b = "Thanh toán toàn bộ";
                 }
+                else if (pay_status == "2")
+                {
+                    b = "Thanh toán một phần";
+                }
                 else
                 {
                     b = "Chưa thanh toán";

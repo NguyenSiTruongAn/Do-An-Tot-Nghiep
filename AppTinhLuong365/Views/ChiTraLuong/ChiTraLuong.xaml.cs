@@ -62,11 +62,11 @@ namespace AppTinhLuong365.Views.ChiTraLuong
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (this.ActualWidth > 980)
+            if (this.ActualWidth > 900)
             {
                 IsSmallSize = 0;
             }
-            else if (this.ActualWidth <= 980 && this.ActualWidth > 460)
+            else if (this.ActualWidth <= 900 && this.ActualWidth > 460)
             {
                 IsSmallSize = 1;
             }
@@ -160,6 +160,13 @@ namespace AppTinhLuong365.Views.ChiTraLuong
             Item_pay data = (Item_pay)b.DataContext;
             Main.PopupSelection.NavigationService.Navigate(new Views.ChiTraLuong.PopupXoa(Main, data.pay_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void Detail(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock tb = sender as TextBlock;
+            Item_pay data = (Item_pay)tb.DataContext;
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.ChiTraLuong.ChiTietChiTraLuong(Main, data.pay_id));
         }
     }
 }

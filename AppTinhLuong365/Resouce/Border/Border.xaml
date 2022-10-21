@@ -18,6 +18,14 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="Border" x:Key="ShadowBorder3">
+        <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.6" RenderingBias="Quality"></DropShadowEffect>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="Border" x:Key="BorderMask1">
         <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
         <Setter Property="CornerRadius" Value="10"></Setter>

@@ -86,11 +86,11 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (this.ActualWidth > 980)
+            if (this.ActualWidth > 900)
             {
                 IsSmallSize = 0;
             }
-            else if (this.ActualWidth <= 980 && this.ActualWidth > 460)
+            else if (this.ActualWidth <= 900 && this.ActualWidth > 460)
             {
                 IsSmallSize = 1;
             }
@@ -255,27 +255,6 @@ namespace AppTinhLuong365.Views.CaiDat
                     web.QueryString);
             }
         }
-
-        // private void thongKe(object sender, MouseButtonEventArgs e)
-        // {
-        //     string year = "", month = "", id_nv = "";
-        //     if (Year.SelectedIndex != -1)
-        //         year = Year.SelectedItem.ToString().Split(' ')[1];
-        //     else
-        //         year = DateTime.Now.ToString("yyyy");
-        //     if (Month.SelectedIndex != -1)
-        //         month = (Month.SelectedIndex + 1) + "";
-        //     else month = DateTime.Now.ToString("MM");
-        //     if (Employee.SelectedIndex != -1)
-        //     {
-        //         ListEmployee id1 = (ListEmployee)Employee.SelectedItem;
-        //         string id2 = id1.ep_id;
-        //         if (id2 == "-1")
-        //             id_nv = "";
-        //         else id_nv = id2;
-        //     }
-        //     getData1(month, year, id_nv);
-        // }
 
         private void Thang(object sender, SelectionChangedEventArgs e)
         {

@@ -94,7 +94,7 @@
                                     </Grid>
                                     <Grid Grid.Row="3">
                                         <TextBlock Text="Tổng lương đã chi trả:" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
-                                        <TextBlock Text="{Binding congLuong.luong_da_tra}" HorizontalAlignment="Right" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                        <TextBlock Text="{Binding congLuong.tong_ltb}" HorizontalAlignment="Right" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                                     </Grid>
                                 </Grid>
                                 <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 170 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">

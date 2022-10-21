@@ -30,6 +30,10 @@ namespace AppTinhLuong365.Model.APIEntity
                 {
                     abc = "Cả ngày";
                 }
+                else
+                {
+                    abc = ca_nghi;
+                }
                 return abc;
             }
         }

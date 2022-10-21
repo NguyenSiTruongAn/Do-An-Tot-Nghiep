@@ -54,10 +54,10 @@ namespace AppTinhLuong365.Views.CaiDat
             getData1(1, month, year, "", "");
             getData2();
             getData3();
-            searchBarMonth1.PlaceHolder = "Năm " + year;
-            searchBarYear1.PlaceHolder = "Tháng " + month;
-            searchBarMonth.PlaceHolder = "Năm " + year;
-            searchBarYear.PlaceHolder = "Tháng " + month;
+            searchBarYear1.PlaceHolder = "Năm " + year;
+            searchBarMonth1.PlaceHolder = "Tháng " + month;
+            searchBarYear.PlaceHolder = "Năm " + year;
+            searchBarMonth.PlaceHolder = "Tháng " + month;
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -79,11 +79,11 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (this.ActualWidth > 980)
+            if (this.ActualWidth > 900)
             {
                 IsSmallSize = 0;
             }
-            else if (this.ActualWidth <= 980 && this.ActualWidth > 460)
+            else if (this.ActualWidth <= 900 && this.ActualWidth > 460)
             {
                 IsSmallSize = 1;
             }
@@ -185,7 +185,7 @@ namespace AppTinhLuong365.Views.CaiDat
                         totalEpLate = int.Parse(api.data.count);
                         PageNVDiMuon = ListPageNumber(totalEpLate);
                         loadPage(page, PageNVDiMuon);
-                        dataGrid.AutoReponsiveColumn(0);
+                        dataGrid.AutoReponsiveColumn(2);
                     }
 
                     foreach (EpLate item in listEpLate)
