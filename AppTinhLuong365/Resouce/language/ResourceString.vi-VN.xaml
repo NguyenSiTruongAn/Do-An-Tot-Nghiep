@@ -15,6 +15,7 @@
     <system:String x:Key="textDanhSachNhanVien">Danh sách nhân viên</system:String>
     <system:String x:Key="textStandardDateNumber">Công chuẩn</system:String>
     <system:String x:Key="textActualDateNumber">Công thực</system:String>
+    <system:String x:Key="textCSP">Công sau phạt</system:String>
     <system:String x:Key="textLate">Đi muộn</system:String>
     <system:String x:Key="textProposalPendingApproval">Đề xuất chờ duyệt</system:String>
     <system:String x:Key="textMonday">Thứ hai</system:String>
@@ -26,6 +27,8 @@
     <system:String x:Key="textSunday">Chủ nhật</system:String>
     <system:String x:Key="textNumberOfCalendarWorkingDays">Công theo lịch: </system:String>
     <system:String x:Key="textLateOrEarly">Đi muộn/ về sớm: </system:String>
+    <system:String x:Key="textCNSL">Cập nhật số liệu</system:String>
+    <system:String x:Key="textNumberEp">Mã NV</system:String>
     <system:String x:Key="textEmploymentContract">Hợp đồng việc làm</system:String>
     <system:String x:Key="textTaxesAndInsurance">Thuế và bảo hiểm</system:String>
     <system:String x:Key="textBasicSalary">Lương cơ bản</system:String>
@@ -41,6 +44,7 @@
     <system:String x:Key="textSalaries">Số thứ tự</system:String>
     <system:String x:Key="textMoney">Số tiền</system:String>
     <system:String x:Key="textUnit">Đơn vị</system:String>
+    <system:String x:Key="textCT">Chi trả(VNĐ)</system:String>
     <system:String x:Key="textstatistical">Thống kê</system:String>
     <system:String x:Key="textSuggestedWorkSchedule">Đề xuất lịch làm việc</system:String>
     <system:String x:Key="textName">Họ và tên:</system:String>
@@ -121,6 +125,7 @@
     <system:String x:Key="textLoaiPhat">Loại phạt</system:String>
     <system:String x:Key="textCaLamViecApDung">Ca làm việc áp dụng</system:String>
     <system:String x:Key="textTuThang">Từ tháng</system:String>
+    <system:String x:Key="textMonth">Tháng</system:String>
     <system:String x:Key="textDenHetThang">Đến hết tháng</system:String>
     <system:String x:Key="textThoiGianTinhPhat">Thời gian tính phạt</system:String>
     <system:String x:Key="textMucPhat">Mức phạt</system:String>
@@ -243,13 +248,22 @@
     <system:String x:Key="textNTC">Nhập tiền / công</system:String>
     <system:String x:Key="textTaoKNL">Tạo kỳ nghỉ lễ</system:String>
     <system:String x:Key="textTMBCTL">Thêm mới bảng chi trả lương</system:String>
+    <system:String x:Key="textBCTL">Bảng chi trả lương</system:String>
+    <system:String x:Key="textPayWage">Trả lương</system:String>
     <system:String x:Key="textADD">Thêm</system:String>
     <system:String x:Key="textNTBCT">Nhập tên bảng chi trả</system:String>
     <system:String x:Key="textTBCT">Tên bảng chi trả</system:String>
     <system:String x:Key="textKCT">Kỳ chi trả (từ - đến)</system:String>
+    <system:String x:Key="textKCTra">Kỳ chi trả</system:String>
+    <system:String x:Key="textSubject">Đối tượng</system:String>
+    <system:String x:Key="textPay">Chi trả</system:String>
+    <system:String x:Key="textPercentPay">Tỉ lệ trả</system:String>
+    <system:String x:Key="textPercentPay1">Tỉ lệ trả(%)</system:String>
+    <system:String x:Key="textRemaining">Còn lại</system:String>
     <system:String x:Key="textHTTT">Hình thức thanh toán</system:String>
     <system:String x:Key="textDVAP">Đơn vị áp dụng</system:String>
     <system:String x:Key="textHB">Hủy bỏ</system:String>
+    <system:String x:Key="textFormality">Hinh thức</system:String>
     <system:String x:Key="textApDungNgay">Áp dụng ngày</system:String>
     <system:String x:Key="textLyDo">Lý do</system:String>
     <system:String x:Key="textDH">Đến hết (không bắt buộc)</system:String>
@@ -324,4 +338,7 @@
     <system:String x:Key="textEvaluate">Đánh giá</system:String>
     <system:String x:Key="textDangXuat">Đăng xuất</system:String>
     <system:String x:Key="textAddNew">Thêm mới</system:String>
+    <system:String x:Key="textTNV">Tên nhân viên</system:String>
+    <system:String x:Key="textLCN">Lương còn nợ tại thời điểm chi trả</system:String>
+    <system:String x:Key="textStillOwed">Còn nợ</system:String>
 </ResourceDictionary>

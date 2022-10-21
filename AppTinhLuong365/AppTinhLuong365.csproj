@@ -135,10 +135,12 @@
     <Compile Include="Model\APIEntity\API_Add_congchuan.cs" />
     <Compile Include="Model\APIEntity\API_Add_employee_to_cycle.cs" />
     <Compile Include="Model\APIEntity\API_Add_late.cs" />
+    <Compile Include="Model\APIEntity\API_Bang_luong_nv.cs" />
     <Compile Include="Model\APIEntity\API_CaiDatCongChuan.cs" />
     <Compile Include="Model\APIEntity\API_ChinhSuaPhuCapTheoCa.cs" />
     <Compile Include="Model\APIEntity\API_ChinhSuaPhucLoi_PhuCap.cs" />
     <Compile Include="Model\APIEntity\Api_CongLuong.cs" />
+    <Compile Include="Model\APIEntity\API_Detail_pay.cs" />
     <Compile Include="Model\APIEntity\API_DSCacKhoanTienKhac.cs" />
     <Compile Include="Model\APIEntity\API_Delete_cycle.cs" />
     <Compile Include="Model\APIEntity\API_Delete_cycle_of_employee.cs" />
@@ -343,17 +345,32 @@
     <Compile Include="Views\CaiDat\Popup\PopupXoaNhanVienNghiLe.xaml.cs">
       <DependentUpon>PopupXoaNhanVienNghiLe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChiTraLuong\ChiTietChiTraLuong.xaml.cs">
+      <DependentUpon>ChiTietChiTraLuong.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChiTraLuong\ChiTraLuong.xaml.cs">
       <DependentUpon>ChiTraLuong.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ChiTraLuong\PopupChiTraLuong.xaml.cs">
       <DependentUpon>PopupChiTraLuong.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChiTraLuong\PopupCTL.xaml.cs">
+      <DependentUpon>PopupCTL.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChiTraLuong\PopupStatus.xaml.cs">
+      <DependentUpon>PopupStatus.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChiTraLuong\PopupSua.xaml.cs">
       <DependentUpon>PopupSua.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChiTraLuong\PopupTb.xaml.cs">
+      <DependentUpon>PopupTb.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChiTraLuong\PopupXoa.xaml.cs">
       <DependentUpon>PopupXoa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChiTraLuong\Validation.xaml.cs">
+      <DependentUpon>Validation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\BaoHiem.xaml.cs">
       <DependentUpon>BaoHiem.xaml</DependentUpon>
@@ -932,11 +949,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ChiTraLuong\ChiTietChiTraLuong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChiTraLuong\PopupCTL.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChiTraLuong\PopupStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ChiTraLuong\PopupSua.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ChiTraLuong\PopupTb.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ChiTraLuong\PopupXoa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChiTraLuong\Validation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

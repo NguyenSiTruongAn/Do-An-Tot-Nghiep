@@ -50,7 +50,7 @@
         </Border>
         <Border CornerRadius="16" Background="{DynamicResource #FFFFFF}" Margin="20">
             <StackPanel VerticalAlignment="Top" Margin="20">
-                <TextBlock TextWrapping="WrapWithOverflow" Text="Bảng chi trả lương" FontWeight="Bold" FontSize="24"
+                <TextBlock TextWrapping="WrapWithOverflow" Text="{DynamicResource textBCTL}" FontWeight="Bold" FontSize="24"
                            Foreground="{DynamicResource #2E3467}">
                 </TextBlock>
                 <WrapPanel x:Name="Wrap_Border1">
@@ -109,10 +109,10 @@
                         </VisualBrush>
                     </DataGrid.OpacityMask>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Bảng chi trả lương">
+                        <DataGridTemplateColumn Header="{DynamicResource textBCTL}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Cursor="Hand" Margin="15 0 0 0" HorizontalAlignment="Left"
+                                    <TextBlock MouseLeftButtonDown="Detail" Cursor="Hand" Margin="15 0 0 0" HorizontalAlignment="Left"
                                                VerticalAlignment="Center"
                                                Text="{Binding pay_name}" FontSize="15"
                                                FontWeight="DemiBold"
@@ -121,7 +121,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Tháng">
+                        <DataGridTemplateColumn Header="{DynamicResource textMonth}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Margin="15 0" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -132,7 +132,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Kỳ chi trả">
+                        <DataGridTemplateColumn Header="{DynamicResource textKCTra}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Margin="15 0" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -146,7 +146,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Đối tượng">
+                        <DataGridTemplateColumn Header="{DynamicResource textSubject}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Margin="15 0" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -157,7 +157,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Hình thức">
+                        <DataGridTemplateColumn Header="{DynamicResource textFormality}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Margin="15 0" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -185,6 +185,11 @@
                                                     </DataTrigger>
                                                     <DataTrigger
                                                         Binding="{Binding ElementName=txtActive,Path=Text}"
+                                                        Value="Thanh toán một phần">
+                                                        <Setter Property="Background" Value="#e4e8ff" />
+                                                    </DataTrigger>
+                                                    <DataTrigger
+                                                        Binding="{Binding ElementName=txtActive,Path=Text}"
                                                         Value="">
                                                         <Setter Property="Visibility" Value="Collapsed" />
                                                     </DataTrigger>
@@ -206,6 +211,10 @@
                                                         <Trigger Property="Text" Value="Chưa thanh toán">
                                                             <Setter Property="Foreground"
                                                                     Value="#ff5959" />
+                                                        </Trigger>
+                                                        <Trigger Property="Text" Value="Thanh toán một phần">
+                                                            <Setter Property="Foreground"
+                                                                    Value="#5664d7" />
                                                         </Trigger>
                                                     </Style.Triggers>
                                                 </Style>

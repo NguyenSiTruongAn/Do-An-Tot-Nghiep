@@ -77,11 +77,11 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (this.ActualWidth > 980)
+            if (this.ActualWidth > 900)
             {
                 IsSmallSize = 0;
             }
-            else if (this.ActualWidth <= 980 && this.ActualWidth > 460)
+            else if (this.ActualWidth <= 900 && this.ActualWidth > 460)
             {
                 IsSmallSize = 1;
             }
@@ -146,6 +146,12 @@ namespace AppTinhLuong365.Views.CaiDat
                     if (api.data != null)
                     {
                         listGeneralCalendar = api.data.general_calendar;
+                        DateTime aDateTime;
+                        foreach (var a in listGeneralCalendar)
+                        {
+                            DateTime.TryParse(a.apply_month, out aDateTime);
+                            a.apply_month = aDateTime.ToString("MM/yyyy");
+                        }
                     }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
@@ -184,9 +190,15 @@ namespace AppTinhLuong365.Views.CaiDat
                 {
                     API_ListCalendarWork api =
                         JsonConvert.DeserializeObject<API_ListCalendarWork>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    if (api.data.personal_calendar != null)
                     {
                         listPersonalCalendar = api.data.personal_calendar;
+                        DateTime aDateTime;
+                        foreach (var a in listPersonalCalendar)
+                        {
+                            DateTime.TryParse(a.apply_month, out aDateTime);
+                            a.apply_month = aDateTime.ToString("MM/yyyy");
+                        }
                     }
                     //foreach (ItemTamUng item in listTamUng)
                     //{

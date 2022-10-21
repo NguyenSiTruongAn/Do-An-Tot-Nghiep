@@ -19,6 +19,21 @@ namespace AppTinhLuong365.Model.APIEntity
         public string cw_id { get; set; }
         public string com_id { get; set; }
         public string apply_month { get; set; }
+
+        public string display_apply_month
+        {
+            get
+            {
+                DateTime a;
+                string c = "";
+                if (apply_month != null)
+                {
+                    DateTime.TryParse(apply_month, out a);
+                    c = a.ToString("MM/yyyy");
+                }
+                return c;
+            }
+        }
         public string num_days { get; set; }
     }
 

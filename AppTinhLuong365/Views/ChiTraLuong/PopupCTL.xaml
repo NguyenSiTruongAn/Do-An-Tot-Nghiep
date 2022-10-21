@@ -1,0 +1,242 @@
+﻿<Page x:Class="AppTinhLuong365.Views.ChiTraLuong.PopupCTL"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.ChiTraLuong"
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
+      mc:Ignorable="d"
+      Title="PopupCTL">
+
+    <Grid Width="1054" MaxHeight="654.5">
+        <Border Style="{DynamicResource ShadowBorder1}"></Border>
+        <Border CornerRadius="8">
+            <StackPanel Margin="52.7 14 52.7 40">
+                <Grid>
+                    <TextBlock Text="{DynamicResource textChiTraLuong}" Foreground="{DynamicResource #2E3467}"
+                               FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" />
+                    <TextBlock Cursor="Hand" MouseLeftButtonDown="Close" Text="x" HorizontalAlignment="Right"
+                               FontWeight="DemiBold"
+                               FontSize="28" />
+                </Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Height="40" Width="150"
+                            CornerRadius="10">
+                        <ComboBox x:Name="ComboBox" BorderThickness="0" Margin="5 0" Style="{DynamicResource Combobox2}"
+                                  ItemContainerStyle="{DynamicResource ComboboxItem1}" FontSize="15"
+                                  Foreground="{DynamicResource #68798B}">
+                            <ComboBoxItem IsSelected="True">Trả theo tỉ lệ</ComboBoxItem>
+                            <ComboBoxItem>Trả theo số tiền</ComboBoxItem>
+                        </ComboBox>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Height="40" Width="94"
+                            Margin="17 0 0 0"
+                            CornerRadius="10">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Visibility" Value="Visible"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=ComboBox, Path=SelectedIndex}" Value="1">
+                                        <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Grid Margin="12 0">
+                            <TextBox x:Name="TextBoxPc" PreviewTextInput="Txt_PreviewCurrencyTextInput"
+                                     DataObject.Pasting="TextBoxPasting" BorderThickness="0"
+                                     Foreground="{DynamicResource #68798B}" FontSize="15" VerticalAlignment="Center">
+                            </TextBox>
+                            <TextBlock Text="%" Foreground="{DynamicResource #68798B}" FontSize="15"
+                                       VerticalAlignment="Center" HorizontalAlignment="Right">
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Height="40" Width="160"
+                            Margin="17 0 0 0"
+                            CornerRadius="10">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=ComboBox, Path=SelectedIndex}" Value="1">
+                                        <Setter Property="Visibility" Value="Visible"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Grid Margin="12 0">
+                            <TextBox x:Name="TextBoxMoney" PreviewTextInput="Txt_PreviewCurrencyTextInput"
+                                     DataObject.Pasting="TextBoxPasting" BorderThickness="0"
+                                     Foreground="{DynamicResource #68798B}" FontSize="15" VerticalAlignment="Center">
+                            </TextBox>
+                            <TextBlock Text="VND" Foreground="{DynamicResource #68798B}" FontSize="15"
+                                       VerticalAlignment="Center" HorizontalAlignment="Right">
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                    <Border Cursor="Hand" MouseLeftButtonDown="update" Margin="17 0 0 0" Height="40" CornerRadius="12" Width="136"
+                            Background="{DynamicResource #4C5BD4}">
+                        <TextBlock Text="{DynamicResource textCNSL}" Foreground="{DynamicResource #FFFFFF}"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+                    </Border>
+                </StackPanel>
+                <Border Margin="0 10 0 20" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource #DDDDDD}" />
+                <ScrollViewer Name="ScrollViewer" MaxHeight="400" VerticalScrollBarVisibility="Visible">
+                    <DataGrid Style="{DynamicResource DataGrid7}" PreviewMouseWheel="DataGrid_OnPreviewMouseWheel"
+                              x:Name="dataGrid" ItemsSource="{Binding listItemDetailPay}">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}"
+                                            Height="{Binding ElementName=dataGrid,Path=ActualHeight}" CornerRadius="10"
+                                            Background="White">
+                                    </Border>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </DataGrid.OpacityMask>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="{DynamicResource textNumberEp}">
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader"
+                                           BasedOn="{StaticResource DataGrid6_HeaderRight}" />
+                                </DataGridTemplateColumn.HeaderStyle>
+                                <DataGridTemplateColumn.CellStyle>
+                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGrid_CellRight}" />
+                                </DataGridTemplateColumn.CellStyle>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Cursor="Hand" HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding ep_id}" FontSize="15"
+                                                   FontWeight="DemiBold"
+                                                   Foreground="{DynamicResource #68798B}">
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn MinWidth="355" Header="{DynamicResource textTNV}">
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader"
+                                           BasedOn="{StaticResource DataGrid6_HeaderRight}" />
+                                </DataGridTemplateColumn.HeaderStyle>
+                                <DataGridTemplateColumn.CellStyle>
+                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGrid_CellRight}" />
+                                </DataGridTemplateColumn.CellStyle>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Cursor="Hand" Margin="15 0 0 0" HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding ep_name}" FontSize="15"
+                                                   FontWeight="DemiBold"
+                                                   Foreground="{DynamicResource #68798B}">
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textTongLuong}">
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader"
+                                           BasedOn="{StaticResource DataGrid6_HeaderRight}" />
+                                </DataGridTemplateColumn.HeaderStyle>
+                                <DataGridTemplateColumn.CellStyle>
+                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGrid_CellRight}" />
+                                </DataGridTemplateColumn.CellStyle>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Cursor="Hand" HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding display_kq_luong, Mode=OneWay}" FontSize="15"
+                                                   FontWeight="DemiBold"
+                                                   Foreground="{DynamicResource #68798B}">
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn MinWidth="157" Header="{DynamicResource textCT}">
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader"
+                                           BasedOn="{StaticResource DataGrid6_HeaderRight}" />
+                                </DataGridTemplateColumn.HeaderStyle>
+                                <DataGridTemplateColumn.CellStyle>
+                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGrid_CellRight}" />
+                                </DataGridTemplateColumn.CellStyle>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="6" Background="{DynamicResource #FFFFFF}" CornerRadius="10"
+                                                BorderBrush="{DynamicResource #e1e1e1}" BorderThickness="1">
+                                            <TextBox PreviewTextInput="Txt_PreviewCurrencyTextInput"
+                                                     DataObject.Pasting="TextBoxPasting" BorderThickness="0" Cursor="Hand" TextAlignment="Center"
+                                                     VerticalAlignment="Center"
+                                                     Text="{Binding money, Mode=OneWay}" FontSize="15"
+                                                     FontWeight="DemiBold" TextChanged="Money"
+                                                     Foreground="{DynamicResource #68798B}">
+                                            </TextBox>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textPercentPay1}">
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader"
+                                           BasedOn="{StaticResource DataGrid6_HeaderRight}" />
+                                </DataGridTemplateColumn.HeaderStyle>
+                                <DataGridTemplateColumn.CellStyle>
+                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGrid_CellRight}" />
+                                </DataGridTemplateColumn.CellStyle>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="6" Background="{DynamicResource #FFFFFF}" CornerRadius="10"
+                                                BorderBrush="{DynamicResource #e1e1e1}" BorderThickness="1">
+                                            <TextBox PreviewTextInput="Txt_PreviewCurrencyTextInput"
+                                                     DataObject.Pasting="TextBoxPasting" TextChanged="Percent" BorderThickness="0" Cursor="Hand" TextAlignment="Center" VerticalContentAlignment="Center"
+                                                     Text="{Binding pc_luong}" FontSize="15"
+                                                     FontWeight="DemiBold" Margin="2 3" 
+                                                     Foreground="{DynamicResource #68798B}">
+                                            </TextBox>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textRemaining}">
+                                <DataGridTemplateColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader"
+                                           BasedOn="{StaticResource DataGrid6_Header}" />
+                                </DataGridTemplateColumn.HeaderStyle>
+                                <DataGridTemplateColumn.CellStyle>
+                                    <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGrid_Cell}" />
+                                </DataGridTemplateColumn.CellStyle>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Cursor="Hand" HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Text="{Binding display_cn_luong, Mode=OneWay}" FontSize="15"
+                                                   FontWeight="DemiBold"
+                                                   Foreground="{DynamicResource #68798B}">
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <Border Cursor="Hand" Background="Transparent" MouseLeftButtonDown="Close" Width="468"
+                            Margin="0 0 12 0" Height="42" BorderThickness="1" BorderBrush="{DynamicResource #659FE5}"
+                            CornerRadius="5">
+                        <TextBlock Text="{DynamicResource textHB}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" FontSize="14" Foreground="{DynamicResource #4C5BD4}"
+                                   FontWeight="DemiBold" />
+                    </Border>
+                    <Border Cursor="Hand" MouseLeftButtonDown="Pay" Width="468" Height="42" Background="{DynamicResource #4C5BD4}" CornerRadius="5">
+                        <TextBlock Text="{DynamicResource textPayWage}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" FontSize="14" Foreground="{DynamicResource #FFFFFF}"
+                                   FontWeight="DemiBold" />
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <tool:LoadingSpinner x:Name="loading" Visibility="Collapsed" />
+        <Grid Name="gridPopup"/>
+    </Grid>
+</Page>

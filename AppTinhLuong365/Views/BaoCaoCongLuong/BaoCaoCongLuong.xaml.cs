@@ -86,7 +86,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 loading.Visibility = Visibility.Visible;
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("company", Main.CurrentCompany.com_id);
-                web.QueryString.Add("month", "9");
+                web.QueryString.Add("month", "10");
                 web.QueryString.Add("year", "2022");
                 web.UploadValuesCompleted += (s, e) =>
                 {
