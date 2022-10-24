@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AppTinhLuong365.Views.TinhLuong
 {
@@ -21,10 +10,21 @@ namespace AppTinhLuong365.Views.TinhLuong
     public partial class PopupTuyChonBangLuong : Page
     {
 
-        public PopupTuyChonBangLuong(MainWindow main)
+        private string name;
+        private string dep_name;
+        private string ep_id;
+        private int month;
+        private int year;
+
+        public PopupTuyChonBangLuong(MainWindow main, string dataName, string dataDepName, string dataEpId, int selectedMonth, int selectedYear)
         {
             this.DataContext = this;
             InitializeComponent();
+            name = dataName;
+            dep_name = dataDepName;
+            ep_id = dataEpId;
+            month = selectedMonth;
+            year = selectedYear;
             Main = main;
         }
 
@@ -37,7 +37,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.ChiTietLuong(Main));
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.ChiTietLuong(Main, name, dep_name, ep_id, month, year));
             this.Visibility = Visibility.Collapsed;
             Main.title.Text = "Bảng lương nhân viên / Chi tiết lương nhân viên";
         }

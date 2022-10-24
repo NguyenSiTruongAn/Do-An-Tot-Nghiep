@@ -195,6 +195,15 @@ namespace AppTinhLuong365.Model.APIEntity
                 OnPropertyChanged();
             }
         }
+
+        private bool _validatepc = false;
+        public bool validatepc
+        {
+            get { return _validatepc;}
+            set
+            {
+                _validatepc = value; OnPropertyChanged();
+            } }
     }
 
     public class API_Detail_pay

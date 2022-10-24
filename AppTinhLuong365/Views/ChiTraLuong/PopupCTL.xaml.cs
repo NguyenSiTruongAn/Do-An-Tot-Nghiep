@@ -219,6 +219,7 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                     //     new Views.ChiTraLuong.Validation());
                     // Main.PopupSelection1.Visibility = Visibility.Visible;
                     gridPopup.Children.Add(new Views.ChiTraLuong.Validation());
+                    // item.validatepc = true;
                 }
             }
 
@@ -241,15 +242,14 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                             JsonConvert.DeserializeObject<API_Add_late>(UnicodeEncoding.UTF8.GetString(ee.Result));
                         if (api.data != null)
                         {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.ChiTraLuong.ChiTietChiTraLuong(Main, id));
+                            this.Visibility = Visibility.Collapsed;
                         }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/pay_wage.php",
                         web.QueryString);
                 }
             }
-
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.ChiTraLuong.ChiTietChiTraLuong(Main, id));
-            this.Visibility = Visibility.Collapsed;
         }
 
         private int dem = 0;

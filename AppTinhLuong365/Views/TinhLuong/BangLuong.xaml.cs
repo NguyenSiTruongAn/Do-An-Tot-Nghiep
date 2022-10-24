@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace AppTinhLuong365.Views.TinhLuong
 {
@@ -126,55 +127,58 @@ namespace AppTinhLuong365.Views.TinhLuong
                 IsSmallSize = 2;
             }
         }
-        // private void dataGrid1Hover(object sender, MouseEventArgs e)
-        // {
-        //     Border col = sender as Border;
-        //     if (col != null)
-        //     {
-        //         abc item = (abc)col.DataContext;
-        //         int index = Test.FindIndex(x => x.name == item.name);
-        //         if (index > -1)
-        //         {
-        //             Test[index].hover = 1;
-        //         }
-        //     }
-        //     else if ((sender as Grid) != null)
-        //     {
-        //         abc item = (abc)(sender as Grid).DataContext;
-        //         int index = Test.FindIndex(x => x.name == item.name);
-        //         if (index > -1)
-        //         {
-        //             Test[index].hover = 1;
-        //         }
-        //     }
-        // }
-        //
-        // private void dataGrid1Leave(object sender, MouseEventArgs e)
-        // {
-        //     Border col = sender as Border;
-        //     if (col != null)
-        //     {
-        //         abc item = (abc)col.DataContext;
-        //         int index = Test.FindIndex(x => x.name == item.name);
-        //         if (index > -1)
-        //         {
-        //             Test[index].hover = 0;
-        //         }
-        //     }
-        //     else if ((sender as Grid) != null)
-        //     {
-        //         abc item = (abc)(sender as Grid).DataContext;
-        //         int index = Test.FindIndex(x => x.name == item.name);
-        //         if (index > -1)
-        //         {
-        //             Test[index].hover = 0;
-        //         }
-        //     }
-        // }
 
-        private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void dataGrid1Hover(object sender, MouseEventArgs e)
         {
-            var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main);
+            Border col = sender as Border;
+            if (col != null)
+            {
+                Item_Bang_Luong item = (Item_Bang_Luong)col.DataContext;
+                int index = listBangLuong.FindIndex(x => x.ep_id == item.ep_id);
+                if (index > -1)
+                {
+                    listBangLuong[index].hover = 1;
+                }
+            }
+            else if ((sender as Grid) != null)
+            {
+                Item_Bang_Luong item = (Item_Bang_Luong)(sender as Grid).DataContext;
+                int index = listBangLuong.FindIndex(x => x.ep_id == item.ep_id);
+                if (index > -1)
+                {
+                    listBangLuong[index].hover = 1;
+                }
+            }
+        }
+
+        private void dataGrid1Leave(object sender, MouseEventArgs e)
+        {
+            Border col = sender as Border;
+            if (col != null)
+            {
+                Item_Bang_Luong item = (Item_Bang_Luong)col.DataContext;
+                int index = listBangLuong.FindIndex(x => x.ep_id == item.ep_id);
+                if (index > -1)
+                {
+                    listBangLuong[index].hover = 0;
+                }
+            }
+            else if ((sender as Grid) != null)
+            {
+                Item_Bang_Luong item = (Item_Bang_Luong)(sender as Grid).DataContext;
+                int index = listBangLuong.FindIndex(x => x.ep_id == item.ep_id);
+                if (index > -1)
+                {
+                    listBangLuong[index].hover = 0;
+                }
+            }
+        }
+
+        private void TuyChon(object sender, MouseButtonEventArgs e)
+        {
+            Path p = sender as Path;
+            Item_Bang_Luong data = (Item_Bang_Luong)p.DataContext;
+            var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id, searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 95, z.Y + 15, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -243,7 +247,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void ThongKe(object sender, MouseButtonEventArgs e)
         {
-            string year = "", month = "", id_nv = "", id_pb = "", start_date = "", end_date = "", order ="";
+            string year = "", month = "", id_nv = "", id_pb = "", start_date = "", end_date = "", order = "";
             if (searchBarYear.SelectedItem != null)
                 year = searchBarYear.SelectedItem.ToString().Split(' ')[1];
             else
@@ -297,11 +301,11 @@ namespace AppTinhLuong365.Views.TinhLuong
 
             if (SearchBar.SelectedIndex != null)
             {
-                order = (SearchBar.SelectedIndex + 1)+"";
+                order = (SearchBar.SelectedIndex + 1) + "";
             }
             else
             {
-                order = 1+"";
+                order = 1 + "";
             }
 
             getData(1, month, year, id_nv, id_pb, start_date, end_date, order);
@@ -524,6 +528,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 order = 1 + "";
             }
+
             getData(1, month, year, id_pb, id_nv, start_date, end_date, order);
             BrushConverter bc = new BrushConverter();
             Page1.Background = (Brush)bc.ConvertFrom("#4C5BD4");
@@ -593,6 +598,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 order = 1 + "";
             }
+
             getData(pagenow - 1, month, year, id_pb, id_nv, start_date, end_date, order);
         }
 
@@ -658,6 +664,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 order = 1 + "";
             }
+
             getData(pagenow + 1, month, year, id_pb, id_nv, start_date, end_date, order);
         }
 
@@ -723,6 +730,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 order = 1 + "";
             }
+
             getData(PageNV.Count, month, year, id_pb, id_nv, start_date, end_date, order);
         }
 
@@ -803,6 +811,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 order = 1 + "";
             }
+
             getData(pagenumber, month, year, id_pb, id_nv, start_date, end_date, order);
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
@@ -871,6 +880,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 order = 1 + "";
             }
+
             getData(pagenumber, month, year, id_pb, id_nv, start_date, end_date, order);
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
@@ -939,6 +949,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 order = 1 + "";
             }
+
             getData(pagenumber, month, year, id_pb, id_nv, start_date, end_date, order);
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
@@ -1044,11 +1055,11 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void Month(object sender, SelectionChangedEventArgs e)
         {
-            string a = DateTime.Now.ToString((searchBarYear.SelectedIndex + 2021) + "-" +
+            string a = DateTime.Now.ToString((searchBarYear.SelectedIndex + DateTime.Now.Year -1) + "-" +
                                              (searchBarMonth.SelectedIndex + 1) + "-01");
             DateTime b = DateTime.Parse(a);
             DatePickerStart.SelectedDate = b;
-            string c = DateTime.Now.ToString((searchBarYear.SelectedIndex + 2021) + "-" +
+            string c = DateTime.Now.ToString((searchBarYear.SelectedIndex + DateTime.Now.Year - 1) + "-" +
                                              (searchBarMonth.SelectedIndex + 1) + "-" +
                                              DateTime.DaysInMonth((searchBarYear.SelectedIndex + 2021),
                                                  (searchBarMonth.SelectedIndex + 1)));

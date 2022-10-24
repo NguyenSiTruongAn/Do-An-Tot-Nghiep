@@ -25,5 +25,10 @@ namespace AppTinhLuong365.Views.ChiTraLuong
             this.DataContext = this;
             InitializeComponent();
         }
+
+        private void Tat(object sender, MouseButtonEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
+        }
     }
 }

@@ -150,7 +150,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Grid x:Name="gridHoTen">
+                                    <Grid x:Name="gridHoTen" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <WrapPanel VerticalAlignment="Center" Margin="25 0 0 0">
                                             <Border Width="45" Height="48" CornerRadius="40"
                                                     HorizontalAlignment="Left">
@@ -164,13 +164,20 @@
                                                                Text="{Binding name}"
                                                                Foreground="{DynamicResource #4C5BD4}">
                                                     </TextBlock>
-                                                    <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #4C5BD4}" VerticalAlignment="Center" Margin="10 0 0 0">
-                                                        <Path.Style>
-                                                            <Style TargetType="Path">
-                                                                <Setter Property="Visibility" Value="Collapsed"></Setter>
-                                                            </Style>
-                                                        </Path.Style>
-                                                    </Path>
+                                                    <Border Background="Transparent">
+                                                        <Path Cursor="Hand" MouseLeftButtonDown="TuyChon" Data="{DynamicResource iconEdit}" Fill="{DynamicResource #4C5BD4}" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                            <Path.Style>
+                                                                <Style TargetType="Path">
+                                                                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding hover}" Value="1">
+                                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Path.Style>
+                                                        </Path>
+                                                    </Border>
                                                 </StackPanel>
                                                 <TextBlock Text="{Binding ep_id}" FontSize="15"
                                                            FontWeight="DemiBold"
@@ -185,7 +192,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textPhongBan}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding dep_name}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
@@ -194,7 +201,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textBasicSalary}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_luong_cb}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -205,7 +212,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textContract}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding pt_hop_dong}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
@@ -214,7 +221,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textStandardDateNumber}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding cong_chuan}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
@@ -223,7 +230,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textActualDateNumber}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding cong_thuc}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
@@ -232,7 +239,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textCSP}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding cong_sau_phat}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -243,7 +250,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textCongTheoTien}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding cong_theo_tien}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -254,7 +261,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textCongDuocGhiNhan}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding cong_ghi_nhan}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -265,7 +272,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textCongDuocNghiPhep}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding cong_nghi_phep}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -279,7 +286,7 @@
                             </DataGridTemplateColumn.CellStyle>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding tong_cong_nhan}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -290,7 +297,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textLuongThuc}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_luong_thuc}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -301,7 +308,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textLuongSauPhat}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_luong_sau_phat}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -312,7 +319,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textPremiumSalary}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_luong_bh}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -326,7 +333,7 @@
                             </DataGridTemplateColumn.CellStyle>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding ms_phat_cong}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
@@ -338,7 +345,7 @@
                             </DataGridTemplateColumn.CellStyle>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_ms_phat_tien}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -349,7 +356,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textHoaHong}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_hoa_hong}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -363,7 +370,7 @@
                             </DataGridTemplateColumn.CellStyle>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_tam_ung}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -374,7 +381,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textThuong}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_thuong}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -385,7 +392,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textThuongNghiLe}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_thuong_le}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -399,7 +406,7 @@
                             </DataGridTemplateColumn.CellStyle>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding phat}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
@@ -411,7 +418,7 @@
                             </DataGridTemplateColumn.CellStyle>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_phat_nghi}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -425,7 +432,7 @@
                             </DataGridTemplateColumn.CellStyle>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_phat_nghi_sqd}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -436,7 +443,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textPhucLoi}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_phuc_loi}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -447,7 +454,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textPhuCap}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_phu_cap}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -458,7 +465,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textPhuCapTheoCa}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding phu_cap_ca}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
@@ -470,7 +477,7 @@
                             </DataGridTemplateColumn.CellStyle>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_bao_hiem}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -481,7 +488,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textKhoanTienKhac}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_khoan_khac}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -492,7 +499,7 @@
                         <DataGridTemplateColumn Header="{DynamicResource textTongLuong}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_tong_luong}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -506,7 +513,7 @@
                             </DataGridTemplateColumn.CellStyle>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_thue}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
@@ -518,7 +525,7 @@
                             </DataGridTemplateColumn.CellStyle>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_luong_thuc_nhan}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>
@@ -532,7 +539,7 @@
                             </DataGridTemplateColumn.CellStyle>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" MouseEnter="dataGrid1Hover" MouseLeave="dataGrid1Leave">
                                         <TextBlock Text="{Binding display_luong_da_tra}"
                                                    Style="{StaticResource TextRowCenter}">
                                         </TextBlock>

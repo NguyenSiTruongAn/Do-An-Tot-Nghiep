@@ -765,7 +765,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
-                                                               Text="{Binding CaNghi}" FontSize="15"
+                                                               Text="{Binding ten_ca_nghi}" FontSize="15"
                                                                FontWeight="DemiBold"
                                                                Foreground="{DynamicResource #68798B}">
                                                     </TextBlock>
@@ -790,6 +790,10 @@
                                                                     <DataTrigger
                                                                         Binding="{Binding ElementName=txtActive,Path=Text}"
                                                                         Value="Từ chối">
+                                                                        <Setter Property="Background" Value="#fee5e5" />
+                                                                    </DataTrigger><DataTrigger
+                                                                        Binding="{Binding ElementName=txtActive,Path=Text}"
+                                                                        Value="Bắt buộc đi làm">
                                                                         <Setter Property="Background" Value="#fee5e5" />
                                                                     </DataTrigger>
                                                                     <DataTrigger
@@ -817,6 +821,10 @@
                                                                                 Value="#ff8c44" />
                                                                         </Trigger>
                                                                         <Trigger Property="Text" Value="Từ chối">
+                                                                            <Setter Property="Foreground"
+                                                                                Value="#ff5959" />
+                                                                        </Trigger>
+                                                                        <Trigger Property="Text" Value="Bắt buộc đi làm">
                                                                             <Setter Property="Foreground"
                                                                                 Value="#ff5959" />
                                                                         </Trigger>

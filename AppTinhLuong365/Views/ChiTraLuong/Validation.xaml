@@ -6,14 +6,15 @@
       xmlns:local="clr-namespace:AppTinhLuong365.Views.ChiTraLuong"
       mc:Ignorable="d">
 
-    <Grid Width="300" Height="40">
-        <Border Style="{StaticResource ShadowBorder2}"></Border>
-        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
+    <Grid Width="250" Height="40">
+        <Border Style="{StaticResource ShadowBorder2}"/>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8" MouseLeftButtonDown="Tat">
             <Grid VerticalAlignment="Center" Margin="5 5 5 0">
-                <Path HorizontalAlignment="Left" Data="{DynamicResource iconThongTinTaoKhoan}"
-                      Fill="{DynamicResource #F46A6A}">
-                </Path>
-                <TextBlock HorizontalAlignment="Right" Text="Bạn chắc chắn muốn xóa tùy chọn này?"
+                <Border CornerRadius="5" HorizontalAlignment="Left" Width="30" Height="30" Background="#ffffff">
+                    <Path VerticalAlignment="Center" HorizontalAlignment="Center" Data="{DynamicResource iconThongBaoXoa}" Fill="#ffa300">
+                    </Path>
+                </Border>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Text="Lương trả không quá 100%"
                            FontSize="15" FontFamily="roboto" FontWeight="DemiBold">
                 </TextBlock>
             </Grid>
