@@ -1,13 +1,13 @@
-﻿<Page x:Class="AppTinhLuong365.Views.TinhLuong.PopupThemHopDong"
+﻿<Page x:Class="AppTinhLuong365.Views.TinhLuong.Popup.PopupSuaHopDong"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong"
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong.Popup"
+      xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       mc:Ignorable="d" 
       VerticalAlignment="Top"
-      Title="PopupThemHopDong">
+      Title="PopupSuaHopDong">
 
     <Grid Width="615">
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
@@ -18,7 +18,7 @@
         <StackPanel>
             <Border Background="{DynamicResource #4C5BD4}" Height="47" CornerRadius="10 10 0 0">
                 <Grid>
-                    <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTHDNV}" Foreground="{DynamicResource #FFFFFF}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock FontWeight="DemiBold" Text="Sửa hợp đồng nhân viên" Foreground="{DynamicResource #FFFFFF}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <Border MouseLeftButtonDown="Path_MouseLeftButtonDown" Cursor="Hand" Background="Transparent">
                         <Path Data="{DynamicResource iconClose}" VerticalAlignment="Center" Fill="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 0 10 0"/>
                     </Border>
@@ -83,10 +83,10 @@
                         <tool:DatePicker x:Name="dpNgayHetHan" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
                     </Border>
                     <TextBlock Margin="0 14 0 0" FontWeight="DemiBold" Text="{DynamicResource textTDK}" FontSize="16" Foreground="{DynamicResource #666666}"/>
-                    <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" Cursor="Hand"> 
+                    <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" Cursor="Hand">
                         <TextBox IsHitTestVisible="False" Margin="10 0 0 0" BorderThickness="0" Text="{DynamicResource textTenCTDK}" FontSize="13" Foreground="{DynamicResource #777777}" VerticalAlignment="Center"/>
                     </Border>
-                    <Border Cursor="Hand" MouseLeftButtonDown="ThemHopDong" Margin="0 19 0 20" Height="45" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
+                    <Border Cursor="Hand" MouseLeftButtonDown="SuaHopDong" Margin="0 19 0 20" Height="45" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
                         <TextBlock Text="{DynamicResource textSave}" FontSize="15" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Border>
                 </StackPanel>

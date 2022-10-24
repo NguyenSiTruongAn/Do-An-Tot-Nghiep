@@ -81,10 +81,24 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
-                string result = salary_emp;
+                string a = "";
                 if (string.IsNullOrEmpty(salary_emp))
-                    result = "0";
-                return result;
+                    return "0";
+                else
+                {
+                    if (Convert.ToDouble(salary_emp) >= 0)
+                    {
+                        double m;
+                        if (double.TryParse(salary_emp, out m)) a = m.ToString("C0").Replace(@"$", "");
+                    }
+                    else
+                    {
+                        double n;
+                        if (double.TryParse(salary_emp.ToString(), out n))
+                            a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                    }
+                }
+                return a;
             }
         }
         public string hopdong_emp { get; set; }

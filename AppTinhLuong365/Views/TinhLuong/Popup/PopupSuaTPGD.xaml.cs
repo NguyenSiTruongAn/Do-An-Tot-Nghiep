@@ -17,29 +17,33 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.TinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupThemPhuThuoc.xaml
+    /// Interaction logic for PopupSuaTPGD.xaml
     /// </summary>
-    public partial class PopupThemPhuThuoc : Page
+    public partial class PopupSuaTPGD : Page
     {
-        public PopupThemPhuThuoc(MainWindow main, ItemEmp data)
+        public PopupSuaTPGD(MainWindow main, FamilyMember data, ItemEmp data1)
         {
-            this.DataContext = this;
             InitializeComponent();
+            this.DataContext = this;
             Main = main;
             this.data = data;
+            this.data1 = data1;
+            tbInput.Text = data.fa_name;
+            tbInput1.Text = data.fa_relation;
+            tbInput2.Text = data.fa_phone;
+            tbInput3.Text = data.fa_job;
+            tbInput4.Text = data.fa_address;
+            dpNgaySinh.SelectedDate = DateTime.Parse(data.fa_birthday);
         }
-        ItemEmp data;
+
         MainWindow Main;
+        FamilyMember data;
+        ItemEmp data1;
 
-        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
-        }
-
-        private void ThemGiaDinh(object sender, MouseButtonEventArgs e)
+        private void SuaGiaDinh(object sender, MouseButtonEventArgs e)
         {
             bool allow = true;
             validateName.Text = validateNgaySinh.Text = validateSDT.Text = validateQH.Text = validateNghe.Text = validateDiaChi.Text = "";
@@ -87,27 +91,33 @@ namespace AppTinhLuong365.Views.TinhLuong
                         web.QueryString.Add("token", Main.CurrentCompany.token);
                         web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     }
-                    web.QueryString.Add("id", data.ep_id);
+                    web.QueryString.Add("id_fa", data.fa_id);
                     web.QueryString.Add("aname", tbInput.Text);
                     web.QueryString.Add("arela", tbInput1.Text);
                     web.QueryString.Add("aphone", tbInput2.Text);
                     web.QueryString.Add("ajob", tbInput3.Text);
                     web.QueryString.Add("aadd", tbInput4.Text);
                     web.QueryString.Add("adate", dpNgaySinh.SelectedDate.Value.ToString("yyyy-MM-dd"));
+                    web.QueryString.Add("checked_f", data.fa_status);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
                         string y = UnicodeEncoding.UTF8.GetString(ee.Result);
                         API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
                         if (api.data != null)
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data));
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1));
                             Main.HomeSelectionPage.Visibility = Visibility.Visible;
                             this.Visibility = Visibility.Collapsed;
                         }
                     };
-                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_ep_family_member.php", web.QueryString);
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_ep_family_member.php", web.QueryString);
                 }
             }
+        }
+
+        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
         }
 
         private void tbInput2_PreviewTextInput(object sender, TextCompositionEventArgs e)

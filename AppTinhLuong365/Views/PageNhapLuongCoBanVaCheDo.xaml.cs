@@ -295,6 +295,7 @@ namespace AppTinhLuong365.Views
             ItemEmp data = (ItemEmp)dp.DataContext;
             Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data));
             Main.title.Text = " Danh sách nhân viên/ Hồ sơ nhân viên";
+            Main.sidebar.SelectedIndex = -1;
         }
 
         public List<int> ListPageNumber(int total)

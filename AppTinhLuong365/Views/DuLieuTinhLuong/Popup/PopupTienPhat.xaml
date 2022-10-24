@@ -1,4 +1,4 @@
-﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.Popup.PopupTienThuong"
+﻿<Page x:Class="AppTinhLuong365.Views.DuLieuTinhLuong.Popup.PopupTienPhat"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,13 +7,13 @@
       mc:Ignorable="d" 
       HorizontalAlignment="Left"
       VerticalAlignment="Top"
-      Title="PopupTienThuong">
+      Title="PopupTienPhat">
 
     <Grid Width="509">
         <Border Style="{StaticResource ShadowBorder2}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Grid>
-                <DataGrid Margin="10 20" HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid1}" ItemsSource="{Binding data.dt_thuong}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                <DataGrid Margin="10 20" HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid1}" ItemsSource="{Binding data.dt_phat}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>
@@ -22,7 +22,7 @@
                         </VisualBrush>
                     </DataGrid.OpacityMask>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="{DynamicResource textTienThuong}">
+                        <DataGridTemplateColumn Header="{DynamicResource textTienPhat}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
