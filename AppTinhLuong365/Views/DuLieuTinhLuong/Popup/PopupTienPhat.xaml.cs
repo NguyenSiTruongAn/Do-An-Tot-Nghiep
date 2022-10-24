@@ -19,9 +19,9 @@ using System.Windows.Shapes;
 namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupTienThuong.xaml
+    /// Interaction logic for PopupTienPhat.xaml
     /// </summary>
-    public partial class PopupTienThuong : Page, INotifyPropertyChanged
+    public partial class PopupTienPhat : Page, INotifyPropertyChanged
     {
         public MainWindow Main;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -29,15 +29,13 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public PopupTienThuong(MainWindow main, ListThuongPhat data)
+        public PopupTienPhat(MainWindow main, ListThuongPhat data)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
             this.data = data;
-            
         }
-
         private ListThuongPhat _data;
         public ListThuongPhat data
         {

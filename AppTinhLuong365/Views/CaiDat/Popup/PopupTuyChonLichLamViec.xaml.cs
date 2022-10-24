@@ -44,9 +44,9 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void ChinhSua_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.CaiDat.Popup.PopupChinhSuaLichLamViec(Main);
+            /*var pop = new Views.CaiDat.Popup.PopupChinhSuaLichLamViec(Main);
             Main.PopupSelection.NavigationService.Navigate(pop);
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            Main.PopupSelection.Visibility = Visibility.Visible;*/
         }
 
         private void DanhSachNhanVien_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)

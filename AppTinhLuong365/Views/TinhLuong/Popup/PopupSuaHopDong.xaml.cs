@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,52 +17,58 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.TinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupThemLuong.xaml
+    /// Interaction logic for PopupSuaHopDong.xaml
     /// </summary>
-    public partial class PopupThemLuong : Page
+    public partial class PopupSuaHopDong : Page
     {
-        public PopupThemLuong(MainWindow main, ChiTietNV data, ItemEmp data1)
+        public PopupSuaHopDong(MainWindow main, ContractWork data, ItemEmp data1)
         {
-            this.DataContext = this;
             InitializeComponent();
+            this.DataContext = this;
             Main = main;
             this.data = data;
-            if(data.basic_salary.Count > 0)
-            {
-                tbInput.Text = data.basic_salary[data.basic_salary.Count - 1].sb_salary_basic;
-                tbInput1.Text = data.basic_salary[data.basic_salary.Count - 1].sb_salary_bh;
-                tbInput2.Text = data.basic_salary[data.basic_salary.Count - 1].sb_pc_bh;
-                dpThang.SelectedDate = DateTime.Parse(data.basic_salary[data.basic_salary.Count - 1].sb_time_up);
-                tbInput3.Text = data.basic_salary[data.basic_salary.Count - 1].sb_lydo;
-                tbInput4.Text = data.basic_salary[data.basic_salary.Count - 1].sb_quyetdinh;
-            }
             this.data1 = data1;
+            tbInput.Text = data.con_name;
+            tbInput1.Text = data.con_salary_persent;
+            dpNgayHieuLuc.SelectedDate = DateTime.Parse(data.con_time_up);
+            if(data.con_time_end != "0000-00-00")
+                dpNgayHetHan.SelectedDate = DateTime.Parse(data.con_time_end);
         }
-
-        ChiTietNV data;
-        ItemEmp data1;
         MainWindow Main;
+        ItemEmp data1;
+        ContractWork data;
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
         }
 
-        private void ThemLuong(object sender, MouseButtonEventArgs e)
+        private void SuaHopDong(object sender, MouseButtonEventArgs e)
         {
             bool allow = true;
+            validateName.Text = validateLuong.Text = validateNgay.Text = "";
             if (string.IsNullOrEmpty(tbInput.Text))
+            {
+                allow = false;
+                validateName.Text = "Vui lòng nhập đầy đủ";
+            }
+            if (string.IsNullOrEmpty(tbInput1.Text))
             {
                 allow = false;
                 validateLuong.Text = "Vui lòng nhập đầy đủ";
             }
-            if(dpThang.SelectedDate == null)
+            else if (int.Parse(tbInput1.Text) > 100)
             {
                 allow = false;
-                validateTG.Text = "Vui lòng chọn thời gian áp dụng";
+                validateLuong.Text = "Vui lòng không nhập quá 100";
+            }
+            if (dpNgayHieuLuc.SelectedDate == null)
+            {
+                allow = false;
+                validateNgay.Text = "Vui lòng chọn thời gian áp dụng";
             }
             if (allow)
             {
@@ -72,14 +79,13 @@ namespace AppTinhLuong365.Views.TinhLuong
                         web.QueryString.Add("token", Main.CurrentCompany.token);
                         web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     }
-                    web.QueryString.Add("id", data.ep_id);
-                    web.QueryString.Add("salary", tbInput.Text);
-                    web.QueryString.Add("salary_bh", tbInput1.Text);
-                    web.QueryString.Add("phucapbh", tbInput2.Text);
-                    web.QueryString.Add("date_ss", dpThang.SelectedDate.Value.ToString("yyyy-MM-dd"));
-                    web.QueryString.Add("lydo", tbInput3.Text);
-                    web.QueryString.Add("quyetdinh", tbInput4.Text);
-                    
+                    web.QueryString.Add("id", data1.ep_id);
+                    web.QueryString.Add("id_cw", data.con_id);
+                    web.QueryString.Add("name_ct", tbInput.Text);
+                    web.QueryString.Add("salary", tbInput1.Text);
+                    web.QueryString.Add("date_ct", dpNgayHieuLuc.SelectedDate.Value.ToString("yyyy-MM-dd"));
+                    if(dpNgayHetHan.SelectedDate != null)
+                        web.QueryString.Add("date_ect_end", dpNgayHetHan.SelectedDate.Value.ToString("yyyy-MM-dd"));
                     web.UploadValuesCompleted += (s, ee) =>
                     {
                         string y = UnicodeEncoding.UTF8.GetString(ee.Result);
@@ -91,9 +97,15 @@ namespace AppTinhLuong365.Views.TinhLuong
                             this.Visibility = Visibility.Collapsed;
                         }
                     };
-                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_ep_basic_salary.php", web.QueryString);
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_ep_contract_work.php", web.QueryString);
                 }
             }
+        }
+
+        private void tbInput1_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

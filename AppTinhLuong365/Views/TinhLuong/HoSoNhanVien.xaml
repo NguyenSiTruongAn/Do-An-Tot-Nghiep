@@ -36,12 +36,16 @@
         <StackPanel Orientation="Vertical" Background="{DynamicResource #FFFFFF}">
             <Border Height="180" VerticalAlignment="Top" CornerRadius="16 16 0 0" Background="{DynamicResource #505DC7}">
                 <Grid>
-                    <Border Margin="20,30,0,39" CornerRadius="16" Background="Black" Width="111" Height="111" HorizontalAlignment="Left"></Border>
+                    <Border Margin="20,30,0,39" CornerRadius="16" Width="111" Height="111" HorizontalAlignment="Left">
+                        <Border.Background>
+                            <ImageBrush x:Name="image"></ImageBrush>
+                        </Border.Background>
+                    </Border>
                     <Path Cursor="Hand" MouseLeftButtonDown="Path_MouseLeftButtonDown" Margin="108 121 0 0" Data="{DynamicResource iconCamera}" Fill="{DynamicResource #FFFFFF}"></Path>
                     <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" Margin="114 127 0 0"></Path>
-                    <TextBlock Text="Lê Văn Thanh" FontSize="20" Foreground="{DynamicResource #FFFFFF}" Margin="157 65 0 0" FontWeight="Bold"></TextBlock>
-                    <TextBlock Text="Thử việc" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="157 94 0 0"></TextBlock>
-                    <Border Cursor="Hand" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Margin="0 0 15 15" Height="35" Width="176.7" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                    <TextBlock x:Name="Ten" FontSize="20" Foreground="{DynamicResource #FFFFFF}" Margin="157 65 0 0" FontWeight="Bold"></TextBlock>
+                    <TextBlock x:Name="ChucVu" FontSize="15" Foreground="{DynamicResource #FFFFFF}" Margin="157 94 0 0"></TextBlock>
+                    <Border MouseLeftButtonDown="ThayLichLamViec" Cursor="Hand" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Margin="0 0 15 15" Height="35" Width="176.7" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                         <TextBlock Text="Thay đổi lịch làm việc" FontSize="14" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #4C5BD4}"/>
                     </Border>
                 </Grid>
@@ -49,30 +53,32 @@
             <Border Margin="20 32 20 0" Background="{DynamicResource #F3F3F3}" CornerRadius="15">
                 <StackPanel>
                     <Grid>
-                        <TextBlock Text="Giới thiệu" FontSize="18" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}" Margin="19 16 0 19"></TextBlock>
+                        <TextBlock Text="Giới thiệu" FontSize="18" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}" Margin="19 16 0 0"></TextBlock>
                         <Path Cursor="Hand" MouseLeftButtonDown="OpenDes" Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 -15 20 0">
-                            <Path.Style>
-                                <Style TargetType="Path">
-                                    <Setter Property="Visibility" Value="Visible"></Setter>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=borderes,Path=Visibility}" Value="Visible">
-                                            <Setter Property="Visibility" Value="Visible"></Setter>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Path.Style>
                         </Path>
                     </Grid>
+                    <TextBlock x:Name="txtGioiThieu" Text="{Binding ep_description}" FontSize="15" Foreground="{DynamicResource #666C7C}">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Margin" Value="19"/>
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter Property="Margin" Value="0"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                     <StackPanel x:Name="borderes" Visibility="Collapsed" >
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10" BorderThickness="1" BorderBrush="Black" Margin="22.8 0 22.8 18">
-                            <TextBox FontSize="15" TextWrapping="Wrap" Foreground="{DynamicResource #777777}" BorderThickness="0" Background="{DynamicResource #FFFFFF}" Height="127" Margin="4"/>
+                            <TextBox x:Name="txtGioiThieuSua" FontSize="15" TextWrapping="Wrap" Foreground="{DynamicResource #777777}" BorderThickness="0" Background="{DynamicResource #FFFFFF}" Height="127" Margin="4"/>
                         </Border>
                         <StackPanel Margin="22.8 0 0 0" Orientation="Horizontal">
                             <Border Width="84.7" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" Background="{DynamicResource #FFFFFF}" CornerRadius="5" Height="34">
                                 <TextBlock Cursor="Hand" Text="Hủy" MouseLeftButtonDown="OpenDes" FontSize="15" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
-                            <Border Margin="5 0 0 0" Width="130.5" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Height="34">
-                                <TextBlock Cursor="Hand" Text="Lưu thông tin" FontSize="15" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Border Cursor="Hand" MouseLeftButtonDown="SuaGioiThieu" Margin="5 0 0 0" Width="130.5" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Height="34">
+                                <TextBlock Text="Lưu thông tin" FontSize="15" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
                         </StackPanel>
                     </StackPanel>
@@ -82,21 +88,10 @@
                 <Border Margin="0 0 20 0" Padding="0 0 0 15" VerticalAlignment="Top" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="0 0 0 1">
                     <Grid>
                         <TextBlock Text="Thông tin cá nhân" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
-                        <Path Cursor="Hand" MouseLeftButtonDown="OpenDes1" Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" HorizontalAlignment="Right" Margin="0 0 20 0">
-                            <Path.Style>
-                                <Style TargetType="Path">
-                                    <Setter Property="Visibility" Value="Visible"></Setter>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=borderes1,Path=Visibility}" Value="Visible">
-                                            <Setter Property="Visibility" Value="Visible"></Setter>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=borderes2,Path=Visibility}" Value="Collapsed">
-                                            <Setter Property="Visibility" Value="Visible"></Setter>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Path.Style>
-                        </Path>
+                        <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="OpenDes1">
+                            <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" HorizontalAlignment="Right" Margin="0 0 20 0">
+                            </Path>
+                        </Border>
                     </Grid>
                 </Border>
                 <Border x:Name="borderes2" Visibility="Visible">
@@ -152,43 +147,43 @@
                                 <TextBlock FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textGender}"/>
-                                        <Run Text="Nam"/>
+                                        <Run x:Name="txtGt"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textStaffID}"/>
-                                        <Run Text="14492"/>
+                                        <Run x:Name="txtMa"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textPosition}"/>
-                                        <Run Text="Thử việc"/>
+                                        <Run x:Name="txtChucVu"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textDateStartWork}"/>
-                                        <Run Text="18/08/2022"/>
+                                        <Run x:Name="txtStartWork"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textEmail}"/>
-                                        <Run Text="nguyensitruongan@gmail.com"/>
+                                        <Run Name="txtEmail"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textBankAccountNumber}"/>
-                                        <Run Text="Chưa cập nhật"/>
+                                        <Run Name="txtSTK"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textBDTL}"/>
-                                        <Run Text="Từ ngày bắt đầu làm việc"/>
+                                        <Run x:Name="txtNgayTinhLuong"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                             </StackPanel>
@@ -201,26 +196,30 @@
                             <StackPanel>
                                 <TextBlock FontWeight="DemiBold" Text="{DynamicResource textHoTen2C}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                    <TextBox Margin="10 0 0 0" FontWeight="DemiBold" VerticalAlignment="Center" Text="Nguyễn Huy Quang" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                    <TextBox x:Name="txtSuaTen" Margin="10 0 0 0" FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                                 </Border>
+                                <TextBlock Style="{StaticResource tblValidate}" x:Name="validateName"/>
                                 <TextBlock Margin="0 46 0 0" FontWeight="DemiBold" Text="{DynamicResource textDateOfBirth2C}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                    <tool:DatePicker FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                    <tool:DatePicker x:Name="cbNgaySinh" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
                                 </Border>
+                                <TextBlock Style="{StaticResource tblValidate}" x:Name="validateNgaySinh"/>
                                 <TextBlock Margin="0 34 0 0" FontWeight="DemiBold" Text="{DynamicResource textMaritalStatus}" FontSize="16" Foreground="{DynamicResource #666666}"/>
-                                <ComboBox Margin="0 5 0 0" FontSize="16" Foreground="{DynamicResource #777777}" Height="42" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                                <ComboBox Name="cbHonNhan" Margin="0 5 0 0" FontSize="16" Foreground="{DynamicResource #777777}" Height="42" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
                                     <ComboBoxItem>Chọn tình trạng hôn nhân</ComboBoxItem>
                                     <ComboBoxItem IsSelected="True">Độc thân</ComboBoxItem>
                                     <ComboBoxItem>Đã kết hôn</ComboBoxItem>
                                     <ComboBoxItem>Khác</ComboBoxItem>
                                 </ComboBox>
+                                <TextBlock x:Name="validateHonNhan" Style="{StaticResource tblValidate}"/>
                                 <TextBlock Margin="0 48 0 0" FontWeight="DemiBold" Text="{DynamicResource textSoDienThoai}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                    <TextBox Margin="10 0 0 0" FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Text="0984471028" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                    <TextBox x:Name="txtSuaPhone" Margin="10 0 0 0" FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                                 </Border>
+                                <TextBlock Style="{StaticResource tblValidate}" x:Name="validatePhone"/>
                                 <TextBlock Margin="0 34 0 0" FontWeight="DemiBold" Text="{DynamicResource textDateStartWork}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                    <TextBlock VerticalAlignment="Center" Margin="10 0 0 0" FontWeight="DemiBold" Text="09/09/2022" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                    <TextBlock x:Name="NgayBatDau" VerticalAlignment="Center" Margin="10 0 0 0" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
                                 </Border>
                                 <TextBlock Margin="0 48 0 0" FontWeight="DemiBold" Text="{DynamicResource textBankName}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
@@ -244,8 +243,8 @@
                                     <Border Width="84.7" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" Background="{DynamicResource #FFFFFF}" CornerRadius="5" Height="34">
                                         <TextBlock Cursor="Hand" Text="Hủy" MouseLeftButtonDown="OpenDes1" FontSize="15" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     </Border>
-                                    <Border Margin="5 0 0 0" Width="130.5" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Height="34">
-                                        <TextBlock Cursor="Hand" Text="Lưu thông tin" FontSize="15" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Border Cursor="Hand" MouseLeftButtonDown="SuaThongTin" Margin="5 0 0 0" Width="130.5" Background="{DynamicResource #4C5BD4}" CornerRadius="5" Height="34">
+                                        <TextBlock Text="Lưu thông tin" FontSize="15" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     </Border>
                                 </StackPanel>
                             </StackPanel>
@@ -253,27 +252,29 @@
                         <Border Style="{DynamicResource Style_Border_Wrap}">
                             <StackPanel>
                                 <TextBlock FontWeight="DemiBold" Text="{DynamicResource textGender}" FontSize="16" Foreground="{DynamicResource #666666}"/>
-                                <ComboBox Margin="0 5 0 0" FontSize="16" Foreground="{DynamicResource #777777}" Height="42" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                                <ComboBox x:Name="cbGioiTinh" Margin="0 5 0 0" FontSize="16" Foreground="{DynamicResource #777777}" Height="42" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
                                     <ComboBoxItem>Chọn giới tính</ComboBoxItem>
                                     <ComboBoxItem IsSelected="True">Nam</ComboBoxItem>
                                     <ComboBoxItem>Nữ</ComboBoxItem>
                                     <ComboBoxItem>Khác</ComboBoxItem>
                                 </ComboBox>
+                                <TextBlock x:Name="validateGioiTinh" Style="{StaticResource tblValidate}"/>
                                 <TextBlock Margin="0 46 0 0" FontWeight="DemiBold" Text="{DynamicResource textMaNhanVien}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                                     <TextBlock VerticalAlignment="Center" Margin="10 0 0 0" FontWeight="DemiBold" Text="14953" FontSize="16" Foreground="{DynamicResource #777777}"/>
                                 </Border>
                                 <TextBlock Margin="0 34 0 0" FontWeight="DemiBold" Text="{DynamicResource textAddress2C}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                    <TextBox FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Text="14, ngo 296 minh khai" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                    <TextBox x:Name="txtSuaDiaChi" FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Text="14, ngo 296 minh khai" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                                 </Border>
+                                <TextBlock Style="{StaticResource tblValidate}" x:Name="validateDiaChi"/>
                                 <TextBlock Margin="0 48 0 0" FontWeight="DemiBold" Text="{DynamicResource textEmail}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                    <TextBox FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Text="Quangtest@gmail.com" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                    <TextBlock x:Name="txtSuaEmail" FontWeight="DemiBold" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}"/>
                                 </Border>
                                 <TextBlock Margin="0 34 0 0" FontWeight="DemiBold" Text="{DynamicResource textBDTL}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                    <tool:DatePicker FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                    <tool:DatePicker x:Name="ChonThang" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
                                 </Border>
                                 <TextBlock Margin="0 48 0 0" FontWeight="DemiBold" Text="{DynamicResource textBankAccountNumber}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
@@ -307,7 +308,7 @@
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
+                    <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" Margin="0 70 20 0" ItemsSource="{Binding ChiTietNV.basic_salary}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
@@ -316,13 +317,76 @@
                             </VisualBrush>
                         </DataGrid.OpacityMask>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="{DynamicResource textBasicSalary}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textPremiumSalary}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textPCDBH}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textTGL}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textTimeUse}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textSua}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textXoa}"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textBasicSalary}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent">
+                                            <TextBlock Style="{StaticResource TextRowCenter1}">
+                                                <Run Text="{Binding display_sb_salary_basic,Mode=OneWay}"/>
+                                                <Run Text="VNĐ"/>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textPremiumSalary}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent">
+                                            <TextBlock Style="{StaticResource TextRowCenter1}">
+                                                <Run Text="{Binding display_salary_bh,Mode=OneWay}"/>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textPCDBH}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent">
+                                            <TextBlock Style="{StaticResource TextRowCenter1}">
+                                                <Run Text="{Binding display_sb_pc_bh,Mode=OneWay}"/>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textTGL}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent">
+                                            <TextBlock Style="{StaticResource TextRowCenter1}">
+                                                <Run Text="{Binding salary_fluctuations,Mode=OneWay}"/>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textTimeUse}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding display_sb_time_up}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textSua}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="SuaLuong" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textXoa}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="XoaLuong" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -336,7 +400,7 @@
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
+                    <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" Margin="0 70 20 0" ItemsSource="{Binding ChiTietNV.contract_work}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
@@ -345,13 +409,53 @@
                             </VisualBrush>
                         </DataGrid.OpacityMask>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="{DynamicResource textTypeOfContract}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textEffectiveStartDate}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textExpirationDate}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textSalaryPercent}"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textTypeOfContract}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource TextRowCenter}" Text="{Binding con_name}"></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textEffectiveStartDate}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding display_con_time_up}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textExpirationDate}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding display_con_time_end}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textSalaryPercent}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding con_salary_persent}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Header="{DynamicResource textTDK}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textSua}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textXoa}"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textSua}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="SuaHopDong" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textXoa}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="XoaHopDong" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -365,7 +469,7 @@
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
+                    <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 70 20 0" ItemsSource="{Binding ChiTietNV.family_member}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
@@ -374,15 +478,76 @@
                             </VisualBrush>
                         </DataGrid.OpacityMask>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="{DynamicResource textTrangThai}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textHoTen}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textDateOfBirth}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textSoDienThoai}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textJob}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textAddress}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textSoDienThoai}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textSua}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textXoa}"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textTrangThai}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DockPanel>
+                                            <CheckBox IsChecked="{Binding display_fa_status,Mode=OneWay}" Checked="ChonPhuThuoc" Unchecked="HuyPhuThuoc"></CheckBox>
+                                            <TextBlock Text="Phụ thuộc" VerticalAlignment="Center" FontSize="15" Foreground="{DynamicResource #666C7C}"/>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding fa_name}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textDateOfBirth}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding display_fa_birthday}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textSoDienThoai}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding fa_phone}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Quan hệ">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding fa_relation}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textJob}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding fa_job}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textAddress}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding fa_address}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textSua}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="SuaPhuThuoc" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textXoa}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="XoaGiaDinh" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -396,7 +561,7 @@
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" Margin="0 70 20 0">
+                    <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" Margin="0 70 20 30" ItemsSource="{Binding ChiTietNV.don}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
@@ -405,12 +570,52 @@
                             </VisualBrush>
                         </DataGrid.OpacityMask>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="{DynamicResource textKDG}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textMoney}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textTBD}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textTKT}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textSua}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textXoa}"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textKDG}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding don_name}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textMoney}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding display_don_price,Mode=OneWay}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textTBD}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding display_don_time_active,Mode=OneWay}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textTKT}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding display_don_time_end,Mode=OneWay}" Style="{StaticResource TextRowCenter}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textSua}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="SuaDongGop" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textXoa}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="XoaDongGop" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

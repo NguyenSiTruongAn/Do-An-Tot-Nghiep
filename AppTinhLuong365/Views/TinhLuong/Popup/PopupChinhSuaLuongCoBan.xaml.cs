@@ -16,41 +16,33 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.TinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupThemLuong.xaml
+    /// Interaction logic for PopupChinhSuaLuongCoBan.xaml
     /// </summary>
-    public partial class PopupThemLuong : Page
+    public partial class PopupChinhSuaLuongCoBan : Page
     {
-        public PopupThemLuong(MainWindow main, ChiTietNV data, ItemEmp data1)
+        public PopupChinhSuaLuongCoBan(MainWindow main, BasicSalary data, ItemEmp data1)
         {
-            this.DataContext = this;
             InitializeComponent();
+            this.DataContext = this;
             Main = main;
+            tbInput.Text = data.sb_salary_basic;
+            tbInput1.Text = data.sb_salary_bh;
+            tbInput2.Text = data.sb_pc_bh;
+            dpThang.SelectedDate = DateTime.Parse(data.sb_time_up);
+            tbInput3.Text = data.sb_lydo;
+            tbInput4.Text = data.sb_quyetdinh;
             this.data = data;
-            if(data.basic_salary.Count > 0)
-            {
-                tbInput.Text = data.basic_salary[data.basic_salary.Count - 1].sb_salary_basic;
-                tbInput1.Text = data.basic_salary[data.basic_salary.Count - 1].sb_salary_bh;
-                tbInput2.Text = data.basic_salary[data.basic_salary.Count - 1].sb_pc_bh;
-                dpThang.SelectedDate = DateTime.Parse(data.basic_salary[data.basic_salary.Count - 1].sb_time_up);
-                tbInput3.Text = data.basic_salary[data.basic_salary.Count - 1].sb_lydo;
-                tbInput4.Text = data.basic_salary[data.basic_salary.Count - 1].sb_quyetdinh;
-            }
             this.data1 = data1;
         }
 
-        ChiTietNV data;
-        ItemEmp data1;
         MainWindow Main;
+        BasicSalary data;
+        ItemEmp data1;
 
-        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
-        }
-
-        private void ThemLuong(object sender, MouseButtonEventArgs e)
+        private void SuaLuong(object sender, MouseButtonEventArgs e)
         {
             bool allow = true;
             if (string.IsNullOrEmpty(tbInput.Text))
@@ -58,7 +50,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                 allow = false;
                 validateLuong.Text = "Vui lòng nhập đầy đủ";
             }
-            if(dpThang.SelectedDate == null)
+            if (dpThang.SelectedDate == null)
             {
                 allow = false;
                 validateTG.Text = "Vui lòng chọn thời gian áp dụng";
@@ -72,14 +64,14 @@ namespace AppTinhLuong365.Views.TinhLuong
                         web.QueryString.Add("token", Main.CurrentCompany.token);
                         web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     }
-                    web.QueryString.Add("id", data.ep_id);
+                    web.QueryString.Add("id_bs", data.sb_id);
                     web.QueryString.Add("salary", tbInput.Text);
                     web.QueryString.Add("salary_bh", tbInput1.Text);
                     web.QueryString.Add("phucapbh", tbInput2.Text);
                     web.QueryString.Add("date_ss", dpThang.SelectedDate.Value.ToString("yyyy-MM-dd"));
                     web.QueryString.Add("lydo", tbInput3.Text);
                     web.QueryString.Add("quyetdinh", tbInput4.Text);
-                    
+
                     web.UploadValuesCompleted += (s, ee) =>
                     {
                         string y = UnicodeEncoding.UTF8.GetString(ee.Result);
@@ -91,9 +83,14 @@ namespace AppTinhLuong365.Views.TinhLuong
                             this.Visibility = Visibility.Collapsed;
                         }
                     };
-                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_ep_basic_salary.php", web.QueryString);
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_ep_basic_salary.php", web.QueryString);
                 }
             }
+        }
+
+        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }

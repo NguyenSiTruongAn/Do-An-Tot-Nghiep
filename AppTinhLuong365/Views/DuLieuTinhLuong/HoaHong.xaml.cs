@@ -284,7 +284,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     else id_nv = id2;
                 }
             });
-            MultipartFormDataContent content = new MultipartFormDataContent();
+            /*MultipartFormDataContent content = new MultipartFormDataContent();
             content.Add(new StringContent(Main.CurrentCompany.com_id), "id_comp");
             content.Add(new StringContent(Main.CurrentCompany.token), "token");
             content.Add(new StringContent(month), "m");
@@ -292,43 +292,54 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             content.Add(new StringContent(id_nv), "uid");
             HttpClient httpClient = new HttpClient();
             Task<HttpResponseMessage> response = httpClient.PostAsync("https://tinhluong.timviec365.vn/api_app/company/export_rose.php", content);
-            string data = response.Result.Content.ReadAsStringAsync().Result;
-            //File.WriteAllText("../../Views/DuLieuTinhLuong/hoa_hong365.html", data);
-            //var converter = new GroupDocs.Conversion.Converter("../../Views/DuLieuTinhLuong/hoa_hong365.html");
-            //var convertOptions = new SpreadsheetConvertOptions();
-
-            string filePath = "";
-            // tạo SaveFileDialog để lưu file excel
-            SaveFileDialog dialog = new SaveFileDialog();
-
-            // chỉ lọc ra các file có định dạng Excel
-            dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
-            dialog.FileName = "hoa_hong_365";
-            // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
-            if (dialog.ShowDialog() == true)
+            string data = response.Result.Content.ReadAsStringAsync().Result;*/
+            string data ="";
+            using (WebClient web = new WebClient())
             {
-                filePath = dialog.FileName;
-                var workbook = new Workbook("../../Views/DuLieuTinhLuong/hoa_hong365.html");
-                workbook.Save(filePath);
-                //converter.Convert(filePath, convertOptions);
+                if (Main.MainType == 0)
+                {
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("m", month);
+                    web.QueryString.Add("y", year);
+                    web.QueryString.Add("uid", id_nv);
+                }
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    data = UnicodeEncoding.UTF8.GetString(e.Result);
+                    File.WriteAllText("../../Views/DuLieuTinhLuong/hoa_hong365.html", data);
+                    string filePath = "";
+                    // tạo SaveFileDialog để lưu file excel
+                    SaveFileDialog dialog = new SaveFileDialog();
+
+                    // chỉ lọc ra các file có định dạng Excel
+                    dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
+                    dialog.FileName = "hoa_hong_365";
+                    // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
+                    if (dialog.ShowDialog() == true)
+                    {
+                        filePath = dialog.FileName;
+                        var workbook = new Workbook("../../Views/DuLieuTinhLuong/hoa_hong365.html");
+                        try
+                        {
+                            workbook.Save(filePath);
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                        loading.Visibility = Visibility.Collapsed;
+                        //converter.Convert(filePath, convertOptions);
+                    }
+
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_rose.php", web.QueryString);
             }
         }
         private void XuatFileThongKe(object sender, MouseButtonEventArgs e)
         {
             loading.Visibility = Visibility.Visible;
-            var task = new Task(() =>
-            {
-                xuatExcel();
-            });
-            task.ContinueWith((p) =>
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    loading.Visibility = Visibility.Collapsed;
-                });
-                task.Dispose();
-            });
-            task.Start();
+            xuatExcel();
         }
 
         private void dataGrid2_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

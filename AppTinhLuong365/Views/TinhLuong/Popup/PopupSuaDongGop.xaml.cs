@@ -19,24 +19,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.TinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupThemDongGop.xaml
+    /// Interaction logic for PopupSuaDongGop.xaml
     /// </summary>
-    public partial class PopupThemDongGop : Page, INotifyPropertyChanged
+    public partial class PopupSuaDongGop : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public PopupThemDongGop(MainWindow main, ItemEmp data)
+        public PopupSuaDongGop(MainWindow main, Don data, ItemEmp data1)
         {
-            this.DataContext = this;
             InitializeComponent();
+            this.DataContext = this;
             Main = main;
             this.data = data;
+            this.data1 = data1;
+            tbInput.Text = data.don_name;
+            tbInput1.Text = data.don_price;
             dteSelectedMonth = new Calendar();
             dteSelectedMonth.Visibility = Visibility.Collapsed;
             dteSelectedMonth.DisplayMode = CalendarMode.Year;
@@ -53,8 +56,8 @@ namespace AppTinhLuong365.Views.TinhLuong
             cl1 = new List<Calendar>();
             cl1.Add(dteSelectedMonth1);
             cl1 = cl1.ToList();
-            textThangAD.Text = DateTime.Now.ToString("MM/yyyy");
-            textThangEnd.Text = DateTime.Now.ToString("MM/yyyy");
+            textThangAD.Text = DateTime.Parse(data.don_time_active).ToString("MM/yyyy");
+            textThangEnd.Text = DateTime.Parse(data.don_time_end).ToString("MM/yyyy");
         }
         Calendar dteSelectedMonth { get; set; }
         Calendar dteSelectedMonth1 { get; set; }
@@ -80,19 +83,13 @@ namespace AppTinhLuong365.Views.TinhLuong
                 _cl1 = value; OnPropertyChanged();
             }
         }
-
         MainWindow Main;
-        ItemEmp data;
+        Don data;
+        ItemEmp data1;
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
-        }
-
-        private void tbInput1_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
         }
 
         int flag = 0;
@@ -149,7 +146,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             flag1 += 1;
         }
 
-        private void ThemDongGop(object sender, MouseButtonEventArgs e)
+        private void SuaDongGop(object sender, MouseButtonEventArgs e)
         {
             bool allow = true;
             validateName.Text = validateTien.Text = validateDate.Text = "";
@@ -168,7 +165,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                 allow = false;
                 validateDate.Text = "Vui lòng chọn thời gian áp dụng";
             }
-            if(DateTime.Parse(textThangAD.Text) > DateTime.Parse(textThangEnd.Text))
+            if (DateTime.Parse(textThangAD.Text) > DateTime.Parse(textThangEnd.Text))
             {
                 allow = false;
                 validateTimeEnd.Text = "Vui lòng chọn tháng kết thúc lớn hơn hoặc bằng tháng bắt đầu";
@@ -182,7 +179,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                         web.QueryString.Add("token", Main.CurrentCompany.token);
                         web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     }
-                    web.QueryString.Add("id", data.ep_id);
+                    web.QueryString.Add("id_don", data.don_id);
                     web.QueryString.Add("bname", tbInput.Text);
                     web.QueryString.Add("bmoney", tbInput1.Text);
                     web.QueryString.Add("btime", DateTime.Parse(textThangAD.Text).ToString("yyyy-MM-dd"));
@@ -193,14 +190,20 @@ namespace AppTinhLuong365.Views.TinhLuong
                         API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
                         if (api.data != null)
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data));
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1));
                             Main.HomeSelectionPage.Visibility = Visibility.Visible;
                             this.Visibility = Visibility.Collapsed;
                         }
                     };
-                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_ep_don.php", web.QueryString);
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_ep_don.php", web.QueryString);
                 }
             }
+        }
+
+        private void tbInput1_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

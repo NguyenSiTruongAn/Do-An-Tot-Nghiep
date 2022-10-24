@@ -94,26 +94,27 @@ namespace AppTinhLuong365.Views.NhanVien
 
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemLuong(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            
+            /*Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemLuong(Main, ));
+            Main.PopupSelection.Visibility = Visibility.Visible;*/
         }
 
         private void StackPanel_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemHopDong(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            /*Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemHopDong(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;*/
         }
 
         private void StackPanel_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemPhuThuoc(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            /*Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemPhuThuoc(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;*/
         }
 
         private void StackPanel_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemDongGop(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            /*Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemDongGop(Main));
+            Main.PopupSelection.Visibility = Visibility.Visible;*/
         }
     }
 }

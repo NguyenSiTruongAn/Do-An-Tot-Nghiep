@@ -6,7 +6,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong"
       mc:Ignorable="d" 
-      d:DesignHeight="631" d:DesignWidth="615"
+      VerticalAlignment="Top"
       Title="PopupThemLuong">
 
     <Grid Width="615" Height="631">
@@ -45,6 +45,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock Style="{StaticResource tblValidate}" Name="validateLuong"/>
                     <TextBlock Margin="0 14 0 0" FontWeight="DemiBold" Text="{DynamicResource textPremiumSalary}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                     <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid Height="38" Margin="10 0 10 0">
@@ -86,8 +87,9 @@
                         <Path Margin="2" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
                     </StackPanel>
                     <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                        <tool:DatePicker FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                        <tool:DatePicker x:Name="dpThang" FontWeight="DemiBold" FontSize="16" Foreground="{DynamicResource #777777}"/>
                     </Border>
+                    <TextBlock x:Name="validateTG" Style="{StaticResource tblValidate}"/>
                     <TextBlock Margin="0 14 0 0" FontWeight="DemiBold" Text="{DynamicResource textLyDo}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                     <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid Height="38" Margin="10 0 10 0">
@@ -124,7 +126,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
-                    <Border Cursor="Hand" Margin="0 19 0 0" Height="45" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
+                    <Border Cursor="Hand" MouseLeftButtonDown="ThemLuong" Margin="0 19 0 0" Height="45" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
                         <TextBlock Text="{DynamicResource textSave}" FontSize="15" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Border>
                 </StackPanel>

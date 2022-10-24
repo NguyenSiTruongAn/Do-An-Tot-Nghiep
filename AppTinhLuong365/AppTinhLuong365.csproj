@@ -139,6 +139,8 @@
     <Compile Include="Model\APIEntity\API_CaiDatCongChuan.cs" />
     <Compile Include="Model\APIEntity\API_ChinhSuaPhuCapTheoCa.cs" />
     <Compile Include="Model\APIEntity\API_ChinhSuaPhucLoi_PhuCap.cs" />
+    <Compile Include="Model\APIEntity\API_ChiTietLichLamViec.cs" />
+    <Compile Include="Model\APIEntity\API_ChiTietNV.cs" />
     <Compile Include="Model\APIEntity\Api_CongLuong.cs" />
     <Compile Include="Model\APIEntity\API_Detail_pay.cs" />
     <Compile Include="Model\APIEntity\API_DSCacKhoanTienKhac.cs" />
@@ -156,7 +158,9 @@
     <Compile Include="Model\APIEntity\API_DSNhomHoaHongDoanhThu.cs" />
     <Compile Include="Model\APIEntity\API_DSNhomHoaHongTien.cs" />
     <Compile Include="Model\APIEntity\API_DSNVADCKTK.cs" />
+    <Compile Include="Model\APIEntity\API_DSNVBH.cs" />
     <Compile Include="Model\APIEntity\API_DSNVCacKhoanThienKhac.cs" />
+    <Compile Include="Model\APIEntity\API_DSNVChuaBH.cs" />
     <Compile Include="Model\APIEntity\API_DSNVHHKeHoach.cs" />
     <Compile Include="Model\APIEntity\API_DSNVHHLPViTri.cs" />
     <Compile Include="Model\APIEntity\API_DSNVHoaHongDoanhThu.cs" />
@@ -172,11 +176,13 @@
     <Compile Include="Model\APIEntity\API_DSTongHHLoiNhuan.cs" />
     <Compile Include="Model\APIEntity\API_DSTongHHLPViTri.cs" />
     <Compile Include="Model\APIEntity\API_DSTongHoaHongTien.cs" />
+    <Compile Include="Model\APIEntity\API_ListBaoHiem.cs" />
     <Compile Include="Model\APIEntity\API_ListCalendarWork.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployee.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployeeChuaThietLapThue.cs" />
     <Compile Include="Model\APIEntity\API_ListLate.cs" />
     <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
+    <Compile Include="Model\APIEntity\API_ListThuongPhat.cs" />
     <Compile Include="Model\APIEntity\API_ListUserTax.cs" />
     <Compile Include="Model\APIEntity\API_List_dep.cs" />
     <Compile Include="Model\APIEntity\API_List_employee_cycle.cs" />
@@ -197,11 +203,13 @@
     <Compile Include="Model\APIEntity\API_Login_Company.cs" />
     <Compile Include="Model\APIEntity\API_Login_Employee.cs" />
     <Compile Include="Model\APIEntity\API_PhucLoi.cs" />
+    <Compile Include="Model\APIEntity\API_SuaGioiThieu.cs" />
     <Compile Include="Model\APIEntity\API_SuaNhanVienTrongPhuLoi.cs" />
     <Compile Include="Model\APIEntity\API_SuaNhomLamViec.cs" />
     <Compile Include="Model\APIEntity\API_TaoNhomLamViec.cs" />
     <Compile Include="Model\APIEntity\API_Tbl_Salary_Manager.cs" />
     <Compile Include="Model\APIEntity\API_ThemCKTK.cs" />
+    <Compile Include="Model\APIEntity\API_ThemHopDong.cs" />
     <Compile Include="Model\APIEntity\API_ThemMoiPhuCaoTheoCa.cs" />
     <Compile Include="Model\APIEntity\API_ThemMoiPhucLoiPhuCap.cs" />
     <Compile Include="Model\APIEntity\API_ThemNhanVienVaoNhom.cs" />
@@ -435,6 +443,15 @@
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaHoaHongLoiNhuan.xaml.cs">
       <DependentUpon>PopupChinhSuaHoaHongLoiNhuan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupTienPhat.xaml.cs">
+      <DependentUpon>PopupTienPhat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupXoaThuongPhat.xaml.cs">
+      <DependentUpon>PopupXoaThuongPhat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\Popup\PopupChinhSuaLuongCoBan.xaml.cs">
+      <DependentUpon>PopupChinhSuaLuongCoBan.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaNhanVienPhuCap.xaml.cs">
       <DependentUpon>PopupChinhSuaNhanVienPhuCap.xaml</DependentUpon>
@@ -714,6 +731,18 @@
     </Compile>
     <Compile Include="Views\TinhLuong\PopupTuyChonCSThue.xaml.cs">
       <DependentUpon>PopupTuyChonCSThue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\Popup\PopupSuaDongGop.xaml.cs">
+      <DependentUpon>PopupSuaDongGop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\Popup\PopupSuaHopDong.xaml.cs">
+      <DependentUpon>PopupSuaHopDong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\Popup\PopupSuaTPGD.xaml.cs">
+      <DependentUpon>PopupSuaTPGD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\Popup\PopupThongBaoXoaLCB.xaml.cs">
+      <DependentUpon>PopupThongBaoXoaLCB.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TinhLuong\TamUng.xaml.cs">
       <DependentUpon>TamUng.xaml</DependentUpon>
@@ -1035,6 +1064,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaHoaHongLoiNhuan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupTienPhat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupXoaThuongPhat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\Popup\PopupChinhSuaLuongCoBan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1522,6 +1563,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TinhLuong\Popup\PopupSuaDongGop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\Popup\PopupSuaHopDong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\Popup\PopupSuaTPGD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\Popup\PopupThongBaoXoaLCB.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TinhLuong\TamUng.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1723,7 +1780,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DuLieuTinhLuong\hoa_hong365.html" />
+    <Content Include="Views\DuLieuTinhLuong\thuong_phat_365.html" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

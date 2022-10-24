@@ -41,6 +41,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock Style="{StaticResource tblValidate}" x:Name="validateName"/>
                     <TextBlock Name="tbTitle" Margin="0 20" Text="" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource #636e73}"></TextBlock>
                     <Border CornerRadius="10 10 0 0" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <StackPanel>
@@ -128,7 +129,6 @@
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
-                                        
                                     </Style>
                                 </ListView.ItemContainerStyle>
                                 <ListView.ItemsPanel>
@@ -140,22 +140,31 @@
                         </StackPanel>
                     </Border>
                     <TextBlock Text="Tích vào ngày bên trên sau đó tích vào ca làm việc bên dưới để chọn ca làm việc tương ứng với ngày hôm đó." FontSize="16" Foreground="{DynamicResource #F46A6A}" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
-                    <TextBlock Margin="0 5" Text="Ca làm việc trong ngày 09-09-2022" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"/>
-                    <DataGrid Style="{StaticResource DataGrid5}" ItemsSource="{Binding Test}">
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <DockPanel>
-                                            <CheckBox Margin="0 0 20 0"></CheckBox>
-                                            <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
-                                        </DockPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <Border Cursor="Hand" Height="38" Background="{DynamicResource #4C5BD4}" CornerRadius="4">
+                    <StackPanel x:Name="chonCa" Visibility="Collapsed">
+                        <TextBlock Margin="0 5" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold">
+                            <Run Text="Ca làm việc trong ngày"/>
+                            <Run x:Name="txtNgay"/>
+                            <Run Text="-"/>
+                            <Run x:Name="txtThang"/>
+                            <Run Text="-"/>
+                            <Run x:Name="txtNam"/>
+                        </TextBlock>
+                        <DataGrid Style="{StaticResource DataGrid5}" ItemsSource="{Binding listCa}">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DockPanel>
+                                                <CheckBox IsChecked="{Binding ischecked}" Margin="0 0 20 0"  PreviewMouseLeftButtonDown="abc"></CheckBox>
+                                                <TextBlock Text="{Binding shift_name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <Border Cursor="Hand" MouseLeftButtonDown="LuuLich" Height="38" Background="{DynamicResource #4C5BD4}" CornerRadius="4">
                         <TextBlock Text="Lưu lại" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold"></TextBlock>
                     </Border>
                 </StackPanel>

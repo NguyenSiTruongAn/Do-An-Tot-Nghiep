@@ -6,10 +6,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong"
       mc:Ignorable="d" 
-      d:DesignHeight="477" d:DesignWidth="615"
+      VerticalAlignment="Top"
       Title="PopupThemDongGop">
 
-    <Grid Width="615" Height="477">
+    <Grid Width="615">
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
@@ -45,13 +45,14 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock Style="{StaticResource tblValidate}" x:Name="validateName"/>
                     <StackPanel Margin="0 14 0 0" Orientation="Horizontal">
                         <TextBlock FontWeight="DemiBold" Text="{DynamicResource textSTDG}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                         <Path Margin="2 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
                     </StackPanel>
                     <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid Height="38" Margin="10 0 10 0">
-                            <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                            <TextBox FontWeight="DemiBold" VerticalAlignment="Center" x:Name="tbInput1" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0" PreviewTextInput="tbInput1_PreviewTextInput"/>
                             <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="{DynamicResource textSTDGVND}" IsHitTestVisible="False">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
@@ -66,27 +67,35 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock x:Name="validateTien" Style="{StaticResource tblValidate}"/>
                     <StackPanel Orientation="Horizontal" Margin="0 14 0 0">
                         <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTBD}" FontSize="16" Foreground="{DynamicResource #777777}"/>
                         <Path Margin="2 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
                     </StackPanel>
-                    <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                    <Border Margin="0 5 10 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid>
-                            <TextBlock Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
-                            <Path Data="{DynamicResource iconLich}" VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                            <TextBlock x:Name="textThangAD" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Border Background="Transparent" MouseLeftButtonDown="Select_thang" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
+                            </Border>
                         </Grid>
                     </Border>
+                    <TextBlock x:Name="validateDate" Style="{StaticResource tblValidate}"/>
+                    <ListView ItemsSource="{Binding cl}" HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="0" Width="260"></ListView>
                     <StackPanel Orientation="Horizontal" Margin="0 14 0 0">
-                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTKT}" FontSize="16" Foreground="{DynamicResource #777777}"/>
-                        <Path Margin="2 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>
+                        <TextBlock FontWeight="DemiBold" Text="Tháng kết thúc (không bắt buộc)" FontSize="16" Foreground="{DynamicResource #777777}"/>
                     </StackPanel>
-                    <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                    <Border Margin="0 5 10 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid>
-                            <TextBlock Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
-                            <Path Data="{DynamicResource iconLich}" VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                            <TextBlock x:Name="textThangEnd" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Border Background="Transparent" MouseLeftButtonDown="Select_thang_end" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
+                            </Border>
                         </Grid>
                     </Border>
-                    <Border Cursor="Hand" Margin="0 19 0 0" Height="45" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
+                    <TextBlock x:Name="validateTimeEnd" Style="{StaticResource tblValidate}"/>
+                    <ListView ItemsSource="{Binding cl1}" HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="0"></ListView>
+                    <Border Cursor="Hand" MouseLeftButtonDown="ThemDongGop" Margin="0 19 0 20" Height="45" CornerRadius="5" Background="{DynamicResource #4C5BD4}">
                         <TextBlock Text="{DynamicResource textSave}" FontSize="15" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Border>
                 </StackPanel>

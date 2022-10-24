@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AppTinhLuong365.Model.APIEntity
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    public class DataDSCaLamViec
+    public class ChiTietLichLamViec
     {
-        public int itemsPerPage { get; set; }
-        public string totalItems { get; set; }
-        public List<DSCaLamViec> items { get; set; }
+        public string begin { get; set; }
+        public string cycle_name { get; set; }
+        public List<ListShift> list_shift { get; set; }
+        public List<Show> show { get; set; }
     }
 
-    public class DSCaLamViec : INotifyPropertyChanged
+    public class DataChiTietLichLamViec
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public ChiTietLichLamViec calendar { get; set; }
+        public string message { get; set; }
+    }
+
+    public class ListShift
+    {
         public string shift_id { get; set; }
         public string com_id { get; set; }
         public string shift_name { get; set; }
@@ -37,20 +37,19 @@ namespace AppTinhLuong365.Model.APIEntity
         public string num_to_money { get; set; }
         public string is_overtime { get; set; }
         public string status { get; set; }
-        private bool _ischecked;
-        public bool ischecked
-        {
-            get { return _ischecked; }
-            set
-            {
-                _ischecked = value; OnPropertyChanged();
-            }
-        }
     }
 
-    public class API_DSCaLamViec
+    public class API_ChiTietLichLamViec
     {
-        public DataDSCaLamViec data { get; set; }
+        public bool result { get; set; }
+        public int code { get; set; }
+        public DataChiTietLichLamViec data { get; set; }
         public object error { get; set; }
+    }
+
+    public class Show
+    {
+        public string date { get; set; }
+        public string shift { get; set; }
     }
 }
