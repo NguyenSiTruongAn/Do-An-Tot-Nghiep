@@ -186,15 +186,17 @@
                                 </DataGridTemplateColumn.CellStyle>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Border Margin="6" Background="{DynamicResource #FFFFFF}" CornerRadius="10"
-                                                BorderBrush="{DynamicResource #e1e1e1}" BorderThickness="1">
-                                            <TextBox PreviewTextInput="Txt_PreviewCurrencyTextInput"
-                                                     DataObject.Pasting="TextBoxPasting" TextChanged="Percent" BorderThickness="0" Cursor="Hand" TextAlignment="Center" VerticalContentAlignment="Center"
-                                                     Text="{Binding pc_luong}" FontSize="15"
-                                                     FontWeight="DemiBold" Margin="2 3" 
-                                                     Foreground="{DynamicResource #68798B}">
-                                            </TextBox>
-                                        </Border>
+                                        <StackPanel>
+                                            <Border Margin="6" Background="{DynamicResource #FFFFFF}" CornerRadius="10"
+                                                    BorderBrush="{DynamicResource #e1e1e1}" BorderThickness="1">
+                                                <TextBox PreviewTextInput="Txt_PreviewCurrencyTextInput"
+                                                         DataObject.Pasting="TextBoxPasting" TextChanged="Percent" BorderThickness="0" Cursor="Hand" TextAlignment="Center" VerticalContentAlignment="Center"
+                                                         Text="{Binding pc_luong}" FontSize="15"
+                                                         FontWeight="DemiBold" Margin="2 3" 
+                                                         Foreground="{DynamicResource #68798B}">
+                                                </TextBox>
+                                            </Border>
+                                        </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

@@ -189,6 +189,7 @@
     <Compile Include="Model\APIEntity\API_List_Np_Improperly.cs" />
     <Compile Include="Model\APIEntity\API_List_pay.cs" />
     <Compile Include="Model\APIEntity\API_List_shift.cs" />
+    <Compile Include="Model\APIEntity\API_Luong_nv.cs" />
     <Compile Include="Model\APIEntity\API_Payroll.cs" />
     <Compile Include="Model\APIEntity\API_ListGroup.cs" />
     <Compile Include="Model\APIEntity\API_ListTamUng.cs" />

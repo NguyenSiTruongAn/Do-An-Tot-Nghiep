@@ -525,6 +525,22 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="DataGridRow" x:Key="RowStyle">
+        <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource #EEEEEE}"></Setter>
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="BorderBrush" Value="{x:Null}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="Background" Value="#eff0ff" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="BorderBrush" Value="{x:Null}" />
+                <Setter Property="FontSize" Value="15" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style TargetType="DataGridRow" x:Key="RowStyle1">
         <Setter Property="Background" Value="{DynamicResource #FFFFFF}"></Setter>
         <Style.Triggers>

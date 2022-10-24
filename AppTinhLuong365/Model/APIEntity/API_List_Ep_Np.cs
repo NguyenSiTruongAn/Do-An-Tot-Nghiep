@@ -21,22 +21,7 @@ namespace AppTinhLuong365.Model.APIEntity
         public string ngaybatdau_nghi { get; set; }
         public string ngayketthuc_nghi { get; set; }
         public string ca_nghi { get; set; }
-        public string CaNghi
-        {
-            get
-            {
-                string abc = "";
-                if (string.IsNullOrEmpty(ca_nghi))
-                {
-                    abc = "Cả ngày";
-                }
-                else
-                {
-                    abc = ca_nghi;
-                }
-                return abc;
-            }
-        }
+        public string ten_ca_nghi { get; set; }
         public string val_type { get; set; }
         public string TrangThai
         {
@@ -55,6 +40,10 @@ namespace AppTinhLuong365.Model.APIEntity
                 {
                     a = "Đã duyệt";
                 }
+                else if (val_type == "6")
+                {
+                    a = "Bắt buộc đi làm";
+                }
                 else
                 {
                     a = "";
@@ -62,15 +51,18 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public object loai_nghi_phep { get; set; }
+        public int loai_nghi_phep { get; set; }
         public string LoaiNghi
         {
             get
             {
                 string b = "";
-                if (string.IsNullOrEmpty((string)loai_nghi_phep))
+                if (loai_nghi_phep == 0)
                 {
                     b = "Nghỉ phép không lương";
+                } else if (loai_nghi_phep == 1)
+                {
+                    b = "Nghỉ phép có lương";
                 }
                 return b;
             }

@@ -1,28 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AppTinhLuong365.Model.APIEntity
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    public class Item_Bang_Luong : INotifyPropertyChanged
+    public class Luong_nv
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        public string ep_id { get; set; }
-        public string name { get; set; }
-        public string ep_image { get; set; }
-        public string dep_id { get; set; }
-        public string dep_name { get; set; }
-        public string luong_cb { get; set; }
+        public Item_Luong_nv luong_nv { get; set; }
+        public string message { get; set; }
+    }
 
+    public class Item_Luong_nv
+    {
+        public string luong_cb { get; set; }
+        public int hop_dong { get; set; }
         public string display_luong_cb
         {
             get
@@ -43,12 +37,33 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-
-        public string pt_hop_dong { get; set; }
         public string cong_chuan { get; set; }
         public int cong_thuc { get; set; }
         public int cong_sau_phat { get; set; }
-        public int cong_theo_tien { get; set; }
+        public object cong_theo_tien { get; set; }
+        public string display_cong_theo_tien
+        {
+            get
+            {
+                string a = "";
+                if (Convert.ToInt64(cong_theo_tien) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(cong_theo_tien.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "").Replace(@"-", "");
+                }
+                else if (cong_theo_tien == null)
+                {
+                    a = "0";
+                }
+                {
+                    double n;
+                    if (double.TryParse(cong_theo_tien.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
+            }
+        }
         public int cong_ghi_nhan { get; set; }
         public int cong_nghi_phep { get; set; }
         public int tong_cong_nhan { get; set; }
@@ -108,7 +123,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 else
                 {
                     double n;
-                    if (double.TryParse(luong_bh, out n))
+                    if (double.TryParse(luong_bh.ToString(), out n))
                         a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
                 }
 
@@ -200,7 +215,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public double thuong_le { get; set; }
+        public int thuong_le { get; set; }
         public string display_thuong_le
         {
             get
@@ -222,6 +237,26 @@ namespace AppTinhLuong365.Model.APIEntity
             }
         }
         public int phat { get; set; }
+        public string display_phat
+        {
+            get
+            {
+                string a = "";
+                if (Convert.ToInt64(phat) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(phat.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(phat.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
+            }
+        }
         public int phat_nghi { get; set; }
         public string display_phat_nghi
         {
@@ -307,6 +342,26 @@ namespace AppTinhLuong365.Model.APIEntity
             }
         }
         public int phu_cap_ca { get; set; }
+        public string display_phu_cap_ca
+        {
+            get
+            {
+                string a = "";
+                if (Convert.ToInt64(phu_cap_ca) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(phu_cap_ca.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(phu_cap_ca.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
+            }
+        }
         public int bao_hiem { get; set; }
         public string display_bao_hiem
         {
@@ -412,7 +467,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string luong_da_tra { get; set; }
+        public double luong_da_tra { get; set; }
         public string display_luong_da_tra
         {
             get
@@ -421,43 +476,25 @@ namespace AppTinhLuong365.Model.APIEntity
                 if (Convert.ToInt64(luong_da_tra) >= 0)
                 {
                     double m;
-                    if (double.TryParse(luong_da_tra, out m)) a = m.ToString("C0").Replace(@"$", "");
+                    if (double.TryParse(luong_da_tra.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
                 }
                 else
                 {
                     double n;
-                    if (double.TryParse(luong_da_tra, out n))
+                    if (double.TryParse(luong_da_tra.ToString(), out n))
                         a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
                 }
 
                 return a;
             }
         }
-
-        private int _hover;
-        public int hover
-        {
-            get => _hover;
-            set
-            {
-                _hover = value;
-                OnPropertyChanged();
-            }
-        }
     }
 
-    public class Bang_luong_nv
-    {
-        public List<Item_Bang_Luong> bang_luong { get; set; }
-        public int total { get; set; }
-        public string message { get; set; }
-    }
-
-    public class API_Bang_luong_nv
+    public class API_Luong_nv
     {
         public bool result { get; set; }
         public int code { get; set; }
-        public Bang_luong_nv data { get; set; }
+        public Luong_nv data { get; set; }
         public object error { get; set; }
     }
 }

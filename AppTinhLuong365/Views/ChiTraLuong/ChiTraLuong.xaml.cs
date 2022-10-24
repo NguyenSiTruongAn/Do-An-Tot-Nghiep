@@ -167,6 +167,7 @@ namespace AppTinhLuong365.Views.ChiTraLuong
             TextBlock tb = sender as TextBlock;
             Item_pay data = (Item_pay)tb.DataContext;
             Main.HomeSelectionPage.NavigationService.Navigate(new Views.ChiTraLuong.ChiTietChiTraLuong(Main, data.pay_id));
+            Main.title.Text = "Chi trả lương / Chi tiết chi trả lương";
         }
     }
 }
