@@ -48,7 +48,7 @@
                             <TextBlock VerticalAlignment="Center" Text="{DynamicResource textDanhSachNhanVien}" MouseLeftButtonDown="DSNhanVien_ClickMouseLeftDown" FontSize="15">
                             </TextBlock>
                         </Border>
-                        <Border Cursor="Hand" CornerRadius="5" Height="40" HorizontalAlignment="Stretch">
+                        <Border x:Name="ChinhSua" Cursor="Hand" CornerRadius="5" Height="40" HorizontalAlignment="Stretch">
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="Background" Value="Transparent"/>
@@ -64,7 +64,7 @@
                             <TextBlock VerticalAlignment="Center" Text="Chỉnh sửa" MouseLeftButtonDown="ChinhSuaThue_ClickMouseLeftDown" FontSize="15">
                             </TextBlock>
                         </Border>
-                        <Border Cursor="Hand" CornerRadius="5" Height="40" HorizontalAlignment="Stretch">
+                        <Border x:Name="Xoa" Cursor="Hand" CornerRadius="5" Height="40" HorizontalAlignment="Stretch">
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="Background" Value="Transparent"/>

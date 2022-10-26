@@ -43,7 +43,7 @@ namespace AppTinhLuong365.Views.TinhLuong
         public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
         private void BtnThemNhanVien_Click(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.TinhLuong.PopupThemNhanVienVaoThue(Main);
+            var pop = new Views.TinhLuong.PopupThemNhanVienVaoThue(Main,"");
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 616;

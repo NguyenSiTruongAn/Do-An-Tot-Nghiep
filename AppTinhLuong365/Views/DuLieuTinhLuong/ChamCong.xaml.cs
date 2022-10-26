@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,9 +53,225 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            string month = DateTime.Now.ToString("MM");
+            string year = DateTime.Now.ToString("yyyy");
+            cbThang.PlaceHolder = "Tháng " + month;
+            cbNam.PlaceHolder = "Năm " + year;
+            getData(int.Parse(month),int.Parse(year),"");
+            getData1();
+            getData2();
         }
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
+
+        public class lichlamviec : INotifyPropertyChanged
+        {
+            public event PropertyChangedEventHandler PropertyChanged;
+            protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+            public int id;
+            public int ngay { get; set; }
+            public List<ChiTietCa> ctca { get; set; }
+            public int _status;
+            public int status
+            {
+                get { return _status; }
+                set { _status = value; OnPropertyChanged(); }
+            }
+        }
+
+        private double _Cong = 0;
+
+        public double Cong
+        {
+            get { return _Cong; }
+            set { _Cong = value; OnPropertyChanged(); }
+        }
+
+        private int _camuon = 0;
+
+        public int camuon
+        {
+            get { return _camuon; }
+            set { _camuon = value; OnPropertyChanged(); }
+        }
+
+        private List<lichlamviec> _listLich;
+
+        public List<lichlamviec> listLich
+        {
+            get { return _listLich; }
+            set { _listLich = value; OnPropertyChanged(); }
+        }
+
+        private List<List<ChiTietCa>> _listDSNV;
+
+        public List<List<ChiTietCa>> listDSNV
+        {
+            get { return _listDSNV; }
+            set { _listDSNV = value; OnPropertyChanged(); }
+        }
+        private int start;
+        private void getData(int month, int year, string ep_id)
+        {
+            if (!string.IsNullOrEmpty(ep_id))
+            {
+                st.Visibility = Visibility.Visible;
+                this.Dispatcher.Invoke(() =>
+                {
+                    using (WebClient web = new WebClient())
+                    {
+                        if (Main.MainType == 0)
+                        {
+                            web.QueryString.Add("token", Main.CurrentCompany.token);
+                            web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                            web.QueryString.Add("id_emp", ep_id);
+                            web.QueryString.Add("month", month + "");
+                            web.QueryString.Add("year", year + "");
+                        }
+                        web.UploadValuesCompleted += (s, e) =>
+                        {
+                            API_ChiTietChamCong api = JsonConvert.DeserializeObject<API_ChiTietChamCong>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
+                            {
+                                listDSNV = api.data.list;
+                                /*                            month = int.Parse(DateTime.Parse(listLLV.begin).ToString("MM"));
+                                                            year = int.Parse(DateTime.Parse(listLLV.begin).ToString("yyyy"));*/
+                                start = (int)new DateTime(year, month, 1).DayOfWeek;
+                                listLich = new List<lichlamviec>();
+                                if (month - 1 > 0)
+                                {
+                                    for (int i = 0; i < start; i++)
+                                    {
+                                        var x = DateTime.DaysInMonth(year, month - 1);
+                                        listLich.Add(new lichlamviec() { id = listLich.Count, status = 0 });
+                                    }
+                                    listLich.Reverse();
+                                }
+                                for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
+                                {
+                                    List<ChiTietCa> Chitietca = new List<ChiTietCa>();
+                                    if(listDSNV != null)
+                                        Chitietca = listDSNV[i - 1];
+                                    var d = new lichlamviec() { id = listLich.Count, ngay = i, ctca = Chitietca, status = 1 };
+                                    DateTime date = DateTime.Parse(year + "-" + month + "-" + i);
+                                    if (date == DateTime.Now)
+                                        d.status = 3;
+                                    listLich.Add(d);
+                                }
+                                int n = 42 - listLich.Count;
+                                if (n >= 7)
+                                    n = n - 7;
+                                for (int i = 1; i <= n; i++)
+                                {
+                                    var d = new lichlamviec() { id = listLich.Count, status = 2 };
+                                    listLich.Add(d);
+                                }
+
+                                foreach(var item in listLich)
+                                {
+                                    if(item!=null && item.ctca != null)
+                                    {
+                                        foreach (var i in item.ctca)
+                                        {
+                                            Cong += double.Parse(i.num_to_calculate);
+                                            if (item.status == 2)
+                                                camuon++;
+
+                                        }
+                                    }    
+                                    
+                                }
+                                listLich = listLich.ToList();
+                            }
+                        };
+                        web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_timekeeping_manager.php", web.QueryString);
+                    }
+                });
+            }
+            else
+                st.Visibility = Visibility.Collapsed;
+        }
+
+        private List<ListEmployee> _listNV;
+
+        public List<ListEmployee> listNV
+        {
+            get { return _listNV; }
+            set
+            {
+                if (value == null) value = new List<ListEmployee>();
+                value.Insert(0, new ListEmployee() { ep_id = "-1", ep_name = "Tất cả nhân viên" });
+                _listNV = value; OnPropertyChanged();
+            }
+        }
+
+        private void getData1()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data.data != null)
+                    {
+                        listNV = api.data.data.items;
+                    }
+                    //foreach (ItemTamUng item in listTamUng)
+                    //{
+                    //    if (item.ep_image == "/img/add.png")
+                    //    {
+                    //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php", web.QueryString);
+            }
+        }
+
+        private List<Item_dep> _listItem_dep;
+
+        public List<Item_dep> listItem_dep
+        {
+            get { return _listItem_dep; }
+            set
+            {
+                if (value == null) value = new List<Item_dep>();
+                value.Insert(0, new Item_dep() { dep_id = "-1", dep_name = "Phòng ban (tất cả)" });
+                _listItem_dep = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void getData2()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_List_dep api =
+                        JsonConvert.DeserializeObject<API_List_dep>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listItem_dep = api.data.list;
+                    }
+                    // foreach (EpLate item in listEpLate)
+                    // {
+                    //     if (item.ts_image != "/img/add.png")
+                    //     {
+                    //         item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                    //     }
+                    // }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_dep.php", web.QueryString);
+            }
+        }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -74,6 +293,37 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             }
             else
                 DockPanel.SetDock(dockChamCong, Dock.Bottom);
+        }
+
+        private void Border_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        {
+            string month = DateTime.Now.ToString("MM");
+            if (cbThang.SelectedIndex > -1)
+                month = cbThang.Text.Split(' ')[1];
+            string year;
+            if (cbNam.SelectedIndex > -1)
+                year = cbNam.Text.Split(' ')[1];
+            else year = DateTime.Now.ToString("yyyy");
+            string id_phong = "";
+            if (cbPhong.SelectedIndex > -1)
+            {
+                Item_dep pb = (Item_dep)cbPhong.SelectedItem;
+                if (pb.dep_id != "-1")
+                    id_phong = pb.dep_id;
+            }
+            string id_user = "";
+            if (cbNV.SelectedIndex > -1)
+            {
+                ListEmployee nv = (ListEmployee)cbNV.SelectedItem;
+                if (nv.ep_id != "-1")
+                    id_user = nv.ep_id;
+            }
+            getData(int.Parse(month), int.Parse(year), id_user);
+        }
+
+        private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
     }
 }
