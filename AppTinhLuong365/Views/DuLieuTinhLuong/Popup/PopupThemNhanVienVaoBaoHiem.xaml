@@ -22,7 +22,7 @@
                         <DockPanel>
                             <Path Margin="10 0 0 0" Data="{DynamicResource iconSearch}" VerticalAlignment="Center" Fill="{DynamicResource #68798B}"></Path>
                             <Grid Height="38" Margin="10 0 10 0">
-                                <TextBox VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
+                                <TextBox TextChanged="Search_TextChanged" VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
                                 <TextBlock VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #68798B}" TextWrapping="Wrap" Text="Nhập từ cần tìm" IsHitTestVisible="False">
                                     <TextBlock.Style>
                                         <Style TargetType="TextBlock">
@@ -40,58 +40,75 @@
                     </Border>
                     <TabControl ItemContainerStyle="{StaticResource TabItem2}" BorderThickness="0">
                         <TabItem Header="Nhân viên" BorderThickness="0">
-                            <DataGrid Height="220" ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="dataGrid1" Style="{StaticResource DataGrid5}" ItemsSource="{Binding Test}">
-                                <DataGrid.Columns>
-                                    <DataGridTemplateColumn>
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Border Style="{StaticResource DashedBoder1}" CornerRadius="0" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch">
-                                                    <Grid>
-                                                        <CheckBox VerticalAlignment="Center">
-                                                        </CheckBox>
-                                                        <Grid Margin="20 0 0 0">
-                                                            <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
-                                                                <Border.Background>
-                                                                    <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
-                                                                </Border.Background>
-                                                            </Border>
-                                                            <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                                                            <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                            <StackPanel>
+                                <DataGrid Height="220" ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="dataGrid1" Style="{StaticResource DataGrid5}" ItemsSource="{Binding listNV1}">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Style="{StaticResource DashedBoder1}" CornerRadius="0" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch">
+                                                        <Grid>
+                                                            <CheckBox VerticalAlignment="Center" Checked="ChonNhanvien" Unchecked="HuyChonNhanvien">
+                                                            </CheckBox>
+                                                            <Grid Margin="20 0 0 0">
+                                                                <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
+                                                                    <Border.Background>
+                                                                        <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
+                                                                    </Border.Background>
+                                                                </Border>
+                                                                <Grid Margin="10 0 0 0" VerticalAlignment="Center">
+                                                                    <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                                    <TextBlock Text="{Binding ep_id}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                                    <TextBlock Text="{Binding dep_name}" Margin="50 40 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                                </Grid>
+                                                            </Grid>
                                                         </Grid>
-                                                    </Grid>
-                                                </Border>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                </DataGrid.Columns>
-                            </DataGrid>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <TextBlock x:Name="validateNV" Style="{StaticResource tblValidate}"/>
+                                <Border Cursor="Hand" MouseLeftButtonDown="btn_TiepTuc_Click" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                                    <TextBlock Text="Tiếp tục" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                </Border>
+                            </StackPanel>
                         </TabItem>
                         <TabItem Header="Nhóm">
-                            <DataGrid Height="220" x:Name="dataGrid2" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{StaticResource DataGrid5}" ItemsSource="{Binding Test}">
-                                <DataGrid.Columns>
-                                    <DataGridTemplateColumn>
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Border Style="{StaticResource DashedBoder1}" CornerRadius="0" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch">
-                                                    <Grid>
-                                                        <CheckBox VerticalAlignment="Center">
-                                                        </CheckBox>
-                                                        <Grid Margin="20 0 0 0">
-                                                            <TextBlock Margin="10 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                                                            <TextBlock Text="{Binding}" Margin="10 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                            <StackPanel>
+                                <DataGrid SelectedIndex="-1" Height="220" x:Name="dataGrid2" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{StaticResource DataGrid5}" ItemsSource="{Binding listGR1}">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Border Style="{StaticResource DashedBoder1}" CornerRadius="0" BorderThickness="0 0 0 1" HorizontalAlignment="Stretch">
+                                                        <Grid>
+                                                            <CheckBox Checked="ChonNhom" Unchecked="HuyChonNhom" VerticalAlignment="Center">
+                                                            </CheckBox>
+                                                            <Grid VerticalAlignment="Center" Margin="20 0 0 0">
+                                                                <TextBlock Margin="10 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding lgr_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                                <TextBlock Margin="10 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}">
+                                                                    <Run Text="("/>
+                                                                    <Run Text="{Binding count_member}" />
+                                                                    <Run Text="người)"/>
+                                                                </TextBlock>
+                                                            </Grid>
                                                         </Grid>
-                                                    </Grid>
-                                                </Border>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                </DataGrid.Columns>
-                            </DataGrid>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <TextBlock x:Name="validateNhom" Style="{StaticResource tblValidate}"/>
+                                <Border Cursor="Hand" MouseLeftButtonDown="btn_TiepTucNhom_Click" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                                    <TextBlock Text="Tiếp tục" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                </Border>
+                            </StackPanel>
                         </TabItem>
                     </TabControl>
-                    <Border Cursor="Hand" MouseLeftButtonDown="btn_TiepTuc_Click" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
-                        <TextBlock Text="Tiếp tục" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                    </Border>
+                    
                 </StackPanel>
             </StackPanel>
         </Border>

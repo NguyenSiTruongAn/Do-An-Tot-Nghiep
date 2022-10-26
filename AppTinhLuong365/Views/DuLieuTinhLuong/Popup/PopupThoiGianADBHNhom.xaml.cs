@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,16 +22,15 @@ using System.Windows.Shapes;
 namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupChinhSuaBHNV.xaml
+    /// Interaction logic for PopupThoiGianADBHNhom.xaml
     /// </summary>
-    public partial class PopupChinhSuaBHNV : Page, INotifyPropertyChanged
+    public partial class PopupThoiGianADBHNhom : Page, INotifyPropertyChanged
     {
-        MainWindow Main;
-        public PopupChinhSuaBHNV(MainWindow main, DSNVGoiBH bhnv)
+        public PopupThoiGianADBHNhom(MainWindow main, ListBaoHiem dsbh, List<ListGroup> gr)
         {
             InitializeComponent();
             this.DataContext = this;
-            Main = main; 
+            Main = main;
             dteSelectedMonth = new Calendar();
             dteSelectedMonth.Visibility = Visibility.Collapsed;
             dteSelectedMonth.DisplayMode = CalendarMode.Year;
@@ -47,24 +47,15 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             cl1 = new List<Calendar>();
             cl1.Add(dteSelectedMonth1);
             cl1 = cl1.ToList();
-            textThangAD.Text = bhnv.display_cls_day;
-            if(bhnv.display_cls_day_end != "---")
-            {
-                textThangAD1.Text = bhnv.display_cls_day_end;
-            }
-            this.bhnv = bhnv;
-            txtID.Text = bhnv.cls_id_user;
-            txtName.Text = bhnv.ep_name;
+            id = dsbh.cl_id;
+            this.dsbh = dsbh;
+            this.gr = gr;
+            if (id == "3")
+                spTien.Visibility = Visibility.Visible;
         }
-
-        DSNVGoiBH bhnv;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+        List<ListGroup> gr;
+        private string id;
+        private ListBaoHiem dsbh;
         Calendar dteSelectedMonth { get; set; }
         Calendar dteSelectedMonth1 { get; set; }
 
@@ -89,7 +80,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 _cl1 = value; OnPropertyChanged();
             }
         }
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        MainWindow Main;
         int flag = 0;
         private void Select_thang(object sender, MouseButtonEventArgs e)
         {
@@ -146,25 +142,28 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             flag1 += 1;
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void tbInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void LuuLai(object sender, MouseButtonEventArgs e)
         {
             bool allow = true;
-            validateDate.Text = "";
+            validateTien.Text = validateDate.Text = "";
             if (textThangAD.Text == "--------- ----")
             {
                 allow = false;
                 validateDate.Text = "Vui lòng chọn thời gian áp dụng";
             }
+            if (string.IsNullOrEmpty(tbInput.Text) && id=="3")
+            {
+                allow = false;
+                validateTien.Text = "Vui lòng nhập đày đủ";
+            }
             if (allow)
             {
-                string day_end = "";
-                if (textThangAD1.Text != "--------- ----")
-                    day_end =DateTime.Parse(textThangAD1.Text).ToString("yyyy-MM");
                 using (WebClient web = new WebClient())
                 {
                     if (Main.MainType == 0)
@@ -172,23 +171,43 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                         web.QueryString.Add("token", Main.CurrentCompany.token);
                         web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     }
-                    web.QueryString.Add("id_tax", bhnv.cls_id);
-                    web.QueryString.Add("date_start", DateTime.Parse(textThangAD.Text).ToString("yyyy-MM"));
-                    web.QueryString.Add("date_end", day_end);
+                    web.QueryString.Add("id_tax", id);
+                    for (int i = 0; i < gr.Count; i++)
+                    {
+                        web.QueryString.Add("id_group[" + i + "]", gr[i].lgr_id);
+                    }
+
+                    DateTime chuky = DateTime.Parse(textThangAD.Text);
+                    web.QueryString.Add("date", chuky.ToString("yyyy-MM-dd"));
+                    if (textThangAD1.Text != "--------- ----")
+                        web.QueryString.Add("date_end", DateTime.Parse(textThangAD1.Text).ToString("yyyy-MM-dd"));
+                    else
+                        web.QueryString.Add("date_end", "");
+                    if(id == "3")
+                        web.QueryString.Add("money", tbInput.Text);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ChinhSuaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_ChinhSuaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        string x = UnicodeEncoding.UTF8.GetString(ee.Result);
+                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(x);
                         if (api.data != null)
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.BaoHiem(Main));
-                            Main.sidebar.SelectedIndex = 8;
-                            this.Visibility = Visibility.Collapsed;
+                            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupDSNhanVienADBaoHiem(Main,dsbh));
                         }
                     };
-                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_emp_insrc.php", web.QueryString);
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_group_tax.php", web.QueryString);
                 }
-                
             }
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
+        }
+
+        private void Btn_QuayLai_Click(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThemNhanVienVaoBaoHiem(Main, dsbh));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

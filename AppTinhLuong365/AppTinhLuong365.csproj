@@ -161,6 +161,7 @@
     <Compile Include="Model\APIEntity\API_DSNVBH.cs" />
     <Compile Include="Model\APIEntity\API_DSNVCacKhoanThienKhac.cs" />
     <Compile Include="Model\APIEntity\API_DSNVChuaBH.cs" />
+    <Compile Include="Model\APIEntity\API_DSNVGoiBH.cs" />
     <Compile Include="Model\APIEntity\API_DSNVHHKeHoach.cs" />
     <Compile Include="Model\APIEntity\API_DSNVHHLPViTri.cs" />
     <Compile Include="Model\APIEntity\API_DSNVHoaHongDoanhThu.cs" />
@@ -444,8 +445,17 @@
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupChinhSuaHoaHongLoiNhuan.xaml.cs">
       <DependentUpon>PopupChinhSuaHoaHongLoiNhuan.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiBH.xaml.cs">
+      <DependentUpon>PopupThemMoiBH.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupThoiGianADBHNhom.xaml.cs">
+      <DependentUpon>PopupThoiGianADBHNhom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupTienPhat.xaml.cs">
       <DependentUpon>PopupTienPhat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupXoaNVKhoiBH.xaml.cs">
+      <DependentUpon>PopupXoaNVKhoiBH.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupXoaThuongPhat.xaml.cs">
       <DependentUpon>PopupXoaThuongPhat.xaml</DependentUpon>
@@ -1067,7 +1077,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThemMoiBH.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupThoiGianADBHNhom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupTienPhat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupXoaNVKhoiBH.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

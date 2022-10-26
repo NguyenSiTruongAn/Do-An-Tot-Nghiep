@@ -19,25 +19,20 @@ using System.Windows.Shapes;
 namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for ThongBaoBaoXoaBH.xaml
+    /// Interaction logic for PopupXoaNVKhoiBH.xaml
     /// </summary>
-    public partial class ThongBaoBaoXoaBH : Page
+    public partial class PopupXoaNVKhoiBH : Page
     {
-        MainWindow Main;
-        private string cl_id;
-        public ThongBaoBaoXoaBH(MainWindow main, string cl_id)
+        public PopupXoaNVKhoiBH(MainWindow main, string id)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
-            this.cl_id = cl_id;
+            this.id = id;
         }
-        private void Close_Click(object sender, MouseButtonEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
-        }
-
-        private void tieptuc(object sender, MouseButtonEventArgs e)
+        MainWindow Main;
+        private string id;
+        private void TiepTuc(object sender, MouseButtonEventArgs e)
         {
             using (WebClient web = new WebClient())
             {
@@ -45,7 +40,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 {
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                    web.QueryString.Add("id_insurrance", cl_id);
+                    web.QueryString.Add("id_tax", id);
                 }
                 web.UploadValuesCompleted += (s, e1) =>
                 {
@@ -57,9 +52,13 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                         this.Visibility = Visibility.Collapsed;
                     }
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/remove_insurrance.php", web.QueryString);
-                
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/delete_emp_insrc.php", web.QueryString);
             }
+        }
+
+        private void Close_Click(object sender, MouseButtonEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }

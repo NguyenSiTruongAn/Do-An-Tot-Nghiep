@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 namespace AppTinhLuong365.Model.APIEntity
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    public class DataDSNVBH
+    public class DataDSNVGoiBH
     {
-        public List<DSNVBH> list { get; set; }
-        public int total { get; set; }
+        public List<DSNVGoiBH> ep_insrc { get; set; }
         public string message { get; set; }
     }
 
-    public class DSNVBH
+    public class DSNVGoiBH
     {
         public string cls_id_user { get; set; }
-        public string cl_name { get; set; }
-        public string cls_id_cl { get; set; }
         public string cls_day { get; set; }
         public string display_cls_day
         {
@@ -28,18 +25,19 @@ namespace AppTinhLuong365.Model.APIEntity
                 return result;
             }
         }
-        public string fs_repica { get; set; }
-        public string cl_id_form { get; set; }
         public string cls_id { get; set; }
+        public string cls_salary { get; set; }
+        public string cls_id_cl { get; set; }
+        public string fs_repica { get; set; }
         public string cls_day_end { get; set; }
         public string display_cls_day_end
         {
             get
             {
                 string result = "---";
-                if (!string.IsNullOrEmpty(cls_day_end))
+                if (!string.IsNullOrEmpty(cls_day_end) && cls_day_end != "0000-00-00")
                 {
-                    result = "Tháng " + DateTime.Parse(cls_day_end).ToString("MM/yyyy");
+                    result = DateTime.Parse(cls_day_end).ToString("MM/yyyy");
                 }
                 return result;
             }
@@ -50,11 +48,11 @@ namespace AppTinhLuong365.Model.APIEntity
         public string ep_image { get; set; }
     }
 
-    public class API_DSNVBH
+    public class API_DSNVGoiBH
     {
         public bool result { get; set; }
         public int code { get; set; }
-        public DataDSNVBH data { get; set; }
+        public DataDSNVGoiBH data { get; set; }
         public object error { get; set; }
     }
 }

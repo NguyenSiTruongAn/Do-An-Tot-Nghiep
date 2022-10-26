@@ -193,6 +193,10 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 {
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("dp", dep_id);
+                    web.QueryString.Add("id", ep_id);
+                    web.QueryString.Add("month", month);
+                    web.QueryString.Add("year", year);
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
@@ -200,8 +204,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     if (api.data != null)
                     {
                         listNVChuaBH = api.data.list;
-                        //totalNVCacNhom = api.data.total;
-                        totalNVCacNhom = 100;
+                        totalNVCacNhom = api.data.total;
                         PageNVCacNhom = ListPageNumber(totalNVCacNhom);
                         loadPage(page, PageNVCacNhom);
                         foreach (var item in listNVChuaBH)
@@ -232,6 +235,10 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     web.QueryString.Add("page", page+"");
+                    web.QueryString.Add("dep_id", dep_id);
+                    web.QueryString.Add("ep_id", ep_id);
+                    web.QueryString.Add("month", month);
+                    web.QueryString.Add("year", year);
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
@@ -239,15 +246,15 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     if (api.data != null)
                     {
                         listNVBH = api.data.list;
-                        //totalNVCacNhom1 = api.data.total;
-                        totalNVCacNhom1 = 100;
+                        totalNVCacNhom1 = api.data.total;
                         PageNVCacNhom1 = ListPageNumber1(totalNVCacNhom1);
                         loadPage1(page, PageNVCacNhom1);
-                        /*foreach (var item in listNVChuaBH)
+                        foreach (var item in listNVBH)
                         {
-                            if (item.ep_image == "/img/add.png")
+                            if (item.ep_image == "")
                                 item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                        }*/
+                            else item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                        }
                     }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_insurrance.php", web.QueryString);
@@ -298,7 +305,9 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void NhapTienBaoHiem_Click(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemNhanVienVaoBaoHiem(Main);
+            Border b = sender as Border;
+            ListBaoHiem data = (ListBaoHiem)b.DataContext;
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThemNhanVienVaoBaoHiem(Main, data);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 616;
@@ -307,7 +316,9 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void BtnTuyChonBaoHiem_Click(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupTuyChonBaoHiem(Main);
+            Border b = sender as Border;
+            ListBaoHiem data = (ListBaoHiem)b.DataContext; 
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupTuyChonBaoHiem(Main, data);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -316,11 +327,11 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupThietLapBaoHiem(Main);
+            Border b = sender as Border;
+            DSNVChuaBH data = (DSNVChuaBH)b.DataContext;
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupThietLapBaoHiem(Main, data);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-            pop.Width = 495;
-            pop.Height = 482;
         }
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -337,10 +348,10 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         {
             string month = DateTime.Now.ToString("MM");
             if (cbThang1.SelectedIndex > -1)
-                month = cbThang.Text.Split(' ')[1];
+                month = cbThang1.Text.Split(' ')[1];
             string year;
             if (cbNam1.SelectedIndex > -1)
-                year = cbNam.Text.Split(' ')[1];
+                year = cbNam1 .Text.Split(' ')[1];
             else year = DateTime.Now.ToString("yyyy");
             string id_phong = "";
             if (cbPhong1.SelectedIndex > -1)
@@ -478,8 +489,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 Page1.Background = (Brush)bc.ConvertFrom("#FFFFFF");
                 txtpage2.Text = pagenb + "";
                 txtpage2.Foreground = (Brush)bc.ConvertFrom("#ffffff");
-                txtpage2.Foreground = (Brush)bc.ConvertFrom("#444");
-                txtpage2.Foreground = (Brush)bc.ConvertFrom("#444");
+                txtpage3.Foreground = (Brush)bc.ConvertFrom("#444");
+                txtpage1.Foreground = (Brush)bc.ConvertFrom("#444");
                 Page2.Visibility = Visibility.Visible;
                 PageTiep.Visibility = Visibility.Visible;
                 PageCuoi.Visibility = Visibility.Collapsed;
@@ -850,8 +861,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 Page11.Background = (Brush)bc.ConvertFrom("#FFFFFF");
                 txtpage21.Text = pagenb + "";
                 txtpage21.Foreground = (Brush)bc.ConvertFrom("#ffffff");
-                txtpage21.Foreground = (Brush)bc.ConvertFrom("#444");
-                txtpage21.Foreground = (Brush)bc.ConvertFrom("#444");
+                txtpage31.Foreground = (Brush)bc.ConvertFrom("#444");
+                txtpage11.Foreground = (Brush)bc.ConvertFrom("#444");
                 Page21.Visibility = Visibility.Visible;
                 PageTiep1.Visibility = Visibility.Visible;
                 PageCuoi1.Visibility = Visibility.Collapsed;
@@ -1100,6 +1111,20 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             }
             getData4(month, year, id_user, id_phong, pagenumber);
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
+        }
+
+        private void TaoMoiBH(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThemMoiBH(Main,"","","","",""));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void XoaNV(object sender, MouseButtonEventArgs e)
+        {
+            Border b = sender as Border;
+            DSNVBH data = (DSNVBH)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupXoaNVKhoiBH(Main, data.cls_id));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

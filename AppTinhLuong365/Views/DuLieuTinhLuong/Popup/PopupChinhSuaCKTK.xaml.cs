@@ -102,7 +102,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void ThietLapCongThuc_MouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.DuLieuTinhLuong.Popup.PopupChinhSuaCongThuc(Main, id1, tbInput.Text, tbInput1.Text, name_ct1, ct1, ct_hs1, fs_id1);
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupChinhSuaCongThuc(Main, id1, tbInput.Text, tbInput1.Text, name_ct1, ct1, ct_hs1, fs_id1,"1");
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
         }

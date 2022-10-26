@@ -5,14 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong.Popup"
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
+      VerticalAlignment="Top"
+      MaxWidth="1000"
       SizeChanged="Page_SizeChanged"
       Title="PopupDSNhanVienADBaoHiem">
 
-    <Grid>
+    <Grid Height="558" Margin="0 100 0 0" Background="Transparent">
         <Border Style="{StaticResource ShadowBorder2}"></Border>
-        <Border Background="{DynamicResource #FFFFFF}">
-            <StackPanel>
+        <Border>
+            <StackPanel Background="Transparent">
                 <Grid>
                     <Border Background="Transparent" CornerRadius="10" Margin="0 3 -50 0">
                         <Border.Effect>
@@ -29,68 +31,77 @@
                         </DockPanel>
                     </Border>
                     <StackPanel>
-                        <TextBlock Text="{Binding}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                        <TextBlock x:Name="title" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
                         <TextBlock Text="Danh sách nhân viên" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                     </StackPanel>
                 </DockPanel>
-                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="20 40 20 20" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
-                    <DataGrid.OpacityMask>
-                        <VisualBrush>
-                            <VisualBrush.Visual>
-                                <Border Width="{Binding ElementName=dataGrid2,Path=ActualWidth}" Height="{Binding ElementName=dataGrid2,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
-                            </VisualBrush.Visual>
-                        </VisualBrush>
-                    </DataGrid.OpacityMask>
-                    <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Grid x:Name="gridHoTen">
-                                        <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
-                                            <Border.Background>
-                                                <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
-                                            </Border.Background>
+                <ScrollViewer x:Name="scrollview" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Background="Transparent" Height="400" Margin="20 40 20 20">
+                    <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listDSNV}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Border Width="{Binding ElementName=dataGrid2,Path=ActualWidth}" Height="{Binding ElementName=dataGrid2,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </DataGrid.OpacityMask>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid x:Name="gridHoTen" Margin="20 0 0 0">
+                                            <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
+                                                </Border.Background>
+                                            </Border>
+                                            <Grid VerticalAlignment="Center" Margin="10 0 0 0">
+                                                <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                <TextBlock Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}">
+                                                <Run Text="ID:"/>
+                                                <Run Text="{Binding cls_id_user}"/>
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding dep_name}" Margin="50 40 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                            </Grid>
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textApDungTuThang}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent">
+                                            <TextBlock Text="{Binding display_cls_day,Mode=OneWay}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                         </Border>
-                                        <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                                        <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
-                                    </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="{DynamicResource textApDungTuThang}">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
-                                    </Border>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="{DynamicResource textDenThang}">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter1}"></TextBlock>
-                                    </Border>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <DockPanel>
-                                        <Border MouseLeftButtonDown="ChinhSuabaoHiemNhanVien_click" VerticalAlignment="Center" Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
-                                            <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textDenThang}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent">
+                                            <TextBlock Text="{Binding display_cls_day_end,Mode=OneWay}" Style="{StaticResource TextRowCenter1}"></TextBlock>
                                         </Border>
-                                        <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
-                                            <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
-                                        </Border>
-                                    </DockPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DockPanel>
+                                            <Border MouseLeftButtonDown="ChinhSuabaoHiemNhanVien_click" VerticalAlignment="Center" Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
+                                                <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>
+                                            </Border>
+                                            <Border MouseLeftButtonDown="XoaNV" Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
+                                                <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
+                                            </Border>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
             </StackPanel>
         </Border>
     </Grid>

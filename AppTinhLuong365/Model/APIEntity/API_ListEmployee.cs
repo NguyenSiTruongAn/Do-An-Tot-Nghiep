@@ -102,6 +102,7 @@ namespace AppTinhLuong365.Model.APIEntity
         public string create_time { get; set; }
         public string group_id { get; set; }
         public object shift_id { get; set; }
+        public bool status { get; set; }
     }
 
     public class API_ListEmployee

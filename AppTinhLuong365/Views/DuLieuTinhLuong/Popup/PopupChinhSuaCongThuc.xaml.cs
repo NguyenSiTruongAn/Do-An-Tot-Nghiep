@@ -20,7 +20,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
     /// </summary>
     public partial class PopupChinhSuaCongThuc : Page
     {
-        public PopupChinhSuaCongThuc(MainWindow main, string id, string name, string note, string name_ct, string ct, string ct_hs, string fs_id)
+        public PopupChinhSuaCongThuc(MainWindow main, string id, string name, string note, string name_ct, string ct, string ct_hs, string fs_id, string type)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -35,9 +35,10 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 CbCongThuc.IsChecked = true;
             else
                 CbHangSo.IsChecked = true;
+            this.type = type;
         }
         MainWindow Main;
-        private string name1, note1, fs_id1, id1;
+        private string name1, note1, fs_id1, id1, type;
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
@@ -59,8 +60,16 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             else ct_hs = "2";
             if (!string.IsNullOrEmpty(congthuc))
             {
-                Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaCKTK(Main, id1, name1, note1, tencongthuc, congthuc, ct_hs, fs_id1));
-                Main.PopupSelection.Visibility = Visibility.Visible;
+                if(type == "1")
+                {
+                    Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaCKTK(Main, id1, name1, note1, tencongthuc, congthuc, ct_hs, fs_id1));
+                    Main.PopupSelection.Visibility = Visibility.Visible;
+                }
+                if(type == "2")
+                {
+                    Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaCSBH(Main, id1, name1, note1, tencongthuc, congthuc, ct_hs, fs_id1));
+                    Main.PopupSelection.Visibility = Visibility.Visible;
+                }    
             }
             else valuedate.Text = "Vui lòng nhập công thức";
         }

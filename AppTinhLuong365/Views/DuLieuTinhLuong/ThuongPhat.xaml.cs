@@ -385,8 +385,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 Page1.Background = (Brush)bc.ConvertFrom("#FFFFFF");
                 txtpage2.Text = pagenb + "";
                 txtpage2.Foreground = (Brush)bc.ConvertFrom("#ffffff");
-                txtpage2.Foreground = (Brush)bc.ConvertFrom("#444");
-                txtpage2.Foreground = (Brush)bc.ConvertFrom("#444");
+                txtpage3.Foreground = (Brush)bc.ConvertFrom("#444");
+                txtpage1.Foreground = (Brush)bc.ConvertFrom("#444");
                 Page2.Visibility = Visibility.Visible;
                 PageTiep.Visibility = Visibility.Visible;
                 PageCuoi.Visibility = Visibility.Collapsed;

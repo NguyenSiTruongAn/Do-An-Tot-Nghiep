@@ -60,7 +60,15 @@ namespace AppTinhLuong365.Views.TinhLuong
                     Main.PopupSelection.Visibility = Visibility.Visible;
                     pop.Width = 565;
                     pop.Height = 481;
-                }    
+                }
+                if (s1 == "2")
+                {
+                    var pop = new Views.DuLieuTinhLuong.Popup.PopupThemMoiBH(Main, name1, note1, name, congthuc, cbCT);
+                    Main.PopupSelection.NavigationService.Navigate(pop);
+                    Main.PopupSelection.Visibility = Visibility.Visible;
+                    pop.Width = 565;
+                    pop.Height = 481;
+                }
             }
             else valuedate.Text = "Vui lòng nhập công thức";
         }
