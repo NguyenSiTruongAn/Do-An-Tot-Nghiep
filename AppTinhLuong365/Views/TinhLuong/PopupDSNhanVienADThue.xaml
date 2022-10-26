@@ -6,14 +6,17 @@
       xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong"
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
       mc:Ignorable="d" 
+      VerticalAlignment="Top"
       SizeChanged="Page_SizeChanged"
       Title="PopupDSNhanVienADThue">
 
-    <Grid>
+    <Grid Margin="0 50 0 0" Background="Transparent">
         <Border Style="{StaticResource ShadowBorder2}"></Border>
-        <Border Background="{DynamicResource #FFFFFF}">
+        <Border Background="Transparent">
             <StackPanel>
-                <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 3 -50 0"></TextBlock>
+                <Border Style="{StaticResource ShadowBorder2}" Background="Transparent">
+                    <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 3 -50 0"></TextBlock>
+                </Border>
                 <DockPanel Margin="20 0">
                     <Border HorizontalAlignment="Right" Cursor="Hand" MouseLeftButtonDown="BtnThemNhanVien_Click" x:Name="btnThemNhanVien" Height="40" Width="156" CornerRadius="10" Background="{DynamicResource #4C5BD4}" DockPanel.Dock="Right">
                         <DockPanel>

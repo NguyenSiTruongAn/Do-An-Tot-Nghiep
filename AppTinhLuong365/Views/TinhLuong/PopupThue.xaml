@@ -5,12 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      VerticalAlignment="Top"
       Title="PopupThue">
-    <Grid>
+    <Grid Margin="0 50 0 0" Width="510">
         <Border Style="{StaticResource ShadowBorder1}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
-            <StackPanel>
+            <StackPanel Margin="0 0 0 20">
                 <Border CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
                     <Grid>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" Text="Thêm mới chính sách thuế"></TextBlock>

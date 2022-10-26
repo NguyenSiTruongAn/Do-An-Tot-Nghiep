@@ -352,4 +352,5 @@
     <system:String x:Key="textTNV">Tên nhân viên</system:String>
     <system:String x:Key="textLCN">Lương còn nợ tại thời điểm chi trả</system:String>
     <system:String x:Key="textStillOwed">Còn nợ</system:String>
+    <system:String x:Key="textCham">&#x2022;</system:String>
 </ResourceDictionary>

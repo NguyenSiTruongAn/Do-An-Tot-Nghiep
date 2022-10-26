@@ -8,6 +8,40 @@
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       mc:Ignorable="d" 
       Title="Thue" SizeChanged="Page_SizeChanged">
+
+    <Page.Resources>
+        <math:MathConvert x:Key="math"></math:MathConvert>
+        <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type DockPanel}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE-20)/2}"/>
+            <Setter Property="Margin" Value="0 0 0 0"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                    <Setter Property="Margin" Value="0 10"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}"/>
+                    <Setter Property="Margin" Value="0 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_StackPanel" TargetType="StackPanel">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math},ConverterParameter=(@VALUE)/4}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_Border" TargetType="Border">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math},ConverterParameter=(@VALUE/5) - 9}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
             <Border Cursor="Hand" MouseLeftButtonDown="btnTaoMoi_MouseLeftButtonDown" x:Name="btnTaoMoi" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
@@ -28,7 +62,7 @@
             </Border>
             <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0" ItemContainerStyle="{StaticResource TabItem1}">
                 <TabItem x:Name="tabItemx" IsSelected="True" Header="{DynamicResource textChinhSachThue}" Background="Transparent">
-                    <Grid Margin="0 20" HorizontalAlignment="Left" Background="{DynamicResource #F7F8FC}" Width="330">
+                    <!--<Grid Margin="0 20" HorizontalAlignment="Left" Background="{DynamicResource #F7F8FC}" Width="330">
                         <Border Style="{StaticResource ShadowBorder1}"></Border>
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                             <StackPanel Orientation="Vertical" Margin="10 0 0 20" VerticalAlignment="Top">
@@ -52,7 +86,54 @@
                                 <TextBlock Margin="20 0" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #5F648D}" Text="Theo hệ số cố định dựa trên quy định mới nhất về cách tính thuế thu nhập cá nhân của Nhà nước năm 2021." TextWrapping="WrapWithOverflow"></TextBlock>
                             </StackPanel>
                         </Border>
-                    </Grid>
+                    </Grid>-->
+                    <ListView Margin="0 0 0 0" Name="lv" ItemsSource="{Binding listCSThue}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE-105)/3}"></Setter>
+                                <Setter Property="Margin" Value="0 0 35 35"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListViewItem">
+                                            <Grid>
+                                                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                                    </Border.Effect>
+                                                </Border>
+                                                <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                                                    <StackPanel Orientation="Vertical" Margin="10 0 0 20" VerticalAlignment="Top">
+                                                        <Grid Height="61" Margin="0 0 10 0">
+                                                            <TextBlock Text="{Binding cl_name}" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
+                                                            <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="TuyChonChinhSachThue_MouseLeftDown" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Width="19" Height="19">
+                                                                <Path Data="{DynamicResource iconBaChamDoc}" VerticalAlignment="Center" Fill="{DynamicResource #979797}" HorizontalAlignment="Center"></Path>
+                                                            </Border>
+                                                            <Line X1="0" Y1="60" X2="330" Y2="60" Stroke="{DynamicResource #474747}" StrokeThickness="1" StrokeDashArray="4 1" />
+                                                        </Grid>
+                                                        <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
+                                                            <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
+                                                            <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                                        </StackPanel>
+                                                        <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="{Binding cl_note}" TextWrapping="WrapWithOverflow"></TextBlock>
+                                                        <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
+                                                            <Path Data="{DynamicResource iconCachTinh}" Fill="{DynamicResource #5F648D}"></Path>
+                                                            <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Cách tính" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
+                                                        </StackPanel>
+                                                        <TextBlock Margin="20 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" Text="{Binding fs_repica}" TextWrapping="WrapWithOverflow"></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Width="{Binding RelativeSource={RelativeSource AncestorType=ListView,Mode=FindAncestor},Path=ActualWidth}"></WrapPanel>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
                 </TabItem>
                 <TabItem Header="{DynamicResource textDSNhanVienChuaThietLap}" Background="Transparent">
                     <TabItem.Resources>
@@ -233,7 +314,7 @@
                                         <TextBlock Text="Danh sách nhân viên đã áp dụng thuế" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}" TextWrapping="WrapWithOverflow"></TextBlock>
                                     </DockPanel>
                                 </DockPanel>
-                                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding listUserTax}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding listUserTax}" ScrollViewer.HorizontalScrollBarVisibility="Visible" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -246,7 +327,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Grid x:Name="gridHoTen">
-                                                        <WrapPanel>
+                                                        <DockPanel>
                                                             <Border Margin="10 0 0 0" Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
                                                                 <Border.Background>
                                                                     <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
@@ -257,7 +338,7 @@
                                                                 <TextBlock Text="{Binding cls_id_user}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                                                                 <TextBlock Text="{Binding dep_name}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                                                             </StackPanel>
-                                                        </WrapPanel>
+                                                        </DockPanel>
                                                     </Grid>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -293,7 +374,10 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding cls_day_end}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                        <TextBlock Style="{StaticResource TextRowCenter}">
+                                                            <Run Text="{DynamicResource textCham}"/>
+                                                            <Run Text="{Binding cls_day_end}"/>
+                                                        </TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>

@@ -35,8 +35,6 @@ namespace AppTinhLuong365.Views.TinhLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
-            dataGrid1.AutoReponsiveColumn(0);
-            dataGrid2.AutoReponsiveColumn(0);
             ItemList = new ObservableCollection<string>();
             for (var i = 1; i <= 12; i++)
             {
@@ -47,15 +45,42 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 YearList.Add($"Năm {i}");
             }
-
+            dataGrid1.AutoReponsiveColumn(1);
             Main = main;
             getData();
             getData1();
+            getData2();
         }
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
 
         public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
+
+        private List<ChinhSachThue> _listCSThue;
+
+        public List<ChinhSachThue> listCSThue
+        {
+            get { return _listCSThue; }
+            set { _listCSThue = value; OnPropertyChanged(); }
+        }
+
+        private void getData2()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ChinhSachThue api = JsonConvert.DeserializeObject<API_ChinhSachThue>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listCSThue = api.data.tax_list;
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_tax_manager.php", web.QueryString);
+            }
+        }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -118,7 +143,9 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void TuyChonChinhSachThue_MouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.TinhLuong.PopupTuyChonCSThue(Main);
+            Border b = sender as Border;
+            ChinhSachThue data = (ChinhSachThue)b.DataContext;
+            var pop = new Views.TinhLuong.PopupTuyChonCSThue(Main, data);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -194,6 +221,11 @@ namespace AppTinhLuong365.Views.TinhLuong
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_user_tax.php", web.QueryString);
             }
+        }
+
+        private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
     }
 }

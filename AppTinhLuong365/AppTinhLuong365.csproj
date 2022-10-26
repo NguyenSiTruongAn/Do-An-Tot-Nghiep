@@ -137,8 +137,10 @@
     <Compile Include="Model\APIEntity\API_Add_late.cs" />
     <Compile Include="Model\APIEntity\API_Bang_luong_nv.cs" />
     <Compile Include="Model\APIEntity\API_CaiDatCongChuan.cs" />
+    <Compile Include="Model\APIEntity\API_ChinhSachThue.cs" />
     <Compile Include="Model\APIEntity\API_ChinhSuaPhuCapTheoCa.cs" />
     <Compile Include="Model\APIEntity\API_ChinhSuaPhucLoi_PhuCap.cs" />
+    <Compile Include="Model\APIEntity\API_ChiTietChamCong.cs" />
     <Compile Include="Model\APIEntity\API_ChiTietLichLamViec.cs" />
     <Compile Include="Model\APIEntity\API_ChiTietNV.cs" />
     <Compile Include="Model\APIEntity\Api_CongLuong.cs" />
