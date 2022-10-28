@@ -1,0 +1,58 @@
+﻿<Page x:Class="AppTinhLuong365.Views.TinhLuong.Popup.PopupThuong"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong.Popup"
+      mc:Ignorable="d" VerticalAlignment="Top"
+      Title="PopupThuong">
+
+    <Grid Width="509">
+        <Border Style="{StaticResource ShadowBorder2}"></Border>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+            <Grid>
+                <DataGrid Margin="10 20" HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid8}" ItemsSource="{Binding dulieu.dt_thuong}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <DataGrid.OpacityMask>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Border Width="{Binding ElementName=dataGrid2,Path=ActualWidth}" Height="{Binding ElementName=dataGrid2,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </DataGrid.OpacityMask>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="{DynamicResource textTienThuong}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent">
+                                        <TextBlock Style="{StaticResource TextRowCenter}" Foreground="{DynamicResource #F46A6A}">
+                                            <Run Text="{Binding display_pay_price,Mode=OneWay}"/>
+                                            <Run Text="Vnđ"/>
+                                        </TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textApDungNgay}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent">
+                                        <TextBlock Text="{Binding Display_pay_day,Mode=OneWay}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textLyDo}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent">
+                                        <TextBlock Text="{Binding pay_case}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

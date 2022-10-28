@@ -1,4 +1,5 @@
-﻿using AppTinhLuong365.Model.APIEntity;
+﻿using System;
+using AppTinhLuong365.Model.APIEntity;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -24,22 +25,34 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        string month;
+        string year;
         public BaoCaoCongLuong(MainWindow main)
         {
             ItemList = new ObservableCollection<string>();
-            for (var i = 1; i <=12; i++)
+            for (var i = 1; i <= 12; i++)
             {
                 ItemList.Add($"Tháng {i}");
             }
+
             YearList = new ObservableCollection<string>();
-            for (var i = 2022; i <= 2025; i++)
+            var c = DateTime.Now.Year;
+            if (c != null)
             {
-                YearList.Add($"Năm {i}");
-            }
+                YearList.Add($"Năm {c - 1}");
+                YearList.Add($"Năm {c}");
+                YearList.Add($"Năm {c + 1}");
+            }   
             InitializeComponent();
             this.DataContext = this;
             Main = main;
-            getData();
+            string month = DateTime.Now.ToString("MM");
+            string year = DateTime.Now.ToString("yyyy");
+            this.month = month;
+            this.year = year;
+            getData(month, year);
+            searchBarYear.PlaceHolder = "Năm " + year;
+            searchBarMonth.PlaceHolder = "Tháng " + month;
         }
 
         public ObservableCollection<string> ItemList { get; set; }
@@ -79,15 +92,15 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             set { _congLuong = value; OnPropertyChanged(); }
         }
 
-        private void getData()
+        private void getData(string month, string year)
         {
             using (WebClient web = new WebClient())
             {
                 loading.Visibility = Visibility.Visible;
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("company", Main.CurrentCompany.com_id);
-                web.QueryString.Add("month", "10");
-                web.QueryString.Add("year", "2022");
+                web.QueryString.Add("month", month);
+                web.QueryString.Add("year", year);
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     Api_CongLuong api = JsonConvert.DeserializeObject<Api_CongLuong>(UnicodeEncoding.UTF8.GetString(e.Result));
@@ -110,7 +123,21 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.BaoCaoCongLuong.TongHopLuongNhanVienTheoChuKi(Main));
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.BaoCaoCongLuong.TongHopLuongNhanVienTheoChuKi(Main, month, year));
+        }
+
+        private void ThongKe(object sender, MouseButtonEventArgs e)
+        {
+            string year = "", month = "", id_nv = "", id_pb = "";
+            if (searchBarYear.SelectedItem != null)
+                year = searchBarYear.SelectedItem.ToString().Split(' ')[1];
+            else
+                year = DateTime.Now.ToString("yyyy");
+            if (searchBarMonth.SelectedIndex != -1)
+                month = (searchBarMonth.SelectedIndex + 1) + "";
+            else month = DateTime.Now.ToString("MM");
+
+            getData(month, year);
         }
     }
 }

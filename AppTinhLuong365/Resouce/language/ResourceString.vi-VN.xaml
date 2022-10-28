@@ -10,6 +10,11 @@
     <system:String x:Key="textCalendar">Lịch làm việc</system:String>
     <system:String x:Key="textDigitalConversion">Chuyển đổi số 365</system:String>
     <system:String x:Key="textAccManagement">Quản lý tài khoản</system:String>
+    <system:String x:Key="textPTBH">Phân tích bảo hiểm</system:String>
+    <system:String x:Key="textPTMLNV">Phân tích mức lương nhân viên</system:String>
+    <system:String x:Key="textSLNV">Số lượng nhân viên</system:String>
+    <system:String x:Key="textTHL">Tổng hợp lương</system:String>
+    <system:String x:Key="textPTT">Phân tích thuế</system:String>
     <system:String x:Key="textNews">Tin tức</system:String>
     <system:String x:Key="textGuide">Hướng dẫn</system:String>
     <system:String x:Key="textDanhSachNhanVien">Danh sách nhân viên</system:String>
@@ -28,6 +33,7 @@
     <system:String x:Key="textNumberOfCalendarWorkingDays">Công theo lịch: </system:String>
     <system:String x:Key="textLateOrEarly">Đi muộn/ về sớm:</system:String>
     <system:String x:Key="textCNSL">Cập nhật số liệu</system:String>
+    <system:String x:Key="textTNTT">Thu nhập tính thuế</system:String>
     <system:String x:Key="textNumberEp">Mã NV</system:String>
     <system:String x:Key="textEmploymentContract">Hợp đồng việc làm</system:String>
     <system:String x:Key="textTaxesAndInsurance">Thuế và bảo hiểm</system:String>
@@ -260,6 +266,8 @@
     <system:String x:Key="textTaoKNL">Tạo kỳ nghỉ lễ</system:String>
     <system:String x:Key="textTMBCTL">Thêm mới bảng chi trả lương</system:String>
     <system:String x:Key="textBCTL">Bảng chi trả lương</system:String>
+    <system:String x:Key="textBCT">Bảng chi trả</system:String>
+    <system:String x:Key="textNCT">Ngày chi trả</system:String>
     <system:String x:Key="textPayWage">Trả lương</system:String>
     <system:String x:Key="textADD">Thêm</system:String>
     <system:String x:Key="textNTBCT">Nhập tên bảng chi trả</system:String>

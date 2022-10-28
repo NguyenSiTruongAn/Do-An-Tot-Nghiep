@@ -1,5 +1,4 @@
-﻿using AppTinhLuong365.Model.APIEntity;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using AppTinhLuong365.Model.APIEntity;
 using Aspose.Cells;
 using Microsoft.Win32;
 using Border = System.Windows.Controls.Border;
@@ -26,18 +26,25 @@ using Path = System.Windows.Shapes.Path;
 namespace AppTinhLuong365.Views.BaoCaoCongLuong
 {
     /// <summary>
-    /// Interaction logic for TongHopLuongNhanVienTheoChuKi.xaml
+    /// Interaction logic for TongHopThongTinBaoHiem.xaml
     /// </summary>
-    public partial class TongHopLuongNhanVienTheoChuKi : Page, INotifyPropertyChanged
+    public partial class TongHopThongTinBaoHiem : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
+
         public int IsSmallSize
         {
             get { return _IsSmallSize; }
-            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
+            set
+            {
+                _IsSmallSize = value;
+                OnPropertyChanged("IsSmallSize");
+            }
         }
+
         public MainWindow Main;
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -46,7 +53,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
         string month;
         string year;
 
-        public TongHopLuongNhanVienTheoChuKi(MainWindow main, string month, string year)
+        public TongHopThongTinBaoHiem(MainWindow main, string month, string year)
         {
             ItemList = new ObservableCollection<string>();
             for (var i = 1; i <= 12; i++)
@@ -66,11 +73,10 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 YearList.Add($"Năm {c}");
                 YearList.Add($"Năm {c + 1}");
             }
+
             InitializeComponent();
             this.DataContext = this;
             Main = main;
-            // string month = DateTime.Now.ToString("MM");
-            // string year = DateTime.Now.ToString("yyyy");
             string start_date = DateTime.Now.ToString("yyyy-MM-01");
             string end_date = DateTime.Now.ToString("yyyy-MM-30");
             int d = Int32.Parse(month);
@@ -86,6 +92,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             getData1();
             getData2();
         }
+
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
         public ObservableCollection<string> SearchList { get; set; }
@@ -156,7 +163,9 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
         {
             Path p = sender as Path;
             Item_Bang_Luong data = (Item_Bang_Luong)p.DataContext;
-            var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id, searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex, DatePickerStart.SelectedDate, DatePickerEnd.SelectedDate);
+            var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id,
+                searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex, DatePickerStart.SelectedDate,
+                DatePickerEnd.SelectedDate);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 95, z.Y + 15, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -1116,7 +1125,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                     }
 
                     web.QueryString.Add("order", order);
-                    web.QueryString.Add("type", "1");
+                    web.QueryString.Add("type", "2");
                     web.QueryString.Add("start_date", m);
                     web.QueryString.Add("end_date", n);
                 }
@@ -1124,19 +1133,19 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     data = UnicodeEncoding.UTF8.GetString(e.Result);
-                    File.WriteAllText("../../Views/BaoCaoCongLuong/Excel/tong_hop_luong.html", data);
+                    File.WriteAllText("../../Views/BaoCaoCongLuong/Excel/tong_hop_bao_hiem.html", data);
                     string filePath = "";
                     // tạo SaveFileDialog để lưu file excel
                     SaveFileDialog dialog = new SaveFileDialog();
 
                     // chỉ lọc ra các file có định dạng Excel
                     dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
-                    dialog.FileName = "tong_hop_luong";
+                    dialog.FileName = "tong_hop_bao_hiem";
                     // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
                     if (dialog.ShowDialog() == true)
                     {
                         filePath = dialog.FileName;
-                        var workbook = new Workbook("../../Views/BaoCaoCongLuong/Excel/tong_hop_luong.html");
+                        var workbook = new Workbook("../../Views/BaoCaoCongLuong/Excel/tong_hop_bao_hiem.html");
                         try
                         {
                             workbook.Save(filePath);
