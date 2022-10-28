@@ -1,0 +1,106 @@
+﻿<Page x:Class="AppTinhLuong365.Views.TinhLuong.Popup.PopupHoaHong"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong.Popup"
+      mc:Ignorable="d"
+      Title="PopupHoaHong">
+
+    <Grid MaxWidth="509" Height="377">
+        <Border Style="{StaticResource ShadowBorder2}" />
+        <Border CornerRadius="10" Background="{DynamicResource #FFFFFF}">
+            <Grid Margin="10 20 10 24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="228"></ColumnDefinition>
+                    <ColumnDefinition Width="260"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <Border CornerRadius="10 0 0 0" Height="65" Background="{DynamicResource #4C5BD4}">
+                        <TextBlock Text="{DynamicResource textLHH}" FontSize="16"
+                                   Foreground="{DynamicResource #FFFFFF}" Margin="0 26 0 0"
+                                   HorizontalAlignment="Center" />
+                    </Border>
+                    <Border BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
+                        <TextBlock Text="{DynamicResource textHoaHongTien}" FontSize="15"
+                                   Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
+                        <TextBlock Text="{DynamicResource textHoaHongDoanhThu}" FontSize="15"
+                                   Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
+                        <TextBlock Text="{DynamicResource textHoaHongLoiNhuan}" FontSize="15"
+                                   Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
+                        <TextBlock Text="{DynamicResource textHoaHongLePhiViTri}" FontSize="15"
+                                   Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
+                        <TextBlock Text="{DynamicResource textHoaHongKeHoach}" FontSize="15"
+                                   Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Border CornerRadius="0 10 0 0" Height="65" Background="{DynamicResource #4C5BD4}">
+                        <TextBlock Text="{DynamicResource textSoTien}" FontSize="16"
+                                   Foreground="{DynamicResource #FFFFFF}" Margin="0 26 0 0"
+                                   HorizontalAlignment="Center" />
+                    </Border>
+                    <Border BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
+                        <TextBlock FontSize="15"
+                                   Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                            <Run Text="{Binding itemRose1.display_rose_1,Mode=OneWay}"/>
+                            <Run Text="VNĐ"/>
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
+                        <TextBlock FontSize="15"
+                                   Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                            <Run Text="{Binding itemRose1.display_rose_2,Mode=OneWay}"/>
+                            <Run Text="VNĐ"/>
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
+                        <TextBlock FontSize="15"
+                                   Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                            <Run Text="{Binding itemRose1.display_rose_3,Mode=OneWay}"/>
+                            <Run Text="VNĐ"/>
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
+                        <TextBlock FontSize="15"
+                                   Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                            <Run Text="{Binding itemRose1.display_rose_4,Mode=OneWay}"/>
+                            <Run Text="VNĐ"/>
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
+                        <TextBlock FontSize="15"
+                                   Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                            <Run Text="{Binding itemRose1.display_rose_5,Mode=OneWay}"/>
+                            <Run Text="VNĐ"/>
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Page>

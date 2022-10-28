@@ -233,7 +233,10 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                         string id_ep = "id_pm[" + i + "]";
                         string salary = "pp_salary[" + i + "]";
                         web.QueryString.Add(id_ep, nv[i]);
-                        web.QueryString.Add(salary, listItemDetailPay[i].money);
+                        if (listItemDetailPay[i].money != "0")
+                        {
+                            web.QueryString.Add(salary, listItemDetailPay[i].money);
+                        }
                     }
 
                     web.UploadValuesCompleted += (s, ee) =>

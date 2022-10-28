@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
@@ -13,6 +14,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Aspose.Cells;
+using Microsoft.Win32;
+using Border = System.Windows.Controls.Border;
 
 namespace AppTinhLuong365.Views.CaiDat
 {
@@ -756,6 +760,61 @@ namespace AppTinhLuong365.Views.CaiDat
         private void dataGrid_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+        }
+
+        private void xuatExcel()
+        {
+            string data = "";
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 0)
+                {
+                    string year = "", month = "";
+                    if (searchBarYear1.SelectedItem != null)
+                        year = searchBarYear1.SelectedItem.ToString().Split(' ')[1];
+                    if (searchBarMonth1.SelectedIndex != -1)
+                        month = (searchBarMonth1.SelectedIndex + 1) + "";
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("month", month);
+                    web.QueryString.Add("year", year);
+                }
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    data = UnicodeEncoding.UTF8.GetString(e.Result);
+                    File.WriteAllText("../../Views/CaiDat/di_muon_ve_som.html", data);
+                    string filePath = "";
+                    // tạo SaveFileDialog để lưu file excel
+                    SaveFileDialog dialog = new SaveFileDialog();
+
+                    // chỉ lọc ra các file có định dạng Excel
+                    dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
+                    dialog.FileName = "di_muon_ve_som_365";
+                    // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
+                    if (dialog.ShowDialog() == true)
+                    {
+                        filePath = dialog.FileName;
+                        var workbook = new Workbook("../../Views/CaiDat/di_muon_ve_som.html");
+                        try
+                        {
+                            workbook.Save(filePath);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                        loading.Visibility = Visibility.Collapsed;
+                        //converter.Convert(filePath, convertOptions);
+                    }
+
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_late.php", web.QueryString);
+            }
+        }
+        private void XuatFileThongKe(object sender, MouseButtonEventArgs e)
+        {
+            loading.Visibility = Visibility.Visible;
+            xuatExcel();
         }
     }
 }

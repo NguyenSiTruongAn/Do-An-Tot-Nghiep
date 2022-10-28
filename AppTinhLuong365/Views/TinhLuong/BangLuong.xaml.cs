@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -11,7 +12,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Shapes;
+using Aspose.Cells;
+using Microsoft.Win32;
+using Border = System.Windows.Controls.Border;
+using Path = System.Windows.Shapes.Path;
 
 namespace AppTinhLuong365.Views.TinhLuong
 {
@@ -40,6 +44,8 @@ namespace AppTinhLuong365.Views.TinhLuong
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        string month;
+        string year;
         public BangLuong(MainWindow main)
         {
             ItemList = new ObservableCollection<string>();
@@ -178,7 +184,7 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             Path p = sender as Path;
             Item_Bang_Luong data = (Item_Bang_Luong)p.DataContext;
-            var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id, searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex);
+            var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id, searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex, DatePickerStart.SelectedDate, DatePickerEnd.SelectedDate);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 95, z.Y + 15, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -1065,6 +1071,86 @@ namespace AppTinhLuong365.Views.TinhLuong
                                                  (searchBarMonth.SelectedIndex + 1)));
             DateTime d = DateTime.Parse(c);
             DatePickerEnd.SelectedDate = d;
+        }
+
+        private void xuatExcel()
+        {
+            string data = "";
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 0)
+                {
+                    var select = cbListNV.SelectedItem as ListEmployee;
+                    string uid = null;
+                    string dp = null;
+                    if (select != null)
+                    {
+                        uid = select.ep_id;
+                    }
+                    var select1 = cbPhongBan.SelectedItem as Item_dep;
+                    if (select1 != null)
+                    {
+                        dp = select1.dep_id;
+                    }
+                    string order;
+                    if (SearchBar.SelectedIndex != null)
+                    {
+                        order = (SearchBar.SelectedIndex + 1) + "";
+                    }
+                    else
+                    {
+                        order = 1 + "";
+                    }
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    string year = "", month = "";
+                    if (searchBarYear.SelectedItem != null)
+                        year = searchBarYear.SelectedItem.ToString().Split(' ')[1];
+                    if (searchBarMonth.SelectedIndex != -1)
+                        month = (searchBarMonth.SelectedIndex + 1) + "";
+                    web.QueryString.Add("m", month);
+                    web.QueryString.Add("y", year);
+                    web.QueryString.Add("uid", uid);
+                    web.QueryString.Add("dp", dp);
+                    web.QueryString.Add("order", order);
+                    // web.QueryString.Add("uid", id_nv);
+                }
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    data = UnicodeEncoding.UTF8.GetString(e.Result);
+                    File.WriteAllText("../../Views/TinhLuong/bang_luong.html", data);
+                    string filePath = "";
+                    // tạo SaveFileDialog để lưu file excel
+                    SaveFileDialog dialog = new SaveFileDialog();
+
+                    // chỉ lọc ra các file có định dạng Excel
+                    dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
+                    dialog.FileName = "bang_luong_365";
+                    // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
+                    if (dialog.ShowDialog() == true)
+                    {
+                        filePath = dialog.FileName;
+                        var workbook = new Workbook("../../Views/TinhLuong/bang_luong.html");
+                        try
+                        {
+                            workbook.Save(filePath);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                        loading.Visibility = Visibility.Collapsed;
+                        //converter.Convert(filePath, convertOptions);
+                    }
+
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_tbl_luong.php", web.QueryString);
+            }
+        }
+        private void XuatFileThongKe(object sender, MouseButtonEventArgs e)
+        {
+            loading.Visibility = Visibility.Visible;
+            xuatExcel();
         }
     }
 }

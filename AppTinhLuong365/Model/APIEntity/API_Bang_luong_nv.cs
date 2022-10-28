@@ -22,7 +22,6 @@ namespace AppTinhLuong365.Model.APIEntity
         public string dep_id { get; set; }
         public string dep_name { get; set; }
         public string luong_cb { get; set; }
-
         public string display_luong_cb
         {
             get
@@ -43,7 +42,6 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-
         public string pt_hop_dong { get; set; }
         public string cong_chuan { get; set; }
         public int cong_thuc { get; set; }
@@ -433,7 +431,27 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
+        public string display_thu_nhap_tinh_thue
+        {
+            get
+            {
+                string a = "";
+                double b = tong_luong - thue;
+                if (Convert.ToInt64(b) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(b.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(b.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
 
+                return a;
+            }
+        }
         private int _hover;
         public int hover
         {

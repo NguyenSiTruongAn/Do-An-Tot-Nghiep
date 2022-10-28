@@ -190,7 +190,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                         API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
                         if (api.data != null)
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1));
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1.ep_id));
                             Main.HomeSelectionPage.Visibility = Visibility.Visible;
                             this.Visibility = Visibility.Collapsed;
                         }
