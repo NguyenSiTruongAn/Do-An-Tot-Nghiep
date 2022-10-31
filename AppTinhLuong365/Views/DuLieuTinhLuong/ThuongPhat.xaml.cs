@@ -31,17 +31,25 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
     public partial class ThuongPhat : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
+
         public int IsSmallSize
         {
             get { return _IsSmallSize; }
-            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
+            set
+            {
+                _IsSmallSize = value;
+                OnPropertyChanged("IsSmallSize");
+            }
         }
+
         public MainWindow Main;
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         public ThuongPhat(MainWindow main)
         {
             ItemList = new ObservableCollection<string>();
@@ -49,11 +57,13 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 ItemList.Add($"Tháng {i}");
             }
+
             YearList = new ObservableCollection<string>();
             for (var i = 2022; i <= 2025; i++)
             {
                 YearList.Add($"Năm {i}");
             }
+
             InitializeComponent();
             this.DataContext = this;
             Main = main;
@@ -62,7 +72,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             string year = DateTime.Now.ToString("yyyy");
             cbThang.PlaceHolder = "Tháng " + month;
             cbNam.PlaceHolder = "Năm " + year;
-            getData(month,year,"","",1);
+            getData(month, year, "", "", 1);
             getData1();
             getData2();
         }
@@ -80,6 +90,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         }
 
         private static int totalNVCacNhom;
+
         private void getData(string month, string year, string ep_id, string dep_id, int page)
         {
             txtngay.Text = month + "/" + year;
@@ -89,12 +100,13 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_emp", ep_id);
                 web.QueryString.Add("month", month);
-                web.QueryString.Add("page", page+"");
+                web.QueryString.Add("page", page + "");
                 web.QueryString.Add("year", year);
                 web.QueryString.Add("dep_id", dep_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListThuongPhat api = JsonConvert.DeserializeObject<API_ListThuongPhat>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    API_ListThuongPhat api =
+                        JsonConvert.DeserializeObject<API_ListThuongPhat>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
                         listTP = api.data.thuong_phat;
@@ -102,6 +114,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         PageNVCacNhom = ListPageNumber(totalNVCacNhom);
                         loadPage(page, PageNVCacNhom);
                     }
+
                     foreach (var item in listTP)
                     {
                         if (item.img == "")
@@ -110,7 +123,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         }
                     }
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_payoff_manager.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_payoff_manager.php",
+                    web.QueryString);
             }
         }
 
@@ -123,7 +137,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 if (value == null) value = new List<ListEmployee>();
                 value.Insert(0, new ListEmployee() { ep_id = "-1", ep_name = "Tất cả nhân viên" });
-                _listNV = value; OnPropertyChanged();
+                _listNV = value;
+                OnPropertyChanged();
             }
         }
 
@@ -135,7 +150,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    API_ListEmployee api =
+                        JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data.data != null)
                     {
                         listNV = api.data.data.items;
@@ -148,7 +164,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     //    }
                     //}
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php",
+                    web.QueryString);
             }
         }
 
@@ -188,7 +205,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     //     }
                     // }
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_dep.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_dep.php",
+                    web.QueryString);
             }
         }
 
@@ -210,6 +228,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 IsSmallSize = 2;
             }
+
             if (this.ActualWidth > 2100)
             {
                 DockPanel.SetDock(dockThuongPhat, Dock.Right);
@@ -255,6 +274,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (pb.dep_id != "-1")
                     id_phong = pb.dep_id;
             }
+
             string id_user = "";
             if (cbNV.SelectedIndex > -1)
             {
@@ -262,6 +282,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (nv.ep_id != "-1")
                     id_user = nv.ep_id;
             }
+
             getData(month, year, id_user, id_phong, 1);
         }
 
@@ -274,6 +295,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 pnb.Add(i);
             }
+
             return pnb;
         }
 
@@ -282,7 +304,11 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         public List<int> PageNVCacNhom
         {
             get { return _PageNVCacNhom; }
-            set { _PageNVCacNhom = value; OnPropertyChanged(); }
+            set
+            {
+                _PageNVCacNhom = value;
+                OnPropertyChanged();
+            }
         }
 
         private int pagenow;
@@ -367,7 +393,6 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     PageTruoc.Visibility = Visibility.Visible;
                     Page1.Visibility = Visibility.Visible;
                     PageDau.Visibility = Visibility.Collapsed;
-
                 }
                 else if (loaiPage.Count > 1)
                 {
@@ -438,6 +463,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 PageTiep.Visibility = Visibility.Visible;
             }
         }
+
         private void ve_page_1(object sender, MouseButtonEventArgs e)
         {
             string month = DateTime.Now.ToString("MM");
@@ -454,6 +480,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (pb.dep_id != "-1")
                     id_phong = pb.dep_id;
             }
+
             string id_user = "";
             if (cbNV.SelectedIndex > -1)
             {
@@ -461,8 +488,9 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (nv.ep_id != "-1")
                     id_user = nv.ep_id;
             }
+
             getData(month, year, id_user, id_phong, 1);
-            
+
             BrushConverter bc = new BrushConverter();
             Page1.Background = (Brush)bc.ConvertFrom("#4C5BD4");
             Page2.Background = (Brush)bc.ConvertFrom("#FFFFFF");
@@ -489,6 +517,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (pb.dep_id != "-1")
                     id_phong = pb.dep_id;
             }
+
             string id_user = "";
             if (cbNV.SelectedIndex > -1)
             {
@@ -496,6 +525,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (nv.ep_id != "-1")
                     id_user = nv.ep_id;
             }
+
             getData(month, year, id_user, id_phong, pagenow - 1);
         }
 
@@ -515,6 +545,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (pb.dep_id != "-1")
                     id_phong = pb.dep_id;
             }
+
             string id_user = "";
             if (cbNV.SelectedIndex > -1)
             {
@@ -522,6 +553,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (nv.ep_id != "-1")
                     id_user = nv.ep_id;
             }
+
             getData(month, year, id_user, id_phong, pagenow + 1);
         }
 
@@ -541,6 +573,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (pb.dep_id != "-1")
                     id_phong = pb.dep_id;
             }
+
             string id_user = "";
             if (cbNV.SelectedIndex > -1)
             {
@@ -548,8 +581,10 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (nv.ep_id != "-1")
                     id_user = nv.ep_id;
             }
+
             getData(month, year, id_user, id_phong, PageNVCacNhom.Count);
         }
+
         private void select_page_click1(object sender, MouseButtonEventArgs e)
         {
             System.Windows.Controls.Border b = sender as System.Windows.Controls.Border;
@@ -568,6 +603,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (pb.dep_id != "-1")
                     id_phong = pb.dep_id;
             }
+
             string id_user = "";
             if (cbNV.SelectedIndex > -1)
             {
@@ -575,6 +611,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (nv.ep_id != "-1")
                     id_user = nv.ep_id;
             }
+
             getData(month, year, id_user, id_phong, pagenumber);
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
@@ -597,6 +634,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (pb.dep_id != "-1")
                     id_phong = pb.dep_id;
             }
+
             string id_user = "";
             if (cbNV.SelectedIndex > -1)
             {
@@ -604,6 +642,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (nv.ep_id != "-1")
                     id_user = nv.ep_id;
             }
+
             getData(month, year, id_user, id_phong, pagenumber);
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
@@ -626,6 +665,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (pb.dep_id != "-1")
                     id_phong = pb.dep_id;
             }
+
             string id_user = "";
             if (cbNV.SelectedIndex > -1)
             {
@@ -633,6 +673,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 if (nv.ep_id != "-1")
                     id_user = nv.ep_id;
             }
+
             getData(month, year, id_user, id_phong, pagenumber);
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
@@ -695,6 +736,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     web.QueryString.Add("y", year);
                     web.QueryString.Add("uid", id_nv);
                 }
+
                 web.UploadValuesCompleted += (s, ee) =>
                 {
                     data = UnicodeEncoding.UTF8.GetString(ee.Result);
@@ -717,14 +759,16 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         }
                         catch (Exception ex)
                         {
-                            System.Windows.MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            System.Windows.MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
                         }
+
                         loading.Visibility = Visibility.Collapsed;
                         //converter.Convert(filePath, convertOptions);
                     }
-
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_rose.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_rose.php",
+                    web.QueryString);
             }
         }
     }

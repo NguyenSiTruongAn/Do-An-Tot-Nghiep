@@ -16,7 +16,7 @@ namespace AppTinhLuong365.Model.APIEntity
     public class Item_Luong_nv
     {
         public string luong_cb { get; set; }
-        public int hop_dong { get; set; }
+        public string hop_dong { get; set; }
         public string display_luong_cb
         {
             get
@@ -40,7 +40,7 @@ namespace AppTinhLuong365.Model.APIEntity
         public string cong_chuan { get; set; }
         public int cong_thuc { get; set; }
         public int cong_sau_phat { get; set; }
-        public object cong_theo_tien { get; set; }
+        public string cong_theo_tien { get; set; }
         public string display_cong_theo_tien
         {
             get
@@ -488,6 +488,48 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
+        public List<ChiTietLuongDaTra> chi_tiet_luong_da_tra { get; set; }
+    }
+
+    public class ChiTietLuongDaTra
+    {
+        public string dp_money { get; set; }
+        public string display_dp_money
+        {
+            get
+            {
+                string a = "";
+                if (Convert.ToInt64(dp_money) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(dp_money.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(dp_money.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
+            }
+        }
+        public string dp_time { get; set; }
+
+        public string display_dp_time
+        {
+            get
+            {
+                string a = "";
+                if (dp_time != null)
+                {
+                    DateTime m;
+                    if (DateTime.TryParse(dp_time, out m)) a = m.ToString("dd/MM/yyyy");
+                }
+                return a;
+            }
+        }
+        public string pay_name { get; set; }
     }
 
     public class API_Luong_nv

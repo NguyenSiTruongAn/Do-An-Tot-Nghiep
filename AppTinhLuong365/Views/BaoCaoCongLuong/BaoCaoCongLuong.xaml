@@ -35,6 +35,20 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type Grid}">
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter= {StaticResource math}, ConverterParameter=(@VALUE/3)-20}"/>
+            <Setter Property="Margin" Value="10 10 10 10"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)-20}"/>
+                    <Setter Property="Margin" Value="10 10"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Page.Resources>
 
     <Grid Background="{DynamicResource #F7F8FC}">
@@ -52,27 +66,27 @@
                     <Border Style="{DynamicResource Style_Border_Wrap}">
                         <WrapPanel x:Name="Wrap_Border1"  HorizontalAlignment="Right">
                             <Border Width="148" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                <tool:SearchBar x:Name="searchBarMonth" FontSize="16" FontWeight="DemiBold" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
                             <Border Width="148" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                <tool:SearchBar FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                <tool:SearchBar x:Name="searchBarYear" FontSize="16" FontWeight="DemiBold" ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
-                            <Border Cursor="Hand" Width="105" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
+                            <Border MouseLeftButtonDown="ThongKe" Cursor="Hand" Width="105" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
                                 <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                             </Border>
                         </WrapPanel>
                     </Border>
                 </WrapPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Grid Margin="20 0 0 0" >
+                <WrapPanel x:Name="Wrap_Grid">
+                    <Grid Style="{StaticResource Style_Grid_Wrap}">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
                             </Border.Effect>
                         </Border>
-                        <Border Height="440" Width="360" VerticalAlignment="Top" CornerRadius="10">
+                        <Border Height="440" VerticalAlignment="Top" CornerRadius="10">
                             <StackPanel>
-                                <TextBlock Margin="0 25 0 0" Text="Tổng hợp lương" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"></TextBlock>
+                                <TextBlock Margin="0 25 0 0" Text="{DynamicResource textTHL}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"></TextBlock>
                                 <Grid Margin="20">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="35"/>
@@ -81,20 +95,32 @@
                                         <RowDefinition Height="35"/>
                                     </Grid.RowDefinitions>
                                     <Grid Grid.Row="0">
-                                        <TextBlock Text="Tổng lương thanh toán:" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
-                                        <TextBlock Text="{Binding congLuong.tong_luong}" HorizontalAlignment="Right" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                        <TextBlock FontSize="15" FontWeight="DemiBold">
+                                            <Run Text="&#x2022;" Foreground="{DynamicResource #c4c4c4}"/>
+                                            <Run Text="Tổng lương thanh toán:" Foreground="{DynamicResource #68798B}"/>
+                                        </TextBlock>
+                                        <TextBlock Text="{Binding congLuong.display_tong_luong}" HorizontalAlignment="Right" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                                     </Grid>
                                     <Grid Grid.Row="1">
-                                        <TextBlock Text="Tổng tiền bảo hiểm:" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
-                                        <TextBlock Text="{Binding congLuong.tong_bh}" HorizontalAlignment="Right" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                        <TextBlock FontSize="15" FontWeight="DemiBold">
+                                            <Run Text="&#x2022;" Foreground="{DynamicResource #c4c4c4}"/>
+                                            <Run Text="Tổng tiền bảo hiểm:" Foreground="{DynamicResource #68798B}"/>
+                                        </TextBlock>
+                                        <TextBlock Text="{Binding congLuong.display_tong_bh}" HorizontalAlignment="Right" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                                     </Grid>
                                     <Grid Grid.Row="2">
-                                        <TextBlock Text="Tổng thuế:" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
-                                        <TextBlock Text="{Binding congLuong.tong_thue}" HorizontalAlignment="Right" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                        <TextBlock FontSize="15" FontWeight="DemiBold">
+                                            <Run Text="&#x2022;" Foreground="{DynamicResource #c4c4c4}"/>
+                                            <Run Text="Tổng thuế:" Foreground="{DynamicResource #68798B}"/>
+                                        </TextBlock>
+                                        <TextBlock Text="{Binding congLuong.display_tong_thue}" HorizontalAlignment="Right" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                                     </Grid>
                                     <Grid Grid.Row="3">
-                                        <TextBlock Text="Tổng lương đã chi trả:" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
-                                        <TextBlock Text="{Binding congLuong.tong_ltb}" HorizontalAlignment="Right" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                        <TextBlock FontSize="15" FontWeight="DemiBold">
+                                            <Run Text="&#x2022;" Foreground="{DynamicResource #c4c4c4}"/>
+                                            <Run Text="Tổng lương đã chi trả:" Foreground="{DynamicResource #68798B}"/>
+                                        </TextBlock>
+                                        <TextBlock Text="{Binding congLuong.display_luong_da_tra}" HorizontalAlignment="Right" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                                     </Grid>
                                 </Grid>
                                 <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 170 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
@@ -103,7 +129,46 @@
                             </StackPanel>
                         </Border>
                     </Grid>
-                </StackPanel>
+                    <Grid Style="{StaticResource Style_Grid_Wrap}">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <Border Height="440" VerticalAlignment="Top" CornerRadius="10">
+                            <Grid>
+                                <TextBlock Margin="0 25 0 0" Text="{DynamicResource textPTBH}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
+                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                    <TextBlock Text="Chi tiết >" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Grid Style="{StaticResource Style_Grid_Wrap}">
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <Border Height="440" VerticalAlignment="Top" CornerRadius="10">
+                            <Grid>
+                                <TextBlock Margin="0 25 0 0" Text="{DynamicResource textPTT}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
+                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                    <TextBlock Text="Chi tiết >" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </WrapPanel>
+                <Grid Margin="10 20 10 0">
+                    <Border Style="{DynamicResource ShadowBorder2}"/>
+                    <Border>
+                        <StackPanel Margin="15 25">
+                            <TextBlock Text="{DynamicResource textPTMLNV}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center"/>
+                            <TextBlock Margin="0 0 0 20" Text="{DynamicResource textSLNV}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
             </StackPanel>
         </Border>
         <tool:LoadingSpinner x:Name="loading" Visibility="Collapsed"/>

@@ -1,16 +1,16 @@
-﻿<Page x:Class="AppTinhLuong365.Views.BaoCaoCongLuong.TongHopLuongNhanVienTheoChuKi"
+﻿<Page x:Class="AppTinhLuong365.Views.BaoCaoCongLuong.TongHopThongTinBaoHiem"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.BaoCaoCongLuong"
-      xmlns:math="clr-namespace:AppTinhLuong365.Core"
+      xmlns:core="clr-namespace:AppTinhLuong365.Core"
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
-      mc:Ignorable="d" 
-      Title="TongHopLuongNhanVienTheoChuKi" SizeChanged="Page_SizeChanged">
+      mc:Ignorable="d"
+      Title="TongHopThongTinBaoHiem" SizeChanged="Page_SizeChanged">
 
     <Page.Resources>
-        <math:MathConvert x:Key="math"></math:MathConvert>
+        <core:MathConvert x:Key="math"></core:MathConvert>
         <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type DockPanel}">
             <Setter Property="Width"
                     Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE/2)}" />
@@ -58,7 +58,7 @@
             </Border>
             <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                 <StackPanel Margin="20 0 20 0">
-                    <TextBlock Margin="0 20 0 0" Text="Tổng hợp lương nhân viên theo chu kỳ" FontSize="24"
+                    <TextBlock Margin="0 20 0 0" Text="Tổng hợp thông tin bảo hiểm của nhân viên" FontSize="24"
                                FontWeight="Bold"
                                Foreground="{DynamicResource #2E3467}">
                     </TextBlock>
@@ -213,24 +213,25 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textBaoHiem}">
+                            <DataGridTemplateColumn Header="{DynamicResource textPremiumSalary}">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent" MouseEnter="dataGrid1Hover"
                                                 MouseLeave="dataGrid1Leave">
-                                            <TextBlock Text="{Binding display_bao_hiem}"
+                                            <TextBlock Text="{Binding display_luong_bh}"
                                                        Style="{StaticResource TextRowCenter}">
                                             </TextBlock>
                                         </Border>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textThue}">
+
+                            <DataGridTemplateColumn Header="{DynamicResource textBaoHiem}">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent" MouseEnter="dataGrid1Hover"
                                                 MouseLeave="dataGrid1Leave">
-                                            <TextBlock Text="{Binding display_thue}"
+                                            <TextBlock Text="{Binding display_bao_hiem}"
                                                        Style="{StaticResource TextRowCenter}">
                                             </TextBlock>
                                         </Border>

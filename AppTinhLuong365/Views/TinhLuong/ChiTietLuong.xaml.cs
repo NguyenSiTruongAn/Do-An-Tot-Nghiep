@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
@@ -18,7 +19,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AppTinhLuong365.Model.APIEntity;
+using Aspose.Cells;
+using Microsoft.Win32;
 using Newtonsoft.Json;
+using Border = Aspose.Cells.Border;
 
 namespace AppTinhLuong365.Views.TinhLuong
 {
@@ -28,29 +32,42 @@ namespace AppTinhLuong365.Views.TinhLuong
     public partial class ChiTietLuong : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
+
         public int IsSmallSize
         {
             get { return _IsSmallSize; }
-            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
+            set
+            {
+                _IsSmallSize = value;
+                OnPropertyChanged("IsSmallSize");
+            }
         }
+
         public MainWindow Main;
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        private string ep_id;
 
-        public ChiTietLuong(MainWindow main, string name, string depName, string epId, int month, int year)
+        private string ep_id;
+        private string month;
+        private string year;
+        private string start_date;
+        private string end_date;
+
+        public ChiTietLuong(MainWindow main, string name, string depName, string epId, int month, int year, string startDate, string endDate)
         {
             ItemList = new ObservableCollection<string>();
             for (var i = 1; i <= 12; i++)
             {
                 ItemList.Add($"Tháng {i}");
             }
+
             YearList = new ObservableCollection<string>();
             var c = DateTime.Now.Year;
-            if (c != null)
+            if (c != 0)
             {
                 YearList.Add($"Năm {c - 1}");
                 YearList.Add($"Năm {c}");
@@ -62,12 +79,16 @@ namespace AppTinhLuong365.Views.TinhLuong
             Main = main;
             // string Month = DateTime.Now.ToString("MM");
             // string Year = DateTime.Now.ToString("yyyy");
-            string start_date = DateTime.Now.ToString("yyyy-MM-01");
-            string end_date = DateTime.Now.ToString("yyyy-MM-30");
+            // string start_date = DateTime.Now.ToString("yyyy-MM-01");
+            // string end_date = DateTime.Now.ToString("yyyy-MM-30");
             int d = month + 1;
             int e = year + DateTime.Now.Year - 1;
+            this.month = d + "";
+            this.year = e + "";
             searchBarMonth.SelectedIndex = d - 1;
             searchBarYear.SelectedIndex = e - e + 1;
+            start_date = startDate;
+            end_date = endDate;
             DateTime a = (DateTime.Parse(start_date));
             DateTime b = (DateTime.Parse(end_date));
             DatePickerStart.SelectedDate = a;
@@ -111,6 +132,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             }
         }
 
+
         private void getData(int month, int year, string start_date, string end_date)
         {
             using (WebClient web = new WebClient())
@@ -121,8 +143,20 @@ namespace AppTinhLuong365.Views.TinhLuong
                 web.QueryString.Add("month", month.ToString());
                 web.QueryString.Add("year", year.ToString());
                 web.QueryString.Add("id_user", ep_id);
-                web.QueryString.Add("start_date", start_date);
-                    web.QueryString.Add("end_date", end_date);
+                string a = "";
+                if (start_date != null)
+                {
+                    DateTime m;
+                    if (DateTime.TryParse(start_date, out m)) a = m.ToString("yyyy-MM-dd");
+                }
+                web.QueryString.Add("start_date", a);
+                string b = "";
+                if (end_date != null)
+                {
+                    DateTime m;
+                    if (DateTime.TryParse(end_date, out m)) b = m.ToString("yyyy-MM-dd");
+                }
+                web.QueryString.Add("end_date", b);
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     API_Luong_nv api =
@@ -151,6 +185,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             DateTime d = DateTime.Parse(c);
             DatePickerEnd.SelectedDate = d;
         }
+
         private void ThongKe(object sender, MouseButtonEventArgs e)
         {
             string year = "", month = "", start_date = "", end_date = "";
@@ -170,7 +205,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             }
             else
                 start_date = DateTime.Now.ToString("yyyy-MM-01");
-            
+
             if (DatePickerEnd.SelectedDate != null)
                 end_date = DatePickerEnd.SelectedDate.Value.ToString("yyyy-MM-dd");
             else if (searchBarMonth != null && searchBarYear != null)
@@ -183,13 +218,123 @@ namespace AppTinhLuong365.Views.TinhLuong
             getData(Convert.ToInt32(month), Convert.ToInt32(year), start_date, end_date);
         }
 
-        // [System.ComponentModel.Bindable(true)]
-        // public System.Windows.Controls.Primitives.PopupAnimation PopupAnimation { get; set; }
-        //
-        // private void Open(object sender, MouseEventArgs e)
-        // {
-        //     myPopup.AllowsTransparency = true;
-        //     myTextBlockPopup.PopupAnimation = PopupAnimation.Fade;
-        // }
+        private void btnTienThuong(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.TinhLuong.Popup.PopupThuong(Main, ep_id, month, year);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 615, z.Y + 20, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void Phat(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.TinhLuong.Popup.PopupPhat(Main, ep_id, month, year);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 615, z.Y + 20, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void HoaHong(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.TinhLuong.Popup.PopupHoaHong(Main, ep_id, month, year);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 615, z.Y, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void Luong(object sender, MouseButtonEventArgs e)
+        {
+            Border b = sender as Border;
+            var pop = new Views.TinhLuong.Popup.PopupLuongDaTra(Main, ep_id, month, year, start_date, end_date);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 615, z.Y, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void xuatExcel()
+        {
+            // string year = "", month = "", id_nv = "";
+            // this.Dispatcher.Invoke(() =>
+            // {
+            //     if (cbNam.SelectedIndex != -1)
+            //         year = cbNam.SelectedItem.ToString().Split(' ')[1];
+            //     else
+            //         year = DateTime.Now.ToString("yyyy");
+            //     if (cbThang.SelectedIndex != -1)
+            //         month = (cbThang.SelectedIndex + 1) + "";
+            //     else month = DateTime.Now.ToString("MM");
+            //     if (cbListNV.SelectedIndex != -1)
+            //     {
+            //         ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+            //         string id2 = id1.ep_id;
+            //         if (id2 == "-1")
+            //             id_nv = "";
+            //         else id_nv = id2;
+            //     }
+            // });
+            /*MultipartFormDataContent content = new MultipartFormDataContent();
+            content.Add(new StringContent(Main.CurrentCompany.com_id), "id_comp");
+            content.Add(new StringContent(Main.CurrentCompany.token), "token");
+            content.Add(new StringContent(month), "m");
+            content.Add(new StringContent(year), "y");
+            content.Add(new StringContent(id_nv), "uid");
+            HttpClient httpClient = new HttpClient();
+            Task<HttpResponseMessage> response = httpClient.PostAsync("https://tinhluong.timviec365.vn/api_app/company/export_rose.php", content);
+            string data = response.Result.Content.ReadAsStringAsync().Result;*/
+            string data = "";
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 0)
+                {
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("m", month);
+                    web.QueryString.Add("y", year);
+                    web.QueryString.Add("uid", ep_id);
+                }
+
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    data = UnicodeEncoding.UTF8.GetString(e.Result);
+                    File.WriteAllText("../../Views/DuLieuTinhLuong/bang_luong_nhan_vien.html", data);
+                    string filePath = "";
+                    // tạo SaveFileDialog để lưu file excel
+                    SaveFileDialog dialog = new SaveFileDialog();
+
+                    // chỉ lọc ra các file có định dạng Excel
+                    dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
+                    dialog.FileName = "bang_luong_nhan_vien_365";
+                    // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
+                    if (dialog.ShowDialog() == true)
+                    {
+                        filePath = dialog.FileName;
+                        var workbook = new Workbook("../../Views/DuLieuTinhLuong/bang_luong_nhan_vien.html");
+                        try
+                        {
+                            workbook.Save(filePath);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+
+                        loading.Visibility = Visibility.Collapsed;
+                        //converter.Convert(filePath, convertOptions);
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_tbl_luong.php",
+                    web.QueryString);
+            }
+        }
+
+        private void XuatFileThongKe(object sender, MouseButtonEventArgs e)
+        {
+            loading.Visibility = Visibility.Visible;
+            xuatExcel();
+        }
     }
 }

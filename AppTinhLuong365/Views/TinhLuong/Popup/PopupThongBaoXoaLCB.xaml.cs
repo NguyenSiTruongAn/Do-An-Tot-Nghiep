@@ -61,7 +61,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                     }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/profile_delete.php", web.QueryString);
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main,data));
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main,data.ep_id));
                 Main.sidebar.SelectedIndex = -1;
                 this.Visibility = Visibility.Collapsed;
             }

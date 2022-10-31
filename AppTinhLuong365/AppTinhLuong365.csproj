@@ -200,6 +200,7 @@
     <Compile Include="Model\APIEntity\API_List_Holiday.cs" />
     <Compile Include="Model\APIEntity\API_List_Np_Improperly.cs" />
     <Compile Include="Model\APIEntity\API_List_pay.cs" />
+    <Compile Include="Model\APIEntity\API_List_rose_nv.cs" />
     <Compile Include="Model\APIEntity\API_List_shift.cs" />
     <Compile Include="Model\APIEntity\API_Luong_nv.cs" />
     <Compile Include="Model\APIEntity\API_Payroll.cs" />
@@ -244,6 +245,12 @@
     </Compile>
     <Compile Include="Views\BaoCaoCongLuong\TongHopLuongNhanVienTheoChuKi.xaml.cs">
       <DependentUpon>TongHopLuongNhanVienTheoChuKi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BaoCaoCongLuong\TongHopThongTinBaoHiem.xaml.cs">
+      <DependentUpon>TongHopThongTinBaoHiem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BaoCaoCongLuong\TongHopThongTinThue.xaml.cs">
+      <DependentUpon>TongHopThongTinThue.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CaiDat\CaiCaVaLichLamViec.xaml.cs">
       <DependentUpon>CaiCaVaLichLamViec.xaml</DependentUpon>
@@ -751,6 +758,14 @@
     </Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupChinhSuaThue.xaml.cs">
       <DependentUpon>PopupChinhSuaThue.xaml</DependentUpon>
+    <Compile Include="Views\TinhLuong\Popup\PopupHoaHong.xaml.cs">
+      <DependentUpon>PopupHoaHong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\Popup\PopupLuongDaTra.xaml.cs">
+      <DependentUpon>PopupLuongDaTra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TinhLuong\Popup\PopupPhat.xaml.cs">
+      <DependentUpon>PopupPhat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupSuaDongGop.xaml.cs">
       <DependentUpon>PopupSuaDongGop.xaml</DependentUpon>
@@ -772,6 +787,8 @@
     </Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupXoaThueNV.xaml.cs">
       <DependentUpon>PopupXoaThueNV.xaml</DependentUpon>
+    <Compile Include="Views\TinhLuong\Popup\PopupThuong.xaml.cs">
+      <DependentUpon>PopupThuong.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TinhLuong\TamUng.xaml.cs">
       <DependentUpon>TamUng.xaml</DependentUpon>
@@ -886,6 +903,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\BaoCaoCongLuong\TongHopLuongNhanVienTheoChuKi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BaoCaoCongLuong\TongHopThongTinBaoHiem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BaoCaoCongLuong\TongHopThongTinThue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1601,7 +1626,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TinhLuong\Popup\PopupChinhSuaThue.xaml">
+    <Page Include="Views\TinhLuong\Popup\PopupChinhSuaThue.xaml"/>
+    <Page Include="Views\TinhLuong\Popup\PopupHoaHong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\Popup\PopupLuongDaTra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\Popup\PopupPhat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1629,7 +1663,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TinhLuong\Popup\PopupXoaThueNV.xaml">
+    <Page Include="Views\TinhLuong\Popup\PopupXoaThueNV.xaml"/>
+    <Page Include="Views\TinhLuong\Popup\PopupThuong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1829,8 +1864,16 @@
     <Resource Include="Login\Resources\Images\QR_timviec_uv.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\BaoCaoCongLuong\Excel\thue.html" />
+    <Content Include="Views\BaoCaoCongLuong\Excel\tong_hop_bao_hiem.html" />
+    <Content Include="Views\BaoCaoCongLuong\Excel\tong_hop_luong.html" />
+    <Content Include="Views\CaiDat\di_muon_ve_som.html">
+      <Generator>MSBuild:Compile</Generator>
+    </Content>
     <Content Include="Views\DuLieuTinhLuong\hoa_hong365.html" />
     <Content Include="Views\DuLieuTinhLuong\thuong_phat_365.html" />
+    <Content Include="Views\TinhLuong\bang_luong.html" />
+    <Content Include="Views\TinhLuong\bang_luong_nhan_vien.html" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

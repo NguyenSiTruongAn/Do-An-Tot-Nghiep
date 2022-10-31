@@ -293,7 +293,7 @@ namespace AppTinhLuong365.Views
         {
             DockPanel dp = sender as DockPanel;
             ItemEmp data = (ItemEmp)dp.DataContext;
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data));
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data.ep_id));
             Main.title.Text = " Danh sách nhân viên/ Hồ sơ nhân viên";
             Main.sidebar.SelectedIndex = -1;
         }
