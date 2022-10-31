@@ -32,8 +32,9 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
-                var x = DateTime.Parse(start_time);
-                string result = DateTime.Parse(start_time).ToString("HH:mm") + " - " + DateTime.Parse(end_time).ToString("HH:mm");
+                string result = "";
+                if(!string.IsNullOrEmpty(start_time))
+                    result = DateTime.Parse(start_time).ToString("HH:mm") + " - " + DateTime.Parse(end_time).ToString("HH:mm");
                 return result;
             }
         }
@@ -42,25 +43,13 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
-                string result = "";
-                if (string.IsNullOrEmpty(check_in))
-                    result = "0";
-                else
-                {
-                    if (string.IsNullOrEmpty(check_out))
-                        result = "1";
-                    else
-                    {
-                        if (DateTime.Parse(ts_date + " " + start_time) < DateTime.Parse(check_in) || DateTime.Parse(ts_date + " " + end_time) > DateTime.Parse(check_out))
-                        {
-                            result = "2";
-                        }
-                        else
-                            result = "3";
-                    }
-                }
+                string result = "0";
+                if(!string.IsNullOrEmpty(check_in))
+                if (check == "Ca muộn")
+                    result = "2";
                 return result;
             }
         }
+        public string check { get; set; }
     }
 }

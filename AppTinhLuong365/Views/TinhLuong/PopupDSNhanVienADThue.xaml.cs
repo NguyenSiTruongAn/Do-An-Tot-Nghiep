@@ -1,7 +1,10 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,20 +37,61 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public PopupDSNhanVienADThue(MainWindow main)
+        public PopupDSNhanVienADThue(MainWindow main, string id, string name)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            this.id = id;
+            Name.Text = name;
+            getData();
         }
-        public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
+
+        private string id;
+
+        private List<DSNVADThue> _listDSNV;
+
+        public List<DSNVADThue> listDSNV
+        {
+            get { return _listDSNV; }
+            set { _listDSNV = value; OnPropertyChanged(); }
+        }
+
+        private void getData()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                using (WebClient web = new WebClient())
+                {
+                    if (Main.MainType == 0)
+                    {
+                        web.QueryString.Add("token", Main.CurrentCompany.token);
+                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                        web.QueryString.Add("id_tax", id);
+                    }
+                    web.UploadValuesCompleted += (s, e) =>
+                    {
+                        API_DSNVADThue api = JsonConvert.DeserializeObject<API_DSNVADThue>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listDSNV = api.data.list;
+                            for (int i = 0; i < listDSNV.Count; i++)
+                            {
+                                if (listDSNV[i].ep_image == "../img/add.png")
+                                    listDSNV[i].ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_user_in_tax.php", web.QueryString);
+                }
+            });
+        }
+
         private void BtnThemNhanVien_Click(object sender, MouseButtonEventArgs e)
         {
             var pop = new Views.TinhLuong.PopupThemNhanVienVaoThue(Main,"");
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-            pop.Width = 616;
-            pop.Height = 462;
         }
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -69,12 +113,20 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-
+            Main.scrolPopup.ScrollToVerticalOffset(Main.scrolPopup.VerticalOffset - e.Delta);
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void XoaNV(object sender, MouseButtonEventArgs e)
+        {
+            Border b = sender as Border;
+            DSNVADThue data = (DSNVADThue)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.Popup.PopupXoaThueNV(Main, data.cls_id));
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

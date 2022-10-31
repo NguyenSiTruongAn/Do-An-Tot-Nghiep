@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,20 +19,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.TinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupTGADThue.xaml
+    /// Interaction logic for PopupThoiGianADTNV.xaml
     /// </summary>
-    public partial class PopupTGADThue : Page, INotifyPropertyChanged
+    public partial class PopupThoiGianADTNV : Page, INotifyPropertyChanged
     {
         MainWindow Main;
-        ItemUserTax data;
-        public PopupTGADThue(MainWindow main, ItemUserTax data)
+        public string id { get; set; }
+        public PopupThoiGianADTNV(MainWindow main, string id, List<ListEmployee> data)
         {
-            InitializeComponent();
-            this.DataContext = this;
+            InitializeComponent(); this.DataContext = this;
             Main = main;
+            listNV1 = data;
             dteSelectedMonth = new Calendar();
             dteSelectedMonth.Visibility = Visibility.Collapsed;
             dteSelectedMonth.DisplayMode = CalendarMode.Year;
@@ -48,9 +49,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             cl1 = new List<Calendar>();
             cl1.Add(dteSelectedMonth1);
             cl1 = cl1.ToList();
-            this.data = data;
-            textThangAD.Text = DateTime.Parse(data.cls_day).ToString("MM/yyyy");
-            textThangAD1.Text = DateTime.Parse(data.cls_day_end).ToString("MM/yyyy");
+            this.id = id;
         }
         Calendar dteSelectedMonth { get; set; }
         Calendar dteSelectedMonth1 { get; set; }
@@ -82,9 +81,27 @@ namespace AppTinhLuong365.Views.TinhLuong
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private List<ListEmployee> _listNV1;
+        public List<ListEmployee> listNV1
+        {
+            get { return _listNV1; }
+            set { _listNV1 = value; OnPropertyChanged(); }
+        }
+
+        private void Btn_QuayLai_Click(object sender, MouseButtonEventArgs e)
+        {
+            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemNhanVienVaoThue(Main, id));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Main.scrolPopup.ScrollToVerticalOffset(Main.scrolPopup.VerticalOffset - e.Delta);
         }
 
         int flag = 0;
@@ -143,6 +160,12 @@ namespace AppTinhLuong365.Views.TinhLuong
             flag1 += 1;
         }
 
+        private void tbInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
         private void LuuLai(object sender, MouseButtonEventArgs e)
         {
             bool allow = true;
@@ -152,11 +175,6 @@ namespace AppTinhLuong365.Views.TinhLuong
                 allow = false;
                 validateDate.Text = "Vui lòng chọn thời gian áp dụng";
             }
-            if(textThangAD1.Text != "--------- ----" && DateTime.Parse(textThangAD.Text) > DateTime.Parse(textThangAD1.Text))
-            {
-                allow = false;
-                validateDate1.Text = "Vui lòng chọn tháng kết thúc lớn hơn tháng bắt đầu";
-            }    
             if (allow)
             {
                 using (WebClient web = new WebClient())
@@ -166,26 +184,28 @@ namespace AppTinhLuong365.Views.TinhLuong
                         web.QueryString.Add("token", Main.CurrentCompany.token);
                         web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     }
-                    web.QueryString.Add("id_list", data.cls_id);
+                    web.QueryString.Add("id_tax", id);
+                    for (int i = 0; i < listNV1.Count; i++)
+                    {
+                        web.QueryString.Add("id_emp[" + i + "]", listNV1[i].ep_id);
+                    }
 
                     DateTime chuky = DateTime.Parse(textThangAD.Text);
-                    web.QueryString.Add("time", chuky.ToString("yyyy-MM-dd"));
+                    web.QueryString.Add("date", chuky.ToString("yyyy-MM-dd"));
                     if (textThangAD1.Text != "--------- ----")
-                        web.QueryString.Add("time_end", DateTime.Parse(textThangAD1.Text).ToString("yyyy-MM-dd"));
+                        web.QueryString.Add("date_end", DateTime.Parse(textThangAD1.Text).ToString("yyyy-MM-dd"));
                     else
-                        web.QueryString.Add("time_end", "");
+                        web.QueryString.Add("date_end", "");
                     web.UploadValuesCompleted += (s, ee) =>
                     {
                         API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
                         if (api.data != null)
                         {
-                            var pop = new Views.TinhLuong.Thue(Main);
-                            Main.HomeSelectionPage.NavigationService.Navigate(pop);
-                            pop.tb.SelectedIndex = 2;
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.Thue(Main));
                             this.Visibility = Visibility.Collapsed;
                         }
                     };
-                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_user_in_tax.php", web.QueryString);
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_emp_tax.php", web.QueryString);
                 }
             }
         }

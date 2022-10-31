@@ -10,6 +10,7 @@ namespace AppTinhLuong365.Model.APIEntity
     public class ListEmployeeChuaThietLapThue
     {
         public List<ItemThue> list { get; set; }
+        public int total { get; set; }
         public string message { get; set; }
     }
 

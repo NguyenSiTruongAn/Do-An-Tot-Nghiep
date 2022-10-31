@@ -1,31 +1,31 @@
-﻿<Page x:Class="AppTinhLuong365.Views.TinhLuong.PopupThue"
+﻿<Page x:Class="AppTinhLuong365.Views.TinhLuong.Popup.PopupChinhSuaThue"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong"
+      xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong.Popup"
       mc:Ignorable="d" 
-      VerticalAlignment="Top"
-      Title="PopupThue">
-    <Grid Margin="0 50 0 0" Width="510">
+      Title="PopupChinhSuaThue">
+
+    <Grid Width="495" Height="433">
         <Border Style="{StaticResource ShadowBorder1}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
-            <StackPanel Margin="0 0 0 20">
+            <StackPanel>
                 <Border CornerRadius="8 8 0 0" Height="47" Background="{DynamicResource #4C5BD4}" VerticalAlignment="Top">
                     <Grid>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" Text="Thêm mới chính sách thuế"></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" Text="Chỉnh sửa"></TextBlock>
                         <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" HorizontalAlignment="Right" Padding="0 3 17 0" FontWeight="Bold" FontFamily="roboto" Text="x" FontSize="28" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                     </Grid>
                 </Border>
                 <StackPanel Width="450">
                     <TextBlock Margin="0 30 0 0">
-                        <Run Text="Tên chính sách thuế" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
+                        <Run Text="Tên khoản tiền khác" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                     </TextBlock>
                     <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid Height="38" Margin="10 0 10 0">
                             <TextBox VerticalAlignment="Center" x:Name="tbInput" TextWrapping="Wrap" FontSize="16" Foreground="{DynamicResource #777777}" BorderThickness="0"/>
-                            <TextBlock VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="Nhập tên chính sách thuế" IsHitTestVisible="False">
+                            <TextBlock VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #777777}" TextWrapping="Wrap" Text="Nhập tên khoản tiền" IsHitTestVisible="False">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -39,7 +39,7 @@
                             </TextBlock>
                         </Grid>
                     </Border>
-                    <TextBlock x:Name="txtValidateName" Style="{StaticResource tblValidate}"/>
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" Name="txtValuedateName"/>
                     <TextBlock Text="Miêu tả chính sách" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold" Margin="0 5"></TextBlock>
                     <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Height="117">
                         <Grid Margin="10">
@@ -62,13 +62,12 @@
                         <TextBlock Text="Thiết lập công thức" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                         <Path Margin="5 0 0 0" VerticalAlignment="Center" Data="{DynamicResource iconArrowRight}" Fill="{DynamicResource #4C5BD4}"></Path>
                     </DockPanel>
-                    <TextBlock x:Name="txtValidate" Style="{StaticResource tblValidate}"/>
-                    <Border Cursor="Hand" MouseLeftButtonDown="ThemMoiThue" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                    <TextBlock Text="" Style="{StaticResource tblValidate}" Name="txtValuedate"/>
+                    <Border MouseLeftButtonDown="LuuThayDoi" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
                         <TextBlock Text="Lưu" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Border>
                 </StackPanel>
             </StackPanel>
         </Border>
-
     </Grid>
 </Page>

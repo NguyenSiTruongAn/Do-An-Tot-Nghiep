@@ -16,15 +16,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.TinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupThongBaoXoa.xaml
+    /// Interaction logic for PopupXoaNVKhoiThue.xaml
     /// </summary>
-    public partial class PopupThongBaoXoa : Page
+    public partial class PopupXoaNVKhoiThue : Page
     {
-        MainWindow Main;
-        public PopupThongBaoXoa(MainWindow main, string id)
+        public PopupXoaNVKhoiThue(MainWindow main, string id)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -32,6 +31,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             this.id = id;
         }
 
+        MainWindow Main;
         private string id;
 
         private void Close_Click(object sender, MouseButtonEventArgs e)
@@ -39,7 +39,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             this.Visibility = Visibility.Collapsed;
         }
 
-        private void XoaThue(object sender, MouseButtonEventArgs e)
+        private void TiepTuc(object sender, MouseButtonEventArgs e)
         {
             using (WebClient web = new WebClient())
             {
@@ -47,19 +47,20 @@ namespace AppTinhLuong365.Views.TinhLuong
                 {
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                    web.QueryString.Add("id_tax", id);
+                    web.QueryString.Add("id_list", id);
                 }
                 web.UploadValuesCompleted += (s, e1) =>
                 {
                     API_XoaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_XoaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e1.Result));
                     if (api.data != null)
                     {
-                        Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.Thue(Main));
+                        var pop = new Views.TinhLuong.Thue(Main);
+                        Main.HomeSelectionPage.NavigationService.Navigate(pop);
+                        pop.tb.SelectedIndex = 2;
                         this.Visibility = Visibility.Collapsed;
                     }
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/remove_tax.php", web.QueryString);
-                
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/delete_user_in_tax.php", web.QueryString);
             }
         }
     }

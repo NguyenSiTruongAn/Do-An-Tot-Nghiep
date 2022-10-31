@@ -16,28 +16,46 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppTinhLuong365.Views.TinhLuong
+namespace AppTinhLuong365.Views.TinhLuong.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupThue.xaml
+    /// Interaction logic for PopupChinhSuaThue.xaml
     /// </summary>
-    public partial class PopupThue : Page
+    public partial class PopupChinhSuaThue : Page
     {
-        MainWindow Main;
-        private string name1, note1, name_ct1, ct1, ct_hs1;
-
-        private void ThemMoiThue(object sender, MouseButtonEventArgs e)
+        public PopupChinhSuaThue(MainWindow main, string id, string name, string note, string name_ct, string ct, string ct_hs, string fs_id)
         {
+            InitializeComponent();
+            this.DataContext = this;
+            Main = main;
+            name1 = name;
+            note1 = note;
+            name_ct1 = name_ct;
+            ct1 = ct;
+            ct_hs1 = ct_hs;
+            tbInput.Text = name;
+            tbInput1.Text = note;
+            fs_id1 = fs_id;
+            id1 = id;
+        }
+        MainWindow Main;
+        private string id1, name1, note1, name_ct1, ct1, ct_hs1, fs_id1;
+
+        private void LuuThayDoi(object sender, MouseButtonEventArgs e)
+        {
+            txtValuedate.Text = txtValuedateName.Text = "";
+            string name = tbInput.Text;
+            string note = tbInput1.Text;
             bool allow = true;
+            if (string.IsNullOrEmpty(name))
+            {
+                txtValuedateName.Text = "Vui nhập tên Thuế";
+                allow = false;
+            }
             if (string.IsNullOrEmpty(ct1))
             {
+                txtValuedate.Text = "Vui lòng thiết lập công thức";
                 allow = false;
-                txtValidate.Text = "Vui lòng thiết lập công thức";
-            }
-            if (string.IsNullOrEmpty(tbInput.Text))
-            {
-                allow = false;
-                txtValidateName.Text = "Vui lòng nhập tên thuế";
             }
             if (allow)
             {
@@ -51,8 +69,9 @@ namespace AppTinhLuong365.Views.TinhLuong
                     web.QueryString.Add("name_recipe", name_ct1);
                     web.QueryString.Add("type_data", ct_hs1);
                     web.QueryString.Add("recipe", ct1);
-                    web.QueryString.Add("name", tbInput.Text);
-                    web.QueryString.Add("des", tbInput1.Text);
+                    web.QueryString.Add("name", name);
+                    web.QueryString.Add("des", note);
+                    web.QueryString.Add("id_tax", id1);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
                         API_ThemCKTK api = JsonConvert.DeserializeObject<API_ThemCKTK>(UnicodeEncoding.UTF8.GetString(ee.Result));
@@ -62,22 +81,9 @@ namespace AppTinhLuong365.Views.TinhLuong
                             this.Visibility = Visibility.Collapsed;
                         }
                     };
-                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/create_tax.php", web.QueryString);
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_tax.php", web.QueryString);
                 }
-                //Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.CacKhoanTienKhac(Main));
             }
-        }
-
-        public PopupThue(MainWindow main, string name, string note, string nam_ct, string ct, string ct_hs)
-        {
-            InitializeComponent();
-            this.DataContext = this;
-            Main = main;
-            tbInput.Text = name;
-            tbInput1.Text = note;
-            name_ct1 = nam_ct;
-            ct1 = ct;
-            ct_hs1 = ct_hs;
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -87,9 +93,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void ThietLapCongThuc_MouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            name1 = tbInput.Text;
-            note1 = tbInput1.Text;
-            var pop = new Views.TinhLuong.PopupChinhSuaThue(Main, "0", name1, note1);
+            var pop = new Views.DuLieuTinhLuong.Popup.PopupChinhSuaCongThuc(Main, id1, tbInput.Text, tbInput1.Text, name_ct1, ct1, ct_hs1, fs_id1, "0");
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
         }

@@ -69,6 +69,8 @@ namespace AppTinhLuong365.Resouce.tool
             set
             {
                 SetValue(ItemsSourceProperty, value);
+                Refresh();
+                OnPropertyChanged();
             }
         }
         // Using a DependencyProperty as the backing store for ItemsSource.  This enables animation, styling, binding, etc...

@@ -19,31 +19,48 @@
                     <Grid Margin="0 30 0 0">
                         <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
                             <Border.Background>
-                                <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                <ImageBrush ImageSource="{Binding data.ep_image}"></ImageBrush>
                             </Border.Background>
                         </Border>
-                        <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                        <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                        <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding data.ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                        <TextBlock Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}">
+                            <Run Text="ID:"/>
+                            <Run Text="{Binding data.ep_id}"/>
+                        </TextBlock>
                     </Grid>
                     <TextBlock Margin="0 10 0 0">
                         <Run Text="Áp dụng từ tháng" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                     </TextBlock>
-                    <Border Margin="0 5 0 0" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" CornerRadius="3" Height="43">
-                        <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
+                    <Border Margin="0 5 10 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid>
+                            <TextBlock x:Name="textThangAD" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Border Background="Transparent" MouseLeftButtonDown="Select_thang" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
+                            </Border>
+                        </Grid>
                     </Border>
-                    <TextBlock Text="Đến tháng(Không bắt buộc)" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold" Margin="0 5"></TextBlock>
-                    <Border Margin="0 5 0 0" BorderBrush="{DynamicResource #DDDDDD}" BorderThickness="1" CornerRadius="3" Height="43">
-                        <tool:DatePicker FontSize="15" Foreground="{DynamicResource #777777}"/>
+                    <TextBlock x:Name="validateDate" Style="{StaticResource tblValidate}"/>
+                    <ListView ItemsSource="{Binding cl}" HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="0"></ListView>
+                    <TextBlock Text="Đến tháng (Không bắt buộc)" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold" Margin="0 5"></TextBlock>
+                    <Border Margin="0 5 10 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                        <Grid>
+                            <TextBlock x:Name="textThangAD1" Margin="14 0 0 0" Text="--------- ----" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" FontSize="16"/>
+                            <Border Background="Transparent" MouseLeftButtonDown="Select_thang1" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Path Data="{DynamicResource iconLich}"  VerticalAlignment="Center" Stroke="Black" HorizontalAlignment="Center" Margin="0 0 10 0"/>
+                            </Border>
+                        </Grid>
                     </Border>
+                    <ListView ItemsSource="{Binding cl1}" HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="0"></ListView>
                     <TextBlock Margin="0 0 0 0">
                         <Run Text="Loại thuế" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"></Run>
                         <Run Text="*" Foreground="{DynamicResource #FF0000}"></Run>
                     </TextBlock>
                     <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="3" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 5 0 0">
-                        <ComboBox Style="{StaticResource Combobox2}"></ComboBox>
+                        <ComboBox Name="cbLoai" Style="{StaticResource Combobox2}" SelectedIndex="0" ItemsSource="{Binding listCSThue,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath ="cl_name"></ComboBox>
                     </Border>
-                    <Border Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                    <TextBlock x:Name="validateThue" Style="{StaticResource tblValidate}"/>
+                    <Border Cursor="Hand" MouseLeftButtonDown="LuuThayDoi" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
                         <TextBlock Text="Lưu lại" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Border>
                 </StackPanel>

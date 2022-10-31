@@ -72,14 +72,13 @@ namespace AppTinhLuong365
             var workingArea = System.Windows.SystemParameters.WorkArea;
             this.Width = workingArea.Right - 180;
             this.Height = workingArea.Bottom - 100;
-            SideBarIndex = 0;
             CurrentCompany = api.data;
+            SideBarIndex = 0;
             sidebar.Visibility = Visibility.Visible;
             sidebarNV.Visibility = Visibility.Collapsed;
             tblUserName.Text = CurrentCompany.com_name;
             CurrentImage = "https://chamcong.24hpay.vn/upload/company/logo/" + CurrentCompany.com_logo;
             MainType = 0;
-
         }
 
         public MainWindow(API_Login_Employee api)
@@ -90,13 +89,13 @@ namespace AppTinhLuong365
             var workingArea = System.Windows.SystemParameters.WorkArea;
             this.Width = workingArea.Right - 180;
             this.Height = workingArea.Bottom - 100;
-            SideBarIndexNV = 0;
+            MainType = 1;
             CurrentEmployee = api.data;
+            SideBarIndexNV = 0;
             sidebar.Visibility = Visibility.Collapsed;
             sidebarNV.Visibility = Visibility.Visible;
             tblUserName.Text = CurrentEmployee.ep_name;
             CurrentImage = "https://chamcong.24hpay.vn/upload/employee/"+CurrentEmployee.ep_image;
-            MainType = 1;
         }
         public DataLogin_Company CurrentCompany { get; set; }
         public DataLogin_Employee CurrentEmployee { get; set; }
@@ -172,6 +171,25 @@ namespace AppTinhLuong365
             }
         }
 
+        private List<SideBarItemCom> _SideBarItemsNV = new List<SideBarItemCom>() {
+                new SideBarItemCom(){ Icon=App.Current.Resources["iconHome"],Name=App.Current.Resources["textAccManagement"] as string},
+                new SideBarItemCom(){ Icon=App.Current.Resources["iconNhapLuongCoBanVaCheDo"],Name=App.Current.Resources["textProfile"] as string},
+                new SideBarItemCom(){ Icon=App.Current.Resources["iconDuLieuTinhLuong"],Name=App.Current.Resources["textSalary"] as string, typePath =1},
+                new SideBarItemCom(){ Icon=App.Current.Resources["iconCalendar"],Name=App.Current.Resources["textChamCong"] as string},
+                new SideBarItemCom(){ Icon=App.Current.Resources["iconBaoCaoCongLuong"],Name=App.Current.Resources["textOffer"] as string, typePath = 1},
+                new SideBarItemCom(){ Icon=App.Current.Resources["iconCalendar"],Name=App.Current.Resources["textCalendar"] as string},
+                new SideBarItemCom(){ Icon=App.Current.Resources["iconChuyenDoiSo"],Name=App.Current.Resources["textDigitalConversion"] as string, typePath =1},
+        };
+        public List<SideBarItemCom> SideBarItemsNV
+        {
+            get { return _SideBarItemsNV; }
+            set
+            {
+                _SideBarItemsNV = value;
+                OnPropertyChanged();
+            }
+        }
+
         private bool _OpenSubMenu;
         public bool OpenSubMenu
         {
@@ -186,6 +204,7 @@ namespace AppTinhLuong365
             get { return _SideBarIndex; }
             set
             {
+                if(this.CurrentCompany != null || this.CurrentEmployee != null)
                 switch (value)
                 {
                     case -1:
@@ -355,7 +374,7 @@ namespace AppTinhLuong365
         private int _SideBarIndexNV = 0;
         public int SideBarIndexNV
         {
-            get { return _SideBarIndex; }
+            get { return _SideBarIndexNV; }
             set
             {
                 switch (value)
@@ -474,6 +493,7 @@ namespace AppTinhLuong365
             HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(this));
             this.Title = App.Current.Resources["textTrangChu"] as string;
             SideBarIndex = 0;
+            sidebar.SelectedIndex = 0;
         }
 
         private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
@@ -492,6 +512,7 @@ namespace AppTinhLuong365
             this.Title = App.Current.Resources["textTrangChu"] as string;
             title.Text = "Quản lý tài khoản nhân sự";
             SideBarIndex = 0;
+            sidebar.SelectedIndex = 0;
         }
 
         private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
