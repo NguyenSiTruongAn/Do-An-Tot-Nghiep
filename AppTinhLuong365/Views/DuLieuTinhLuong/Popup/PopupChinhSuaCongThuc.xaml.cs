@@ -69,7 +69,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 {
                     Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupChinhSuaCSBH(Main, id1, name1, note1, tencongthuc, congthuc, ct_hs, fs_id1));
                     Main.PopupSelection.Visibility = Visibility.Visible;
-                }    
+                }
+                if (type == "0")
+                {
+                    Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.Popup.PopupChinhSuaThue(Main, id1, name1, note1, tencongthuc, congthuc, ct_hs, fs_id1));
+                    Main.PopupSelection.Visibility = Visibility.Visible;
+                }
             }
             else valuedate.Text = "Vui lòng nhập công thức";
         }

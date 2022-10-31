@@ -74,14 +74,16 @@ namespace AppTinhLuong365.Views.TinhLuong
                     if (api.data.data != null)
                     {
                         listNV = listNV1 = api.data.data.items;
+                        foreach (ListEmployee item in listNV)
+                        {
+                            if (item.ep_image == "")
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
+                            else
+                                item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                        }
                     }
-                    //foreach (ItemTamUng item in listTamUng)
-                    //{
-                    //    if (item.ep_image == "/img/add.png")
-                    //    {
-                    //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                    //    }
-                    //}
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php", web.QueryString);
             }
@@ -116,8 +118,8 @@ namespace AppTinhLuong365.Views.TinhLuong
                 validateNV.Text = "Vui lòng chọn nhân viên";
             else
             {
-                /*Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupTGADThue(Main, id1, dsnv));
-                Main.PopupSelection.Visibility = Visibility.Visible;*/
+                Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.Popup.PopupThoiGianADTNV(Main, id1, dsnv));
+                Main.PopupSelection.Visibility = Visibility.Visible;
             }
         }
 

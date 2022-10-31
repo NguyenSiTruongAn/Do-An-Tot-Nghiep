@@ -15,7 +15,7 @@
         <Border Background="Transparent">
             <StackPanel>
                 <Border Style="{StaticResource ShadowBorder2}" Background="Transparent">
-                    <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 3 -50 0"></TextBlock>
+                    <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" Cursor="Hand" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 3 -50 0"></TextBlock>
                 </Border>
                 <DockPanel Margin="20 0">
                     <Border HorizontalAlignment="Right" Cursor="Hand" MouseLeftButtonDown="BtnThemNhanVien_Click" x:Name="btnThemNhanVien" Height="40" Width="156" CornerRadius="10" Background="{DynamicResource #4C5BD4}" DockPanel.Dock="Right">
@@ -25,11 +25,11 @@
                         </DockPanel>
                     </Border>
                     <StackPanel>
-                        <TextBlock Text="{Binding}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                        <TextBlock x:Name="Name" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
                         <TextBlock Text="Danh sách nhân viên" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                     </StackPanel>
                 </DockPanel>
-                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="20 40 20 20" ItemsSource="{Binding Test}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="20 40 20 20" ItemsSource="{Binding listDSNV}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>
@@ -41,14 +41,20 @@
                         <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Grid x:Name="gridHoTen">
+                                    <Grid x:Name="gridHoTen" Margin="10 0 0 0">
                                         <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
                                             <Border.Background>
-                                                <ImageBrush ImageSource="https://tinhluong.timviec365.vn/img/add.png"></ImageBrush>
+                                                <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
                                             </Border.Background>
                                         </Border>
-                                        <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                                        <TextBlock Text="{Binding}" Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                        <Grid Margin="10 0 0 0" VerticalAlignment="Center">
+                                            <TextBlock Margin="50 0 0 0" FontSize="15" FontWeight="Bold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                            <TextBlock Margin="50 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}">
+                                                <Run Text="ID:"/>
+                                                <Run Text="{Binding ep_id}"/>
+                                            </TextBlock>
+                                            <TextBlock Text="{Binding dep_name}" Margin="50 40 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"/>
+                                        </Grid>
                                     </Grid>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -57,7 +63,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Text="{Binding dep_name}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -66,7 +72,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Text="{Binding display_cls_day}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -75,7 +81,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Text="{Binding display_cls_day_end}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -84,7 +90,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Grid>
-                                        <Border Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
+                                        <Border MouseLeftButtonDown="XoaNV" Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
                                             <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
                                         </Border>
                                     </Grid>

@@ -28,5 +28,9 @@ namespace AppTinhLuong365.Model.APIEntity
         public string cl_active { get; set; }
         public string cl_note { get; set; }
         public string fs_repica { get; set; }
+        public string fs_name { get; set; }
+        public string fs_note { get; set; }
+        public string fs_data { get; set; }
+        public string fs_type { get; set; }
     }
 }

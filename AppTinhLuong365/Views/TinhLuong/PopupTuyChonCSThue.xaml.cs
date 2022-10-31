@@ -46,7 +46,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void DSNhanVien_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.TinhLuong.PopupDSNhanVienADThue(Main);
+            var pop = new Views.TinhLuong.PopupDSNhanVienADThue(Main, cs.cl_id, cs.cl_name);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.MaxWidth = 1054;
@@ -54,7 +54,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void ChinhSuaThue_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.TinhLuong.PopupThue(Main);
+            var pop = new Views.TinhLuong.Popup.PopupChinhSuaThue(Main, cs.cl_id, cs.cl_name, cs.cl_note, cs.fs_name, cs.fs_repica, cs.fs_data, "");
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 495;
@@ -63,7 +63,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void Xoa_Click(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.TinhLuong.PopupThongBaoXoa(Main);
+            var pop = new Views.TinhLuong.PopupThongBaoXoa(Main, cs.cl_id);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
             pop.Width = 616;

@@ -48,19 +48,19 @@
             <Border Background="#fff" CornerRadius="10" BorderBrush="{DynamicResource #ebebeb}">
                 <StackPanel Margin="20">
                     <DockPanel>
-                        <DockPanel DockPanel.Dock="Right" x:Name="dockChamCong" Style="{DynamicResource Style_Grid_Wrap}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 0 10">
+                        <DockPanel x:Name="dockChamCong" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 10 0 0">
                             <WrapPanel>
                                 <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                    <tool:SearchBar x:Name="cbThang" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                    <tool:SearchBar x:Name="cbThang" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                                 </Border>
                                 <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                    <tool:SearchBar x:Name="cbNam" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                    <tool:SearchBar x:Name="cbNam" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                                 </Border>
                                 <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                    <tool:SearchBar x:Name="cbPhong" ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="dep_name" FontSize="16" FontWeight="DemiBold" PlaceHolder="Phòng ban (tất cả)"/>
+                                    <tool:SearchBar SelectionChanged="ChonPhong" x:Name="cbPhong" Foreground="{DynamicResource #444}" ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="dep_name" FontSize="16" FontWeight="DemiBold" PlaceHolder="Phòng ban (tất cả)"/>
                                 </Border>
                                 <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 20 0">
-                                    <tool:SearchBar x:Name="cbNV" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath ="ep_id_display" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
+                                    <tool:SearchBar x:Name="cbNV" Foreground="{DynamicResource #444}" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page,Mode=FindAncestor}}" DisplayMemberPath ="display_ep_name" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
                                 </Border>
                                 <Border MouseLeftButtonDown="Border_MouseLeftButtonDown_2" Cursor="Hand" Width="105" Height="40" Background="{DynamicResource #4C5BD4}" CornerRadius="10">
                                     <TextBlock Text="{DynamicResource textstatistical}" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />
@@ -190,7 +190,7 @@
                                                                                                 <Style TargetType="Border">
                                                                                                     <Setter Property="Visibility" Value="Collapsed"/>
                                                                                                     <Style.Triggers>
-                                                                                                        <DataTrigger Binding="{Binding status}" Value="3">
+                                                                                                        <DataTrigger Binding="{Binding check}" Value="Ca đủ công">
                                                                                                             <Setter Property="Visibility" Value="Visible"/>
                                                                                                         </DataTrigger>
                                                                                                     </Style.Triggers>
@@ -206,7 +206,7 @@
                                                                                                 <Style TargetType="Border">
                                                                                                     <Setter Property="Visibility" Value="Collapsed"/>
                                                                                                     <Style.Triggers>
-                                                                                                        <DataTrigger Binding="{Binding status}" Value="0">
+                                                                                                        <DataTrigger Binding="{Binding check}" Value="Ca nghỉ">
                                                                                                             <Setter Property="Visibility" Value="Visible"/>
                                                                                                         </DataTrigger>
                                                                                                     </Style.Triggers>
@@ -222,7 +222,7 @@
                                                                                                 <Style TargetType="Border">
                                                                                                     <Setter Property="Visibility" Value="Collapsed"/>
                                                                                                     <Style.Triggers>
-                                                                                                        <DataTrigger Binding="{Binding status}" Value="1">
+                                                                                                        <DataTrigger Binding="{Binding check}" Value="Ca chưa hoàn thành">
                                                                                                             <Setter Property="Visibility" Value="Visible"/>
                                                                                                         </DataTrigger>
                                                                                                     </Style.Triggers>
@@ -238,7 +238,7 @@
                                                                                                 <Style TargetType="Border">
                                                                                                     <Setter Property="Visibility" Value="Collapsed"/>
                                                                                                     <Style.Triggers>
-                                                                                                        <DataTrigger Binding="{Binding status}" Value="2">
+                                                                                                        <DataTrigger Binding="{Binding check}" Value="Ca muộn">
                                                                                                             <Setter Property="Visibility" Value="Visible"/>
                                                                                                         </DataTrigger>
                                                                                                     </Style.Triggers>
@@ -246,6 +246,22 @@
                                                                                             </Border.Style>
                                                                                             <Grid HorizontalAlignment="Center" Width="130">
                                                                                                 <Path Data="{DynamicResource iconTimeCheck}" Fill="{DynamicResource #FF8C44}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                                                                                <TextBlock FontWeight="DemiBold" Text="{Binding Display_time, Mode=OneWay}" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                                                                            </Grid>
+                                                                                        </Border>
+                                                                                        <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #efedc9}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                                                            <Border.Style>
+                                                                                                <Style TargetType="Border">
+                                                                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                                                                    <Style.Triggers>
+                                                                                                        <DataTrigger Binding="{Binding check}" Value="Ca ghi nhận công">
+                                                                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                                                                        </DataTrigger>
+                                                                                                    </Style.Triggers>
+                                                                                                </Style>
+                                                                                            </Border.Style>
+                                                                                            <Grid HorizontalAlignment="Center" Width="130">
+                                                                                                <Path Data="{DynamicResource iconCongCong}" Fill="{DynamicResource #49AA1F}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
                                                                                                 <TextBlock FontWeight="DemiBold" Text="{Binding Display_time, Mode=OneWay}" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
                                                                                             </Grid>
                                                                                         </Border>
