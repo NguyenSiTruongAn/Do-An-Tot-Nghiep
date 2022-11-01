@@ -407,7 +407,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                         API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
                         if (api.data != null)
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1));
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1.ep_id));
                             Main.title.Text = " Danh sách nhân viên/ Hồ sơ nhân viên";
                             Main.sidebar.SelectedIndex = -1;
                         }

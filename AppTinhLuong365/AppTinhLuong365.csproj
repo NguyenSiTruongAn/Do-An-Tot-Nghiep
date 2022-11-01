@@ -758,6 +758,7 @@
     </Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupChinhSuaThue.xaml.cs">
       <DependentUpon>PopupChinhSuaThue.xaml</DependentUpon>
+	</Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupHoaHong.xaml.cs">
       <DependentUpon>PopupHoaHong.xaml</DependentUpon>
     </Compile>
@@ -787,6 +788,7 @@
     </Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupXoaThueNV.xaml.cs">
       <DependentUpon>PopupXoaThueNV.xaml</DependentUpon>
+	</Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupThuong.xaml.cs">
       <DependentUpon>PopupThuong.xaml</DependentUpon>
     </Compile>
