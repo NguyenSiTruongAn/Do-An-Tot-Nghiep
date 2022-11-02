@@ -496,7 +496,9 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void ThayLichLamViec(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.CaiDat.Popup.PopupChinhSuaLichLamViec(Main, ChiTietNV.cycle, data1);
+            Border b = sender as Border;
+            GeneralCalendar data = (GeneralCalendar)b.DataContext;
+            var pop = new Views.CaiDat.Popup.PopupChinhSuaLichLamViec(Main, ChiTietNV.cycle, data1, data.apply_month);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
         }

@@ -1,35 +1,47 @@
 ﻿<Page x:Class="AppTinhLuong365.Views.CaiDat.Popup.PopupDSNVLichLamViec"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat"
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
-      mc:Ignorable="d" 
-      SizeChanged="Page_SizeChanged"
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
       Title="PopupDSNVLichLamViec">
 
-    <Grid>
+    <Grid Height="666">
         <Border Style="{StaticResource ShadowBorder2}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <StackPanel>
                 <Border Style="{StaticResource ShadowBorder2}" Background="Transparent">
-                    <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right" Margin="0 3 -50 0"></TextBlock>
+                    <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Text="X" FontSize="28"
+                               FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Right"
+                               Margin="0 3 -50 0">
+                    </TextBlock>
                 </Border>
                 <StackPanel Margin="20 0">
-                    <TextBlock Text="{Binding listEmps.cy_name}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
-                    <TextBlock Text="Danh sách nhân viên" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                    <TextBlock x:Name="Block1" FontSize="24" FontWeight="Bold"
+                               Foreground="{DynamicResource #2E3467}">
+                    </TextBlock>
+                    <TextBlock Text="Danh sách nhân viên" FontSize="15" FontWeight="DemiBold"
+                               Foreground="{DynamicResource #68798B}">
+                    </TextBlock>
                 </StackPanel>
                 <TabControl Margin="20 0" ItemContainerStyle="{StaticResource TabItem2}" BorderThickness="0">
                     <TabItem Header="Nhân viên" BorderThickness="0">
-                        <ScrollViewer>
-                            <StackPanel>
-                                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 20 0 20" ItemsSource="{Binding listEmps}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                        <StackPanel>
+                            <ScrollViewer Name="scr" Height="450" PreviewMouseWheel="dataGrid_PreviewMouseWheel"
+                                      VerticalScrollBarVisibility="Visible">
+                                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 20 0 20"
+                                      ItemsSource="{Binding listEmps}"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
-                                                <Border Width="{Binding ElementName=dataGrid2,Path=ActualWidth}" Height="{Binding ElementName=dataGrid2,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
+                                                <Border Width="{Binding ElementName=dataGrid2,Path=ActualWidth}"
+                                                    Height="{Binding ElementName=dataGrid2,Path=ActualHeight}"
+                                                    CornerRadius="10" Background="White">
+                                                </Border>
                                             </VisualBrush.Visual>
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
@@ -39,14 +51,21 @@
                                                 <DataTemplate>
                                                     <Grid x:Name="gridHoTen">
                                                         <WrapPanel VerticalAlignment="Center" Margin="25 0 0 0">
-                                                            <Border Width="45" Height="48" CornerRadius="40" HorizontalAlignment="Left">
+                                                            <Border Width="45" Height="48" CornerRadius="40"
+                                                                HorizontalAlignment="Left">
                                                                 <Border.Background>
                                                                     <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
                                                                 </Border.Background>
                                                             </Border>
                                                             <StackPanel Margin="10 0 0 0">
-                                                                <TextBlock FontSize="15" FontWeight="DemiBold" Text="{Binding ep_name}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                                                                <TextBlock Text="{Binding ep_id}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
+                                                                <TextBlock FontSize="15" FontWeight="DemiBold"
+                                                                       Text="{Binding ep_name}"
+                                                                       Foreground="{DynamicResource #4C5BD4}">
+                                                                </TextBlock>
+                                                                <TextBlock Text="{Binding ep_id}" FontSize="15"
+                                                                       FontWeight="DemiBold"
+                                                                       Foreground="{DynamicResource #68798B}">
+                                                                </TextBlock>
                                                             </StackPanel>
                                                         </WrapPanel>
                                                     </Grid>
@@ -57,7 +76,9 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding dep_name}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                        <TextBlock Text="{Binding dep_name}"
+                                                               Style="{StaticResource TextRowCenter}">
+                                                        </TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -66,7 +87,9 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding ep_phone}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                        <TextBlock Text="{Binding ep_phone}"
+                                                               Style="{StaticResource TextRowCenter}">
+                                                        </TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -75,7 +98,9 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding ep_email}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                        <TextBlock Text="{Binding ep_email}"
+                                                               Style="{StaticResource TextRowCenter}">
+                                                        </TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -83,43 +108,73 @@
                                         <DataGridTemplateColumn>
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Border MouseLeftButtonDown="Path_MouseLeftButtonDown" Margin="10 0 0 0" Background="Transparent" Width="22" Height="22" Cursor="Hand">
-                                                        <Path Data="{DynamicResource iconXoa}" Fill="{DynamicResource #F46A6A}"></Path>
+                                                    <Border MouseLeftButtonDown="Path_MouseLeftButtonDown"
+                                                        Margin="10 0 0 0" Background="Transparent" Width="22"
+                                                        Height="22" Cursor="Hand">
+                                                        <Path Data="{DynamicResource iconXoa}"
+                                                          Fill="{DynamicResource #F46A6A}">
+                                                        </Path>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
-                                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 0">
-                                    <Border Cursor="Hand" MouseLeftButtonDown="ve_page_1" x:Name="PageDau" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock Text="&lt;&lt;&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="PageTruoc" MouseLeftButtonDown="page_truoc_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock Text="&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="Page1" MouseLeftButtonDown="select_page_click1" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock x:Name="txtpage1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="Page2" MouseLeftButtonDown="select_page_click2" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock x:Name="txtpage2" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="Page3" MouseLeftButtonDown="select_page_click3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock x:Name="txtpage3" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="PageTiep" MouseLeftButtonDown="page_sau_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="PageCuoi" MouseLeftButtonDown="page_cuoi_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock Text=">>>" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                </DockPanel>
-
-                            </StackPanel>
-                        </ScrollViewer>
+                            </ScrollViewer>
+                            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 20">
+                                <Border Cursor="Hand" MouseLeftButtonDown="ve_page_1" x:Name="PageDau"
+                                        BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}"
+                                        Background="Transparent" CornerRadius="10" Width="35" Height="35"
+                                        Margin="0 0 10 0">
+                                    <TextBlock Text="&lt;&lt;&lt;" VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" Foreground="{DynamicResource #444}" />
+                                </Border>
+                                <Border Cursor="Hand" x:Name="PageTruoc" MouseLeftButtonDown="page_truoc_click"
+                                        BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}"
+                                        Background="Transparent" CornerRadius="10" Width="35" Height="35"
+                                        Margin="0 0 10 0">
+                                    <TextBlock Text="&lt;" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                               Foreground="{DynamicResource #444}" />
+                                </Border>
+                                <Border Cursor="Hand" x:Name="Page1" MouseLeftButtonDown="select_page_click1"
+                                        BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}"
+                                        Background="Transparent" CornerRadius="10" Width="35" Height="35"
+                                        Margin="0 0 10 0">
+                                    <TextBlock x:Name="txtpage1" Text="1" VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" Foreground="{DynamicResource #444}" />
+                                </Border>
+                                <Border Cursor="Hand" x:Name="Page2" MouseLeftButtonDown="select_page_click2"
+                                        BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}"
+                                        Background="Transparent" CornerRadius="10" Width="35" Height="35"
+                                        Margin="0 0 10 0">
+                                    <TextBlock x:Name="txtpage2" Text="2" VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" Foreground="{DynamicResource #444}" />
+                                </Border>
+                                <Border Cursor="Hand" x:Name="Page3" MouseLeftButtonDown="select_page_click3"
+                                        BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}"
+                                        Background="Transparent" CornerRadius="10" Width="35" Height="35"
+                                        Margin="0 0 10 0">
+                                    <TextBlock x:Name="txtpage3" Text="3" VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" Foreground="{DynamicResource #444}" />
+                                </Border>
+                                <Border Cursor="Hand" x:Name="PageTiep" MouseLeftButtonDown="page_sau_click"
+                                        BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}"
+                                        Background="Transparent" CornerRadius="10" Width="35" Height="35"
+                                        Margin="0 0 10 0">
+                                    <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                               Foreground="{DynamicResource #444}" />
+                                </Border>
+                                <Border Cursor="Hand" x:Name="PageCuoi" MouseLeftButtonDown="page_cuoi_click"
+                                        BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}"
+                                        Background="Transparent" CornerRadius="10" Width="35" Height="35"
+                                        Margin="0 0 10 0">
+                                    <TextBlock Text=">>>" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                               Foreground="{DynamicResource #444}" />
+                                </Border>
+                            </DockPanel>
+                        </StackPanel>
                     </TabItem>
                 </TabControl>
-                
             </StackPanel>
         </Border>
     </Grid>

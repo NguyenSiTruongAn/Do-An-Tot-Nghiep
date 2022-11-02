@@ -45,11 +45,13 @@
                             </TextBlock>
                         </Grid>
                     </Border>
+                    <TextBlock x:Name="validateName" Style="{StaticResource tblValidate}"/>
+
                     <Grid Margin="0 10 0 0">
                         <TextBlock FontWeight="DemiBold" Text="{DynamicResource textCLLV}" Foreground="{DynamicResource #666666}" FontSize="16"/>
                         <Path Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center" Margin="135 0 0 0"/>
                     </Grid>
-                    <ComboBox FontSize="16" Foreground="{DynamicResource #777777}" Margin="0 5 0 0" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
+                    <ComboBox x:Name="ComboBox" FontSize="16" Foreground="{DynamicResource #777777}" Margin="0 5 0 0" Style="{DynamicResource Combobox2}" ItemContainerStyle="{DynamicResource ComboboxItem2}">
                         <ComboBoxItem IsSelected="True">Thứ 2- thứ 6</ComboBoxItem>
                         <ComboBoxItem>Thứ 2- thứ 7</ComboBoxItem>
                         <ComboBoxItem>Thứ 2- thứ CN</ComboBoxItem>
@@ -66,12 +68,11 @@
                             </Border>
                         </Grid>
                     </Border>
-                    <Viewbox Width="229" HorizontalAlignment="Stretch">
-                        <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center" DisplayMode="Year" x:Name="dteSelectedMonth" DisplayModeChanged="dteSelectedMonth_DisplayModeChanged"/>
-                    </Viewbox>
+                    <ListView ItemsSource="{Binding cl}" HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="0"></ListView>
+                    <TextBlock x:Name="validateMonth" Style="{StaticResource tblValidate}"/>
                     <TextBlock Margin="0 15 0 0 " FontWeight="DemiBold" Text="{DynamicResource textNBDLV}" Foreground="{DynamicResource #666666}" FontSize="16"/>
                     <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                        <tool:DatePicker FontSize="16" Foreground="{DynamicResource #777777}"/>
+                        <tool:DatePicker x:Name="DatePicker" FontSize="16" Foreground="{DynamicResource #777777}"/>
                     </Border>
                     <Border Cursor="Hand" MouseLeftButtonDown="BtnTiepTuc_Click" Margin="0 30 0 0" Height="37" CornerRadius="3" Background="{DynamicResource #4C5BD4}">
                         <TextBlock Text="{DynamicResource textContinue}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold" FontSize="15"/>

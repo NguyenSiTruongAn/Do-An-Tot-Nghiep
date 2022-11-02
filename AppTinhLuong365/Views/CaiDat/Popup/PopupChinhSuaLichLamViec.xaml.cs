@@ -26,13 +26,16 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
     public partial class PopupChinhSuaLichLamViec : Page, INotifyPropertyChanged
     {
         MainWindow Main;
-        public PopupChinhSuaLichLamViec(MainWindow main, string cy_id, ItemEmp data)
+
+        string date;
+        public PopupChinhSuaLichLamViec(MainWindow main, string cy_id, ItemEmp data, string date)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
             this.cy_id = cy_id;
             this.data = data;
+            this.date = date;
             getData();
             getData1();
         }
@@ -322,6 +325,30 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 else
                     cycle += "\"" + year + "-" + month + "-" + (i + 1) + "\":" + a + "}";
             }
+            string cycle1 = "[";
+            for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
+            {
+                string a = "\"shift_id\":\"";
+                if (listLich[start + i].dsca.Count > 0)
+                {
+                    for (int j = 0; j < listLich[start + i].dsca.Count; j++)
+                    {
+                        if (j < listLich[start + i].dsca.Count - 1)
+                            a += listLich[start + i].dsca[j].shift_id + ",";
+                        else
+                            a += listLich[start + i].dsca[j].shift_id + "\"" + "";
+                    }
+                }
+                else
+                {
+                    a += "\"";
+                }
+                if (i < DateTime.DaysInMonth(year, month) - 1)
+                    cycle1 += "{\"date\":\"" + year + "-" + month + "-" + (i + 1) + "\"," + a + "},";
+                else
+                    cycle1 += "{\"date\":\"" + year + "-" + month + "-" + (i + 1) + "\"," + a +"}]";
+            }
+
             bool allow = true;
             validateName.Text = "";
             if(string.IsNullOrEmpty(tbInput.Text))
@@ -338,24 +365,62 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                         web.QueryString.Add("token", Main.CurrentCompany.token);
                         web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     }
-                    web.QueryString.Add("name", tbInput.Text);
-                    web.QueryString.Add("id_ep", data.ep_id);
-                    web.QueryString.Add("cycle", cycle);
-                    web.QueryString.Add("month", listLLV.begin);
-                    web.UploadValuesCompleted += (s, ee) =>
+
+                    if (data != null)
                     {
-                        string y = UnicodeEncoding.UTF8.GetString(ee.Result);
-                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
-                        if (api.data != null)
+                        web.QueryString.Add("name", tbInput.Text);
+                        web.QueryString.Add("id_ep", data.ep_id);
+                        web.QueryString.Add("cycle", cycle);
+                        web.QueryString.Add("month", listLLV.begin);
+                        web.UploadValuesCompleted += (s, ee) =>
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data.ep_id));
-                            Main.HomeSelectionPage.Visibility = Visibility.Visible;
-                            this.Visibility = Visibility.Collapsed;
-                        }
-                    };
-                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_cycle_pf.php", web.QueryString);
+                            string y = UnicodeEncoding.UTF8.GetString(ee.Result);
+                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data.ep_id));
+                                Main.HomeSelectionPage.Visibility = Visibility.Visible;
+                                this.Visibility = Visibility.Collapsed;
+                            }
+                        };
+                        web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_cycle_pf.php", web.QueryString);
+                    }
+                    else
+                    {
+                        web.Headers.Add("Authorization", Main.CurrentCompany.token);
+                        web.QueryString.Add("cy_name", tbInput.Text);
+                        web.QueryString.Add("detail_cycle", cycle1);
+                        string a = DateTime.Parse(date).ToString("yyyy/MM/dd");
+                        web.QueryString.Add("date", a+"");
+                        web.QueryString.Add("cy_id", cy_id);
+                        web.UploadValuesCompleted += (s, ee) =>
+                        {
+                            string y = UnicodeEncoding.UTF8.GetString(ee.Result);
+                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
+                                if (api.data != null)
+                            {
+                                if (data != null)
+                                {
+                                    Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data.ep_id));
+                                    Main.HomeSelectionPage.Visibility = Visibility.Visible;
+                                }
+                                else
+                                {
+                                    Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
+                                    Main.HomeSelectionPage.Visibility = Visibility.Visible;
+                                }
+                                this.Visibility = Visibility.Collapsed;
+                            }
+                        };
+                        web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/update_cycle.php", web.QueryString);
+                    }
                 }
             }
+        }
+
+        private void UIElement_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Main.scrolPopup.ScrollToVerticalOffset(Main.scrolPopup.VerticalOffset - e.Delta);
         }
     }
 }
