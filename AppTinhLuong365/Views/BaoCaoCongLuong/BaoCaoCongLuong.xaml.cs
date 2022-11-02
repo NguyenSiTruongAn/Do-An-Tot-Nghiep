@@ -21,6 +21,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
     public partial class BaoCaoCongLuong : Page, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -28,6 +29,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
 
         string month;
         string year;
+
         public BaoCaoCongLuong(MainWindow main)
         {
             ItemList = new ObservableCollection<string>();
@@ -173,12 +175,16 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
         public int IsSmallSize
         {
             get { return _IsSmallSize; }
-            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
+            set
+            {
+                _IsSmallSize = value;
+                OnPropertyChanged("IsSmallSize");
+            }
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (this.ActualWidth > 980)
+            if (this.ActualWidth > 800)
             {
                 IsSmallSize = 0;
             }
@@ -197,7 +203,11 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
         public ItemCongLuong congLuong
         {
             get { return _congLuong; }
-            set { _congLuong = value; OnPropertyChanged(); }
+            set
+            {
+                _congLuong = value;
+                OnPropertyChanged();
+            }
         }
 
         private void getData(string month, string year)
@@ -211,7 +221,8 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 web.QueryString.Add("year", year);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    Api_CongLuong api = JsonConvert.DeserializeObject<Api_CongLuong>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    Api_CongLuong api =
+                        JsonConvert.DeserializeObject<Api_CongLuong>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
                         BieuDo.Visibility = BieuDo1.Visibility = stBDCot.Visibility = Visibility.Visible;
@@ -236,6 +247,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                         bd7tr.Width = ((double)congLuong.lnv_710 / (2 * x)) * bddonvi.ActualWidth;
                         bd10tr.Width = ((double)congLuong.lnv_10 / (2 * x)) * bddonvi.ActualWidth;
                     }
+
                     loading.Visibility = Visibility.Collapsed;
                     //foreach (ItemTamUng item in listTamUng)
                     //{
@@ -245,13 +257,27 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                     //    }
                     //}
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_cong_luong.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_cong_luong.php",
+                    web.QueryString);
             }
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.BaoCaoCongLuong.TongHopLuongNhanVienTheoChuKi(Main, month, year));
+            Main.HomeSelectionPage.NavigationService.Navigate(
+                new Views.BaoCaoCongLuong.TongHopLuongNhanVienTheoChuKi(Main, month, year));
+        }
+
+        private void Border_MouseLeftButtonDown1(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(
+                new Views.BaoCaoCongLuong.TongHopThongTinBaoHiem(Main, month, year));
+        }
+
+        private void Border_MouseLeftButtonDown2(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(
+                new Views.BaoCaoCongLuong.TongHopThongTinThue(Main, month, year));
         }
 
         private void ThongKe(object sender, MouseButtonEventArgs e)

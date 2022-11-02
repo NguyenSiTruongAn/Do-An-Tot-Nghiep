@@ -7,6 +7,7 @@
       xmlns:core="clr-namespace:AppTinhLuong365.Core"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.BaoCaoCongLuong"
       xmlns:chart="using:De.TorstenMandelkow.MetroChart"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       mc:Ignorable="d" 
       d:DesignWidth="1400"
       Title="BaoCaoCongLuong" SizeChanged="Page_SizeChanged">
@@ -140,14 +141,11 @@
                         <Border Height="440" VerticalAlignment="Top" CornerRadius="10">
                             <Grid>
                                 <TextBlock Margin="0 25 0 0" Text="{DynamicResource textPTBH}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
-
-
                                 <Border x:Name="BieuDo" Height="250" Width="250" BorderThickness="1" CornerRadius="250" Background="{DynamicResource #FFA800}">
                                     <Grid x:Name="grid">
                                     </Grid>
                                 </Border>
-
-                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown1" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                                     <TextBlock Text="Chi tiết >" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                 </Border>
                             </Grid>
@@ -183,7 +181,7 @@
                                     <Grid x:Name="grid1">
                                     </Grid>
                                 </Border>
-                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown2" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                                     <TextBlock Text="Chi tiết >" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                 </Border>
                                 <Ellipse

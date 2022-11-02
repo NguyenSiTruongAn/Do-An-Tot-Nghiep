@@ -368,7 +368,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int thue { get; set; }
+        public double thue { get; set; }
         public string display_thue
         {
             get
