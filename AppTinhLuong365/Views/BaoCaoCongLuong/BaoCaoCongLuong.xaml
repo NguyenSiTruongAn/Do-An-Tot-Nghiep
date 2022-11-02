@@ -6,7 +6,9 @@
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       xmlns:core="clr-namespace:AppTinhLuong365.Core"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.BaoCaoCongLuong"
+      xmlns:chart="using:De.TorstenMandelkow.MetroChart"
       mc:Ignorable="d" 
+      d:DesignWidth="1400"
       Title="BaoCaoCongLuong" SizeChanged="Page_SizeChanged">
 
     <Page.Resources>
@@ -138,11 +140,35 @@
                         <Border Height="440" VerticalAlignment="Top" CornerRadius="10">
                             <Grid>
                                 <TextBlock Margin="0 25 0 0" Text="{DynamicResource textPTBH}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
+
+
+                                <Border x:Name="BieuDo" Height="250" Width="250" BorderThickness="1" CornerRadius="250" Background="{DynamicResource #FFA800}">
+                                    <Grid x:Name="grid">
+                                    </Grid>
+                                </Border>
+
                                 <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                                     <TextBlock Text="Chi tiết >" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                 </Border>
                             </Grid>
                         </Border>
+                        <Ellipse
+                                    Width="350"
+                                    Height="350"
+                                    Stroke="White"
+                                    StrokeThickness="87"
+                                    HorizontalAlignment="Center"
+                                />
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 0 70">
+                            <DockPanel>
+                                <Ellipse Height="10" Width="10" Fill="{DynamicResource #4C5BD4}"/>
+                                <TextBlock Margin="10 0 0 0" Text="Bảo hiểm" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Ellipse Height="10" Width="10" Fill="{DynamicResource #FFA800}"/>
+                                <TextBlock Margin="10 0 0 0" Text="Tổng lương thanh toán" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"/>
+                            </DockPanel>
+                        </StackPanel>
                     </Grid>
                     <Grid Style="{StaticResource Style_Grid_Wrap}">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
@@ -153,9 +179,30 @@
                         <Border Height="440" VerticalAlignment="Top" CornerRadius="10">
                             <Grid>
                                 <TextBlock Margin="0 25 0 0" Text="{DynamicResource textPTT}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
+                                <Border x:Name="BieuDo1" Height="250" Width="250" BorderThickness="1" CornerRadius="250" Background="{DynamicResource #FFA800}">
+                                    <Grid x:Name="grid1">
+                                    </Grid>
+                                </Border>
                                 <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                                     <TextBlock Text="Chi tiết >" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                 </Border>
+                                <Ellipse
+                                    Width="350"
+                                    Height="350"
+                                    Stroke="White"
+                                    StrokeThickness="87"
+                                    HorizontalAlignment="Center"
+                                />
+                                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50 0 0 70">
+                                    <DockPanel>
+                                        <Ellipse Height="10" Width="10" Fill="{DynamicResource #4C5BD4}"/>
+                                        <TextBlock Margin="10 0 0 0" Text="Tổng thuế" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"/>
+                                    </DockPanel>
+                                    <DockPanel>
+                                        <Ellipse Height="10" Width="10" Fill="{DynamicResource #FFA800}"/>
+                                        <TextBlock Margin="10 0 0 0" Text="Tổng lương thanh toán" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"/>
+                                    </DockPanel>
+                                </StackPanel>
                             </Grid>
                         </Border>
                     </Grid>
@@ -163,9 +210,385 @@
                 <Grid Margin="10 20 10 0">
                     <Border Style="{DynamicResource ShadowBorder2}"/>
                     <Border>
-                        <StackPanel Margin="15 25">
-                            <TextBlock Text="{DynamicResource textPTMLNV}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center"/>
-                            <TextBlock Margin="0 0 0 20" Text="{DynamicResource textSLNV}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center"/>
+                        <StackPanel x:Name="stBDCot" Margin="15 25">
+                            <TextBlock Text="{DynamicResource textPTMLNV}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" Margin="0 0 0 20"/>
+                            <DockPanel>
+                                <TextBlock VerticalAlignment="Center" Text="Lương nhân viên" Margin="0 0 30 0">
+                                    <TextBlock.LayoutTransform>
+                                        <RotateTransform Angle="90"/>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                                <StackPanel x:Name="lv">
+                                    <DockPanel>
+                                        <DockPanel.Style>
+                                            <Style TargetType="DockPanel">
+                                                <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)}"></Setter>
+                                            </Style>
+                                        </DockPanel.Style>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Lớn hơn 10 triệu" TextWrapping="WrapWithOverflow">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                        <Grid>
+                                            <DockPanel>
+                                                <Border x:Name="bddonvi" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                            </DockPanel>
+                                            <Border x:Name="bd10tr" Background="{DynamicResource #4C5BD4}" Width="100" HorizontalAlignment="Left">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
+                                                    </Style>
+                                                </Border.Style>
+                                            </Border>
+                                        </Grid>
+
+                                    </DockPanel>
+                                    <DockPanel>
+                                        <DockPanel.Style>
+                                            <Style TargetType="DockPanel">
+                                                <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)}"></Setter>
+                                            </Style>
+                                        </DockPanel.Style>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="7 - 10 triệu" TextWrapping="WrapWithOverflow">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                        <Grid>
+                                            <DockPanel>
+                                                <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                            </DockPanel>
+                                            <Border x:Name="bd7tr" Background="{DynamicResource #4C5BD4}" Width="100" HorizontalAlignment="Left">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
+                                                    </Style>
+                                                </Border.Style>
+                                            </Border>
+                                        </Grid>
+
+                                    </DockPanel>
+                                    <DockPanel>
+                                        <DockPanel.Style>
+                                            <Style TargetType="DockPanel">
+                                                <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)}"></Setter>
+                                            </Style>
+                                        </DockPanel.Style>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="5 -7 triệu" TextWrapping="WrapWithOverflow">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                        <Grid>
+                                            <DockPanel>
+                                                <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                            </DockPanel>
+                                            <Border x:Name="bd5tr" Background="{DynamicResource #4C5BD4}" Width="100" HorizontalAlignment="Left">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
+                                                    </Style>
+                                                </Border.Style>
+                                            </Border>
+                                        </Grid>
+
+                                    </DockPanel>
+                                    <DockPanel>
+                                        <DockPanel.Style>
+                                            <Style TargetType="DockPanel">
+                                                <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)}"></Setter>
+                                            </Style>
+                                        </DockPanel.Style>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Dưới 5 triệu" TextWrapping="WrapWithOverflow">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                        <Grid>
+                                            <DockPanel>
+                                                <Border BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border BorderThickness="0 1 1 1" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/9}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                            </DockPanel>
+                                            <Border x:Name="bdduoi5tr" Background="{DynamicResource #4C5BD4}" Width="300" HorizontalAlignment="Left">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
+                                                    </Style>
+                                                </Border.Style>
+                                            </Border>
+                                        </Grid>
+
+                                    </DockPanel>
+                                    <DockPanel>
+                                        <DockPanel.Style>
+                                            <Style TargetType="DockPanel">
+                                                <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)}"></Setter>
+                                            </Style>
+                                        </DockPanel.Style>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="WrapWithOverflow">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                        <Grid>
+                                            <DockPanel>
+                                                <Border BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <TextBlock Text="0"/>
+                                                </Border>
+                                                <Border BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <TextBlock x:Name="nb1"/>
+                                                </Border>
+                                                <Border BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <TextBlock x:Name="nb2"/>
+                                                </Border>
+                                                <Border BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <TextBlock x:Name="nb3"/>
+                                                </Border>
+                                                <Border BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <TextBlock x:Name="nb4"/>
+                                                </Border>
+                                                <Border BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <Grid>
+                                                        <TextBlock x:Name="nb5"/>
+                                                        <TextBlock x:Name="nb6" HorizontalAlignment="Right"/>
+                                                    </Grid>
+                                                </Border>
+                                            </DockPanel>
+
+                                        </Grid>
+
+                                    </DockPanel>
+                                </StackPanel>
+                            </DockPanel>
+                            <TextBlock Margin="0 20 0 20" Text="{DynamicResource textSLNV}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Border>
                 </Grid>

@@ -177,6 +177,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             borderes1.Visibility =
                 borderes1.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
             txtSuaTen.Text = ChiTietNV.ep_name;
+            txtep_id.Text = ChiTietNV.ep_id;
             txtSuaPhone.Text = ChiTietNV.ep_phone;
             txtSuaEmail.Text = ChiTietNV.ep_email;
             txtSuaDiaChi.Text = ChiTietNV.ep_address;

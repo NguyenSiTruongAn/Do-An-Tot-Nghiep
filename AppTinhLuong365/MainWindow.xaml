@@ -179,7 +179,7 @@
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Background="{DynamicResource #F7F8FC}">
             <ScrollViewer x:Name="scrollMain" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
-                <Frame Margin="40" x:Name="HomeSelectionPage" NavigationUIVisibility="Hidden" BorderThickness="0" IsVisibleChanged="HomeSelectionPage_IsVisibleChanged"></Frame>
+                <Frame Margin="20" x:Name="HomeSelectionPage" NavigationUIVisibility="Hidden" BorderThickness="0" IsVisibleChanged="HomeSelectionPage_IsVisibleChanged"></Frame>
             </ScrollViewer>
         </Grid>
 

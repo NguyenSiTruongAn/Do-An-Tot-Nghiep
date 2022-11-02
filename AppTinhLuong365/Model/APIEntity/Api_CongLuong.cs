@@ -20,7 +20,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(tong_luong) >= 0)
+                if (Convert.ToDouble(tong_luong) >= 0)
                 {
                     double m;
                     if (double.TryParse(tong_luong, out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -40,7 +40,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(tong_bh) >= 0)
+                if (Convert.ToDouble(tong_bh) >= 0)
                 {
                     double m;
                     if (double.TryParse(tong_bh, out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -61,7 +61,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(tong_thue) >= 0)
+                if (Convert.ToDouble(tong_thue) >= 0)
                 {
                     double m;
                     if (double.TryParse(tong_thue, out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -79,7 +79,7 @@ namespace AppTinhLuong365.Model.APIEntity
         public double tong_ltb { get; set; }
         public int so_nv { get; set; }
         public double pt_bh { get; set; }
-        public int pt_thue { get; set; }
+        public double pt_thue { get; set; }
         public int lnv_15 { get; set; }
         public int lnv_57 { get; set; }
         public int lnv_710 { get; set; }
@@ -90,7 +90,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(luong_da_tra) >= 0)
+                if (Convert.ToDouble(luong_da_tra) >= 0)
                 {
                     double m;
                     if (double.TryParse(luong_da_tra, out m)) a = m.ToString("C0").Replace(@"$", "");

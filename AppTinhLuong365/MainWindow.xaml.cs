@@ -176,7 +176,7 @@ namespace AppTinhLuong365
                 new SideBarItemCom(){ Icon=App.Current.Resources["iconNhapLuongCoBanVaCheDo"],Name=App.Current.Resources["textProfile"] as string},
                 new SideBarItemCom(){ Icon=App.Current.Resources["iconDuLieuTinhLuong"],Name=App.Current.Resources["textSalary"] as string, typePath =1},
                 new SideBarItemCom(){ Icon=App.Current.Resources["iconCalendar"],Name=App.Current.Resources["textChamCong"] as string},
-                new SideBarItemCom(){ Icon=App.Current.Resources["iconBaoCaoCongLuong"],Name=App.Current.Resources["textOffer"] as string, typePath = 1},
+                new SideBarItemCom(){ Icon=App.Current.Resources["iconDeXuat"],Name=App.Current.Resources["textOffer"] as string},
                 new SideBarItemCom(){ Icon=App.Current.Resources["iconCalendar"],Name=App.Current.Resources["textCalendar"] as string},
                 new SideBarItemCom(){ Icon=App.Current.Resources["iconChuyenDoiSo"],Name=App.Current.Resources["textDigitalConversion"] as string, typePath =1},
         };
@@ -404,9 +404,9 @@ namespace AppTinhLuong365
                         Process.Start("https://vanthu.timviec365.vn/trang-quan-ly-de-xuat.html");
                         break;
                     case 5:
-                        HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.Calendar());
+                        HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.Calendar(this));
                         this.Title = App.Current.Resources["textTrangChu"] as string;
-                        title.Text = "";
+                        title.Text = "Lịch làm việc";
                         break;
                     case 6:
                         Process.Start("https://quanlychung.timviec365.vn/quan-ly-ung-dung-nhan-vien.html");

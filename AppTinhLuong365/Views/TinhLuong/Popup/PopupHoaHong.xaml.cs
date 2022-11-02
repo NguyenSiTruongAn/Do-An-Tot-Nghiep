@@ -81,8 +81,16 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
             using (WebClient web = new WebClient())
             {
                 // loading.Visibility = Visibility.Visible;
-                web.QueryString.Add("token", Main.CurrentCompany.token);
-                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                if(Main.MainType == 0)
+                {
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                }
+                if(Main.MainType == 1)
+                {
+                    web.QueryString.Add("token", Main.CurrentEmployee.token);
+                    web.QueryString.Add("id_comp", Main.CurrentEmployee.com_id);
+                }
                 web.QueryString.Add("time", year + "-" + month);
                 web.QueryString.Add("id_user", ep_id);
                 web.UploadValuesCompleted += (s, e) =>
@@ -92,7 +100,8 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                     if (api.data != null)
                     {
                         itemRose = api.data.rose;
-                        itemRose1 = itemRose[0];
+                        if(itemRose.Count > 0)
+                            itemRose1 = itemRose[0];
                     }
                     // loading.Visibility = Visibility.Collapsed;
                 };

@@ -188,7 +188,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void ThongKe(object sender, MouseButtonEventArgs e)
         {
-            string year = "", month = "", start_date = "", end_date = "";
+            year = ""; month = ""; start_date = ""; end_date = "";
             if (searchBarYear.SelectedItem != null)
                 year = searchBarYear.SelectedItem.ToString().Split(' ')[1];
             else

@@ -79,8 +79,16 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
             using (WebClient web = new WebClient())
             {
                 // loading.Visibility = Visibility.Visible;
-                web.QueryString.Add("token", Main.CurrentCompany.token);
-                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                if (Main.MainType == 0)
+                {
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                }
+                if (Main.MainType == 1)
+                {
+                    web.QueryString.Add("token", Main.CurrentEmployee.token);
+                    web.QueryString.Add("id_comp", Main.CurrentEmployee.com_id);
+                }
                 web.QueryString.Add("month", month);
                 web.QueryString.Add("year", year);
                 web.QueryString.Add("id_emp", ep_id);
@@ -91,7 +99,8 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                     if (api.data != null)
                     {
                         data = api.data.thuong_phat;
-                        dulieu = data[0];
+                        if(data.Count>0)
+                            dulieu = data[0];
                     }
                     // loading.Visibility = Visibility.Collapsed;
                 };

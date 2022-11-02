@@ -5,61 +5,859 @@
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.NhanVien"
+      xmlns:math="clr-namespace:AppTinhLuong365.Core"
       mc:Ignorable="d" 
-      d:DesignHeight="920" d:DesignWidth="1042" Background="{DynamicResource #F7F8FC}"
+      Background="{DynamicResource #F7F8FC}"
       Title="payroll">
 
-    <Grid Margin="20">
+    <Page.Resources>
+        <math:MathConvert x:Key="math"></math:MathConvert>
+        <Style x:Key="Style_Grid_Wrap" TargetType="{x:Type DockPanel}">
+            <Setter Property="Width"
+                    Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE/2)}" />
+            <Setter Property="Margin" Value="0 0 0 0" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width"
+                            Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}" />
+                    <Setter Property="Margin" Value="0 10" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="2">
+                    <Setter Property="Width"
+                            Value="{Binding Path=ActualWidth, ElementName=Wrap_Grid,Converter={StaticResource math}, ConverterParameter=(@VALUE)}" />
+                    <Setter Property="Margin" Value="0 10" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_Border1" TargetType="Border">
+            <Setter Property="Width"
+                    Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter={StaticResource math},ConverterParameter=(@VALUE/5) - 9}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width"
+                            Value="{Binding Path=ActualWidth, ElementName=Wrap_Border1,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Style_Border" TargetType="Border">
+            <Setter Property="Width"
+                    Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math},ConverterParameter=(@VALUE/6) - 9}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
+                    <Setter Property="Width"
+                            Value="{Binding Path=ActualWidth, ElementName=Wrap_Border,Converter={StaticResource math}, ConverterParameter=(@VALUE)/2}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="MyButtonStyle" TargetType="ToggleButton">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Name="border"
+                                BorderThickness="0"
+                                Padding="4,2"
+                                BorderBrush="DarkGray"
+                                CornerRadius="3"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Transparent" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid Margin="0 20">
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
             </Border.Effect>
         </Border>
-        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16" Grid.ColumnSpan="2" Margin="0,0,-0.4,0">
-            <StackPanel>
-                <StackPanel VerticalAlignment="Top" Margin="20 0 0 0">
-                    <TextBlock Text="Bảng lương chu kỳ" Margin="0 25 0 0" FontSize="24" Foreground="{DynamicResource #2E3467}" FontWeight="Bold"></TextBlock>
-                    <TextBlock Text="Nguyễn Sĩ Trường An - ID 14492" FontWeight="DemiBold" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="0 3 0 0"></TextBlock>
-                    <TextBlock Text="PHÒNG 15: TRUNG TÂM ĐÀO TẠO ỨNG VIÊN MỚI ĐẾN" FontWeight="DemiBold" FontSize="15" Foreground="{DynamicResource #68798B}" Margin="0 3 0 0"></TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 20 0 0" Height="38" VerticalAlignment="Top">
-                    <TextBlock Text="Từ" FontSize="14" FontWeight="DemiBold" Foreground="Black" VerticalAlignment="Center"></TextBlock>
-                    <Border Width="150" Height="38" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
-                        <tool:DatePicker FontSize="16" Foreground="{DynamicResource #777777}"/>
-                    </Border>
-                    <TextBlock Text="Đến" FontSize="14" FontWeight="DemiBold" Foreground="Black" Margin="20 0 0 0" VerticalAlignment="Center"></TextBlock>
-                    <Border Width="150" Height="38" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
-                        <tool:DatePicker FontSize="16" Foreground="{DynamicResource #777777}"/>
-                    </Border>
-                    <Border Width="150" Height="38" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
-                        <tool:SearchBar Cursor="Hand" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
-                    </Border>
-                    <Border Width="150" Height="38" BorderThickness="1" BorderBrush="{DynamicResource #68798B}" CornerRadius="10" Margin="10 0 0 0">
-                        <tool:SearchBar Cursor="Hand" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
-                    </Border>
-                    <Border Background="{DynamicResource #4C5BD4}" CornerRadius="10"  Height="38" Width="100" Margin="10 0 20 0">
-                        <TextBlock Text="{DynamicResource textstatistical}" Padding="10 20" FontSize="14" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                    </Border>
-                </StackPanel>
-                <StackPanel Margin="20 30 20 0">
-                    <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}">
-                        <DataGrid.OpacityMask>
-                            <VisualBrush>
-                                <VisualBrush.Visual>
-                                    <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}" Height="{Binding ElementName=dataGrid,Path=ActualHeight}" CornerRadius="10" Background="White"></Border>
-                                </VisualBrush.Visual>
-                            </VisualBrush>
-                        </DataGrid.OpacityMask>
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="{DynamicResource textNumericalOrder}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Các khoản lương"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Thông số lương"></DataGridTextColumn>
-                            <DataGridTextColumn Header="{DynamicResource textUnit}"></DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </StackPanel>
+        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
+            <StackPanel Margin="17.8 20 17.8 30">
+                <TextBlock FontSize="24" Text="Bảng lương chu kỳ" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"/>
+                <TextBlock x:Name="txtTen" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                <TextBlock x:Name="txtPhong" Margin="0 10 0 0" FontSize="15" Foreground="#67898B"/>
+                <DockPanel HorizontalAlignment="Right" Margin="0 30 0 0" VerticalAlignment="Top">
+                    <WrapPanel Name="Wrap_Border">
+                        <Border>
+                            <TextBlock Text="{DynamicResource textTu}" FontSize="16" Margin="10"
+                                       Foreground="{DynamicResource #000}" FontWeight="DemiBold">
+                            </TextBlock>
+                        </Border>
+                        <Border Width="144" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
+                                CornerRadius="10" Height="38" Margin="0 0 9 0">
+                            <tool:DatePicker x:Name="DatePickerStart" FontSize="15"
+                                             Foreground="{DynamicResource #777777}" />
+                        </Border>
+                        <Border>
+                            <TextBlock Text="{DynamicResource textDen}" FontSize="16" Margin="10"
+                                       Foreground="{DynamicResource #000}" FontWeight="DemiBold">
+                            </TextBlock>
+                        </Border>
+                        <Border Width="144" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
+                                CornerRadius="10" Height="38" Margin="0 0 9 0">
+                            <tool:DatePicker x:Name="DatePickerEnd" FontSize="15"
+                                             Foreground="{DynamicResource #777777}" />
+                        </Border>
+                        <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10"
+                                Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                            <tool:SearchBar SelectionChanged="Month" x:Name="searchBarMonth"
+                                            Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
+                                            ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}" />
+                        </Border>
+                        <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10"
+                                Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
+                            <tool:SearchBar SelectionChanged="Month" x:Name="searchBarYear"
+                                            Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
+                                            ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" />
+                        </Border>
+                        <Border MouseLeftButtonDown="ThongKe" Width="104" BorderBrush="{DynamicResource #ebebeb}"
+                                BorderThickness="1"
+                                CornerRadius="10" Height="38" Margin="0 0 9 0" Background="{DynamicResource #4C5BD4}">
+                            <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}"
+                                       FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"
+                                       HorizontalAlignment="Center">
+                            </TextBlock>
+                        </Border>
+                    </WrapPanel>
+                </DockPanel>
+                <Border Margin="0 30 0 0 " Height="63" Background="{DynamicResource #4C5BD4}" CornerRadius="10 10 0 0">
+                    <Grid Margin="0 26 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock TextAlignment="Center" Text="{DynamicResource textNumericalOrder}"
+                                   FontSize="16" Foreground="{DynamicResource #FFFFFF}" />
+                        <TextBlock Grid.Column="1" Margin="40 0 0 0" Text="{DynamicResource textCKL}" FontSize="16"
+                                   Foreground="{DynamicResource #FFFFFF}" />
+                        <TextBlock Grid.Column="2" Margin="26 0 0 0" Text="{DynamicResource textTSL}" FontSize="16"
+                                   Foreground="{DynamicResource #FFFFFF}" />
+                        <TextBlock Grid.Column="3" Margin="26 0 0 0" Text="{DynamicResource textUnit}" FontSize="16"
+                                   Foreground="{DynamicResource #FFFFFF}" />
+                        <TextBlock Grid.Column="4"></TextBlock>
+                    </Grid>
+                </Border>
+                <Border CornerRadius="0 0 10 10" Background="{DynamicResource #FFFFFF}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <Border HorizontalAlignment="Stretch" Height="50.5" BorderThickness="1 0 0 1"
+                                    BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="01"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="02"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="03"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="04"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="05"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="06"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="07"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="08"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="09"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="10"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="11"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="12"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="13"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="14"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="15"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="16"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="17"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="18"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="19"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="20"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="21"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="22"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="23"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="24"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="25"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="40"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="27"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="28"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="29"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="30"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textBasicSalary}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textContract}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textStandardDateNumber}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textActualDateNumber}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textCSP}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textCongTheoTien}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textCongGhiNhan}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textCongNghiPhep}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textTongCong}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textLuongThuc}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textLuongSauPhat}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textLuongBaoHiem}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textDiMuonVeSomPhatTien}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textDiMuonVeSomPhatCong}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textHoaHong}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textTienDaTamUng}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textThuong}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textThuongNghiLe}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textPhat}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textPNNKDPN}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textPNSQD}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textPhucLoi}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textPhuCap}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textPhuCapTheoCa}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textBaoHiem}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textKhoanTienKhac}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textTongLuong}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textThue}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textTongLuongThuc}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{DynamicResource textTongLuongDaTra}"
+                                           FontSize="15" Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_luong_cb}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.hop_dong}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.cong_chuan}" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.cong_thuc}" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.cong_sau_phat}" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_cong_theo_tien}" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.cong_ghi_nhan}" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.cong_nghi_phep}" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.tong_cong_nhan}" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_luong_thuc}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_luong_sau_phat}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_luong_bh}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_ms_phat_tien}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.ms_phat_cong}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock x:Name="ValueHoaHong" Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_hoa_hong}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_tam_ung}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock x:Name="ValueThuong" Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_thuong}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_thuong_le}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock x:Name="ValuePhat" Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_phat}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_phat_nghi}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_phat_nghi_sqd}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_phuc_loi}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_phu_cap}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_phu_cap_ca}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_bao_hiem}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_khoan_khac}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_tong_luong}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_thue}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_luong_thuc_nhan}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock x:Name="ValueTong" Margin="40 0 0 0" VerticalAlignment="Center"
+                                           Text="{Binding itemLuongNv.display_luong_da_tra}" FontSize="15"
+                                           Foreground="{DynamicResource  #F46A6A}" />
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="3">
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="%" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="Công" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="Công" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="Công" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="Công" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="Công" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="Công" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="Công" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
+                                           Foreground="{DynamicResource  #68798B}" />
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="4">
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border MouseLeftButtonDown="HoaHong" Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <Grid Margin="15 0 0 0" VerticalAlignment="Center">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=ValueHoaHong, Path= Text}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Path VerticalAlignment="Center" Fill="{DynamicResource #68798B}"
+                                          Data="{DynamicResource iconDetail}">
+                                    </Path>
+                                    <TextBlock Margin="20 0 0 0" Text="{DynamicResource textDetail}" FontSize="15"
+                                               Foreground="{DynamicResource #68798B}" />
+                                </Grid>
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border MouseLeftButtonDown="btnTienThuong" Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <Grid Margin="15 0 0 0" VerticalAlignment="Center">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=ValueHoaHong, Path= Text}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Path VerticalAlignment="Center" Fill="{DynamicResource #68798B}"
+                                          Data="{DynamicResource iconDetail}">
+                                    </Path>
+                                    <TextBlock Margin="20 0 0 0" Text="{DynamicResource textDetail}" FontSize="15"
+                                               Foreground="{DynamicResource #68798B}" />
+                                </Grid>
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border MouseLeftButtonDown="Phat" Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <Grid Margin="15 0 0 0" VerticalAlignment="Center">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=ValueHoaHong, Path= Text}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Path VerticalAlignment="Center" Fill="{DynamicResource #68798B}"
+                                          Data="{DynamicResource iconDetail}">
+                                    </Path>
+                                    <TextBlock Margin="20 0 0 0" Text="{DynamicResource textDetail}" FontSize="15"
+                                               Foreground="{DynamicResource #68798B}" />
+                                </Grid>
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            </Border>
+                            <Border MouseLeftButtonDown="Luong" Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <Grid Margin="15 0 0 0" VerticalAlignment="Center">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=ValueHoaHong, Path= Text}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Path VerticalAlignment="Center" Fill="{DynamicResource #68798B}"
+                                          Data="{DynamicResource iconDetail}">
+                                    </Path>
+                                    <TextBlock Margin="20 0 0 0" Text="{DynamicResource textDetail}" FontSize="15"
+                                               Foreground="{DynamicResource #68798B}" />
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Border Height="49" Background="{DynamicResource #EDEFFB}" BorderThickness="1 0 1 1"
+                        BorderBrush="{DynamicResource  #ebebeb}">
+                    <TextBlock Margin="30 0 0 0" VerticalAlignment="Center" FontSize="15"
+                               Foreground="{DynamicResource #68798B}">
+                        <Run Text="{DynamicResource textTongLuongThuc}" />
+                        <Run Text=":" />
+                        <Run Text="{Binding itemLuongNv.display_luong_thuc_nhan, Mode=OneWay}" />
+                        <Run Text="(VNĐ)" />
+                    </TextBlock>
+                </Border>
+                <Border MouseLeftButtonDown="XuatFileThongKe" Margin="0 15 0 0" CornerRadius="5" HorizontalAlignment="Left" Width="191.5" Height="40"
+                        Background="{DynamicResource #4C5BD4}">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Path Data="{DynamicResource iconThongke}" Fill="{DynamicResource #FFFFFF}"></Path>
+                        <TextBlock Margin="10 0 0 0" FontSize="15" Foreground="{DynamicResource #FFFFFF}"
+                                   Text="Xuất file lương" />
+                    </StackPanel>
+                </Border>
             </StackPanel>
         </Border>
-
+        <tool:LoadingSpinner x:Name="loading" Visibility="Collapsed" />
     </Grid>
 </Page>

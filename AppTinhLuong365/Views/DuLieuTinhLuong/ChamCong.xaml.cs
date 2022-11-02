@@ -168,8 +168,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                                     var d = new lichlamviec() { id = listLich.Count, status = 2 };
                                     listLich.Add(d);
                                 }
-
-                                foreach(var item in listLich)
+                                Cong = camuon = 0;
+                                foreach (var item in listLich)
                                 {
                                     if(item!=null && item.ctca != null)
                                     {
