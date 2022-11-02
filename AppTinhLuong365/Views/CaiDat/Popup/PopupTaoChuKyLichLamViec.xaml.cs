@@ -41,12 +41,14 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         int year;
         int start;
 
-        public PopupTaoChuKyLichLamViec(MainWindow main, string ten, string thang, int select, string date, List<DSCaLamViec> ca)
+        public PopupTaoChuKyLichLamViec(MainWindow main, string ten, string thang, int select, string date,
+            List<DSCaLamViec> ca)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
             this.ten = ten;
+            TextBlockThang.Text = thang;
             this.thang = thang;
             this.select = select;
             this.date = date;
@@ -171,14 +173,34 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
             {
                 List<DSCaLamViec> dsc = new List<DSCaLamViec>();
-                int x = (int)new DateTime(year, month, listLich[i + start-1].ngay).DayOfWeek;
-                if (x >= 1 && x < 6)
+                int x = (int)new DateTime(year, month, listLich[i + start - 1].ngay).DayOfWeek;
+                if (DateTime.Parse(date).Day <= listLich[i + start - 1].ngay)
                 {
-                    dsc = dsca;
+                    if (select == 0)
+                    {
+                        if (x >= 1 && x < 6)
+                        {
+                            dsc = dsca;
+                        }
+                    }
+
+                    if (select == 1)
+                    {
+                        if (x >= 1 && x < 7)
+                        {
+                            dsc = dsca;
+                        }
+                    }
+
+                    if (select == 2)
+                    {
+                        dsc = dsca;
+                    }
                 }
+
                 var d = new lichlamviec()
-                    { id = listLich.Count, ngay = i, ca = dsc.Count, status = 1, dsca = dsc };
-                listLich[i + start-1] = d;
+                    { id = i + start - 1, ngay = i, ca = dsc.Count, status = 1, dsca = dsc };
+                listLich[i + start - 1] = d;
             }
 
             listLich = listLich.ToList();
@@ -317,28 +339,28 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void LuuLich(object sender, MouseButtonEventArgs e)
         {
-            string cycle = "{";
-            for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
-            {
-                string a = "[";
-                if (listLich[start + i].dsca.Count > 0)
-                {
-                    for (int j = 0; j < listLich[start + i].dsca.Count; j++)
-                    {
-                        if (j < listLich[start + i].dsca.Count - 1)
-                            a += "\"" + listLich[start + i].dsca[j].shift_id + "\"" + ",";
-                        else
-                            a += "\"" + listLich[start + i].dsca[j].shift_id + "\"" + "]";
-                    }
-                }
-                else
-                    a += "]";
-
-                if (i < DateTime.DaysInMonth(year, month) - 1)
-                    cycle += "\"" + year + "-" + month + "-" + (i + 1) + "\":" + a + ",";
-                else
-                    cycle += "\"" + year + "-" + month + "-" + (i + 1) + "\":" + a + "}";
-            }
+            // string cycle = "{";
+            // for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
+            // {
+            //     string a = "[";
+            //     if (listLich[start + i].dsca.Count > 0)
+            //     {
+            //         for (int j = 0; j < listLich[start + i].dsca.Count; j++)
+            //         {
+            //             if (j < listLich[start + i].dsca.Count - 1)
+            //                 a += "\"" + listLich[start + i].dsca[j].shift_id + "\"" + ",";
+            //             else
+            //                 a += "\"" + listLich[start + i].dsca[j].shift_id + "\"" + "]";
+            //         }
+            //     }
+            //     else
+            //         a += "]";
+            //
+            //     if (i < DateTime.DaysInMonth(year, month) - 1)
+            //         cycle += "\"" + year + "-" + month + "-" + (i + 1) + "\":" + a + ",";
+            //     else
+            //         cycle += "\"" + year + "-" + month + "-" + (i + 1) + "\":" + a + "}";
+            // }
 
             string cycle1 = "[";
             for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
@@ -372,62 +394,26 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 {
                     if (Main.MainType == 0)
                     {
-                        web.QueryString.Add("token", Main.CurrentCompany.token);
-                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                        web.Headers.Add("Authorization", Main.CurrentCompany.token);
+                        web.QueryString.Add("id_com", Main.CurrentCompany.com_id);
                     }
 
-                    // if (data != null)
+                    web.QueryString.Add("cycle_name", ten);
+                    web.QueryString.Add("detail_cycle", cycle1);
+                    string a = DateTime.Parse(date).ToString("yyyy-MM-dd");
+                    web.QueryString.Add("date", a);
+                    web.UploadValuesCompleted += (s, ee) =>
                     {
-                        web.QueryString.Add("name", ten);
-                        // web.QueryString.Add("id_ep", data.ep_id);
-                        web.QueryString.Add("cycle", cycle);
-                        web.QueryString.Add("month", listLLV.begin);
-                        web.UploadValuesCompleted += (s, ee) =>
+                        string y = UnicodeEncoding.UTF8.GetString(ee.Result);
+                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
+                        if (api.data != null)
                         {
-                            string y = UnicodeEncoding.UTF8.GetString(ee.Result);
-                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
-                            if (api.data != null)
-                            {
-                                Main.HomeSelectionPage.NavigationService.Navigate(
-                                    new Views.CaiDat.CaiCaVaLichLamViec(Main));
-                                Main.HomeSelectionPage.Visibility = Visibility.Visible;
-                                this.Visibility = Visibility.Collapsed;
-                            }
-                        };
-                        web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_cycle_pf.php",
-                            web.QueryString);
-                    }
-                    // else
-                    {
-                        web.Headers.Add("Authorization", Main.CurrentCompany.token);
-                        web.QueryString.Add("cy_name", ten);
-                        web.QueryString.Add("detail_cycle", cycle1);
-                        string a = DateTime.Parse(date).ToString("yyyy/MM/dd");
-                        web.QueryString.Add("date", a + "");
-                        // web.QueryString.Add("cy_id", cy_id);
-                        web.UploadValuesCompleted += (s, ee) =>
-                        {
-                            string y = UnicodeEncoding.UTF8.GetString(ee.Result);
-                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
-                            if (api.data != null)
-                            {
-                                // if (data != null)
-                                // {
-                                //     Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
-                                //     Main.HomeSelectionPage.Visibility = Visibility.Visible;
-                                // }
-                                // else
-                                {
-                                    Main.HomeSelectionPage.NavigationService.Navigate(
-                                        new Views.CaiDat.CaiCaVaLichLamViec(Main));
-                                    Main.HomeSelectionPage.Visibility = Visibility.Visible;
-                                }
-                                this.Visibility = Visibility.Collapsed;
-                            }
-                        };
-                        web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/update_cycle.php",
-                            web.QueryString);
-                    }
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/add_cycle.php",
+                        web.QueryString);
+                    Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
+                    this.Visibility = Visibility.Collapsed;
                 }
             }
         }
