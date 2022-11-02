@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,13 +20,26 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
     /// <summary>
     /// Interaction logic for PopupThemLichLamViec.xaml
     /// </summary>
-    public partial class PopupThemLichLamViec : Page
+    public partial class PopupThemLichLamViec : Page, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public PopupThemLichLamViec(MainWindow main)
         {
             this.DataContext = this;
             InitializeComponent();
             Main = main;
+            dteSelectedMonth = new Calendar();
+            dteSelectedMonth.Visibility = Visibility.Collapsed;
+            dteSelectedMonth.DisplayMode = CalendarMode.Year;
+            dteSelectedMonth.MouseLeftButtonDown += Select_thang;
+            dteSelectedMonth.DisplayModeChanged += dteSelectedMonth_DisplayModeChanged;
+            cl = new List<Calendar>();
+            cl.Add(dteSelectedMonth);
+            cl = cl.ToList();
         }
         MainWindow Main;
 
@@ -35,8 +50,26 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void BtnTiepTuc_Click(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupChonCaLamViec(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            bool allow = true;
+            validateName.Text = validateMonth.Text = "";
+
+            if (string.IsNullOrEmpty(tbInput.Text))
+            {
+                allow = false;
+                validateName.Text = "Vui lòng nhập tên lịch làm việc";
+            }
+
+            if (textThang.Text == "--------- ----")
+            {
+                allow = false;
+                validateMonth.Text = "Vui lòng chọn tháng áp dụng";
+            }
+
+            if (allow)
+            {
+                Main.PopupSelection.NavigationService.Navigate(new PopupChonCaLamViec(Main, tbInput.Text, textThang.Text, ComboBox.SelectedIndex, DatePicker.SelectedDate+""));
+                Main.PopupSelection.Visibility = Visibility.Visible;
+            }
         }
 
         private void Select_thang(object sender, MouseButtonEventArgs e)
@@ -57,6 +90,8 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             if (textThang != null && !string.IsNullOrEmpty(x))
             {
                 textThang.Text = x;
+                DateTime a = DateTime.Parse(x);
+                DatePicker.SelectedDate = a;
             }
             dteSelectedMonth.DisplayMode = CalendarMode.Year;
             if (dteSelectedMonth.DisplayDate != null && flag > 0)
@@ -64,6 +99,18 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 dteSelectedMonth.Visibility = Visibility.Collapsed;
             }
             flag += 1;
+        }
+        Calendar dteSelectedMonth { get; set; }
+
+        private List<Calendar> _cl;
+
+        public List<Calendar> cl
+        {
+            get { return _cl; }
+            set
+            {
+                _cl = value; OnPropertyChanged();
+            }
         }
     }
 }

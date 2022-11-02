@@ -6,6 +6,7 @@
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       xmlns:core="clr-namespace:AppTinhLuong365.Core"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.BaoCaoCongLuong"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       mc:Ignorable="d" 
       Title="BaoCaoCongLuong" SizeChanged="Page_SizeChanged">
 
@@ -138,7 +139,7 @@
                         <Border Height="440" VerticalAlignment="Top" CornerRadius="10">
                             <Grid>
                                 <TextBlock Margin="0 25 0 0" Text="{DynamicResource textPTBH}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
-                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown1" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                                     <TextBlock Text="Chi tiết >" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                 </Border>
                             </Grid>
@@ -153,7 +154,7 @@
                         <Border Height="440" VerticalAlignment="Top" CornerRadius="10">
                             <Grid>
                                 <TextBlock Margin="0 25 0 0" Text="{DynamicResource textPTT}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
-                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown2" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                                     <TextBlock Text="Chi tiết >" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                 </Border>
                             </Grid>
@@ -165,7 +166,6 @@
                     <Border>
                         <StackPanel Margin="15 25">
                             <TextBlock Text="{DynamicResource textPTMLNV}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center"/>
-                            <TextBlock Margin="0 0 0 20" Text="{DynamicResource textSLNV}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Border>
                 </Grid>
