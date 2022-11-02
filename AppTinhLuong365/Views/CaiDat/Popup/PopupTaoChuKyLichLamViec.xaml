@@ -16,7 +16,10 @@
         <StackPanel PreviewMouseWheel="UIElement_OnPreviewMouseWheel">
             <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                 <StackPanel Margin="20 0">
-                    <TextBlock Margin="0 20" Text="Tháng 09/2022" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource #636e73}"></TextBlock>
+                    <TextBlock Margin="0 20" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource #636e73}">
+                        <Run Text="Tháng"/>
+                        <Run x:Name="TextBlockThang"/>
+                    </TextBlock>
                     <Border CornerRadius="10 10 0 0" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <StackPanel>
                             <Border Background="{DynamicResource #4C5BD4}" CornerRadius="10 10 0 0" Height="45">
@@ -114,7 +117,6 @@
                         </StackPanel>
                     </Border>
                     <TextBlock Text="Tích vào ngày bên trên sau đó tích vào ca làm việc bên dưới để chọn ca làm việc tương ứng với ngày hôm đó." FontSize="16" Foreground="{DynamicResource #F46A6A}" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
-                    <TextBlock Margin="0 5" Text="Ca làm việc trong ngày 09-09-2022" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"/>
                     <StackPanel x:Name="chonCa" Visibility="Collapsed">
                         <TextBlock Margin="0 5" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold">
                             <Run Text="Ca làm việc trong ngày"/>
@@ -172,7 +174,7 @@
                                 <TextBlock Margin="25 0 0 0" Text="Quay lại" FontSize="15" Foreground="{DynamicResource #666666}" FontWeight="Bold"></TextBlock>
                             </Grid>
                         </Border>
-                        <Border Cursor="Hand" Height="38" Width="215" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}" CornerRadius="4">
+                        <Border MouseLeftButtonDown="LuuLich" Cursor="Hand" Height="38" Width="215" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}" CornerRadius="4">
                             <TextBlock Text="Tạo chu kỳ" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold"></TextBlock>
                         </Border>
                     </DockPanel>
