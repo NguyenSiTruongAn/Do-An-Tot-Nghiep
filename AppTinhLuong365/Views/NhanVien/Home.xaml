@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:AppTinhLuong365.Views.NhanVien"
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
       mc:Ignorable="d" 
-      d:DesignHeight="1292" d:DesignWidth="1102" Background="{DynamicResource #F7F8FC}"
+      d:DesignHeight="1930" d:DesignWidth="2000"
+      Background="{DynamicResource #F7F8FC}"
       Title="Home">
     <Page.Resources>
         <math:MathConvert x:Key="math"></math:MathConvert>
@@ -31,7 +32,7 @@
             </Style.Triggers>
         </Style>
     </Page.Resources>
-    <Grid  Margin="30 50 31 0">
+    <Grid  Margin="0 50 0 0">
         <StackPanel>
             <Grid>
                 <TextBlock FontSize="18" Foreground="{DynamicResource #2E3467}" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="DemiBold">
@@ -39,7 +40,7 @@
                     <Run x:Name="TenNV"/>
                     <Run Text="!"/>
                 </TextBlock>
-                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="top">
+                <StackPanel Cursor="Hand" MouseLeftButtonDown="XemLuong" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="top">
                     <Path Margin="0 0 10 0" Data="{DynamicResource iconArrowLeft}" Stroke="{DynamicResource #4C5BD4}"></Path>
                     <TextBlock FontWeight="DemiBold" Text="Xem bảng lương" Foreground="{DynamicResource #4C5BD4}" FontSize="15px"></TextBlock>
                 </StackPanel>
@@ -55,7 +56,18 @@
                         </Border>
                         <Border VerticalAlignment="Top" Margin="0 0 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Height="122">
                             <Grid>
-                                <TextBlock Text="{Binding listNV.sum_day}" FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                <TextBlock FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #4C5BD4}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Text" Value="{Binding listNV.sum_day}"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding listNV.sum_day}" Value="">
+                                                    <Setter Property="Text" Value="0"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
                                 <TextBlock FontWeight="DemiBold" Text="{DynamicResource textStandardDateNumber}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="24 75 0 0"></TextBlock>
                             </Grid>
                         </Border>
@@ -68,7 +80,18 @@
                         </Border>
                         <Border VerticalAlignment="Top" Margin="0 0 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Height="122">
                             <Grid>
-                                <TextBlock Text="{Binding listNV.work_day}" FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #68B782}"></TextBlock>
+                                <TextBlock FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #68B782}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Text" Value="{Binding listNV.work_day}"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding listNV.work_day}" Value="">
+                                                    <Setter Property="Text" Value="0"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
                                 <TextBlock FontWeight="DemiBold" Text="{DynamicResource textActualDateNumber}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="24 75 0 0"></TextBlock>
                             </Grid>
                         </Border>
@@ -81,7 +104,18 @@
                         </Border>
                         <Border VerticalAlignment="Top" Margin="0 0 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Height="122">
                             <Grid>
-                                <TextBlock Text="{Binding listNV.sum_late}" FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #FFA72E}"></TextBlock>
+                                <TextBlock FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #FFA72E}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Text" Value="{Binding listNV.sum_late}"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding listNV.sum_late}" Value="">
+                                                    <Setter Property="Text" Value="0"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
                                 <TextBlock FontWeight="DemiBold" Text="{DynamicResource textLate}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="24 75 0 0"></TextBlock>
                             </Grid>
                         </Border>
@@ -95,7 +129,18 @@
                         </Border>
                         <Border VerticalAlignment="Top" Margin="0 0 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Height="122">
                             <Grid>
-                                <TextBlock Text="{Binding listNV.form_pending}" FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #9C2B23}"></TextBlock>
+                                <TextBlock FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #9C2B23}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Text" Value="{Binding listNV.form_pending}"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding listNV.form_pending}" Value="">
+                                                    <Setter Property="Text" Value="0"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
                                 <TextBlock FontWeight="DemiBold" Text="{DynamicResource textProposalPendingApproval}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="24 75 0 0"></TextBlock>
                             </Grid>
                         </Border>
@@ -110,7 +155,10 @@
                     <Border VerticalAlignment="Top" Margin="0 30 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}">
                         <Grid  VerticalAlignment="Top">
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="Bảng công chu kỳ tháng 8/2022" Margin="20 0 0 0" FontWeight="Bold" FontSize="18" Foreground="{DynamicResource #2E3467}"></TextBlock>
+                                <TextBlock  Margin="20 0 0 0" FontWeight="Bold" FontSize="18" Foreground="{DynamicResource #2E3467}">
+                                    <Run Text="Bảng công chu kỳ tháng"/>
+                                    <Run Name="txtThang"/>
+                                </TextBlock>
                                 <StackPanel>
                                     <StackPanel Orientation="Horizontal" Background="{DynamicResource #4C5BD4}" Margin="20 22 20 0">
                                         <StackPanel Height="40">

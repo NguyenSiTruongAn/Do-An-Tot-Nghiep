@@ -16,11 +16,16 @@ namespace AppTinhLuong365.Model.APIEntity
         public string message { get; set; }
     }
 
+    public class ErrorNV
+    {
+        public string message { get; set; }
+    }
+
     public class API_QuanLyTaiKhoanNV
     {
         public bool result { get; set; }
         public int code { get; set; }
         public DataQuanLyTaiKhoanNV data { get; set; }
-        public object error { get; set; }
+        public ErrorNV error { get; set; }
     }
 }

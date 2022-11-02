@@ -53,9 +53,9 @@ namespace AppTinhLuong365.Model.APIEntity
         public string src_avt { get; set; }
         public object family { get; set; }
         public object donate { get; set; }
-        public object tax { get; set; }
-        public object insurance { get; set; }
-        public object salary { get; set; }
+        public List<TaxNV> tax { get; set; }
+        public List<InsuranceNV> insurance { get; set; }
+        public List<SalaryNV> salary { get; set; }
         public List<ContractNV> contract { get; set; }
         public string message { get; set; }
     }

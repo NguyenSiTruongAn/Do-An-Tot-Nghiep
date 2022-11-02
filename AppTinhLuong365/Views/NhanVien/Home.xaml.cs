@@ -45,6 +45,7 @@ namespace AppTinhLuong365.Views.NhanVien
             TenNV.Text = Main.CurrentEmployee.ep_name;
             getData();
             getData1(int.Parse(DateTime.Now.ToString("MM")), int.Parse(DateTime.Now.ToString("yyyy")),Main.CurrentEmployee.ep_id);
+            txtThang.Text = DateTime.Now.ToString("MM/yyyy");
         }
 
         private DataQuanLyTaiKhoanNV _listNV;
@@ -74,6 +75,11 @@ namespace AppTinhLuong365.Views.NhanVien
                     {
                         listNV = api.data;
                     }
+                    else if (api.error.message == "Không tìm thấy dữ liệu")
+                    {
+                        listNV = new DataQuanLyTaiKhoanNV() { sum_day = "0", form_pending = "0", sum_late="0", work_day ="0"};
+                    }    
+                        
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")
@@ -218,6 +224,11 @@ namespace AppTinhLuong365.Views.NhanVien
         private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+        }
+
+        private void XemLuong(object sender, MouseButtonEventArgs e)
+        {
+            Main.SideBarIndexNV = 2;
         }
     }
 }

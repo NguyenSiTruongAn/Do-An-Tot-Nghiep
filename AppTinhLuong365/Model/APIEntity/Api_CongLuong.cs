@@ -40,7 +40,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(tong_bh) >= 0)
+                if (Convert.ToDouble(tong_bh) >= 0)
                 {
                     double m;
                     if (double.TryParse(tong_bh, out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -90,7 +90,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(luong_da_tra) >= 0)
+                if (Convert.ToDouble(luong_da_tra) >= 0)
                 {
                     double m;
                     if (double.TryParse(luong_da_tra, out m)) a = m.ToString("C0").Replace(@"$", "");

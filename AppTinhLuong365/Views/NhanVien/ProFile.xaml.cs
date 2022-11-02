@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AppTinhLuong365.Model.APIEntity;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,9 +55,69 @@ namespace AppTinhLuong365.Views.NhanVien
             }
 
             Main = main;
+            getData();
         }
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
+
+        private DataTTNhanVien _TTNV;
+
+        public DataTTNhanVien TTNV
+        {
+            get { return _TTNV; }
+            set
+            {
+                _TTNV = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void getData()
+        {
+            try
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    using (WebClient web = new WebClient())
+                    {
+                        if (Main.MainType == 1)
+                        {
+                            web.QueryString.Add("token", Main.CurrentEmployee.token);
+                            web.QueryString.Add("id_com", Main.CurrentEmployee.com_id);
+                            web.QueryString.Add("id", Main.CurrentEmployee.ep_id);
+                        }
+
+                        web.UploadValuesCompleted += (s, e) =>
+                        {
+                            string x = UnicodeEncoding.UTF8.GetString(e.Result);
+                            API_TTNhanVien api = JsonConvert.DeserializeObject<API_TTNhanVien>(x);
+                            if (api.data != null)
+                            {
+                                TTNV = api.data;
+                                if (TTNV != null)
+                                    if (TTNV.ep_image == "/img/add.png")
+                                        TTNV.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                    else TTNV.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + TTNV.ep_image;
+                                txtGioiThieu.Text = TTNV.ep_description;
+                                TTNV = TTNV;
+                                if (TTNV.tax == null)
+                                    dataGrid2.Visibility = Visibility.Collapsed;
+                                if (TTNV.insurance == null)
+                                    dataGrid3.Visibility = Visibility.Collapsed;
+                                if (TTNV.contract == null)
+                                    dataGrid1.Visibility = Visibility.Collapsed;
+                                if (TTNV.salary == null)
+                                    dataGrid.Visibility = Visibility.Collapsed;
+                            }
+                        };
+                        web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/employe/profile_emp.php", web.QueryString);
+                    }
+                });
+            }
+            catch
+            {
+            }
+        }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -75,46 +138,142 @@ namespace AppTinhLuong365.Views.NhanVien
         private void OpenDes(object sender, MouseButtonEventArgs e)
         {
             borderes.Visibility = borderes.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            txtGioiThieu.Visibility = txtGioiThieu.Visibility == Visibility.Visible
+                ? Visibility.Collapsed
+                : Visibility.Visible;
+            txtGioiThieuSua.Text = TTNV.ep_description;
         }
 
         private void OpenDes1(object sender, MouseButtonEventArgs e)
         {
-            borderes1.Visibility = borderes1.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            borderes2.Visibility = borderes2.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+            borderes1.Visibility =
+                borderes1.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            txtSuaTen.Text = TTNV.ep_name;
+            txtep_id.Text = TTNV.ep_id;
+            txtSuaPhone.Text = TTNV.ep_phone;
+            txtSuaEmail.Text = TTNV.ep_email;
+            txtSuaDiaChi.Text = TTNV.ep_address;
+            cbHonNhan.SelectedIndex = int.Parse(TTNV.ep_married);
+            cbNgaySinh.SelectedDate = DateTime.Parse(TTNV.display_ep_birth_day);
+            NgayBatDau.Text = DateTime.Parse(TTNV.start_working_time).ToString("dd/MM/yyyy");
+            cbGioiTinh.SelectedIndex = int.Parse(TTNV.ep_gender);
+            borderes2.Visibility =
+                borderes2.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void SuaGioiThieu(object sender, MouseButtonEventArgs e)
+        {
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 1)
+                {
+                    web.QueryString.Add("token", Main.CurrentEmployee.token);
+                    web.QueryString.Add("id_comp", Main.CurrentEmployee.com_id);
+                }
+
+                web.QueryString.Add("emp_name", TTNV.ep_name);
+                web.QueryString.Add("ep_phone", TTNV.ep_phone);
+                web.QueryString.Add("ep_address", TTNV.ep_address);
+                web.QueryString.Add("id_emp", Main.CurrentEmployee.ep_id);
+                web.QueryString.Add("description", txtGioiThieuSua.Text);
+                web.UploadValuesCompleted += (s, ee) =>
+                {
+                    API_SuaGioiThieu api =
+                        JsonConvert.DeserializeObject<API_SuaGioiThieu>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                    if (api.data != null)
+                    {
+                        TTNV.ep_description = txtGioiThieu.Text = txtGioiThieuSua.Text;
+                        borderes.Visibility = Visibility.Collapsed;
+                        txtGioiThieu.Visibility = Visibility.Visible;
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/employe/edit_description_emp.php",
+                    web.QueryString);
+            }
+        }
+
+        private void SuaThongTin(object sender, MouseButtonEventArgs e)
+        {
+            bool allow = true;
+            validateName.Text = validatePhone.Text = validateHonNhan.Text =
+                validateNgaySinh.Text = validateGioiTinh.Text = validateDiaChi.Text = "";
+            if (string.IsNullOrEmpty(txtSuaTen.Text))
+            {
+                allow = false;
+                validateName.Text = "Vui lòng nhập đầy đủ";
+            }
+
+            if (cbHonNhan.SelectedIndex < 1)
+            {
+                allow = false;
+                validateHonNhan.Text = "Vui lòng chọn tình trạng";
+            }
+
+            var x = DateTime.Now - cbNgaySinh.SelectedDate;
+            if (x.Value.TotalDays < 5475)
+            {
+                allow = false;
+                validateNgaySinh.Text = "Vui lòng chọn ngày sinh phù hợp(>=15 tuổi)";
+            }
+
+            if (string.IsNullOrEmpty(txtSuaPhone.Text))
+            {
+                allow = false;
+                validatePhone.Text = "Vui lòng nhập đầy đủ";
+            }
+
+            if (cbGioiTinh.SelectedIndex < 1)
+            {
+                allow = false;
+                validateGioiTinh.Text = "Vui lòng chọn giới tính";
+            }
+
+            if (string.IsNullOrEmpty(txtSuaDiaChi.Text))
+            {
+                allow = false;
+                validateDiaChi.Text = "Vui lòng nhập thông tin";
+            }
+
+            if (allow)
+            {
+                using (WebClient web = new WebClient())
+                {
+                    if (Main.MainType == 1)
+                    {
+                        web.QueryString.Add("token", Main.CurrentEmployee.token);
+                        web.QueryString.Add("id_comp", Main.CurrentEmployee.com_id);
+                    }
+
+                    web.QueryString.Add("ep_name", txtSuaTen.Text);
+                    web.QueryString.Add("ep_phone", txtSuaPhone.Text);
+                    web.QueryString.Add("ep_address", txtSuaDiaChi.Text);
+                    web.QueryString.Add("ep_gender", cbGioiTinh.SelectedIndex + "");
+                    web.QueryString.Add("birth_day", cbNgaySinh.SelectedDate.Value.ToString("yyyy-MM-dd"));
+                    web.QueryString.Add("married_id", cbHonNhan.SelectedIndex + "");
+                    web.QueryString.Add("id_ep", Main.CurrentEmployee.ep_id);
+                    web.UploadValuesCompleted += (s, ee) =>
+                    {
+                        string y = UnicodeEncoding.UTF8.GetString(ee.Result);
+                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
+                        if (api.data != null)
+                        {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.ProFile(Main));
+                            Main.title.Text = " Hồ sơ cá nhân";
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/employe/edit_emp.php",
+                        web.QueryString);
+                }
+            }
         }
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
         }
 
-        private void Run_Click(object sender, RoutedEventArgs e)
+        private void dataGrid_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-
-        }
-
-        private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            
-            /*Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemLuong(Main, ));
-            Main.PopupSelection.Visibility = Visibility.Visible;*/
-        }
-
-        private void StackPanel_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
-        {
-            /*Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemHopDong(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;*/
-        }
-
-        private void StackPanel_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
-        {
-            /*Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemPhuThuoc(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;*/
-        }
-
-        private void StackPanel_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
-        {
-            /*Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemDongGop(Main));
-            Main.PopupSelection.Visibility = Visibility.Visible;*/
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
     }
 }

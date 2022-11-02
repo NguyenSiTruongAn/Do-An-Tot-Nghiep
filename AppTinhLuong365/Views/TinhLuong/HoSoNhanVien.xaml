@@ -261,7 +261,7 @@
                                 <TextBlock x:Name="validateGioiTinh" Style="{StaticResource tblValidate}"/>
                                 <TextBlock Margin="0 46 0 0" FontWeight="DemiBold" Text="{DynamicResource textMaNhanVien}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                    <TextBlock VerticalAlignment="Center" Margin="10 0 0 0" FontWeight="DemiBold" Text="14953" FontSize="16" Foreground="{DynamicResource #777777}"/>
+                                    <TextBlock VerticalAlignment="Center" Margin="10 0 0 0" FontWeight="DemiBold" Name="txtep_id" FontSize="16" Foreground="{DynamicResource #777777}"/>
                                 </Border>
                                 <TextBlock Margin="0 34 0 0" FontWeight="DemiBold" Text="{DynamicResource textAddress2C}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                                 <Border Margin="0 5 0 0" Height="41" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">

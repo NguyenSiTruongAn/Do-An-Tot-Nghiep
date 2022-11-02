@@ -182,6 +182,7 @@
     <Compile Include="Model\APIEntity\API_DSTongHHLoiNhuan.cs" />
     <Compile Include="Model\APIEntity\API_DSTongHHLPViTri.cs" />
     <Compile Include="Model\APIEntity\API_DSTongHoaHongTien.cs" />
+    <Compile Include="Model\APIEntity\API_LichLamViecNV.cs" />
     <Compile Include="Model\APIEntity\API_ListBaoHiem.cs" />
     <Compile Include="Model\APIEntity\API_ListCalendarWork.cs" />
     <Compile Include="Model\APIEntity\API_ListEmployee.cs" />
@@ -225,6 +226,7 @@
     <Compile Include="Model\APIEntity\API_ThietLapNhanVienVaoNhom.cs" />
     <Compile Include="Model\APIEntity\API_ThongKeHoaHong.cs" />
     <Compile Include="Model\APIEntity\API_ThongTinNV.cs" />
+    <Compile Include="Model\APIEntity\API_TTNhanVien.cs" />
     <Compile Include="Model\APIEntity\API_UserInfo.cs" />
     <Compile Include="Model\APIEntity\API_XoaNhanVienKhoiNhom.cs" />
     <Compile Include="Model\APIEntity\API_XoaNhanVienKhoiPhucLoi.cs" />
@@ -758,7 +760,7 @@
     </Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupChinhSuaThue.xaml.cs">
       <DependentUpon>PopupChinhSuaThue.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupHoaHong.xaml.cs">
       <DependentUpon>PopupHoaHong.xaml</DependentUpon>
     </Compile>
@@ -788,7 +790,7 @@
     </Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupXoaThueNV.xaml.cs">
       <DependentUpon>PopupXoaThueNV.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupThuong.xaml.cs">
       <DependentUpon>PopupThuong.xaml</DependentUpon>
     </Compile>
@@ -1628,7 +1630,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TinhLuong\Popup\PopupChinhSuaThue.xaml"/>
+    <Page Include="Views\TinhLuong\Popup\PopupChinhSuaThue.xaml" />
     <Page Include="Views\TinhLuong\Popup\PopupHoaHong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1665,7 +1667,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TinhLuong\Popup\PopupXoaThueNV.xaml"/>
+    <Page Include="Views\TinhLuong\Popup\PopupXoaThueNV.xaml" />
     <Page Include="Views\TinhLuong\Popup\PopupThuong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

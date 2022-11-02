@@ -215,13 +215,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int thuong_le { get; set; }
+        public double thuong_le { get; set; }
         public string display_thuong_le
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(thuong_le) >= 0)
+                if (Convert.ToDouble(thuong_le) >= 0)
                 {
                     double m;
                     if (double.TryParse(thuong_le.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
