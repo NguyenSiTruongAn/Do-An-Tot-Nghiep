@@ -290,6 +290,9 @@
     <Compile Include="Views\CaiDat\Popup\PopupAddFileNhanVien.xaml.cs">
       <DependentUpon>PopupAddFileNhanVien.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CaiDat\Popup\PopupSaoChepLichDon.xaml.cs">
+      <DependentUpon>PopupSaoChepLichDon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CaiDat\Popup\PopupTaoChuKyLichLamViec.xaml.cs">
       <DependentUpon>PopupTaoChuKyLichLamViec.xaml</DependentUpon>
     </Compile>
@@ -943,6 +946,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CaiDat\Popup\PopupAddFileNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CaiDat\Popup\PopupSaoChepLichDon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

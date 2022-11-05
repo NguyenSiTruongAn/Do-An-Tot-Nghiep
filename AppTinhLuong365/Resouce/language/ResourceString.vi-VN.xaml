@@ -242,6 +242,7 @@
     <system:String x:Key="textContinue">Tiếp tục</system:String>
     <system:String x:Key="textSCLLV">Sao chép lịch làm việc</system:String>
     <system:String x:Key="textSCL">Sao chép lịch</system:String>
+    <system:String x:Key="textSave1">Lưu Lại</system:String>
     <system:String x:Key="textCTADLLV">Chọn tháng áp dụng lịch làm việc</system:String>
     <system:String x:Key="textCTC">Chọn tất cả</system:String>
     <system:String x:Key="textTMMDMVS">Thêm mới mức phạt đi muộn về sớm</system:String>
