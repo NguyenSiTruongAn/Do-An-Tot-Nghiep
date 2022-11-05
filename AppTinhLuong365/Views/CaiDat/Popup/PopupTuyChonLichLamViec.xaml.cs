@@ -43,7 +43,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void SaoChep_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupTuyChonSaoChepLichLamViec(Main));
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupSaoChepLichDon(Main, id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 

@@ -37,7 +37,7 @@
                                 </Path>
                                 <TextBlock x:Name="text" Margin="0 0 0 0" Grid.Column="1" Text="{Binding Name}" Foreground="{DynamicResource #666c7c}" FontSize="16"></TextBlock>
                                 <Grid Grid.Column="1" HorizontalAlignment="Right">
-                                    <Path Data="{DynamicResource iconMore}" Fill="{DynamicResource #666c7c}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 0">
+                                    <Path Data="{DynamicResource s}" Fill="{DynamicResource #666c7c}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20 0">
                                         <Path.Style>
                                             <Style TargetType="Path">
                                                 <Setter Property="Visibility" Value="Collapsed"/>
@@ -155,7 +155,7 @@
                             </Border.Background>
                         </Border>
                         <DockPanel Cursor="Hand" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
-                            <TextBlock Name="tblUserName" Margin="0 0 12 0" FontSize="15" Foreground="{DynamicResource #2E3467}" Text="" Width="270" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Name="tblUserName" Margin="10 0 12 0" FontSize="15" Foreground="{DynamicResource #2E3467}" Text="" Width="270" VerticalAlignment="Center"></TextBlock>
                             <Path Data="{DynamicResource iconDrop}" VerticalAlignment="Center" Fill="{DynamicResource #2E3467}" Margin="0 0 22 0"></Path>
                         </DockPanel>
                     </StackPanel>

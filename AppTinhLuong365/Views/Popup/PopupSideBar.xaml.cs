@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppTinhLuong365.Model.APIEntity;
 
 namespace AppTinhLuong365.Views.Popup
 {
@@ -24,14 +25,40 @@ namespace AppTinhLuong365.Views.Popup
     public partial class PopupSideBar : Page
     {
         MainWindow Main;
+
         public PopupSideBar(MainWindow main)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            if (Main.MainType == 0)
+            {
+                NameCompany.Text = Main.CurrentCompany.com_name;
+                sidebar.Visibility = Visibility.Visible;
+                sidebarNV.Visibility = Visibility.Collapsed;
+                com_image = "https://chamcong.24hpay.vn/upload/company/logo/" + Main.CurrentCompany.com_logo;
+            }
+            else
+            {
+                NameCompany.Text = Main.CurrentEmployee.ep_name;
+                sidebar.Visibility = Visibility.Collapsed;
+                sidebarNV.Visibility = Visibility.Visible;
+                if (string.IsNullOrEmpty(Main.CurrentEmployee.ep_image) || Main.CurrentEmployee.ep_image == "/img/add.png" || Main.CurrentEmployee.ep_image == "")
+                {
+                    com_image = "https://tinhluong.timviec365.vn/img/add.png";
+                }
+                else
+                {
+                    com_image = "https://chamcong.24hpay.vn/upload/employee/" + Main.CurrentEmployee.ep_image;
+                }
+            }
         }
 
+        public string com_image { get; set; }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -40,22 +67,22 @@ namespace AppTinhLuong365.Views.Popup
         public class SideBarItemCom : INotifyPropertyChanged
         {
             public event PropertyChangedEventHandler PropertyChanged;
+
             protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
+
             public object Icon { get; set; }
             public string Name { get; set; }
             public bool Child { get; set; }
             public bool HadSubMenu { get; set; } = false;
 
             private Visibility _Vis = Visibility.Visible;
+
             public Visibility Vis
             {
-                get
-                {
-                    return _Vis;
-                }
+                get { return _Vis; }
                 set
                 {
                     _Vis = value;
@@ -65,33 +92,129 @@ namespace AppTinhLuong365.Views.Popup
 
             public int typePath { get; set; } = 0;
         }
-        private List<SideBarItemCom> _SideBarItems = new List<SideBarItemCom>() {
-                new SideBarItemCom(){ Icon=App.Current.Resources["iconHome"],Name=App.Current.Resources["textTrangChu"] as string},
-                new SideBarItemCom(){ Icon=App.Current.Resources["iconNhapLuongCoBanVaCheDo"],Name=App.Current.Resources["textNhapLuongCoBanVaCheDo"] as string},
-                new SideBarItemCom(){ Icon=App.Current.Resources["iconDuLieuTinhLuong"],Name=App.Current.Resources["textDuLieuTinhLuong"] as string, typePath =1},
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textChamCong"] as string,Vis=Visibility.Collapsed },
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textThuongPhat"] as string,Vis=Visibility.Collapsed },
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textPhucLoi"] as string ,Vis=Visibility.Collapsed},
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textHoaHong"] as string,Vis=Visibility.Collapsed },
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textCacKhoanTienKhac"] as string ,Vis=Visibility.Collapsed},
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textBaoHiem"] as string ,Vis=Visibility.Collapsed},
-                new SideBarItemCom(){ Icon=App.Current.Resources["iconTinhLuong"],Name=App.Current.Resources["textSalary"] as string,typePath=1},
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textBangLuong"] as string,Vis=Visibility.Collapsed },
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textTamUng"] as string,Vis=Visibility.Collapsed },
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textThue"] as string ,Vis=Visibility.Collapsed},
-                new SideBarItemCom(){ Icon=App.Current.Resources["iconChiTraLuong"],Name=App.Current.Resources["textChiTraLuong"] as string, typePath = 1},
-                new SideBarItemCom(){ Icon=App.Current.Resources["iconBaoCaoCongLuong"],Name=App.Current.Resources["textBaoCaoCongLuong"] as string, typePath = 1},
-                new SideBarItemCom(){ Icon=App.Current.Resources["iconCaiDat"],Name=App.Current.Resources["textCaiDat"] as string, typePath = 1},
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textNhomLamViec"] as string,Vis=Visibility.Collapsed },
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textCaiCaVaLichLamViec"] as string,Vis=Visibility.Collapsed },
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textDiMuonVeSom"] as string ,Vis=Visibility.Collapsed},
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textNghiPhep"] as string,Vis=Visibility.Collapsed },
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textNgayNghiLe"] as string ,Vis=Visibility.Collapsed},
-                new SideBarItemCom() { Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textBieuMauDeXuat"] as string ,Vis=Visibility.Collapsed},
-                new SideBarItemCom(){ Icon=App.Current.Resources["iconPhanQuyen"],Name=App.Current.Resources["textPhanQuyen"] as string},
-                new SideBarItemCom(){ Icon=App.Current.Resources["iconChuyenDoiSo"],Name=App.Current.Resources["textDigitalConversion"] as string, typePath =1},
-                new SideBarItemCom(){ Icon=App.Current.Resources["iconLogout"],Name=App.Current.Resources["textDangXuat"] as string},
+
+        private List<SideBarItemCom> _SideBarItems = new List<SideBarItemCom>()
+        {
+            new SideBarItemCom()
+                { Icon = App.Current.Resources["iconHome"], Name = App.Current.Resources["textTrangChu"] as string },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconNhapLuongCoBanVaCheDo"],
+                Name = App.Current.Resources["textNhapLuongCoBanVaCheDo"] as string
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconDuLieuTinhLuong"],
+                Name = App.Current.Resources["textDuLieuTinhLuong"] as string, typePath = 1
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textChamCong"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textThuongPhat"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textPhucLoi"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textHoaHong"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"],
+                Name = App.Current.Resources["textCacKhoanTienKhac"] as string, Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textBaoHiem"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconTinhLuong"], Name = App.Current.Resources["textSalary"] as string,
+                typePath = 1
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textBangLuong"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textTamUng"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textThue"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconChiTraLuong"],
+                Name = App.Current.Resources["textChiTraLuong"] as string, typePath = 1
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconBaoCaoCongLuong"],
+                Name = App.Current.Resources["textBaoCaoCongLuong"] as string, typePath = 1
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconCaiDat"], Name = App.Current.Resources["textCaiDat"] as string,
+                typePath = 1
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textNhomLamViec"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"],
+                Name = App.Current.Resources["textCaiCaVaLichLamViec"] as string, Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textDiMuonVeSom"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textNghiPhep"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"], Name = App.Current.Resources["textNgayNghiLe"] as string,
+                Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconSubMenu"],
+                Name = App.Current.Resources["textBieuMauDeXuat"] as string, Vis = Visibility.Collapsed
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconPhanQuyen"], Name = App.Current.Resources["textPhanQuyen"] as string
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconChuyenDoiSo"],
+                Name = App.Current.Resources["textDigitalConversion"] as string, typePath = 1
+            },
+            new SideBarItemCom()
+                { Icon = App.Current.Resources["iconLogout"], Name = App.Current.Resources["textDangXuat"] as string },
         };
+
         public List<SideBarItemCom> SideBarItems
         {
             get { return _SideBarItems; }
@@ -102,15 +225,64 @@ namespace AppTinhLuong365.Views.Popup
             }
         }
 
+        private List<SideBarItemCom> _SideBarItemsNV = new List<SideBarItemCom>()
+        {
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconHome"], Name = App.Current.Resources["textAccManagement"] as string
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconNhapLuongCoBanVaCheDo"],
+                Name = App.Current.Resources["textProfile"] as string
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconDuLieuTinhLuong"],
+                Name = App.Current.Resources["textSalary"] as string, typePath = 1
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconCalendar"], Name = App.Current.Resources["textChamCong"] as string
+            },
+            new SideBarItemCom()
+                { Icon = App.Current.Resources["iconDeXuat"], Name = App.Current.Resources["textOffer"] as string },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconCalendar"], Name = App.Current.Resources["textCalendar"] as string
+            },
+            new SideBarItemCom()
+            {
+                Icon = App.Current.Resources["iconChuyenDoiSo"],
+                Name = App.Current.Resources["textDigitalConversion"] as string, typePath = 1
+            },
+        };
+
+        public List<SideBarItemCom> SideBarItemsNV
+        {
+            get { return _SideBarItemsNV; }
+            set
+            {
+                _SideBarItemsNV = value;
+                OnPropertyChanged();
+            }
+        }
+
         private bool _OpenSubMenu;
+
         public bool OpenSubMenu
         {
             get { return _OpenSubMenu; }
-            set { _OpenSubMenu = value; OnPropertyChanged(); }
+            set
+            {
+                _OpenSubMenu = value;
+                OnPropertyChanged();
+            }
         }
 
 
         private int _SideBarIndex = 0;
+
         public int SideBarIndex
         {
             get { return _SideBarIndex; }
@@ -147,12 +319,24 @@ namespace AppTinhLuong365.Views.Popup
                         Main.title.Text = "Danh sách nhân viên";
                         break;
                     case 2:
-                        SideBarItems[3].Vis = SideBarItems[3].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[4].Vis = SideBarItems[4].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[5].Vis = SideBarItems[5].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[6].Vis = SideBarItems[6].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[7].Vis = SideBarItems[7].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[8].Vis = SideBarItems[8].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+                        SideBarItems[3].Vis = SideBarItems[3].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[4].Vis = SideBarItems[4].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[5].Vis = SideBarItems[5].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[6].Vis = SideBarItems[6].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[7].Vis = SideBarItems[7].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[8].Vis = SideBarItems[8].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
                         OpenSubMenu = true;
                         break;
                     case 3:
@@ -176,7 +360,8 @@ namespace AppTinhLuong365.Views.Popup
                         Main.title.Text = Main.Title;
                         break;
                     case 7:
-                        Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.CacKhoanTienKhac(Main));
+                        Main.HomeSelectionPage.NavigationService.Navigate(
+                            new Views.DuLieuTinhLuong.CacKhoanTienKhac(Main));
                         Main.Title = App.Current.Resources["textCacKhoanTienKhac"] as string;
                         Main.title.Text = App.Current.Resources["textKhoanTienKhac"] as string;
                         break;
@@ -186,9 +371,15 @@ namespace AppTinhLuong365.Views.Popup
                         Main.title.Text = Main.Title;
                         break;
                     case 9:
-                        SideBarItems[10].Vis = SideBarItems[10].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[11].Vis = SideBarItems[11].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[12].Vis = SideBarItems[12].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+                        SideBarItems[10].Vis = SideBarItems[10].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[11].Vis = SideBarItems[11].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[12].Vis = SideBarItems[12].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
                         OpenSubMenu = true;
                         break;
                     case 10:
@@ -212,17 +403,30 @@ namespace AppTinhLuong365.Views.Popup
                         Main.title.Text = Main.Title;
                         break;
                     case 14:
-                        Main.HomeSelectionPage.NavigationService.Navigate(new Views.BaoCaoCongLuong.BaoCaoCongLuong(Main));
+                        Main.HomeSelectionPage.NavigationService.Navigate(
+                            new Views.BaoCaoCongLuong.BaoCaoCongLuong(Main));
                         Main.Title = App.Current.Resources["textBaoCaoCongLuong"] as string;
                         Main.title.Text = Main.Title;
                         break;
                     case 15:
-                        SideBarItems[16].Vis = SideBarItems[16].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[17].Vis = SideBarItems[17].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[18].Vis = SideBarItems[18].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[19].Vis = SideBarItems[19].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[20].Vis = SideBarItems[20].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-                        SideBarItems[21].Vis = SideBarItems[21].Vis == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+                        SideBarItems[16].Vis = SideBarItems[16].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[17].Vis = SideBarItems[17].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[18].Vis = SideBarItems[18].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[19].Vis = SideBarItems[19].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[20].Vis = SideBarItems[20].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
+                        SideBarItems[21].Vis = SideBarItems[21].Vis == Visibility.Visible
+                            ? Visibility.Collapsed
+                            : Visibility.Visible;
                         OpenSubMenu = true;
                         break;
                     case 16:
@@ -264,7 +468,9 @@ namespace AppTinhLuong365.Views.Popup
                     default:
                         break;
                 }
-                var z = new List<int>() { -1, 0, 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23 };
+
+                var z = new List<int>()
+                    { -1, 0, 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23 };
                 if (z.Contains(value)) _SideBarIndex = value;
                 else if (value != 5)
                 {
@@ -274,6 +480,66 @@ namespace AppTinhLuong365.Views.Popup
                         SideBarIndex = h;
                     }
                 }
+
+                OnPropertyChanged();
+            }
+        }
+
+        private int _SideBarIndexNV = 0;
+
+        public int SideBarIndexNV
+        {
+            get { return _SideBarIndexNV; }
+            set
+            {
+                switch (value)
+                {
+                    case 0:
+                        Main.HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.Home(Main));
+                        Main.Title = App.Current.Resources["textTrangChu"] as string;
+                        Main.title.Text = "Quản lý tài khoản";
+                        break;
+                    case 1:
+                        Main.HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.ProFile(Main));
+                        Main.Title = App.Current.Resources["textTrangChu"] as string;
+                        Main.title.Text = "Hồ sơ cá nhân";
+                        break;
+                    case 2:
+                        Main.HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.payroll(Main));
+                        Main.Title = App.Current.Resources["textTrangChu"] as string;
+                        Main.title.Text = "Bảng lương";
+                        break;
+                    case 3:
+                        Main.HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.TimeKeeping(Main));
+                        Main.Title = App.Current.Resources["textTrangChu"] as string;
+                        Main.title.Text = "Chấm công";
+                        break;
+                    case 4:
+                        Process.Start("https://vanthu.timviec365.vn/trang-quan-ly-de-xuat.html");
+                        break;
+                    case 5:
+                        Main.HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.Calendar(Main));
+                        Main.Title = App.Current.Resources["textTrangChu"] as string;
+                        Main.title.Text = "Lịch làm việc";
+                        break;
+                    case 6:
+                        Process.Start("https://quanlychung.timviec365.vn/quan-ly-ung-dung-nhan-vien.html");
+                        break;
+                    default:
+                        break;
+                }
+
+                var z = new List<int>() { 0, 1, 2, 3, 5 };
+                if (z.Contains(value)) _SideBarIndexNV = value;
+                else if (value != 5)
+                {
+                    var h = sidebarNV.SelectedIndex;
+                    if (h > -1)
+                    {
+                        SideBarIndexNV = h;
+                    }
+                }
+
                 OnPropertyChanged();
             }
         }
