@@ -104,7 +104,7 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void Border_MouseLeftButtonDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupSaoChepLich(Main));
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupSaoChepLich(Main, searchBarMonth1.SelectedIndex, searchBarYear1.SelectedIndex));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
