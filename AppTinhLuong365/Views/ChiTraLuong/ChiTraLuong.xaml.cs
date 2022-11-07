@@ -160,7 +160,7 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                             DateTime.TryParse(a.pay_time_end, out aDateTime);
                             a.pay_time_end = aDateTime.ToString("dd/MM/yyyy");
                             DateTime.TryParse(a.pay_for_time, out aDateTime);
-                            a.pay_for_time = "Tháng " + aDateTime.ToString("MM/yyyy");
+                            a.pay_for_time = aDateTime.ToString("MM/yyyy");
                         }
                     }
                     //foreach (EpLate item in list)

@@ -164,6 +164,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             if (nv.Count <= 0)
             {
                 allow = false;
+                validatePhat.Text = "Vui lòng chọn nhân viên";
             }
 
             if (allow)

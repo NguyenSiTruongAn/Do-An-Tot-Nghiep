@@ -75,11 +75,7 @@
                                 </Border>
                             </Grid>
                         </Border>
-                        <Viewbox MaxWidth="590" HorizontalAlignment="Stretch">
-                            <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                  DisplayMode="Year" x:Name="dteSelectedMonth"
-                                  DisplayModeChanged="dteSelectedMonth_DisplayModeChanged" />
-                        </Viewbox>
+                        <ListView ItemsSource="{Binding cl}" HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="0"></ListView>
                         <Grid Margin="0 14 0 0">
                             <TextBlock FontWeight="DemiBold" Text="{DynamicResource textKCT}" FontSize="16"
                                    Foreground="{DynamicResource #666666}" />
