@@ -68,26 +68,19 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                 ComboBoxPay.SelectedIndex = 1;
             }
             Main = main;
-        }
-
-        private int _IsSmallSize;
-        public int IsSmallSize
-        {
-            get { return _IsSmallSize; }
-            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
-        }
-
-        MainWindow Main;
-        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
+            dteSelectedMonth = new Calendar();
+            dteSelectedMonth.Visibility = Visibility.Collapsed;
+            dteSelectedMonth.DisplayMode = CalendarMode.Year;
+            dteSelectedMonth.MouseLeftButtonDown += Select_thang;
+            dteSelectedMonth.DisplayModeChanged += dteSelectedMonth_DisplayModeChanged;
+            cl = new List<Calendar>();
+            cl.Add(dteSelectedMonth);
+            cl = cl.ToList();
         }
 
         private void Select_thang(object sender, MouseButtonEventArgs e)
         {
-            dteSelectedMonth.Visibility = dteSelectedMonth.Visibility == Visibility.Visible
-                ? Visibility.Collapsed
-                : Visibility.Visible;
+            dteSelectedMonth.Visibility = dteSelectedMonth.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
             flag = 1;
         }
 
@@ -103,15 +96,39 @@ namespace AppTinhLuong365.Views.ChiTraLuong
             if (textThang != null && !string.IsNullOrEmpty(x))
             {
                 textThang.Text = x;
+                DateTime a = DateTime.Parse(x);
             }
-
             dteSelectedMonth.DisplayMode = CalendarMode.Year;
             if (dteSelectedMonth.DisplayDate != null && flag > 0)
             {
                 dteSelectedMonth.Visibility = Visibility.Collapsed;
             }
-
             flag += 1;
+        }
+        Calendar dteSelectedMonth { get; set; }
+
+        private List<Calendar> _cl;
+
+        public List<Calendar> cl
+        {
+            get { return _cl; }
+            set
+            {
+                _cl = value; OnPropertyChanged();
+            }
+        }
+
+        private int _IsSmallSize;
+        public int IsSmallSize
+        {
+            get { return _IsSmallSize; }
+            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
+        }
+
+        MainWindow Main;
+        private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
         }
 
         private void Save(object sender, MouseButtonEventArgs e)
@@ -148,10 +165,14 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                         web.QueryString.Add("pay_id", id);
                     }
                     web.QueryString.Add("pay_name", tbInput.Text);
-                    string date = "";
+                    DateTime date;
+                    string c = "";
                     if (textThang.Text != "--------- ----")
-                        date = dteSelectedMonth.DisplayDate.ToString("yyyy-MM");
-                    web.QueryString.Add("pay_for_time", date);
+                    {
+                        DateTime.TryParse(textThang.Text, out date);
+                        c = date.ToString("yyyy-MM");
+                    } 
+                    web.QueryString.Add("pay_for_time", c);
                     string startDate = "";
                     if (StartDate.SelectedDate != null)
                     {

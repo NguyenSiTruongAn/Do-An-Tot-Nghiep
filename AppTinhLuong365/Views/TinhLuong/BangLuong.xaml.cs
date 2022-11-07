@@ -46,6 +46,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         string month;
         string year;
+
         public BangLuong(MainWindow main)
         {
             ItemList = new ObservableCollection<string>();
@@ -99,6 +100,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.QueryString.Add("cp", "2");
                 }
+
                 if (Main.MainType == 1)
                 {
                     web.QueryString.Add("id_comp", Main.CurrentEmployee.com_id);
@@ -109,7 +111,8 @@ namespace AppTinhLuong365.Views.TinhLuong
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    API_ThongBaoCT api =
+                        JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
                         Main.listTB = api.data.abc;
@@ -127,7 +130,8 @@ namespace AppTinhLuong365.Views.TinhLuong
                         }
                     }
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php",
+                    web.QueryString);
             }
         }
 
@@ -227,7 +231,9 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             Path p = sender as Path;
             Item_Bang_Luong data = (Item_Bang_Luong)p.DataContext;
-            var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id, searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex, DatePickerStart.SelectedDate, DatePickerEnd.SelectedDate);
+            var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id,
+                searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex, DatePickerStart.SelectedDate,
+                DatePickerEnd.SelectedDate);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 95, z.Y + 15, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -348,7 +354,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else
                 end_date = DateTime.Now.ToString("yyyy-MM-01");
 
-            if (SearchBar.SelectedIndex <0)
+            if (SearchBar.SelectedIndex >= 0)
             {
                 order = (SearchBar.SelectedIndex + 1) + "";
             }
@@ -569,7 +575,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else
                 end_date = DateTime.Now.ToString("yyyy-MM-01");
 
-            if (SearchBar.SelectedIndex >=0)
+            if (SearchBar.SelectedIndex >= 0)
             {
                 order = (SearchBar.SelectedIndex + 1) + "";
             }
@@ -639,7 +645,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else
                 end_date = DateTime.Now.ToString("yyyy-MM-01");
 
-            if (SearchBar.SelectedIndex >=0)
+            if (SearchBar.SelectedIndex >= 0)
             {
                 order = (SearchBar.SelectedIndex + 1) + "";
             }
@@ -705,7 +711,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else
                 end_date = DateTime.Now.ToString("yyyy-MM-01");
 
-            if (SearchBar.SelectedIndex >=0)
+            if (SearchBar.SelectedIndex >= 0)
             {
                 order = (SearchBar.SelectedIndex + 1) + "";
             }
@@ -771,7 +777,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else
                 end_date = DateTime.Now.ToString("yyyy-MM-01");
 
-            if (SearchBar.SelectedIndex >=0)
+            if (SearchBar.SelectedIndex >= 0)
             {
                 order = (SearchBar.SelectedIndex + 1) + "";
             }
@@ -852,7 +858,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else
                 end_date = DateTime.Now.ToString("yyyy-MM-01");
 
-            if (SearchBar.SelectedIndex >=0)
+            if (SearchBar.SelectedIndex >= 0)
             {
                 order = (SearchBar.SelectedIndex + 1) + "";
             }
@@ -921,7 +927,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else
                 end_date = DateTime.Now.ToString("yyyy-MM-01");
 
-            if (SearchBar.SelectedIndex >=0)
+            if (SearchBar.SelectedIndex >= 0)
             {
                 order = (SearchBar.SelectedIndex + 1) + "";
             }
@@ -990,7 +996,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else
                 end_date = DateTime.Now.ToString("yyyy-MM-01");
 
-            if (SearchBar.SelectedIndex >=0)
+            if (SearchBar.SelectedIndex >= 0)
             {
                 order = (SearchBar.SelectedIndex + 1) + "";
             }
@@ -1104,7 +1110,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void Month(object sender, SelectionChangedEventArgs e)
         {
-            string a = DateTime.Now.ToString((searchBarYear.SelectedIndex + DateTime.Now.Year -1) + "-" +
+            string a = DateTime.Now.ToString((searchBarYear.SelectedIndex + DateTime.Now.Year - 1) + "-" +
                                              (searchBarMonth.SelectedIndex + 1) + "-01");
             DateTime b = DateTime.Parse(a);
             DatePickerStart.SelectedDate = b;
@@ -1130,13 +1136,15 @@ namespace AppTinhLuong365.Views.TinhLuong
                     {
                         uid = select.ep_id;
                     }
+
                     var select1 = cbPhongBan.SelectedItem as Item_dep;
                     if (select1 != null)
                     {
                         dp = select1.dep_id;
                     }
+
                     string order;
-                    if (SearchBar.SelectedIndex >=0)
+                    if (SearchBar.SelectedIndex >= 0)
                     {
                         order = (SearchBar.SelectedIndex + 1) + "";
                     }
@@ -1144,6 +1152,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                     {
                         order = 1 + "";
                     }
+
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     string year = "", month = "";
@@ -1158,6 +1167,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                     web.QueryString.Add("order", order);
                     // web.QueryString.Add("uid", id_nv);
                 }
+
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     data = UnicodeEncoding.UTF8.GetString(e.Result);
@@ -1182,14 +1192,16 @@ namespace AppTinhLuong365.Views.TinhLuong
                         {
                             MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
+
                         loading.Visibility = Visibility.Collapsed;
                         //converter.Convert(filePath, convertOptions);
                     }
-
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_tbl_luong.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_tbl_luong.php",
+                    web.QueryString);
             }
         }
+
         private void XuatFileThongKe(object sender, MouseButtonEventArgs e)
         {
             loading.Visibility = Visibility.Visible;

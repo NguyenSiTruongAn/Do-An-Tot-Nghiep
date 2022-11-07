@@ -124,10 +124,11 @@
                         <DataGridTemplateColumn Header="{DynamicResource textMonth}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Margin="15 0" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                               Text="{Binding pay_for_time}" FontSize="15"
+                                    <TextBlock Margin="15 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"
                                                FontWeight="DemiBold"
                                                Foreground="{DynamicResource #F46A6A}">
+                                        <Run Text="Tháng"/>
+                                        <Run Text="{Binding pay_for_time}"/>
                                     </TextBlock>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
