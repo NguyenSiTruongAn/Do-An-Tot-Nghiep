@@ -224,6 +224,7 @@
     <Compile Include="Model\APIEntity\API_ThemNhanVienVaoNhom.cs" />
     <Compile Include="Model\APIEntity\API_ThemNhanVienVaoPhucLoi_PhuCap.cs" />
     <Compile Include="Model\APIEntity\API_ThietLapNhanVienVaoNhom.cs" />
+    <Compile Include="Model\APIEntity\API_ThongBaoCT.cs" />
     <Compile Include="Model\APIEntity\API_ThongKeHoaHong.cs" />
     <Compile Include="Model\APIEntity\API_ThongTinNV.cs" />
     <Compile Include="Model\APIEntity\API_TTNhanVien.cs" />
@@ -805,6 +806,9 @@
     </Compile>
     <Compile Include="Views\TrangChu\PopupTaiKhoan.xaml.cs">
       <DependentUpon>PopupTaiKhoan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrangChu\popup\PopupThongBao.xaml.cs">
+      <DependentUpon>PopupThongBao.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TrangChu\TaiKhoan.xaml.cs">
       <DependentUpon>TaiKhoan.xaml</DependentUpon>
@@ -1687,6 +1691,10 @@
     <Page Include="Views\TrangChu\PopupTaiKhoan.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TrangChu\popup\PopupThongBao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TrangChu\TaiKhoan.xaml">
       <SubType>Designer</SubType>

@@ -79,6 +79,7 @@ namespace AppTinhLuong365
             tblUserName.Text = CurrentCompany.com_name;
             CurrentImage = "https://chamcong.24hpay.vn/upload/company/logo/" + CurrentCompany.com_logo;
             MainType = 0;
+            getData();
         }
 
         public MainWindow(API_Login_Employee api)
@@ -96,6 +97,20 @@ namespace AppTinhLuong365
             sidebarNV.Visibility = Visibility.Visible;
             tblUserName.Text = CurrentEmployee.ep_name;
             CurrentImage = "https://chamcong.24hpay.vn/upload/employee/"+CurrentEmployee.ep_image;
+            getData();
+        }
+        private int _sotb = 0;
+        public int sotb
+        {
+            get
+            {
+                return _sotb;
+            }
+            set
+            {
+                _sotb = value;
+                OnPropertyChanged();
+            }
         }
         public DataLogin_Company CurrentCompany { get; set; }
         public DataLogin_Employee CurrentEmployee { get; set; }
@@ -107,6 +122,7 @@ namespace AppTinhLuong365
             set { currentImage = value;OnPropertyChanged(); }
         }
         public CacKhoanTienKhac pageCacKhoanTienKhac;
+        public Action LogOut { get; set; }
         public class SideBarItemCom : INotifyPropertyChanged
         {
             public event PropertyChangedEventHandler PropertyChanged;
@@ -427,6 +443,80 @@ namespace AppTinhLuong365
                 OnPropertyChanged();
             }
         }
+
+        private List<ThongBaoCT> _listTB;
+
+        public List<ThongBaoCT> listTB
+        {
+            get { return _listTB; }
+            set { _listTB = value; OnPropertyChanged(); }
+        }
+
+        private int _fontsize = 14;
+        public int fontsize
+        {
+            get
+            {
+                return _fontsize;
+            }
+            set
+            {
+                _fontsize = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Thickness _margin = new Thickness(12.5, -10.5, 0, 0);
+        public Thickness margin
+        {
+            get
+            {
+                return _margin;
+            }
+            set
+            {
+                _margin = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void getData()
+        {
+            using (WebClient web = new WebClient())
+            {
+                if(MainType == 0)
+                {
+                    web.QueryString.Add("id_comp", CurrentCompany.com_id);
+                    web.QueryString.Add("token", CurrentCompany.token);
+                    web.QueryString.Add("cp", "2");
+                }
+                if(MainType == 1)
+                {
+                        web.QueryString.Add("id_comp", CurrentEmployee.com_id);
+                        web.QueryString.Add("token", CurrentEmployee.token);
+                        web.QueryString.Add("cp", "1");
+                        web.QueryString.Add("user_nhan", CurrentEmployee.ep_id);
+                }
+                
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listTB = api.data.abc;
+                        if (listTB != null)
+                            sotb = listTB.Count;
+                        if (sotb >= 10)
+                        {
+                            fontsize = 10;
+                            margin = new Thickness(10, -7, 0, 0);
+                        }
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
+            }
+        }
+
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (IsFull == 0) this.DragMove();
@@ -537,6 +627,15 @@ namespace AppTinhLuong365
         {
             this.PopupSelection.NavigationService.Navigate(new Views.Popup.PopupSideBar(this));
             this.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void XemThongBao(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.TrangChu.popup.PopupThongBao(this);
+            this.PopupSelection.NavigationService.Navigate(pop);
+            this.PopupSelection.Visibility = Visibility.Visible;
+            var z = Mouse.GetPosition(this.PopupSelection);
+            pop.Margin = new Thickness(z.X - 448, z.Y + 30, 0, 0);
         }
     }
 }

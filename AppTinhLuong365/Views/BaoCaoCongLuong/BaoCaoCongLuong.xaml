@@ -142,8 +142,8 @@
                                 <TextBlock Margin="0 25 0 0" Text="{DynamicResource textPTBH}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
 
 
-                                <Border x:Name="BieuDo" Height="250" Width="250" BorderThickness="1" CornerRadius="250" Background="{DynamicResource #FFA800}">
-                                    <Grid x:Name="grid">
+                                <Border x:Name="BieuDo" Height="250" MouseEnter="HoverTongLuong" MouseLeave="LeaveLuong" Width="250" BorderThickness="1" CornerRadius="250" Background="{DynamicResource #FFA800}">
+                                    <Grid x:Name="grid" MouseEnter="HoverBH" MouseLeave="LeaveBH">
                                     </Grid>
                                 </Border>
 
@@ -179,8 +179,8 @@
                         <Border Height="440" VerticalAlignment="Top" CornerRadius="10">
                             <Grid>
                                 <TextBlock Margin="0 25 0 0" Text="{DynamicResource textPTT}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
-                                <Border x:Name="BieuDo1" Height="250" Width="250" BorderThickness="1" CornerRadius="250" Background="{DynamicResource #FFA800}">
-                                    <Grid x:Name="grid1">
+                                <Border Cursor="Hand" x:Name="BieuDo1" MouseEnter="HoverTongLuong" MouseLeave="LeaveLuong" Height="250" Width="250" BorderThickness="1" CornerRadius="250" Background="{DynamicResource #FFA800}">
+                                    <Grid x:Name="grid1" MouseEnter="HoverT" MouseLeave="LeaveT">
                                     </Grid>
                                 </Border>
                                 <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
@@ -283,13 +283,28 @@
                                                     </Border.Style>
                                                 </Border>
                                             </DockPanel>
-                                            <Border x:Name="bd10tr" Background="{DynamicResource #4C5BD4}" Width="100" HorizontalAlignment="Left">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
-                                                    </Style>
-                                                </Border.Style>
-                                            </Border>
+                                            <DockPanel>
+                                                <Border x:Name="bd10tr" MouseEnter="Hover10tr" MouseLeave="Leave10tr" Background="{DynamicResource #4C5BD4}" Width="100" HorizontalAlignment="Left">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border x:Name="b10tr" Visibility="Collapsed" Margin="5 0 0 0" CornerRadius="10" Background="{DynamicResource #000}" Height="50" HorizontalAlignment="Left">
+                                                    <Grid>
+                                                        <Path Data="{DynamicResource iconTamGiac}" Fill="{DynamicResource #000}" Margin="-7 20 0 0">
+                                                        </Path>
+                                                        <StackPanel>
+                                                            <TextBlock Margin="5 0" Text="Lớn hơn 10 triệu" FontSize="15" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold"/>
+                                                            <DockPanel HorizontalAlignment="Left" Margin="5 0 0 0">
+                                                                <Border Width="15" Height="15" BorderBrush="{DynamicResource #FFFFFF}" BorderThickness="2" Background="{DynamicResource #4C5BD4}"/>
+                                                                <TextBlock Text="{Binding congLuong.lnv_10}" FontSize="12" Foreground="{DynamicResource #FFFFFF}"/>
+                                                            </DockPanel>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </Border>
+                                            </DockPanel>
                                         </Grid>
 
                                     </DockPanel>
@@ -357,13 +372,28 @@
                                                     </Border.Style>
                                                 </Border>
                                             </DockPanel>
-                                            <Border x:Name="bd7tr" Background="{DynamicResource #4C5BD4}" Width="100" HorizontalAlignment="Left">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
-                                                    </Style>
-                                                </Border.Style>
-                                            </Border>
+                                            <DockPanel>
+                                                <Border x:Name="bd7tr" MouseEnter="Hover7tr" MouseLeave="Leave7tr" Background="{DynamicResource #4C5BD4}" Width="100" HorizontalAlignment="Left">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border x:Name="b7tr" Visibility="Collapsed" Margin="5 0 0 0" CornerRadius="10" Background="{DynamicResource #000}" Height="50" HorizontalAlignment="Left">
+                                                    <Grid>
+                                                        <Path Data="{DynamicResource iconTamGiac}" Fill="{DynamicResource #000}" Margin="-7 20 0 0">
+                                                        </Path>
+                                                        <StackPanel>
+                                                            <TextBlock Margin="5 0" Text="7-10 triệu" FontSize="15" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold"/>
+                                                            <DockPanel HorizontalAlignment="Left" Margin="5 0 0 0">
+                                                                <Border Width="15" Height="15" BorderBrush="{DynamicResource #FFFFFF}" BorderThickness="2" Background="{DynamicResource #4C5BD4}"/>
+                                                                <TextBlock Text="{Binding congLuong.lnv_710}" FontSize="12" Foreground="{DynamicResource #FFFFFF}"/>
+                                                            </DockPanel>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </Border>
+                                            </DockPanel>
                                         </Grid>
 
                                     </DockPanel>
@@ -431,13 +461,28 @@
                                                     </Border.Style>
                                                 </Border>
                                             </DockPanel>
-                                            <Border x:Name="bd5tr" Background="{DynamicResource #4C5BD4}" Width="100" HorizontalAlignment="Left">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
-                                                    </Style>
-                                                </Border.Style>
-                                            </Border>
+                                            <DockPanel>
+                                                <Border x:Name="bd5tr" MouseEnter="Hover5tr" MouseLeave="Leave5tr" Background="{DynamicResource #4C5BD4}" Width="100" HorizontalAlignment="Left">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border x:Name="b5tr" Visibility="Collapsed" Margin="5 0 0 0" CornerRadius="10" Background="{DynamicResource #000}" Height="50" HorizontalAlignment="Left">
+                                                    <Grid>
+                                                        <Path Data="{DynamicResource iconTamGiac}" Fill="{DynamicResource #000}" Margin="-7 20 0 0">
+                                                        </Path>
+                                                        <StackPanel>
+                                                            <TextBlock Margin="5 0" Text="5 - 7 triệu" FontSize="15" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold"/>
+                                                            <DockPanel HorizontalAlignment="Left" Margin="5 0 0 0">
+                                                                <Border Width="15" Height="15" BorderBrush="{DynamicResource #FFFFFF}" BorderThickness="2" Background="{DynamicResource #4C5BD4}"/>
+                                                                <TextBlock Text="{Binding congLuong.lnv_57}" FontSize="12" Foreground="{DynamicResource #FFFFFF}"/>
+                                                            </DockPanel>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </Border>
+                                            </DockPanel>
                                         </Grid>
 
                                     </DockPanel>
@@ -505,13 +550,28 @@
                                                     </Border.Style>
                                                 </Border>
                                             </DockPanel>
-                                            <Border x:Name="bdduoi5tr" Background="{DynamicResource #4C5BD4}" Width="300" HorizontalAlignment="Left">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
-                                                    </Style>
-                                                </Border.Style>
-                                            </Border>
+                                            <DockPanel>
+                                                <Border x:Name="bdduoi5tr" MouseLeave="LeaveDuoi5tr" MouseEnter="HoverDuoi5tr" Background="{DynamicResource #4C5BD4}" Width="300" HorizontalAlignment="Left">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Height" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/25}"></Setter>
+                                                        </Style>
+                                                    </Border.Style>
+                                                </Border>
+                                                <Border x:Name="duoi5tr" Visibility="Collapsed" Margin="5 0 0 0" CornerRadius="10" Background="{DynamicResource #000}" Height="50" HorizontalAlignment="Left">
+                                                    <Grid>
+                                                        <Path Data="{DynamicResource iconTamGiac}" Fill="{DynamicResource #000}" Margin="-7 20 0 0">
+                                                        </Path>
+                                                        <StackPanel>
+                                                            <TextBlock Margin="5 0" Text="Dưới 5 triệu" FontSize="15" Foreground="{DynamicResource #FFFFFF}" FontWeight="DemiBold"/>
+                                                            <DockPanel HorizontalAlignment="Left" Margin="5 0 0 0">
+                                                                <Border Width="15" Height="15" BorderBrush="{DynamicResource #FFFFFF}" BorderThickness="2" Background="{DynamicResource #4C5BD4}"/>
+                                                                <TextBlock Text="{Binding congLuong.lnv_15}" FontSize="12" Foreground="{DynamicResource #FFFFFF}"/>
+                                                            </DockPanel>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </Border>
+                                            </DockPanel>
                                         </Grid>
 
                                     </DockPanel>
@@ -593,6 +653,33 @@
                     </Border>
                 </Grid>
             </StackPanel>
+        </Border>
+        <Border Visibility="Collapsed" x:Name="bTongLuong" MouseEnter="HoverTongLuong" MouseLeave="LeaveLuong" Height="30" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource #000}">
+            <DockPanel>
+                <Border Margin="10 0 0 0" Background="{DynamicResource #FFA800}" BorderThickness="3" BorderBrush="{DynamicResource #FFFFFF}" Width="20" Height="20"/>
+                <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource #FFFFFF}">
+                    <Run Text=" Tổng lương thanh toán: "/>
+                    <Run Text="{Binding congLuong.display_tong_luong,Mode=OneWay}"/>
+                </TextBlock>
+            </DockPanel>
+        </Border>
+        <Border Visibility="Collapsed" MouseEnter="HoverBH" MouseLeave="LeaveBH" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="bTongbh" Height="30" CornerRadius="10" Background="{DynamicResource #000}">
+            <DockPanel>
+                <Border Margin="10 0 0 0" Background="{DynamicResource #4C5BD4}" BorderThickness="3" BorderBrush="{DynamicResource #FFFFFF}" Width="20" Height="20"/>
+                <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource #FFFFFF}">
+                    <Run Text=" Tổng bảo hiểm: "/>
+                    <Run Text="{Binding congLuong.display_tong_bh,Mode=OneWay}"/>
+                </TextBlock>
+            </DockPanel>
+        </Border>
+        <Border Visibility="Collapsed" MouseEnter="HoverT" MouseLeave="LeaveT" x:Name="bTongT" Height="30" CornerRadius="10" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource #000}">
+            <DockPanel>
+                <Border Margin="10 0 0 0" Background="{DynamicResource #4C5BD4}" BorderThickness="3" BorderBrush="{DynamicResource #FFFFFF}" Width="20" Height="20"/>
+                <TextBlock FontWeight="DemiBold" VerticalAlignment="Center" FontSize="12" Foreground="{DynamicResource #FFFFFF}">
+                    <Run Text=" Tổng thuế: "/>
+                    <Run Text="{Binding congLuong.display_tong_thue,Mode=OneWay}"/>
+                </TextBlock>
+            </DockPanel>
         </Border>
         <tool:LoadingSpinner x:Name="loading" Visibility="Collapsed"/>
     </Grid>

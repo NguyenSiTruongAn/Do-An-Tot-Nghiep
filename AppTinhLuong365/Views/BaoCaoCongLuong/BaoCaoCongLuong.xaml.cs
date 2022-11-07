@@ -52,9 +52,10 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             searchBarYear.PlaceHolder = "Năm " + year;
             searchBarMonth.PlaceHolder = "Tháng " + month;
             BieuDo.Visibility = BieuDo1.Visibility = stBDCot.Visibility = Visibility.Hidden;
+            getDataTB();
         }
 
-        private void VeBieuDo(Grid gridbd, double d)
+        private void VeBieuDo(Grid gridbd, double d, int type)
         {
             BrushConverter bc = new BrushConverter();
             if (d == 0)
@@ -73,6 +74,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                     {
                         if (i > x - 0.7)
                         {
+                            
                             Line line = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#ffffff") };
                             gridbd.Children.Add(line);
                         }
@@ -192,6 +194,48 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             }
         }
 
+        private void getDataTB()
+        {
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 0)
+                {
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("cp", "2");
+                }
+                if (Main.MainType == 1)
+                {
+                    web.QueryString.Add("id_comp", Main.CurrentEmployee.com_id);
+                    web.QueryString.Add("token", Main.CurrentEmployee.token);
+                    web.QueryString.Add("cp", "1");
+                    web.QueryString.Add("user_nhan", Main.CurrentEmployee.ep_id);
+                }
+
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        Main.listTB = api.data.abc;
+                        if (Main.listTB != null)
+                            Main.sotb = Main.listTB.Count;
+                        if (Main.sotb >= 10)
+                        {
+                            Main.fontsize = 10;
+                            Main.margin = new Thickness(10, -7, 0, 0);
+                        }
+                        else
+                        {
+                            Main.fontsize = 14;
+                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                        }
+                    }
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
+            }
+        }
+
         private ItemCongLuong _congLuong;
 
         public ItemCongLuong congLuong
@@ -200,6 +244,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             set { _congLuong = value; OnPropertyChanged(); }
         }
 
+        double tongluong=0, tongthue=0, tongbh = 0;
         private void getData(string month, string year)
         {
             using (WebClient web = new WebClient())
@@ -216,13 +261,16 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                     {
                         BieuDo.Visibility = BieuDo1.Visibility = stBDCot.Visibility = Visibility.Visible;
                         congLuong = api.data.list;
+                        tongbh = double.Parse(congLuong.tong_bh);
+                        tongluong = double.Parse(congLuong.tong_luong);
+                        tongthue = double.Parse(congLuong.tong_thue);
                         BrushConverter bc = new BrushConverter();
                         grid.Children.Clear();
                         grid1.Children.Clear();
                         //double d = congLuong.pt_bh * (Math.PI/50);
-                        VeBieuDo(grid, congLuong.pt_bh * (Math.PI / 50));
+                        VeBieuDo(grid, congLuong.pt_bh * (Math.PI / 50),1);
                         double d1 = congLuong.pt_thue * (Math.PI/50);
-                        VeBieuDo(grid1, d1);
+                        VeBieuDo(grid1, d1,2);
                         int total = congLuong.so_nv;
                         int x = (int)total / 10;
                         nb6.Text = x * 12 + "";
@@ -266,6 +314,81 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             else month = DateTime.Now.ToString("MM");
 
             getData(month, year);
+        }
+
+        private void HoverBH(object sender, MouseEventArgs e)
+        {
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            bTongbh.Visibility = Visibility.Visible;
+            bTongbh.Margin = new Thickness(z.X - 330, z.Y - 90, 0, 0);
+            bTongLuong.Visibility = Visibility.Collapsed;
+        }
+
+        private void LeaveLuong(object sender, MouseEventArgs e)
+        {
+            bTongLuong.Visibility = Visibility.Collapsed;
+        }
+        private void LeaveBH(object sender, MouseEventArgs e)
+        {
+            bTongbh.Visibility = Visibility.Collapsed;
+        }
+        private void LeaveT(object sender, MouseEventArgs e)
+        {
+            bTongT.Visibility = Visibility.Collapsed;
+        }
+
+        private void HoverDuoi5tr(object sender, MouseEventArgs e)
+        {
+            duoi5tr.Visibility = Visibility.Visible;
+        }
+
+        private void LeaveDuoi5tr(object sender, MouseEventArgs e)
+        {
+            duoi5tr.Visibility = Visibility.Collapsed;
+        }
+
+        private void Hover10tr(object sender, MouseEventArgs e)
+        {
+            b10tr.Visibility = Visibility.Visible;
+        }
+
+        private void Leave10tr(object sender, MouseEventArgs e)
+        {
+            b10tr.Visibility = Visibility.Collapsed;
+        }
+        private void Hover5tr(object sender, MouseEventArgs e)
+        {
+            b5tr.Visibility = Visibility.Visible;
+        }
+
+        private void Leave5tr(object sender, MouseEventArgs e)
+        {
+            b5tr.Visibility = Visibility.Collapsed;
+        }
+
+        private void Hover7tr(object sender, MouseEventArgs e)
+        {
+            b7tr.Visibility = Visibility.Visible;
+        }
+
+        private void Leave7tr(object sender, MouseEventArgs e)
+        {
+            b7tr.Visibility = Visibility.Collapsed;
+        }
+
+        private void HoverTongLuong(object sender, MouseEventArgs e)
+        {
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            bTongLuong.Visibility = Visibility.Visible;
+            bTongLuong.Margin = new Thickness(z.X - 330, z.Y - 70, 0, 0);
+        }
+
+        private void HoverT(object sender, MouseEventArgs e)
+        {
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            bTongT.Visibility = Visibility.Visible;
+            bTongT.Margin = new Thickness(z.X - 330, z.Y - 70, 0, 0);
+            bTongLuong.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -144,10 +144,10 @@
                         <TextBlock VerticalAlignment="Center" Text="{DynamicResource textTrangChu}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Cursor="Hand"/>
                         <TextBlock VerticalAlignment="Center" Text="{DynamicResource textGuide}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" Cursor="Hand"></TextBlock>
                         <TextBlock VerticalAlignment="Center" Text="{DynamicResource textNews}" FontSize="15" FontFamily="roboto" Foreground="{DynamicResource #68798B}" Margin="0 0 21 0" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2" Cursor="Hand"></TextBlock>
-                        <Grid Margin="0 0 21 0" VerticalAlignment="Center">
+                        <Grid Margin="0 0 21 0" VerticalAlignment="Center" Cursor="Hand" Background="Transparent" MouseLeftButtonDown="XemThongBao">
                             <Path Data="{DynamicResource iconRing}" Fill="{DynamicResource #68798B}"></Path>
                             <Path Data="{DynamicResource iconCirle}" Fill="{DynamicResource #F46A6A}" Margin="8 -8 0 0"></Path>
-                            <TextBlock Text="2" FontSize="14" Foreground="{DynamicResource #FFFFFF}" Margin="12.5 -10.5 0 0"></TextBlock>
+                            <TextBlock Text="{Binding sotb}" FontSize="{Binding fontsize}" Foreground="{DynamicResource #FFFFFF}" Margin="{Binding margin}"/>
                         </Grid>
                         <Border Width="32" Height="32" CornerRadius="32">
                             <Border.Background>
