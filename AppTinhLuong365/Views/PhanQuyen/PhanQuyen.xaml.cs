@@ -171,12 +171,11 @@ namespace AppTinhLuong365.Views.PhanQuyen
                         JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
-                        listEmployee1 = api.data.data.items;
-                        listEmployee = api.data.data.items;
+                        listEmployee = listEmployee1 = api.data.data.items;
                         listEmployee.RemoveAt(0);
                         listEmployee = listEmployee.ToList();
                     }
-                    foreach (ListEmployee item in listEmployee1)
+                    foreach (ListEmployee item in listEmployee)
                     {
                         if (item.ep_image != "")
                         {
@@ -214,22 +213,18 @@ namespace AppTinhLuong365.Views.PhanQuyen
                             
                             listEmployee = null;
                             listEmployee = new List<ListEmployee>();
+                            if (listEmployee2.ep_image != "")
+                            {
+                                listEmployee2.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + listEmployee2.ep_image;
+                            }
+                            else
+                            {
+                                listEmployee2.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
                             listEmployee.Add(listEmployee2);
                             listEmployee = listEmployee.ToList();
                         }
-                        
                     }
-                    // foreach (ListEmployee item in listEmployee1)
-                    // {
-                    //     if (item.ep_image != "")
-                    //     {
-                    //         item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
-                    //     }
-                    //     else
-                    //     {
-                    //         item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                    //     }
-                    // }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php",
                     web.QueryString);

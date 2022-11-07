@@ -286,13 +286,17 @@ namespace AppTinhLuong365.Views.CaiDat
                             a.ngayketthuc_nghi = aDateTime.ToString("dd/MM/yyyy");
                         }
                     }
-                    //foreach (ItemNp item in list)
-                    //{
-                    //    if (item.ts_image != "/img/add.png")
-                    //    {
-                    //        item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
-                    //    }
-                    //}
+                    foreach (ItemNp item in listItemNp)
+                    {
+                        if (item.ep_image == "../img/add.png")
+                        {
+                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                        }
+                        else
+                        {
+                            item.ep_image = item.ep_image;
+                        }
+                    }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_np.php",
                     web.QueryString);

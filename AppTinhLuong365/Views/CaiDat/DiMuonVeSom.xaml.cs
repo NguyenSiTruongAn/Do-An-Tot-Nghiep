@@ -821,6 +821,14 @@ namespace AppTinhLuong365.Views.CaiDat
                     web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     web.QueryString.Add("month", month);
                     web.QueryString.Add("year", year);
+                    ListEmployee x = (ListEmployee)cbListNV.SelectedItem;
+                    if (x != null)
+                    {
+                        if (x.ep_id != "-1")
+                        {
+                            web.QueryString.Add("id_ep", x.ep_id);
+                        }
+                    }
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
