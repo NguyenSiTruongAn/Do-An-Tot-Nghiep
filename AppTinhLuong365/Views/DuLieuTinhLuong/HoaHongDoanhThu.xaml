@@ -154,7 +154,7 @@
                                 <DataGridTemplateColumn Header="{DynamicResource textGhiChu}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Border Background="Transparent">
+                                            <Border Background="Transparent" MouseLeftButtonDown="XemGhiChu" Cursor="Hand">
                                                 <TextBlock Text="(Xem chi tiết)" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"/>
                                             </Border>
                                         </DataTemplate>
@@ -311,7 +311,7 @@
                                         <DataGridTemplateColumn Header="{DynamicResource textGhiChu}">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Border Background="Transparent">
+                                                    <Border Background="Transparent" MouseLeftButtonDown="XemGhiCHuNhom" Cursor="Hand">
                                                         <TextBlock Text="(Xem chi tiết)" Foreground="{DynamicResource #4C5BD4}" Style="{StaticResource TextRowCenter}"/>
                                                     </Border>
                                                 </DataTemplate>

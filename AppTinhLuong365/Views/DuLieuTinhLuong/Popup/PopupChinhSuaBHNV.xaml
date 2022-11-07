@@ -20,11 +20,11 @@
                     </Grid>
                 </Border>
                 <StackPanel Width="450" Margin="20 30">
-                    <Border Margin="0 20 0 0" CornerRadius="20" HorizontalAlignment="Left" Height="34" Background="{DynamicResource #EBF0F5}" Width="173">
-                        <DockPanel>
+                    <Border Margin="0 20 0 0" CornerRadius="20" HorizontalAlignment="Left" Height="34" Background="{DynamicResource #EBF0F5}">
+                        <DockPanel Margin="10 0">
                             <Border Margin="5 0 0 0" Width="26" Height="26" CornerRadius="40" HorizontalAlignment="Left">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="{Binding}"></ImageBrush>
+                                    <ImageBrush ImageSource="{Binding bhnv.ep_image}"></ImageBrush>
                                 </Border.Background>
                             </Border>
                             <TextBlock VerticalAlignment="Center" Margin="10 0 0 0" FontSize="15" Foreground="{DynamicResource #666c7c}">

@@ -439,7 +439,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 month = cbThang1.Text.Split(' ')[1];
             string year;
             if (cbNam1.SelectedIndex > -1)
-                year = cbNam.Text.Split(' ')[1];
+                year = cbNam1.Text.Split(' ')[1];
             else year = DateTime.Now.ToString("yyyy");
             string id_gr = "";
             if (cbGR.SelectedIndex > -1)

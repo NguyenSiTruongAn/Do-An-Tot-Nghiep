@@ -58,12 +58,13 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                         API_ThemCKTK api = JsonConvert.DeserializeObject<API_ThemCKTK>(UnicodeEncoding.UTF8.GetString(ee.Result));
                         if (api.data != null)
                         {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.CacKhoanTienKhac(Main));
+                            Main.HomeSelectionPage.Visibility = Visibility.Visible;
+                            this.Visibility = Visibility.Collapsed;
                         }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_otherMoney.php", web.QueryString);
                 }
-                //Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.CacKhoanTienKhac(Main));
-                this.Visibility = Visibility.Collapsed;
             }
         }
 

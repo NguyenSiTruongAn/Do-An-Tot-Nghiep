@@ -32,10 +32,11 @@ namespace AppTinhLuong365.Views.CaiDat
             this.DataContext = this;
             Main = main;
             getData();
-            getData1(1);
-            getData2(1);
+            getData1(1,"");
+            getData2(1,"");
             dataGrid.AutoReponsiveColumn(0);
             getDataTB();
+            getData3();
         }
 
         private void getDataTB()
@@ -79,6 +80,43 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
         }
+
+        private List<ListEmployee> _listNV;
+
+        public List<ListEmployee> listNV
+        {
+            get { return _listNV; }
+            set
+            {
+                _listNV = value; OnPropertyChanged();
+            }
+        }
+
+        private void getData3()
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data.data != null)
+                    {
+                        listNV = api.data.data.items;
+                    }
+                    //foreach (ItemTamUng item in listTamUng)
+                    //{
+                    //    if (item.ep_image == "/img/add.png")
+                    //    {
+                    //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php", web.QueryString);
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -139,7 +177,7 @@ namespace AppTinhLuong365.Views.CaiDat
             }
         }
 
-        private void getData1(int pageNB)
+        private void getData1(int pageNB, string iduser)
         {
             using (WebClient web = new WebClient())
             {
@@ -147,6 +185,7 @@ namespace AppTinhLuong365.Views.CaiDat
                 {
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("id_user", iduser);
                     web.QueryString.Add("page", pageNB + "");
                 }
                 web.UploadValuesCompleted += (s, e) =>
@@ -224,7 +263,7 @@ namespace AppTinhLuong365.Views.CaiDat
             }
         }
 
-        private void getData2(int page)
+        private void getData2(int page, string id_user)
         {
             using (WebClient web = new WebClient())
             {
@@ -233,6 +272,7 @@ namespace AppTinhLuong365.Views.CaiDat
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.QueryString.Add("company", Main.CurrentCompany.com_id);
                     web.QueryString.Add("page", page + "");
+                    web.QueryString.Add("id_user", id_user);
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
@@ -310,22 +350,20 @@ namespace AppTinhLuong365.Views.CaiDat
         private void NVChuaNhom_selectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            ListEpNoGroup selected = (ListEpNoGroup)(Search_NVChuaThietLap.SelectedItem);
+            ListEmployee selected = (ListEmployee)(Search_NVChuaThietLap.SelectedItem);
             if (selected != null)
-            {
-                listNVChuaNhom1 = listNVChuaNhom.Where(x => x.ep_id == selected.ep_id).ToList();
-            }
-            else listNVChuaNhom1 = listNVChuaNhom;
+                getData1(1, selected.ep_id);
+            else
+                getData1(1, "");
         }
         private void Search_DSNVCacNhom(object sender, SelectionChangedEventArgs e)
         {
 
-            EpGroup selected = (EpGroup)(Search_NVCacNhom.SelectedItem);
+            ListEmployee selected = (ListEmployee)(Search_NVCacNhom.SelectedItem);
             if (selected != null)
-            {
-                listNVCacNhom1 = listNVCacNhom.Where(x => x.ep_id == selected.ep_id).ToList();
-            }
-            else listNVCacNhom1 = listNVCacNhom;
+                getData2(1, selected.ep_id);
+            else
+                getData2(1, "");
         }
 
         private void BtnThietLapNVCacNhom(object sender, MouseButtonEventArgs e)
@@ -349,7 +387,7 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             Border b = sender as Border;
             int pagenumber = int.Parse(txtpage1.Text);
-            getData2(pagenumber);
+            getData2(pagenumber,"");
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
 
@@ -357,7 +395,7 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             Border b = sender as Border;
             int pagenumber = int.Parse(txtpage2.Text);
-            getData2(pagenumber);
+            getData2(pagenumber,"");
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
 
@@ -365,7 +403,7 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             Border b = sender as Border;
             int pagenumber = int.Parse(txtpage3.Text);
-            getData2(pagenumber);
+            getData2(pagenumber,"");
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
 
@@ -373,7 +411,7 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             Border b = sender as Border;
             int pagenumber = int.Parse(txtpage1_chua_nhom.Text);
-            getData1(pagenumber);
+            getData1(pagenumber,"");
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
 
@@ -381,7 +419,7 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             Border b = sender as Border;
             int pagenumber = int.Parse(txtpage2_chua_nhom.Text);
-            getData1(pagenumber);
+            getData1(pagenumber,"");
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
 
@@ -389,7 +427,7 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             Border b = sender as Border;
             int pagenumber = int.Parse(txtpage3_chua_nhom.Text);
-            getData1(pagenumber);
+            getData1(pagenumber,"");
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
 
@@ -688,7 +726,7 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void ve_page_1(object sender, MouseButtonEventArgs e)
         {
-            getData2(1);
+            getData2(1,"");
             BrushConverter bc = new BrushConverter();
             Page1.Background = (Brush)bc.ConvertFrom("#4C5BD4");
             txtpage1.Text = "1";
@@ -697,22 +735,22 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void page_truoc_click(object sender, MouseButtonEventArgs e)
         {
-            getData2(pagenow - 1);
+            getData2(pagenow - 1,"");
         }
 
         private void page_sau_click(object sender, MouseButtonEventArgs e)
         {
-            getData2(pagenow + 1);
+            getData2(pagenow + 1,"");
         }
 
         private void page_cuoi_click(object sender, MouseButtonEventArgs e)
         {
-            getData2(PageNVCacNhom.Count);
+            getData2(PageNVCacNhom.Count,"");
         }
 
         private void ve_page_1_chua_nhom(object sender, MouseButtonEventArgs e)
         {
-            getData1(1);
+            getData1(1,"");
             BrushConverter bc = new BrushConverter();
             Page1_chua_nhom.Background = (Brush)bc.ConvertFrom("#4C5BD4");
             txtpage1_chua_nhom.Text = "1";
@@ -722,17 +760,17 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void page_truoc_click_chua_nhom(object sender, MouseButtonEventArgs e)
         {
-            getData1(pagenow - 1);
+            getData1(pagenow - 1,"");
         }
 
         private void page_sau_click_chua_nhom(object sender, MouseButtonEventArgs e)
         {
-            getData1(pagenow + 1);
+            getData1(pagenow + 1,"");
         }
 
         private void page_cuoi_click_chua_nhom(object sender, MouseButtonEventArgs e)
         {
-            getData1(PageNVChuaNhom.Count);
+            getData1(PageNVChuaNhom.Count,"");
         }
     }
 }

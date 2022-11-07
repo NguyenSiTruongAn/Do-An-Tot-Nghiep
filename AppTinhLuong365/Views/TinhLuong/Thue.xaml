@@ -62,31 +62,6 @@
             </Border>
             <TabControl x:Name="tb" Background="{DynamicResource #F7F8FC}" BorderThickness="0" ItemContainerStyle="{StaticResource TabItem1}">
                 <TabItem x:Name="tabItemx" IsSelected="True" Header="{DynamicResource textChinhSachThue}" Background="Transparent">
-                    <!--<Grid Margin="0 20" HorizontalAlignment="Left" Background="{DynamicResource #F7F8FC}" Width="330">
-                        <Border Style="{StaticResource ShadowBorder1}"></Border>
-                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
-                            <StackPanel Orientation="Vertical" Margin="10 0 0 20" VerticalAlignment="Top">
-                                <Border BorderBrush="{DynamicResource #474747}" BorderThickness="0 0 0 1" Height="61" Margin="0 0 10 0">
-                                    <Grid>
-                                        <TextBlock Text="Thuế theo hệ số cố định" FontSize="16" VerticalAlignment="Center" Foreground="{DynamicResource #4C5BD4}" FontWeight="DemiBold"></TextBlock>
-                                        <Border MouseLeftButtonDown="TuyChonChinhSachThue_MouseLeftDown" Width="23" Height="23" Background="Transparent" VerticalAlignment="Center"  HorizontalAlignment="Right">
-                                            <Path VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand" Data="{DynamicResource iconBaChamDoc}" Fill="{DynamicResource #979797}"></Path>
-                                        </Border>
-                                    </Grid>
-                                </Border>
-                                <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
-                                    <Path Data="{DynamicResource iconBut}" Fill="{DynamicResource #5F648D}"></Path>
-                                    <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Miêu tả" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
-                                </StackPanel>
-                                <TextBlock Margin="20 0" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #5F648D}" Text="Thuế thu nhập cá nhân áp dụng với người lao động không ký hợp đồng hoặc ký hợp đồng dưới 3 tháng và có từng lần chi trả thu nhập > 2 triệu đồng." TextWrapping="WrapWithOverflow"></TextBlock>
-                                <StackPanel Margin="0 20 0 0" Orientation="Horizontal" HorizontalAlignment="Right" Width="320">
-                                    <Path Data="{DynamicResource iconCachTinh}" Fill="{DynamicResource #5F648D}"></Path>
-                                    <TextBlock FontWeight="DemiBold" Padding="5 0 0 0" Text="Cách tính" FontSize="14" Foreground="{DynamicResource #5F648D}" Margin="0 0 0 5"></TextBlock>
-                                </StackPanel>
-                                <TextBlock Margin="20 0" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource #5F648D}" Text="Theo hệ số cố định dựa trên quy định mới nhất về cách tính thuế thu nhập cá nhân của Nhà nước năm 2021." TextWrapping="WrapWithOverflow"></TextBlock>
-                            </StackPanel>
-                        </Border>
-                    </Grid>-->
                     <ListView Margin="0 0 0 0" Name="lv" ItemsSource="{Binding listCSThue}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
