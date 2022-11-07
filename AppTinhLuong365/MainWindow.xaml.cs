@@ -114,13 +114,18 @@ namespace AppTinhLuong365
             {
                 _sotb = value;
                 OnPropertyChanged();
-            if (string.IsNullOrEmpty(CurrentEmployee.ep_image) || CurrentEmployee.ep_image == "/img/add.png" || CurrentEmployee.ep_image == "")
-            {
-                CurrentImage = "https://tinhluong.timviec365.vn/img/add.png";
-            }
-            else
-            {
-                CurrentImage = "https://chamcong.24hpay.vn/upload/employee/" + CurrentEmployee.ep_image;
+                if(MainType == 1)
+                {
+                    if (string.IsNullOrEmpty(CurrentEmployee.ep_image) || CurrentEmployee.ep_image == "/img/add.png" || CurrentEmployee.ep_image == "")
+                    {
+                        CurrentImage = "https://tinhluong.timviec365.vn/img/add.png";
+                    }
+                    else
+                    {
+                        CurrentImage = "https://chamcong.24hpay.vn/upload/employee/" + CurrentEmployee.ep_image;
+                    }
+                }
+                
             }
         }
 
