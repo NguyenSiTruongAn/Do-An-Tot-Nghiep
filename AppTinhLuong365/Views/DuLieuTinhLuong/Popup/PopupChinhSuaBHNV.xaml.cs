@@ -57,7 +57,14 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             txtName.Text = bhnv.ep_name;
         }
 
-        DSNVGoiBH bhnv;
+        private DSNVGoiBH _bhnv;
+
+        public DSNVGoiBH bhnv
+        {
+            get { return _bhnv; }
+            set { _bhnv = value; OnPropertyChanged(); }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

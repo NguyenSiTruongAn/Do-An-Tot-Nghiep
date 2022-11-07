@@ -66,8 +66,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             }
 
             Main = main;
-
-            
+            this.ep_id = ep_id1 = ep_id;
             getData(ep_id);
             getDataTB();
         }
@@ -114,7 +113,9 @@ namespace AppTinhLuong365.Views.TinhLuong
             }
         }
 
-        ItemEmp data1 = new ItemEmp();
+        private string ep_id;
+        static private string ep_id1;
+        ItemEmp data1 = new ItemEmp() { ep_id = ep_id1};
         public ObservableCollection<string> ItemList { get; set; }
         public ObservableCollection<string> YearList { get; set; }
 
@@ -156,9 +157,15 @@ namespace AppTinhLuong365.Views.TinhLuong
                                     if (ChiTietNV.ep_image == "/img/add.png")
                                         ChiTietNV.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
                                 txtName.Text = ChiTietNV.ep_name;
-                                txtNS.Text = DateTime.Parse(ChiTietNV.ep_birth_day).ToString("dd/MM/yyyy");
+                                if (string.IsNullOrEmpty(ChiTietNV.ep_birth_day))
+                                    txtNS.Text = "Chưa cập nhật";
+                                else
+                                    txtNS.Text = DateTime.Parse(ChiTietNV.ep_birth_day).ToString("dd/MM/yyyy");
                                 txtDep.Text = ChiTietNV.dep_name;
-                                txtAddress.Text = ChiTietNV.ep_address;
+                                if (string.IsNullOrEmpty(ChiTietNV.ep_address))
+                                    txtNS.Text = "Chưa cập nhật";
+                                else
+                                    txtAddress.Text = ChiTietNV.ep_address;
                                 txtPhoneNumber.Text = ChiTietNV.ep_phone;
                                 txtBank.Text = ChiTietNV.ep_phone_tk;
                                 txtChucVu.Text = ChiTietNV.position_id;
@@ -246,25 +253,25 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemLuong(Main, ChiTietNV, data1));
+            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemLuong(Main, ChiTietNV, ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void StackPanel_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemHopDong(Main, data1));
+            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemHopDong(Main, ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void StackPanel_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemPhuThuoc(Main, data1));
+            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemPhuThuoc(Main, ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void StackPanel_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemDongGop(Main, data1));
+            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.PopupThemDongGop(Main, ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
@@ -359,10 +366,10 @@ namespace AppTinhLuong365.Views.TinhLuong
                     web.Headers.Add("Authorization", Main.CurrentCompany.token);
                 }
 
-                web.QueryString.Add("ep_name", data1.ep_name);
-                web.QueryString.Add("ep_phone", data1.ep_phone);
-                web.QueryString.Add("ep_address", data1.ep_address);
-                web.QueryString.Add("id_ep", data1.ep_id);
+                web.QueryString.Add("ep_name", ChiTietNV.ep_name);
+                web.QueryString.Add("ep_phone", ChiTietNV.ep_phone);
+                web.QueryString.Add("ep_address", ChiTietNV.ep_address);
+                web.QueryString.Add("id_ep", ChiTietNV.ep_id);
                 web.QueryString.Add("description", txtGioiThieuSua.Text);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
@@ -438,7 +445,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                     web.QueryString.Add("gender", cbGioiTinh.SelectedIndex + "");
                     web.QueryString.Add("date", cbNgaySinh.SelectedDate.Value.ToString("yyyy-MM-dd"));
                     web.QueryString.Add("married", cbHonNhan.SelectedIndex + "");
-                    web.QueryString.Add("id_ep", data1.ep_id);
+                    web.QueryString.Add("id_ep", ChiTietNV.ep_id);
                     if (ChonThang.SelectedDate != null)
                         web.QueryString.Add("fstime", ChonThang.SelectedDate.Value.ToString("yyyy-MM-dd"));
                     else
@@ -451,7 +458,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                         API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
                         if (api.data != null)
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1.ep_id));
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, ChiTietNV.ep_id));
                             Main.title.Text = " Danh sách nhân viên/ Hồ sơ nhân viên";
                             Main.sidebar.SelectedIndex = -1;
                         }
@@ -466,8 +473,7 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             Border b = sender as Border;
             BasicSalary data = (BasicSalary)b.DataContext;
-            Main.PopupSelection.NavigationService.Navigate(
-                new Views.TinhLuong.Popup.PopupChinhSuaLuongCoBan(Main, data, data1));
+            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.Popup.PopupChinhSuaLuongCoBan(Main, data, ChiTietNV.ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
@@ -476,7 +482,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             Border b = sender as Border;
             BasicSalary data = (BasicSalary)b.DataContext;
             Main.PopupSelection.NavigationService.Navigate(
-                new Views.TinhLuong.Popup.PopupThongBaoXoaLCB(Main, data.sb_id, 1, data1));
+                new Views.TinhLuong.Popup.PopupThongBaoXoaLCB(Main, data.sb_id, 1, ChiTietNV.ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
@@ -490,7 +496,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             Border b = sender as Border;
             ContractWork data = (ContractWork)b.DataContext;
             Main.PopupSelection.NavigationService.Navigate(
-                new Views.TinhLuong.Popup.PopupSuaHopDong(Main, data, data1));
+                new Views.TinhLuong.Popup.PopupSuaHopDong(Main, data, ChiTietNV.ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
@@ -499,7 +505,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             Border b = sender as Border;
             ContractWork data = (ContractWork)b.DataContext;
             Main.PopupSelection.NavigationService.Navigate(
-                new Views.TinhLuong.Popup.PopupThongBaoXoaLCB(Main, data.con_id, 2, data1));
+                new Views.TinhLuong.Popup.PopupThongBaoXoaLCB(Main, data.con_id, 2, ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
@@ -508,7 +514,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             Border b = sender as Border;
             FamilyMember data = (FamilyMember)b.DataContext;
             Main.PopupSelection.NavigationService.Navigate(
-                new Views.TinhLuong.Popup.PopupThongBaoXoaLCB(Main, data.fa_id, 3, data1));
+                new Views.TinhLuong.Popup.PopupThongBaoXoaLCB(Main, data.fa_id, 3, ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
@@ -516,7 +522,7 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             Border b = sender as Border;
             FamilyMember data = (FamilyMember)b.DataContext;
-            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.Popup.PopupSuaTPGD(Main, data, data1));
+            Main.PopupSelection.NavigationService.Navigate(new Views.TinhLuong.Popup.PopupSuaTPGD(Main, data, ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
@@ -525,7 +531,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             Border b = sender as Border;
             Don data = (Don)b.DataContext;
             Main.PopupSelection.NavigationService.Navigate(
-                new Views.TinhLuong.Popup.PopupThongBaoXoaLCB(Main, data.don_id, 4, data1));
+                new Views.TinhLuong.Popup.PopupThongBaoXoaLCB(Main, data.don_id, 4, ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
@@ -534,15 +540,14 @@ namespace AppTinhLuong365.Views.TinhLuong
             Border b = sender as Border;
             Don data = (Don)b.DataContext;
             Main.PopupSelection.NavigationService.Navigate(
-                new Views.TinhLuong.Popup.PopupSuaDongGop(Main, data, data1));
+                new Views.TinhLuong.Popup.PopupSuaDongGop(Main, data, ep_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
         private void ThayLichLamViec(object sender, MouseButtonEventArgs e)
         {
             Border b = sender as Border;
-            GeneralCalendar data = (GeneralCalendar)b.DataContext;
-            var pop = new Views.CaiDat.Popup.PopupChinhSuaLichLamViec(Main, ChiTietNV.cycle, data1, data.apply_month);
+            var pop = new Views.CaiDat.Popup.PopupChinhSuaLichLamViec(Main, ChiTietNV.cycle, data1, DateTime.Now.ToString("MM"));
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
         }

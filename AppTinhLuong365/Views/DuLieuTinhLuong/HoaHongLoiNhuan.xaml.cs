@@ -52,7 +52,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             }
             YearList = new ObservableCollection<string>();
             var c = DateTime.Now.Year;
-            if (c != null)
+            if (true)
             {
                 YearList.Add($"Năm {c - 1}");
                 YearList.Add($"Năm {c}");
@@ -353,7 +353,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 month = cbThang1.Text.Split(' ')[1];
             string year;
             if (cbNam1.SelectedIndex > -1)
-                year = cbNam.Text.Split(' ')[1];
+                year = cbNam1.Text.Split(' ')[1];
             else year = DateTime.Now.ToString("yyyy");
             string id_gr = "";
             if (cbGR.SelectedIndex > -1)

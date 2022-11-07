@@ -17,7 +17,27 @@ namespace AppTinhLuong365.Model.APIEntity
     public class NoiDungTamUng
     {
         public DateTime ngay_tam_ung { get; set; }
-        public int sotien_tam_ung { get; set; }
+        public string sotien_tam_ung { get; set; }
+        public string display_sotien_tam_ung
+        {
+            get
+            {
+                string a = "";
+                if (Convert.ToDouble(sotien_tam_ung) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(sotien_tam_ung, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(sotien_tam_ung.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
+            }
+        }
         public string ly_do { get; set; }
     }
     public class ItemTamUng

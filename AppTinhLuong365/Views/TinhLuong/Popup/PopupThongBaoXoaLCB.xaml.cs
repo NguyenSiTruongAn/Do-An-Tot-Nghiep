@@ -23,7 +23,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
     /// </summary>
     public partial class PopupThongBaoXoaLCB : Page
     {
-        public PopupThongBaoXoaLCB(MainWindow main, string id, int type, ItemEmp data)
+        public PopupThongBaoXoaLCB(MainWindow main, string id, int type, string data)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -35,7 +35,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
         MainWindow Main;
         private string id;
         private int type;
-        private ItemEmp data;
+        private string data;
 
         private void Close_Click(object sender, MouseButtonEventArgs e)
         {
@@ -61,7 +61,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                     }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/profile_delete.php", web.QueryString);
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main,data.ep_id));
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main,data));
                 Main.sidebar.SelectedIndex = -1;
                 this.Visibility = Visibility.Collapsed;
             }

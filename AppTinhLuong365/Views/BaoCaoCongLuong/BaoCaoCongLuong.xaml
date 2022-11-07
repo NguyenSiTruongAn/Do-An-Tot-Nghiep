@@ -142,7 +142,12 @@
                             <Grid>
                                 <TextBlock Margin="0 25 0 0" Text="{DynamicResource textPTBH}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
                                 <Border x:Name="BieuDo" Height="250" MouseEnter="HoverTongLuong" MouseLeave="LeaveLuong" Width="250" BorderThickness="1" CornerRadius="250" Background="{DynamicResource #FFA800}">
-                                    <Grid x:Name="grid" MouseEnter="HoverBH" MouseLeave="LeaveBH">
+                                    <Grid>
+                                        <Grid x:Name="grid" MouseEnter="HoverBH" MouseLeave="LeaveBH">
+                                        </Grid>
+                                        <Grid x:Name="bd1" MouseEnter="HoverTongLuong" MouseLeave="LeaveLuong">
+
+                                        </Grid>
                                     </Grid>
                                 </Border>
                                 <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown1" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">
@@ -174,11 +179,16 @@
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
                             </Border.Effect>
                         </Border>
-                        <Border Height="440" VerticalAlignment="Top" CornerRadius="10">
+                        <Border  Height="440" VerticalAlignment="Top" CornerRadius="10">
                             <Grid>
                                 <TextBlock Margin="0 25 0 0" Text="{DynamicResource textPTT}" FontSize="16" Foreground="{DynamicResource #68798B}" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
                                 <Border Cursor="Hand" x:Name="BieuDo1" MouseEnter="HoverTongLuong" MouseLeave="LeaveLuong" Height="250" Width="250" BorderThickness="1" CornerRadius="250" Background="{DynamicResource #FFA800}">
-                                    <Grid x:Name="grid1" MouseEnter="HoverT" MouseLeave="LeaveT">
+                                    <Grid>
+                                        <Grid x:Name="grid1" MouseEnter="HoverT" MouseLeave="LeaveT">
+                                        </Grid>
+                                        <Grid x:Name="bd2" MouseEnter="HoverTongLuong" MouseLeave="LeaveLuong">
+                                            
+                                        </Grid>
                                     </Grid>
                                 </Border>
                                 <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown2" Margin="0 0 20 30" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #4C5BD4}" VerticalAlignment="Bottom" HorizontalAlignment="Right">

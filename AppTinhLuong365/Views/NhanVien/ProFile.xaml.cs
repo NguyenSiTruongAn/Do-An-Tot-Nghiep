@@ -138,7 +138,7 @@ namespace AppTinhLuong365.Views.NhanVien
                             {
                                 TTNV = api.data;
                                 if (TTNV != null)
-                                    if (TTNV.ep_image == "/img/add.png")
+                                    if (TTNV.ep_image == "/img/add.png" || string.IsNullOrEmpty(TTNV.ep_image))
                                         TTNV.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
                                     else TTNV.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + TTNV.ep_image;
                                 txtGioiThieu.Text = TTNV.ep_description;
