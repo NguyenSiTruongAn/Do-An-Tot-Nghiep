@@ -63,10 +63,11 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             cbThang.PlaceHolder = cbThang1.PlaceHolder = "Tháng " + month;
             cbNam.PlaceHolder = cbNam1.PlaceHolder = "Năm " + year;
             getData();
-            getData1();
+            getData1(month,year,"");
             getData2();
             getData3(month, year, "", "", 1);
             getData4(month, year, "", "", 1);
+            getData5("", month, year);
             getDataTB();
         }
 
@@ -112,31 +113,37 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             }
         }
 
-        private List<ListEmployee> _listNV;
+        private List<DSNVTheoThoiGian> _listNV;
 
-        public List<ListEmployee> listNV
+        public List<DSNVTheoThoiGian> listNV
         {
             get { return _listNV; }
             set
             {
-                if (value == null) value = new List<ListEmployee>();
-                value.Insert(0, new ListEmployee() { ep_id = "-1", ep_name = "Tất cả nhân viên" });
-                _listNV = value; OnPropertyChanged();
+                if (value == null) value = new List<DSNVTheoThoiGian>();
+                value.Insert(0, new DSNVTheoThoiGian() { ep_id = "-1", ep_name = "Tất cả nhân viên" });
+                _listNV = value;
+                cbNV.ItemsSource = _listNV;
             }
         }
 
-        private void getData1()
+        private void getData1(string month, string year, string dep_id)
         {
             using (WebClient web = new WebClient())
             {
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_dep", dep_id);
+                web.QueryString.Add("active", "true");
+                web.QueryString.Add("start_date", year + "-" + month + "-01");
+                int x = DateTime.DaysInMonth(int.Parse(year), int.Parse(month));
+                web.QueryString.Add("date", year + "-" + month + "-" + x);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data.data != null)
+                    API_DSNVTheoThoiGian api = JsonConvert.DeserializeObject<API_DSNVTheoThoiGian>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
                     {
-                        listNV = api.data.data.items;
+                        listNV = api.data.list;
                     }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
@@ -146,7 +153,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     //    }
                     //}
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/ep_by_time.php", web.QueryString);
             }
         }
 
@@ -307,6 +314,87 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             }
         }
 
+        private List<DSNVTheoThoiGian> _listNV1;
+        public List<DSNVTheoThoiGian> listNV1
+        {
+            get { return _listNV1; }
+            set
+            {
+                if (value == null) value = new List<DSNVTheoThoiGian>();
+                value.Insert(0, new DSNVTheoThoiGian() { ep_id = "-1", ep_name = "Tất cả nhân viên" });
+                _listNV1 = value;
+                cbNV1.ItemsSource = _listNV1;
+            }
+        }
+
+        private void getData5(string dep_id, string month, string year)
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("token", Main.CurrentCompany.token);
+                web.QueryString.Add("id_dep", dep_id);
+                web.QueryString.Add("active", "true");
+                web.QueryString.Add("start_date", year + "-" + month + "-01");
+                int x = DateTime.DaysInMonth(int.Parse(year), int.Parse(month));
+                web.QueryString.Add("date", year + "-" + month + "-" + x);
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    API_DSNVTheoThoiGian api = JsonConvert.DeserializeObject<API_DSNVTheoThoiGian>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    if (api.data != null)
+                    {
+                        listNV1 = api.data.list;
+                    }
+                    //foreach (ItemTamUng item in listTamUng)
+                    //{
+                    //    if (item.ep_image == "/img/add.png")
+                    //    {
+                    //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                    //    }
+                    //}
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/ep_by_time.php", web.QueryString);
+            }
+        }
+
+        private void ChonPhong(object sender, SelectionChangedEventArgs e)
+        {
+            string month = DateTime.Now.ToString("MM");
+            if (cbThang.SelectedIndex > -1)
+                month = cbThang.Text.Split(' ')[1];
+            string year;
+            if (cbNam.SelectedIndex > -1)
+                year = cbNam.Text.Split(' ')[1];
+            else year = DateTime.Now.ToString("yyyy");
+            string id_phong = "";
+            if (cbPhong.SelectedIndex > -1)
+            {
+                Item_dep pb = (Item_dep)cbPhong.SelectedItem;
+                if (pb.dep_id != "-1")
+                    id_phong = pb.dep_id;
+            }
+            getData1(month, year, id_phong);
+        }
+
+        private void ChonPhong1(object sender, SelectionChangedEventArgs e)
+        {
+            string month = DateTime.Now.ToString("MM");
+            if (cbThang1.SelectedIndex > -1)
+                month = cbThang1.Text.Split(' ')[1];
+            string year;
+            if (cbNam1.SelectedIndex > -1)
+                year = cbNam1.Text.Split(' ')[1];
+            else year = DateTime.Now.ToString("yyyy");
+            string id_phong = "";
+            if (cbPhong1.SelectedIndex > -1)
+            {
+                Item_dep pb = (Item_dep)cbPhong1.SelectedItem;
+                if (pb.dep_id != "-1")
+                    id_phong = pb.dep_id;
+            }
+            getData5(id_phong, month, year);
+        }
+
         private void Border_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
         {
             string month = DateTime.Now.ToString("MM");
@@ -326,7 +414,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             string id_user = "";
             if (cbNV.SelectedIndex > -1)
             {
-                ListEmployee nv = (ListEmployee)cbNV.SelectedItem;
+                DSNVTheoThoiGian nv = (DSNVTheoThoiGian)cbNV.SelectedItem;
                 if (nv.ep_id != "-1")
                     id_user = nv.ep_id;
             }
@@ -409,7 +497,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             string id_user = "";
             if (cbNV1.SelectedIndex > -1)
             {
-                ListEmployee nv = (ListEmployee)cbNV1.SelectedItem;
+                DSNVTheoThoiGian nv = (DSNVTheoThoiGian)cbNV1.SelectedItem;
                 if (nv.ep_id != "-1")
                     id_user = nv.ep_id;
             }

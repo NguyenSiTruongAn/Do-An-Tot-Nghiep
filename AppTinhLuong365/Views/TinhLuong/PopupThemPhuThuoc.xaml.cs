@@ -24,14 +24,14 @@ namespace AppTinhLuong365.Views.TinhLuong
     /// </summary>
     public partial class PopupThemPhuThuoc : Page
     {
-        public PopupThemPhuThuoc(MainWindow main, ItemEmp data)
+        public PopupThemPhuThuoc(MainWindow main, string data)
         {
             this.DataContext = this;
             InitializeComponent();
             Main = main;
             this.data = data;
         }
-        ItemEmp data;
+        string data;
         MainWindow Main;
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -51,7 +51,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             if (string.IsNullOrEmpty(tbInput2.Text))
             {
                 allow = false;
-                validateQH.Text = "Vui lòng nhập đầy đủ";
+                validateSDT.Text = "Vui lòng nhập đầy đủ";
             }
             else if (tbInput2.Text.Length != 10)
             {
@@ -87,7 +87,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                         web.QueryString.Add("token", Main.CurrentCompany.token);
                         web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     }
-                    web.QueryString.Add("id", data.ep_id);
+                    web.QueryString.Add("id", data);
                     web.QueryString.Add("aname", tbInput.Text);
                     web.QueryString.Add("arela", tbInput1.Text);
                     web.QueryString.Add("aphone", tbInput2.Text);
@@ -100,7 +100,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                         API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
                         if (api.data != null)
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data.ep_id));
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data));
                             Main.HomeSelectionPage.Visibility = Visibility.Visible;
                             this.Visibility = Visibility.Collapsed;
                         }

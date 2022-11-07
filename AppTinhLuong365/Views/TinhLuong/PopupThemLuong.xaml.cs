@@ -23,7 +23,7 @@ namespace AppTinhLuong365.Views.TinhLuong
     /// </summary>
     public partial class PopupThemLuong : Page
     {
-        public PopupThemLuong(MainWindow main, ChiTietNV data, ItemEmp data1)
+        public PopupThemLuong(MainWindow main, ChiTietNV data, string data1)
         {
             this.DataContext = this;
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace AppTinhLuong365.Views.TinhLuong
         }
 
         ChiTietNV data;
-        ItemEmp data1;
+        string data1;
         MainWindow Main;
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -87,7 +87,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                         API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
                         if (api.data != null)
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1.ep_id));
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data.ep_id));
                             Main.HomeSelectionPage.Visibility = Visibility.Visible;
                             this.Visibility = Visibility.Collapsed;
                         }

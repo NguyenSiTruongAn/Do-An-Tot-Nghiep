@@ -31,7 +31,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public PopupSuaDongGop(MainWindow main, Don data, ItemEmp data1)
+        public PopupSuaDongGop(MainWindow main, Don data, string data1)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -85,7 +85,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
         }
         MainWindow Main;
         Don data;
-        ItemEmp data1;
+        string data1;
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -190,7 +190,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                         API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
                         if (api.data != null)
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1.ep_id));
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1));
                             Main.HomeSelectionPage.Visibility = Visibility.Visible;
                             this.Visibility = Visibility.Collapsed;
                         }

@@ -24,7 +24,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
     /// </summary>
     public partial class PopupSuaHopDong : Page
     {
-        public PopupSuaHopDong(MainWindow main, ContractWork data, ItemEmp data1)
+        public PopupSuaHopDong(MainWindow main, ContractWork data, string data1)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -38,7 +38,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                 dpNgayHetHan.SelectedDate = DateTime.Parse(data.con_time_end);
         }
         MainWindow Main;
-        ItemEmp data1;
+        string data1;
         ContractWork data;
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -79,7 +79,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                         web.QueryString.Add("token", Main.CurrentCompany.token);
                         web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                     }
-                    web.QueryString.Add("id", data1.ep_id);
+                    web.QueryString.Add("id", data1);
                     web.QueryString.Add("id_cw", data.con_id);
                     web.QueryString.Add("name_ct", tbInput.Text);
                     web.QueryString.Add("salary", tbInput1.Text);
@@ -92,7 +92,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                         API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
                         if (api.data != null)
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1.ep_id));
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1));
                             Main.HomeSelectionPage.Visibility = Visibility.Visible;
                             this.Visibility = Visibility.Collapsed;
                         }
