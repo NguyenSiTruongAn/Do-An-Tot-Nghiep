@@ -51,7 +51,9 @@
                         <DockPanel x:Name="dockChamCong" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 10 0 0">
                             <WrapPanel>
                                 <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                    <tool:SearchBar x:Name="cbThang" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                    <tool:SearchBar x:Name="cbThang" Foreground="{DynamicResource #444}" FontSize="16"
+                                                    FontWeight="DemiBold"
+                                                    ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}" />
                                 </Border>
                                 <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
                                     <tool:SearchBar x:Name="cbNam" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>

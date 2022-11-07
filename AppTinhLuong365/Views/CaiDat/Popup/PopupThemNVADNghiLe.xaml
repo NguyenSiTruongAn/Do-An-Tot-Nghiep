@@ -4,11 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat.Popup"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d" VerticalAlignment="Top"
       Title="PopupThemNVADNghiLe">
 
-    <Grid>
+    <Grid Width="616">
         <Border Style="{StaticResource ShadowBorder2}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="8">
             <StackPanel>
@@ -18,8 +17,8 @@
                         <TextBlock Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" HorizontalAlignment="Right" Padding="0 3 17 0" FontWeight="Bold" FontFamily="roboto" Text="x" FontSize="28" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                     </Grid>
                 </Border>
-                <StackPanel Width="450">
-                    <Border Margin="0 20 0 0" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
+                <StackPanel Margin="27.7 30 27.7 0">
+                    <Border CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <DockPanel>
                             <Path Margin="10 0 0 0" Data="{DynamicResource iconSearch}" VerticalAlignment="Center" Fill="{DynamicResource #68798B}"></Path>
                             <Grid Height="38" Margin="10 0 10 0">
@@ -68,7 +67,7 @@
                             </DataGrid>
                         </TabItem>
                     </TabControl>
-                    <Border MouseLeftButtonDown="Add" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
+                    <Border MouseLeftButtonDown="Add" Cursor="Hand" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="0 0 0 20">
                         <TextBlock Text="Chọn" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                     </Border>
                 </StackPanel>

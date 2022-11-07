@@ -42,9 +42,7 @@
                         </Grid>
                     </Border>
                     <TextBlock x:Name="validateDate" Style="{StaticResource tblValidate}"/>
-                    <Viewbox Width="229" HorizontalAlignment="Stretch">
-                        <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center" DisplayMode="Year" x:Name="dteSelectedMonth" DisplayModeChanged="dteSelectedMonth_DisplayModeChanged"/>
-                    </Viewbox>
+                    <ListView ItemsSource="{Binding cl}" HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="0"></ListView>
                     <TextBlock Margin="0 14 0 0" FontWeight="DemiBold" Text="{DynamicResource textDH}" FontSize="16" Foreground="{DynamicResource #777777}"/>
                     <Border Margin="0 5 0 0" Height="43" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <Grid>
@@ -54,9 +52,7 @@
                             </Border>
                         </Grid>
                     </Border>
-                    <Viewbox Width="229" HorizontalAlignment="Stretch">
-                        <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" DisplayMode="Year" x:Name="dteSelectedMonth1" DisplayModeChanged="dteSelectedMonth1_DisplayModeChanged"/>
-                    </Viewbox>
+                    <ListView ItemsSource="{Binding cl1}" HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="0"></ListView>
                     <Grid Margin="0 14 0 0">
                         <TextBlock FontWeight="DemiBold" Text="{DynamicResource textTienPhuCap}" FontSize="16" Foreground="{DynamicResource #666666}"/>
                         <Path Margin="95 0 0 0" Data="{DynamicResource iconRequire}" Fill="{DynamicResource #FF0000}" VerticalAlignment="Center"/>

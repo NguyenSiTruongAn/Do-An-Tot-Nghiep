@@ -63,7 +63,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     web.QueryString);
             }
 
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.Popup.PopupDSNVLichLamViec(Main, ID, null));
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
             this.Visibility = Visibility.Collapsed;
         }
 

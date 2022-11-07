@@ -22,6 +22,26 @@ namespace AppTinhLuong365.Model.APIEntity
         public string cl_active { get; set; }
         public string cl_note { get; set; }
         public string cl_salary { get; set; }
+        public string display_cl_salary
+        {
+            get
+            {
+                string a = "";
+                if (Convert.ToDouble(cl_salary) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(cl_salary, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(cl_salary.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
+            }
+        }
         public string cl_day { get; set; }
         public string displaycl_day
         {
@@ -60,6 +80,26 @@ namespace AppTinhLuong365.Model.APIEntity
     {
         public string wf_id { get; set; }
         public string wf_money { get; set; }
+        public string display_wf_money
+        {
+            get
+            {
+                string a = "";
+                if (Convert.ToDouble(wf_money) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(wf_money, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(wf_money.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
+            }
+        }
         public string wf_time { get; set; }
         public string displaywf_time
         {
@@ -102,6 +142,28 @@ namespace AppTinhLuong365.Model.APIEntity
         public string cl_active { get; set; }
         public string cl_note { get; set; }
         public string cl_salary { get; set; }
+
+        public string display_cl_salary
+        {
+            get
+            {
+                string a = "";
+                if (Convert.ToDouble(cl_salary) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(cl_salary, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(cl_salary.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
+            }
+        }
+
         public string cl_day { get; set; }
         public string displaycl_day
         {
