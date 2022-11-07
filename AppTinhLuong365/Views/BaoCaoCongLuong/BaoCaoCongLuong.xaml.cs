@@ -57,7 +57,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             getDataTB();
         }
 
-        private void VeBieuDo(Grid gridbd, double d, int type)
+        private void VeBieuDo(Grid gridbd, Grid bd, double d, int type)
         {
             BrushConverter bc = new BrushConverter();
             if (d == 0)
@@ -155,14 +155,102 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                             Line line1 = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#4C5BD4") };
                             gridbd.Children.Add(line1);
                         }
-                        if (j < 125)
-                        {
-                            MessageBox.Show(j + "");
-                            break;
-                        }
                     }
                     Line line3 = new Line() { X1 = 125, Y1 = 0, X2 = 125, Y2 = 125, StrokeThickness = 1.5, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#ffffff") };
                     gridbd.Children.Add(line3);
+                }
+                else
+                    if(d < 2 * Math.PI)
+                {
+                    double x = 125 + 125 * (Math.Sin(Math.PI / 2));
+                    double y = 125 - Math.Sqrt(125 * 125 - (x - 125) * (x - 125));
+                    double z = y / ((x - 125) / 0.3);
+                    for (double i = 125, j = 0; i < x; i += 0.3, j += z)
+                    {
+                        Line line1 = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#4C5BD4") };
+                        gridbd.Children.Add(line1);
+                    }
+                    x = 125 + 125 * (Math.Cos(Math.PI / 2));
+                    y = 125 + Math.Sqrt(125 * 125 - (x - 125) * (x - 125));
+                    z = y / ((250 - x) / 0.2);
+                    for (double i = 250, j = 125; i > x; i -= 0.2, j += z)
+                    {
+                        Line line1 = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#4C5BD4") };
+                        gridbd.Children.Add(line1);
+                    }
+                    Line line2 = new Line() { X1 = 125, Y1 = 0, X2 = 125, Y2 = 125, StrokeThickness = 1.5, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#ffffff") };
+                    gridbd.Children.Add(line2);
+                    x = 125 - 125 * (Math.Sin(Math.PI/2));
+                    y = 125 + Math.Sqrt(125 * 125 - (125 - x) * (125 - x));
+                    z = (250 - y) / ((125 - x) / 0.2);
+                    for (double i = 125, j = 250; i > x; i -= 0.2, j -= z)
+                    {
+                            Line line1 = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#4C5BD4") };
+                            gridbd.Children.Add(line1);
+                    }
+                    Line line3 = new Line() { X1 = 125, Y1 = 0, X2 = 125, Y2 = 125, StrokeThickness = 1.5, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#ffffff") };
+                    gridbd.Children.Add(line3);
+                    x = 125 - 125 * (Math.Cos(d - 3*Math.PI / 2));
+                    y = Math.Sqrt(125 * 125 - (125- x) * (125 -x));
+                    z = (y) / ((x) / 0.2);
+                    for (double i = 0, j = 125; i <= x; i += 0.2, j -= z)
+                    {
+                        if (i >= x - 1)
+                        {
+                            Line line = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#ffffff") };
+                            gridbd.Children.Add(line);
+                        }
+                        else
+                        {
+                            Line line1 = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#4C5BD4") };
+                            gridbd.Children.Add(line1);
+                        }
+                    }
+                }
+                else if(d == 2 * Math.PI)
+                {
+                    double x = 125 + 125 * (Math.Sin(Math.PI / 2));
+                    double y = 125 - Math.Sqrt(125 * 125 - (x - 125) * (x - 125));
+                    double z = y / ((x - 125) / 0.3);
+                    for (double i = 125, j = 0; i < x; i += 0.3, j += z)
+                    {
+                        Line line1 = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#4C5BD4") };
+                        gridbd.Children.Add(line1);
+                    }
+                    x = 125 + 125 * (Math.Cos(Math.PI / 2));
+                    y = 125 + Math.Sqrt(125 * 125 - (x - 125) * (x - 125));
+                    z = y / ((250 - x) / 0.2);
+                    for (double i = 250, j = 125; i > x; i -= 0.2, j += z)
+                    {
+                        Line line1 = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#4C5BD4") };
+                        gridbd.Children.Add(line1);
+                    }
+                    x = 125 - 125 * (Math.Sin(Math.PI / 2));
+                    y = 125 + Math.Sqrt(125 * 125 - (125 - x) * (125 - x));
+                    z = (250 - y) / ((125 - x) / 0.2);
+                    for (double i = 125, j = 250; i > x; i -= 0.2, j -= z)
+                    {
+                        if (i <= x + 1)
+                        {
+                            Line line = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#ffffff") };
+                            gridbd.Children.Add(line);
+                        }
+                        else
+                        {
+                            Line line1 = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#4C5BD4") };
+                            gridbd.Children.Add(line1);
+                        }
+                    }
+                    x = 125 - 125 * (Math.Cos(d - 3 * Math.PI / 2));
+                    y = Math.Sqrt(125 * 125 - (x) * (x));
+                    z = (y) / ((x) / 0.2);
+                    for (double i = 0, j = 125; i <= x; i -= 0.2, j -= z)
+                    {
+                            Line line1 = new Line() { X1 = i, Y1 = j, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#4C5BD4") };
+                            gridbd.Children.Add(line1);
+                    }
+                    Line line2 = new Line() { X1 = 125, Y1 = 0, X2 = 125, Y2 = 125, StrokeThickness = 1, Stroke = (System.Windows.Media.Brush)bc.ConvertFrom("#ffffff") };
+                    bd.Children.Add(line2);
                 }
             }
         }
@@ -278,10 +366,12 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                         BrushConverter bc = new BrushConverter();
                         grid.Children.Clear();
                         grid1.Children.Clear();
-                        //double d = congLuong.pt_bh * (Math.PI/50);
-                        VeBieuDo(grid, congLuong.pt_bh * (Math.PI / 50),1);
+                        double d = congLuong.pt_bh * (Math.PI/50);
+                        if (d > 2 * Math.PI)
+                            d = 2*Math.PI - ( d - 2 * Math.PI);
+                        VeBieuDo(grid,bd1, d,1);
                         double d1 = congLuong.pt_thue * (Math.PI/50);
-                        VeBieuDo(grid1, d1,2);
+                        VeBieuDo(grid1, bd2, d1,2);
                         int total = congLuong.so_nv;
                         int x = (int)total / 10;
                         nb6.Text = x * 12 + "";

@@ -24,7 +24,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
     /// </summary>
     public partial class PopupSuaTPGD : Page
     {
-        public PopupSuaTPGD(MainWindow main, FamilyMember data, ItemEmp data1)
+        public PopupSuaTPGD(MainWindow main, FamilyMember data, string data1)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -41,7 +41,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
 
         MainWindow Main;
         FamilyMember data;
-        ItemEmp data1;
+        string data1;
 
         private void SuaGiaDinh(object sender, MouseButtonEventArgs e)
         {
@@ -105,7 +105,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                         API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
                         if (api.data != null)
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1.ep_id));
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1));
                             Main.HomeSelectionPage.Visibility = Visibility.Visible;
                             this.Visibility = Visibility.Collapsed;
                         }

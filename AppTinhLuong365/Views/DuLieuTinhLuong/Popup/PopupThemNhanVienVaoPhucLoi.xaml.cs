@@ -43,6 +43,47 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 setDayEnd = true;
             }
             getData();
+            dteSelectedMonth = new Calendar();
+            dteSelectedMonth.Visibility = Visibility.Collapsed;
+            dteSelectedMonth.DisplayMode = CalendarMode.Year;
+            dteSelectedMonth.MouseLeftButtonDown += Select_thang;
+            dteSelectedMonth.DisplayModeChanged += dteSelectedMonth_DisplayModeChanged;
+            dteSelectedMonth1 = new Calendar();
+            dteSelectedMonth1.Visibility = Visibility.Collapsed;
+            dteSelectedMonth1.DisplayMode = CalendarMode.Year;
+            dteSelectedMonth1.MouseLeftButtonDown += Select_thang_end;
+            dteSelectedMonth1.DisplayModeChanged += dteSelectedMonth1_DisplayModeChanged;
+            cl = new List<Calendar>();
+            cl.Add(dteSelectedMonth);
+            cl = cl.ToList();
+            cl1 = new List<Calendar>();
+            cl1.Add(dteSelectedMonth1);
+            cl1 = cl1.ToList();
+        }
+
+        Calendar dteSelectedMonth { get; set; }
+        Calendar dteSelectedMonth1 { get; set; }
+
+        private List<Calendar> _cl;
+
+        public List<Calendar> cl
+        {
+            get { return _cl; }
+            set
+            {
+                _cl = value; OnPropertyChanged();
+            }
+        }
+
+        private List<Calendar> _cl1;
+
+        public List<Calendar> cl1
+        {
+            get { return _cl1; }
+            set
+            {
+                _cl1 = value; OnPropertyChanged();
+            }
         }
 
         MainWindow Main;
@@ -185,7 +226,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         private void Select_thang_end(object sender, MouseButtonEventArgs e)
         {
             dteSelectedMonth1.Visibility = dteSelectedMonth1.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-            if (dteSelectedMonth.DisplayDate == null) dteSelectedMonth1.DisplayDateStart = day1;
+            if (textThangAD.Text == "--------- ----") dteSelectedMonth1.DisplayDateStart = day1;
             else
                 dteSelectedMonth1.DisplayDateStart = dteSelectedMonth.DisplayDate;
             if (setDayEnd)
@@ -268,7 +309,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         {
             dteSelectedMonth.Visibility = dteSelectedMonth.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
             dteSelectedMonth.DisplayDateStart = day1;
-            if (dteSelectedMonth1.DisplayDate != null)
+            if (textDenThang.Text != "--------- ----")
                 dteSelectedMonth.DisplayDateEnd = dteSelectedMonth1.DisplayDate;
             else if (setDayEnd)
                 dteSelectedMonth.DisplayDateEnd = day_end1;

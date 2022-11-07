@@ -112,7 +112,7 @@
                                 <DataTemplate>
                                     <Border Background="Transparent">
                                         <TextBlock Style="{StaticResource TextRowCenter}">
-                                            <Run Text="{Binding NoiDung.sotien_tam_ung, Mode=OneWay}"/>
+                                            <Run Text="{Binding NoiDung.display_sotien_tam_ung, Mode=OneWay}"/>
                                             <Run Text="VND"/>
                                         </TextBlock>
                                     </Border>
