@@ -66,28 +66,35 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void getData()
         {
-            using (WebClient web = new WebClient())
+            try
             {
-                if (Main.MainType == 0)
+                using (WebClient web = new WebClient())
                 {
-                    web.QueryString.Add("token", Main.CurrentCompany.token);
-                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                    web.QueryString.Add("id_om", id1);
-                }
-                web.UploadValuesCompleted += (s, e) =>
-                {
-                    API_DSNVADCKTK api = JsonConvert.DeserializeObject<API_DSNVADCKTK>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    if (Main.MainType == 0)
                     {
-                        listNVCacKhoanTienKhac = api.data.list;
-                        foreach(var item in listNVCacKhoanTienKhac)
-                        {
-                            if (item.ep_image == "../img/add.png")
-                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                        }    
+                        web.QueryString.Add("token", Main.CurrentCompany.token);
+                        web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                        web.QueryString.Add("id_om", id1);
                     }
-                };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_in_otherMoney.php", web.QueryString);
+                    web.UploadValuesCompleted += (s, e) =>
+                    {
+                        API_DSNVADCKTK api = JsonConvert.DeserializeObject<API_DSNVADCKTK>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listNVCacKhoanTienKhac = api.data.list;
+                            foreach (var item in listNVCacKhoanTienKhac)
+                            {
+                                if (item.ep_image == "../img/add.png")
+                                    item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
+                        }
+                    };
+                    web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_in_otherMoney.php", web.QueryString);
+                }
+            }
+            catch
+            {
+
             }
         }
 

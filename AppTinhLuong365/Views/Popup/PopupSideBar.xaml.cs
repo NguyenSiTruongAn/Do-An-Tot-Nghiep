@@ -256,6 +256,8 @@ namespace AppTinhLuong365.Views.Popup
                 Icon = App.Current.Resources["iconChuyenDoiSo"],
                 Name = App.Current.Resources["textDigitalConversion"] as string, typePath = 1
             },
+            new SideBarItemCom()
+                { Icon = App.Current.Resources["iconLogout"], Name = App.Current.Resources["textDangXuat"] as string },
         };
 
         public List<SideBarItemCom> SideBarItemsNV
@@ -525,6 +527,9 @@ namespace AppTinhLuong365.Views.Popup
                         break;
                     case 6:
                         Process.Start("https://quanlychung.timviec365.vn/quan-ly-ung-dung-nhan-vien.html");
+                        break;
+                    case 7:
+                        if (Main.LogOut != null) Main.LogOut();
                         break;
                     default:
                         break;

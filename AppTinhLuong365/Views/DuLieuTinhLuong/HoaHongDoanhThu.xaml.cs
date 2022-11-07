@@ -477,5 +477,21 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
+
+        private void XemGhiChu(object sender, MouseButtonEventArgs e)
+        {
+            Border b = sender as Border;
+            DSNVHoaHongDoanhThu data = (DSNVHoaHongDoanhThu)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupXemChiTietHHDT(Main, data.ro_note));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void XemGhiCHuNhom(object sender, MouseButtonEventArgs e)
+        {
+            Border b = sender as Border;
+            DSNhomHoaHongDoanhThu data = (DSNhomHoaHongDoanhThu)b.DataContext;
+            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupXemChiTietHHDT(Main, data.ro_note));
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
     }
 }

@@ -47,12 +47,13 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     API_XoaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_XoaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e1.Result));
                     if (api.data != null)
                     {
+                        Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.CacKhoanTienKhac(Main));
+                        Main.sidebar.SelectedIndex = 7;
+                        this.Visibility = Visibility.Collapsed;
                     }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/delete_otherMoney.php", web.QueryString);
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.CacKhoanTienKhac(Main));
-                Main.sidebar.SelectedIndex = 7;
-                this.Visibility = Visibility.Collapsed;
+                
             }
         }
 

@@ -476,6 +476,9 @@
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupTienPhat.xaml.cs">
       <DependentUpon>PopupTienPhat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DuLieuTinhLuong\Popup\PopupXemChiTietHHDT.xaml.cs">
+      <DependentUpon>PopupXemChiTietHHDT.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DuLieuTinhLuong\Popup\PopupXoaNVKhoiBH.xaml.cs">
       <DependentUpon>PopupXoaNVKhoiBH.xaml</DependentUpon>
     </Compile>
@@ -1144,6 +1147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DuLieuTinhLuong\Popup\PopupTienPhat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DuLieuTinhLuong\Popup\PopupXemChiTietHHDT.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
