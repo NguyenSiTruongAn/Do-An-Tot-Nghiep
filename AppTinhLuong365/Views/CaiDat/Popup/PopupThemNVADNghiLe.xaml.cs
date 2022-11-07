@@ -47,23 +47,13 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             this.DataContext = this;
             Main = main;
             this.id = id;
-            getData().ContinueWith((t) =>
-            {
-                getData1().ContinueWith((t1) =>
-                {
-                    listEmployee.RemoveAll(x => epHolidayList.Any(item => item.ho_id_user == x.ep_id));
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        dataGrid1.ItemsSource = listEmployee1;
-                    });
-                });
-            });
+            getData();
         }
 
 
-        private List<ListEmployee> _listEmployee = new List<ListEmployee>();
+        private List<ListNoHoliday> _listEmployee;
 
-        public List<ListEmployee> listEmployee
+        public List<ListNoHoliday> listEmployee
         {
             get { return _listEmployee; }
             set
@@ -73,9 +63,9 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             }
         }
 
-        private List<ListEmployee> _listEmployee1;
+        private List<ListNoHoliday> _listEmployee1;
 
-        public List<ListEmployee> listEmployee1
+        public List<ListNoHoliday> listEmployee1
         {
             get { return _listEmployee1; }
             set
@@ -91,12 +81,13 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                var z = web.UploadValues(new Uri("https://tinhluong.timviec365.vn/api_app/company/list_emp.php"), web.QueryString);
-                API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(z));
+                web.QueryString.Add("id_ho", id);
+                var z = web.UploadValues(new Uri("https://tinhluong.timviec365.vn/api_app/company/list_ep_no_holiday.php"), web.QueryString);
+                API_List_ep_no_holiday api = JsonConvert.DeserializeObject<API_List_ep_no_holiday>(UnicodeEncoding.UTF8.GetString(z));
                 if (api.data != null)
                 {
-                    listEmployee1 = listEmployee = api.data.data.items;
-                    foreach (ListEmployee item in listEmployee)
+                    listEmployee1 = listEmployee = api.data.list_no_holiday;
+                    foreach (ListNoHoliday item in listEmployee)
                     {
                         if (item.ep_image != "")
                         {
@@ -117,54 +108,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 x.ep_name.ToLower().RemoveUnicode().Contains(tbInput.Text.ToLower().RemoveUnicode())).ToList();
             string v = "";
         }
-
-        private List<EpHolidayItem> _epHolidayList = new List<EpHolidayItem>();
-
-        public List<EpHolidayItem> epHolidayList
-        {
-            get { return _epHolidayList; }
-            set { _epHolidayList = value; OnPropertyChanged(); }
-        }
-
-        private async Task getData1()
-        {
-            using (WebClient web = new WebClient())
-            {
-                web.QueryString.Add("token", Main.CurrentCompany.token);
-                web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
-                web.QueryString.Add("id_ho", id);
-                var z = web.UploadValues(new Uri("https://tinhluong.timviec365.vn/api_app/company/list_ep_holiday.php"), "POST", web.QueryString);
-                API_List_ep_holiday api = JsonConvert.DeserializeObject<API_List_ep_holiday>(UnicodeEncoding.UTF8.GetString(z));
-                if (api.data != null)
-                {
-
-                    epHolidayList = api.data.ep_holiday_list;
-                    DateTime date;
-                    foreach (var a in epHolidayList)
-                    {
-                        DateTime.TryParse(a.time_start, out date);
-                        a.time_start = date.ToString("dd/MM/yyyy");
-                        DateTime.TryParse(a.time_end, out date);
-                        a.time_end = date.ToString("dd/MM/yyyy");
-                    }
-                    foreach (EpHolidayItem item in epHolidayList)
-                    {
-                        if (item.ep_image != "../img/add.png")
-                        {
-                            item.ep_image = item.ep_image;
-                        }
-                        else
-                        {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                        }
-                    }
-                }
-            }
-        }
-
-        // public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc", "dd", "ee", "ff", "gg" };
-        // public List<string> Test1 { get; set; } = new List<string>() { "aa", "bb" };
-
+        
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
@@ -175,7 +119,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         private void ChonNhanvien(object sender, RoutedEventArgs e)
         {
             CheckBox cb = sender as CheckBox;
-            ListEmployee data = (ListEmployee)cb.DataContext;
+            ListNoHoliday data = (ListNoHoliday)cb.DataContext;
             nv.Add(data.ep_id);
         }
 

@@ -22,7 +22,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(luong_cb) >= 0)
+                if (Convert.ToDouble(luong_cb) >= 0)
                 {
                     double m;
                     if (double.TryParse(luong_cb, out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -38,15 +38,15 @@ namespace AppTinhLuong365.Model.APIEntity
             }
         }
         public string cong_chuan { get; set; }
-        public int cong_thuc { get; set; }
-        public int cong_sau_phat { get; set; }
+        public string cong_thuc { get; set; }
+        public string cong_sau_phat { get; set; }
         public string cong_theo_tien { get; set; }
         public string display_cong_theo_tien
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(cong_theo_tien) >= 0)
+                if (Convert.ToDouble(cong_theo_tien) >= 0)
                 {
                     double m;
                     if (double.TryParse(cong_theo_tien.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "").Replace(@"-", "");
@@ -64,16 +64,16 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int cong_ghi_nhan { get; set; }
-        public int cong_nghi_phep { get; set; }
-        public int tong_cong_nhan { get; set; }
-        public int luong_thuc { get; set; }
+        public string cong_ghi_nhan { get; set; }
+        public string cong_nghi_phep { get; set; }
+        public string tong_cong_nhan { get; set; }
+        public string luong_thuc { get; set; }
         public string display_luong_thuc
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(luong_thuc) >= 0)
+                if (Convert.ToDouble(luong_thuc) >= 0)
                 {
                     double m;
                     if (double.TryParse(luong_thuc.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -88,13 +88,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int luong_sau_phat { get; set; }
+        public string luong_sau_phat { get; set; }
         public string display_luong_sau_phat
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(luong_sau_phat) >= 0)
+                if (Convert.ToDouble(luong_sau_phat) >= 0)
                 {
                     double m;
                     if (double.TryParse(luong_sau_phat.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -115,7 +115,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(luong_bh) >= 0)
+                if (Convert.ToDouble(luong_bh) >= 0)
                 {
                     double m;
                     if (double.TryParse(luong_bh, out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -130,13 +130,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int ms_phat_tien { get; set; }
+        public string ms_phat_tien { get; set; }
         public string display_ms_phat_tien
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(ms_phat_tien) >= 0)
+                if (Convert.ToDouble(ms_phat_tien) >= 0)
                 {
                     double m;
                     if (double.TryParse(ms_phat_tien.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -151,14 +151,14 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int ms_phat_cong { get; set; }
+        public string ms_phat_cong { get; set; }
         public double hoa_hong { get; set; }
         public string display_hoa_hong
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(hoa_hong) >= 0)
+                if (Convert.ToDouble(hoa_hong) >= 0)
                 {
                     double m;
                     if (double.TryParse(hoa_hong.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -173,13 +173,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int tam_ung { get; set; }
+        public string tam_ung { get; set; }
         public string display_tam_ung
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(tam_ung) >= 0)
+                if (Convert.ToDouble(tam_ung) >= 0)
                 {
                     double m;
                     if (double.TryParse(tam_ung.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -194,13 +194,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int thuong { get; set; }
+        public string thuong { get; set; }
         public string display_thuong
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(thuong) >= 0)
+                if (Convert.ToDouble(thuong) >= 0)
                 {
                     double m;
                     if (double.TryParse(thuong.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -236,13 +236,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int phat { get; set; }
+        public string phat { get; set; }
         public string display_phat
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(phat) >= 0)
+                if (Convert.ToDouble(phat) >= 0)
                 {
                     double m;
                     if (double.TryParse(phat.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -257,13 +257,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int phat_nghi { get; set; }
+        public string phat_nghi { get; set; }
         public string display_phat_nghi
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(phat_nghi) >= 0)
+                if (Convert.ToDouble(phat_nghi) >= 0)
                 {
                     double m;
                     if (double.TryParse(phat_nghi.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -278,13 +278,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int phat_nghi_sqd { get; set; }
+        public string phat_nghi_sqd { get; set; }
         public string display_phat_nghi_sqd
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(phat_nghi_sqd) >= 0)
+                if (Convert.ToDouble(phat_nghi_sqd) >= 0)
                 {
                     double m;
                     if (double.TryParse(phat_nghi_sqd.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -299,13 +299,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int phuc_loi { get; set; }
+        public string phuc_loi { get; set; }
         public string display_phuc_loi
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(phuc_loi) >= 0)
+                if (Convert.ToDouble(phuc_loi) >= 0)
                 {
                     double m;
                     if (double.TryParse(phuc_loi.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -320,13 +320,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int phu_cap { get; set; }
+        public string phu_cap { get; set; }
         public string display_phu_cap
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(phu_cap) >= 0)
+                if (Convert.ToDouble(phu_cap) >= 0)
                 {
                     double m;
                     if (double.TryParse(phu_cap.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -341,13 +341,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int phu_cap_ca { get; set; }
+        public string phu_cap_ca { get; set; }
         public string display_phu_cap_ca
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(phu_cap_ca) >= 0)
+                if (Convert.ToDouble(phu_cap_ca) >= 0)
                 {
                     double m;
                     if (double.TryParse(phu_cap_ca.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -362,13 +362,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int bao_hiem { get; set; }
+        public string bao_hiem { get; set; }
         public string display_bao_hiem
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(bao_hiem) >= 0)
+                if (Convert.ToDouble(bao_hiem) >= 0)
                 {
                     double m;
                     if (double.TryParse(bao_hiem.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -383,13 +383,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int khoan_khac { get; set; }
+        public string khoan_khac { get; set; }
         public string display_khoan_khac
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(khoan_khac) >= 0)
+                if (Convert.ToDouble(khoan_khac) >= 0)
                 {
                     double m;
                     if (double.TryParse(khoan_khac.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -410,7 +410,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(tong_luong) >= 0)
+                if (Convert.ToDouble(tong_luong) >= 0)
                 {
                     double m;
                     if (double.TryParse(tong_luong.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -425,13 +425,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public int thue { get; set; }
+        public string thue { get; set; }
         public string display_thue
         {
             get
             {
                 string a = "";
-                if (Convert.ToInt64(thue) >= 0)
+                if (Convert.ToDouble(thue) >= 0)
                 {
                     double m;
                     if (double.TryParse(thue.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -452,7 +452,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(luong_thuc_nhan) >= 0)
+                if (Convert.ToDouble(luong_thuc_nhan) >= 0)
                 {
                     double m;
                     if (double.TryParse(luong_thuc_nhan.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -473,7 +473,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(luong_da_tra) >= 0)
+                if (Convert.ToDouble(luong_da_tra) >= 0)
                 {
                     double m;
                     if (double.TryParse(luong_da_tra.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
@@ -499,7 +499,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(dp_money) >= 0)
+                if (Convert.ToDouble(dp_money) >= 0)
                 {
                     double m;
                     if (double.TryParse(dp_money.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");

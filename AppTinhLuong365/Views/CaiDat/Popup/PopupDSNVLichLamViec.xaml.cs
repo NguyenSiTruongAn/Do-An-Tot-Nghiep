@@ -28,24 +28,35 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
     public partial class PopupDSNVLichLamViec : Page, INotifyPropertyChanged
     {
         private int _IsSmallSize;
+
         public int IsSmallSize
         {
             get { return _IsSmallSize; }
-            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
+            set
+            {
+                _IsSmallSize = value;
+                OnPropertyChanged("IsSmallSize");
+            }
         }
+
         public MainWindow Main;
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         private string id;
-        public PopupDSNVLichLamViec(MainWindow main, string Id)
+        // private string cy_name;
+
+        public PopupDSNVLichLamViec(MainWindow main, string Id, string name)
         {
             InitializeComponent();
             this.DataContext = this;
             Main = main;
             id = Id;
+            Block1.Text = name;
             getData(1);
         }
 
@@ -58,6 +69,11 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         }
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            scr.ScrollToVerticalOffset(scr.VerticalOffset - e.Delta);
+        }
+
+        private void dataGrid_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             Main.scrolPopup.ScrollToVerticalOffset(Main.scrolPopup.VerticalOffset - e.Delta);
         }
@@ -79,14 +95,18 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         }
 
         private List<Item_emp> _listEmps;
+
         public List<Item_emp> listEmps
         {
             get { return _listEmps; }
-            set { _listEmps = value; OnPropertyChanged(); }
+            set
+            {
+                _listEmps = value;
+                OnPropertyChanged();
+            }
         }
 
         private static int totalEp;
-
         private void getData(int page)
         {
             using (WebClient web = new WebClient())
@@ -97,15 +117,20 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("length", "20");
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_emp_in_cycle_by_com_id api = JsonConvert.DeserializeObject<API_List_emp_in_cycle_by_com_id>(UnicodeEncoding.UTF8.GetString(e.Result));
+                    API_List_emp_in_cycle_by_com_id api =
+                        JsonConvert.DeserializeObject<API_List_emp_in_cycle_by_com_id>(
+                            UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
                         listEmps = api.data.items;
+                        // if(listEmps != null && listEmps.Count >0)
+                        //     Block1.Text = listEmps[0].cy_name;
                         totalEp = int.Parse(api.data.totalItems);
                         PageEp = ListPageNumber(totalEp);
                         loadPage(page, PageEp);
-                        dataGrid2.AutoReponsiveColumn(0);
+                        // dataGrid2.AutoReponsiveColumn(1);
                     }
+
                     foreach (Item_emp item in listEmps)
                     {
                         if (item.ep_image == "")
@@ -118,7 +143,8 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                         }
                     }
                 };
-                web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/list_employee_cycle.php", web.QueryString);
+                web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/list_employee_cycle.php",
+                    web.QueryString);
             }
         }
 
@@ -220,7 +246,6 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     PageTruoc.Visibility = Visibility.Visible;
                     Page1.Visibility = Visibility.Visible;
                     PageDau.Visibility = Visibility.Collapsed;
-
                 }
                 else if (loaiPage.Count > 1)
                 {
@@ -318,6 +343,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             {
                 pnb.Add(i);
             }
+
             return pnb;
         }
 
@@ -326,14 +352,19 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         public List<int> PageEp
         {
             get { return _PageEp; }
-            set { _PageEp = value; OnPropertyChanged(); }
+            set
+            {
+                _PageEp = value;
+                OnPropertyChanged();
+            }
         }
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Border p = sender as Border;
             Item_emp data = (Item_emp)p.DataContext;
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupThongBaoXoaNhanVien(Main, id, data.ep_id, data.apply_month));
+            Main.PopupSelection.NavigationService.Navigate(
+                new Views.CaiDat.Popup.PopupThongBaoXoaNhanVien(Main, id, data.ep_id, data.apply_month));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }

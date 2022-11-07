@@ -37,8 +37,20 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
-                string result = sum_rose.Split('.')[0];
-                return result;
+                string a = "";
+                if (Convert.ToDouble(sum_rose) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(sum_rose, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(sum_rose.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
             }
         }
         public string rose_1 { get; set; }
@@ -46,8 +58,20 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
-                string result = rose_1.Split('.')[0];
-                return result;
+                string a = "";
+                if (Convert.ToDouble(rose_1) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(rose_1, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(rose_1.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
             }
         }
         public string rose_2 { get; set; }
@@ -55,8 +79,20 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
-                string result = rose_2.Split('.')[0];
-                return result;
+                string a = "";
+                if (Convert.ToDouble(rose_2) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(rose_2, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(rose_2.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
             }
         }
         public string rose_3 { get; set; }
@@ -64,8 +100,20 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
-                string result = rose_3.Split('.')[0];
-                return result;
+                string a = "";
+                if (Convert.ToDouble(rose_3) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(rose_3, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(rose_3.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
             }
         }
         public string rose_4 { get; set; }
@@ -73,8 +121,20 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
-                string result = rose_4.Split('.')[0];
-                return result;
+                string a = "";
+                if (Convert.ToDouble(rose_4) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(rose_4, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(rose_4.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
             }
         }
         public string rose_5 { get; set; }
@@ -82,8 +142,20 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
-                string result = rose_5.Split('.')[0];
-                return result;
+                string a = "";
+                if (Convert.ToDouble(rose_5) >= 0)
+                {
+                    double m;
+                    if (double.TryParse(rose_5, out m)) a = m.ToString("C0").Replace(@"$", "");
+                }
+                else
+                {
+                    double n;
+                    if (double.TryParse(rose_5.ToString(), out n))
+                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                }
+
+                return a;
             }
         }
     }

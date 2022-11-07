@@ -175,8 +175,9 @@ namespace AppTinhLuong365.Views.ChiTraLuong
 
         private void update(object sender, MouseButtonEventArgs e)
         {
-            if (!string.IsNullOrEmpty(TextBoxPc.Text))
+            if (!string.IsNullOrEmpty(TextBoxPc.Text) && ComboBox.SelectedIndex == 0)
             {
+                TextBoxMoney.Text = "";
                 foreach (var item in listItemDetailPay)
                 {
                     item.pc_luong = Convert.ToInt32(TextBoxPc.Text);
@@ -186,8 +187,9 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                 }
             }
 
-            if (!string.IsNullOrEmpty(TextBoxMoney.Text))
+            if (!string.IsNullOrEmpty(TextBoxMoney.Text) && ComboBox.SelectedIndex == 1)
             {
+                TextBoxPc.Text = "";
                 foreach (var item in listItemDetailPay)
                 {
                     item.money = TextBoxMoney.Text;

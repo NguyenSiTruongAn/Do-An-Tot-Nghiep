@@ -36,8 +36,60 @@ namespace AppTinhLuong365.Views.ChiTraLuong
             InitializeComponent();
             Main = main;
             getData();
-            ComboBox.SelectedIndex = 0;
+            ComboBox.SelectedIndex = 0; dteSelectedMonth = new Calendar();
+            dteSelectedMonth.Visibility = Visibility.Collapsed;
+            dteSelectedMonth.DisplayMode = CalendarMode.Year;
+            dteSelectedMonth.MouseLeftButtonDown += Select_thang;
+            dteSelectedMonth.DisplayModeChanged += dteSelectedMonth_DisplayModeChanged;
+            cl = new List<Calendar>();
+            cl.Add(dteSelectedMonth);
+            cl = cl.ToList();
         }
+
+        private void Select_thang(object sender, MouseButtonEventArgs e)
+        {
+            dteSelectedMonth.Visibility = dteSelectedMonth.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+            flag = 1;
+        }
+
+        int flag = 0;
+
+        private void dteSelectedMonth_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
+        {
+            var x = dteSelectedMonth.DisplayDate.ToString("MM/yyyy");
+            if (flag == 0)
+                x = "";
+            else
+                x = dteSelectedMonth.DisplayDate.ToString("MM/yyyy");
+            if (textThang != null && !string.IsNullOrEmpty(x))
+            {
+                textThang.Text = x;
+                valuedateDay = dteSelectedMonth.DisplayDate.ToString("yyyy/MM");
+                DateTime a = DateTime.Parse(x);
+            }
+            dteSelectedMonth.DisplayMode = CalendarMode.Year;
+            if (dteSelectedMonth.DisplayDate != null && flag > 0)
+            {
+                dteSelectedMonth.Visibility = Visibility.Collapsed;
+            }
+            flag += 1;
+        }
+
+        private string valuedateDay = "";
+
+        Calendar dteSelectedMonth { get; set; }
+
+        private List<Calendar> _cl;
+
+        public List<Calendar> cl
+        {
+            get { return _cl; }
+            set
+            {
+                _cl = value; OnPropertyChanged();
+            }
+        }
+
 
         private int _IsSmallSize;
         public int IsSmallSize
@@ -90,37 +142,6 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_dep.php",
                     web.QueryString);
             }
-        }
-
-        private void Select_thang(object sender, MouseButtonEventArgs e)
-        {
-            dteSelectedMonth.Visibility = dteSelectedMonth.Visibility == Visibility.Visible
-                ? Visibility.Collapsed
-                : Visibility.Visible;
-            flag = 1;
-        }
-
-        int flag = 0;
-
-        private void dteSelectedMonth_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
-        {
-            var x = dteSelectedMonth.DisplayDate.ToString("MM/yyyy");
-            if (flag == 0)
-                x = "";
-            else
-                x = dteSelectedMonth.DisplayDate.ToString("MM/yyyy");
-            if (textThang != null && !string.IsNullOrEmpty(x))
-            {
-                textThang.Text = x;
-            }
-
-            dteSelectedMonth.DisplayMode = CalendarMode.Year;
-            if (dteSelectedMonth.DisplayDate != null && flag > 0)
-            {
-                dteSelectedMonth.Visibility = Visibility.Collapsed;
-            }
-
-            flag += 1;
         }
 
         private void Save(object sender, MouseButtonEventArgs e)

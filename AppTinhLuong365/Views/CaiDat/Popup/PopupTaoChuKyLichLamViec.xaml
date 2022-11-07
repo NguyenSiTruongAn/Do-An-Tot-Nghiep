@@ -13,10 +13,13 @@
                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
             </Border.Effect>
         </Border>
-        <StackPanel>
+        <StackPanel PreviewMouseWheel="UIElement_OnPreviewMouseWheel">
             <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                 <StackPanel Margin="20 0">
-                    <TextBlock Margin="0 20" Text="Tháng 09/2022" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource #636e73}"></TextBlock>
+                    <TextBlock Margin="0 20" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource #636e73}">
+                        <Run Text="Tháng"/>
+                        <Run x:Name="TextBlockThang"/>
+                    </TextBlock>
                     <Border CornerRadius="10 10 0 0" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
                         <StackPanel>
                             <Border Background="{DynamicResource #4C5BD4}" CornerRadius="10 10 0 0" Height="45">
@@ -44,372 +47,126 @@
                                     </Border>
                                 </DockPanel>
                             </Border>
-                            <DockPanel Height="55">
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="28" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="29" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="30" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="31" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="1" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="2" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="3" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                            </DockPanel>
-                            <DockPanel Height="55">
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="4" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="5" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="6" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="7" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="8" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="9" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="10" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                            </DockPanel>
-                            <DockPanel Height="55">
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="11" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="12" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="13" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="14" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="15" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="16" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="17" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                            </DockPanel>
-                            <DockPanel Height="55">
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="18" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="19" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="20" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="21" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="22" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="23" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="24" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                            </DockPanel>
-                            <DockPanel Height="55">
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="25" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="26" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="27" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="28" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="29" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="30" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #777777}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="1" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                            </DockPanel>
-                            <DockPanel Height="55">
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="2" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="3" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="4" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="5" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="6" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="7" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                                <Grid Width="64">
-                                    <Border Width="30" Height="30" CornerRadius="30" BorderThickness="0" BorderBrush="{DynamicResource #DDDDDD}">
-                                        <TextBlock Text="8" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #E9E9E9}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                    <Border Visibility="Collapsed" Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}">
-                                        <TextBlock Text="1" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                                    </Border>
-                                </Grid>
-                            </DockPanel>
+                            <ListView ItemsSource="{Binding listLich}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListViewItem">
+                                                    <Grid Width="64" Height="55">
+                                                        <Border Width="30" Height="30" MouseLeftButtonDown="selectNgay" CornerRadius="30" BorderBrush="{DynamicResource #DDDDDD}">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Setter Property="BorderThickness" Value="0"/>
+                                                                    <Setter Property="Background" Value="Transparent"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding status}" Value="1">
+                                                                            <Setter Property="BorderThickness" Value="1"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding status}" Value="2">
+                                                                            <Setter Property="Background" Value="{DynamicResource #4C5BD4}"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <TextBlock Name="tbDay1" Text="{Binding ngay}" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="TextBlock">
+                                                                        <Setter Property="Foreground" Value="{DynamicResource #E9E9E9}"/>
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding status}" Value="1">
+                                                                                <Setter Property="Foreground" Value="{DynamicResource #777777}"/>
+                                                                            </DataTrigger>
+                                                                            <DataTrigger Binding="{Binding status}" Value="2">
+                                                                                <Setter Property="Foreground" Value="{DynamicResource #FFFFFF}"/>
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </TextBlock.Style>
+                                                            </TextBlock>
+                                                        </Border>
+                                                        <Border Margin="0 0 12 6" Width="18" Height="18" CornerRadius="7" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                    <Setter Property="Background" Value="{DynamicResource #4C5BD4}"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding ca}" Value="0">
+                                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding status}" Value="2">
+                                                                            <Setter Property="Background" Value="{DynamicResource #F46A6A}"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <TextBlock Text="{Binding ca}" FontSize="10" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                                        </Border>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Width="{Binding RelativeSource={RelativeSource AncestorType=ListView,Mode=FindAncestor},Path=ActualWidth}"></WrapPanel>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
                         </StackPanel>
                     </Border>
                     <TextBlock Text="Tích vào ngày bên trên sau đó tích vào ca làm việc bên dưới để chọn ca làm việc tương ứng với ngày hôm đó." FontSize="16" Foreground="{DynamicResource #F46A6A}" TextWrapping="WrapWithOverflow" FontWeight="DemiBold"/>
-                    <TextBlock Margin="0 5" Text="Ca làm việc trong ngày 09-09-2022" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold"/>
-                    <DataGrid Style="{StaticResource DataGrid5}" ItemsSource="{Binding Test}">
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <DockPanel>
-                                            <CheckBox Margin="0 0 20 0"></CheckBox>
-                                            <TextBlock Text="{Binding}" Style="{StaticResource TextRowCenter}"></TextBlock>
-                                        </DockPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <StackPanel x:Name="chonCa" Visibility="Collapsed">
+                        <TextBlock Margin="0 5" FontSize="16" Foreground="{DynamicResource #666666}" FontWeight="DemiBold">
+                            <Run Text="Ca làm việc trong ngày"/>
+                            <Run x:Name="txtNgay"/>
+                            <Run Text="-"/>
+                            <Run x:Name="txtThang"/>
+                            <Run Text="-"/>
+                            <Run x:Name="txtNam"/>
+                        </TextBlock>
+                        <!-- <DataGrid Style="{StaticResource DataGrid5}" ItemsSource="{Binding listCa}"> -->
+                        <!--     <DataGrid.Columns> -->
+                        <!--         <DataGridTemplateColumn> -->
+                        <!--             <DataGridTemplateColumn.CellTemplate> -->
+                        <!--                 <DataTemplate> -->
+                        <!--                     <DockPanel> -->
+                        <!--                         <CheckBox IsChecked="{Binding ischecked}" Margin="0 0 20 0"  PreviewMouseLeftButtonDown="abc"></CheckBox> -->
+                        <!--                         <TextBlock Text="{Binding shift_name}" Style="{StaticResource TextRowCenter}"></TextBlock> -->
+                        <!--                     </DockPanel> -->
+                        <!--                 </DataTemplate> -->
+                        <!--             </DataGridTemplateColumn.CellTemplate> -->
+                        <!--         </DataGridTemplateColumn> -->
+                        <!--     </DataGrid.Columns> -->
+                        <!-- </DataGrid> -->
+                        <ListView BorderThickness="0"
+                                  ItemsSource="{Binding listCa}">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListViewItem">
+                                                <Border Margin="5 0 0 0">
+                                                    <StackPanel Margin="0 15"
+                                                                Orientation="Horizontal">
+                                                        <CheckBox Margin="5 0 0 0"
+                                                                  IsChecked="{Binding ischecked}" PreviewMouseLeftButtonDown="abc">
+                                                        </CheckBox>
+                                                        <TextBlock FontSize="15"
+                                                                   Foreground="{DynamicResource #666666}"
+                                                                   FontWeight="DemiBold"
+                                                                   Text="{Binding shift_name}">
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </StackPanel>
                     <DockPanel Margin="0 20">
                         <Border MouseLeftButtonDown="Btn_QuayLai_Click" BorderThickness="1" BorderBrush="{DynamicResource #666666}" Cursor="Hand" Height="38" Width="215" HorizontalAlignment="Right" Background="Transparent" CornerRadius="4">
                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -417,7 +174,7 @@
                                 <TextBlock Margin="25 0 0 0" Text="Quay lại" FontSize="15" Foreground="{DynamicResource #666666}" FontWeight="Bold"></TextBlock>
                             </Grid>
                         </Border>
-                        <Border Cursor="Hand" Height="38" Width="215" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}" CornerRadius="4">
+                        <Border MouseLeftButtonDown="LuuLich" Cursor="Hand" Height="38" Width="215" HorizontalAlignment="Right" Background="{DynamicResource #4C5BD4}" CornerRadius="4">
                             <TextBlock Text="Tạo chu kỳ" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold"></TextBlock>
                         </Border>
                     </DockPanel>

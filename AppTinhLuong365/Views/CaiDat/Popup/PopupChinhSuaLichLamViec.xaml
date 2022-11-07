@@ -9,7 +9,7 @@
 
     <Grid Width="494" Background="{DynamicResource #FFFFFF}">
         <Border Style="{StaticResource ShadowBorder2}"></Border>
-        <StackPanel>
+        <StackPanel PreviewMouseWheel="UIElement_OnPreviewMouseWheel">
             <Border Background="{DynamicResource #4C5BD4}" Height="47" CornerRadius="8 8 0 0">
                 <Grid>
                     <TextBlock Text="Chỉnh sửa lịch làm việc" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource #FFFFFF}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
@@ -149,20 +149,46 @@
                             <Run Text="-"/>
                             <Run x:Name="txtNam"/>
                         </TextBlock>
-                        <DataGrid Style="{StaticResource DataGrid5}" ItemsSource="{Binding listCa}">
-                            <DataGrid.Columns>
-                                <DataGridTemplateColumn>
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <DockPanel>
-                                                <CheckBox IsChecked="{Binding ischecked}" Margin="0 0 20 0"  PreviewMouseLeftButtonDown="abc"></CheckBox>
-                                                <TextBlock Text="{Binding shift_name}" Style="{StaticResource TextRowCenter}"></TextBlock>
-                                            </DockPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <!-- <DataGrid Style="{StaticResource DataGrid5}" ItemsSource="{Binding listCa}"> -->
+                        <!--     <DataGrid.Columns> -->
+                        <!--         <DataGridTemplateColumn> -->
+                        <!--             <DataGridTemplateColumn.CellTemplate> -->
+                        <!--                 <DataTemplate> -->
+                        <!--                     <DockPanel> -->
+                        <!--                         <CheckBox IsChecked="{Binding ischecked}" Margin="0 0 20 0"  PreviewMouseLeftButtonDown="abc"></CheckBox> -->
+                        <!--                         <TextBlock Text="{Binding shift_name}" Style="{StaticResource TextRowCenter}"></TextBlock> -->
+                        <!--                     </DockPanel> -->
+                        <!--                 </DataTemplate> -->
+                        <!--             </DataGridTemplateColumn.CellTemplate> -->
+                        <!--         </DataGridTemplateColumn> -->
+                        <!--     </DataGrid.Columns> -->
+                        <!-- </DataGrid> -->
+                        <ListView BorderThickness="0"
+                                  ItemsSource="{Binding listCa}">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListViewItem">
+                                                <Border Margin="5 0 0 0">
+                                                    <StackPanel Margin="0 15"
+                                                                Orientation="Horizontal">
+                                                        <CheckBox Margin="5 0 0 0"
+                                                                  IsChecked="{Binding ischecked}" PreviewMouseLeftButtonDown="abc">
+                                                        </CheckBox>
+                                                        <TextBlock FontSize="15"
+                                                                   Foreground="{DynamicResource #666666}"
+                                                                   FontWeight="DemiBold"
+                                                                   Text="{Binding shift_name}">
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
                     </StackPanel>
                     <Border Cursor="Hand" MouseLeftButtonDown="LuuLich" Height="38" Background="{DynamicResource #4C5BD4}" CornerRadius="4">
                         <TextBlock Text="Lưu lại" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="{DynamicResource #FFFFFF}" FontWeight="Bold"></TextBlock>

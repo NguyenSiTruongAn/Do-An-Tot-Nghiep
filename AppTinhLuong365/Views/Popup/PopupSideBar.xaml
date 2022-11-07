@@ -90,10 +90,19 @@
     <Grid Width="300">
         <Border Style="{StaticResource ShadowBorder2}" CornerRadius="0"></Border>
         <StackPanel Margin="10 20">
-            <Image HorizontalAlignment="Left" VerticalAlignment="Center" Source="/Views/TrangChu/Image/app1651713915_favicon.png" Width="32" Height="32" Margin="0 0 10 0"></Image>
-            <TextBlock TextWrapping="WrapWithOverflow" Margin="0 0 12 0" FontSize="15" Foreground="{DynamicResource #2E3467}" Text="Công ty TNHH 124 ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" Width="270" VerticalAlignment="Center"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Border Width="32" Height="32" CornerRadius="32" HorizontalAlignment="Left">
+                <Border.Background>
+                    <ImageBrush ImageSource="{Binding com_image}"/>
+                </Border.Background>
+            </Border>
+            <TextBlock x:Name="NameCompany" TextWrapping="WrapWithOverflow" Margin="10 0 12 0" FontSize="15" Foreground="{DynamicResource #2E3467}" Width="270" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
             <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                <ListView Name="sidebar" Margin="0 7" ItemsSource="{Binding SideBarItems}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItemStyle}" SelectedIndex="{Binding SideBarIndex ,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                <Grid>
+                    <ListView Name="sidebar" Margin="0 7" ItemsSource="{Binding SideBarItems}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItemStyle}" SelectedIndex="{Binding SideBarIndex ,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                    <ListView Name="sidebarNV" Margin="0 7" ItemsSource="{Binding SideBarItemsNV}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItemStyle}" SelectedIndex="{Binding SideBarIndexNV ,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                </Grid>
             </ScrollViewer>
         </StackPanel>
         

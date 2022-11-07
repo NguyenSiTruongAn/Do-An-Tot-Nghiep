@@ -59,9 +59,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             }
 
             YearList = new ObservableCollection<string>();
-            for (var i = 2022; i <= 2025; i++)
+            var c = DateTime.Now.Year;
+            if (c != null)
             {
-                YearList.Add($"Năm {i}");
+                YearList.Add($"Năm {c - 1}");
+                YearList.Add($"Năm {c}");
+                YearList.Add($"Năm {c + 1}");
             }
 
             InitializeComponent();

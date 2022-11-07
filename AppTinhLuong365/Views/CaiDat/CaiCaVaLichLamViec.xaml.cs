@@ -147,7 +147,7 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void Border_MouseLeftButtonDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupSaoChepLich(Main));
+            Main.PopupSelection.NavigationService.Navigate(new Views.CaiDat.Popup.PopupSaoChepLich(Main, searchBarMonth1.SelectedIndex, searchBarYear1.SelectedIndex));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
 
@@ -155,7 +155,7 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             Border p = sender as Border;
             GeneralCalendar data = (GeneralCalendar)p.DataContext;
-            var pop = new Views.CaiDat.Popup.PopupTuyChonLichLamViec(Main, data.cy_id);
+            var pop = new Views.CaiDat.Popup.PopupTuyChonLichLamViec(Main, data.cy_id, data.apply_month, data.cy_name);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -332,7 +332,7 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             Border p = sender as Border;
             PersonalCalendar data = (PersonalCalendar)p.DataContext;
-            var pop = new Views.CaiDat.Popup.PopupTuyChonLichLamViec(Main, data.cy_id);
+            var pop = new Views.CaiDat.Popup.PopupTuyChonLichLamViec(Main, data.cy_id, data.apply_month, data.cy_name);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 205, z.Y + 20, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);

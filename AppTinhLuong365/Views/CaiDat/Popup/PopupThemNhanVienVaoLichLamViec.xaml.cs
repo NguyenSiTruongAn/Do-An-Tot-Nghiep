@@ -71,9 +71,9 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             pop.Height = 500;
         }
 
-        private List<Item_employee_not_in_cycle> _listNV;
+        private List<Item_all_employee_of_company> _listNV;
 
-        public List<Item_employee_not_in_cycle> listNV
+        public List<Item_all_employee_of_company> listNV
         {
             get { return _listNV; }
             set
@@ -83,9 +83,9 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             }
         }
 
-        private List<Item_employee_not_in_cycle> _listNV1;
+        private List<Item_all_employee_of_company> _listNV1;
 
-        public List<Item_employee_not_in_cycle> listNV1
+        public List<Item_all_employee_of_company> listNV1
         {
             get { return _listNV1; }
             set
@@ -99,25 +99,25 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         {
             using (WebClient web = new WebClient())
             {
-                web.QueryString.Add("group", ID_gr);
+                web.QueryString.Add("filter_by[active]", "true");
                 if (Main.MainType == 0)
                 {
-                    //web.QueryString.Add("length", "20");
                     web.Headers.Add("Authorization", Main.CurrentCompany.token);
-                    //web.QueryString.Add("month_apply", "2022-09-01");
+                    web.QueryString.Add("filter_by[company]", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("filter_by[not_in_cycle]", ID_gr);
                 }
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_employee_not_in_cycle api =
-                        JsonConvert.DeserializeObject<API_List_employee_not_in_cycle>(
+                    API_List_all_employee_of_company api =
+                        JsonConvert.DeserializeObject<API_List_all_employee_of_company>(
                             UnicodeEncoding.UTF8.GetString(e.Result));
                     if (api.data != null)
                     {
                         listNV = listNV1 = api.data.items;
                     }
 
-                    foreach (Item_employee_not_in_cycle item in listNV)
+                    foreach (Item_all_employee_of_company item in listNV)
                     {
                         if (item.ep_image == "")
                         {
@@ -130,7 +130,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     }
                 };
                 web.UploadValuesTaskAsync(
-                    "https://chamcong.24hpay.vn/service/get_list_employee_not_in_cycle.php?length=20&month_apply=2022-09-01",
+                    "https://chamcong.24hpay.vn/service/list_all_employee_of_company.php",
                     web.QueryString);
             }
         }
@@ -146,7 +146,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         private void ChonNhanvien(object sender, RoutedEventArgs e)
         {
             CheckBox cb = sender as CheckBox;
-            Item_employee_not_in_cycle data = (Item_employee_not_in_cycle)cb.DataContext;
+            Item_all_employee_of_company data = (Item_all_employee_of_company)cb.DataContext;
             nv.Add(data.ep_id);
         }
 
