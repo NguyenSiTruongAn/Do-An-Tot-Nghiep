@@ -21,23 +21,40 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
-                string a = "";
-                if (Convert.ToDouble(luong_cb) >= 0)
-                {
-                    double m;
-                    if (double.TryParse(luong_cb, out m)) a = m.ToString("C0").Replace(@"$", "");
-                }
+                if (string.IsNullOrEmpty(luong_cb))
+                    return "0";
                 else
                 {
-                    double n;
-                    if (double.TryParse(luong_cb.ToString(), out n))
-                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
-                }
+                    string a = "";
+                    if (Convert.ToDouble(luong_cb) >= 0)
+                    {
+                        double m;
+                        if (double.TryParse(luong_cb, out m)) a = m.ToString("C0").Replace(@"$", "");
+                    }
+                    else
+                    {
+                        double n;
+                        if (double.TryParse(luong_cb.ToString(), out n))
+                            a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                    }
 
-                return a;
+                    return a;
+                }
             }
         }
         public string cong_chuan { get; set; }
+        public string display_cong_chuan
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(cong_chuan))
+                {
+                    return "0";
+                }
+
+                return cong_chuan;
+            }
+        }
         public string cong_thuc { get; set; }
         public string cong_sau_phat { get; set; }
         public string cong_theo_tien { get; set; }
@@ -114,20 +131,25 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
-                string a = "";
-                if (Convert.ToDouble(luong_bh) >= 0)
-                {
-                    double m;
-                    if (double.TryParse(luong_bh, out m)) a = m.ToString("C0").Replace(@"$", "");
-                }
+                if (string.IsNullOrEmpty(luong_bh))
+                    return "0";
                 else
                 {
-                    double n;
-                    if (double.TryParse(luong_bh.ToString(), out n))
-                        a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
-                }
+                    string a = "";
+                    if (Convert.ToDouble(luong_bh) >= 0)
+                    {
+                        double m;
+                        if (double.TryParse(luong_bh, out m)) a = m.ToString("C0").Replace(@"$", "");
+                    }
+                    else
+                    {
+                        double n;
+                        if (double.TryParse(luong_bh.ToString(), out n))
+                            a = "-" + n.ToString("C0").Replace(@"$", "").Replace(@"(", "").Replace(@")", "");
+                    }
 
-                return a;
+                    return a;
+                }
             }
         }
         public string ms_phat_tien { get; set; }
@@ -472,6 +494,8 @@ namespace AppTinhLuong365.Model.APIEntity
         {
             get
             {
+                if (string.IsNullOrEmpty(luong_da_tra.ToString()))
+                    return "0";
                 string a = "";
                 if (Convert.ToDouble(luong_da_tra) >= 0)
                 {

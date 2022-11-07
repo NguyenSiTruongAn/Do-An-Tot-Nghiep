@@ -551,7 +551,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 order = 1 + "";
             }
 
-            getData(1, month, year, id_pb, id_nv, start_date, end_date, order);
+            getData(1, month, year, id_nv, id_pb, start_date, end_date, order);
             BrushConverter bc = new BrushConverter();
             Page1.Background = (Brush)bc.ConvertFrom("#4C5BD4");
             txtpage1.Text = "1";
@@ -621,7 +621,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 order = 1 + "";
             }
 
-            getData(pagenow - 1, month, year, id_pb, id_nv, start_date, end_date, order);
+            getData(pagenow - 1, month, year, id_nv, id_pb, start_date, end_date, order);
         }
 
         private void page_sau_click(object sender, MouseButtonEventArgs e)
@@ -687,7 +687,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 order = 1 + "";
             }
 
-            getData(pagenow + 1, month, year, id_pb, id_nv, start_date, end_date, order);
+            getData(pagenow + 1, month, year, id_nv, id_pb, start_date, end_date, order);
         }
 
         private void page_cuoi_click(object sender, MouseButtonEventArgs e)
@@ -753,7 +753,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 order = 1 + "";
             }
 
-            getData(PageNV.Count, month, year, id_pb, id_nv, start_date, end_date, order);
+            getData(PageNV.Count, month, year, id_nv, id_pb, start_date, end_date, order);
         }
 
         public List<int> ListPageNumber(int total)
@@ -834,7 +834,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 order = 1 + "";
             }
 
-            getData(pagenumber, month, year, id_pb, id_nv, start_date, end_date, order);
+            getData(pagenumber, month, year, id_nv, id_pb, start_date, end_date, order);
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
 
@@ -903,7 +903,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 order = 1 + "";
             }
 
-            getData(pagenumber, month, year, id_pb, id_nv, start_date, end_date, order);
+            getData(pagenumber, month, year, id_nv, id_pb, start_date, end_date, order);
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
 
@@ -972,7 +972,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 order = 1 + "";
             }
 
-            getData(pagenumber, month, year, id_pb, id_nv, start_date, end_date, order);
+            getData(pagenumber, month, year, id_nv, id_pb, start_date, end_date, order);
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
 
@@ -1118,8 +1118,17 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                         order = 1 + "";
                     }
 
-                    string start_date = DatePickerStart.SelectedDate + "";
-                    string end_date = DatePickerEnd.SelectedDate + "";
+                    string start_date = "";
+                    if (DatePickerStart.SelectedDate != null)
+                    {
+                         start_date = DatePickerStart.SelectedDate + "";
+                    }
+
+                    string end_date = "";
+                    if (DatePickerEnd.SelectedDate != null)
+                    {
+                         end_date = DatePickerEnd.SelectedDate + "";
+                    }
                     DateTime start = default;
                     DateTime end = default;
                     string m = "";

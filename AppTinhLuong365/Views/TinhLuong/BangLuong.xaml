@@ -241,7 +241,7 @@
                                     <DataTemplate>
                                         <Border Background="Transparent" MouseEnter="dataGrid1Hover"
                                                 MouseLeave="dataGrid1Leave">
-                                            <TextBlock Text="{Binding cong_chuan}"
+                                            <TextBlock Text="{Binding display_cong_chuan}"
                                                        Style="{StaticResource TextRowCenter}">
                                             </TextBlock>
                                         </Border>

@@ -150,6 +150,13 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
             nv.Add(data.ep_id);
         }
 
+        private void HuyChon(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            Item_all_employee_of_company data = (Item_all_employee_of_company)cb.DataContext;
+            nv.Remove(data.ep_id);
+        }
+
         private string Arr_Id_Ep;
         private void ThemNhanVienVaoNhom(object sender, MouseButtonEventArgs e)
         {

@@ -79,11 +79,11 @@ namespace AppTinhLuong365.Views.NhanVien
             // string start_date = DateTime.Now.ToString("yyyy-MM-01");
             // string end_date = DateTime.Now.ToString("yyyy-MM-30");
             int d = int.Parse(month);
-            int e = int.Parse(year) + DateTime.Now.Year - 1;
+            int e = int.Parse(year);
             this.month = d + "";
             this.year = e + "";
             searchBarMonth.SelectedIndex = d - 1;
-            searchBarYear.SelectedIndex = e - e + 1;
+            searchBarYear.SelectedIndex = 1;
             DateTime a = (DateTime.Parse(start_date));
             DateTime b = (DateTime.Parse(end_date));
             DatePickerStart.SelectedDate = a;
