@@ -156,9 +156,15 @@ namespace AppTinhLuong365.Views.TinhLuong
                                     if (ChiTietNV.ep_image == "/img/add.png")
                                         ChiTietNV.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
                                 txtName.Text = ChiTietNV.ep_name;
-                                txtNS.Text = DateTime.Parse(ChiTietNV.ep_birth_day).ToString("dd/MM/yyyy");
+                                if (string.IsNullOrEmpty(ChiTietNV.ep_birth_day))
+                                    txtNS.Text = "Chưa cập nhật";
+                                else
+                                    txtNS.Text = DateTime.Parse(ChiTietNV.ep_birth_day).ToString("dd/MM/yyyy");
                                 txtDep.Text = ChiTietNV.dep_name;
-                                txtAddress.Text = ChiTietNV.ep_address;
+                                if (string.IsNullOrEmpty(ChiTietNV.ep_address))
+                                    txtNS.Text = "Chưa cập nhật";
+                                else
+                                    txtAddress.Text = ChiTietNV.ep_address;
                                 txtPhoneNumber.Text = ChiTietNV.ep_phone;
                                 txtBank.Text = ChiTietNV.ep_phone_tk;
                                 txtChucVu.Text = ChiTietNV.position_id;
@@ -541,8 +547,7 @@ namespace AppTinhLuong365.Views.TinhLuong
         private void ThayLichLamViec(object sender, MouseButtonEventArgs e)
         {
             Border b = sender as Border;
-            GeneralCalendar data = (GeneralCalendar)b.DataContext;
-            var pop = new Views.CaiDat.Popup.PopupChinhSuaLichLamViec(Main, ChiTietNV.cycle, data1, data.apply_month);
+            var pop = new Views.CaiDat.Popup.PopupChinhSuaLichLamViec(Main, ChiTietNV.cycle, data1, DateTime.Now.ToString("MM"));
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
         }

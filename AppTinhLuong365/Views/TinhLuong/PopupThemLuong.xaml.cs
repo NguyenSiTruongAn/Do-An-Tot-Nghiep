@@ -29,6 +29,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             InitializeComponent();
             Main = main;
             this.data = data;
+            if(data.basic_salary != null)
             if(data.basic_salary.Count > 0)
             {
                 tbInput.Text = data.basic_salary[data.basic_salary.Count - 1].sb_salary_basic;
