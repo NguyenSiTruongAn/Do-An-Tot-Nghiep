@@ -5,10 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat"
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
-      mc:Ignorable="d"
+      mc:Ignorable="d" VerticalAlignment="Top"
       Title="PopupDSNVLichLamViec">
 
-    <Grid Height="666">
+    <Grid>
         <Border Style="{StaticResource ShadowBorder2}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <StackPanel>

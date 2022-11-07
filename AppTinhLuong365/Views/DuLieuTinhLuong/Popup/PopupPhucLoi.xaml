@@ -100,9 +100,7 @@
                                     </Grid>
                                 </Border>
                                 <TextBlock x:Name="validateDate" Style="{StaticResource tblValidate}"/>
-                                <Viewbox HorizontalAlignment="Stretch" Width="229">
-                                    <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center" DisplayMode="Year" x:Name="dteSelectedMonth" DisplayModeChanged="dteSelectedMonth_DisplayModeChanged"/>
-                                </Viewbox>
+                                <ListView ItemsSource="{Binding cl}" HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="0"></ListView>
                             </StackPanel>
                         </Border>
                         <Border Style="{DynamicResource Style_Border_Wrap1}">
@@ -116,10 +114,8 @@
                                         </Border>
                                     </Grid>
                                 </Border>
-                                <Viewbox Width="229" HorizontalAlignment="Stretch">
-                                    <Calendar Visibility="Collapsed" HorizontalAlignment="Stretch" DisplayMode="Year" x:Name="dteSelectedMonth1" DisplayModeChanged="dteSelectedMonth1_DisplayModeChanged"/>
-                                </Viewbox>
                                 <TextBlock x:Name="validateDateEnd" Style="{StaticResource tblValidate}"/>
+                                <ListView ItemsSource="{Binding cl1}" HorizontalAlignment="Center" VerticalAlignment="Top" BorderThickness="0"></ListView>
                             </StackPanel>
                         </Border>
                     </WrapPanel>

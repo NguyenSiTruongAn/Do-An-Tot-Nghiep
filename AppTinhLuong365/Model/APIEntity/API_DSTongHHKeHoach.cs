@@ -33,7 +33,7 @@ namespace AppTinhLuong365.Model.APIEntity
             get
             {
                 string a = "";
-                if (Convert.ToInt64(money) >= 0)
+                if (Convert.ToDouble(money) >= 0)
                 {
                     double m;
                     if (double.TryParse(money, out m)) a = m.ToString("C0").Replace(@"$", "");

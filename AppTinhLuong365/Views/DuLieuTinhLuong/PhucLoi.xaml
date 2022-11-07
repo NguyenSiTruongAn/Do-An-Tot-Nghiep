@@ -56,7 +56,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding cl_salary}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                                        <TextBlock Text="{Binding display_cl_salary, Mode=OneWay}" Style="{StaticResource TextRowCenter1}"></TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -183,7 +183,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding cl_salary}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                                        <TextBlock Text="{Binding display_cl_salary, Mode=OneWay}" Style="{StaticResource TextRowCenter1}"></TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -310,7 +310,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding wf_money}" Style="{StaticResource TextRowCenter1}"></TextBlock>
+                                                        <TextBlock Text="{Binding display_wf_money, Mode=OneWay}" Style="{StaticResource TextRowCenter1}"></TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>

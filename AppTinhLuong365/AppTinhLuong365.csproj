@@ -191,12 +191,14 @@
     <Compile Include="Model\APIEntity\API_ListTamUng.cs" />
     <Compile Include="Model\APIEntity\API_ListThuongPhat.cs" />
     <Compile Include="Model\APIEntity\API_ListUserTax.cs" />
+    <Compile Include="Model\APIEntity\API_List_all_employee_of_company.cs" />
     <Compile Include="Model\APIEntity\API_List_dep.cs" />
     <Compile Include="Model\APIEntity\API_List_employee_cycle.cs" />
     <Compile Include="Model\APIEntity\API_List_employee_not_in_cycle.cs" />
     <Compile Include="Model\APIEntity\API_List_emp_in_cycle_by_com_id.cs" />
     <Compile Include="Model\APIEntity\API_List_ep_holiday.cs" />
     <Compile Include="Model\APIEntity\API_List_Ep_Late.cs" />
+    <Compile Include="Model\APIEntity\API_List_ep_no_holiday.cs" />
     <Compile Include="Model\APIEntity\API_List_Ep_Np.cs" />
     <Compile Include="Model\APIEntity\API_List_Holiday.cs" />
     <Compile Include="Model\APIEntity\API_List_Np_Improperly.cs" />
