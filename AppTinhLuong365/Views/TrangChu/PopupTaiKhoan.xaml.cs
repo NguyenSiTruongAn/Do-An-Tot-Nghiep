@@ -46,7 +46,7 @@ namespace AppTinhLuong365.Views.TrangChu
 
         private void DockPanel_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
         {
-
+            if (Main.LogOut != null) Main.LogOut();
         }
     }
 }

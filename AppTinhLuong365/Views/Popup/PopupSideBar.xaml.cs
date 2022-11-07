@@ -465,12 +465,13 @@ namespace AppTinhLuong365.Views.Popup
                     case 23:
                         Process.Start("https://quanlychung.timviec365.vn/quan-ly-ung-dung-cong-ty.html");
                         break;
+                    case 24:
+                        if (Main.LogOut != null) Main.LogOut();
+                        break;
                     default:
                         break;
                 }
-
-                var z = new List<int>()
-                    { -1, 0, 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23 };
+                var z = new List<int>() { -1, 0, 1, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24 };
                 if (z.Contains(value)) _SideBarIndex = value;
                 else if (value != 5)
                 {

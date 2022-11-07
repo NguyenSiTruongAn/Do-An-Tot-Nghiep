@@ -59,6 +59,7 @@ namespace AppTinhLuong365.Login.Views.Login
             set { _Pass = value; OnPropertyChanged(); }
         }
         Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
+        Regex regexSDT = new Regex(@"0(1\d{9}|9\d{8})", RegexOptions.CultureInvariant | RegexOptions.Singleline);
         //
         private void SignIn(object sender, MouseButtonEventArgs e)
         {
@@ -95,10 +96,10 @@ namespace AppTinhLuong365.Login.Views.Login
                 allow = false;
                 tblValidateEmail.Text = "Không được để trống";
             }
-            else if (!regex.IsMatch(txtEmail.Text))
+            else if (!regex.IsMatch(txtEmail.Text) && !regexSDT.IsMatch(txtEmail.Text))
             {
                 allow = false;
-                tblValidateEmail.Text = "Nhập không đúng định dạng email";
+                tblValidateEmail.Text = "Nhập không đúng định dạng";
             }
             if (string.IsNullOrEmpty(Pass))
             {
@@ -138,11 +139,11 @@ namespace AppTinhLuong365.Login.Views.Login
                         main.Left = WinLogin.Left;
                         main.Top = WinLogin.Top;
 
-                        //main.LogOut = () =>
-                        //{
-                        //    main.Close();
-                        //    WinLogin.LogOut(main.IsFull,main);
-                        //};
+                        main.LogOut = () =>
+                        {
+                            main.Close();
+                            WinLogin.LogOut(main.IsFull, main);
+                        };
 
                         WinLogin.Hide();
                         main.ShowDialog();
@@ -182,9 +183,9 @@ namespace AppTinhLuong365.Login.Views.Login
             {
                 tblValidateEmail.Text = "Không được để trống";
             }
-            else if (!regex.IsMatch(txtEmail.Text))
+            else if (!regex.IsMatch(txtEmail.Text) && !regexSDT.IsMatch(txtEmail.Text))
             {
-                tblValidateEmail.Text = "Nhập không đúng định dạng email";
+                tblValidateEmail.Text = "Nhập không đúng định dạng";
             }
         }
         private void txtPass_LostFocus(object sender, RoutedEventArgs e)
@@ -202,9 +203,9 @@ namespace AppTinhLuong365.Login.Views.Login
             {
                 tblValidateEmail.Text = "Không được để trống";
             }
-            else if (!regex.IsMatch(txtEmail.Text))
+            else if (!regex.IsMatch(txtEmail.Text) && !regexSDT.IsMatch(txtEmail.Text))
             {
-                tblValidateEmail.Text = "Nhập không đúng định dạng email";
+                tblValidateEmail.Text = "Nhập không đúng định dạng";
             }
         }
         private void ckSave_Unchecked(object sender, RoutedEventArgs e)
