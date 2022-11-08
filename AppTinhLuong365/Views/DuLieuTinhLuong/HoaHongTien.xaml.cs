@@ -95,23 +95,27 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -144,18 +148,22 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         }
                         web.UploadValuesCompleted += (s, e) =>
                         {
-                            string x = UnicodeEncoding.UTF8.GetString(e.Result);
-                            API_DSNVHoaHongTien api = JsonConvert.DeserializeObject<API_DSNVHoaHongTien>(x);
-                            if (api.data != null)
+                            try
                             {
-                                listNVHHTien = api.data.list_rose;
-                                if(listNVHHTien != null)
-                                foreach (var item in listNVHHTien)
+                                string x = UnicodeEncoding.UTF8.GetString(e.Result);
+                                API_DSNVHoaHongTien api = JsonConvert.DeserializeObject<API_DSNVHoaHongTien>(x);
+                                if (api.data != null)
                                 {
-                                    if (item.ep_image == "/img/add.png")
-                                        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                    listNVHHTien = api.data.list_rose;
+                                    if (listNVHHTien != null)
+                                        foreach (var item in listNVHHTien)
+                                        {
+                                            if (item.ep_image == "/img/add.png")
+                                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                        }
                                 }
                             }
+                            catch { }
                         };
                         web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_rose_tien.php", web.QueryString);
                     }
@@ -188,11 +196,15 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data.data != null)
+                    try
                     {
-                        listNV = api.data.data.items;
+                        API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data.data != null)
+                        {
+                            listNV = api.data.data.items;
+                        }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")
@@ -230,12 +242,16 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         }
                         web.UploadValuesCompleted += (s, e) =>
                         {
-                            string x = UnicodeEncoding.UTF8.GetString(e.Result);
-                            API_DSNhomHoaHongTien api = JsonConvert.DeserializeObject<API_DSNhomHoaHongTien>(x);
-                            if (api.data != null)
+                            try
                             {
-                                listNhomHHTien = api.data.list_rose_gr;
+                                string x = UnicodeEncoding.UTF8.GetString(e.Result);
+                                API_DSNhomHoaHongTien api = JsonConvert.DeserializeObject<API_DSNhomHoaHongTien>(x);
+                                if (api.data != null)
+                                {
+                                    listNhomHHTien = api.data.list_rose_gr;
+                                }
                             }
+                            catch { }
                         };
                         web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_group_rose_tien.php", web.QueryString);
                     }
@@ -266,11 +282,15 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListGroup api = JsonConvert.DeserializeObject<API_ListGroup>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listGR = api.data.list_group;
+                        API_ListGroup api = JsonConvert.DeserializeObject<API_ListGroup>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listGR = api.data.list_group;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_group_manager.php", web.QueryString);
             }
@@ -302,18 +322,22 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         }
                         web.UploadValuesCompleted += (s, e) =>
                         {
-                            string x = UnicodeEncoding.UTF8.GetString(e.Result);
-                            API_DSTongHoaHongTien api = JsonConvert.DeserializeObject<API_DSTongHoaHongTien>(x);
-                            if (api.data != null)
+                            try
                             {
-                                listTongHHTien = api.data.list;
-                                if (listTongHHTien != null)
-                                    foreach (var item in listTongHHTien)
-                                    {
-                                        if (item.ep_image == "/img/add.png")
-                                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                                    }
+                                string x = UnicodeEncoding.UTF8.GetString(e.Result);
+                                API_DSTongHoaHongTien api = JsonConvert.DeserializeObject<API_DSTongHoaHongTien>(x);
+                                if (api.data != null)
+                                {
+                                    listTongHHTien = api.data.list;
+                                    if (listTongHHTien != null)
+                                        foreach (var item in listTongHHTien)
+                                        {
+                                            if (item.ep_image == "/img/add.png")
+                                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                        }
+                                }
                             }
+                            catch { }
                         };
                         web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_total_rose_tien.php", web.QueryString);
                     }

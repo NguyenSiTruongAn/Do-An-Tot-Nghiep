@@ -123,13 +123,17 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                 web.QueryString.Add("end_date", b);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_Luong_nv api =
-                        JsonConvert.DeserializeObject<API_Luong_nv>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        itemLuong = api.data.luong_nv.chi_tiet_luong_da_tra;
-                        // dulieu = data[0];
+                        API_Luong_nv api =
+                        JsonConvert.DeserializeObject<API_Luong_nv>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            itemLuong = api.data.luong_nv.chi_tiet_luong_da_tra;
+                            // dulieu = data[0];
+                        }
                     }
+                    catch { }
                     // loading.Visibility = Visibility.Collapsed;
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_luong_nv.php",

@@ -101,14 +101,18 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                     web.QueryString.Add("checked_f", data.fa_status);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        string y = UnicodeEncoding.UTF8.GetString(ee.Result);
-                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
-                        if (api.data != null)
+                        try
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1));
-                            Main.HomeSelectionPage.Visibility = Visibility.Visible;
-                            this.Visibility = Visibility.Collapsed;
+                            string y = UnicodeEncoding.UTF8.GetString(ee.Result);
+                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data1));
+                                Main.HomeSelectionPage.Visibility = Visibility.Visible;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_ep_family_member.php", web.QueryString);
                 }

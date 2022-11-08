@@ -136,7 +136,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         private void ThemThuongPhat(object sender, MouseButtonEventArgs e)
         {
             bool allow = true;
-            validateTien.Text = validateNgay.Text = "";
+            validateTien.Text = validateNgay.Text = validateLyDo.Text ="";
             if (string.IsNullOrEmpty(tbInput.Text))
             {
                 allow = false;
@@ -147,6 +147,11 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 allow = false;
                 validateNgay.Text = "Vui lòng chọn ngày áp dụng";
             }
+            if(string.IsNullOrEmpty(tbInput1.Text))
+            {
+                allow = false;
+                validateLyDo.Text = "Vui lòng nhập lý do";
+            }    
             if (allow)
             {
                 using(WebClient web = new WebClient())
@@ -165,13 +170,17 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     web.QueryString.Add("day", dpNgay.SelectedDate.Value.ToString("yyyy-MM-dd"));
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ThemCKTK api = JsonConvert.DeserializeObject<API_ThemCKTK>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.ThuongPhat(Main));
-                            Main.HomeSelectionPage.Visibility = Visibility.Visible;
-                            this.Visibility = Visibility.Collapsed;
+                            API_ThemCKTK api = JsonConvert.DeserializeObject<API_ThemCKTK>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.ThuongPhat(Main));
+                                Main.HomeSelectionPage.Visibility = Visibility.Visible;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_punish_emp.php", web.QueryString);
                 }
@@ -181,7 +190,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         private void SuaThuongPhat(object sender, MouseButtonEventArgs e)
         {
             bool allow = true;
-            validateTien.Text = validateNgay.Text = "";
+            validateTien.Text = validateNgay.Text = validateLyDo.Text = "";
             if (string.IsNullOrEmpty(tbInput.Text))
             {
                 allow = false;
@@ -191,6 +200,11 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             {
                 allow = false;
                 validateNgay.Text = "Vui lòng chọn ngày áp dụng";
+            }
+            if (string.IsNullOrEmpty(tbInput1.Text))
+            {
+                allow = false;
+                validateLyDo.Text = "Vui lòng nhập lý do";
             }
             if (allow)
             {
@@ -210,13 +224,17 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     web.QueryString.Add("day", dpNgay.SelectedDate.Value.ToString("yyyy-MM-dd"));
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ThemCKTK api = JsonConvert.DeserializeObject<API_ThemCKTK>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.ThuongPhat(Main));
-                            Main.HomeSelectionPage.Visibility = Visibility.Visible;
-                            this.Visibility = Visibility.Collapsed;
+                            API_ThemCKTK api = JsonConvert.DeserializeObject<API_ThemCKTK>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.ThuongPhat(Main));
+                                Main.HomeSelectionPage.Visibility = Visibility.Visible;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_punish_emp.php", web.QueryString);
                 }

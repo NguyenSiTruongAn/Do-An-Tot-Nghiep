@@ -130,7 +130,7 @@ namespace AppTinhLuong365.Login.Views.Login
                             AppTinhLuong365.Properties.Settings.Default.ComPass = Pass;
                             AppTinhLuong365.Properties.Settings.Default.Save();
                         }
-
+                        api.data.pass = api.data.ToMD5(Pass);
                         var main = new AppTinhLuong365.MainWindow(api);
 
                         main.IsFull = WinLogin.IsFull;

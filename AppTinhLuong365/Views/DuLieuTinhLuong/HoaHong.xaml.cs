@@ -92,23 +92,27 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -141,17 +145,21 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         }
                         web.UploadValuesCompleted += (s, e) =>
                         {
-                            string x = UnicodeEncoding.UTF8.GetString(e.Result);
-                            API_ThongKeHoaHong api = JsonConvert.DeserializeObject<API_ThongKeHoaHong>(x);
-                            if (api.data != null)
+                            try
                             {
-                                listThongKeHH = api.data.rose;
-                                foreach (var item in listThongKeHH)
+                                string x = UnicodeEncoding.UTF8.GetString(e.Result);
+                                API_ThongKeHoaHong api = JsonConvert.DeserializeObject<API_ThongKeHoaHong>(x);
+                                if (api.data != null)
                                 {
-                                    if (item.ep_image == "/img/add.png")
-                                        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                    listThongKeHH = api.data.rose;
+                                    foreach (var item in listThongKeHH)
+                                    {
+                                        if (item.ep_image == "/img/add.png")
+                                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                    }
                                 }
                             }
+                            catch { }
                         };
                         web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_rose_nv.php", web.QueryString);
                     }
@@ -185,11 +193,15 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data.data != null)
+                    try
                     {
-                        listNV = api.data.data.items;
+                        API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data.data != null)
+                        {
+                            listNV = api.data.data.items;
+                        }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")

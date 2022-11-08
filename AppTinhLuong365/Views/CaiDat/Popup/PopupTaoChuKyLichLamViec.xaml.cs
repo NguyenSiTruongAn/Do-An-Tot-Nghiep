@@ -87,12 +87,16 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_DSCaLamViec api =
-                            JsonConvert.DeserializeObject<API_DSCaLamViec>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listCa = api.data.items;
+                            API_DSCaLamViec api =
+                            JsonConvert.DeserializeObject<API_DSCaLamViec>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
+                            {
+                                listCa = api.data.items;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/list_shift.php", web.QueryString);
                 }
@@ -400,20 +404,25 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
                     web.QueryString.Add("cycle_name", ten);
                     web.QueryString.Add("detail_cycle", cycle1);
-                    string a = DateTime.Parse(date).ToString("yyyy-MM-dd");
+                    string a = DateTime.Parse(date).ToString("yyyy-MM") + "-01";
                     web.QueryString.Add("date", a);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        string y = UnicodeEncoding.UTF8.GetString(ee.Result);
-                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
-                        if (api.data != null)
+                        try
                         {
+                            string y = UnicodeEncoding.UTF8.GetString(ee.Result);
+                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/add_cycle.php",
                         web.QueryString);
-                    Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
-                    this.Visibility = Visibility.Collapsed;
+                    
                 }
             }
         }

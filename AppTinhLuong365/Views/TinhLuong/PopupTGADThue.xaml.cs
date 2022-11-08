@@ -176,14 +176,18 @@ namespace AppTinhLuong365.Views.TinhLuong
                         web.QueryString.Add("time_end", "");
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
-                            var pop = new Views.TinhLuong.Thue(Main);
-                            Main.HomeSelectionPage.NavigationService.Navigate(pop);
-                            pop.tb.SelectedIndex = 2;
-                            this.Visibility = Visibility.Collapsed;
+                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                var pop = new Views.TinhLuong.Thue(Main);
+                                Main.HomeSelectionPage.NavigationService.Navigate(pop);
+                                pop.tb.SelectedIndex = 2;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_user_in_tax.php", web.QueryString);
                 }

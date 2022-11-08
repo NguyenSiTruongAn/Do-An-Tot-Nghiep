@@ -117,31 +117,35 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("length", "20");
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_emp_in_cycle_by_com_id api =
+                    try
+                    {
+                        API_List_emp_in_cycle_by_com_id api =
                         JsonConvert.DeserializeObject<API_List_emp_in_cycle_by_com_id>(
                             UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
-                    {
-                        listEmps = api.data.items;
-                        // if(listEmps != null && listEmps.Count >0)
-                        //     Block1.Text = listEmps[0].cy_name;
-                        totalEp = int.Parse(api.data.totalItems);
-                        PageEp = ListPageNumber(totalEp);
-                        loadPage(page, PageEp);
-                        // dataGrid2.AutoReponsiveColumn(1);
-                    }
+                        if (api.data != null)
+                        {
+                            listEmps = api.data.items;
+                            // if(listEmps != null && listEmps.Count >0)
+                            //     Block1.Text = listEmps[0].cy_name;
+                            totalEp = int.Parse(api.data.totalItems);
+                            PageEp = ListPageNumber(totalEp);
+                            loadPage(page, PageEp);
+                            // dataGrid2.AutoReponsiveColumn(1);
+                        }
 
-                    foreach (Item_emp item in listEmps)
-                    {
-                        if (item.ep_image == "")
+                        foreach (Item_emp item in listEmps)
                         {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                        }
-                        else
-                        {
-                            item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                            if (item.ep_image == "")
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
+                            else
+                            {
+                                item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/list_employee_cycle.php",
                     web.QueryString);

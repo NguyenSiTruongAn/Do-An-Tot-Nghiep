@@ -89,23 +89,27 @@ namespace AppTinhLuong365.Views.CaiDat
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -188,18 +192,22 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("take", "2");
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_Np_Improperly api =
-                        JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        list = api.data.list;
-                        DateTime aDateTime;
-                        foreach (var a in list)
+                        API_List_Np_Improperly api =
+                        JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            DateTime.TryParse(a.pc_time, out aDateTime);
-                            a.pc_time = aDateTime.ToString("dd/MM/yyyy");
+                            list = api.data.list;
+                            DateTime aDateTime;
+                            foreach (var a in list)
+                            {
+                                DateTime.TryParse(a.pc_time, out aDateTime);
+                                a.pc_time = aDateTime.ToString("dd/MM/yyyy");
+                            }
                         }
                     }
+                    catch { }
                     //foreach (EpLate item in list)
                     //{
                     //    if (item.ts_image != "/img/add.png")
@@ -272,31 +280,35 @@ namespace AppTinhLuong365.Views.CaiDat
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_Ep_Np api =
+                    try
+                    {
+                        API_List_Ep_Np api =
                         JsonConvert.DeserializeObject<API_List_Ep_Np>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
-                    {
-                        listItemNp = api.data.list;
-                        DateTime aDateTime;
-                        foreach (var a in listItemNp)
+                        if (api.data != null)
                         {
-                            DateTime.TryParse(a.ngaybatdau_nghi, out aDateTime);
-                            a.ngaybatdau_nghi = aDateTime.ToString("dd/MM/yyyy");
-                            DateTime.TryParse(a.ngayketthuc_nghi, out aDateTime);
-                            a.ngayketthuc_nghi = aDateTime.ToString("dd/MM/yyyy");
+                            listItemNp = api.data.list;
+                            DateTime aDateTime;
+                            foreach (var a in listItemNp)
+                            {
+                                DateTime.TryParse(a.ngaybatdau_nghi, out aDateTime);
+                                a.ngaybatdau_nghi = aDateTime.ToString("dd/MM/yyyy");
+                                DateTime.TryParse(a.ngayketthuc_nghi, out aDateTime);
+                                a.ngayketthuc_nghi = aDateTime.ToString("dd/MM/yyyy");
+                            }
+                        }
+                        foreach (ItemNp item in listItemNp)
+                        {
+                            if (item.ep_image == "../img/add.png")
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
+                            else
+                            {
+                                item.ep_image = item.ep_image;
+                            }
                         }
                     }
-                    foreach (ItemNp item in listItemNp)
-                    {
-                        if (item.ep_image == "../img/add.png")
-                        {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                        }
-                        else
-                        {
-                            item.ep_image = item.ep_image;
-                        }
-                    }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_np.php",
                     web.QueryString);
@@ -383,12 +395,16 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListEmployee api =
-                        JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listEmployee = api.data.data.items;
+                        API_ListEmployee api =
+                        JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listEmployee = api.data.data.items;
+                        }
                     }
+                    catch { }
                     // foreach (EpLate item in listEpLate)
                     // {
                     //     if (item.ts_image != "/img/add.png")
@@ -424,12 +440,16 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_shift api =
-                        JsonConvert.DeserializeObject<API_List_shift>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listShift = api.data.items;
+                        API_List_shift api =
+                        JsonConvert.DeserializeObject<API_List_shift>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listShift = api.data.items;
+                        }
                     }
+                    catch { }
                     // foreach (EpLate item in listEpLate)
                     // {
                     //     if (item.ts_image != "/img/add.png")
@@ -462,18 +482,22 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("take", "1");
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_Np_Improperly api =
-                        JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        list1 = api.data.list;
-                        DateTime aDateTime;
-                        foreach (var a in list1)
+                        API_List_Np_Improperly api =
+                        JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            DateTime.TryParse(a.pc_time, out aDateTime);
-                            a.pc_time = aDateTime.ToString("dd/MM/yyyy");
+                            list1 = api.data.list;
+                            DateTime aDateTime;
+                            foreach (var a in list1)
+                            {
+                                DateTime.TryParse(a.pc_time, out aDateTime);
+                                a.pc_time = aDateTime.ToString("dd/MM/yyyy");
+                            }
                         }
                     }
+                    catch { }
                     //foreach (EpLate item in list)
                     //{
                     //    if (item.ts_image != "/img/add.png")
@@ -545,20 +569,23 @@ namespace AppTinhLuong365.Views.CaiDat
                     // web.QueryString.Add("id_group", ID_gr);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        string x = UnicodeEncoding.UTF8.GetString(ee.Result);
-                        API_ThemNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_ThemNhanVienVaoNhom>(x);
-                        if (api.data != null)
+                        try
                         {
+                            string x = UnicodeEncoding.UTF8.GetString(ee.Result);
+                            API_ThemNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_ThemNhanVienVaoNhom>(x);
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiPhep(Main));
+                                this.Control.SelectedIndex = 1;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_np.php",
                         web.QueryString);
                 }
             }
-
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiPhep(Main));
-            this.Control.SelectedIndex = 1;
-            this.Visibility = Visibility.Collapsed;
         }
 
         private static readonly Regex _regex = new Regex(@"^[0-9]\d*(\.\d{0,2})?$");
@@ -630,20 +657,23 @@ namespace AppTinhLuong365.Views.CaiDat
                     // web.QueryString.Add("id_group", ID_gr);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        string x = UnicodeEncoding.UTF8.GetString(ee.Result);
-                        API_ThemNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_ThemNhanVienVaoNhom>(x);
-                        if (api.data != null)
+                        try
                         {
+                            string x = UnicodeEncoding.UTF8.GetString(ee.Result);
+                            API_ThemNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_ThemNhanVienVaoNhom>(x);
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiPhep(Main));
+                                this.Control.SelectedIndex = 2;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_np.php",
                         web.QueryString);
                 }
             }
-
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiPhep(Main));
-            this.Control.SelectedIndex = 2;
-            this.Visibility = Visibility.Collapsed;
         }
 
         private void DataGrid_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)

@@ -67,23 +67,27 @@ namespace AppTinhLuong365.Views.PhanQuyen
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -167,25 +171,29 @@ namespace AppTinhLuong365.Views.PhanQuyen
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListEmployee api =
+                    try
+                    {
+                        API_ListEmployee api =
                         JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
-                    {
-                        listEmployee = listEmployee1 = api.data.data.items;
-                        listEmployee.RemoveAt(0);
-                        listEmployee = listEmployee.ToList();
-                    }
-                    foreach (ListEmployee item in listEmployee)
-                    {
-                        if (item.ep_image != "")
+                        if (api.data != null)
                         {
-                            item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                            listEmployee = listEmployee1 = api.data.data.items;
+                            listEmployee.RemoveAt(0);
+                            listEmployee = listEmployee.ToList();
                         }
-                        else
+                        foreach (ListEmployee item in listEmployee)
                         {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            if (item.ep_image != "")
+                            {
+                                item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                            }
+                            else
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php",
                     web.QueryString);
@@ -202,29 +210,33 @@ namespace AppTinhLuong365.Views.PhanQuyen
                 web.QueryString.Add("id_ep", ep_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    var a = UnicodeEncoding.UTF8.GetString(e.Result);
-                    API_DSNVPQ1Nguoi api =
-                        JsonConvert.DeserializeObject<API_DSNVPQ1Nguoi>(a);
-                    if (api.data.data != null)
+                    try
                     {
-                        if (!string.IsNullOrEmpty(ep_id) && ep_id!= "-1")
+                        var a = UnicodeEncoding.UTF8.GetString(e.Result);
+                        API_DSNVPQ1Nguoi api =
+                            JsonConvert.DeserializeObject<API_DSNVPQ1Nguoi>(a);
+                        if (api.data.data != null)
                         {
-                            listEmployee2 = api.data.data.items;
-                            
-                            listEmployee = null;
-                            listEmployee = new List<ListEmployee>();
-                            if (listEmployee2.ep_image != "")
+                            if (!string.IsNullOrEmpty(ep_id) && ep_id != "-1")
                             {
-                                listEmployee2.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + listEmployee2.ep_image;
+                                listEmployee2 = api.data.data.items;
+
+                                listEmployee = null;
+                                listEmployee = new List<ListEmployee>();
+                                if (listEmployee2.ep_image != "")
+                                {
+                                    listEmployee2.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + listEmployee2.ep_image;
+                                }
+                                else
+                                {
+                                    listEmployee2.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                }
+                                listEmployee.Add(listEmployee2);
+                                listEmployee = listEmployee.ToList();
                             }
-                            else
-                            {
-                                listEmployee2.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                            }
-                            listEmployee.Add(listEmployee2);
-                            listEmployee = listEmployee.ToList();
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php",
                     web.QueryString);

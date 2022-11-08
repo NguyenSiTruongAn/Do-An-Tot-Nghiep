@@ -79,23 +79,27 @@ namespace AppTinhLuong365.Views.CaiDat
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -184,18 +188,22 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("year", year);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListCalendarWork api =
-                        JsonConvert.DeserializeObject<API_ListCalendarWork>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listGeneralCalendar = api.data.general_calendar;
-                        DateTime aDateTime;
-                        foreach (var a in listGeneralCalendar)
+                        API_ListCalendarWork api =
+                        JsonConvert.DeserializeObject<API_ListCalendarWork>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            DateTime.TryParse(a.apply_month, out aDateTime);
-                            a.apply_month = aDateTime.ToString("MM/yyyy");
+                            listGeneralCalendar = api.data.general_calendar;
+                            DateTime aDateTime;
+                            foreach (var a in listGeneralCalendar)
+                            {
+                                DateTime.TryParse(a.apply_month, out aDateTime);
+                                a.apply_month = aDateTime.ToString("MM/yyyy");
+                            }
                         }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")
@@ -231,18 +239,22 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("year", year);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListCalendarWork api =
-                        JsonConvert.DeserializeObject<API_ListCalendarWork>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data.personal_calendar != null)
+                    try
                     {
-                        listPersonalCalendar = api.data.personal_calendar;
-                        DateTime aDateTime;
-                        foreach (var a in listPersonalCalendar)
+                        API_ListCalendarWork api =
+                        JsonConvert.DeserializeObject<API_ListCalendarWork>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data.personal_calendar != null)
                         {
-                            DateTime.TryParse(a.apply_month, out aDateTime);
-                            a.apply_month = aDateTime.ToString("MM/yyyy");
+                            listPersonalCalendar = api.data.personal_calendar;
+                            DateTime aDateTime;
+                            foreach (var a in listPersonalCalendar)
+                            {
+                                DateTime.TryParse(a.apply_month, out aDateTime);
+                                a.apply_month = aDateTime.ToString("MM/yyyy");
+                            }
                         }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")
@@ -278,14 +290,18 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.Headers.Add("Authorization", Main.CurrentCompany.token);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_CaiDatCongChuan api =
-                        JsonConvert.DeserializeObject<API_CaiDatCongChuan>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        item = api.data.item;
-                        tbInput.Text = item.num_days;
-                        cw_id = item.cw_id;
+                        API_CaiDatCongChuan api =
+                        JsonConvert.DeserializeObject<API_CaiDatCongChuan>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            item = api.data.item;
+                            tbInput.Text = item.num_days;
+                            cw_id = item.cw_id;
+                        }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")

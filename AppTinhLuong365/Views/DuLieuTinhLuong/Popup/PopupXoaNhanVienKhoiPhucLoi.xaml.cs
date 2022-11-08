@@ -52,15 +52,20 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 web.QueryString.Add("id_wf", id_wf1);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    API_XoaNhanVienKhoiPhucLoi api = JsonConvert.DeserializeObject<API_XoaNhanVienKhoiPhucLoi>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                    if (api.data != null)
+                    try
                     {
+                        API_XoaNhanVienKhoiPhucLoi api = JsonConvert.DeserializeObject<API_XoaNhanVienKhoiPhucLoi>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
+                            this.Visibility = Visibility.Collapsed;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/delete_ep_wf.php", web.QueryString);
             }
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
-            this.Visibility = Visibility.Collapsed;
+            
         }
     }
 }

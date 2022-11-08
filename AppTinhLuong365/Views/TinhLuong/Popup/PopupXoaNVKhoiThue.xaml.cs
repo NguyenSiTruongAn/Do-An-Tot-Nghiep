@@ -51,14 +51,18 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                 }
                 web.UploadValuesCompleted += (s, e1) =>
                 {
-                    API_XoaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_XoaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e1.Result));
-                    if (api.data != null)
+                    try
                     {
-                        var pop = new Views.TinhLuong.Thue(Main);
-                        Main.HomeSelectionPage.NavigationService.Navigate(pop);
-                        pop.tb.SelectedIndex = 2;
-                        this.Visibility = Visibility.Collapsed;
+                        API_XoaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_XoaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e1.Result));
+                        if (api.data != null)
+                        {
+                            var pop = new Views.TinhLuong.Thue(Main);
+                            Main.HomeSelectionPage.NavigationService.Navigate(pop);
+                            pop.tb.SelectedIndex = 2;
+                            this.Visibility = Visibility.Collapsed;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/delete_user_in_tax.php", web.QueryString);
             }

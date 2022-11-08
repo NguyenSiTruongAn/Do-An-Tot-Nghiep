@@ -73,19 +73,23 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_DSNVThemVaoCKTK api = JsonConvert.DeserializeObject<API_DSNVThemVaoCKTK>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listNV1 = listNV = api.data.list;
-                    }
-                    foreach (DSNVThemVaoCKTK item in listNV)
-                    {
-                        if (item.ep_image == "")
+                        API_DSNVThemVaoCKTK api = JsonConvert.DeserializeObject<API_DSNVThemVaoCKTK>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            listNV1 = listNV = api.data.list;
                         }
-                        else item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                        foreach (DSNVThemVaoCKTK item in listNV)
+                        {
+                            if (item.ep_image == "")
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
+                            else item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_add_otherMoney.php", web.QueryString);
             }

@@ -70,20 +70,24 @@ namespace AppTinhLuong365.Views.TinhLuong
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data.data != null)
+                    try
                     {
-                        listNV = listNV1 = api.data.data.items;
-                        foreach (ListEmployee item in listNV)
+                        API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data.data != null)
                         {
-                            if (item.ep_image == "")
+                            listNV = listNV1 = api.data.data.items;
+                            foreach (ListEmployee item in listNV)
                             {
-                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                if (item.ep_image == "")
+                                {
+                                    item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                }
+                                else
+                                    item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
                             }
-                            else
-                                item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php", web.QueryString);
             }

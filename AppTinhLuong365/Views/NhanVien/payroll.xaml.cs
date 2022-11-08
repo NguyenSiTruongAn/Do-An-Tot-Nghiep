@@ -115,23 +115,27 @@ namespace AppTinhLuong365.Views.NhanVien
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -195,12 +199,16 @@ namespace AppTinhLuong365.Views.NhanVien
                 web.QueryString.Add("end_date", b);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_Luong_nv api =
-                        JsonConvert.DeserializeObject<API_Luong_nv>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        itemLuongNv = api.data.luong_nv;
+                        API_Luong_nv api =
+                        JsonConvert.DeserializeObject<API_Luong_nv>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            itemLuongNv = api.data.luong_nv;
+                        }
                     }
+                    catch { }
                     // loading.Visibility = Visibility.Collapsed;
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_luong_nv.php",
@@ -227,17 +235,21 @@ namespace AppTinhLuong365.Views.NhanVien
                 web.QueryString.Add("id_comp", Main.CurrentEmployee.com_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_dep api =
-                        JsonConvert.DeserializeObject<API_List_dep>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listItem_dep = api.data.list;
-                        foreach(var item in listItem_dep)
+                        API_List_dep api =
+                        JsonConvert.DeserializeObject<API_List_dep>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            if (item.dep_id == Main.CurrentEmployee.dep_id)
-                                txtPhong.Text = item.dep_name;
+                            listItem_dep = api.data.list;
+                            foreach (var item in listItem_dep)
+                            {
+                                if (item.dep_id == Main.CurrentEmployee.dep_id)
+                                    txtPhong.Text = item.dep_name;
+                            }
                         }
                     }
+                    catch { }
                     // foreach (EpLate item in listEpLate)
                     // {
                     //     if (item.ts_image != "/img/add.png")

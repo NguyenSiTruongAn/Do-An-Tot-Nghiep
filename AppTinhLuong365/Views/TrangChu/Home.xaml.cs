@@ -69,23 +69,27 @@ namespace AppTinhLuong365.Views.TrangChu
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch{ }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -151,14 +155,18 @@ namespace AppTinhLuong365.Views.TrangChu
                     web.QueryString.Add("token", Main.CurrentCompany.token);
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data.data != null)
+                        try
                         {
-                            listNV = api.data.data.items;
-                            txtTotalAcc.Text = api.data.data.totalItems;
-                            txtdate.Text = "Tháng " + DateTime.Now.ToString("MM/yyyy");
-                            NameCompany.Text = Main.CurrentCompany.com_name;
+                            API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data.data != null)
+                            {
+                                listNV = api.data.data.items;
+                                txtTotalAcc.Text = api.data.data.totalItems;
+                                txtdate.Text = "Tháng " + DateTime.Now.ToString("MM/yyyy");
+                                NameCompany.Text = Main.CurrentCompany.com_name;
+                            }
                         }
+                        catch { }
                         //foreach (ItemTamUng item in listTamUng)
                         //{
                         //    if (item.ep_image == "/img/add.png")
@@ -202,24 +210,31 @@ namespace AppTinhLuong365.Views.TrangChu
                     web.QueryString.Add("off_set", (page * 10 - 10) + "");
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_DSNVTrangChu api = JsonConvert.DeserializeObject<API_DSNVTrangChu>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listNVChuaLLV = api.data.items;
-                            totalNVCacNhom = api.data.totalItems;
-                            PageNVCacNhom = ListPageNumber(totalNVCacNhom);
-                            loadPage(page, PageNVCacNhom);
+                            API_DSNVTrangChu api = JsonConvert.DeserializeObject<API_DSNVTrangChu>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
+                            {
+                                listNVChuaLLV = api.data.items;
+                                totalNVCacNhom = api.data.totalItems;
+                                PageNVCacNhom = ListPageNumber(totalNVCacNhom);
+                                loadPage(page, PageNVCacNhom);
+                            }
+                            foreach (DSNVTrangChu item in listNVChuaLLV)
+                            {
+                                if (item.ep_image == "")
+                                {
+                                    item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                }
+                                else
+                                {
+                                    item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                                }
+                            }
                         }
-                        foreach (DSNVTrangChu item in listNVChuaLLV)
+                        catch
                         {
-                            if (item.ep_image == "")
-                            {
-                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                            }
-                            else
-                            {
-                                item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
-                            }
+
                         }
                     };
                     web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/get_list_employee_not_in_cycle.php", web.QueryString);
@@ -239,7 +254,10 @@ namespace AppTinhLuong365.Views.TrangChu
 
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("https://vanthu.timviec365.vn/mau-de-xuat.html");
+            if (Main.MainType == 1)
+                Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=81b016d57ec189daa8e04dd2d59a22c3." + Main.CurrentEmployee.ep_id + "." + Main.CurrentEmployee.pass + "&link=https://vanthu.timviec365.vn/mau-de-xuat.html");
+            else
+                Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=f30f0b61e761b8926941f232ea7cccb9." + Main.CurrentCompany.com_id + "." + Main.CurrentCompany.pass + "&link=https://vanthu.timviec365.vn/mau-de-xuat.html");
         }
 
         private void DockPanel_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)

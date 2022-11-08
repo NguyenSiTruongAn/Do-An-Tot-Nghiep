@@ -85,23 +85,27 @@ namespace AppTinhLuong365.Views.CaiDat
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -167,12 +171,16 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("time", year + "-" + month);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListLate api =
-                        JsonConvert.DeserializeObject<API_ListLate>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listLate = api.data.list_late;
+                        API_ListLate api =
+                        JsonConvert.DeserializeObject<API_ListLate>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listLate = api.data.list_late;
+                        }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")
@@ -224,26 +232,30 @@ namespace AppTinhLuong365.Views.CaiDat
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_Ep_Late api =
+                    try
+                    {
+                        API_List_Ep_Late api =
                         JsonConvert.DeserializeObject<API_List_Ep_Late>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
-                    {
-                        listEpLate1 = listEpLate = api.data.ep_late;
-                        totalEpLate = int.Parse(api.data.count);
-                        PageNVDiMuon = ListPageNumber(totalEpLate);
-                        loadPage(page, PageNVDiMuon);
-                        dataGrid.AutoReponsiveColumn(2);
-                    }
-
-                    foreach (EpLate item in listEpLate)
-                    {
-                        if (item.ts_image != "/img/add.png" && !string.IsNullOrEmpty(item.ts_image))
+                        if (api.data != null)
                         {
-                            item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                            listEpLate1 = listEpLate = api.data.ep_late;
+                            totalEpLate = int.Parse(api.data.count);
+                            PageNVDiMuon = ListPageNumber(totalEpLate);
+                            loadPage(page, PageNVDiMuon);
+                            dataGrid.AutoReponsiveColumn(2);
                         }
-                        else
-                            item.ts_image = "https://tinhluong.timviec365.vn/img/add.png";
+
+                        foreach (EpLate item in listEpLate)
+                        {
+                            if (item.ts_image != "/img/add.png" && !string.IsNullOrEmpty(item.ts_image))
+                            {
+                                item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
+                            }
+                            else
+                                item.ts_image = "https://tinhluong.timviec365.vn/img/add.png";
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_late.php",
                     web.QueryString);
@@ -643,7 +655,7 @@ namespace AppTinhLuong365.Views.CaiDat
             else month = DateTime.Now.ToString("MM");
             if (cbListNV.SelectedIndex != -1)
             {
-                ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+                DSNVTheoThoiGian id1 = (DSNVTheoThoiGian)cbListNV.SelectedItem;
                 string id2 = id1.ep_id;
                 if (id2 == "-1")
                     id_nv = "";
@@ -754,11 +766,15 @@ namespace AppTinhLuong365.Views.CaiDat
                     web.QueryString.Add("date", year + "-" + month + "-" + x);
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_DSNVTheoThoiGian api = JsonConvert.DeserializeObject<API_DSNVTheoThoiGian>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listEmployee = api.data.list;
+                            API_DSNVTheoThoiGian api = JsonConvert.DeserializeObject<API_DSNVTheoThoiGian>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
+                            {
+                                listEmployee = api.data.list;
+                            }
                         }
+                        catch { }
                         //foreach (ItemTamUng item in listTamUng)
                         //{
                         //    if (item.ep_image == "/img/add.png")
@@ -877,32 +893,35 @@ namespace AppTinhLuong365.Views.CaiDat
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    data = UnicodeEncoding.UTF8.GetString(e.Result);
-                    File.WriteAllText("../../Views/CaiDat/di_muon_ve_som.html", data);
-                    string filePath = "";
-                    // tạo SaveFileDialog để lưu file excel
-                    SaveFileDialog dialog = new SaveFileDialog();
-
-                    // chỉ lọc ra các file có định dạng Excel
-                    dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
-                    dialog.FileName = "di_muon_ve_som_365";
-                    // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
-                    if (dialog.ShowDialog() == true)
+                    try
                     {
-                        filePath = dialog.FileName;
-                        var workbook = new Workbook("../../Views/CaiDat/di_muon_ve_som.html");
-                        try
-                        {
-                            workbook.Save(filePath);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        }
-                        loading.Visibility = Visibility.Collapsed;
-                        //converter.Convert(filePath, convertOptions);
-                    }
+                        data = UnicodeEncoding.UTF8.GetString(e.Result);
+                        File.WriteAllText("../../Views/CaiDat/di_muon_ve_som.html", data);
+                        string filePath = "";
+                        // tạo SaveFileDialog để lưu file excel
+                        SaveFileDialog dialog = new SaveFileDialog();
 
+                        // chỉ lọc ra các file có định dạng Excel
+                        dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
+                        dialog.FileName = "di_muon_ve_som_365";
+                        // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
+                        if (dialog.ShowDialog() == true)
+                        {
+                            filePath = dialog.FileName;
+                            var workbook = new Workbook("../../Views/CaiDat/di_muon_ve_som.html");
+                            try
+                            {
+                                workbook.Save(filePath);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            }
+                            loading.Visibility = Visibility.Collapsed;
+                            //converter.Convert(filePath, convertOptions);
+                        }
+                    }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_late.php", web.QueryString);
             }

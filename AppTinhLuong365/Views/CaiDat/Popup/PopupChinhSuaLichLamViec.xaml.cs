@@ -73,11 +73,15 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     }
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_DSCaLamViec api = JsonConvert.DeserializeObject<API_DSCaLamViec>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listCa = api.data.items;
+                            API_DSCaLamViec api = JsonConvert.DeserializeObject<API_DSCaLamViec>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
+                            {
+                                listCa = api.data.items;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/list_shift.php", web.QueryString);
                 }
@@ -115,55 +119,59 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     }
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_ChiTietLichLamViec api = JsonConvert.DeserializeObject<API_ChiTietLichLamViec>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listLLV = api.data.calendar;
-                            tbTitle.Text = $"Tháng {DateTime.Now.Month}/{DateTime.Now.Year}";
-                            tbInput.Text = listLLV.cycle_name;
-                            month = int.Parse(DateTime.Parse(listLLV.begin).ToString("MM"));
-                            year = int.Parse(DateTime.Parse(listLLV.begin).ToString("yyyy"));
-                            start = (int)new DateTime(year, month, 1).DayOfWeek;
-                            listLich = new List<lichlamviec>();
-                            if (month - 1 > 0)
+                            API_ChiTietLichLamViec api = JsonConvert.DeserializeObject<API_ChiTietLichLamViec>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
                             {
-                                for (int i = 0; i < start; i++)
+                                listLLV = api.data.calendar;
+                                tbTitle.Text = $"Tháng {DateTime.Now.Month}/{DateTime.Now.Year}";
+                                tbInput.Text = listLLV.cycle_name;
+                                month = int.Parse(DateTime.Parse(listLLV.begin).ToString("MM"));
+                                year = int.Parse(DateTime.Parse(listLLV.begin).ToString("yyyy"));
+                                start = (int)new DateTime(year, month, 1).DayOfWeek;
+                                listLich = new List<lichlamviec>();
+                                if (month - 1 > 0)
                                 {
-                                    var x = DateTime.DaysInMonth(year, month - 1);
-                                    listLich.Add(new lichlamviec() { id = listLich.Count, ngay = x - i, ca = 0, status = 0 });
-                                }
-                                listLich.Reverse();
-                            }
-                            for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
-                            {
-                                List<DSCaLamViec> dsc = new List<DSCaLamViec>();
-                                string[] a;
-                                if(listLLV.show.Count == DateTime.DaysInMonth(year, month))
-                                {
-                                    if (!string.IsNullOrEmpty(listLLV.show[i - 1].shift))
+                                    for (int i = 0; i < start; i++)
                                     {
-                                        a = listLLV.show[i - 1].shift.Split(',');
-                                        foreach (var item in listCa)
+                                        var x = DateTime.DaysInMonth(year, month - 1);
+                                        listLich.Add(new lichlamviec() { id = listLich.Count, ngay = x - i, ca = 0, status = 0 });
+                                    }
+                                    listLich.Reverse();
+                                }
+                                for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
+                                {
+                                    List<DSCaLamViec> dsc = new List<DSCaLamViec>();
+                                    string[] a;
+                                    if (listLLV.show.Count == DateTime.DaysInMonth(year, month))
+                                    {
+                                        if (!string.IsNullOrEmpty(listLLV.show[i - 1].shift))
                                         {
-                                            foreach (var x in a)
+                                            a = listLLV.show[i - 1].shift.Split(',');
+                                            foreach (var item in listCa)
                                             {
-                                                if (x == item.shift_id)
-                                                    dsc.Add(item);
+                                                foreach (var x in a)
+                                                {
+                                                    if (x == item.shift_id)
+                                                        dsc.Add(item);
+                                                }
                                             }
                                         }
                                     }
-                                }    
-                                var d = new lichlamviec() { id = listLich.Count, ngay = i, ca = dsc.Count, status = 1, dsca = dsc };
-                                listLich.Add(d);
+                                    var d = new lichlamviec() { id = listLich.Count, ngay = i, ca = dsc.Count, status = 1, dsca = dsc };
+                                    listLich.Add(d);
+                                }
+                                int n = 42 - listLich.Count;
+                                for (int i = 1; i <= n; i++)
+                                {
+                                    var d = new lichlamviec() { id = listLich.Count, ngay = i, ca = 0, status = 0 };
+                                    listLich.Add(d);
+                                }
+                                listLich = listLich.ToList();
                             }
-                            int n = 42 - listLich.Count;
-                            for (int i = 1; i <= n; i++)
-                            {
-                                var d = new lichlamviec() { id = listLich.Count, ngay = i, ca = 0, status = 0 };
-                                listLich.Add(d);
-                            }
-                            listLich = listLich.ToList();
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/detail_cycle.php", web.QueryString);
                 }

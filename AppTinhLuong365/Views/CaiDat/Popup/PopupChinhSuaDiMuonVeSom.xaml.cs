@@ -193,19 +193,23 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_shift api =
-                        JsonConvert.DeserializeObject<API_List_shift>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listShift = api.data.items;
-                        foreach (var i in listShift)
+                        API_List_shift api =
+                        JsonConvert.DeserializeObject<API_List_shift>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            if (i.shift_id == shift)
+                            listShift = api.data.items;
+                            foreach (var i in listShift)
                             {
-                                cbDate.SelectedItem = i;
+                                if (i.shift_id == shift)
+                                {
+                                    cbDate.SelectedItem = i;
+                                }
                             }
                         }
                     }
+                    catch { }
                     // foreach (EpLate item in listEpLate)
                     // {
                     //     if (item.ts_image != "/img/add.png")

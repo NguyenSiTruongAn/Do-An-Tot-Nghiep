@@ -74,18 +74,22 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     }
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_DSNhanVienPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_DSNhanVienPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listDSNV = api.data.list;
-                            foreach (var item in listDSNV)
+                            API_DSNhanVienPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_DSNhanVienPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
                             {
-                                if (item.ep_image != "")
-                                    item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
-                                else
-                                    item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                listDSNV = api.data.list;
+                                foreach (var item in listDSNV)
+                                {
+                                    if (item.ep_image != "")
+                                        item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                                    else
+                                        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                }
                             }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/welfare_cate_stf.php", web.QueryString);
                 }

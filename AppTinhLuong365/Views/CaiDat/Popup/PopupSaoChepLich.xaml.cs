@@ -129,18 +129,22 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("year", year);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListCalendarWork api =
-                        JsonConvert.DeserializeObject<API_ListCalendarWork>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listCalendar = api.data.all_calendar;
-                        DateTime aDateTime;
-                        foreach (var a in listCalendar)
+                        API_ListCalendarWork api =
+                        JsonConvert.DeserializeObject<API_ListCalendarWork>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            DateTime.TryParse(a.apply_month, out aDateTime);
-                            a.apply_month = aDateTime.ToString("MM/yyyy");
+                            listCalendar = api.data.all_calendar;
+                            DateTime aDateTime;
+                            foreach (var a in listCalendar)
+                            {
+                                DateTime.TryParse(a.apply_month, out aDateTime);
+                                a.apply_month = aDateTime.ToString("MM/yyyy");
+                            }
                         }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")
@@ -199,14 +203,18 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_Add_late api =
-                            JsonConvert.DeserializeObject<API_Add_late>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(
-                                new Views.CaiDat.CaiCaVaLichLamViec(Main));
-                            this.Visibility = Visibility.Collapsed;
+                            API_Add_late api =
+                            JsonConvert.DeserializeObject<API_Add_late>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(
+                                    new Views.CaiDat.CaiCaVaLichLamViec(Main));
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/copy_calendarwork.php",
                         web.QueryString);

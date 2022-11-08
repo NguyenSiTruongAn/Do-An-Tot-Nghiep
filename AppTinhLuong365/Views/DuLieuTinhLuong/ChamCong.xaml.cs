@@ -86,22 +86,28 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
-                        }
+                    }
+                    catch
+                    {
                     }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
@@ -164,6 +170,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         {
             if (!string.IsNullOrEmpty(ep_id))
             {
+                st.Visibility = Visibility.Visible;
                 this.Dispatcher.Invoke(() =>
                 {
                     using (WebClient web = new WebClient())
@@ -178,65 +185,68 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         }
                         web.UploadValuesCompleted += (s, e) =>
                         {
-                            API_ChiTietChamCong api = JsonConvert.DeserializeObject<API_ChiTietChamCong>(UnicodeEncoding.UTF8.GetString(e.Result));
-                            if (api.data != null)
+                            try
                             {
-                                listDSNV = api.data.list;
-                                /*                            month = int.Parse(DateTime.Parse(listLLV.begin).ToString("MM"));
-                                                            year = int.Parse(DateTime.Parse(listLLV.begin).ToString("yyyy"));*/
-                                start = (int)new DateTime(year, month, 1).DayOfWeek;
-                                listLich = new List<lichlamviec>();
-                                if (month - 1 > 0)
+                                API_ChiTietChamCong api = JsonConvert.DeserializeObject<API_ChiTietChamCong>(UnicodeEncoding.UTF8.GetString(e.Result));
+                                if (api.data != null)
                                 {
-                                    for (int i = 0; i < start; i++)
+                                    listDSNV = api.data.list;
+                                    /*                            month = int.Parse(DateTime.Parse(listLLV.begin).ToString("MM"));
+                                                                year = int.Parse(DateTime.Parse(listLLV.begin).ToString("yyyy"));*/
+                                    start = (int)new DateTime(year, month, 1).DayOfWeek;
+                                    listLich = new List<lichlamviec>();
+                                    if (month - 1 > 0)
                                     {
-                                        var x = DateTime.DaysInMonth(year, month - 1);
-                                        listLich.Add(new lichlamviec() { id = listLich.Count, status = 0 });
-                                    }
-                                    listLich.Reverse();
-                                }
-                                for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
-                                {
-                                    List<ChiTietCa> Chitietca = new List<ChiTietCa>();
-                                    if(listDSNV != null)
-                                        Chitietca = listDSNV[i - 1];
-                                    var d = new lichlamviec() { id = listLich.Count, ngay = i, ctca = Chitietca, status = 1 };
-                                    DateTime date = DateTime.Parse(year + "-" + month + "-" + i);
-                                    if (date == DateTime.Now)
-                                        d.status = 3;
-                                    listLich.Add(d);
-                                }
-                                int n = 42 - listLich.Count;
-                                if (n >= 7)
-                                    n = n - 7;
-                                for (int i = 1; i <= n; i++)
-                                {
-                                    var d = new lichlamviec() { id = listLich.Count, status = 2 };
-                                    listLich.Add(d);
-                                }
-                                Cong = camuon = 0;
-                                foreach (var item in listLich)
-                                {
-                                    if(item!=null && item.ctca != null)
-                                    {
-                                        foreach (var i in item.ctca)
+                                        for (int i = 0; i < start; i++)
                                         {
-                                            if(!string.IsNullOrEmpty(i.num_to_calculate) && i.check != "Ca chưa hoàn thành")
-                                                Cong += double.Parse(i.num_to_calculate);
-                                            if (i.status == "2")
-                                                camuon++;
-
+                                            var x = DateTime.DaysInMonth(year, month - 1);
+                                            listLich.Add(new lichlamviec() { id = listLich.Count, status = 0 });
                                         }
-                                    }    
-                                    
+                                        listLich.Reverse();
+                                    }
+                                    for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
+                                    {
+                                        List<ChiTietCa> Chitietca = new List<ChiTietCa>();
+                                        if (listDSNV != null)
+                                            Chitietca = listDSNV[i - 1];
+                                        var d = new lichlamviec() { id = listLich.Count, ngay = i, ctca = Chitietca, status = 1 };
+                                        DateTime date = DateTime.Parse(year + "-" + month + "-" + i);
+                                        if (date == DateTime.Now)
+                                            d.status = 3;
+                                        listLich.Add(d);
+                                    }
+                                    int n = 42 - listLich.Count;
+                                    if (n >= 7)
+                                        n = n - 7;
+                                    for (int i = 1; i <= n; i++)
+                                    {
+                                        var d = new lichlamviec() { id = listLich.Count, status = 2 };
+                                        listLich.Add(d);
+                                    }
+                                    Cong = camuon = 0;
+                                    foreach (var item in listLich)
+                                    {
+                                        if (item != null && item.ctca != null)
+                                        {
+                                            foreach (var i in item.ctca)
+                                            {
+                                                if (!string.IsNullOrEmpty(i.num_to_calculate) && i.check != "Ca chưa hoàn thành" && i.check!="Ca nghỉ")
+                                                    Cong += double.Parse(i.num_to_calculate);
+                                                if (i.status == "2")
+                                                    camuon++;
+                                            }
+                                        }
+                                    }
+                                    listLich = listLich.ToList();
                                 }
-                                listLich = listLich.ToList();
                             }
+                            catch { }
                         };
                         web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_timekeeping_manager.php", web.QueryString);
                     }
                 });
             }
+            else st.Visibility = Visibility.Collapsed;
         }
 
         private List<DSNVTheoThoiGian> _listNV;
@@ -266,11 +276,15 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 web.QueryString.Add("date", year + "-" + month + "-" + x);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_DSNVTheoThoiGian api = JsonConvert.DeserializeObject<API_DSNVTheoThoiGian>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listNV = api.data.list;
+                        API_DSNVTheoThoiGian api = JsonConvert.DeserializeObject<API_DSNVTheoThoiGian>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listNV = api.data.list;
+                        }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")
@@ -305,12 +319,16 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_dep api =
-                        JsonConvert.DeserializeObject<API_List_dep>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listItem_dep = api.data.list;
+                        API_List_dep api =
+                        JsonConvert.DeserializeObject<API_List_dep>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listItem_dep = api.data.list;
+                        }
                     }
+                    catch { }
                     // foreach (EpLate item in listEpLate)
                     // {
                     //     if (item.ts_image != "/img/add.png")

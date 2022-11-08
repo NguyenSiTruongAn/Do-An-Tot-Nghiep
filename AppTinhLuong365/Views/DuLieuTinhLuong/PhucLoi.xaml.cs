@@ -66,23 +66,27 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -125,15 +129,19 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     }
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_PhucLoi api = JsonConvert.DeserializeObject<API_PhucLoi>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listPhucLoi = api.data.list_welfare;
-                            listPhucLoi.Reverse();
-                            listPhuCap = api.data.list_allowance;
-                            listPhuCap.Reverse();
-                            listPhuCapTheoCa = api.data.list_allowance_shift;
+                            API_PhucLoi api = JsonConvert.DeserializeObject<API_PhucLoi>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
+                            {
+                                listPhucLoi = api.data.list_welfare;
+                                listPhucLoi.Reverse();
+                                listPhuCap = api.data.list_allowance;
+                                listPhuCap.Reverse();
+                                listPhuCapTheoCa = api.data.list_allowance_shift;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_welfare.php", web.QueryString);
                 }

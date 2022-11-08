@@ -62,12 +62,16 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_shift api =
-                        JsonConvert.DeserializeObject<API_List_shift>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listShift = api.data.items;
+                        API_List_shift api =
+                        JsonConvert.DeserializeObject<API_List_shift>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listShift = api.data.items;
+                        }
                     }
+                    catch { }
                     // foreach (EpLate item in listEpLate)
                     // {
                     //     if (item.ts_image != "/img/add.png")
@@ -277,20 +281,25 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     web.QueryString.Add("date_start", day_Start);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        string a = UnicodeEncoding.UTF8.GetString(ee.Result);
-                        API_Add_late api =
-                            JsonConvert.DeserializeObject<API_Add_late>(
-                                UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
+                            string a = UnicodeEncoding.UTF8.GetString(ee.Result);
+                            API_Add_late api =
+                                JsonConvert.DeserializeObject<API_Add_late>(
+                                    UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.DiMuonVeSom(Main));
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_late.php",
                         web.QueryString);
                 }
 
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.DiMuonVeSom(Main));
-                this.Visibility = Visibility.Collapsed;
+                
             }
         }
     }

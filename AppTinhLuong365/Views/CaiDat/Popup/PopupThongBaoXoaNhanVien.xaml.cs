@@ -52,19 +52,24 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("month", month);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    var a = UnicodeEncoding.UTF8.GetString(ee.Result);
-                    API_Delete_cycle_of_employee api =
-                        JsonConvert.DeserializeObject<API_Delete_cycle_of_employee>(a);
-                    if (api.data != null)
+                    try
                     {
+                        var a = UnicodeEncoding.UTF8.GetString(ee.Result);
+                        API_Delete_cycle_of_employee api =
+                            JsonConvert.DeserializeObject<API_Delete_cycle_of_employee>(a);
+                        if (api.data != null)
+                        {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
+                            this.Visibility = Visibility.Collapsed;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/delete_cycle_of_employee.php",
                     web.QueryString);
             }
 
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
-            this.Visibility = Visibility.Collapsed;
+            
         }
 
         private void Close_Click(object sender, MouseButtonEventArgs e)

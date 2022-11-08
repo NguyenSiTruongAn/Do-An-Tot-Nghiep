@@ -59,23 +59,27 @@ namespace AppTinhLuong365.Views.CaiDat
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -100,11 +104,15 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data.data != null)
+                    try
                     {
-                        listNV = api.data.data.items;
+                        API_ListEmployee api = JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data.data != null)
+                        {
+                            listNV = api.data.data.items;
+                        }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")
@@ -143,11 +151,15 @@ namespace AppTinhLuong365.Views.CaiDat
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListGroup api = JsonConvert.DeserializeObject<API_ListGroup>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listNhom = api.data.list_group;
+                        API_ListGroup api = JsonConvert.DeserializeObject<API_ListGroup>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listNhom = api.data.list_group;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_group_manager.php", web.QueryString);
             }
@@ -190,23 +202,27 @@ namespace AppTinhLuong365.Views.CaiDat
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_ep_nogroup api = JsonConvert.DeserializeObject<API_List_ep_nogroup>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listNVChuaNhom1 = listNVChuaNhom = api.data.list;
-                        totalNVChuaNhom = int.Parse(api.data.total);
-                        PageNVChuaNhom = ListPageNumber(totalNVChuaNhom);
-                        loadPage_ChuaNhom(pageNB, PageNVChuaNhom);
-                        dataGrid.AutoReponsiveColumn(0);
-
-                    }
-                    foreach (ListEpNoGroup item in listNVChuaNhom)
-                    {
-                        if (item.ep_image == "/img/add.png")
+                        API_List_ep_nogroup api = JsonConvert.DeserializeObject<API_List_ep_nogroup>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            listNVChuaNhom1 = listNVChuaNhom = api.data.list;
+                            totalNVChuaNhom = int.Parse(api.data.total);
+                            PageNVChuaNhom = ListPageNumber(totalNVChuaNhom);
+                            loadPage_ChuaNhom(pageNB, PageNVChuaNhom);
+                            dataGrid.AutoReponsiveColumn(0);
+
+                        }
+                        foreach (ListEpNoGroup item in listNVChuaNhom)
+                        {
+                            if (item.ep_image == "/img/add.png")
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_list_emp_nogroup.php", web.QueryString);
             }
@@ -276,22 +292,26 @@ namespace AppTinhLuong365.Views.CaiDat
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    List_user_group api = JsonConvert.DeserializeObject<List_user_group>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listNVCacNhom1 = listNVCacNhom = api.data.ep_group;
-                        totalNVCacNhom = api.data.count;
-                        PageNVCacNhom = ListPageNumber(totalNVCacNhom);
-                        loadPage(page, PageNVCacNhom);
-                        dataGrid1.AutoReponsiveColumn(1);
-                    }
-                    foreach (EpGroup item in listNVCacNhom)
-                    {
-                        if (item.ep_image == "/img/add.png")
+                        List_user_group api = JsonConvert.DeserializeObject<List_user_group>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            listNVCacNhom1 = listNVCacNhom = api.data.ep_group;
+                            totalNVCacNhom = api.data.count;
+                            PageNVCacNhom = ListPageNumber(totalNVCacNhom);
+                            loadPage(page, PageNVCacNhom);
+                            dataGrid1.AutoReponsiveColumn(1);
+                        }
+                        foreach (EpGroup item in listNVCacNhom)
+                        {
+                            if (item.ep_image == "/img/add.png")
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_user_group.php", web.QueryString);
             }

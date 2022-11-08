@@ -6,9 +6,8 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat.Popup"
       mc:Ignorable="d" 
-      d:DesignHeight="741" d:DesignWidth="616"
       Title="PopupDiMuonVeSom">
-    <Grid Width="616" Height="741">
+    <Grid Width="616" Height="650">
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>
@@ -22,7 +21,7 @@
                 </Grid>
             </Border>
             <Border Background="{DynamicResource #FFFFFF}" CornerRadius="0 0 10 10">
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" Height="693">
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" Height="600">
                     <StackPanel Margin="20 30">
                         <Grid>
                             <TextBlock FontWeight="DemiBold" Text="{DynamicResource textLDP}" FontSize="16" Foreground="{DynamicResource #666666}"/>

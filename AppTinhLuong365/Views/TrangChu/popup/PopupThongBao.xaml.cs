@@ -67,41 +67,45 @@ namespace AppTinhLuong365.Views.TrangChu.popup
                 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    string x = UnicodeEncoding.UTF8.GetString(e.Result);
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listTB = api.data.abc;
-                        foreach (var item in listTB)
+                        string x = UnicodeEncoding.UTF8.GetString(e.Result);
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            if (!string.IsNullOrEmpty(item.ep_name))
-                                item.com_name = item.ep_name;
-                        }
-                        if(Main.MainType == 0)
-                        {
+                            listTB = api.data.abc;
                             foreach (var item in listTB)
                             {
-                                if (string.IsNullOrEmpty(item.ep_name))
-                                    item.com_name = "";
+                                if (!string.IsNullOrEmpty(item.ep_name))
+                                    item.com_name = item.ep_name;
                             }
-                        }
-                        if(listTB != null)
-                        {
-                            Main.sotb = listTB.Count;
-                            if (Main.sotb >= 10)
+                            if (Main.MainType == 0)
                             {
-                                Main.fontsize = 10;
-                                Main.margin = new Thickness(10, -7, 0, 0);
+                                foreach (var item in listTB)
+                                {
+                                    if (string.IsNullOrEmpty(item.ep_name))
+                                        item.com_name = "";
+                                }
+                            }
+                            if (listTB != null)
+                            {
+                                Main.sotb = listTB.Count;
+                                if (Main.sotb >= 10)
+                                {
+                                    Main.fontsize = 10;
+                                    Main.margin = new Thickness(10, -7, 0, 0);
+                                }
+                                else
+                                {
+                                    Main.fontsize = 14;
+                                    Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                                }
                             }
                             else
-                            {
-                                Main.fontsize = 14;
-                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
-                            }
+                                Main.sotb = 0;
                         }
-                        else
-                            Main.sotb = 0;
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -146,12 +150,16 @@ namespace AppTinhLuong365.Views.TrangChu.popup
 
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    string x = UnicodeEncoding.UTF8.GetString(ee.Result);
-                    API_XoaNhomLamViec api = JsonConvert.DeserializeObject<API_XoaNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                    if (api.data != null)
+                    try
                     {
-                        getData();
+                        string x = UnicodeEncoding.UTF8.GetString(ee.Result);
+                        API_XoaNhomLamViec api = JsonConvert.DeserializeObject<API_XoaNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                            getData();
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/del_all_notify.php", web.QueryString);
             }
@@ -166,12 +174,16 @@ namespace AppTinhLuong365.Views.TrangChu.popup
                 web.QueryString.Add("id_tb", data.tb_id);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    string x = UnicodeEncoding.UTF8.GetString(ee.Result);
-                    API_XoaNhomLamViec api = JsonConvert.DeserializeObject<API_XoaNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                    if (api.data != null)
+                    try
                     {
-                        getData();
+                        string x = UnicodeEncoding.UTF8.GetString(ee.Result);
+                        API_XoaNhomLamViec api = JsonConvert.DeserializeObject<API_XoaNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                            getData();
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/del_one_notify.php", web.QueryString);
             }

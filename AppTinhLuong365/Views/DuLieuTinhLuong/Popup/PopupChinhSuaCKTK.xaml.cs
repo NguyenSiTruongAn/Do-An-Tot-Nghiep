@@ -60,22 +60,27 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     web.QueryString.Add("fs_ct", fs_id1);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ThemCKTK api = JsonConvert.DeserializeObject<API_ThemCKTK>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
-                            int index=Main.pageCacKhoanTienKhac.listCacKhoanTienKhac.FindIndex(x=>x.cl_id== id1);
-                            if (index>-1)
+                            API_ThemCKTK api = JsonConvert.DeserializeObject<API_ThemCKTK>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
                             {
-                                Main.pageCacKhoanTienKhac.listCacKhoanTienKhac[index].cl_name = name;
-                                Main.pageCacKhoanTienKhac.listCacKhoanTienKhac[index].cl_note = note;
-                                Main.pageCacKhoanTienKhac.listCacKhoanTienKhac[index].fs_repica = ct1;
+                                /*int index=Main.pageCacKhoanTienKhac.listCacKhoanTienKhac.FindIndex(x=>x.cl_id== id1);
+                                if (index>-1)
+                                {
+                                    Main.pageCacKhoanTienKhac.listCacKhoanTienKhac[index].cl_name = name;
+                                    Main.pageCacKhoanTienKhac.listCacKhoanTienKhac[index].cl_note = note;
+                                    Main.pageCacKhoanTienKhac.listCacKhoanTienKhac[index].fs_repica = ct1;
+                                }*/
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.CacKhoanTienKhac(Main));
+                                this.Visibility = Visibility.Collapsed;
                             }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_otherMoney.php", web.QueryString);
                 }
-                //Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.CacKhoanTienKhac(Main));
-                this.Visibility = Visibility.Collapsed;
+                
             }
         }
 
