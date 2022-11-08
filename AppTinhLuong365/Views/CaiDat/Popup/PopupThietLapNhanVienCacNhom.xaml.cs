@@ -73,16 +73,20 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     }
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_ListGroup api = JsonConvert.DeserializeObject<API_ListGroup>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            if (listNhom != null)
+                            API_ListGroup api = JsonConvert.DeserializeObject<API_ListGroup>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
                             {
-                                listNhom.Add(api.data.list_group[0]);
-                                listNhom = listNhom.ToList();
+                                if (listNhom != null)
+                                {
+                                    listNhom.Add(api.data.list_group[0]);
+                                    listNhom = listNhom.ToList();
+                                }
+                                else listNhom = api.data.list_group;
                             }
-                            else listNhom = api.data.list_group;
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_group_manager.php", web.QueryString);
                 }

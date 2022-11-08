@@ -79,23 +79,27 @@ namespace AppTinhLuong365.Views.NhanVien
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -132,26 +136,30 @@ namespace AppTinhLuong365.Views.NhanVien
 
                         web.UploadValuesCompleted += (s, e) =>
                         {
-                            string x = UnicodeEncoding.UTF8.GetString(e.Result);
-                            API_TTNhanVien api = JsonConvert.DeserializeObject<API_TTNhanVien>(x);
-                            if (api.data != null)
+                            try
                             {
-                                TTNV = api.data;
-                                if (TTNV != null)
-                                    if (TTNV.ep_image == "/img/add.png" || string.IsNullOrEmpty(TTNV.ep_image))
-                                        TTNV.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                                    else TTNV.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + TTNV.ep_image;
-                                txtGioiThieu.Text = TTNV.ep_description;
-                                TTNV = TTNV;
-                                if (TTNV.tax == null)
-                                    dataGrid2.Visibility = Visibility.Collapsed;
-                                if (TTNV.insurance == null)
-                                    dataGrid3.Visibility = Visibility.Collapsed;
-                                if (TTNV.contract == null)
-                                    dataGrid1.Visibility = Visibility.Collapsed;
-                                if (TTNV.salary == null)
-                                    dataGrid.Visibility = Visibility.Collapsed;
+                                string x = UnicodeEncoding.UTF8.GetString(e.Result);
+                                API_TTNhanVien api = JsonConvert.DeserializeObject<API_TTNhanVien>(x);
+                                if (api.data != null)
+                                {
+                                    TTNV = api.data;
+                                    if (TTNV != null)
+                                        if (TTNV.ep_image == "/img/add.png" || string.IsNullOrEmpty(TTNV.ep_image))
+                                            TTNV.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                        else TTNV.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + TTNV.ep_image;
+                                    txtGioiThieu.Text = TTNV.ep_description;
+                                    TTNV = TTNV;
+                                    if (TTNV.tax == null)
+                                        dataGrid2.Visibility = Visibility.Collapsed;
+                                    if (TTNV.insurance == null)
+                                        dataGrid3.Visibility = Visibility.Collapsed;
+                                    if (TTNV.contract == null)
+                                        dataGrid1.Visibility = Visibility.Collapsed;
+                                    if (TTNV.salary == null)
+                                        dataGrid.Visibility = Visibility.Collapsed;
+                                }
                             }
+                            catch { }
                         };
                         web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/employe/profile_emp.php", web.QueryString);
                     }
@@ -221,14 +229,18 @@ namespace AppTinhLuong365.Views.NhanVien
                 web.QueryString.Add("description", txtGioiThieuSua.Text);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    API_SuaGioiThieu api =
-                        JsonConvert.DeserializeObject<API_SuaGioiThieu>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                    if (api.data != null)
+                    try
                     {
-                        TTNV.ep_description = txtGioiThieu.Text = txtGioiThieuSua.Text;
-                        borderes.Visibility = Visibility.Collapsed;
-                        txtGioiThieu.Visibility = Visibility.Visible;
+                        API_SuaGioiThieu api =
+                        JsonConvert.DeserializeObject<API_SuaGioiThieu>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                            TTNV.ep_description = txtGioiThieu.Text = txtGioiThieuSua.Text;
+                            borderes.Visibility = Visibility.Collapsed;
+                            txtGioiThieu.Visibility = Visibility.Visible;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/employe/edit_description_emp.php",
                     web.QueryString);
@@ -296,13 +308,17 @@ namespace AppTinhLuong365.Views.NhanVien
                     web.QueryString.Add("id_ep", Main.CurrentEmployee.ep_id);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        string y = UnicodeEncoding.UTF8.GetString(ee.Result);
-                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
-                        if (api.data != null)
+                        try
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.ProFile(Main));
-                            Main.title.Text = " Hồ sơ cá nhân";
+                            string y = UnicodeEncoding.UTF8.GetString(ee.Result);
+                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.ProFile(Main));
+                                Main.title.Text = " Hồ sơ cá nhân";
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/employe/edit_emp.php",
                         web.QueryString);

@@ -118,7 +118,7 @@
                                             Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
                                             ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" />
                         </Border>
-                        <Border MouseLeftButtonDown="ThongKe" Width="104" BorderBrush="{DynamicResource #ebebeb}"
+                        <Border MouseLeftButtonDown="ThongKe" Cursor="Hand" Width="104" BorderBrush="{DynamicResource #ebebeb}"
                                 BorderThickness="1"
                                 CornerRadius="10" Height="38" Margin="0 0 9 0" Background="{DynamicResource #4C5BD4}">
                             <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}"

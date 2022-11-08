@@ -71,12 +71,18 @@ namespace AppTinhLuong365.Views.PhanQuyen
                 web.QueryString.Add("id_ep_update", id);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    API_ThemNhanVienVaoNhom api =
+                    try
+                    {
+                        API_ThemNhanVienVaoNhom api =
                         JsonConvert.DeserializeObject<API_ThemNhanVienVaoNhom>(
                             UnicodeEncoding.UTF8.GetString(ee.Result));
-                    if (api.data != null)
-                    {
+                        if (api.data != null)
+                        {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.PhanQuyen.PhanQuyen(Main));
+                            this.Visibility = Visibility.Collapsed;
+                        }
                     }
+                    catch { }
                     // foreach (ListEmployee item in listEmployee1)
                     // {
                     //     if (item.ep_image != "")
@@ -92,8 +98,6 @@ namespace AppTinhLuong365.Views.PhanQuyen
                 web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/update_permission.php",
                     web.QueryString);
             }
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.PhanQuyen.PhanQuyen(Main));
-            this.Visibility = Visibility.Collapsed;
         }
     }
 }

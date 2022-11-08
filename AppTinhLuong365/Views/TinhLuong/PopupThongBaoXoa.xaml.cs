@@ -51,12 +51,16 @@ namespace AppTinhLuong365.Views.TinhLuong
                 }
                 web.UploadValuesCompleted += (s, e1) =>
                 {
-                    API_XoaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_XoaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e1.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.Thue(Main));
-                        this.Visibility = Visibility.Collapsed;
+                        API_XoaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_XoaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e1.Result));
+                        if (api.data != null)
+                        {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.Thue(Main));
+                            this.Visibility = Visibility.Collapsed;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/remove_tax.php", web.QueryString);
                 

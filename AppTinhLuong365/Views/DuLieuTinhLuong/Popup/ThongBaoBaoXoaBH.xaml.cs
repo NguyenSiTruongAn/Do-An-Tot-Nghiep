@@ -49,13 +49,17 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 }
                 web.UploadValuesCompleted += (s, e1) =>
                 {
-                    API_XoaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_XoaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e1.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.BaoHiem(Main));
-                        Main.sidebar.SelectedIndex = 8;
-                        this.Visibility = Visibility.Collapsed;
+                        API_XoaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_XoaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e1.Result));
+                        if (api.data != null)
+                        {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.BaoHiem(Main));
+                            Main.sidebar.SelectedIndex = 8;
+                            this.Visibility = Visibility.Collapsed;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/remove_insurrance.php", web.QueryString);
                 

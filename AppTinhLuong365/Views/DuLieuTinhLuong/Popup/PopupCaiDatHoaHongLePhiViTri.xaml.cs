@@ -62,13 +62,17 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     }
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_DSCaiDatHoaHongVT api = JsonConvert.DeserializeObject<API_DSCaiDatHoaHongVT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listDSCaiDatHHVT = api.data.list;
-                            for (int i = 1; i <= listDSCaiDatHHVT.Count; i++)
-                                listDSCaiDatHHVT[i - 1].STT = i + "";
+                            API_DSCaiDatHoaHongVT api = JsonConvert.DeserializeObject<API_DSCaiDatHoaHongVT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
+                            {
+                                listDSCaiDatHHVT = api.data.list;
+                                for (int i = 1; i <= listDSCaiDatHHVT.Count; i++)
+                                    listDSCaiDatHHVT[i - 1].STT = i + "";
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/setting_rose.php", web.QueryString);
                 }

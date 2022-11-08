@@ -49,15 +49,20 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     web.QueryString.Add("id_group", ID);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_XoaNhomLamViec api = JsonConvert.DeserializeObject<API_XoaNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
+                            API_XoaNhomLamViec api = JsonConvert.DeserializeObject<API_XoaNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NhomLamViec(Main));
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/remove_group_work.php", web.QueryString);
                 }
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NhomLamViec(Main));
-                this.Visibility = Visibility.Collapsed;
+                
         }
     }
 }

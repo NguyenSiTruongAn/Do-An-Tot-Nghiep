@@ -83,22 +83,26 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.QueryString.Add("id_ho", id);
                 var z = web.UploadValues(new Uri("https://tinhluong.timviec365.vn/api_app/company/list_ep_no_holiday.php"), web.QueryString);
-                API_List_ep_no_holiday api = JsonConvert.DeserializeObject<API_List_ep_no_holiday>(UnicodeEncoding.UTF8.GetString(z));
-                if (api.data != null)
+                try
                 {
-                    listEmployee1 = listEmployee = api.data.list_no_holiday;
-                    foreach (ListNoHoliday item in listEmployee)
+                    API_List_ep_no_holiday api = JsonConvert.DeserializeObject<API_List_ep_no_holiday>(UnicodeEncoding.UTF8.GetString(z));
+                    if (api.data != null)
                     {
-                        if (item.ep_image != "")
+                        listEmployee1 = listEmployee = api.data.list_no_holiday;
+                        foreach (ListNoHoliday item in listEmployee)
                         {
-                            item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
-                        }
-                        else
-                        {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            if (item.ep_image != "")
+                            {
+                                item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                            }
+                            else
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
                         }
                     }
                 }
+                catch { }
             }
         }
 
@@ -160,19 +164,22 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     web.QueryString.Add("id_ho", id);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        string a = UnicodeEncoding.UTF8.GetString(ee.Result);
-                        API_Add_employee_to_cycle api =
-                            JsonConvert.DeserializeObject<API_Add_employee_to_cycle>(a);
-                        if (api.data != null)
+                        try
                         {
+                            string a = UnicodeEncoding.UTF8.GetString(ee.Result);
+                            API_Add_employee_to_cycle api =
+                                JsonConvert.DeserializeObject<API_Add_employee_to_cycle>(a);
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiLe(Main));
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_ep_holiday.php",
                         web.QueryString);
                 }
-
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiLe(Main));
-                this.Visibility = Visibility.Collapsed;
             }
         }
     }

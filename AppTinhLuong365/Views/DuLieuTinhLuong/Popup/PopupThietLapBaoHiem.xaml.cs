@@ -105,11 +105,15 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListBaoHiem api = JsonConvert.DeserializeObject<API_ListBaoHiem>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listBaoHiem = api.data.list;
+                        API_ListBaoHiem api = JsonConvert.DeserializeObject<API_ListBaoHiem>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listBaoHiem = api.data.list;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_insurrance.php", web.QueryString);
             }
@@ -213,12 +217,16 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                         web.QueryString.Add("time_end", "");
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.BaoHiem(Main));
-                            this.Visibility = Visibility.Collapsed;
+                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.BaoHiem(Main));
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_emp_insrc.php", web.QueryString);
                 }

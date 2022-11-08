@@ -124,14 +124,18 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_Add_late api =
-                            JsonConvert.DeserializeObject<API_Add_late>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(
-                                new Views.CaiDat.CaiCaVaLichLamViec(Main));
-                            this.Visibility = Visibility.Collapsed;
+                            API_Add_late api =
+                            JsonConvert.DeserializeObject<API_Add_late>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(
+                                    new Views.CaiDat.CaiCaVaLichLamViec(Main));
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/copy_calendarwork.php",
                         web.QueryString);

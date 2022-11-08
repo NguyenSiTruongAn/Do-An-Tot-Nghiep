@@ -122,12 +122,16 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("year", "2022");    
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_Holiday api = JsonConvert.DeserializeObject<API_List_Holiday>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        holidayList = api.data.holiday_list;
-                        
+                        API_List_Holiday api = JsonConvert.DeserializeObject<API_List_Holiday>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            holidayList = api.data.holiday_list;
+
+                        }
                     }
+                    catch { }
                     //foreach (ItemNp item in list)
                     //{
                     //    if (item.ts_image != "/img/add.png")

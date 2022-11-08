@@ -2,8 +2,10 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,8 +23,19 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
     /// <summary>
     /// Interaction logic for PopupChinhSuaNhanVienPhucLoi.xaml
     /// </summary>
-    public partial class PopupChinhSuaNhanVienPhucLoi : Page
+    public partial class PopupChinhSuaNhanVienPhucLoi : Page, INotifyPropertyChanged
     {
+        private int _IsSmallSize;
+        public int IsSmallSize
+        {
+            get { return _IsSmallSize; }
+            set { _IsSmallSize = value; OnPropertyChanged("IsSmallSize"); }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         private DateTime day1, day_end1, day2, day_end2;
         private string d_e, id1;
         private bool setDayEnd;
@@ -46,6 +59,47 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
             {
                 DateTime.TryParse(day_end, out day_end2);
                 setDayEnd = true;
+            }
+            dteSelectedMonth = new Calendar();
+            dteSelectedMonth.Visibility = Visibility.Collapsed;
+            dteSelectedMonth.DisplayMode = CalendarMode.Year;
+            dteSelectedMonth.MouseLeftButtonDown += Select_thang;
+            dteSelectedMonth.DisplayModeChanged += dteSelectedMonth_DisplayModeChanged;
+            dteSelectedMonth1 = new Calendar();
+            dteSelectedMonth1.Visibility = Visibility.Collapsed;
+            dteSelectedMonth1.DisplayMode = CalendarMode.Year;
+            dteSelectedMonth1.MouseLeftButtonDown += Select_thang_end;
+            dteSelectedMonth1.DisplayModeChanged += dteSelectedMonth1_DisplayModeChanged;
+            cl = new List<Calendar>();
+            cl.Add(dteSelectedMonth);
+            cl = cl.ToList();
+            cl1 = new List<Calendar>();
+            cl1.Add(dteSelectedMonth1);
+            cl1 = cl1.ToList();
+        }
+
+        Calendar dteSelectedMonth { get; set; }
+        Calendar dteSelectedMonth1 { get; set; }
+
+        private List<Calendar> _cl;
+
+        public List<Calendar> cl
+        {
+            get { return _cl; }
+            set
+            {
+                _cl = value; OnPropertyChanged();
+            }
+        }
+
+        private List<Calendar> _cl1;
+
+        public List<Calendar> cl1
+        {
+            get { return _cl1; }
+            set
+            {
+                _cl1 = value; OnPropertyChanged();
             }
         }
         MainWindow Main;
@@ -146,16 +200,21 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                         web.QueryString.Add("date_end", dteSelectedMonth1.DisplayDate.ToString("yyyy-MM-dd"));
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_SuaNhanVienTrongPhuLoi api = JsonConvert.DeserializeObject<API_SuaNhanVienTrongPhuLoi>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
+                            API_SuaNhanVienTrongPhuLoi api = JsonConvert.DeserializeObject<API_SuaNhanVienTrongPhuLoi>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
+                                Main.sidebar.SelectedIndex = 5;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_ep_wf.php", web.QueryString);
                 }
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
-                Main.sidebar.SelectedIndex = 5;
-                this.Visibility = Visibility.Collapsed;
+                
             }
         }
     }

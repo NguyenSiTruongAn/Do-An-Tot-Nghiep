@@ -74,16 +74,20 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 web.QueryString.Add("type", "5");
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_DSCaiDatHoaHongKeHoach api = JsonConvert.DeserializeObject<API_DSCaiDatHoaHongKeHoach>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listKeHoach = api.data.list;
-                        foreach (var item in listKeHoach)
+                        API_DSCaiDatHoaHongKeHoach api = JsonConvert.DeserializeObject<API_DSCaiDatHoaHongKeHoach>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            if (item.tl_id == data1.tl_id)
-                                cbKeHoach.SelectedItem = item;
+                            listKeHoach = api.data.list;
+                            foreach (var item in listKeHoach)
+                            {
+                                if (item.tl_id == data1.tl_id)
+                                    cbKeHoach.SelectedItem = item;
+                            }
                         }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")

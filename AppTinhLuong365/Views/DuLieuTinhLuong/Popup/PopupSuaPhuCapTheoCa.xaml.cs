@@ -192,16 +192,21 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                         web.QueryString.Add("month_end", dteSelectedMonth1.DisplayDate.ToString("yyyy-MM-dd"));
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ChinhSuaPhuCapTheoCa api = JsonConvert.DeserializeObject<API_ChinhSuaPhuCapTheoCa>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
+                            API_ChinhSuaPhuCapTheoCa api = JsonConvert.DeserializeObject<API_ChinhSuaPhuCapTheoCa>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
+                                Main.sidebar.SelectedIndex = 5;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_welfare_shift.php", web.QueryString);
                 }
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
-                Main.sidebar.SelectedIndex = 5;
-                this.Visibility = Visibility.Collapsed;
+                
             }
         }
 

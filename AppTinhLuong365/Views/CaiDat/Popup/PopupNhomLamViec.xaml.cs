@@ -64,15 +64,19 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     web.QueryString.Add("des", tbInput1.Text);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_TaoNhomLamViec api = JsonConvert.DeserializeObject<API_TaoNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
+                            API_TaoNhomLamViec api = JsonConvert.DeserializeObject<API_TaoNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NhomLamViec(Main));
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/create_group_work.php", web.QueryString);
                 }
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NhomLamViec(Main));
-                this.Visibility = Visibility.Collapsed;
             }
         }
     }

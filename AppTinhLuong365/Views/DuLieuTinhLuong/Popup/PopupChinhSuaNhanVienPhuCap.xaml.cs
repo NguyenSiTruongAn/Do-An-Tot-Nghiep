@@ -80,16 +80,21 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                         web.QueryString.Add("date_end", textDenThang.SelectedDate.Value.ToString("yyyy-MM-dd"));
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_SuaNhanVienTrongPhuLoi api = JsonConvert.DeserializeObject<API_SuaNhanVienTrongPhuLoi>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
+                            API_SuaNhanVienTrongPhuLoi api = JsonConvert.DeserializeObject<API_SuaNhanVienTrongPhuLoi>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
+                                Main.sidebar.SelectedIndex = 5;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_ep_wf.php", web.QueryString);
                 }
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
-                Main.sidebar.SelectedIndex = 5;
-                this.Visibility = Visibility.Collapsed;
+                
             }
         }
 

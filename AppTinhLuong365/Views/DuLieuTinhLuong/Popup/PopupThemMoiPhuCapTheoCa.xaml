@@ -6,9 +6,10 @@
       xmlns:local="clr-namespace:AppTinhLuong365.Views.DuLieuTinhLuong.Popup"
       mc:Ignorable="d" 
       d:DesignHeight="503" d:DesignWidth="609"
+      VerticalAlignment="Top"
       Title="PopupThemMoiPhuCapTheoCa">
 
-    <Grid Height="503" Width="609">
+    <Grid Width="609">
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>

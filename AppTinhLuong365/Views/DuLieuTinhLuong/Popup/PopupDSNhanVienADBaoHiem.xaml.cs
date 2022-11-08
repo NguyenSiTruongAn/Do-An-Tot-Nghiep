@@ -73,23 +73,28 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     }
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_DSNVGoiBH api = JsonConvert.DeserializeObject<API_DSNVGoiBH>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listDSNV = api.data.ep_insrc;
-                            for(int i=0; i<listDSNV.Count; i++)
+                            API_DSNVGoiBH api = JsonConvert.DeserializeObject<API_DSNVGoiBH>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
                             {
-                                if (listDSNV[i].ep_image != "")
-                                    listDSNV[i].ep_image = "https://chamcong.24hpay.vn/upload/employee/" + listDSNV[i].ep_image;
-                                else
-                                    listDSNV[i].ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                                if (string.IsNullOrEmpty(listDSNV[i].ep_name))
+                                listDSNV = api.data.ep_insrc;
+                                if(listDSNV != null)
+                                for (int i = 0; i < listDSNV.Count; i++)
                                 {
-                                    listDSNV.Remove(listDSNV[i]);
-                                    i--;
-                                }    
+                                    if (listDSNV[i].ep_image != "")
+                                        listDSNV[i].ep_image = "https://chamcong.24hpay.vn/upload/employee/" + listDSNV[i].ep_image;
+                                    else
+                                        listDSNV[i].ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                    if (string.IsNullOrEmpty(listDSNV[i].ep_name))
+                                    {
+                                        listDSNV.Remove(listDSNV[i]);
+                                        i--;
+                                    }
+                                }
                             }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_insrc.php", web.QueryString);
                 }

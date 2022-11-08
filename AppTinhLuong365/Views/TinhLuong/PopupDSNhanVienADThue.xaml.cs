@@ -71,16 +71,20 @@ namespace AppTinhLuong365.Views.TinhLuong
                     }
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_DSNVADThue api = JsonConvert.DeserializeObject<API_DSNVADThue>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listDSNV = api.data.list;
-                            for (int i = 0; i < listDSNV.Count; i++)
+                            API_DSNVADThue api = JsonConvert.DeserializeObject<API_DSNVADThue>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
                             {
-                                if (listDSNV[i].ep_image == "../img/add.png")
-                                    listDSNV[i].ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                listDSNV = api.data.list;
+                                for (int i = 0; i < listDSNV.Count; i++)
+                                {
+                                    if (listDSNV[i].ep_image == "../img/add.png")
+                                        listDSNV[i].ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                }
                             }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_user_in_tax.php", web.QueryString);
                 }

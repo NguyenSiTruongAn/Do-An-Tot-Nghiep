@@ -72,18 +72,22 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     web.QueryString.Add("id_rose", data1.ro_id);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
+                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                var pop = new Views.DuLieuTinhLuong.HoaHongTien(Main);
+                                Main.HomeSelectionPage.NavigationService.Navigate(pop);
+                                Main.sidebar.SelectedIndex = -1;
+                                pop.tb1.SelectedIndex = 1;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_gr_rose_tien.php", web.QueryString);
                 }
-                var pop = new Views.DuLieuTinhLuong.HoaHongTien(Main);
-                Main.HomeSelectionPage.NavigationService.Navigate(pop);
-                Main.sidebar.SelectedIndex = -1;
-                pop.tb1.SelectedIndex = 1;
-                this.Visibility = Visibility.Collapsed;
             }
         }
     }

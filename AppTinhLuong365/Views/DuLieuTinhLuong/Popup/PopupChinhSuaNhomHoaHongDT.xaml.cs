@@ -116,16 +116,20 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_DSCaiDatHoaHongDoanhThu api = JsonConvert.DeserializeObject<API_DSCaiDatHoaHongDoanhThu>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listMucDT = api.data.rose_dt;
-                        foreach (var item in listMucDT)
+                        API_DSCaiDatHoaHongDoanhThu api = JsonConvert.DeserializeObject<API_DSCaiDatHoaHongDoanhThu>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            if (item.tl_id == data1.tl_id)
-                                cbMucDT1.SelectedItem = item;
+                            listMucDT = api.data.rose_dt;
+                            foreach (var item in listMucDT)
+                            {
+                                if (item.tl_id == data1.tl_id)
+                                    cbMucDT1.SelectedItem = item;
+                            }
                         }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")
@@ -277,18 +281,23 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     }
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
+                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                var pop = new Views.DuLieuTinhLuong.HoaHongDoanhThu(Main);
+                                Main.HomeSelectionPage.NavigationService.Navigate(pop);
+                                Main.sidebar.SelectedIndex = -1;
+                                pop.tb1.SelectedIndex = 1;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_group_rose_dt.php", web.QueryString);
                 }
-                var pop = new Views.DuLieuTinhLuong.HoaHongDoanhThu(Main);
-                Main.HomeSelectionPage.NavigationService.Navigate(pop);
-                Main.sidebar.SelectedIndex = -1;
-                pop.tb1.SelectedIndex = 1;
-                this.Visibility = Visibility.Collapsed;
+                
             }
         }
 

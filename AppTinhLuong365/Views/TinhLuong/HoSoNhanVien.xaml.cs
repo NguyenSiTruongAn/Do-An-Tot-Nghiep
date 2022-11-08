@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -91,23 +92,27 @@ namespace AppTinhLuong365.Views.TinhLuong
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -148,44 +153,48 @@ namespace AppTinhLuong365.Views.TinhLuong
 
                         web.UploadValuesCompleted += (s, e) =>
                         {
-                            string x = UnicodeEncoding.UTF8.GetString(e.Result);
-                            API_ChiTietNV api = JsonConvert.DeserializeObject<API_ChiTietNV>(x);
-                            if (api.data != null)
+                            try
                             {
-                                ChiTietNV = api.data.list;
-                                if (ChiTietNV != null)
-                                    if (ChiTietNV.ep_image == "/img/add.png")
+                                string x = UnicodeEncoding.UTF8.GetString(e.Result);
+                                API_ChiTietNV api = JsonConvert.DeserializeObject<API_ChiTietNV>(x);
+                                if (api.data != null)
+                                {
+                                    ChiTietNV = api.data.list;
+                                    if (ChiTietNV != null)
+                                        if (ChiTietNV.ep_image == "/img/add.png")
+                                            ChiTietNV.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                    txtName.Text = ChiTietNV.ep_name;
+                                    if (string.IsNullOrEmpty(ChiTietNV.ep_birth_day))
+                                        txtNS.Text = "Chưa cập nhật";
+                                    else
+                                        txtNS.Text = DateTime.Parse(ChiTietNV.ep_birth_day).ToString("dd/MM/yyyy");
+                                    txtDep.Text = ChiTietNV.dep_name;
+                                    if (string.IsNullOrEmpty(ChiTietNV.ep_address))
+                                        txtNS.Text = "Chưa cập nhật";
+                                    else
+                                        txtAddress.Text = ChiTietNV.ep_address;
+                                    txtPhoneNumber.Text = ChiTietNV.ep_phone;
+                                    txtBank.Text = ChiTietNV.ep_phone_tk;
+                                    txtChucVu.Text = ChiTietNV.position_id;
+                                    txtBank.Text = ChiTietNV.display_st_bank;
+                                    txtGt.Text = ChiTietNV.display_ep_gender;
+                                    txtMa.Text = ChiTietNV.ep_id;
+                                    txtStartWork.Text = ChiTietNV.display_start_working_time;
+                                    txtEmail.Text = ChiTietNV.display_ep_email;
+                                    txtSTK.Text = ChiTietNV.display_st_stk;
+                                    txtNgayTinhLuong.Text = ChiTietNV.display_st_time;
+                                    txtGioiThieu.Text = ChiTietNV.ep_description;
+                                    Ten.Text = ChiTietNV.ep_name;
+                                    ChucVu.Text = ChiTietNV.dep_name;
+                                    if (!string.IsNullOrEmpty(ChiTietNV.ep_image))
+                                        ChiTietNV.ep_image = "https://chamcong.24hpay.vn/upload/employee/" +
+                                                             ChiTietNV.ep_image;
+                                    else
                                         ChiTietNV.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                                txtName.Text = ChiTietNV.ep_name;
-                                if (string.IsNullOrEmpty(ChiTietNV.ep_birth_day))
-                                    txtNS.Text = "Chưa cập nhật";
-                                else
-                                    txtNS.Text = DateTime.Parse(ChiTietNV.ep_birth_day).ToString("dd/MM/yyyy");
-                                txtDep.Text = ChiTietNV.dep_name;
-                                if (string.IsNullOrEmpty(ChiTietNV.ep_address))
-                                    txtNS.Text = "Chưa cập nhật";
-                                else
-                                    txtAddress.Text = ChiTietNV.ep_address;
-                                txtPhoneNumber.Text = ChiTietNV.ep_phone;
-                                txtBank.Text = ChiTietNV.ep_phone_tk;
-                                txtChucVu.Text = ChiTietNV.position_id;
-                                txtBank.Text = ChiTietNV.display_st_bank;
-                                txtGt.Text = ChiTietNV.display_ep_gender;
-                                txtMa.Text = ChiTietNV.ep_id;
-                                txtStartWork.Text = ChiTietNV.display_start_working_time;
-                                txtEmail.Text = ChiTietNV.display_ep_email;
-                                txtSTK.Text = ChiTietNV.display_st_stk;
-                                txtNgayTinhLuong.Text = ChiTietNV.display_st_time;
-                                txtGioiThieu.Text = ChiTietNV.ep_description;
-                                Ten.Text = ChiTietNV.ep_name;
-                                ChucVu.Text = ChiTietNV.dep_name;
-                                if (!string.IsNullOrEmpty(ChiTietNV.ep_image))
-                                    ChiTietNV.ep_image = "https://chamcong.24hpay.vn/upload/employee/" +
-                                                         ChiTietNV.ep_image;
-                                else
-                                    ChiTietNV.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                                image.ImageSource = new BitmapImage(new Uri(ChiTietNV.ep_image));
+                                    image.ImageSource = new BitmapImage(new Uri(ChiTietNV.ep_image));
+                                }
                             }
+                            catch { }
                         };
                         web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/profile_ep.php",
                             web.QueryString);
@@ -303,12 +312,16 @@ namespace AppTinhLuong365.Views.TinhLuong
                 web.QueryString.Add("checked_f", data.fa_status);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    API_ThemMoiPhucLoiPhuCap api =
+                    try
+                    {
+                        API_ThemMoiPhucLoiPhuCap api =
                         JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(
                             UnicodeEncoding.UTF8.GetString(ee.Result));
-                    if (api.data != null)
-                    {
+                        if (api.data != null)
+                        {
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_ep_family_member.php",
                     web.QueryString);
@@ -343,12 +356,16 @@ namespace AppTinhLuong365.Views.TinhLuong
                 web.QueryString.Add("checked_f", data.fa_status);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    API_ThemMoiPhucLoiPhuCap api =
+                    try
+                    {
+                        API_ThemMoiPhucLoiPhuCap api =
                         JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(
                             UnicodeEncoding.UTF8.GetString(ee.Result));
-                    if (api.data != null)
-                    {
+                        if (api.data != null)
+                        {
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_ep_family_member.php",
                     web.QueryString);
@@ -373,14 +390,18 @@ namespace AppTinhLuong365.Views.TinhLuong
                 web.QueryString.Add("description", txtGioiThieuSua.Text);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    API_SuaGioiThieu api =
-                        JsonConvert.DeserializeObject<API_SuaGioiThieu>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                    if (api.data != null)
+                    try
                     {
-                        ChiTietNV.ep_description = txtGioiThieu.Text = txtGioiThieuSua.Text;
-                        borderes.Visibility = Visibility.Collapsed;
-                        txtGioiThieu.Visibility = Visibility.Visible;
+                        API_SuaGioiThieu api =
+                        JsonConvert.DeserializeObject<API_SuaGioiThieu>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                            ChiTietNV.ep_description = txtGioiThieu.Text = txtGioiThieuSua.Text;
+                            borderes.Visibility = Visibility.Collapsed;
+                            txtGioiThieu.Visibility = Visibility.Visible;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/update_user_info_employee.php",
                     web.QueryString);
@@ -454,14 +475,18 @@ namespace AppTinhLuong365.Views.TinhLuong
                     web.QueryString.Add("fsstk", tbInput1.Text);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        string y = UnicodeEncoding.UTF8.GetString(ee.Result);
-                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
-                        if (api.data != null)
+                        try
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, ChiTietNV.ep_id));
-                            Main.title.Text = " Danh sách nhân viên/ Hồ sơ nhân viên";
-                            Main.sidebar.SelectedIndex = -1;
+                            string y = UnicodeEncoding.UTF8.GetString(ee.Result);
+                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(y);
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, ChiTietNV.ep_id));
+                                Main.title.Text = " Danh sách nhân viên/ Hồ sơ nhân viên";
+                                Main.sidebar.SelectedIndex = -1;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_employee.php",
                         web.QueryString);
@@ -550,6 +575,11 @@ namespace AppTinhLuong365.Views.TinhLuong
             var pop = new Views.CaiDat.Popup.PopupChinhSuaLichLamViec(Main, ChiTietNV.cycle, data1, DateTime.Now.ToString("MM"));
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void XemChiTiet(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=f30f0b61e761b8926941f232ea7cccb9." + Main.CurrentCompany.com_id + "." + Main.CurrentCompany.pass + "&link=https://phanmemsohoatailieu.timviec365.vn/tim-kiem-tep-tin.html?nv=" + ChiTietNV.ep_id);
         }
     }
 }

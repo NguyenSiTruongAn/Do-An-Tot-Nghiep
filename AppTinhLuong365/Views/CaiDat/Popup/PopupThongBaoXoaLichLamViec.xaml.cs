@@ -50,15 +50,20 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("id_com", Main.CurrentCompany.com_id);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    API_Delete_cycle api = JsonConvert.DeserializeObject<API_Delete_cycle>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                    if (api.data != null)
+                    try
                     {
+                        API_Delete_cycle api = JsonConvert.DeserializeObject<API_Delete_cycle>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
+                            this.Visibility = Visibility.Collapsed;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/delete_cycle.php", web.QueryString);
             }
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
-            this.Visibility = Visibility.Collapsed;
+            
         }
     }
 }

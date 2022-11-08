@@ -111,24 +111,28 @@ namespace AppTinhLuong365.Views.TinhLuong
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api =
-                        JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api =
+                        JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php",
                     web.QueryString);
@@ -270,28 +274,32 @@ namespace AppTinhLuong365.Views.TinhLuong
                 web.QueryString.Add("order", order);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_Bang_luong_nv api =
+                    try
+                    {
+                        API_Bang_luong_nv api =
                         JsonConvert.DeserializeObject<API_Bang_luong_nv>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
-                    {
-                        listBangLuong = api.data.bang_luong;
-                        totalEp = api.data.total;
-                        PageNV = ListPageNumber(totalEp);
-                        loadPage(page, PageNV);
-                        // dataGrid.AutoReponsiveColumn(0);
-                    }
+                        if (api.data != null)
+                        {
+                            listBangLuong = api.data.bang_luong;
+                            totalEp = api.data.total;
+                            PageNV = ListPageNumber(totalEp);
+                            loadPage(page, PageNV);
+                            // dataGrid.AutoReponsiveColumn(0);
+                        }
 
-                    foreach (Item_Bang_Luong item in listBangLuong)
-                    {
-                        if (item.ep_image == "/img/add.png")
+                        foreach (Item_Bang_Luong item in listBangLuong)
                         {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                        }
-                        else
-                        {
-                            item.ep_image = item.ep_image;
+                            if (item.ep_image == "/img/add.png")
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
+                            else
+                            {
+                                item.ep_image = item.ep_image;
+                            }
                         }
                     }
+                    catch { }
 
                     loading.Visibility = Visibility.Collapsed;
                 };
@@ -1043,12 +1051,16 @@ namespace AppTinhLuong365.Views.TinhLuong
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_dep api =
-                        JsonConvert.DeserializeObject<API_List_dep>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listItem_dep = api.data.list;
+                        API_List_dep api =
+                        JsonConvert.DeserializeObject<API_List_dep>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listItem_dep = api.data.list;
+                        }
                     }
+                    catch { }
                     // foreach (EpLate item in listEpLate)
                     // {
                     //     if (item.ts_image != "/img/add.png")
@@ -1084,12 +1096,16 @@ namespace AppTinhLuong365.Views.TinhLuong
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListEmployee api =
-                        JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listEmployee = api.data.data.items;
+                        API_ListEmployee api =
+                        JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listEmployee = api.data.data.items;
+                        }
                     }
+                    catch { }
                     // foreach (EpLate item in listEpLate)
                     // {
                     //     if (item.ts_image != "/img/add.png")

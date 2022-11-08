@@ -78,16 +78,20 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     }
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_DSNVADCKTK api = JsonConvert.DeserializeObject<API_DSNVADCKTK>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listNVCacKhoanTienKhac = api.data.list;
-                            foreach (var item in listNVCacKhoanTienKhac)
+                            API_DSNVADCKTK api = JsonConvert.DeserializeObject<API_DSNVADCKTK>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
                             {
-                                if (item.ep_image == "../img/add.png")
-                                    item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                listNVCacKhoanTienKhac = api.data.list;
+                                foreach (var item in listNVCacKhoanTienKhac)
+                                {
+                                    if (item.ep_image == "../img/add.png")
+                                        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                                }
                             }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_in_otherMoney.php", web.QueryString);
                 }

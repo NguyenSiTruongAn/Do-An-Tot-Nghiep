@@ -46,18 +46,21 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("lho_id", id);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    API_Delete_cycle_of_employee api =
-                        JsonConvert.DeserializeObject<API_Delete_cycle_of_employee>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                    if (api.data != null)
+                    try
                     {
+                        API_Delete_cycle_of_employee api =
+                        JsonConvert.DeserializeObject<API_Delete_cycle_of_employee>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                        if (api.data != null)
+                        {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiLe(Main));
+                            this.Visibility = Visibility.Collapsed;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/delete_holiday.php",
                     web.QueryString);
             }
-
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiLe(Main));
-            this.Visibility = Visibility.Collapsed;
         }
 
         private void Close_Click(object sender, MouseButtonEventArgs e)

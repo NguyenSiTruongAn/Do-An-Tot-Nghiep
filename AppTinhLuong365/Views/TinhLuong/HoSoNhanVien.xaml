@@ -139,7 +139,7 @@
                                 <TextBlock Margin="0 10 0 0" FontSize="15" Foreground="{DynamicResource #666C7C}" FontWeight="DemiBold" TextWrapping="Wrap">
                                     <TextBlock.Inlines>
                                         <Run Text="{DynamicResource textHSNV}"/>
-                                        <Run Cursor="Hand" Foreground="{DynamicResource #4C5BD4}" Text="Xem chi tiết" Hyperlink.Click="Run_Click"/>
+                                        <Run Cursor="Hand" Foreground="{DynamicResource #4C5BD4}" Text="Xem chi tiết" Hyperlink.Click="Run_Click" MouseLeftButtonDown="XemChiTiet"/>
                                     </TextBlock.Inlines>
                                 </TextBlock>
                             </StackPanel>

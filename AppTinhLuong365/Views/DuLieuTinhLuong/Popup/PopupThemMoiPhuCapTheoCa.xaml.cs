@@ -185,11 +185,15 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     }
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_DSCaLamViec api = JsonConvert.DeserializeObject<API_DSCaLamViec>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listCa = api.data.items;
+                            API_DSCaLamViec api = JsonConvert.DeserializeObject<API_DSCaLamViec>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
+                            {
+                                listCa = api.data.items;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/list_shift.php", web.QueryString);
                 }
@@ -239,16 +243,21 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     }
                     web.UploadValuesCompleted += (s, e1) =>
                     {
-                        API_ThemMoiPhuCaoTheoCa api = JsonConvert.DeserializeObject<API_ThemMoiPhuCaoTheoCa>(UnicodeEncoding.UTF8.GetString(e1.Result));
-                        if (api.data != null)
+                        try
                         {
+                            API_ThemMoiPhuCaoTheoCa api = JsonConvert.DeserializeObject<API_ThemMoiPhuCaoTheoCa>(UnicodeEncoding.UTF8.GetString(e1.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
+                                Main.sidebar.SelectedIndex = 5;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/create_welfare_shift.php", web.QueryString);
                 }
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
-                Main.sidebar.SelectedIndex = 5;
-                this.Visibility = Visibility.Collapsed;
+                
             }
         }
 

@@ -184,17 +184,20 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     web.QueryString.Add("date_end", day_end);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ChinhSuaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_ChinhSuaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.BaoHiem(Main));
-                            Main.sidebar.SelectedIndex = 8;
-                            this.Visibility = Visibility.Collapsed;
+                            API_ChinhSuaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_ChinhSuaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.BaoHiem(Main));
+                                Main.sidebar.SelectedIndex = 8;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_emp_insrc.php", web.QueryString);
                 }
-                
             }
         }
     }

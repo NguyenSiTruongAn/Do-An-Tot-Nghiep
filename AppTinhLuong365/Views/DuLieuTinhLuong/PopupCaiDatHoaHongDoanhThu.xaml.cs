@@ -61,13 +61,17 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     }
                     web.UploadValuesCompleted += (s, e) =>
                     {
-                        API_DSCaiDatHoaHongDoanhThu api = JsonConvert.DeserializeObject<API_DSCaiDatHoaHongDoanhThu>(UnicodeEncoding.UTF8.GetString(e.Result));
-                        if (api.data != null)
+                        try
                         {
-                            listDSCaiDatHHDT = api.data.rose_dt;
-                            for (int i = 1; i <= listDSCaiDatHHDT.Count; i++)
-                                listDSCaiDatHHDT[i-1].STT = i + "";
+                            API_DSCaiDatHoaHongDoanhThu api = JsonConvert.DeserializeObject<API_DSCaiDatHoaHongDoanhThu>(UnicodeEncoding.UTF8.GetString(e.Result));
+                            if (api.data != null)
+                            {
+                                listDSCaiDatHHDT = api.data.rose_dt;
+                                for (int i = 1; i <= listDSCaiDatHHDT.Count; i++)
+                                    listDSCaiDatHHDT[i - 1].STT = i + "";
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_rose_dt.php", web.QueryString);
                 }

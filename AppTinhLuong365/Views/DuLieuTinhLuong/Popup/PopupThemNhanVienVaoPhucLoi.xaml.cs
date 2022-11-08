@@ -127,19 +127,23 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_DSNVThemMoiVaoPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_DSNVThemMoiVaoPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listNV1= listNV = api.data.list;
-                    }
-                    foreach (DSNVThemMoiVaoPhucLoi_PhuCap item in listNV)
-                    {
-                        if (item.ep_image == "")
+                        API_DSNVThemMoiVaoPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_DSNVThemMoiVaoPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            listNV1 = listNV = api.data.list;
                         }
-                        else item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                        foreach (DSNVThemMoiVaoPhucLoi_PhuCap item in listNV)
+                        {
+                            if (item.ep_image == "")
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
+                            else item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                        }
                     }
+                    catch {  }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_user_other.php", web.QueryString);
             }
@@ -181,21 +185,37 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                         dem++;
                     }
                     web.QueryString.Add("id_welf", id1);
-                    web.QueryString.Add("wf_time", day1.ToString("yyyy/MM/dd"));
-                    if(setDayEnd)
-                        web.QueryString.Add("wf_time_end", day_end1.ToString("yyyy/MM/dd"));
-                    else web.QueryString.Add("wf_time_end", "");
+                    if(textThangAD.Text != "--------- ----")
+                        web.QueryString.Add("wf_time", DateTime.Parse(textThangAD.Text).ToString("yyyy/MM/dd"));
+                    else
+                        web.QueryString.Add("wf_time", day1.ToString("yyyy/MM/dd"));
+                    if(textDenThang.Text != "--------- ----")
+                    {
+                        web.QueryString.Add("wf_time_end", DateTime.Parse(textDenThang.Text).ToString("yyyy/MM/dd"));
+                    }
+                    else
+                    {
+                        if (setDayEnd)
+                            web.QueryString.Add("wf_time_end", day_end1.ToString("yyyy/MM/dd"));
+                        else web.QueryString.Add("wf_time_end", "");
+                    }
+
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ThemNhanVienVaoPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_ThemNhanVienVaoPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
+                            API_ThemNhanVienVaoPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_ThemNhanVienVaoPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch {  }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_ep_welfare.php", web.QueryString);
                 }
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
-                this.Visibility = Visibility.Collapsed;
+                
             }
         }
 

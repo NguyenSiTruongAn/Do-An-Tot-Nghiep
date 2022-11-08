@@ -69,6 +69,7 @@
                                 </TextBlock>
                             </Grid>
                         </Border>
+                        <TextBlock x:Name="validateLyDo" Style="{StaticResource tblValidate}"/>
                         <Border x:Name="btnThem" Cursor="Hand" MouseLeftButtonDown="ThemThuongPhat" Background="{DynamicResource #4C5BD4}" CornerRadius="5" HorizontalAlignment="Stretch" Height="45" Margin="2,20,-2.4,0">
                             <TextBlock Text="Thêm thưởng phạt" FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                         </Border>

@@ -55,15 +55,19 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                 }
                 web.UploadValuesCompleted += (s, e1) =>
                 {
-                    API_XoaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_XoaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e1.Result));
-                    if (api.data != null)
+                    try
                     {
+                        API_XoaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_XoaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(e1.Result));
+                        if (api.data != null)
+                        {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data));
+                            Main.sidebar.SelectedIndex = -1;
+                            this.Visibility = Visibility.Collapsed;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/profile_delete.php", web.QueryString);
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main,data));
-                Main.sidebar.SelectedIndex = -1;
-                this.Visibility = Visibility.Collapsed;
             }
         }
     }

@@ -55,12 +55,16 @@ namespace AppTinhLuong365.Views.TinhLuong
                     web.QueryString.Add("des", tbInput1.Text);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ThemCKTK api = JsonConvert.DeserializeObject<API_ThemCKTK>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
-                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.Thue(Main));
-                            this.Visibility = Visibility.Collapsed;
+                            API_ThemCKTK api = JsonConvert.DeserializeObject<API_ThemCKTK>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.Thue(Main));
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/create_tax.php", web.QueryString);
                 }

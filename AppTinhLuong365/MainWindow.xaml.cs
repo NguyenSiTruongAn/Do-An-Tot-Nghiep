@@ -540,7 +540,7 @@ namespace AppTinhLuong365
                             title.Text = this.Title;
                             break;
                         case 21:
-                            Process.Start("https://vanthu.timviec365.vn/mau-de-xuat.html");
+                            Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=f30f0b61e761b8926941f232ea7cccb9." + CurrentCompany.com_id + "." + CurrentCompany.pass + "&link=https://vanthu.timviec365.vn/mau-de-xuat.html");
                             break;
                         case 22:
                             HomeSelectionPage.NavigationService.Navigate(new Views.PhanQuyen.PhanQuyen(this));
@@ -548,7 +548,7 @@ namespace AppTinhLuong365
                             title.Text = this.Title;
                             break;
                         case 23:
-                            Process.Start("https://quanlychung.timviec365.vn/quan-ly-ung-dung-cong-ty.html");
+                            Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=f30f0b61e761b8926941f232ea7cccb9." + CurrentCompany.com_id + "." + CurrentCompany.pass + "&link=https://quanlychung.timviec365.vn/quan-ly-ung-dung-cong-ty.html");
                             break;
                         default:
                             break;
@@ -600,7 +600,7 @@ namespace AppTinhLuong365
                         title.Text = "Chấm công";
                         break;
                     case 4:
-                        Process.Start("https://vanthu.timviec365.vn/trang-quan-ly-de-xuat.html");
+                        Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=81b016d57ec189daa8e04dd2d59a22c3." + CurrentEmployee.ep_id + "." + CurrentEmployee.pass + "&link=https://vanthu.timviec365.vn/trang-quan-ly-de-xuat.html");
                         break;
                     case 5:
                         HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.Calendar(this));
@@ -608,7 +608,7 @@ namespace AppTinhLuong365
                         title.Text = "Lịch làm việc";
                         break;
                     case 6:
-                        Process.Start("https://quanlychung.timviec365.vn/quan-ly-ung-dung-nhan-vien.html");
+                        Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=81b016d57ec189daa8e04dd2d59a22c3." + CurrentEmployee.ep_id + "." + CurrentEmployee.pass + "&link=https://quanlychung.timviec365.vn/quan-ly-ung-dung-nhan-vien.html");
                         break;
                     default:
                         break;
@@ -772,12 +772,19 @@ namespace AppTinhLuong365
 
         private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("https://tinhluong.timviec365.vn/huong-dan.html");
+            if(MainType == 1)
+                Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=81b016d57ec189daa8e04dd2d59a22c3." + CurrentEmployee.ep_id + "." + CurrentEmployee.pass + "&link=https://tinhluong.timviec365.vn/huong-dan.html");
+            else
+                Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=f30f0b61e761b8926941f232ea7cccb9." + CurrentCompany.com_id + "." + CurrentCompany.pass + "&link=https://tinhluong.timviec365.vn/huong-dan.html");
+
         }
 
         private void TextBlock_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("https://timviec365.vn/blog/c105/cac-van-de-ve-luong");
+            if (MainType == 1)
+                Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=81b016d57ec189daa8e04dd2d59a22c3." + CurrentEmployee.ep_id + "." + CurrentEmployee.pass + "&link=https://timviec365.vn/blog/c105/cac-van-de-ve-luong");
+            else
+                Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=f30f0b61e761b8926941f232ea7cccb9." + CurrentCompany.com_id + "." + CurrentCompany.pass + "&link=https://timviec365.vn/blog/c105/cac-van-de-ve-luong");
         }
 
         private void TextBlock_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)

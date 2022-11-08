@@ -96,16 +96,20 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     web.QueryString.Add("type_tax", i);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_ChinhSuaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_ChinhSuaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
+                            API_ChinhSuaPhucLoi_PhuCap api = JsonConvert.DeserializeObject<API_ChinhSuaPhucLoi_PhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
+                                Main.sidebar.SelectedIndex = 5;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_welfare.php", web.QueryString);
                 }
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
-                Main.sidebar.SelectedIndex = 5;
-                this.Visibility = Visibility.Collapsed;
             }
         }
 

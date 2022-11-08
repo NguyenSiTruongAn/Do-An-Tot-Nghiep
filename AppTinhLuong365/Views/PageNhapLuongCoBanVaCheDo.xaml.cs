@@ -1,9 +1,12 @@
 ﻿using AppTinhLuong365.Model.APIEntity;
+using Aspose.Cells;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
@@ -70,23 +73,27 @@ namespace AppTinhLuong365.Views
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -130,24 +137,27 @@ namespace AppTinhLuong365.Views
                 web.QueryString.Add("id_emp", user);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_Tbl_Salary_Manager api = JsonConvert.DeserializeObject<API_Tbl_Salary_Manager>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listNhanVien = api.data.list_emp;
-                        totalNVCacNhom = api.data.total_item;
-                        PageNVCacNhom = ListPageNumber(totalNVCacNhom);
-                        loadPage(page, PageNVCacNhom);
-                    }
-                    foreach (ItemEmp item in listNhanVien)
-                    {
-                        if (item.ep_image == "")
+                        API_Tbl_Salary_Manager api = JsonConvert.DeserializeObject<API_Tbl_Salary_Manager>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            listNhanVien = api.data.list_emp;
+                            totalNVCacNhom = api.data.total_item;
+                            PageNVCacNhom = ListPageNumber(totalNVCacNhom);
+                            loadPage(page, PageNVCacNhom);
                         }
-                        else
-                            item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                        foreach (ItemEmp item in listNhanVien)
+                        {
+                            if (item.ep_image == "")
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
+                            else
+                                item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                        }
                     }
-
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_salary_manager.php", web.QueryString);
             }
@@ -210,11 +220,15 @@ namespace AppTinhLuong365.Views
                 web.QueryString.Add("date", DateTime.Parse(date).ToString("yyyy") + "-" + DateTime.Parse(date).ToString("MM") + "-" + x);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_DSNVTheoThoiGian api = JsonConvert.DeserializeObject<API_DSNVTheoThoiGian>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listNV = api.data.list;
+                        API_DSNVTheoThoiGian api = JsonConvert.DeserializeObject<API_DSNVTheoThoiGian>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listNV = api.data.list;
+                        }
                     }
+                    catch { }
                     //foreach (ItemTamUng item in listTamUng)
                     //{
                     //    if (item.ep_image == "/img/add.png")
@@ -264,12 +278,16 @@ namespace AppTinhLuong365.Views
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_dep api =
-                        JsonConvert.DeserializeObject<API_List_dep>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listItem_dep = api.data.list;
+                        API_List_dep api =
+                        JsonConvert.DeserializeObject<API_List_dep>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            listItem_dep = api.data.list;
+                        }
                     }
+                    catch { }
                     // foreach (EpLate item in listEpLate)
                     // {
                     //     if (item.ts_image != "/img/add.png")
@@ -314,7 +332,7 @@ namespace AppTinhLuong365.Views
         }
         private void dataGrid1Hover(object sender, MouseEventArgs e)
         {
-            Border col = sender as Border;
+            System.Windows.Controls.Border col = sender as System.Windows.Controls.Border;
             if (col != null)
             {
                 ItemEmp item = (ItemEmp)col.DataContext;
@@ -337,7 +355,7 @@ namespace AppTinhLuong365.Views
 
         private void dataGrid1Leave(object sender, MouseEventArgs e)
         {
-            Border col = sender as Border;
+            System.Windows.Controls.Border col = sender as System.Windows.Controls.Border;
             if (col != null)
             {
                 ItemEmp item = (ItemEmp)col.DataContext;
@@ -637,7 +655,7 @@ namespace AppTinhLuong365.Views
         }
         private void select_page_click1(object sender, MouseButtonEventArgs e)
         {
-            Border b = sender as Border;
+            System.Windows.Controls.Border b = sender as System.Windows.Controls.Border;
             int pagenumber = int.Parse(txtpage1.Text);
             string time = DateTime.Now.ToString("MM");
             if (selectDate.SelectedDate != null)
@@ -662,7 +680,7 @@ namespace AppTinhLuong365.Views
 
         private void select_page_click2(object sender, MouseButtonEventArgs e)
         {
-            Border b = sender as Border;
+            System.Windows.Controls.Border b = sender as System.Windows.Controls.Border;
             int pagenumber = int.Parse(txtpage2.Text);
             string time = DateTime.Now.ToString("MM");
             if (selectDate.SelectedDate != null)
@@ -687,7 +705,7 @@ namespace AppTinhLuong365.Views
 
         private void select_page_click3(object sender, MouseButtonEventArgs e)
         {
-            Border b = sender as Border;
+            System.Windows.Controls.Border b = sender as System.Windows.Controls.Border;
             int pagenumber = int.Parse(txtpage3.Text);
             string time = DateTime.Now.ToString("MM");
             if (selectDate.SelectedDate != null)
@@ -713,6 +731,72 @@ namespace AppTinhLuong365.Views
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+        }
+
+        private void xuatExcel()
+        {
+            string year = "", month = "", id_nv = "";
+            this.Dispatcher.Invoke(() =>
+            {
+                if (selectDate.SelectedDate != null)
+                    month = selectDate.SelectedDate.Value.ToString("yyyy-MM-dd");
+                else month = DateTime.Now.ToString("yyyy-MM-dd");
+            });
+            /*MultipartFormDataContent content = new MultipartFormDataContent();
+            content.Add(new StringContent(Main.CurrentCompany.com_id), "id_comp");
+            content.Add(new StringContent(Main.CurrentCompany.token), "token");
+            content.Add(new StringContent(month), "m");
+            content.Add(new StringContent(year), "y");
+            content.Add(new StringContent(id_nv), "uid");
+            HttpClient httpClient = new HttpClient();
+            Task<HttpResponseMessage> response = httpClient.PostAsync("https://tinhluong.timviec365.vn/api_app/company/export_rose.php", content);
+            string data = response.Result.Content.ReadAsStringAsync().Result;*/
+            string data = "";
+            using (WebClient web = new WebClient())
+            {
+                if (Main.MainType == 0)
+                {
+                    web.QueryString.Add("token", Main.CurrentCompany.token);
+                    web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                    web.QueryString.Add("time", month);
+                }
+                web.UploadValuesCompleted += (s, e) =>
+                {
+                    data = UnicodeEncoding.UTF8.GetString(e.Result);
+                    File.WriteAllText("../../Views/DuLieuTinhLuong/hoa_hong365.html", data);
+                    string filePath = "";
+                    // tạo SaveFileDialog để lưu file excel
+                    SaveFileDialog dialog = new SaveFileDialog();
+
+                    // chỉ lọc ra các file có định dạng Excel
+                    dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
+                    dialog.FileName = "luong365";
+                    // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
+                    if (dialog.ShowDialog() == true)
+                    {
+                        filePath = dialog.FileName;
+                        var workbook = new Workbook("../../Views/DuLieuTinhLuong/hoa_hong365.html");
+                        try
+                        {
+                            workbook.Save(filePath);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                        loading.Visibility = Visibility.Collapsed;
+                        //converter.Convert(filePath, convertOptions);
+                    }
+
+                };
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_excel_salary_manager.php", web.QueryString);
+            }
+        }
+
+        private void Xuatfile(object sender, MouseButtonEventArgs e)
+        {
+            loading.Visibility = Visibility.Visible;
+            xuatExcel();
         }
     }
 }

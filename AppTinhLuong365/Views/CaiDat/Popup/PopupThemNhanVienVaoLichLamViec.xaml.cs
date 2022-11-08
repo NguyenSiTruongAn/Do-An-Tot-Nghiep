@@ -109,25 +109,29 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_all_employee_of_company api =
+                    try
+                    {
+                        API_List_all_employee_of_company api =
                         JsonConvert.DeserializeObject<API_List_all_employee_of_company>(
                             UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
-                    {
-                        listNV = listNV1 = api.data.items;
-                    }
+                        if (api.data != null)
+                        {
+                            listNV = listNV1 = api.data.items;
+                        }
 
-                    foreach (Item_all_employee_of_company item in listNV)
-                    {
-                        if (item.ep_image == "")
+                        foreach (Item_all_employee_of_company item in listNV)
                         {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                        }
-                        else
-                        {
-                            item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                            if (item.ep_image == "")
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
+                            else
+                            {
+                                item.ep_image = "https://chamcong.24hpay.vn/upload/employee/" + item.ep_image;
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync(
                     "https://chamcong.24hpay.vn/service/list_all_employee_of_company.php",
@@ -195,19 +199,24 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     web.QueryString.Add("cy_id", ID_gr);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_Add_employee_to_cycle api =
+                        try
+                        {
+                            API_Add_employee_to_cycle api =
                             JsonConvert.DeserializeObject<API_Add_employee_to_cycle>(
                                 UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
-                        {
+                            if (api.data != null)
+                            {
+                                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/add_employee_to_cycle.php",
                         web.QueryString);
                 }
 
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
-                this.Visibility = Visibility.Collapsed;
+                
             }
         }
     }

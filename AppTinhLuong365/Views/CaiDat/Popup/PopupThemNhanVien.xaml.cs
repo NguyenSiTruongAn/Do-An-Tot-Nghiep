@@ -77,18 +77,22 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 }
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_DSThemMoiNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_DSThemMoiNhanVienVaoNhom>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        listNV = listNV1 = api.data.list;
-                    }
-                    foreach (DSThemMoiNhanVienVaoNhom item in listNV)
-                    {
-                        if (item.ep_image == "/img/add.png")
+                        API_DSThemMoiNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_DSThemMoiNhanVienVaoNhom>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            listNV = listNV1 = api.data.list;
+                        }
+                        foreach (DSThemMoiNhanVienVaoNhom item in listNV)
+                        {
+                            if (item.ep_image == "/img/add.png")
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
                         }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_add_user_gr.php", web.QueryString);
             }
@@ -133,16 +137,21 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                         web.QueryString.Add("id_group", ID_gr);
                         web.UploadValuesCompleted += (s, ee) =>
                         {
-                            API_ThemNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_ThemNhanVienVaoNhom>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                            if (api.data != null)
+                            try
                             {
+                                API_ThemNhanVienVaoNhom api = JsonConvert.DeserializeObject<API_ThemNhanVienVaoNhom>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                                if (api.data != null)
+                                {
+                                    Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NhomLamViec(Main));
+                                    this.Visibility = Visibility.Collapsed;
+                                }
                             }
+                            catch { }
                         };
                         web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_emp_group_work.php", web.QueryString);
                     }
                 }
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NhomLamViec(Main));
-                this.Visibility = Visibility.Collapsed;
+                
             }
             
         }

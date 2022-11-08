@@ -187,12 +187,16 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                         web.QueryString.Add("money", tbInput.Text);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        string x = UnicodeEncoding.UTF8.GetString(ee.Result);
-                        API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(x);
-                        if (api.data != null)
+                        try
                         {
-                            Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupDSNhanVienADBaoHiem(Main,dsbh));
+                            string x = UnicodeEncoding.UTF8.GetString(ee.Result);
+                            API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(x);
+                            if (api.data != null)
+                            {
+                                Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupDSNhanVienADBaoHiem(Main, dsbh));
+                            }
                         }
+                        catch { }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/add_group_tax.php", web.QueryString);
                 }

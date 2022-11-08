@@ -95,14 +95,18 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                 web.QueryString.Add("id_user", ep_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_rose_nv api =
-                        JsonConvert.DeserializeObject<API_List_rose_nv>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        itemRose = api.data.rose;
-                        if(itemRose.Count > 0)
-                            itemRose1 = itemRose[0];
+                        API_List_rose_nv api =
+                        JsonConvert.DeserializeObject<API_List_rose_nv>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            itemRose = api.data.rose;
+                            if (itemRose.Count > 0)
+                                itemRose1 = itemRose[0];
+                        }
                     }
+                    catch { }
                     // loading.Visibility = Visibility.Collapsed;
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_rose_nv.php",

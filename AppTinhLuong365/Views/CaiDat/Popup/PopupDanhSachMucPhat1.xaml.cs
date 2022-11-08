@@ -60,11 +60,15 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("shift_id", id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_Np_Improperly api = JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        list = api.data.list;
+                        API_List_Np_Improperly api = JsonConvert.DeserializeObject<API_List_Np_Improperly>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            list = api.data.list;
+                        }
                     }
+                    catch { }
                     //foreach (EpLate item in list)
                     //{
                     //    if (item.ts_image != "/img/add.png")
@@ -93,17 +97,22 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                     web.QueryString.Add("pc_money", text);
                     web.UploadValuesCompleted += (s, ee) =>
                     {
-                        API_SuaNhomLamViec api = JsonConvert.DeserializeObject<API_SuaNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
-                        if (api.data != null)
+                        try
                         {
+                            API_SuaNhomLamViec api = JsonConvert.DeserializeObject<API_SuaNhomLamViec>(UnicodeEncoding.UTF8.GetString(ee.Result));
+                            if (api.data != null)
+                            {
+                                var pop = new Views.CaiDat.NghiPhep(Main);
+                                Main.HomeSelectionPage.NavigationService.Navigate(pop);
+                                pop.Control.SelectedIndex = 1;
+                                this.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        catch{ }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_np.php", web.QueryString);
                 }
-                var pop = new Views.CaiDat.NghiPhep(Main);
-                Main.HomeSelectionPage.NavigationService.Navigate(pop);
-                pop.Control.SelectedIndex = 1;
-                this.Visibility = Visibility.Collapsed;
+                
             }
             else
             {

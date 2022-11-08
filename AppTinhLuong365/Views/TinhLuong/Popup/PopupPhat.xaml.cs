@@ -105,14 +105,18 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                 web.QueryString.Add("id_emp", ep_id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ListThuongPhat api =
-                        JsonConvert.DeserializeObject<API_ListThuongPhat>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        data = api.data.thuong_phat;
-                        if(data.Count>0)
-                            dulieu = data[0];
+                        API_ListThuongPhat api =
+                        JsonConvert.DeserializeObject<API_ListThuongPhat>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
+                        {
+                            data = api.data.thuong_phat;
+                            if (data.Count > 0)
+                                dulieu = data[0];
+                        }
                     }
+                    catch { }
                     // loading.Visibility = Visibility.Collapsed;
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/tbl_payoff_manager.php",

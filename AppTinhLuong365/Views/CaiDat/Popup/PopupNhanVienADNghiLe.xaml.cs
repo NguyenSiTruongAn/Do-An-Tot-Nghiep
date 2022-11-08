@@ -58,30 +58,34 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("id_ho", id);
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_ep_holiday api = JsonConvert.DeserializeObject<API_List_ep_holiday>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        epHolidayList = api.data.ep_holiday_list;
-                        DateTime date;
-                        foreach (var a in _epHolidayList)
+                        API_List_ep_holiday api = JsonConvert.DeserializeObject<API_List_ep_holiday>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            DateTime.TryParse(a.time_start, out date);
-                            a.time_start = date.ToString("dd/MM/yyyy");
-                            DateTime.TryParse(a.time_end, out date);
-                            a.time_end = date.ToString("dd/MM/yyyy");
+                            epHolidayList = api.data.ep_holiday_list;
+                            DateTime date;
+                            foreach (var a in _epHolidayList)
+                            {
+                                DateTime.TryParse(a.time_start, out date);
+                                a.time_start = date.ToString("dd/MM/yyyy");
+                                DateTime.TryParse(a.time_end, out date);
+                                a.time_end = date.ToString("dd/MM/yyyy");
+                            }
+                        }
+                        foreach (EpHolidayItem item in epHolidayList)
+                        {
+                            if (item.ep_image != "../img/add.png")
+                            {
+                                item.ep_image = item.ep_image;
+                            }
+                            else
+                            {
+                                item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
+                            }
                         }
                     }
-                    foreach (EpHolidayItem item in epHolidayList)
-                    {
-                        if (item.ep_image != "../img/add.png")
-                        {
-                            item.ep_image = item.ep_image;
-                        }
-                        else
-                        {
-                            item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
-                        }
-                    }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_holiday.php", web.QueryString);
             }

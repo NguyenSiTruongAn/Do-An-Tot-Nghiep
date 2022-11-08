@@ -52,21 +52,24 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 web.QueryString.Add("id_u", id_ep);
                 web.UploadValuesCompleted += (s, ee) =>
                 {
-                    API_Delete_cycle_of_employee api =
+                    try
+                    {
+                        API_Delete_cycle_of_employee api =
                         JsonConvert.DeserializeObject<API_Delete_cycle_of_employee>(
                             UnicodeEncoding.UTF8.GetString(ee.Result));
-                    if (api.data != null)
-                    {
+                        if (api.data != null)
+                        {
+                            var pop = new Views.CaiDat.NghiLe(Main);
+                            Main.HomeSelectionPage.NavigationService.Navigate(pop);
+                            // pop.Control.SelectedIndex = 1;
+                            this.Visibility = Visibility.Collapsed;
+                        }
                     }
+                    catch { }
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/delete_ep_holiday.php",
                     web.QueryString);
             }
-
-            var pop = new Views.CaiDat.NghiLe(Main);
-            Main.HomeSelectionPage.NavigationService.Navigate(pop);
-            // pop.Control.SelectedIndex = 1;
-            this.Visibility = Visibility.Collapsed;
         }
     }
 }
