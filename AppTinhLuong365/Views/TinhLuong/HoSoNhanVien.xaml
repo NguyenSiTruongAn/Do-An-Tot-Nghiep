@@ -54,8 +54,10 @@
                 <StackPanel>
                     <Grid>
                         <TextBlock Text="Giới thiệu" FontSize="18" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}" Margin="19 16 0 0"></TextBlock>
-                        <Path Cursor="Hand" MouseLeftButtonDown="OpenDes" Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 -15 20 0">
-                        </Path>
+                        <Border Cursor="Hand" MouseLeftButtonDown="OpenDes" Background="Transparent">
+                            <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #2E3467}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 -15 20 0">
+                            </Path>
+                        </Border>
                     </Grid>
                     <TextBlock x:Name="txtGioiThieu" Text="{Binding ep_description}" FontSize="15" Foreground="{DynamicResource #666C7C}">
                         <TextBlock.Style>

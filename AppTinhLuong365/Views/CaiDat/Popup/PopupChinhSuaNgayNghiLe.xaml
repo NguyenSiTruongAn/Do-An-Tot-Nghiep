@@ -6,10 +6,11 @@
       xmlns:local="clr-namespace:AppTinhLuong365.Views.CaiDat.Popup"
       xmlns:tool="clr-namespace:AppTinhLuong365.Resouce.tool"
       mc:Ignorable="d" 
-      d:DesignHeight="415" d:DesignWidth="528"
+      d:DesignWidth="528"
+      VerticalAlignment="Top"
       Title="PopupChinhSuaNgayNghiLe">
 
-    <Grid Width="528" Height="415">
+    <Grid Width="528">
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.4"></DropShadowEffect>

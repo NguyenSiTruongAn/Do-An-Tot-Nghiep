@@ -62,23 +62,31 @@ namespace AppTinhLuong365.Views.CaiDat
 
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        Main.listTB = api.data.abc;
-                        if (Main.listTB != null)
-                            Main.sotb = Main.listTB.Count;
-                        if (Main.sotb >= 10)
+                        API_ThongBaoCT api = JsonConvert.DeserializeObject<API_ThongBaoCT>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            Main.fontsize = 10;
-                            Main.margin = new Thickness(10, -7, 0, 0);
-                        }
-                        else
-                        {
-                            Main.fontsize = 14;
-                            Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            Main.listTB = api.data.abc;
+                            if (Main.listTB != null)
+                                Main.sotb = Main.listTB.Count;
+                            if (Main.sotb >= 10)
+                            {
+                                Main.fontsize = 10;
+                                Main.margin = new Thickness(10, -7, 0, 0);
+                            }
+                            else
+                            {
+                                Main.fontsize = 14;
+                                Main.margin = new Thickness(12.5, -10.5, 0, 0);
+                            }
                         }
                     }
+                    catch
+                    {
+
+                    }
+                    
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_notify.php", web.QueryString);
             }
@@ -118,14 +126,7 @@ namespace AppTinhLuong365.Views.CaiDat
                     if (api.data != null)
                     {
                         holidayList = api.data.holiday_list;
-                        DateTime date;
-                        foreach (var a in holidayList)
-                        {
-                            DateTime.TryParse(a.time_start, out date);
-                            a.time_start = date.ToString("dd/MM/yyyy");
-                            DateTime.TryParse(a.time_end, out date);
-                            a.time_end = date.ToString("dd/MM/yyyy");
-                        }
+                        
                     }
                     //foreach (ItemNp item in list)
                     //{
@@ -156,19 +157,16 @@ namespace AppTinhLuong365.Views.CaiDat
                 web.QueryString.Add("year", "2021");
                 web.UploadValuesCompleted += (s, e) =>
                 {
-                    API_List_Holiday api = JsonConvert.DeserializeObject<API_List_Holiday>(UnicodeEncoding.UTF8.GetString(e.Result));
-                    if (api.data != null)
+                    try
                     {
-                        holidayList1 = api.data.holiday_list;
-                        DateTime date;
-                        foreach (var a in holidayList1)
+                        API_List_Holiday api = JsonConvert.DeserializeObject<API_List_Holiday>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        if (api.data != null)
                         {
-                            DateTime.TryParse(a.time_start, out date);
-                            a.time_start = date.ToString("dd/MM/yyyy");
-                            DateTime.TryParse(a.time_end, out date);
-                            a.time_end = date.ToString("dd/MM/yyyy");
+                            holidayList1 = api.data.holiday_list;
+
                         }
                     }
+                    catch { }
                     //foreach (ItemNp item in list)
                     //{
                     //    if (item.ts_image != "/img/add.png")
@@ -189,7 +187,7 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             TextBlock t = sender as TextBlock;
             HolidayList data = (HolidayList)t.DataContext;
-            var pop = new Views.CaiDat.Popup.PopupTuyChinhNgayNghiLe(Main, data.lho_id, data.lho_name, data.lho_number, data.lho_status, data.time_start, data.time_end);
+            var pop = new Views.CaiDat.Popup.PopupTuyChinhNgayNghiLe(Main, data.lho_id, data.lho_name, data.lho_number, data.lho_status, data._time_start, data._time_end);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 208, z.Y + 30, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);

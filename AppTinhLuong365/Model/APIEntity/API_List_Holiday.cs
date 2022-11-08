@@ -42,7 +42,42 @@ namespace AppTinhLuong365.Model.APIEntity
         }
         public string lho_time_created { get; set; }
         public string time_start { get; set; }
+        public string display_time_start
+        {
+            get
+            {
+                string result = "";
+                result = time_start.Split('-')[0] + "/" + time_start.Split('-')[1] + "/" + time_start.Split('-')[2];
+                return result;
+            }
+        }
+        public string _time_start
+        {
+            get
+            {
+                string result = "";
+                result = time_start.Split('-')[2] + "/" + time_start.Split('-')[1] + "/" + time_start.Split('-')[0];
+                return result;
+            }
+        }
         public string time_end { get; set; }
+        public string display_time_end
+        {
+            get
+            {
+                string result = "";
+                result = time_end.Split('-')[0] + "/" + time_end.Split('-')[1] + "/" + time_end.Split('-')[2];
+                return result;
+            }
+        }public string _time_end
+        {
+            get
+            {
+                string result = "";
+                result = time_end.Split('-')[2] + "/" + time_end.Split('-')[1] + "/" + time_end.Split('-')[0];
+                return result;
+            }
+        }
     }
 
     public class API_List_Holiday

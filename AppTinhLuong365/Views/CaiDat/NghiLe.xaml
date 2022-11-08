@@ -75,9 +75,9 @@
                                                                     <StackPanel VerticalAlignment="Top" Margin="25 0 0 0">
                                                                         <TextBlock FontSize="14" Foreground="{DynamicResource #5F648D}" FontWeight="DemiBold" Text="Nghỉ Từ Ngày"/>
                                                                         <TextBlock Margin="0 5 0 23" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold">
-                                                                            <Run Text="{Binding time_start}"/>
+                                                                            <Run Text="{Binding display_time_start,Mode=OneWay}"/>
                                                                             <Run Text="-"/>
-                                                                            <Run Text="{Binding time_end}"/>
+                                                                            <Run Text="{Binding display_time_end, Mode=OneWay}"/>
                                                                         </TextBlock>
                                                                     </StackPanel>
                                                                 </Grid>
@@ -170,9 +170,9 @@
                                                                     <StackPanel VerticalAlignment="Top" Margin="25 0 0 0">
                                                                         <TextBlock FontSize="14" Foreground="{DynamicResource #5F648D}" FontWeight="DemiBold" Text="Nghỉ Từ Ngày"/>
                                                                         <TextBlock Margin="0 5 0 23" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold">
-                                                                            <Run Text="{Binding time_start}"/>
+                                                                            <Run Text="{Binding display_time_start,Mode=OneWay}"/>
                                                                             <Run Text="-"/>
-                                                                            <Run Text="{Binding time_end}"/>
+                                                                            <Run Text="{Binding display_time_end,Mode=OneWay}"/>
                                                                         </TextBlock>
                                                                     </StackPanel>
                                                                 </Grid>

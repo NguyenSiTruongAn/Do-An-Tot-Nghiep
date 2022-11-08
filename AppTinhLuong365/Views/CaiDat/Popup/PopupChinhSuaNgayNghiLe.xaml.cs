@@ -115,14 +115,15 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                             JsonConvert.DeserializeObject<API_Add_late>(a);
                         if (api.data != null)
                         {
+                            Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiLe(Main));
+                            this.Visibility = Visibility.Collapsed;
                         }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_holiday.php",
                         web.QueryString);
                 }
 
-                Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiLe(Main));
-                this.Visibility = Visibility.Collapsed;
+                
             }
         }
     }

@@ -89,7 +89,7 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar x:Name="searchBarMonth1" Foreground="{DynamicResource #444}" FontSize="16"
+                                                <tool:SearchBar x:Name="searchBarMonth1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 Loaded="SearchBarMonth_OnLoaded" />
@@ -97,13 +97,13 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar x:Name="searchBarYear1" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
+                                                <tool:SearchBar x:Name="searchBarYear1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
                                                                 ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" Loaded="FrameworkElement_OnLoaded"/>
                                             </Border>
                                             <Border Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar x:Name="cbPhongBan" Foreground="{DynamicResource #444}"
+                                                <tool:SearchBar x:Name="cbPhongBan" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}"
                                                                 FontSize="16" PlaceHolder="Phòng ban (tất cả)"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}"
@@ -116,7 +116,7 @@
                                                                 FontSize="16" PlaceHolder="Tất cả nhân viên"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}"
-                                                                DisplayMemberPath="ep_id_display" />
+                                                                DisplayMemberPath="display_ep_name" />
                                             </Border>
                                             <Border MouseLeftButtonDown="ThongKe" Cursor="Hand" Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0"
