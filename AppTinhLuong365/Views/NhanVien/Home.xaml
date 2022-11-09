@@ -129,19 +129,19 @@
                         </Border>
                         <Border VerticalAlignment="Top" Margin="0 0 0 0" CornerRadius="10" Background="{DynamicResource #FFFFFF}" Height="122">
                             <Grid>
-                                <TextBlock FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #9C2B23}">
+                                <TextBlock FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #afa70f}">
                                     <TextBlock.Style>
                                         <Style TargetType="TextBlock">
-                                            <Setter Property="Text" Value="{Binding listNV.form_pending}"/>
+                                            <Setter Property="Text" Value="{Binding listNV.cong_ghi_nhan}"/>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding listNV.form_pending}" Value="">
+                                                <DataTrigger Binding="{Binding listNV.cong_ghi_nhan}" Value="">
                                                     <Setter Property="Text" Value="0"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </TextBlock.Style>
                                 </TextBlock>
-                                <TextBlock FontWeight="DemiBold" Text="{DynamicResource textProposalPendingApproval}" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="24 75 0 0"></TextBlock>
+                                <TextBlock FontWeight="DemiBold" Text="Công ghi nhận thêm" FontSize="15" Foreground="{DynamicResource #666C7C}" Margin="24 75 0 0"></TextBlock>
                             </Grid>
                         </Border>
                     </Grid>
