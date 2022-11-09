@@ -848,7 +848,7 @@
                         <Run Text="(VNĐ)" />
                     </TextBlock>
                 </Border>
-                <Border MouseLeftButtonDown="XuatFileThongKe" Margin="0 15 0 0" CornerRadius="5" HorizontalAlignment="Left" Width="191.5" Height="40"
+                <Border Cursor="Hand" MouseLeftButtonDown="XuatFileThongKe" Margin="0 15 0 0" CornerRadius="5" HorizontalAlignment="Left" Width="191.5" Height="40"
                         Background="{DynamicResource #4C5BD4}">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                         <Path Data="{DynamicResource iconThongke}" Fill="{DynamicResource #FFFFFF}"></Path>

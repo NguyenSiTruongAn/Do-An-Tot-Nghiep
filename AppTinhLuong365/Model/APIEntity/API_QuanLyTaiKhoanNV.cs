@@ -13,6 +13,7 @@ namespace AppTinhLuong365.Model.APIEntity
         public string work_day { get; set; }
         public string sum_late { get; set; }
         public string form_pending { get; set; }
+        public string cong_ghi_nhan { get; set; }
         public string message { get; set; }
     }
 

@@ -211,7 +211,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                                             Chitietca = listDSNV[i - 1];
                                         var d = new lichlamviec() { id = listLich.Count, ngay = i, ctca = Chitietca, status = 1 };
                                         DateTime date = DateTime.Parse(year + "-" + month + "-" + i);
-                                        if (date == DateTime.Now)
+                                        if (date.ToString("yyyy/MM/dd") == DateTime.Now.ToString("yyyy/MM/dd"))
                                             d.status = 3;
                                         listLich.Add(d);
                                     }
