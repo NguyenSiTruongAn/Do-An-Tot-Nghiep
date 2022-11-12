@@ -9,6 +9,7 @@
       mc:Ignorable="d" 
       Background="#F7F8FC"
       SizeChanged="Page_SizeChanged"
+      x:Name="page"
       Title="ChamCong" d:DesignWidth="1743.327">
     <Page.Resources>
         <math:MathConvert x:Key="math"></math:MathConvert>
@@ -45,7 +46,7 @@
     </Page.Resources>
     <Grid>
         <StackPanel>
-            <Border Background="#fff" CornerRadius="10" BorderBrush="{DynamicResource #ebebeb}">
+            <Border x:Name="boder" Background="#fff" CornerRadius="10" BorderBrush="{DynamicResource #ebebeb}">
                 <StackPanel Margin="20">
                     <DockPanel>
                         <DockPanel x:Name="dockChamCong" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 10 0 0">
