@@ -18,7 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using AppTinhLuong365.Model.APIEntity;
-using Aspose.Cells;
+//using Aspose.Cells;
 using Microsoft.Win32;
 using Border = System.Windows.Controls.Border;
 using Path = System.Windows.Shapes.Path;
@@ -1212,7 +1212,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                     if (dialog.ShowDialog() == true)
                     {
                         filePath = dialog.FileName;
-                        var workbook = new Workbook("../../Views/BaoCaoCongLuong/Excel/tong_hop_bao_hiem.html");
+                        /*var workbook = new Workbook("../../Views/BaoCaoCongLuong/Excel/tong_hop_bao_hiem.html");
                         try
                         {
                             workbook.Save(filePath);
@@ -1220,7 +1220,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        }
+                        }*/
 
                         loading.Visibility = Visibility.Collapsed;
                         //converter.Convert(filePath, convertOptions);

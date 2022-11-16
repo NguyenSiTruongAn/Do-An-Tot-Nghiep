@@ -14,7 +14,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Aspose.Cells;
+//using Aspose.Cells;
 using Microsoft.Win32;
 using Border = System.Windows.Controls.Border;
 
@@ -908,7 +908,7 @@ namespace AppTinhLuong365.Views.CaiDat
                         if (dialog.ShowDialog() == true)
                         {
                             filePath = dialog.FileName;
-                            var workbook = new Workbook("../../Views/CaiDat/di_muon_ve_som.html");
+                            /*var workbook = new Workbook("../../Views/CaiDat/di_muon_ve_som.html");
                             try
                             {
                                 workbook.Save(filePath);
@@ -916,7 +916,7 @@ namespace AppTinhLuong365.Views.CaiDat
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                            }
+                            }*/
                             loading.Visibility = Visibility.Collapsed;
                             //converter.Convert(filePath, convertOptions);
                         }
