@@ -45,6 +45,10 @@ namespace AppTinhLuong365.Views.TrangChu
             Main = main;
             getData();
             com_image = "https://chamcong.24hpay.vn/upload/company/logo/" + Main.CurrentCompany.com_logo;
+            if(string.IsNullOrEmpty(Main.CurrentCompany.com_logo))
+            {
+                com_image = "https://quanlychung.timviec365.vn/img/logo_com.png";
+            }    
             getData1(1);
             getDataTB();
         }

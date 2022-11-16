@@ -106,6 +106,11 @@
                     </LinearGradientBrush>
                 </Path.Fill>
             </Path>
+            <Border Height="30" Width="30" HorizontalAlignment="Left" Margin="10 0" CornerRadius="30">
+                <Border.Background>
+                    <ImageBrush ImageSource="https://quanlychung.timviec365.vn/img/ql-tinhluong.png"/>
+                </Border.Background>
+            </Border>
             <TextBlock VerticalAlignment="Top" Text="Phần mềm tính lương" HorizontalAlignment="Left" Margin="50,4,0,0" FontSize="18" Foreground="#FF4C5BD4" FontWeight="Bold"></TextBlock>
             <TextBlock VerticalAlignment="Top" Text="Timviec365" HorizontalAlignment="Left" Margin="50,23,0,0" FontSize="11" Foreground="#FF4C5BD4" Width="58" Height="13"></TextBlock>
             <Grid x:Name="Minimimize" Cursor="Hand" Margin="0,14,94,0" HorizontalAlignment="Right" Width="15" Height="15" VerticalAlignment="Top" MouseLeftButtonDown="Minimimize_MouseLeftButtonDown" Background="Transparent" >
@@ -178,7 +183,7 @@
             <!--<ListView Name="sidebarNV" Margin="0 7" ItemsSource="{Binding SideBarItemsNV}" BorderThickness="0" ItemContainerStyle="{StaticResource SideBarItem1}" SelectedIndex="{Binding SideBarIndexNV}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>-->
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Background="{DynamicResource #F7F8FC}">
-            <ScrollViewer x:Name="scrollMain" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+            <ScrollViewer x:Name="scrollMain" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                 <Frame Margin="20" x:Name="HomeSelectionPage" NavigationUIVisibility="Hidden" BorderThickness="0" IsVisibleChanged="HomeSelectionPage_IsVisibleChanged"></Frame>
             </ScrollViewer>
         </Grid>

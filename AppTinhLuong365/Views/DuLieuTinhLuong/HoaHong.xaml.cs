@@ -25,6 +25,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 //using GroupDocs.Conversion.Options.Convert;
 using System.Net.Http;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace AppTinhLuong365.Views.DuLieuTinhLuong
 {
@@ -383,6 +384,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     {
                         filePath = dialog.FileName;
                         var workbook = new Workbook($"{Environment.GetEnvironmentVariable("APPDATA")}/TinhLuong/hoa_hong365.html");
+                        var worksheet = workbook.Worksheets[0];
                         try
                         {
                             workbook.Save(filePath);
@@ -391,13 +393,50 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         {
                             MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
-                        //converter.Convert(filePath, convertOptions);
+                        Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+                        if (xlApp == null)
+                        {
+                            MessageBox.Show("Excel is not properly installed!!");
+                            return;
+                        }
+
+
+                        xlApp.DisplayAlerts = false;
+                        Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(filePath, 0, false, 5, "", "", false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
+                        Excel.Sheets worksheets = xlWorkBook.Worksheets;
+                        worksheets[2].Delete();
+                        xlWorkBook.Save();
+                        xlWorkBook.Close();
+
+                        releaseObject(worksheets);
+                        releaseObject(xlWorkBook);
+                        releaseObject(xlApp);
                     }
                     loading.Visibility = Visibility.Collapsed;
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_rose.php", web.QueryString);
             }
         }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+
         private void XuatFileThongKe(object sender, MouseButtonEventArgs e)
         {
             loading.Visibility = Visibility.Visible;
