@@ -1188,7 +1188,12 @@ namespace AppTinhLuong365.Views.TinhLuong
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     data = UnicodeEncoding.UTF8.GetString(e.Result);
-                    File.WriteAllText("../../Views/TinhLuong/bang_luong.html", data);
+                    string path = $"{Environment.GetEnvironmentVariable("APPDATA")}/TinhLuong/";
+                    if (!System.IO.Directory.Exists(path))
+                    {
+                        System.IO.Directory.CreateDirectory(path);
+                    }
+                    File.WriteAllText($"{Environment.GetEnvironmentVariable("APPDATA")}/TinhLuong/bang_luong.html", data);
                     string filePath = "";
                     // tạo SaveFileDialog để lưu file excel
                     SaveFileDialog dialog = new SaveFileDialog();
@@ -1200,7 +1205,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                     if (dialog.ShowDialog() == true)
                     {
                         filePath = dialog.FileName;
-                        var converter = new GroupDocs.Conversion.Converter("../../Views/TinhLuong/bang_luong.html");
+                        var converter = new GroupDocs.Conversion.Converter($"{Environment.GetEnvironmentVariable("APPDATA")}/TinhLuong/bang_luong.html");
                         // Set conversion parameters for XLSX format
                         var convertOptions = converter.GetPossibleConversions()["xlsx"].ConvertOptions;
                         // Convert to XLSX format
