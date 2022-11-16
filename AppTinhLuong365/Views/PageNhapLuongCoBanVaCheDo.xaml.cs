@@ -1,5 +1,5 @@
 ﻿using AppTinhLuong365.Model.APIEntity;
-using Aspose.Cells;
+//using Aspose.Cells;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
@@ -775,7 +775,7 @@ namespace AppTinhLuong365.Views
                     if (dialog.ShowDialog() == true)
                     {
                         filePath = dialog.FileName;
-                        var workbook = new Workbook("../../Views/DuLieuTinhLuong/hoa_hong365.html");
+                        /*var workbook = new Workbook("../../Views/DuLieuTinhLuong/hoa_hong365.html");
                         try
                         {
                             workbook.Save(filePath);
@@ -783,7 +783,7 @@ namespace AppTinhLuong365.Views
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        }
+                        }*/
                         loading.Visibility = Visibility.Collapsed;
                         //converter.Convert(filePath, convertOptions);
                     }

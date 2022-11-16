@@ -20,7 +20,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AppTinhLuong365.Core;
 using AppTinhLuong365.Model.APIEntity;
-using Aspose.Cells;
+//using Aspose.Cells;
 using Newtonsoft.Json;
 
 namespace AppTinhLuong365.Views.DuLieuTinhLuong
@@ -835,7 +835,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     if (dialog.ShowDialog() == true)
                     {
                         filePath = dialog.FileName;
-                        var workbook = new Workbook("../../Views/DuLieuTinhLuong/thuong_phat_365.html");
+                        /*var workbook = new Workbook("../../Views/DuLieuTinhLuong/thuong_phat_365.html");
                         try
                         {
                             workbook.Save(filePath);
@@ -844,7 +844,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         {
                             System.Windows.MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK,
                                 MessageBoxImage.Warning);
-                        }
+                        }*/
 
                         loading.Visibility = Visibility.Collapsed;
                         //converter.Convert(filePath, convertOptions);

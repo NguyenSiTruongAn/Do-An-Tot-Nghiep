@@ -3,7 +3,7 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 //using OfficeOpenXml;
 //using OfficeOpenXml.Style;
-using Aspose.Cells;
+//using Aspose.Cells;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -377,7 +377,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     if (dialog.ShowDialog() == true)
                     {
                         filePath = dialog.FileName;
-                        var workbook = new Workbook("../../Views/DuLieuTinhLuong/hoa_hong365.html");
+                        /*var workbook = new Workbook("../../Views/DuLieuTinhLuong/hoa_hong365.html");
                         try
                         {
                             workbook.Save(filePath);
@@ -385,7 +385,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         catch(Exception ex)
                         {
                             MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        }
+                        }*/
                         loading.Visibility = Visibility.Collapsed;
                         //converter.Convert(filePath, convertOptions);
                     }
