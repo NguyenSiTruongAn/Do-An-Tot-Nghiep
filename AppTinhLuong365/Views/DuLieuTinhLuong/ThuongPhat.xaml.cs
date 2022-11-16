@@ -20,7 +20,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AppTinhLuong365.Core;
 using AppTinhLuong365.Model.APIEntity;
-//using Aspose.Cells;
+using Aspose.Cells;
 using Newtonsoft.Json;
 
 namespace AppTinhLuong365.Views.DuLieuTinhLuong
@@ -823,7 +823,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 web.UploadValuesCompleted += (s, ee) =>
                 {
                     data = UnicodeEncoding.UTF8.GetString(ee.Result);
-                    File.WriteAllText("../../Views/DuLieuTinhLuong/thuong_phat_365.html", data);
+                    string path = $"{Environment.GetEnvironmentVariable("APPDATA")}/TinhLuong/";
+                    if (!System.IO.Directory.Exists(path))
+                    {
+                        System.IO.Directory.CreateDirectory(path);
+                    }
+                    File.WriteAllText($"{ Environment.GetEnvironmentVariable("APPDATA")}/ TinhLuong / thuong_phat_365.html", data);
                     string filePath = "";
                     // tạo SaveFileDialog để lưu file excel
                     Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog();
@@ -835,7 +840,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     if (dialog.ShowDialog() == true)
                     {
                         filePath = dialog.FileName;
-                        /*var workbook = new Workbook("../../Views/DuLieuTinhLuong/thuong_phat_365.html");
+                        var workbook = new Workbook($"{ Environment.GetEnvironmentVariable("APPDATA")}/ TinhLuong / thuong_phat_365.html");
                         try
                         {
                             workbook.Save(filePath);
@@ -844,7 +849,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         {
                             System.Windows.MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK,
                                 MessageBoxImage.Warning);
-                        }*/
+                        }
 
                         loading.Visibility = Visibility.Collapsed;
                         //converter.Convert(filePath, convertOptions);

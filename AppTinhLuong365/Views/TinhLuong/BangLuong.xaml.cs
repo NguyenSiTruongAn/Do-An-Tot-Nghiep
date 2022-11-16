@@ -12,7 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-//using Aspose.Cells;
+using Aspose.Cells;
 using Microsoft.Win32;
 using Border = System.Windows.Controls.Border;
 using Path = System.Windows.Shapes.Path;
@@ -1205,12 +1205,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                     if (dialog.ShowDialog() == true)
                     {
                         filePath = dialog.FileName;
-                        var converter = new GroupDocs.Conversion.Converter($"{Environment.GetEnvironmentVariable("APPDATA")}/TinhLuong/bang_luong.html");
-                        // Set conversion parameters for XLSX format
-                        var convertOptions = converter.GetPossibleConversions()["xlsx"].ConvertOptions;
-                        // Convert to XLSX format
-                        converter.Convert(filePath, convertOptions);
-                        /*var workbook = new Workbook("../../Views/TinhLuong/bang_luong.html");
+                        var workbook = new Workbook($"{Environment.GetEnvironmentVariable("APPDATA")}/TinhLuong/bang_luong.html");
                         try
                         {
                             workbook.Save(filePath);
@@ -1218,11 +1213,10 @@ namespace AppTinhLuong365.Views.TinhLuong
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        }*/
-
-                        loading.Visibility = Visibility.Collapsed;
+                        }
                         //converter.Convert(filePath, convertOptions);
                     }
+                    loading.Visibility = Visibility.Collapsed;
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_tbl_luong.php",
                     web.QueryString);

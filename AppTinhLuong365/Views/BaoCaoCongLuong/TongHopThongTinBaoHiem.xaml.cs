@@ -18,7 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using AppTinhLuong365.Model.APIEntity;
-//using Aspose.Cells;
+using Aspose.Cells;
 using Microsoft.Win32;
 using Border = System.Windows.Controls.Border;
 using Path = System.Windows.Shapes.Path;
@@ -1200,7 +1200,12 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     data = UnicodeEncoding.UTF8.GetString(e.Result);
-                    File.WriteAllText("../../Views/BaoCaoCongLuong/Excel/tong_hop_bao_hiem.html", data);
+                    string path = $"{Environment.GetEnvironmentVariable("APPDATA")}/TinhLuong/";
+                    if (!System.IO.Directory.Exists(path))
+                    {
+                        System.IO.Directory.CreateDirectory(path);
+                    }
+                    File.WriteAllText($"{Environment.GetEnvironmentVariable("APPDATA")}/TinhLuong/tong_hop_bao_hiem.html", data);
                     string filePath = "";
                     // tạo SaveFileDialog để lưu file excel
                     SaveFileDialog dialog = new SaveFileDialog();
@@ -1212,7 +1217,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                     if (dialog.ShowDialog() == true)
                     {
                         filePath = dialog.FileName;
-                        /*var workbook = new Workbook("../../Views/BaoCaoCongLuong/Excel/tong_hop_bao_hiem.html");
+                        var workbook = new Workbook($"{Environment.GetEnvironmentVariable("APPDATA")}/TinhLuong/tong_hop_bao_hiem.html");
                         try
                         {
                             workbook.Save(filePath);
@@ -1220,11 +1225,11 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        }*/
+                        }
 
-                        loading.Visibility = Visibility.Collapsed;
                         //converter.Convert(filePath, convertOptions);
                     }
+                    loading.Visibility = Visibility.Collapsed;
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_luong_th.php  ",
                     web.QueryString);
