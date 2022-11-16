@@ -76,8 +76,8 @@
     <ApplicationIcon>Asset tinhluong %281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GroupDocs.Conversion, Version=22.10.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\GroupDocs.Conversion.22.10.0\lib\net35\GroupDocs.Conversion.dll</HintPath>
+    <Reference Include="Aspose.Cells, Version=22.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Cells.22.11.0\lib\net40\Aspose.Cells.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
@@ -1962,7 +1962,5 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
-    <Error Condition="!Exists('..\packages\GroupDocs.Conversion.22.10.0\build\net35\GroupDocs.Conversion.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GroupDocs.Conversion.22.10.0\build\net35\GroupDocs.Conversion.targets'))" />
   </Target>
-  <Import Project="..\packages\GroupDocs.Conversion.22.10.0\build\net35\GroupDocs.Conversion.targets" Condition="Exists('..\packages\GroupDocs.Conversion.22.10.0\build\net35\GroupDocs.Conversion.targets')" />
 </Project>
