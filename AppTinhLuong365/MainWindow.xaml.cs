@@ -83,6 +83,10 @@ namespace AppTinhLuong365
             sidebarNV.Visibility = Visibility.Collapsed;
             tblUserName.Text = CurrentCompany.com_name;
             CurrentImage = "https://chamcong.24hpay.vn/upload/company/logo/" + CurrentCompany.com_logo;
+            if (string.IsNullOrEmpty(CurrentCompany.com_logo))
+            {
+                CurrentImage = "https://quanlychung.timviec365.vn/img/logo_com.png";
+            }
             MainType = 0;
             getData();
         }

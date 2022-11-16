@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using Border = System.Windows.Controls.Border;
 using Path = System.Windows.Shapes.Path;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace AppTinhLuong365.Views.BaoCaoCongLuong
 {
@@ -1158,6 +1159,25 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                         try
                         {
                             workbook.Save(filePath);
+                            Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+                            if (xlApp == null)
+                            {
+                                MessageBox.Show("Excel is not properly installed!!");
+                                return;
+                            }
+
+
+                            xlApp.DisplayAlerts = false;
+                            Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(filePath, 0, false, 5, "", "", false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
+                            Excel.Sheets worksheets = xlWorkBook.Worksheets;
+                            worksheets[2].Delete();
+                            xlWorkBook.Save();
+                            xlWorkBook.Close();
+
+                            releaseObject(worksheets);
+                            releaseObject(xlWorkBook);
+                            releaseObject(xlApp);
                         }
                         catch (Exception ex)
                         {
@@ -1170,6 +1190,24 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/export_luong_th.php  ",
                     web.QueryString);
+            }
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
             }
         }
 
