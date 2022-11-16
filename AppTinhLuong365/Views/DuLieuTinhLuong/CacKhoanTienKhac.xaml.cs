@@ -119,7 +119,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         public List<DSCacKhoanTienKhac> listCacKhoanTienKhac
         {
             get { return _listCacKhoanTienKhac; }
-            set { _listCacKhoanTienKhac = value; OnPropertyChanged(); }
+            set {
+                _listCacKhoanTienKhac = value;
+                OnPropertyChanged();
+                lv.ItemsSource = null;
+                lv.Items.Clear();
+            }
         }
 
         private void getData()
@@ -138,6 +143,10 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                         API_DSCacKhoanTienKhac api = JsonConvert.DeserializeObject<API_DSCacKhoanTienKhac>(UnicodeEncoding.UTF8.GetString(e.Result));
                         if (api.data != null)
                         {
+                            if(listCacKhoanTienKhac != null)
+                            {
+                                listCacKhoanTienKhac.Clear();
+                            }
                             listCacKhoanTienKhac = api.data.other_list;
                         }
                     }

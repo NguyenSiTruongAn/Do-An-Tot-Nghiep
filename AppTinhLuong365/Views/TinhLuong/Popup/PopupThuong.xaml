@@ -11,7 +11,7 @@
         <Border Style="{StaticResource ShadowBorder2}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Grid>
-                <DataGrid Margin="10 20" HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid8}" ItemsSource="{Binding dulieu.dt_thuong}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <DataGrid Margin="10 20" HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid8}" ItemsSource="{Binding dulieu.dt_thuong}" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>

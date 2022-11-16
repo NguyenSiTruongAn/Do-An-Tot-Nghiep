@@ -84,7 +84,7 @@ namespace AppTinhLuong365.Model.APIEntity
         public string cong_ghi_nhan { get; set; }
         public string cong_nghi_phep { get; set; }
         public string tong_cong_nhan { get; set; }
-        public string luong_thuc { get; set; }
+        public double luong_thuc { get; set; }
         public string display_luong_thuc
         {
             get
@@ -105,7 +105,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string luong_sau_phat { get; set; }
+        public double luong_sau_phat { get; set; }
         public string display_luong_sau_phat
         {
             get
@@ -152,7 +152,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 }
             }
         }
-        public string ms_phat_tien { get; set; }
+        public double ms_phat_tien { get; set; }
         public string display_ms_phat_tien
         {
             get
@@ -195,7 +195,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string tam_ung { get; set; }
+        public double tam_ung { get; set; }
         public string display_tam_ung
         {
             get
@@ -216,7 +216,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string thuong { get; set; }
+        public double thuong { get; set; }
         public string display_thuong
         {
             get
@@ -258,7 +258,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string phat { get; set; }
+        public double phat { get; set; }
         public string display_phat
         {
             get
@@ -279,7 +279,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string phat_nghi { get; set; }
+        public double phat_nghi { get; set; }
         public string display_phat_nghi
         {
             get
@@ -300,7 +300,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string phat_nghi_sqd { get; set; }
+        public double phat_nghi_sqd { get; set; }
         public string display_phat_nghi_sqd
         {
             get
@@ -321,7 +321,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string phuc_loi { get; set; }
+        public double phuc_loi { get; set; }
         public string display_phuc_loi
         {
             get
@@ -342,7 +342,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string phu_cap { get; set; }
+        public double phu_cap { get; set; }
         public string display_phu_cap
         {
             get
@@ -363,7 +363,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string phu_cap_ca { get; set; }
+        public double phu_cap_ca { get; set; }
         public string display_phu_cap_ca
         {
             get
@@ -384,7 +384,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string bao_hiem { get; set; }
+        public double bao_hiem { get; set; }
         public string display_bao_hiem
         {
             get
@@ -405,7 +405,7 @@ namespace AppTinhLuong365.Model.APIEntity
                 return a;
             }
         }
-        public string khoan_khac { get; set; }
+        public double khoan_khac { get; set; }
         public string display_khoan_khac
         {
             get

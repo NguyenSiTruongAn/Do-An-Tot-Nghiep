@@ -302,6 +302,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                     catch { }
 
                     loading.Visibility = Visibility.Collapsed;
+                    stBangLuong.Visibility = Visibility.Visible;
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_bang_luong_nv.php",
                     web.QueryString);
