@@ -170,7 +170,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
         {
             if (!string.IsNullOrEmpty(ep_id))
             {
-                st.Visibility = Visibility.Visible;
+                scroll.Visibility = Visibility.Visible;
                 this.Dispatcher.Invoke(() =>
                 {
                     using (WebClient web = new WebClient())
@@ -246,7 +246,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     }
                 });
             }
-            else st.Visibility = Visibility.Collapsed;
+            else scroll.Visibility = Visibility.Collapsed;
         }
 
         private List<DSNVTheoThoiGian> _listNV;

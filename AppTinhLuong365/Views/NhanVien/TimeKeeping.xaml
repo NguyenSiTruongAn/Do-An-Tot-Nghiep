@@ -62,245 +62,252 @@
                             <TextBlock Text="Bảng công chu kỳ" FontSize="24" FontWeight="Bold" Foreground="#2E3467" />
                         </DockPanel>
                     </DockPanel>
-                    <StackPanel x:Name="st">
-                        <StackPanel Orientation="Horizontal" Background="{DynamicResource #4C5BD4}" Margin="20 22 20 0">
-                            <StackPanel Height="40">
-                                <StackPanel.Style>
-                                    <Style TargetType="StackPanel">
-                                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
-                                    </Style>
-                                </StackPanel.Style>
-                                <TextBlock Height="40" FontSize="15" Text="{DynamicResource textSunday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+                    <ScrollViewer x:Name="scroll" HorizontalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="st" MinWidth="1100">
+                            <StackPanel.Style>
+                                <Style TargetType="StackPanel">
+                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=scroll, Converter={StaticResource math}, ConverterParameter=(@VALUE)}"></Setter>
+                                </Style>
+                            </StackPanel.Style>
+                            <StackPanel Orientation="Horizontal" Background="{DynamicResource #4C5BD4}" Margin="20 22 20 0">
+                                <StackPanel Height="40">
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <TextBlock Height="40" FontSize="15" Text="{DynamicResource textSunday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <TextBlock FontSize="15" Text="{DynamicResource textMonday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <TextBlock FontSize="15" Text="{DynamicResource textTuesday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <TextBlock FontSize="15" Text="{DynamicResource textWednesday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <TextBlock FontSize="15" Text="{DynamicResource textThursday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <TextBlock FontSize="15" Text="{DynamicResource textFriday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <TextBlock FontSize="15" Text="{DynamicResource textSaturday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel>
-                                <StackPanel.Style>
-                                    <Style TargetType="StackPanel">
+                            <ListView Margin="20 0 20 0" MinWidth="1050" Name="lv" ItemsSource="{Binding listLich}" BorderThickness="1" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
                                         <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
-                                    </Style>
-                                </StackPanel.Style>
-                                <TextBlock FontSize="15" Text="{DynamicResource textMonday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <StackPanel.Style>
-                                    <Style TargetType="StackPanel">
-                                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
-                                    </Style>
-                                </StackPanel.Style>
-                                <TextBlock FontSize="15" Text="{DynamicResource textTuesday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <StackPanel.Style>
-                                    <Style TargetType="StackPanel">
-                                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
-                                    </Style>
-                                </StackPanel.Style>
-                                <TextBlock FontSize="15" Text="{DynamicResource textWednesday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <StackPanel.Style>
-                                    <Style TargetType="StackPanel">
-                                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
-                                    </Style>
-                                </StackPanel.Style>
-                                <TextBlock FontSize="15" Text="{DynamicResource textThursday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <StackPanel.Style>
-                                    <Style TargetType="StackPanel">
-                                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
-                                    </Style>
-                                </StackPanel.Style>
-                                <TextBlock FontSize="15" Text="{DynamicResource textFriday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <StackPanel.Style>
-                                    <Style TargetType="StackPanel">
-                                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
-                                    </Style>
-                                </StackPanel.Style>
-                                <TextBlock FontSize="15" Text="{DynamicResource textSaturday}" Margin="0 10 0 0" Background="{DynamicResource #4C5BD4}" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" FontWeight="DemiBold"></TextBlock>
-                            </StackPanel>
-                        </StackPanel>
-                        <ListView Margin="20 0 20 0" MinWidth="1050" Name="lv" ItemsSource="{Binding listLich}" BorderThickness="1" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="lv_PreviewMouseWheel">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)/7}"></Setter>
-                                    <Setter Property="MinHeight" Value="110"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ListViewItem">
-                                                <Grid>
-                                                    <Border Margin="0 0 0 0" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
-                                                        <Border.Style>
-                                                            <Style TargetType="Border">
-                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                                <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding status}" Value="0">
-                                                                        <Setter Property="Visibility" Value="Hidden"/>
-                                                                    </DataTrigger>
-                                                                    <DataTrigger Binding="{Binding status}" Value="2">
-                                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                                    </DataTrigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </Border.Style>
-                                                        <StackPanel>
-                                                            <Border Width="20" Height="20" CornerRadius="20" Margin="0 9 0 0" HorizontalAlignment="Center">
-                                                                <Border.Style>
-                                                                    <Style TargetType="Border">
-                                                                        <Setter Property="Background" Value="Transparent"/>
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding status}" Value="3">
-                                                                                <Setter Property="Background" Value="{DynamicResource #4C5BD4}"/>
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </Border.Style>
-                                                                <TextBlock FontWeight="Bold" Text="{Binding ngay}" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                                    <TextBlock.Style>
-                                                                        <Style TargetType="TextBlock">
-                                                                            <Setter Property="Foreground" Value="{DynamicResource #989898}"/>
+                                        <Setter Property="MinHeight" Value="110"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListViewItem">
+                                                    <Grid>
+                                                        <Border Margin="0 0 0 0" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding status}" Value="0">
+                                                                            <Setter Property="Visibility" Value="Hidden"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding status}" Value="2">
+                                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <StackPanel>
+                                                                <Border Width="20" Height="20" CornerRadius="20" Margin="0 9 0 0" HorizontalAlignment="Center">
+                                                                    <Border.Style>
+                                                                        <Style TargetType="Border">
+                                                                            <Setter Property="Background" Value="Transparent"/>
                                                                             <Style.Triggers>
                                                                                 <DataTrigger Binding="{Binding status}" Value="3">
-                                                                                    <Setter Property="Foreground" Value="{DynamicResource #FFFFFF}"/>
+                                                                                    <Setter Property="Background" Value="{DynamicResource #4C5BD4}"/>
                                                                                 </DataTrigger>
                                                                             </Style.Triggers>
                                                                         </Style>
-                                                                    </TextBlock.Style>
-                                                                </TextBlock>
-                                                            </Border>
-                                                            <ListView ItemsSource="{Binding ctca}" Margin="0 0 0 20" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                                                <ListView.ItemContainerStyle>
-                                                                    <Style TargetType="ListViewItem">
-                                                                        <Setter Property="Template">
-                                                                            <Setter.Value>
-                                                                                <ControlTemplate TargetType="ListViewItem">
-                                                                                    <Grid>
-                                                                                        <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
-                                                                                            <Border.Style>
-                                                                                                <Style TargetType="Border">
-                                                                                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                                                                                    <Style.Triggers>
-                                                                                                        <DataTrigger Binding="{Binding check}" Value="Ca đủ công">
-                                                                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                                                                        </DataTrigger>
-                                                                                                    </Style.Triggers>
-                                                                                                </Style>
-                                                                                            </Border.Style>
-                                                                                            <Grid HorizontalAlignment="Center" Width="130">
-                                                                                                <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
-                                                                                                <TextBlock FontWeight="DemiBold" Text="{Binding Display_time, Mode=OneWay}" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
-                                                                                            </Grid>
-                                                                                        </Border>
-                                                                                        <Border Width="130 " Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #FEE5E5}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
-                                                                                            <Border.Style>
-                                                                                                <Style TargetType="Border">
-                                                                                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                                                                                    <Style.Triggers>
-                                                                                                        <DataTrigger Binding="{Binding check}" Value="Ca nghỉ">
-                                                                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                                                                        </DataTrigger>
-                                                                                                    </Style.Triggers>
-                                                                                                </Style>
-                                                                                            </Border.Style>
-                                                                                            <Grid HorizontalAlignment="Center" Width="130">
-                                                                                                <Path Data="{DynamicResource iconXCheck}" Fill="{DynamicResource #FF5959}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
-                                                                                                <TextBlock FontWeight="DemiBold" Text="Ca nghỉ" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 9 0" HorizontalAlignment="Right"  VerticalAlignment="Center"></TextBlock>
-                                                                                            </Grid>
-                                                                                        </Border>
-                                                                                        <Border Width="130" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #FEE5E5}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
-                                                                                            <Border.Style>
-                                                                                                <Style TargetType="Border">
-                                                                                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                                                                                    <Style.Triggers>
-                                                                                                        <DataTrigger Binding="{Binding check}" Value="Ca chưa hoàn thành">
-                                                                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                                                                        </DataTrigger>
-                                                                                                    </Style.Triggers>
-                                                                                                </Style>
-                                                                                            </Border.Style>
-                                                                                            <Grid HorizontalAlignment="Center" Width="130" Height="50">
-                                                                                                <Path Data="{DynamicResource iconXCheck}" Fill="{DynamicResource #FF5959}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
-                                                                                                <TextBlock FontWeight="DemiBold" Text="Ca chưa hoàn thành" TextWrapping="WrapWithOverflow" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 9 0" HorizontalAlignment="Right"  VerticalAlignment="Center"></TextBlock>
-                                                                                            </Grid>
-                                                                                        </Border>
-                                                                                        <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #FFF3EB}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
-                                                                                            <Border.Style>
-                                                                                                <Style TargetType="Border">
-                                                                                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                                                                                    <Style.Triggers>
-                                                                                                        <DataTrigger Binding="{Binding check}" Value="Ca muộn">
-                                                                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                                                                        </DataTrigger>
-                                                                                                    </Style.Triggers>
-                                                                                                </Style>
-                                                                                            </Border.Style>
-                                                                                            <Grid HorizontalAlignment="Center" Width="130">
-                                                                                                <Path Data="{DynamicResource iconTimeCheck}" Fill="{DynamicResource #FF8C44}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
-                                                                                                <TextBlock FontWeight="DemiBold" Text="{Binding Display_time, Mode=OneWay}" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
-                                                                                            </Grid>
-                                                                                        </Border>
-                                                                                        <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #efedc9}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
-                                                                                            <Border.Style>
-                                                                                                <Style TargetType="Border">
-                                                                                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                                                                                    <Style.Triggers>
-                                                                                                        <DataTrigger Binding="{Binding check}" Value="Ca ghi nhận công">
-                                                                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                                                                        </DataTrigger>
-                                                                                                    </Style.Triggers>
-                                                                                                </Style>
-                                                                                            </Border.Style>
-                                                                                            <Grid HorizontalAlignment="Center" Width="130">
-                                                                                                <Path Data="{DynamicResource iconCongCong}" Fill="{DynamicResource #49AA1F}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
-                                                                                                <TextBlock FontWeight="DemiBold" Text="{Binding Display_time, Mode=OneWay}" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
-                                                                                            </Grid>
-                                                                                        </Border>
-                                                                                    </Grid>
-                                                                                </ControlTemplate>
-                                                                            </Setter.Value>
-                                                                        </Setter>
-                                                                    </Style>
-                                                                </ListView.ItemContainerStyle>
-                                                                <ListView.ItemsPanel>
-                                                                    <ItemsPanelTemplate>
-                                                                        <StackPanel Width="{Binding RelativeSource={RelativeSource AncestorType=ListView,Mode=FindAncestor},Path=ActualWidth}"></StackPanel>
-                                                                    </ItemsPanelTemplate>
-                                                                </ListView.ItemsPanel>
-                                                            </ListView>
-                                                        </StackPanel>
-                                                    </Border>
-                                                </Grid>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel Width="{Binding RelativeSource={RelativeSource AncestorType=ListView,Mode=FindAncestor},Path=ActualWidth}"></WrapPanel>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                        </ListView>
-                        <StackPanel Margin="20,0,20,0" Background="{DynamicResource #EDEFFB}">
-                            <StackPanel.Style>
-                                <Style TargetType="StackPanel">
-                                    <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)}"></Setter>
-                                </Style>
-                            </StackPanel.Style>
-                            <Border BorderThickness="1 1 1 1" BorderBrush="{DynamicResource #BBBBBB}">
-                                <StackPanel Margin="0 0 0 0"  VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <TextBlock FontWeight="DemiBold" Text="{DynamicResource textNumberOfCalendarWorkingDays}" Foreground="{DynamicResource #2E3467}" FontSize="15" Margin="30 0 0 0"></TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Text="{Binding Cong}" Foreground="{DynamicResource #2E3467}" FontSize="15" Margin="5 0 0 0"></TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Text="{DynamicResource textLateOrEarly}" FontSize="15" Margin="50 0 0 0"></TextBlock>
-                                    <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}" FontSize="15" Margin="5 0 0 0">
+                                                                    </Border.Style>
+                                                                    <TextBlock FontWeight="Bold" Text="{Binding ngay}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Setter Property="Foreground" Value="{DynamicResource #989898}"/>
+                                                                                <Style.Triggers>
+                                                                                    <DataTrigger Binding="{Binding status}" Value="3">
+                                                                                        <Setter Property="Foreground" Value="{DynamicResource #FFFFFF}"/>
+                                                                                    </DataTrigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Border>
+                                                                <ListView ItemsSource="{Binding ctca}" Margin="0 0 0 20" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                                                    <ListView.ItemContainerStyle>
+                                                                        <Style TargetType="ListViewItem">
+                                                                            <Setter Property="Template">
+                                                                                <Setter.Value>
+                                                                                    <ControlTemplate TargetType="ListViewItem">
+                                                                                        <Grid>
+                                                                                            <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                                                                <Border.Style>
+                                                                                                    <Style TargetType="Border">
+                                                                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                                                                        <Style.Triggers>
+                                                                                                            <DataTrigger Binding="{Binding check}" Value="Ca đủ công">
+                                                                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                                                                            </DataTrigger>
+                                                                                                        </Style.Triggers>
+                                                                                                    </Style>
+                                                                                                </Border.Style>
+                                                                                                <Grid HorizontalAlignment="Center" Width="130">
+                                                                                                    <Path Data="{DynamicResource iconCheck}" Fill="{DynamicResource #469F94}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                                                                                    <TextBlock FontWeight="DemiBold" Text="{Binding Display_time, Mode=OneWay}" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                                                                                </Grid>
+                                                                                            </Border>
+                                                                                            <Border Width="130 " Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #FEE5E5}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                                                                <Border.Style>
+                                                                                                    <Style TargetType="Border">
+                                                                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                                                                        <Style.Triggers>
+                                                                                                            <DataTrigger Binding="{Binding check}" Value="Ca nghỉ">
+                                                                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                                                                            </DataTrigger>
+                                                                                                        </Style.Triggers>
+                                                                                                    </Style>
+                                                                                                </Border.Style>
+                                                                                                <Grid HorizontalAlignment="Center" Width="130">
+                                                                                                    <Path Data="{DynamicResource iconXCheck}" Fill="{DynamicResource #FF5959}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                                                                                    <TextBlock FontWeight="DemiBold" Text="Ca nghỉ" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 9 0" HorizontalAlignment="Right"  VerticalAlignment="Center"></TextBlock>
+                                                                                                </Grid>
+                                                                                            </Border>
+                                                                                            <Border Width="130" Height="50" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #FEE5E5}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                                                                <Border.Style>
+                                                                                                    <Style TargetType="Border">
+                                                                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                                                                        <Style.Triggers>
+                                                                                                            <DataTrigger Binding="{Binding check}" Value="Ca chưa hoàn thành">
+                                                                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                                                                            </DataTrigger>
+                                                                                                        </Style.Triggers>
+                                                                                                    </Style>
+                                                                                                </Border.Style>
+                                                                                                <Grid HorizontalAlignment="Center" Width="130" Height="50">
+                                                                                                    <Path Data="{DynamicResource iconXCheck}" Fill="{DynamicResource #FF5959}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                                                                                    <TextBlock FontWeight="DemiBold" Text="Ca chưa hoàn thành" TextWrapping="WrapWithOverflow" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="0 0 9 0" HorizontalAlignment="Right"  VerticalAlignment="Center"></TextBlock>
+                                                                                                </Grid>
+                                                                                            </Border>
+                                                                                            <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #FFF3EB}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                                                                <Border.Style>
+                                                                                                    <Style TargetType="Border">
+                                                                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                                                                        <Style.Triggers>
+                                                                                                            <DataTrigger Binding="{Binding check}" Value="Ca muộn">
+                                                                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                                                                            </DataTrigger>
+                                                                                                        </Style.Triggers>
+                                                                                                    </Style>
+                                                                                                </Border.Style>
+                                                                                                <Grid HorizontalAlignment="Center" Width="130">
+                                                                                                    <Path Data="{DynamicResource iconTimeCheck}" Fill="{DynamicResource #FF8C44}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                                                                                    <TextBlock FontWeight="DemiBold" Text="{Binding Display_time, Mode=OneWay}" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                                                                                </Grid>
+                                                                                            </Border>
+                                                                                            <Border Width="130" Height="30" Margin="0 9 0 0" CornerRadius="16" Background="{DynamicResource #efedc9}" BorderThickness="1" BorderBrush="{DynamicResource #BBBBBB}">
+                                                                                                <Border.Style>
+                                                                                                    <Style TargetType="Border">
+                                                                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                                                                        <Style.Triggers>
+                                                                                                            <DataTrigger Binding="{Binding check}" Value="Ca ghi nhận công">
+                                                                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                                                                            </DataTrigger>
+                                                                                                        </Style.Triggers>
+                                                                                                    </Style>
+                                                                                                </Border.Style>
+                                                                                                <Grid HorizontalAlignment="Center" Width="130">
+                                                                                                    <Path Data="{DynamicResource iconCongCong}" Fill="{DynamicResource #49AA1F}" VerticalAlignment="Center" Margin="10 0 0 0"></Path>
+                                                                                                    <TextBlock FontWeight="DemiBold" Text="{Binding Display_time, Mode=OneWay}" FontSize="14" Foreground="{DynamicResource #68798B}" Margin="32 0 0 0"  VerticalAlignment="Center"></TextBlock>
+                                                                                                </Grid>
+                                                                                            </Border>
+                                                                                        </Grid>
+                                                                                    </ControlTemplate>
+                                                                                </Setter.Value>
+                                                                            </Setter>
+                                                                        </Style>
+                                                                    </ListView.ItemContainerStyle>
+                                                                    <ListView.ItemsPanel>
+                                                                        <ItemsPanelTemplate>
+                                                                            <StackPanel Width="{Binding RelativeSource={RelativeSource AncestorType=ListView,Mode=FindAncestor},Path=ActualWidth}"></StackPanel>
+                                                                        </ItemsPanelTemplate>
+                                                                    </ListView.ItemsPanel>
+                                                                </ListView>
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Width="{Binding RelativeSource={RelativeSource AncestorType=ListView,Mode=FindAncestor},Path=ActualWidth}"></WrapPanel>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <StackPanel Margin="20,0,20,0" Background="{DynamicResource #EDEFFB}">
+                                <StackPanel.Style>
+                                    <Style TargetType="StackPanel">
+                                        <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)}"></Setter>
+                                    </Style>
+                                </StackPanel.Style>
+                                <Border BorderThickness="1 1 1 1" BorderBrush="{DynamicResource #BBBBBB}">
+                                    <StackPanel Margin="0 0 0 0"  VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left">
+                                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textNumberOfCalendarWorkingDays}" Foreground="{DynamicResource #2E3467}" FontSize="15" Margin="30 0 0 0"></TextBlock>
+                                        <TextBlock FontWeight="DemiBold" Text="{Binding Cong}" Foreground="{DynamicResource #2E3467}" FontSize="15" Margin="5 0 0 0"></TextBlock>
+                                        <TextBlock FontWeight="DemiBold" Text="{DynamicResource textLateOrEarly}" FontSize="15" Margin="50 0 0 0"></TextBlock>
+                                        <TextBlock FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}" FontSize="15" Margin="5 0 0 0">
                                         <Run Text="{Binding camuon}"/>
                                         <Run Text="ca"/>
-                                    </TextBlock>
-                                </StackPanel>
-                            </Border>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
+                    </ScrollViewer>
                 </StackPanel>
             </Border>
 

@@ -650,7 +650,7 @@
                                            Foreground="{DynamicResource  #68798B}" />
                             </Border>
                             <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">
-                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="Công" FontSize="15"
+                                <TextBlock Margin="40 0 0 0" VerticalAlignment="Center" Text="VND" FontSize="15"
                                            Foreground="{DynamicResource  #68798B}" />
                             </Border>
                             <Border Height="50.5" BorderThickness="0 0 0 1" BorderBrush="{DynamicResource #ebebeb}">

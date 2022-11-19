@@ -66,12 +66,13 @@ namespace AppTinhLuong365.Model.APIEntity
                 if (Convert.ToDouble(cong_theo_tien) >= 0)
                 {
                     double m;
-                    if (double.TryParse(cong_theo_tien.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "").Replace(@"-", "");
+                    if (double.TryParse(cong_theo_tien.ToString(), out m)) a = m.ToString("C0").Replace(@"$", "");
                 }
                 else if (cong_theo_tien == null)
                 {
                     a = "0";
                 }
+                else
                 {
                     double n;
                     if (double.TryParse(cong_theo_tien.ToString(), out n))
