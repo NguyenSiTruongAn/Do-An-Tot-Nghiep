@@ -89,7 +89,7 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar x:Name="searchBarMonth1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16"
+                                                <tool:SearchBar CornerRadius="10" x:Name="searchBarMonth1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 Loaded="SearchBarMonth_OnLoaded" />
@@ -97,13 +97,13 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar x:Name="searchBarYear1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
+                                                <tool:SearchBar CornerRadius="10" x:Name="searchBarYear1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
                                                                 ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" Loaded="FrameworkElement_OnLoaded"/>
                                             </Border>
                                             <Border Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar x:Name="cbPhongBan" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}"
+                                                <tool:SearchBar CornerRadius="10" x:Name="cbPhongBan" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}"
                                                                 FontSize="16" PlaceHolder="Phòng ban (tất cả)"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}"
@@ -112,7 +112,7 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar x:Name="cbListNV" Foreground="{DynamicResource #444}"
+                                                <tool:SearchBar CornerRadius="10" x:Name="cbListNV" Foreground="{DynamicResource #444}"
                                                                 FontSize="16" PlaceHolder="Tất cả nhân viên"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}"
@@ -132,7 +132,7 @@
                                     </Border>
                                 </WrapPanel>
                                 <DataGrid x:Name="dataGrid" ItemsSource="{Binding listEpLate}"
-                                          Style="{StaticResource DataGrid1}" Margin="0 40 0 0" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
+                                          Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 40 0 0" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -316,7 +316,7 @@
                         <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}"
                                 Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                 CornerRadius="10" Height="38">
-                            <tool:SearchBar x:Name="searchBarMonth" Foreground="{DynamicResource #444}" FontSize="16"
+                            <tool:SearchBar CornerRadius="10" x:Name="searchBarMonth" Foreground="{DynamicResource #444}" FontSize="16"
                                             FontWeight="DemiBold"
                                             ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
                                             Loaded="SearchBarMonth_OnLoaded" />
@@ -324,7 +324,7 @@
                         <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}"
                                 Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                 CornerRadius="10" Height="38">
-                            <tool:SearchBar x:Name="searchBarYear" Foreground="{DynamicResource #444}" FontSize="16"
+                            <tool:SearchBar CornerRadius="10" x:Name="searchBarYear" Foreground="{DynamicResource #444}" FontSize="16"
                                             FontWeight="DemiBold"
                                             ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"
                                             Loaded="FrameworkElement_OnLoaded" />
@@ -363,7 +363,7 @@
                             </TextBlock>
                         </Border>
                     </Grid>
-                    <DataGrid PreviewMouseWheel="DataGrid_OnPreviewMouseWheel" x:Name="dataGrid1" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listLate}">
+                    <DataGrid PreviewMouseWheel="DataGrid_OnPreviewMouseWheel" x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding listLate}">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>

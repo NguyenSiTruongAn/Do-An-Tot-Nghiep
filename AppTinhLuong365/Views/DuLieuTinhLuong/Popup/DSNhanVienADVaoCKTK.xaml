@@ -35,7 +35,7 @@
                         <TextBlock Text="Danh sách nhân viên" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}"></TextBlock>
                     </StackPanel>
                 </DockPanel>
-                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="20 40 20 20" ItemsSource="{Binding listNVCacKhoanTienKhac}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="20 40 20 20" ItemsSource="{Binding listNVCacKhoanTienKhac}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>

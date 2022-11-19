@@ -32,7 +32,7 @@
                                         <TextBlock TextWrapping="WrapWithOverflow"  Text="{DynamicResource textPhucLoiDuocTinhThepThang}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
                                     </StackPanel>
                                 </DockPanel>
-                                <DataGrid x:Name="dataGrid1" Margin="0 30 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listPhucLoi}" PreviewMouseWheel="dataGrid2_PreviewMouseWheel">
+                                <DataGrid x:Name="dataGrid1" Margin="0 30 0 0" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding listPhucLoi}" PreviewMouseWheel="dataGrid2_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -44,9 +44,20 @@
                                         <DataGridTemplateColumn Header="{DynamicResource textTenPhucLoi}" MaxWidth="300">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <StackPanel Background="Transparent">
+                                                    <StackPanel Background="Transparent" VerticalAlignment="Center">
                                                         <TextBlock Text="{Binding cl_name}" TextWrapping="WrapWithOverflow" Style="{StaticResource TextRowCenter}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                                                        <TextBlock Text="{Binding cl_note}" TextWrapping="WrapWithOverflow" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                                        <TextBlock Text="{Binding cl_note}" TextWrapping="WrapWithOverflow" TextAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" FontSize="15">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding cl_note}" Value="">
+                                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
                                                     </StackPanel>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -161,7 +172,7 @@
                                         <TextBlock TextWrapping="WrapWithOverflow" Text="Mức phụ cấp tương ứng với tổng ngày công trong tháng. Tổng tiền phụ cấp hưởng được tính theo số ngày công thực tế đi làm trong tháng" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
                                     </StackPanel>
                                 </DockPanel>
-                                <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listPhuCap}" PreviewMouseWheel="dataGrid2_PreviewMouseWheel">
+                                <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding listPhuCap}" PreviewMouseWheel="dataGrid2_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -254,10 +265,10 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn MinWidth="100">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Border MouseLeftButtonDown="BtnTuyChonDSPC" Cursor="Hand" HorizontalAlignment="Right" Background="Transparent" Height="30" Width="30">
+                                                    <Border MouseLeftButtonDown="BtnTuyChonDSPC" Cursor="Hand" HorizontalAlignment="Center" Background="Transparent" Height="30" Width="30">
                                                         <Path Margin="0 0 10 0" Data="{DynamicResource iconCaiDat}" Stroke="{DynamicResource #666666}"></Path>
                                                     </Border>
                                                 </DataTemplate>
@@ -288,7 +299,7 @@
                                         <TextBlock TextWrapping="WrapWithOverflow" Text="Phụ cấp theo ca được tính tại thời điểm áp dụng tương ứng. Phụ cấp theo ca được miễn thuế." FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold"></TextBlock>
                                     </StackPanel>
                                 </DockPanel>
-                                <DataGrid x:Name="dataGrid2" Margin="0 30 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listPhuCapTheoCa}" PreviewMouseWheel="dataGrid2_PreviewMouseWheel">
+                                <DataGrid x:Name="dataGrid2" Margin="0 30 0 0" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding listPhuCapTheoCa}" PreviewMouseWheel="dataGrid2_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>

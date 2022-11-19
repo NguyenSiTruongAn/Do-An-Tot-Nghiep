@@ -86,13 +86,13 @@
                             </Border>
                             <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10"
                                     Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                <tool:SearchBar SelectionChanged="Month" x:Name="searchBarMonth"
+                                <tool:SearchBar CornerRadius="10" SelectionChanged="Month" x:Name="searchBarMonth"
                                                 Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
                                                 ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}" />
                             </Border>
                             <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10"
                                     Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                <tool:SearchBar SelectionChanged="Month" x:Name="searchBarYear"
+                                <tool:SearchBar CornerRadius="10" SelectionChanged="Month" x:Name="searchBarYear"
                                                 Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
                                                 ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" />
                             </Border>
@@ -107,20 +107,20 @@
                             </Border>
                             <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10"
                                     Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                <tool:SearchBar x:Name="SearchBar" Cursor="Hand" Foreground="{DynamicResource #444}"
+                                <tool:SearchBar CornerRadius="10" x:Name="SearchBar" Cursor="Hand" Foreground="{DynamicResource #444}"
                                                 FontSize="16" FontWeight="DemiBold"
                                                 ItemsSource="{Binding SearchList,RelativeSource={RelativeSource AncestorType=Page}}" />
                             </Border>
                             <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10"
                                     Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                <tool:SearchBar x:Name="cbPhongBan" Foreground="{DynamicResource #444}" FontSize="16"
+                                <tool:SearchBar CornerRadius="10" x:Name="cbPhongBan" Foreground="{DynamicResource #444}" FontSize="16"
                                                 FontWeight="DemiBold" PlaceHolder="Phòng ban (tất cả )"
                                                 ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}"
                                                 DisplayMemberPath="dep_name" />
                             </Border>
                             <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10"
                                     Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                <tool:SearchBar x:Name="cbListNV" FontSize="16" Foreground="{DynamicResource #444}"
+                                <tool:SearchBar CornerRadius="10" x:Name="cbListNV" FontSize="16" Foreground="{DynamicResource #444}"
                                                 FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"
                                                 DisplayMemberPath="ep_id_display"
                                                 ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}"/>
@@ -137,7 +137,7 @@
                         </WrapPanel>
                     </DockPanel>
                     <DataGrid PreviewMouseWheel="DataGrid_OnPreviewMouseWheel" x:Name="dataGrid1"
-                              Style="{StaticResource DataGrid1}" ItemsSource="{Binding listBangLuong}"
+                              Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding listBangLuong}"
                               ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="0 40 0 0">
                         <DataGrid.OpacityMask>
                             <VisualBrush>

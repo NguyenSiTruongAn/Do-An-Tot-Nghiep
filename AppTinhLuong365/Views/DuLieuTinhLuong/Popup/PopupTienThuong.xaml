@@ -13,7 +13,7 @@
         <Border Style="{StaticResource ShadowBorder2}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Grid>
-                <DataGrid Margin="10 20" HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid1}" ItemsSource="{Binding data.dt_thuong}" ScrollViewer.HorizontalScrollBarVisibility="Auto" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                <DataGrid Margin="10 20" HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding data.dt_thuong}" ScrollViewer.HorizontalScrollBarVisibility="Auto" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>

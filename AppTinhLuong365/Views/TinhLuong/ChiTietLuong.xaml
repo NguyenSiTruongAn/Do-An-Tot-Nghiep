@@ -114,13 +114,13 @@
                         </Border>
                         <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10"
                                 Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                            <tool:SearchBar SelectionChanged="Month" x:Name="searchBarMonth"
+                            <tool:SearchBar CornerRadius="10" SelectionChanged="Month" x:Name="searchBarMonth"
                                             Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
                                             ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}" />
                         </Border>
                         <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10"
                                 Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                            <tool:SearchBar SelectionChanged="Month" x:Name="searchBarYear"
+                            <tool:SearchBar CornerRadius="10" SelectionChanged="Month" x:Name="searchBarYear"
                                             Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
                                             ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" />
                         </Border>

@@ -337,7 +337,7 @@
                                 </Border>
                                 <DataGrid PreviewMouseWheel="DataGrid_OnPreviewMouseWheel" x:Name="dataGrid"
                                           ItemsSource="{Binding list}"
-                                          Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                                          Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 30 0 0">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -349,12 +349,12 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTemplateColumn Header="{DynamicResource textCaLamViec}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textCaLamViec}" MinWidth="200">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Border Background="Transparent">
-                                                        <StackPanel Margin="15 0 0 0" VerticalAlignment="Center"
-                                                                    HorizontalAlignment="Right">
+                                                    <Border Background="Transparent" HorizontalAlignment="Left">
+                                                        <StackPanel Margin="15 0 30 0" VerticalAlignment="Center"
+                                                                    HorizontalAlignment="Left">
                                                             <TextBlock FontSize="15"
                                                                        Foreground="{DynamicResource #4C5BD4}"
                                                                        FontWeight="DemiBold"
@@ -371,7 +371,7 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textMucPhatDangApDung}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textMucPhatDangApDung}" MinWidth="300">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
@@ -384,7 +384,7 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textNgayBatDauApDung}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textNgayBatDauApDung}" MinWidth="300">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
@@ -401,7 +401,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Cursor="Hand" Background="Transparent"
-                                                            MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                                                            MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="50 0 0 0">
                                                         <TextBlock FontSize="15" FontWeight="DemiBold"
                                                                    Text="Xem mức phạt"
                                                                    Style="{StaticResource TextRowCenter}"
@@ -572,7 +572,7 @@
                                 </Border>
 
                                 <DataGrid PreviewMouseWheel="DataGrid_OnPreviewMouseWheel" x:Name="dataGrid1" ItemsSource="{Binding list1}"
-                                          Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                                          Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 30 0 0">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -681,7 +681,7 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap3}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar SelectionChanged="Thang" x:Name="Month"
+                                                <tool:SearchBar CornerRadius="10" SelectionChanged="Thang" x:Name="Month"
                                                                 Foreground="{DynamicResource #444}" FontSize="16"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
@@ -690,7 +690,7 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap3}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar SelectionChanged="Thang" x:Name="Year"
+                                                <tool:SearchBar CornerRadius="10" SelectionChanged="Thang" x:Name="Year"
                                                                 Foreground="{DynamicResource #444}" FontSize="16"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" />
@@ -698,7 +698,7 @@
                                             <Border Style="{DynamicResource Style_Border_Wrap3}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar SelectionChanged="Thang" x:Name="Employee"
+                                                <tool:SearchBar CornerRadius="10" SelectionChanged="Thang" x:Name="Employee"
                                                                 Foreground="{DynamicResource #444}" FontSize="16"
                                                                 FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"
                                                                 ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}"
@@ -709,7 +709,7 @@
                                     </Border>
                                 </WrapPanel>
                                 <DataGrid x:Name="dataGrid2" ItemsSource="{Binding listItemNp}"
-                                          Style="{StaticResource DataGrid1}" Margin="0 40 0 0">
+                                          Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 40 0 0" PreviewMouseWheel="DataGrid_OnPreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>
@@ -726,13 +726,13 @@
                                                 <DataTemplate>
                                                     <Grid x:Name="gridHoTen">
                                                         <WrapPanel VerticalAlignment="Center">
-                                                            <Border Margin="10 0 0 0" Width="40" Height="40"
+                                                            <Border Margin="10 0" Width="40" Height="40"
                                                                     CornerRadius="40" HorizontalAlignment="Left">
                                                                 <Border.Background>
                                                                     <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
                                                                 </Border.Background>
                                                             </Border>
-                                                            <StackPanel Margin="10 0 20 0">
+                                                            <StackPanel Margin="10 0 30 0">
                                                                 <TextBlock FontSize="15" FontWeight="Bold"
                                                                            Text="{Binding ep_name}"
                                                                            Foreground="{DynamicResource #4C5BD4}">
@@ -751,7 +751,7 @@
                                         <DataGridTemplateColumn Header="{DynamicResource textNgayXinNghi}">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                    <TextBlock Margin="30 0" VerticalAlignment="Center" HorizontalAlignment="Center"
                                                                FontSize="15" FontWeight="DemiBold"
                                                                Foreground="{DynamicResource #4C5BD4}">
                                                         <Run Text="{Binding ngaybatdau_nghi}" />
@@ -776,7 +776,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Width="150" Height="36"
-                                                            CornerRadius="20">
+                                                            CornerRadius="20" Margin="30 0">
                                                         <Border.Style>
                                                             <Style TargetType="Border">
                                                                 <Setter Property="Background"
@@ -839,7 +839,7 @@
                                         <DataGridTemplateColumn Header="{DynamicResource textLoaiHinh}">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                    <TextBlock Margin="30 0" VerticalAlignment="Center" HorizontalAlignment="Center"
                                                                Text="{Binding LoaiNghi}" FontSize="15"
                                                                FontWeight="DemiBold"
                                                                Foreground="{DynamicResource #68798B}">

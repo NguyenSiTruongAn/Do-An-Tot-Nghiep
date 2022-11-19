@@ -79,7 +79,7 @@
                     </StackPanel>
                     <Border CornerRadius="1" x:Name="right" Margin="10 0 0 0" BorderThickness="1 0 0 0" Style="{StaticResource DashedBoder1}">
                         <StackPanel Margin="10 0 20 0">
-                            <DataGrid HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding data.dt_thuong}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                            <DataGrid HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 40 0 0" ItemsSource="{Binding data.dt_thuong}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                                 <DataGrid.OpacityMask>
                                     <VisualBrush>
                                         <VisualBrush.Visual>
@@ -136,7 +136,7 @@
                                     </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <DataGrid HorizontalAlignment="Stretch" x:Name="dataGrid1" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding data.dt_phat}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                            <DataGrid HorizontalAlignment="Stretch" x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 40 0 0" ItemsSource="{Binding data.dt_phat}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                                 <DataGrid.OpacityMask>
                                     <VisualBrush>
                                         <VisualBrush.Visual>

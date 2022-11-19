@@ -39,7 +39,7 @@
                     </StackPanel>
                 </DockPanel>
                 <DataGrid PreviewMouseWheel="dataGrid1_PreviewMouseWheel" x:Name="dataGrid2"
-                          Style="{StaticResource DataGrid1}" Margin="20 40 20 20"
+                          Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="20 40 20 20"
                           ItemsSource="{Binding epHolidayList}" Height="450" VerticalScrollBarVisibility="Visible">
                     <DataGrid.OpacityMask>
                         <VisualBrush>

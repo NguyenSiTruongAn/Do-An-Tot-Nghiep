@@ -59,14 +59,14 @@
                             <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap}"
                                     Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}"
                                     BorderThickness="1" CornerRadius="10" Height="38">
-                                <tool:SearchBar x:Name="Year" Foreground="{DynamicResource #444}" FontSize="16"
+                                <tool:SearchBar CornerRadius="10" x:Name="Year" Foreground="{DynamicResource #444}" FontSize="16"
                                                 FontWeight="DemiBold" PlaceHolder="Năm 2022"
                                                 ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" />
                             </Border>
                             <Border Cursor="Hand" Style="{DynamicResource Style_Border_Wrap}"
                                     Background="{DynamicResource #FFFFFF}" BorderBrush="{DynamicResource #ebebeb}"
                                     BorderThickness="1" CornerRadius="10" Height="38">
-                                <tool:SearchBar x:Name="Month" Foreground="{DynamicResource #444}" FontSize="16"
+                                <tool:SearchBar CornerRadius="10" x:Name="Month" Foreground="{DynamicResource #444}" FontSize="16"
                                                 FontWeight="DemiBold" PlaceHolder="Tháng 8"
                                                 ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}" />
                             </Border>
@@ -96,7 +96,7 @@
                         </Border>
                     </Border>
                 </WrapPanel>
-                <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listPay}"
+                <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding listPay}"
                           Margin="0 40 0 0">
                     <DataGrid.OpacityMask>
                         <VisualBrush>

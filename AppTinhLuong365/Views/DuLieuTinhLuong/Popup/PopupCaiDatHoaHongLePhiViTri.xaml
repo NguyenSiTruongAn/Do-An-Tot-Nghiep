@@ -27,7 +27,7 @@
                         </DockPanel>
                     </Border>
                 </DockPanel>
-                <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding listDSCaiDatHHVT}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 40 0 0" ItemsSource="{Binding listDSCaiDatHHVT}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>

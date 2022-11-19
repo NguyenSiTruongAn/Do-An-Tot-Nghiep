@@ -39,11 +39,11 @@
                         <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="38" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
                             <tool:DatePicker x:Name="selectDate" SelectedDateChange="ChonPhong" FontSize="15" Foreground="{DynamicResource #777777}"/>
                         </Border>
-                        <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                            <tool:SearchBar x:Name="cbPhong" SelectionChanged="ChonPhong" ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="dep_name" FontSize="16" FontWeight="DemiBold" PlaceHolder="Phòng ban (tất cả)"/>
-                        </Border>
+                        <!--<Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">-->
+                        <tool:SearchBar x:Name="cbPhong"  Width="160" Height="40" SelectionChanged="ChonPhong" CornerRadius="10" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0" ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="dep_name" FontSize="16" FontWeight="DemiBold" PlaceHolder="Phòng ban (tất cả)"/>
+                        <!--</Border>-->
                         <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 20 0">
-                            <tool:SearchBar x:Name="cbNV" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath ="display_ep_name" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
+                            <tool:SearchBar CornerRadius="10" x:Name="cbNV" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath ="display_ep_name" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
                         </Border>
                         <Border MouseLeftButtonDown="Border_MouseLeftButtonDown_2" Cursor="Hand" Width="105" Height="40" Background="{DynamicResource #4C5BD4}" CornerRadius="10">
                             <TextBlock Text="{DynamicResource textstatistical}" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />
@@ -65,7 +65,7 @@
                         <TextBlock Text="{DynamicResource textXuatLuongCoBan}" FontWeight="DemiBold" VerticalAlignment="Center" Margin="10" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />
                     </Border>
                 </WrapPanel>
-                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listNhanVien}" Margin="0 10 0 0" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding listNhanVien}" Margin="0 10 0 0" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>

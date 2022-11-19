@@ -69,10 +69,10 @@
                     <Border Style="{DynamicResource Style_Border_Wrap}">
                         <WrapPanel x:Name="Wrap_Border1"  HorizontalAlignment="Right">
                             <Border Width="148" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                <tool:SearchBar x:Name="searchBarMonth" FontSize="16" FontWeight="DemiBold" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                <tool:SearchBar CornerRadius="10" x:Name="searchBarMonth" FontSize="16" FontWeight="DemiBold" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
                             <Border Width="148" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                                <tool:SearchBar x:Name="searchBarYear" FontSize="16" FontWeight="DemiBold" ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                <tool:SearchBar CornerRadius="10" x:Name="searchBarYear" FontSize="16" FontWeight="DemiBold" ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
                             <Border MouseLeftButtonDown="ThongKe" Cursor="Hand" Width="105" Style="{DynamicResource Style_Border_Wrap1}" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Background="{DynamicResource #4C5BD4}">
                                 <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>

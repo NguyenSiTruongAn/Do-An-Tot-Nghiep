@@ -24,7 +24,7 @@
                     <TabItem Header="Nhân viên" BorderThickness="0">
                         <ScrollViewer>
                             <StackPanel>
-                                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 20 0 20" ItemsSource="{Binding listDSNV}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                                <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 20 0 20" ItemsSource="{Binding listDSNV}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
                                             <VisualBrush.Visual>

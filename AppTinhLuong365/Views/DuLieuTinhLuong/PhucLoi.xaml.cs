@@ -171,7 +171,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             {
                 DockPanel.SetDock(borderPhucLoi, Dock.Bottom);
             }
-            if (this.ActualWidth > 1650)
+            if (this.ActualWidth > 1200)
             {
                 DockPanel.SetDock(borderPhuCap, Dock.Right);
             }

@@ -53,7 +53,7 @@
             <StackPanel VerticalAlignment="Top">
                 <DockPanel>
                     <Border Width="180" Height="38" x:Name="borderPhanQuyen" DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="4">
-                        <tool:SearchBar SelectionChanged="NhanVien" x:Name="Employee"
+                        <tool:SearchBar CornerRadius="10" SelectionChanged="NhanVien" x:Name="Employee"
                                         Foreground="{DynamicResource #444}" FontSize="16"
                                         FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"
                                         ItemsSource="{Binding listEmployee1, RelativeSource={RelativeSource AncestorType=Page}}"
@@ -64,7 +64,7 @@
                         <TextBlock Text="{DynamicResource textQLPhanQuyenNhanVien}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"></TextBlock>
                     </StackPanel>
                 </DockPanel>
-                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" Margin="0 30 0 0" ItemsSource="{Binding listEmployee}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
+                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 30 0 0" ItemsSource="{Binding listEmployee}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>

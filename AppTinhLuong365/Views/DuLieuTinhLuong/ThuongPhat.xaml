@@ -25,18 +25,18 @@
                             <DockPanel x:Name="dockThuongPhat" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 10 0 0">
                                 <WrapPanel>
                                     <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                        <tool:SearchBar x:Name="cbThang" Foreground="{DynamicResource #444}" FontSize="16"
+                                        <tool:SearchBar CornerRadius="10" x:Name="cbThang" Foreground="{DynamicResource #444}" FontSize="16"
                                                     FontWeight="DemiBold"
                                                     ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}" />
                                     </Border>
                                     <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                        <tool:SearchBar x:Name="cbNam" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                        <tool:SearchBar CornerRadius="10" x:Name="cbNam" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                                     </Border>
                                     <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                        <tool:SearchBar SelectionChanged="ChonPhong" x:Name="cbPhong" Foreground="{DynamicResource #444}" ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="dep_name" FontSize="16" FontWeight="DemiBold" PlaceHolder="Phòng ban (tất cả)"/>
+                                        <tool:SearchBar CornerRadius="10" SelectionChanged="ChonPhong" x:Name="cbPhong" Foreground="{DynamicResource #444}" ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="dep_name" FontSize="16" FontWeight="DemiBold" PlaceHolder="Phòng ban (tất cả)"/>
                                     </Border>
                                     <Border Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 20 0">
-                                        <tool:SearchBar x:Name="cbNV" Foreground="{DynamicResource #444}" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page,Mode=FindAncestor}}" DisplayMemberPath ="display_ep_name" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
+                                        <tool:SearchBar CornerRadius="10" x:Name="cbNV" Foreground="{DynamicResource #444}" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page,Mode=FindAncestor}}" DisplayMemberPath ="display_ep_name" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
                                     </Border>
                                     <Border MouseLeftButtonDown="Border_MouseLeftButtonDown_2" Cursor="Hand" Width="105" Height="40" Background="{DynamicResource #4C5BD4}" CornerRadius="10">
                                         <TextBlock Text="{DynamicResource textstatistical}" VerticalAlignment="Center" FontSize="16" Foreground="{DynamicResource #FFFFFF}" HorizontalAlignment="Center" />
@@ -51,7 +51,7 @@
                                 <TextBlock TextWrapping="WrapWithOverflow" FontWeight="DemiBold" Text="Quản lí theo dõi thưởng phạt nhân viên" FontSize="15" Foreground="{DynamicResource #68798B }" />
                             </StackPanel>
                         </DockPanel>
-                        <DataGrid x:Name="dataGrid1" Margin="0 20" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listTP}" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                        <DataGrid x:Name="dataGrid1" Margin="0 20" Style="{StaticResource DataGrid1}" SelectedIndex="0" HorizontalScrollBarVisibility="Auto" ItemsSource="{Binding listTP}" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                             <DataGrid.OpacityMask>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
@@ -60,7 +60,7 @@
                                 </VisualBrush>
                             </DataGrid.OpacityMask>
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                <DataGridTemplateColumn Header="{DynamicResource textHoTen}" MinWidth="300">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Grid x:Name="gridHoTen" Margin="10 0 0 0">
@@ -80,7 +80,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Tiền thưởng">
+                                <DataGridTemplateColumn Header="Tiền thưởng" MinWidth="200">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Cursor="Hand" MouseLeftButtonDown="btnTienThuong" Padding="10 0" HorizontalAlignment="Center" Background="{DynamicResource #D0EAE7}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="30">
@@ -92,7 +92,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Tiền phạt">
+                                <DataGridTemplateColumn Header="Tiền phạt" MinWidth="200">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Cursor="Hand" MouseLeftButtonDown="btnTienPhat" HorizontalAlignment="Center" Padding="10 0" Background="{DynamicResource #FFECEC}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="30">
@@ -104,7 +104,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn>
+                                <DataGridTemplateColumn MinWidth="200">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Cursor="Hand" MouseLeftButtonDown="TuyChinhThuongPhat_Click" HorizontalAlignment="Right" Background="{DynamicResource #EDEFFB}" BorderThickness="1" BorderBrush="{DynamicResource #ebebeb}" CornerRadius="20" Height="30" Width="133">

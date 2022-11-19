@@ -29,14 +29,14 @@
         <WrapPanel x:Name="Wrap_Border1" HorizontalAlignment="Right">
             <Border Style="{DynamicResource Style_Border_Wrap1}" Background="{DynamicResource #FFFFFF}" Width="160"
                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                <tool:SearchBar SelectionChanged="Load" x:Name="searchBarYear1" Foreground="{DynamicResource #444}"
+                <tool:SearchBar CornerRadius="10" SelectionChanged="Load" x:Name="searchBarYear1" Foreground="{DynamicResource #444}"
                                 FontSize="16" FontWeight="DemiBold"
                                 ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"
                                 Loaded="FrameworkElement_OnLoaded" />
             </Border>
             <Border Style="{DynamicResource Style_Border_Wrap1}" Background="{DynamicResource #FFFFFF}" Width="160"
                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">
-                <tool:SearchBar SelectionChanged="Load" x:Name="searchBarMonth1" Foreground="{DynamicResource #444}"
+                <tool:SearchBar CornerRadius="10" SelectionChanged="Load" x:Name="searchBarMonth1" Foreground="{DynamicResource #444}"
                                 FontSize="16"
                                 FontWeight="DemiBold"
                                 ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"

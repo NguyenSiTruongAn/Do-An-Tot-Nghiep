@@ -104,9 +104,9 @@
                     <Grid Cursor="Arrow">
                         <StackPanel>
                             <Border Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
-                                <tool:SearchBar x:Name="Search_NVChuaThietLap" SelectionChanged="NVChuaNhom_selectionChanged" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="ep_id_display" FontSize="16" Height="28" Width="123" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm"/>
+                                <tool:SearchBar CornerRadius="10" x:Name="Search_NVChuaThietLap" SelectionChanged="NVChuaNhom_selectionChanged" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="ep_id_display" FontSize="16" Height="28" Width="123" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm"/>
                             </Border>
-                            <DataGrid x:Name="dataGrid" Margin="0 10 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listNVChuaNhom1}" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                            <DataGrid x:Name="dataGrid" Margin="0 10 0 0" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding listNVChuaNhom1}" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                                 <DataGrid.OpacityMask>
                                     <VisualBrush>
                                         <VisualBrush.Visual>
@@ -177,11 +177,11 @@
                     <Grid Cursor="Arrow">
                         <StackPanel>
                             <Border Margin="0 20 0 0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="{DynamicResource #aaa}" CornerRadius="4">
-                                <tool:SearchBar x:Name="Search_NVCacNhom" SelectionChanged="Search_DSNVCacNhom" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="ep_id_display" FontSize="16" Height="28" Width="123" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm">
+                                <tool:SearchBar CornerRadius="10" x:Name="Search_NVCacNhom" SelectionChanged="Search_DSNVCacNhom" ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page}}" DisplayMemberPath="ep_id_display" FontSize="16" Height="28" Width="123" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Nhập tên cần tìm">
                                    
                                 </tool:SearchBar>
                             </Border>
-                            <DataGrid HorizontalAlignment="Stretch" Width="{Binding pWidth}" x:Name="dataGrid1" Margin="0 10 0 0" Style="{StaticResource DataGrid1}" ItemsSource="{Binding listNVCacNhom1}" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                            <DataGrid HorizontalAlignment="Stretch" Width="{Binding pWidth}" x:Name="dataGrid1" Margin="0 10 0 0" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding listNVCacNhom1}" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                                 <DataGrid.OpacityMask>
                                     <VisualBrush>
                                         <VisualBrush.Visual>

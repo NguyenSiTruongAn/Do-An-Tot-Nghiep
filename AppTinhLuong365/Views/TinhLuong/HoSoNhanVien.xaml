@@ -310,7 +310,7 @@
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" Margin="0 70 20 0" ItemsSource="{Binding ChiTietNV.basic_salary}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
+                    <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 70 20 0" ItemsSource="{Binding ChiTietNV.basic_salary}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
@@ -402,7 +402,7 @@
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" Margin="0 70 20 0" ItemsSource="{Binding ChiTietNV.contract_work}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
+                    <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 70 20 0" ItemsSource="{Binding ChiTietNV.contract_work}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
@@ -471,7 +471,7 @@
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" Margin="0 70 20 0" ItemsSource="{Binding ChiTietNV.family_member}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
+                    <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 70 20 0" ItemsSource="{Binding ChiTietNV.family_member}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
@@ -563,7 +563,7 @@
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" Margin="0 70 20 30" ItemsSource="{Binding ChiTietNV.don}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
+                    <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 70 20 30" ItemsSource="{Binding ChiTietNV.don}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>

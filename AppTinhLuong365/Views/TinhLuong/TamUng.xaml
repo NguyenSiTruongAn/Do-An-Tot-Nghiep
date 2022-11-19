@@ -55,14 +55,14 @@
                     <DockPanel x:Name="dockTamUng" DockPanel.Dock="Right" Style="{DynamicResource Style_Grid_Wrap}" HorizontalAlignment="Stretch">
                         <WrapPanel Name="Wrap_Border" HorizontalAlignment="Right">
                             <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                <tool:SearchBar x:Name="cbListNV" DisplayMemberPath ="ep_id_display"  ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page}}" FontSize="16" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
+                                <tool:SearchBar CornerRadius="10" x:Name="cbListNV" DisplayMemberPath ="ep_id_display"  ItemsSource="{Binding listNV,RelativeSource={RelativeSource AncestorType=Page}}" FontSize="16" Foreground="{DynamicResource #444}" FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"/>
 
                             </Border>
                             <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                <tool:SearchBar x:Name="cbThang" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                <tool:SearchBar CornerRadius="10" x:Name="cbThang" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Tháng 8" ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
                             <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10" Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
-                                <tool:SearchBar x:Name="cbNam" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
+                                <tool:SearchBar CornerRadius="10" x:Name="cbNam" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold" PlaceHolder="Năm 2022"  ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"/>
                             </Border>
                             <Border Cursor="Hand" MouseLeftButtonDown="ThongKe" Style="{DynamicResource Style_Border}" Width="104" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38" Margin="0 0 9 0" Background="{DynamicResource #4C5BD4}">
                                 <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}" FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
@@ -74,7 +74,7 @@
                         <TextBlock Text="{DynamicResource textQuanLyTheoDoiNhanVienTamUng}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"></TextBlock>
                     </StackPanel>
                 </DockPanel>
-                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" Margin="0 40 0 0" ItemsSource="{Binding listTamUng}">
+                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 40 0 0" ItemsSource="{Binding listTamUng}">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>

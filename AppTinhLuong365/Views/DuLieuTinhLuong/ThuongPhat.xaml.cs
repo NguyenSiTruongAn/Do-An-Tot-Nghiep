@@ -71,7 +71,6 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
-            dataGrid1.AutoReponsiveColumn(0);
             string month = DateTime.Now.ToString("MM");
             string year = DateTime.Now.ToString("yyyy");
             cbThang.PlaceHolder = "Tháng " + month;

@@ -776,7 +776,7 @@ namespace AppTinhLuong365.Views
 
                     // chỉ lọc ra các file có định dạng Excel
                     dialog.Filter = "Excel | *.xlsx | Excel 2003 | *.xls";
-                    dialog.FileName = "luong365";
+                    dialog.FileName = "luong_365";
                     // Nếu mở file và chọn nơi lưu file thành công sẽ lưu đường dẫn lại dùng
                     if (dialog.ShowDialog() == true)
                     {

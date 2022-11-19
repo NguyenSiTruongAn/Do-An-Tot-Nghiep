@@ -20,7 +20,7 @@
                     <TextBlock Text="Danh sách mức phạt qua từng thời điểm" FontSize="16"
                                Foreground="{DynamicResource #4C5BD4}" />
                     <DataGrid Height="auto" x:Name="dataGrid" ItemsSource="{Binding list}"
-                              Style="{StaticResource DataGrid1}" Margin="0 30 0 0">
+                              Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 30 0 0">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>

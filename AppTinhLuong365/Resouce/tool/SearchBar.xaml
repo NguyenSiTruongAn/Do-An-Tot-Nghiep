@@ -73,7 +73,7 @@
                                                                 </TextBlock.Style>
                                                             </TextBlock>
                                                         </Border>
-                                                        <Border Grid.Column="1" Background="{Binding RelativeSource={RelativeSource AncestorType=UserControl},Path=Background}" CornerRadius="{Binding CornerRadius}">
+                                                        <Border Grid.Column="1" Background="#FFFFFF" CornerRadius="{Binding CornerRadius}">
                                                             <Path Data="{StaticResource iconSearch}" Fill="{TemplateBinding Foreground}" Margin="10 0" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"></Path>
                                                         </Border>
                                                     </Grid>

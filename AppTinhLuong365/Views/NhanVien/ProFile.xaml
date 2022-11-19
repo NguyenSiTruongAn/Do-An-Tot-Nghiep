@@ -276,7 +276,7 @@
                             <TextBlock Text="{DynamicResource textBasicSalary}" Padding="0 0 0 15" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" ItemsSource="{Binding TTNV.salary}" Margin="0 70 20 0" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
+                    <DataGrid x:Name="dataGrid" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding TTNV.salary}" Margin="0 70 20 0" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
@@ -331,7 +331,7 @@
                             <TextBlock Text="{DynamicResource textEmploymentContract}" Padding="0 0 0 15" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" ItemsSource="{Binding TTNV.contract}" Margin="0 70 20 0"  PreviewMouseWheel="dataGrid_PreviewMouseWheel">
+                    <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding TTNV.contract}" Margin="0 70 20 0"  PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
@@ -380,7 +380,7 @@
                             <TextBlock Text="{DynamicResource textTaxesAndInsurance}" Padding="0 0 0 15" FontSize="20" FontWeight="DemiBold" Foreground="{DynamicResource #2E3467}"></TextBlock>
                         </Grid>
                     </Border>
-                    <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" ItemsSource="{Binding TTNV.tax}" Margin="0 20 20 0"  PreviewMouseWheel="dataGrid_PreviewMouseWheel">
+                    <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding TTNV.tax}" Margin="0 20 20 0"  PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
@@ -405,7 +405,7 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" ItemsSource="{Binding TTNV.insurance}" Margin="0 30 20 0"  PreviewMouseWheel="dataGrid_PreviewMouseWheel">
+                    <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding TTNV.insurance}" Margin="0 30 20 0"  PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                         <DataGrid.OpacityMask>
                             <VisualBrush>
                                 <VisualBrush.Visual>
