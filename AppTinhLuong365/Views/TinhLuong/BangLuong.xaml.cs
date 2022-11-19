@@ -234,15 +234,19 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void TuyChon(object sender, MouseButtonEventArgs e)
         {
-            Path p = sender as Path;
-            Item_Bang_Luong data = (Item_Bang_Luong)p.DataContext;
-            var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id,
-                searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex, DatePickerStart.SelectedDate,
-                DatePickerEnd.SelectedDate);
-            var z = Mouse.GetPosition(Main.PopupSelection);
-            pop.Margin = new Thickness(z.X - 95, z.Y + 15, 0, 0);
-            Main.PopupSelection.NavigationService.Navigate(pop);
-            Main.PopupSelection.Visibility = Visibility.Visible;
+            try
+            {
+                Border p = sender as Border;
+                Item_Bang_Luong data = (Item_Bang_Luong)p.DataContext;
+                var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id,
+                    searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex, DatePickerStart.SelectedDate,
+                    DatePickerEnd.SelectedDate);
+                var z = Mouse.GetPosition(Main.PopupSelection);
+                pop.Margin = new Thickness(z.X - 95, z.Y + 15, 0, 0);
+                Main.PopupSelection.NavigationService.Navigate(pop);
+                Main.PopupSelection.Visibility = Visibility.Visible;
+            }
+            catch { }
         }
 
         private List<Item_Bang_Luong> _listBangLuong;

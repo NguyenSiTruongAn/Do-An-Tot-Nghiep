@@ -7,7 +7,7 @@
       xmlns:math="clr-namespace:AppTinhLuong365.Core"
       mc:Ignorable="d" 
       Background="{DynamicResource #F7F8FC}"
-      SizeChanged="Page_SizeChanged"
+      SizeChanged="Page_SizeChanged" d:DesignWidth="1800"
       Title="Home">
     <Page.Resources>
         <math:MathConvert x:Key="math"></math:MathConvert>
@@ -23,7 +23,7 @@
             </Style.Triggers>
         </Style>
         <Style x:Key="Style_StackPanel" TargetType="StackPanel">
-            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math},ConverterParameter=(@VALUE)/3}"/>
+            <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math},ConverterParameter=(@VALUE - 30)/3}"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsSmallSize}" Value="1">
                     <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=Wrap_StackPanel,Converter={StaticResource math}, ConverterParameter=(@VALUE)/3}"/>
@@ -80,7 +80,7 @@
                 <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
                     <DockPanel Margin="10">
                         <WrapPanel Name="Wrap_StackPanel">
-                            <StackPanel DockPanel.Dock="Left" Margin="0 0 10 0">
+                            <StackPanel DockPanel.Dock="Left" Margin="0 0 10 0" Style="{StaticResource Style_StackPanel}">
                                 <DockPanel Background="Transparent" Cursor="Hand" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
                                     <TextBlock LineHeight="26" Text="{DynamicResource textPhanQuyen}" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource #4C5BD4}" TextWrapping="WrapWithOverflow"></TextBlock>
                                     <Path Data="{DynamicResource iconArrowRight}" Stroke="{DynamicResource #2E3467}" VerticalAlignment="Bottom" Margin="5 0 0 0"></Path>
@@ -88,7 +88,7 @@
                                 <TextBlock LineHeight="26" Text="Phân quyền truy cập tài khoản công ty" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"></TextBlock>
                                 <TextBlock LineHeight="26" Text="Phân quyền theo cá nhân" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"></TextBlock>
                             </StackPanel>
-                            <StackPanel Margin="0 0 10 0">
+                            <StackPanel Margin="0 0 10 0" Style="{StaticResource Style_StackPanel}">
                                 <DockPanel  Background="Transparent" Cursor="Hand"  MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
                                     <TextBlock LineHeight="26" Text="{DynamicResource textBieuMauDeXuat}" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource #4C5BD4}" TextWrapping="WrapWithOverflow"></TextBlock>
                                     <Path Data="{DynamicResource iconArrowRight}" Stroke="{DynamicResource #2E3467}" VerticalAlignment="Bottom" Margin="5 0 0 0"></Path>
@@ -96,7 +96,7 @@
                                 <TextBlock LineHeight="26" Text="Quản lý mẫu đề xuất" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"></TextBlock>
                                 <TextBlock LineHeight="26" Text="Thiết lập biểu mẫu xuất mới" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"></TextBlock>
                             </StackPanel>
-                            <StackPanel DockPanel.Dock="Right" Margin="0 0 10 0">
+                            <StackPanel DockPanel.Dock="Right" Margin="0 0 10 0" Style="{StaticResource Style_StackPanel}">
                                 <DockPanel Background="Transparent" Cursor="Hand" MouseLeftButtonDown="DockPanel_MouseLeftButtonDown_1">
                                     <TextBlock LineHeight="26" Text="{DynamicResource textBangLuong}" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                     <Path HorizontalAlignment="Left" Data="{DynamicResource iconArrowRight}" Stroke="{DynamicResource #2E3467}" VerticalAlignment="Bottom" Margin="5 0 0 0"></Path>

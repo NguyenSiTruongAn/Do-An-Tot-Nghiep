@@ -156,7 +156,7 @@
                                 <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Grid x:Name="gridHoTen" MouseEnter="dataGrid1Hover"
+                                            <Grid x:Name="gridHoTen" Background="Transparent" MouseEnter="dataGrid1Hover"
                                               MouseLeave="dataGrid1Leave">
                                                 <WrapPanel VerticalAlignment="Center" Margin="25 0 0 0">
                                                     <Border Width="45" Height="48" CornerRadius="40"
@@ -171,8 +171,8 @@
                                                                    Text="{Binding name}"
                                                                    Foreground="{DynamicResource #4C5BD4}">
                                                             </TextBlock>
-                                                            <Border Background="Transparent">
-                                                                <Path Cursor="Hand" MouseLeftButtonDown="TuyChon"
+                                                            <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="TuyChon">
+                                                                <Path Cursor="Hand"
                                                                   Data="{DynamicResource iconEdit}"
                                                                   Fill="{DynamicResource #4C5BD4}"
                                                                   VerticalAlignment="Center" Margin="10 0 0 0">
