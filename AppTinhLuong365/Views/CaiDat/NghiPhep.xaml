@@ -196,7 +196,7 @@
                                                        FontWeight="Bold" Foreground="{DynamicResource #2E3467}">
                                             </TextBlock>
                                             <TextBlock TextWrapping="WrapWithOverflow"
-                                                       Text="Nghỉ không có đơn xin phép hoặc có đơn xon phép nhưng bị sếp &quot;hủy đơn&quot;"
+                                                       Text="Nghỉ không có đơn xin phép hoặc có đơn xin phép nhưng bị sếp &quot;hủy đơn&quot;"
                                                        FontStyle="Italic" Foreground="{DynamicResource #000}"
                                                        FontWeight="DemiBold">
                                             </TextBlock>
