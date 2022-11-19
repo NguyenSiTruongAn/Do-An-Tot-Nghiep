@@ -44,9 +44,9 @@
                                         <DataGridTemplateColumn Header="{DynamicResource textTenPhucLoi}" MaxWidth="300">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <StackPanel Background="Transparent" VerticalAlignment="Center">
-                                                        <TextBlock Text="{Binding cl_name}" TextWrapping="WrapWithOverflow" Style="{StaticResource TextRowCenter}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                                                        <TextBlock Text="{Binding cl_note}" TextWrapping="WrapWithOverflow" TextAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" FontSize="15">
+                                                    <StackPanel Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                        <TextBlock Text="{Binding cl_name}" HorizontalAlignment="Left" TextWrapping="WrapWithOverflow" Style="{StaticResource TextRowCenter}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                        <TextBlock Text="{Binding cl_note}" HorizontalAlignment="Left" TextWrapping="WrapWithOverflow" TextAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}" FontSize="15">
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">
                                                                     <Setter Property="Visibility" Value="Visible"/>
@@ -185,7 +185,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding cl_name}" Style="{StaticResource TextRowCenter1}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                        <TextBlock HorizontalAlignment="Left" Text="{Binding cl_name}" Style="{StaticResource TextRowCenter1}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -312,7 +312,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
-                                                        <TextBlock Text="{Binding shift_name}" Style="{StaticResource TextRowCenter1}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                                        <TextBlock HorizontalAlignment="Left" Text="{Binding shift_name}" Style="{StaticResource TextRowCenter1}" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                                                     </Border>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>

@@ -403,9 +403,19 @@
                             </DataGrid.OpacityMask>
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                    <DataGridTemplateColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                                            <Setter Property="Foreground" Value="{DynamicResource #FFFFFF}"/>
+                                            <Setter Property="Background" Value="{DynamicResource #4C5BD4}"/>
+                                            <Setter Property="FontWeight" Value="DemiBold"/>
+                                            <Setter Property="Margin" Value="100 0"/>
+                                            <Setter Property="FontSize" Value="15"/>
+                                        </Style>
+                                    </DataGridTemplateColumn.HeaderStyle>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Grid x:Name="gridHoTen" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 0 0 0">
+                                            <Grid x:Name="gridHoTen" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
                                                 <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
                                                     <Border.Background>
                                                         <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
