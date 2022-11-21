@@ -64,7 +64,7 @@
                         <TextBlock Text="{DynamicResource textQLPhanQuyenNhanVien}" FontSize="15" Foreground="{DynamicResource #68798B}" FontWeight="DemiBold" TextWrapping="WrapWithOverflow"></TextBlock>
                     </StackPanel>
                 </DockPanel>
-                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 30 0 0" ItemsSource="{Binding listEmployee}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
+                <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 30 0 0" ItemsSource="{Binding listEmployee3}" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>
@@ -150,6 +150,29 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
+                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 10">
+                    <Border Cursor="Hand" MouseLeftButtonDown="ve_page_1" x:Name="PageDau" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                        <TextBlock Text="&lt;&lt;&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                    </Border>
+                    <Border Cursor="Hand" x:Name="PageTruoc" MouseLeftButtonDown="page_truoc_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                        <TextBlock Text="&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                    </Border>
+                    <Border Cursor="Hand" x:Name="Page1" MouseLeftButtonDown="select_page_click1" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                        <TextBlock x:Name="txtpage1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                    </Border>
+                    <Border Cursor="Hand" x:Name="Page2" MouseLeftButtonDown="select_page_click2" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                        <TextBlock x:Name="txtpage2" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                    </Border>
+                    <Border Cursor="Hand" x:Name="Page3" MouseLeftButtonDown="select_page_click3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                        <TextBlock x:Name="txtpage3" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                    </Border>
+                    <Border Cursor="Hand" x:Name="PageTiep" MouseLeftButtonDown="page_sau_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                        <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                    </Border>
+                    <Border Cursor="Hand" x:Name="PageCuoi" MouseLeftButtonDown="page_cuoi_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                        <TextBlock Text=">>>" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                    </Border>
+                </DockPanel>
             </StackPanel>
         </Border>
         

@@ -33,7 +33,7 @@
                                       VerticalScrollBarVisibility="Visible">
                                 <DataGrid x:Name="dataGrid2" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 20 0 20"
                                       ItemsSource="{Binding listEmps}"
-                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                       PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush>
