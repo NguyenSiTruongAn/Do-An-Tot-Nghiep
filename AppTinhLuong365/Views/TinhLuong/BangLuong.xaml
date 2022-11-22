@@ -51,7 +51,7 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <StackPanel Margin="20" x:Name="stBangLuong" Visibility="Visible">
+        <StackPanel Margin="20" x:Name="stBangLuong" Visibility="Collapsed">
             <Grid MinHeight="500">
                 <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                     <Border.Effect>

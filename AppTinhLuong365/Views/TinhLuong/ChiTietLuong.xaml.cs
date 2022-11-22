@@ -183,6 +183,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void getData(int month, int year, string start_date, string end_date)
         {
+            loading.Visibility = Visibility.Visible;
             using (WebClient web = new WebClient())
             {
                 // loading.Visibility = Visibility.Visible;
@@ -218,7 +219,8 @@ namespace AppTinhLuong365.Views.TinhLuong
                     }
                     catch
                     {
-                    }                    // loading.Visibility = Visibility.Collapsed;
+                    }
+                    loading.Visibility = Visibility.Collapsed;
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_luong_nv.php",
                     web.QueryString);
@@ -430,6 +432,15 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             loading.Visibility = Visibility.Visible;
             xuatExcel();
+        }
+
+        private void PhatSQD(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.TinhLuong.Popup.PopupPhatSQD(Main, itemLuongNv.list_phat_nsqd);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 615, z.Y, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
         }
     }
 }

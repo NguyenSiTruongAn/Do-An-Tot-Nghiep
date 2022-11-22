@@ -825,6 +825,9 @@
     <Compile Include="Views\TinhLuong\Popup\PopupPhat.xaml.cs">
       <DependentUpon>PopupPhat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TinhLuong\Popup\PopupPhatSQD.xaml.cs">
+      <DependentUpon>PopupPhatSQD.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TinhLuong\Popup\PopupSuaDongGop.xaml.cs">
       <DependentUpon>PopupSuaDongGop.xaml</DependentUpon>
     </Compile>
@@ -1706,6 +1709,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TinhLuong\Popup\PopupPhat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TinhLuong\Popup\PopupPhatSQD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

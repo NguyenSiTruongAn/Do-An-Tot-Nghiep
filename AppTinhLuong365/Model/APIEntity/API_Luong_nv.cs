@@ -514,6 +514,7 @@ namespace AppTinhLuong365.Model.APIEntity
             }
         }
         public List<ChiTietLuongDaTra> chi_tiet_luong_da_tra { get; set; }
+        public List<ListPhatNsqd> list_phat_nsqd { get; set; }
     }
 
     public class ChiTietLuongDaTra
@@ -555,6 +556,13 @@ namespace AppTinhLuong365.Model.APIEntity
             }
         }
         public string pay_name { get; set; }
+    }
+
+    public class ListPhatNsqd
+    {
+        public string ngaynghi { get; set; }
+        public string canghi { get; set; }
+        public string mucphat { get; set; }
     }
 
     public class API_Luong_nv
