@@ -192,11 +192,15 @@ namespace AppTinhLuong365.Views.TinhLuong
             if (col != null)
             {
                 Item_Bang_Luong item = (Item_Bang_Luong)col.DataContext;
-                int index = listBangLuong.FindIndex(x => x.ep_id == item.ep_id);
-                if (index > -1)
+                try
                 {
-                    listBangLuong[index].hover = 1;
+                    int index = listBangLuong.FindIndex(x => x.ep_id == item.ep_id);
+                    if (index > -1)
+                    {
+                        listBangLuong[index].hover = 1;
+                    }
                 }
+                catch { }
             }
             else if ((sender as Grid) != null)
             {
@@ -215,11 +219,15 @@ namespace AppTinhLuong365.Views.TinhLuong
             if (col != null)
             {
                 Item_Bang_Luong item = (Item_Bang_Luong)col.DataContext;
-                int index = listBangLuong.FindIndex(x => x.ep_id == item.ep_id);
-                if (index > -1)
+                try
                 {
-                    listBangLuong[index].hover = 0;
+                    int index = listBangLuong.FindIndex(x => x.ep_id == item.ep_id);
+                    if (index > -1)
+                    {
+                        listBangLuong[index].hover = 0;
+                    }
                 }
+                catch { }
             }
             else if ((sender as Grid) != null)
             {

@@ -11,7 +11,7 @@
         <Border Style="{StaticResource ShadowBorder2}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Grid>
-                <DataGrid Margin="10 20" HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid8}" ItemsSource="{Binding dulieu.dt_thuong}" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <DataGrid Margin="10 20" HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid8}" ItemsSource="{Binding data}" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>
@@ -25,7 +25,7 @@
                                 <DataTemplate>
                                     <Border Background="Transparent">
                                         <TextBlock Style="{StaticResource TextRowCenter}" Foreground="{DynamicResource #F46A6A}">
-                                            <Run Text="{Binding display_pay_price,Mode=OneWay}"/>
+                                            <Run Text="{Binding money}"/>
                                             <Run Text="Vnđ"/>
                                         </TextBlock>
                                     </Border>
@@ -36,7 +36,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding Display_pay_day,Mode=OneWay}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Text="{Binding date}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -45,7 +45,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding pay_case}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Text="{Binding lydo}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>

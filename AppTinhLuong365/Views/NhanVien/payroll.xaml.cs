@@ -312,7 +312,7 @@ namespace AppTinhLuong365.Views.NhanVien
 
         private void btnTienThuong(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.TinhLuong.Popup.PopupThuong(Main, ep_id, month, year);
+            var pop = new Views.TinhLuong.Popup.PopupThuong(Main, itemLuongNv.ct_thuong);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 615, z.Y + 20, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -321,7 +321,7 @@ namespace AppTinhLuong365.Views.NhanVien
 
         private void Phat(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.TinhLuong.Popup.PopupPhat(Main, ep_id, month, year);
+            var pop = new Views.TinhLuong.Popup.PopupPhat(Main, itemLuongNv.ct_phat);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 615, z.Y + 20, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -330,7 +330,7 @@ namespace AppTinhLuong365.Views.NhanVien
 
         private void HoaHong(object sender, MouseButtonEventArgs e)
         {
-            var pop = new Views.TinhLuong.Popup.PopupHoaHong(Main, ep_id, month, year);
+            var pop = new Views.TinhLuong.Popup.PopupHoaHong(Main, itemLuongNv.chi_tiet_hoa_hong);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 615, z.Y, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -341,6 +341,24 @@ namespace AppTinhLuong365.Views.NhanVien
         {
             System.Windows.Controls.Border b = sender as System.Windows.Controls.Border;
             var pop = new Views.TinhLuong.Popup.PopupLuongDaTra(Main, ep_id, month, year, start_date, end_date);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 615, z.Y, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void phatcong(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.TinhLuong.Popup.PopupPhatCong(Main, itemLuongNv.ct_ms_phat_cong);
+            var z = Mouse.GetPosition(Main.PopupSelection);
+            pop.Margin = new Thickness(z.X - 615, z.Y, 0, 0);
+            Main.PopupSelection.NavigationService.Navigate(pop);
+            Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void phattien(object sender, MouseButtonEventArgs e)
+        {
+            var pop = new Views.TinhLuong.Popup.PopupCTPhatDiMuon(Main, itemLuongNv.ct_ms_phat_tien);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 615, z.Y, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);

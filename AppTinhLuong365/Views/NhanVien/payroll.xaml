@@ -731,9 +731,43 @@
                             </Border>
                             <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
                             </Border>
-                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            <Border MouseLeftButtonDown="phattien" Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <Grid Margin="15 0 0 0" VerticalAlignment="Center">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding itemLuongNv.display_ct_ms_phat_tien,Mode=OneWay}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Path VerticalAlignment="Center" Fill="{DynamicResource #68798B}"
+                                          Data="{DynamicResource iconDetail}">
+                                    </Path>
+                                    <TextBlock Margin="20 0 0 0" Text="{DynamicResource textDetail}" FontSize="15"
+                                               Foreground="{DynamicResource #68798B}" />
+                                </Grid>
                             </Border>
-                            <Border Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                            <Border MouseLeftButtonDown="phatcong" Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
+                                <Grid Margin="15 0 0 0" VerticalAlignment="Center">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding itemLuongNv.display_ct_ms_phat_cong,Mode=OneWay}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Path VerticalAlignment="Center" Fill="{DynamicResource #68798B}"
+                                          Data="{DynamicResource iconDetail}">
+                                    </Path>
+                                    <TextBlock Margin="20 0 0 0" Text="{DynamicResource textDetail}" FontSize="15"
+                                               Foreground="{DynamicResource #68798B}" />
+                                </Grid>
                             </Border>
                             <Border MouseLeftButtonDown="HoaHong" Height="50.5" BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}">
                                 <Grid Margin="15 0 0 0" VerticalAlignment="Center">
@@ -741,7 +775,7 @@
                                         <Style TargetType="Grid">
                                             <Setter Property="Visibility" Value="Visible"/>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=ValueHoaHong, Path= Text}" Value="0">
+                                                <DataTrigger Binding="{Binding itemLuongNv.display_chi_tiet_hoa_hong,Mode=OneWay}" Value="0">
                                                     <Setter Property="Visibility" Value="Collapsed" />
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -762,7 +796,7 @@
                                         <Style TargetType="Grid">
                                             <Setter Property="Visibility" Value="Visible"/>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=ValueThuong, Path= Text}" Value="0">
+                                                <DataTrigger Binding="{Binding itemLuongNv.display_ct_thuong,Mode=OneWay}" Value="0">
                                                     <Setter Property="Visibility" Value="Collapsed" />
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -783,7 +817,7 @@
                                         <Style TargetType="Grid">
                                             <Setter Property="Visibility" Value="Visible"/>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=ValuePhat, Path= Text}" Value="0">
+                                                <DataTrigger Binding="{Binding itemLuongNv.display_ct_phat,Mode=OneWay}" Value="0">
                                                     <Setter Property="Visibility" Value="Collapsed" />
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -804,7 +838,7 @@
                                         <Style TargetType="Grid">
                                             <Setter Property="Visibility" Value="Visible"/>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=ValuePhatNghiSQD, Path= Text}" Value="0">
+                                                <DataTrigger Binding="{Binding itemLuongNv.display_list_phat_nsqd,Mode=OneWay}" Value="0">
                                                     <Setter Property="Visibility" Value="Collapsed" />
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -839,7 +873,7 @@
                                         <Style TargetType="Grid">
                                             <Setter Property="Visibility" Value="Visible"/>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=ValueTong, Path= Text}" Value="0">
+                                                <DataTrigger Binding="{Binding itemLuongNv.display_chi_tiet_luong_da_tra,Mode=OneWay}" Value="0">
                                                     <Setter Property="Visibility" Value="Collapsed" />
                                                 </DataTrigger>
                                             </Style.Triggers>

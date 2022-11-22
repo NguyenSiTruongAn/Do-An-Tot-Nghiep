@@ -1,17 +1,18 @@
-﻿<Page x:Class="AppTinhLuong365.Views.TinhLuong.Popup.PopupPhat"
+﻿<Page x:Class="AppTinhLuong365.Views.TinhLuong.Popup.PopupCTPhatDiMuon"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AppTinhLuong365.Views.TinhLuong.Popup"
-      mc:Ignorable="d" VerticalAlignment="Top"
-      Title="PopupPhat">
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PopupCTPhatDiMuon">
 
-    <Grid Width="509">
+    <Grid Width="600">
         <Border Style="{StaticResource ShadowBorder2}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <Grid>
-                <DataGrid Margin="10 20" HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid8}" ItemsSource="{Binding data}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <DataGrid Margin="10 20" HorizontalAlignment="Stretch" x:Name="dataGrid2" Style="{StaticResource DataGrid8}" ItemsSource="{Binding data}" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>
@@ -41,11 +42,20 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="{DynamicResource textLyDo}">
+                        <DataGridTemplateColumn Header="{DynamicResource textCa}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
-                                        <TextBlock Text="{Binding lydo}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                        <TextBlock Text="{Binding shift}" Style="{StaticResource TextRowCenter}"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{DynamicResource textMuonSom}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="Transparent">
+                                        <TextBlock Text="{Binding muon}" Style="{StaticResource TextRowCenter}"></TextBlock>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -55,5 +65,4 @@
             </Grid>
         </Border>
     </Grid>
-
 </Page>

@@ -62,40 +62,35 @@
                         <TextBlock FontSize="15"
                                    Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
                                    HorizontalAlignment="Center">
-                            <Run Text="{Binding itemRose1.display_rose_1,Mode=OneWay}"/>
-                            <Run Text="VNĐ"/>
+                            <Run Text="{Binding itemRose.display_tien,Mode=OneWay}"/>
                         </TextBlock>
                     </Border>
                     <Border BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
                         <TextBlock FontSize="15"
                                    Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
                                    HorizontalAlignment="Center">
-                            <Run Text="{Binding itemRose1.display_rose_2,Mode=OneWay}"/>
-                            <Run Text="VNĐ"/>
+                            <Run Text="{Binding itemRose.display_doanhthu,Mode=OneWay}"/>
                         </TextBlock>
                     </Border>
                     <Border BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
                         <TextBlock FontSize="15"
                                    Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
                                    HorizontalAlignment="Center">
-                            <Run Text="{Binding itemRose1.display_rose_3,Mode=OneWay}"/>
-                            <Run Text="VNĐ"/>
+                            <Run Text="{Binding itemRose.display_loinhuan,Mode=OneWay}"/>
                         </TextBlock>
                     </Border>
                     <Border BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
                         <TextBlock FontSize="15"
                                    Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
                                    HorizontalAlignment="Center">
-                            <Run Text="{Binding itemRose1.display_rose_4,Mode=OneWay}"/>
-                            <Run Text="VNĐ"/>
+                            <Run Text="{Binding itemRose.display_vitri,Mode=OneWay}"/>
                         </TextBlock>
                     </Border>
                     <Border BorderThickness="0 0 1 1" BorderBrush="{DynamicResource #ebebeb}" Height="50.5">
                         <TextBlock FontSize="15"
                                    Foreground="{DynamicResource #68798B}" VerticalAlignment="Center"
                                    HorizontalAlignment="Center">
-                            <Run Text="{Binding itemRose1.display_rose_5,Mode=OneWay}"/>
-                            <Run Text="VNĐ"/>
+                            <Run Text="{Binding itemRose.display_kehoach,Mode=OneWay}"/>
                         </TextBlock>
                     </Border>
                 </StackPanel>

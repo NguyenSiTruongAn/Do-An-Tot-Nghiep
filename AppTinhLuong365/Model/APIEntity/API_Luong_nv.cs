@@ -514,7 +514,95 @@ namespace AppTinhLuong365.Model.APIEntity
             }
         }
         public List<ChiTietLuongDaTra> chi_tiet_luong_da_tra { get; set; }
+        public int display_chi_tiet_luong_da_tra
+        {
+            get
+            {
+                if (chi_tiet_luong_da_tra != null)
+                {
+                    if (chi_tiet_luong_da_tra.Count > 0)
+                        return 1;
+                }
+                return 0;
+            }
+        }
         public List<ListPhatNsqd> list_phat_nsqd { get; set; }
+        public int display_list_phat_nsqd
+        {
+            get
+            {
+                if (list_phat_nsqd != null)
+                {
+                    if (list_phat_nsqd.Count > 0)
+                        return 1;
+                }
+                return 0;
+            }
+        }
+        public List<CtMsPhatTien> ct_ms_phat_tien { get; set; }
+        public int display_ct_ms_phat_tien
+        {
+            get
+            {
+                if (ct_ms_phat_tien != null)
+                {
+                    if (ct_ms_phat_tien.Count > 0)
+                        return 1;
+                }
+                return 0;
+            }
+        }
+        public List<CtMsPhatCong> ct_ms_phat_cong { get; set; }
+        public int display_ct_ms_phat_cong
+        {
+            get
+            {
+                if (ct_ms_phat_cong != null)
+                {
+                    if (ct_ms_phat_cong.Count > 0)
+                        return 1;
+                }
+                return 0;
+            }
+        }
+        public List<CtThuong> ct_thuong { get; set; }
+        public int display_ct_thuong
+        {
+            get
+            {
+                if (ct_thuong != null)
+                {
+                    if (ct_thuong.Count > 0)
+                        return 1;
+                }
+                return 0;
+            }
+        }
+        public ChiTietHoaHong chi_tiet_hoa_hong { get; set; }
+        public int display_chi_tiet_hoa_hong
+        {
+            get
+            {
+                if (chi_tiet_hoa_hong.tien != null || chi_tiet_hoa_hong.doanhthu != null || chi_tiet_hoa_hong.loinhuan != null || chi_tiet_hoa_hong.kehoach != null || chi_tiet_hoa_hong.vitri != null)
+                {
+                    return 1;
+                }
+                return 0;
+            }
+        }
+        public List<CtPhat> ct_phat { get; set; }
+        public int display_ct_phat
+        {
+            get
+            {
+                if(ct_phat != null)
+                {
+                    if (ct_phat.Count > 0)
+                        return 1;
+                }
+                return 0;
+            }
+        }
     }
 
     public class ChiTietLuongDaTra
@@ -541,7 +629,6 @@ namespace AppTinhLuong365.Model.APIEntity
             }
         }
         public string dp_time { get; set; }
-
         public string display_dp_time
         {
             get
@@ -558,11 +645,104 @@ namespace AppTinhLuong365.Model.APIEntity
         public string pay_name { get; set; }
     }
 
+    public class CtMsPhatTien
+    {
+        public string date { get; set; }
+        public string shift { get; set; }
+        public string muon { get; set; }
+        public object money { get; set; }
+    }
+    public class CtMsPhatCong
+    {
+        public string date { get; set; }
+        public string shift { get; set; }
+        public string muon { get; set; }
+        public object cong { get; set; }
+    }
+
+    public class CtThuong
+    {
+        public string money { get; set; }
+        public string date { get; set; }
+        public string lydo { get; set; }
+    }
+
     public class ListPhatNsqd
     {
         public string ngaynghi { get; set; }
         public string canghi { get; set; }
         public string mucphat { get; set; }
+    }
+
+    public class ChiTietHoaHong
+    {
+        public object tien { get; set; }
+        public object display_tien
+        {
+            get
+            {
+                if(tien != null)
+                {
+                    return tien + "VNĐ";
+                }
+                return "0 VNĐ";
+            }
+        }
+        public object doanhthu { get; set; }
+        public object display_doanhthu
+        {
+            get
+            {
+                if (doanhthu != null)
+                {
+                    return doanhthu + "VNĐ";
+                }
+                return "0 VNĐ";
+            }
+        }
+        public object loinhuan { get; set; }
+        public object display_loinhuan
+        {
+            get
+            {
+                if (loinhuan != null)
+                {
+                    return loinhuan + "VNĐ";
+                }
+                return "0 VNĐ";
+            }
+        }
+        public object vitri { get; set; }
+        public object display_vitri
+        {
+            get
+            {
+                if (vitri != null)
+                {
+                    return vitri + "VNĐ";
+                }
+                return "0 VNĐ";
+            }
+        }
+        public object kehoach { get; set; }
+        public object display_kehoach
+        {
+            get
+            {
+                if (kehoach != null)
+                {
+                    return kehoach + "VNĐ";
+                }
+                return "0 VNĐ";
+            }
+        }
+    }
+
+    public class CtPhat
+    {
+        public string money { get; set; }
+        public string date { get; set; }
+        public string lydo { get; set; }
     }
 
     public class API_Luong_nv
