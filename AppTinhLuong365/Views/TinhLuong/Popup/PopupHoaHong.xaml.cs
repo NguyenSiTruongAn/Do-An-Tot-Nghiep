@@ -103,7 +103,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                         {
                             itemRose = api.data.rose;
                             if (itemRose.Count > 0)
-                                itemRose1 = itemRose[0];
+                                itemRose1 = itemRose[0]; 
                         }
                     }
                     catch { }

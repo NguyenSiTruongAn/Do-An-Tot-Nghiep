@@ -51,7 +51,7 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <StackPanel Margin="20" x:Name="stBangLuong" Visibility="Collapsed">
+        <StackPanel Margin="20" x:Name="stBangLuong" Visibility="Visible">
             <Grid MinHeight="500">
                 <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                     <Border.Effect>
@@ -124,7 +124,7 @@
                                     Width="160" Height="40" BorderBrush="{DynamicResource #ebebeb}" Margin="0 0 10 0">
                                     <tool:SearchBar CornerRadius="10" x:Name="cbListNV" FontSize="16" Foreground="{DynamicResource #444}"
                                                 FontWeight="DemiBold" PlaceHolder="Tất cả nhân viên"
-                                                DisplayMemberPath="ep_id_display"
+                                                DisplayMemberPath="display_ep_name"
                                                 ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}" />
                                 </Border>
                                 <Border MouseLeftButtonDown="ThongKe" Width="104" BorderBrush="{DynamicResource #ebebeb}"

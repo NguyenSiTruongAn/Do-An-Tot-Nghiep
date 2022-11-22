@@ -326,7 +326,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else month = DateTime.Now.ToString("MM");
             if (cbListNV.SelectedIndex != -1)
             {
-                ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+                DSNVTheoThoiGian id1 = (DSNVTheoThoiGian)cbListNV.SelectedItem;
                 string id2 = id1.ep_id;
                 if (id2 == "-1")
                     id_nv = "";
@@ -547,7 +547,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else month = DateTime.Now.ToString("MM");
             if (cbListNV.SelectedIndex != -1)
             {
-                ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+                DSNVTheoThoiGian id1 = (DSNVTheoThoiGian)cbListNV.SelectedItem;
                 string id2 = id1.ep_id;
                 if (id2 == "-1")
                     id_nv = "";
@@ -617,7 +617,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else month = DateTime.Now.ToString("MM");
             if (cbListNV.SelectedIndex != -1)
             {
-                ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+                DSNVTheoThoiGian id1 = (DSNVTheoThoiGian)cbListNV.SelectedItem;
                 string id2 = id1.ep_id;
                 if (id2 == "-1")
                     id_nv = "";
@@ -683,7 +683,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else month = DateTime.Now.ToString("MM");
             if (cbListNV.SelectedIndex != -1)
             {
-                ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+                DSNVTheoThoiGian id1 = (DSNVTheoThoiGian)cbListNV.SelectedItem;
                 string id2 = id1.ep_id;
                 if (id2 == "-1")
                     id_nv = "";
@@ -749,7 +749,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else month = DateTime.Now.ToString("MM");
             if (cbListNV.SelectedIndex != -1)
             {
-                ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+                DSNVTheoThoiGian id1 = (DSNVTheoThoiGian)cbListNV.SelectedItem;
                 string id2 = id1.ep_id;
                 if (id2 == "-1")
                     id_nv = "";
@@ -830,7 +830,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else month = DateTime.Now.ToString("MM");
             if (cbListNV.SelectedIndex != -1)
             {
-                ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+                DSNVTheoThoiGian id1 = (DSNVTheoThoiGian)cbListNV.SelectedItem;
                 string id2 = id1.ep_id;
                 if (id2 == "-1")
                     id_nv = "";
@@ -899,7 +899,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else month = DateTime.Now.ToString("MM");
             if (cbListNV.SelectedIndex != -1)
             {
-                ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+                DSNVTheoThoiGian id1 = (DSNVTheoThoiGian)cbListNV.SelectedItem;
                 string id2 = id1.ep_id;
                 if (id2 == "-1")
                     id_nv = "";
@@ -968,7 +968,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             else month = DateTime.Now.ToString("MM");
             if (cbListNV.SelectedIndex != -1)
             {
-                ListEmployee id1 = (ListEmployee)cbListNV.SelectedItem;
+                DSNVTheoThoiGian id1 = (DSNVTheoThoiGian)cbListNV.SelectedItem;
                 string id2 = id1.ep_id;
                 if (id2 == "-1")
                     id_nv = "";
@@ -1080,15 +1080,15 @@ namespace AppTinhLuong365.Views.TinhLuong
             }
         }
 
-        private List<ListEmployee> _listEmployee;
+        private List<DSNVTheoThoiGian> _listEmployee;
 
-        public List<ListEmployee> listEmployee
+        public List<DSNVTheoThoiGian> listEmployee
         {
             get { return _listEmployee; }
             set
             {
-                if (value == null) value = new List<ListEmployee>();
-                value.Insert(0, new ListEmployee() { ep_id = "-1", ep_name = "Tất cả nhân viên" });
+                if (value == null) value = new List<DSNVTheoThoiGian>();
+                value.Insert(0, new DSNVTheoThoiGian() { ep_id = "-1", ep_name = "Tất cả nhân viên" });
                 _listEmployee = value;
                 OnPropertyChanged();
             }
@@ -1100,15 +1100,18 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
+                web.QueryString.Add("active", "true");
+                web.QueryString.Add("start_date", DatePickerStart.SelectedDate.Value.ToString("yyyy-MM-dd"));
+                web.QueryString.Add("date", DatePickerEnd.SelectedDate.Value.ToString("yyyy-MM-dd"));
                 web.UploadValuesCompleted += (s, e) =>
                 {
                     try
                     {
-                        API_ListEmployee api =
-                        JsonConvert.DeserializeObject<API_ListEmployee>(UnicodeEncoding.UTF8.GetString(e.Result));
+                        API_DSNVTheoThoiGian api =
+                        JsonConvert.DeserializeObject<API_DSNVTheoThoiGian>(UnicodeEncoding.UTF8.GetString(e.Result));
                         if (api.data != null)
                         {
-                            listEmployee = api.data.data.items;
+                            listEmployee = api.data.list;
                         }
                     }
                     catch { }
@@ -1120,7 +1123,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                     //     }
                     // }
                 };
-                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_emp.php",
+                web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/ep_by_time.php",
                     web.QueryString);
             }
         }
@@ -1151,7 +1154,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 if (Main.MainType == 0)
                 {
-                    var select = cbListNV.SelectedItem as ListEmployee;
+                    var select = cbListNV.SelectedItem as DSNVTheoThoiGian;
                     string uid = null;
                     string dp = null;
                     if (select != null)
