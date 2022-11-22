@@ -73,7 +73,7 @@
                                 </Border>
                                 <Border Width="144" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                     CornerRadius="10" Height="38" Margin="0 0 9 0">
-                                    <tool:DatePicker x:Name="DatePickerStart" FontSize="15"
+                                    <tool:DatePicker x:Name="DatePickerStart" FontSize="15" SelectedDateChange="Month1"
                                                  Foreground="{DynamicResource #777777}" />
                                 </Border>
                                 <Border>
@@ -83,7 +83,7 @@
                                 </Border>
                                 <Border Width="144" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                     CornerRadius="10" Height="38" Margin="0 0 9 0">
-                                    <tool:DatePicker x:Name="DatePickerEnd" FontSize="15"
+                                    <tool:DatePicker x:Name="DatePickerEnd" FontSize="15" SelectedDateChange="Month1"
                                                  Foreground="{DynamicResource #777777}" />
                                 </Border>
                                 <Border Cursor="Hand" Background="Transparent" BorderThickness="1" CornerRadius="10"

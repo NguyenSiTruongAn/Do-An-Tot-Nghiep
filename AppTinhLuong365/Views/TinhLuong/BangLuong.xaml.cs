@@ -1153,6 +1153,13 @@ namespace AppTinhLuong365.Views.TinhLuong
                                                  (searchBarMonth.SelectedIndex + 1)));
             DateTime d = DateTime.Parse(c);
             DatePickerEnd.SelectedDate = d;
+            getData2();
+        }
+
+        private void Month1(object sender, SelectionChangedEventArgs e)
+        {
+            
+            getData2();
         }
 
         private void xuatExcel()
