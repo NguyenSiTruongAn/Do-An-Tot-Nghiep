@@ -26,6 +26,7 @@ using System.Windows.Shapes;
 //using GroupDocs.Conversion.Options.Convert;
 using System.Net.Http;
 using Excel = Microsoft.Office.Interop.Excel;
+using AppTinhLuong365.Core;
 
 namespace AppTinhLuong365.Views.DuLieuTinhLuong
 {
@@ -445,7 +446,8 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void dataGrid2_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+            DataGrid dg = sender as DataGrid;
+                        if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dg.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
     }
 }

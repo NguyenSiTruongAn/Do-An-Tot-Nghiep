@@ -80,7 +80,7 @@
                                 <TextBlock TextWrapping="WrapWithOverflow" Text="Danh sách nhân viên hưởng hoa hồng lợi nhuận" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"/>
                             </DockPanel>
                         </DockPanel>
-                        <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 40 0 0" ItemsSource="{Binding listNVHHLoiNhuan}" ScrollViewer.HorizontalScrollBarVisibility="Visible" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                        <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 40 0 0" ItemsSource="{Binding listNVHHLoiNhuan}" ScrollViewer.HorizontalScrollBarVisibility="Auto" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                             <DataGrid.OpacityMask>
                                 <VisualBrush>
                                     <VisualBrush.Visual>
@@ -89,7 +89,7 @@
                                 </VisualBrush>
                             </DataGrid.OpacityMask>
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                <DataGridTemplateColumn Header="{DynamicResource textHoTen}" MinWidth="300">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Grid x:Name="gridHoTen">
@@ -107,7 +107,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textCKAP}">
+                                <DataGridTemplateColumn Header="{DynamicResource textCKAP}" MinWidth="200">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -116,7 +116,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textProduct}">
+                                <DataGridTemplateColumn Header="{DynamicResource textProduct}" MinWidth="200">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -125,7 +125,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textAmount}">
+                                <DataGridTemplateColumn Header="{DynamicResource textAmount}" MinWidth="150">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -134,7 +134,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textTDT}">
+                                <DataGridTemplateColumn Header="{DynamicResource textTDT}" MinWidth="200">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -146,7 +146,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textHoaHongDuocNhan}">
+                                <DataGridTemplateColumn Header="{DynamicResource textHoaHongDuocNhan}" MinWidth="200">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -158,10 +158,10 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn>
+                                <DataGridTemplateColumn MinWidth="100">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Grid>
+                                            <Grid HorizontalAlignment="Center">
                                                 <DockPanel>
                                                     <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
                                                         <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>
@@ -248,10 +248,10 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTemplateColumn Header="Tên Nhóm">
+                                        <DataGridTemplateColumn Header="Tên Nhóm" MinWidth="300">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid x:Name="gridHoTen" VerticalAlignment="Center" Margin="10 0 0 0">
+                                                    <Grid x:Name="gridHoTen" VerticalAlignment="Center" Margin="15 0 0 0">
                                                         <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding lgr_name}" Foreground="{DynamicResource #4C5BD4}"/>
                                                         <TextBlock Margin="0 20 0 0" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource #68798B}">
                                                             <Run Text="("/>
@@ -262,7 +262,7 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textCKAP}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textCKAP}" MinWidth="200">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
@@ -271,7 +271,7 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textProduct}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textProduct}" MinWidth="200">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
@@ -280,7 +280,7 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textAmount}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textAmount}" MinWidth="120">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
@@ -289,7 +289,7 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textTDT}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textTDT}" MinWidth="200">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
@@ -301,10 +301,10 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn MinWidth="100">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid>
+                                                    <Grid HorizontalAlignment="Center">
                                                         <DockPanel>
                                                             <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="ChinhSuaNhom">
                                                                 <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>

@@ -69,7 +69,7 @@
                                     <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=scroll, Converter={StaticResource math}, ConverterParameter=(@VALUE)}"></Setter>
                                 </Style>
                             </StackPanel.Style>
-                            <StackPanel Orientation="Horizontal" Background="{DynamicResource #4C5BD4}" Margin="20 22 20 0">
+                            <StackPanel PreviewMouseWheel="st_PreviewMouseWheel" Orientation="Horizontal" Background="{DynamicResource #4C5BD4}" Margin="20 22 20 0">
                                 <StackPanel Height="40">
                                     <StackPanel.Style>
                                         <Style TargetType="StackPanel">
@@ -288,7 +288,7 @@
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
                             </ListView>
-                            <StackPanel Margin="20,0,20,0" Background="{DynamicResource #EDEFFB}">
+                            <StackPanel PreviewMouseWheel="st_PreviewMouseWheel" Margin="20,0,20,0" Background="{DynamicResource #EDEFFB}">
                                 <StackPanel.Style>
                                     <Style TargetType="StackPanel">
                                         <Setter Property="Width" Value="{Binding Path=ActualWidth, ElementName=lv, Converter={StaticResource math}, ConverterParameter=(@VALUE)}"></Setter>

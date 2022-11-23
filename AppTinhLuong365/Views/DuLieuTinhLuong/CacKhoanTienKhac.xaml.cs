@@ -1,4 +1,5 @@
-﻿using AppTinhLuong365.Model.APIEntity;
+﻿using AppTinhLuong365.Core;
+using AppTinhLuong365.Model.APIEntity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 YearList.Add($"Năm {c + 1}");
             }
             InitializeComponent();
+            dataGrid2.AutoReponsiveColumn(0);
             this.DataContext = this;
             Main = main;
             string moth = DateTime.Now.ToString("MM");
@@ -122,8 +124,6 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             set {
                 _listCacKhoanTienKhac = value;
                 OnPropertyChanged();
-                lv.ItemsSource = null;
-                lv.Items.Clear();
             }
         }
 

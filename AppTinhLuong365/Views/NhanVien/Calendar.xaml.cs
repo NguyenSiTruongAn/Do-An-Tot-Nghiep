@@ -1,4 +1,5 @@
-﻿using AppTinhLuong365.Model.APIEntity;
+﻿using AppTinhLuong365.Core;
+using AppTinhLuong365.Model.APIEntity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -225,12 +226,18 @@ namespace AppTinhLuong365.Views.NhanVien
 
         private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+            ListView lv = sender as ListView;
+            if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)) {scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta); } else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void DexuatLich(object sender, MouseButtonEventArgs e)
         {
             Process.Start("https://vanthu.timviec365.vn/tao-de-xuat-lich-lam-viec.html");
+        }
+
+        private void st_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
     }
 }

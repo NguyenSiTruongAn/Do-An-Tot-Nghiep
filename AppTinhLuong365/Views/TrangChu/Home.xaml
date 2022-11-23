@@ -118,7 +118,7 @@
                     </VisualBrush>
                 </DataGrid.OpacityMask>
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                    <DataGridTemplateColumn Header="{DynamicResource textHoTen}" MinWidth="250">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid x:Name="gridHoTen" Margin="10 0 0 0">
@@ -147,7 +147,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="{DynamicResource textSoDienThoai}">
+                    <DataGridTemplateColumn Header="{DynamicResource textSoDienThoai}" MinWidth="200">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Border Background="Transparent">
@@ -156,7 +156,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="{DynamicResource textHopThu}">
+                    <DataGridTemplateColumn Header="{DynamicResource textHopThu}" MinWidth="200">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Border Background="Transparent">

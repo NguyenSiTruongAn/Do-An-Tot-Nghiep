@@ -1,4 +1,5 @@
-﻿using AppTinhLuong365.Model.APIEntity;
+﻿using AppTinhLuong365.Core;
+using AppTinhLuong365.Model.APIEntity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,6 @@ namespace AppTinhLuong365.Views.TinhLuong
             {
                 YearList.Add($"Năm {i}");
             }
-
             Main = main;
             this.ep_id = ep_id1 = ep_id;
             getData(ep_id);
@@ -513,7 +513,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void dataGrid_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+            DataGrid dg = sender as DataGrid;if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dg.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void SuaHopDong(object sender, MouseButtonEventArgs e)

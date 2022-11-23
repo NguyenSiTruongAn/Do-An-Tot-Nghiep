@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppTinhLuong365.Core;
 using AppTinhLuong365.Model.APIEntity;
 using Newtonsoft.Json;
 
@@ -43,6 +44,7 @@ namespace AppTinhLuong365.Views.PhanQuyen
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            
             getData();
             getDataTB();
         }
@@ -208,6 +210,7 @@ namespace AppTinhLuong365.Views.PhanQuyen
                                 item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
                             }
                         }
+                        dataGrid1.AutoReponsiveColumn(0);
                     }
                     catch { }
                 };
@@ -275,7 +278,7 @@ namespace AppTinhLuong365.Views.PhanQuyen
 
         private void dataGrid_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+                        if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dataGrid1.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void NhanVien(object sender, SelectionChangedEventArgs e)

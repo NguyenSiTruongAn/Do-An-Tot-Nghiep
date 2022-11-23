@@ -418,29 +418,29 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textEffectiveStartDate}">
+                            <DataGridTemplateColumn Header="{DynamicResource textEffectiveStartDate}" MinWidth="200">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding display_con_time_up}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textExpirationDate}">
+                            <DataGridTemplateColumn Header="{DynamicResource textExpirationDate}" MinWidth="200">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding display_con_time_end}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textSalaryPercent}">
+                            <DataGridTemplateColumn Header="{DynamicResource textSalaryPercent}" MinWidth="150">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding con_salary_persent}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="{DynamicResource textTDK}"></DataGridTextColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textSua}">
+                            <DataGridTextColumn Header="{DynamicResource textTDK}" MinWidth="150"></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="{DynamicResource textSua}" MinWidth="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="SuaHopDong" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -449,7 +449,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textXoa}">
+                            <DataGridTemplateColumn Header="{DynamicResource textXoa}" MinWidth="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="XoaHopDong" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -490,49 +490,49 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                            <DataGridTemplateColumn Header="{DynamicResource textHoTen}" MinWidth="200">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding fa_name}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textDateOfBirth}">
+                            <DataGridTemplateColumn Header="{DynamicResource textDateOfBirth}" MinWidth="150">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding display_fa_birthday}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textSoDienThoai}">
+                            <DataGridTemplateColumn Header="{DynamicResource textSoDienThoai}" MinWidth="150">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding fa_phone}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Quan hệ">
+                            <DataGridTemplateColumn Header="Quan hệ" MinWidth="150">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding fa_relation}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textJob}">
+                            <DataGridTemplateColumn Header="{DynamicResource textJob}" MinWidth="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding fa_job}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textAddress}">
+                            <DataGridTemplateColumn Header="{DynamicResource textAddress}" MinWidth="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding fa_address}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textSua}">
+                            <DataGridTemplateColumn Header="{DynamicResource textSua}" MinWidth="70">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="SuaPhuThuoc" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -541,7 +541,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textXoa}">
+                            <DataGridTemplateColumn Header="{DynamicResource textXoa}" MinWidth="70">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="XoaGiaDinh" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -579,28 +579,28 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textMoney}">
+                            <DataGridTemplateColumn Header="{DynamicResource textMoney}" MinWidth="150">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding display_don_price,Mode=OneWay}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textTBD}">
+                            <DataGridTemplateColumn Header="{DynamicResource textTBD}" MinWidth="200">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding display_don_time_active,Mode=OneWay}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textTKT}">
+                            <DataGridTemplateColumn Header="{DynamicResource textTKT}" MinWidth="200">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding display_don_time_end,Mode=OneWay}" Style="{StaticResource TextRowCenter}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textSua}">
+                            <DataGridTemplateColumn Header="{DynamicResource textSua}" MinWidth="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="SuaDongGop" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -609,7 +609,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textXoa}">
+                            <DataGridTemplateColumn Header="{DynamicResource textXoa}" MinWidth="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="XoaDongGop" HorizontalAlignment="Center" VerticalAlignment="Center">

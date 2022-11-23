@@ -8,7 +8,7 @@
       mc:Ignorable="d" VerticalAlignment="Top"
       Title="PopupDSNVLichLamViec">
 
-    <Grid>
+    <Grid Margin="0 50 0 0">
         <Border Style="{StaticResource ShadowBorder2}"></Border>
         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="10">
             <StackPanel>
@@ -46,7 +46,7 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                        <DataGridTemplateColumn MinWidth="275" Header="{DynamicResource textHoTen}">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Grid x:Name="gridHoTen">
@@ -94,7 +94,7 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textHopThu}">
+                                        <DataGridTemplateColumn MinWidth="275" Header="{DynamicResource textHopThu}">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
@@ -105,7 +105,7 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn MinWidth="75">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border MouseLeftButtonDown="Path_MouseLeftButtonDown"

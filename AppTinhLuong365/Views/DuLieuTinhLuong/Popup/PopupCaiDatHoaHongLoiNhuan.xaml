@@ -36,7 +36,7 @@
                         </VisualBrush>
                     </DataGrid.OpacityMask>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="STT">
+                        <DataGridTemplateColumn Header="STT" MinWidth="150">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -45,7 +45,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Tên sản phẩm">
+                        <DataGridTemplateColumn Header="Tên sản phẩm" MinWidth="250">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -54,7 +54,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Chi phí">
+                        <DataGridTemplateColumn Header="Chi phí" MinWidth=" 250">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -63,7 +63,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn>
+                        <DataGridTemplateColumn MinWidth="150">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Grid>

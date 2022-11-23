@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AppTinhLuong365.Core;
 
 namespace AppTinhLuong365.Views.CaiDat
 {
@@ -55,6 +56,7 @@ namespace AppTinhLuong365.Views.CaiDat
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            dataGrid1.AutoReponsiveColumn(0);
             string month = DateTime.Now.ToString("MM");
             string year = DateTime.Now.ToString("yyyy");
             string date = DateTime.Now.ToString("yyyy-MM-dd");
@@ -678,12 +680,12 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void DataGrid_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+                        if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dataGrid1.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void ListView_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+                        if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dataGrid1.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void NghiPhep_OnLoaded(object sender, RoutedEventArgs e)

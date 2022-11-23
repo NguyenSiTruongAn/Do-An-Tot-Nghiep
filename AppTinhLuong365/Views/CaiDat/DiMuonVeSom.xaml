@@ -86,7 +86,7 @@
                                     </Border>
                                     <Border Style="{DynamicResource Style_Border_Wrap}">
                                         <WrapPanel x:Name="Wrap_Border1">
-                                            <Border Style="{DynamicResource Style_Border_Wrap1}"
+                                            <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
                                                 <tool:SearchBar CornerRadius="10" x:Name="searchBarMonth1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16"
@@ -94,13 +94,13 @@
                                                                 ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 Loaded="SearchBarMonth_OnLoaded" />
                                             </Border>
-                                            <Border Style="{DynamicResource Style_Border_Wrap1}"
+                                            <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
                                                 <tool:SearchBar CornerRadius="10" x:Name="searchBarYear1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
                                                                 ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" Loaded="FrameworkElement_OnLoaded"/>
                                             </Border>
-                                            <Border Style="{DynamicResource Style_Border_Wrap1}"
+                                            <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
                                                 <tool:SearchBar CornerRadius="10" x:Name="cbPhongBan" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}"
@@ -109,7 +109,7 @@
                                                                 ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 DisplayMemberPath="dep_name" />
                                             </Border>
-                                            <Border Style="{DynamicResource Style_Border_Wrap1}"
+                                            <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
                                                 <tool:SearchBar CornerRadius="10" x:Name="cbListNV" Foreground="{DynamicResource #444}"
@@ -118,7 +118,7 @@
                                                                 ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 DisplayMemberPath="display_ep_name" />
                                             </Border>
-                                            <Border MouseLeftButtonDown="ThongKe" Cursor="Hand" Style="{DynamicResource Style_Border_Wrap1}"
+                                            <Border Width="160" MouseLeftButtonDown="ThongKe" Cursor="Hand" Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0"
                                                     CornerRadius="10" Height="38"
                                                     Background="{DynamicResource #4C5BD4}">
@@ -295,7 +295,6 @@
 
                             </StackPanel>
                         </Border>
-                        <tool:LoadingSpinner x:Name="loading" Visibility="Collapsed" />
                     </Grid>
                     <Border MouseLeftButtonDown="XuatFileThongKe" Cursor="Hand" Margin="20 0 0 0" Width="210" Height="40" CornerRadius="5"
                             Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Left">
@@ -580,5 +579,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
+        <tool:LoadingSpinner x:Name="loading" Visibility="Collapsed" />
     </Grid>
 </Page>

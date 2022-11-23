@@ -23,6 +23,7 @@ using Microsoft.Win32;
 using Border = System.Windows.Controls.Border;
 using Path = System.Windows.Shapes.Path;
 using Excel = Microsoft.Office.Interop.Excel;
+using AppTinhLuong365.Core;
 
 namespace AppTinhLuong365.Views.BaoCaoCongLuong
 {
@@ -70,6 +71,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            dataGrid1.AutoReponsiveColumn(0);
             // string month = DateTime.Now.ToString("MM");
             // string year = DateTime.Now.ToString("yyyy");
             string start_date = DateTime.Now.ToString("yyyy-MM-01");
@@ -1089,7 +1091,11 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
 
         private void DataGrid_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+            if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+            {
+                var scroll = dataGrid1.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);
+            }
+            else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void Month(object sender, SelectionChangedEventArgs e)

@@ -52,7 +52,7 @@
                         </VisualBrush>
                     </DataGrid.OpacityMask>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                        <DataGridTemplateColumn MinWidth="300" Header="{DynamicResource textHoTen}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Grid x:Name="gridHoTen">
@@ -86,7 +86,7 @@
                         <DataGridTemplateColumn Header="Phòng ban/ Bộ phận">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border HorizontalAlignment="Center" Background="Transparent">
                                         <TextBlock Text="{Binding dep_name}" VerticalAlignment="Center" FontSize="15"
                                                    FontWeight="DemiBold">
                                         </TextBlock>
@@ -94,7 +94,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Mức thưởng">
+                        <DataGridTemplateColumn Header="Mức thưởng" MinWidth="150">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -120,10 +120,10 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Ngày áp dụng">
+                        <DataGridTemplateColumn Header="Ngày áp dụng" MinWidth="230">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="Transparent">
+                                    <Border Background="Transparent" HorizontalAlignment="Center">
                                         <TextBlock VerticalAlignment="Center" Margin="0 5 0 23" FontSize="15"
                                                    Foreground="{DynamicResource #68798B}" FontWeight="DemiBold">
                                             <Run Text="{Binding time_start}" />
@@ -134,7 +134,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Xóa">
+                        <DataGridTemplateColumn Header="Xóa" MinWidth="100">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border MouseLeftButtonDown="Xoa" Margin="10 0 0 0" Background="Transparent" Width="22" Height="22"

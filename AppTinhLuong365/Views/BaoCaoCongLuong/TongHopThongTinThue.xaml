@@ -151,7 +151,7 @@
                             </VisualBrush>
                         </DataGrid.OpacityMask>
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn MinWidth="345" Header="{DynamicResource textHoTen}">
+                            <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid x:Name="gridHoTen" MouseEnter="dataGrid1Hover"
@@ -238,7 +238,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn MinWidth="230" Header="{DynamicResource textTongLuongThuc}">
+                            <DataGridTemplateColumn Header="{DynamicResource textTongLuongThuc}">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Border Background="Transparent" MouseEnter="dataGrid1Hover"

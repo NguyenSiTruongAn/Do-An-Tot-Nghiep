@@ -53,6 +53,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         public PopupDSNVLichLamViec(MainWindow main, string Id, string name)
         {
             InitializeComponent();
+            //dataGrid2.AutoReponsiveColumn(3);
             this.DataContext = this;
             Main = main;
             id = Id;

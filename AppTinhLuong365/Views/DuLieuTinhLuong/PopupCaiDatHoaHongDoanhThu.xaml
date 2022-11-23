@@ -27,7 +27,7 @@
                         </DockPanel>
                     </Border>
                 </DockPanel>
-                <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 40 0 0" ItemsSource="{Binding listDSCaiDatHHDT}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
+                <DataGrid x:Name="dataGrid3" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 40 0 0" ItemsSource="{Binding listDSCaiDatHHDT}" ScrollViewer.HorizontalScrollBarVisibility="Auto" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                     <DataGrid.OpacityMask>
                         <VisualBrush>
                             <VisualBrush.Visual>
@@ -36,7 +36,7 @@
                         </VisualBrush>
                     </DataGrid.OpacityMask>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="STT">
+                        <DataGridTemplateColumn Header="STT" MinWidth="100">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -45,7 +45,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Tên doanh thu">
+                        <DataGridTemplateColumn Header="Tên doanh thu" MinWidth="200">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -54,7 +54,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Doanh Thu">
+                        <DataGridTemplateColumn Header="Doanh Thu" MinWidth="220">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -67,7 +67,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Hoa hồng( % )">
+                        <DataGridTemplateColumn Header="Hoa hồng( % )" MinWidth="170">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -79,10 +79,10 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn>
+                        <DataGridTemplateColumn MinWidth="150">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Grid>
+                                    <Grid HorizontalAlignment="Center">
                                         <DockPanel>
                                             <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
                                                 <Path Data="{DynamicResource iconPenEdit}" Fill="{DynamicResource #4C5BD4}"></Path>

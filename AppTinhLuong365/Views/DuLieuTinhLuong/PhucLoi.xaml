@@ -41,7 +41,7 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTemplateColumn Header="{DynamicResource textTenPhucLoi}" MaxWidth="300">
+                                        <DataGridTemplateColumn Header="{DynamicResource textTenPhucLoi}">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <StackPanel Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Center">

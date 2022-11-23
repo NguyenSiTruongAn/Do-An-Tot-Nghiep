@@ -1,4 +1,5 @@
-﻿using AppTinhLuong365.Model.APIEntity;
+﻿using AppTinhLuong365.Core;
+using AppTinhLuong365.Model.APIEntity;
 using Aspose.Cells;
 using Microsoft.Win32;
 using Newtonsoft.Json;
@@ -731,8 +732,15 @@ namespace AppTinhLuong365.Views
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+            if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+            {
+                var scroll = dataGrid1.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);
+            }
+            else             
+                Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
+  
+
 
         private void xuatExcel()
         {

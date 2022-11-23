@@ -89,10 +89,10 @@
                                 </VisualBrush>
                             </DataGrid.OpacityMask>
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                <DataGridTemplateColumn Header="{DynamicResource textHoTen}" MinWidth="250">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Grid x:Name="gridHoTen">
+                                            <Grid x:Name="gridHoTen" Margin="15 0 0 0">
                                                 <Border Width="40" Height="40" CornerRadius="40" HorizontalAlignment="Left">
                                                     <Border.Background>
                                                         <ImageBrush ImageSource="{Binding ep_image}"></ImageBrush>
@@ -109,7 +109,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textCKAP}">
+                                <DataGridTemplateColumn Header="{DynamicResource textCKAP}" MinWidth="200">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -118,7 +118,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textProduct}">
+                                <DataGridTemplateColumn Header="{DynamicResource textProduct}" MinWidth="200">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -127,7 +127,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textAmount}">
+                                <DataGridTemplateColumn Header="{DynamicResource textAmount}" MinWidth="120">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -136,7 +136,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="{DynamicResource textHoaHongDuocNhan}">
+                                <DataGridTemplateColumn Header="{DynamicResource textHoaHongDuocNhan}" MinWidth="200">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Border Background="Transparent">
@@ -148,10 +148,10 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn>
+                                <DataGridTemplateColumn MinWidth="100">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Grid>
+                                            <Grid HorizontalAlignment="Center">
                                                 <DockPanel>
                                                     <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
                                                         <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>
@@ -291,10 +291,10 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn MaxWidth="100">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid>
+                                                    <Grid HorizontalAlignment="Center">
                                                         <DockPanel>
                                                             <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="ChinhSuaNhom">
                                                                 <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"></Path>

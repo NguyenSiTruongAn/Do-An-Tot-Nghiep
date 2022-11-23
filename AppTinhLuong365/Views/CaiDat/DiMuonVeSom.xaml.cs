@@ -51,6 +51,7 @@ namespace AppTinhLuong365.Views.CaiDat
             }
 
             InitializeComponent();
+            dataGrid1.AutoReponsiveColumn(1);
             this.DataContext = this;
             Main = main;
             string month = DateTime.Now.ToString("MM");
@@ -165,6 +166,7 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void getData(string month, string year)
         {
+            loading.Visibility = Visibility.Visible;
             using (WebClient web = new WebClient())
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
@@ -189,6 +191,7 @@ namespace AppTinhLuong365.Views.CaiDat
                     //        item.ep_image = "https://tinhluong.timviec365.vn/img/add.png";
                     //    }
                     //}
+                    loading.Visibility = Visibility.Collapsed;
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_late.php",
                     web.QueryString);
@@ -222,6 +225,7 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void getData1(int page, string month, string year, string id_nv, string id_pb)
         {
+            loading.Visibility = Visibility.Visible;
             using (WebClient web = new WebClient())
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
@@ -257,6 +261,7 @@ namespace AppTinhLuong365.Views.CaiDat
                         }
                     }
                     catch { }
+                    loading.Visibility = Visibility.Collapsed;
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_ep_late.php",
                     web.QueryString);
@@ -859,12 +864,12 @@ namespace AppTinhLuong365.Views.CaiDat
 
         private void DataGrid_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+                        if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dataGrid1.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void dataGrid_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+                        if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dataGrid1.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void xuatExcel()

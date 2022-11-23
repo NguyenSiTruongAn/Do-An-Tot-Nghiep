@@ -36,7 +36,7 @@
                         </VisualBrush>
                     </DataGrid.OpacityMask>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="STT">
+                        <DataGridTemplateColumn Header="STT" MinWidth="100">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -45,7 +45,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Tên kế hoạch">
+                        <DataGridTemplateColumn Header="Tên kế hoạch" MinWidth="250">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -54,7 +54,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Đạt KPI">
+                        <DataGridTemplateColumn Header="Đạt KPI" MinWidth="200">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -63,7 +63,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Không đạt">
+                        <DataGridTemplateColumn Header="Không đạt" MinWidth="200">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border Background="Transparent">
@@ -72,10 +72,10 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn>
+                        <DataGridTemplateColumn MinWidth="150">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Grid>
+                                    <Grid HorizontalAlignment="Center">
                                         <DockPanel>
                                             <Border Background="Transparent" Width="22" Height="22" Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
                                                 <Path Data="{DynamicResource iconPenEdit}" Fill="{DynamicResource #4C5BD4}"></Path>

@@ -1,4 +1,5 @@
-﻿using AppTinhLuong365.Model.APIEntity;
+﻿using AppTinhLuong365.Core;
+using AppTinhLuong365.Model.APIEntity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,9 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             InitializeComponent();
             this.DataContext = this;
             Main = main;
+            dataGrid1.AutoReponsiveColumn(0);
+            dataGrid.AutoReponsiveColumn(0);
+            dataGrid2.AutoReponsiveColumn(0);
             getData();
             getDataTB();
         }
@@ -236,7 +240,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void dataGrid2_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+                        if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dataGrid1.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void BtnTuyChonDSPC(object sender, MouseButtonEventArgs e)

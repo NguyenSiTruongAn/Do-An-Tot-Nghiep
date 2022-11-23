@@ -584,12 +584,12 @@
                                         </VisualBrush>
                                     </DataGrid.OpacityMask>
                                     <DataGrid.Columns>
-                                        <DataGridTemplateColumn Header="{DynamicResource textCaLamViec}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textCaLamViec}" MinWidth="300">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
                                                         <StackPanel Margin="15 0 0 0" VerticalAlignment="Center"
-                                                                    HorizontalAlignment="Right">
+                                                                    HorizontalAlignment="Left">
                                                             <TextBlock FontSize="15"
                                                                        Foreground="{DynamicResource #4C5BD4}"
                                                                        FontWeight="DemiBold"
@@ -606,7 +606,7 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textMucPhatDangApDung}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textMucPhatDangApDung}" MinWidth="300">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
@@ -619,7 +619,7 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textNgayBatDauApDung}">
+                                        <DataGridTemplateColumn Header="{DynamicResource textNgayBatDauApDung}" MinWidth="300">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Background="Transparent">
@@ -632,7 +632,7 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="">
+                                        <DataGridTemplateColumn Header="" MinWidth="150">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <Border Cursor="Hand" Background="Transparent"

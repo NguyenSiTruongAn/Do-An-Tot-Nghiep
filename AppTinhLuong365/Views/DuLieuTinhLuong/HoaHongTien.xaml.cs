@@ -57,7 +57,9 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                 YearList.Add($"Năm {c}");
                 YearList.Add($"Năm {c + 1}");
             }
-
+            dataGrid1.AutoReponsiveColumn(0);
+            dataGrid2.AutoReponsiveColumn(2);
+            dataGrid3.AutoReponsiveColumn(0);
             Main = main;
             string month = DateTime.Now.ToString("MM");
             string year = DateTime.Now.ToString("yyyy");
@@ -392,7 +394,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+                        if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dataGrid1.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)

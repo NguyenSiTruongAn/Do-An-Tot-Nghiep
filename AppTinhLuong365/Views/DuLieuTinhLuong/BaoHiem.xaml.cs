@@ -58,6 +58,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             this.DataContext = this;
             Main = main;
             dataGrid1.AutoReponsiveColumn(0);
+            dataGrid2.AutoReponsiveColumn(0);
             string month = DateTime.Now.ToString("MM");
             string year = DateTime.Now.ToString("yyyy");
             cbThang.PlaceHolder = cbThang1.PlaceHolder = "Tháng " + month;
@@ -501,12 +502,12 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+                        if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dataGrid1.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
+                        if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dataGrid1.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
 
         private void ThongKeNVBH(object sender, MouseButtonEventArgs e)
