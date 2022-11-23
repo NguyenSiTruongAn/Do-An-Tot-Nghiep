@@ -123,7 +123,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         int flag = 0;
@@ -223,7 +223,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                             if (api.data != null)
                             {
                                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.BaoHiem(Main));
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         }
                         catch { }

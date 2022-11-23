@@ -160,7 +160,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void SLChanged1(object sender, TextChangedEventArgs e)
@@ -284,7 +284,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_group_rose_fees.php", web.QueryString);
                 }
-                this.Visibility = Visibility.Collapsed;
+                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
             }
         }
 

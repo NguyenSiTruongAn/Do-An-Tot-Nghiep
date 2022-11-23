@@ -101,6 +101,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             Thang.Text = "tháng " + d + "/" + e;
             getData(d, e, start_date, end_date);
             getDataTB();
+            Main.HomeSelectionPage.Focus();
         }
 
         private void getDataTB()
@@ -221,6 +222,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                     {
                     }
                     loading.Visibility = Visibility.Collapsed;
+                    Main.HomeSelectionPage.Focus();
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_luong_nv.php",
                     web.QueryString);

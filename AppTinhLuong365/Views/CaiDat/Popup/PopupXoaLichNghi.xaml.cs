@@ -53,7 +53,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                         if (api.data != null)
                         {
                             Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiLe(Main));
-                            this.Visibility = Visibility.Collapsed;
+                            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                         }
                     }
                     catch { }
@@ -65,7 +65,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void Close_Click(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
     }
 }

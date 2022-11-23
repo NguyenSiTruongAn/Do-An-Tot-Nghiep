@@ -48,7 +48,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void ThemLuong(object sender, MouseButtonEventArgs e)
@@ -91,7 +91,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                             {
                                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data.ep_id));
                                 Main.HomeSelectionPage.Visibility = Visibility.Visible;
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         }
                         catch { }

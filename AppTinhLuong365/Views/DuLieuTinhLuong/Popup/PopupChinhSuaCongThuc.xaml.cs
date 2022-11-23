@@ -41,7 +41,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         private string name1, note1, fs_id1, id1, type;
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)

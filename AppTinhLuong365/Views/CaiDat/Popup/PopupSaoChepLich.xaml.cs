@@ -58,7 +58,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void Select_thang(object sender, MouseButtonEventArgs e)
@@ -211,7 +211,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                             {
                                 Main.HomeSelectionPage.NavigationService.Navigate(
                                     new Views.CaiDat.CaiCaVaLichLamViec(Main));
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         }
                         catch { }

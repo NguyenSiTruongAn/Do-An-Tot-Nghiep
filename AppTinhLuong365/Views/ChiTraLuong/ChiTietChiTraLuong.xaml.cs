@@ -421,7 +421,7 @@ namespace AppTinhLuong365.Views.ChiTraLuong
             bool allow = true;
             if (nv.Count <= 0)
             {
-                Main.PopupSelection.NavigationService.Navigate(new Views.ChiTraLuong.PopupTb());
+                Main.PopupSelection.NavigationService.Navigate(new Views.ChiTraLuong.PopupTb(Main));
                 Main.PopupSelection.Visibility = Visibility.Visible;
                 allow = false;
             }

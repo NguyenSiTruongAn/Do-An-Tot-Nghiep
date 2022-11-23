@@ -101,7 +101,7 @@ namespace AppTinhLuong365.Views.ChiTraLuong
         MainWindow Main;
         private void Path_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private List<Item_dep> _listDep;
@@ -228,7 +228,7 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                 }
 
                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.ChiTraLuong.ChiTraLuong(Main));
-                this.Visibility = Visibility.Collapsed;
+                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
             }
         }
     }

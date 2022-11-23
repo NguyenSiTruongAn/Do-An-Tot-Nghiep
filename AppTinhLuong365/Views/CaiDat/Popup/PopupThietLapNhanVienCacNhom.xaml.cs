@@ -120,13 +120,13 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                 pop.tb.SelectedIndex = 2;
                 Main.HomeSelectionPage.NavigationService.Navigate(pop);
                 pop.dataGrid1.AutoFitColumn(1);
-                this.Visibility = Visibility.Collapsed;
+                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
             }
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
     }
 }

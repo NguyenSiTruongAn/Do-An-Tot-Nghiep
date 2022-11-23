@@ -816,6 +816,7 @@ namespace AppTinhLuong365
         {
             this.PopupSelection.NavigationService.Navigate(null);
             this.PopupSelection.Visibility = Visibility.Hidden;
+            this.HomeSelectionPage.Focus();
         }
 
         private void btn_OpenMenu_Click(object sender, MouseButtonEventArgs e)

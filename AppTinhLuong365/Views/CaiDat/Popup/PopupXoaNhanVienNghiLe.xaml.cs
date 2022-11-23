@@ -38,7 +38,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
 
         private void Close_Click(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -62,7 +62,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                             var pop = new Views.CaiDat.NghiLe(Main);
                             Main.HomeSelectionPage.NavigationService.Navigate(pop);
                             // pop.Control.SelectedIndex = 1;
-                            this.Visibility = Visibility.Collapsed;
+                            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                         }
                     }
                     catch { }

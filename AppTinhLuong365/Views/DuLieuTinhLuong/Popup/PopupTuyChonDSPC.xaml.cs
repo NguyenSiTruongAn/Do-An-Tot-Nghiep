@@ -39,7 +39,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void Close_click(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void ThemNhanVien_ClickMouseLeftDown(object sender, MouseButtonEventArgs e)

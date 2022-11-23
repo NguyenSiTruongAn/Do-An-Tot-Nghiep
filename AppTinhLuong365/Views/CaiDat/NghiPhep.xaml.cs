@@ -577,7 +577,7 @@ namespace AppTinhLuong365.Views.CaiDat
                             {
                                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiPhep(Main));
                                 this.Control.SelectedIndex = 1;
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         }
                         catch { }
@@ -665,7 +665,7 @@ namespace AppTinhLuong365.Views.CaiDat
                             {
                                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.NghiPhep(Main));
                                 this.Control.SelectedIndex = 2;
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         }
                         catch { }

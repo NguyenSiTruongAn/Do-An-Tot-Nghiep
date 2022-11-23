@@ -96,7 +96,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -204,7 +204,7 @@ namespace AppTinhLuong365.Views.TinhLuong.Popup
                             if (api.data != null)
                             {
                                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.Thue(Main));
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         }
                         catch { }

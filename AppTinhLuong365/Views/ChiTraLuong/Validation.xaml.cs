@@ -20,15 +20,16 @@ namespace AppTinhLuong365.Views.ChiTraLuong
     /// </summary>
     public partial class Validation : UserControl
     {
-        public Validation()
+        public Validation(MainWindow main)
         {
             this.DataContext = this;
             InitializeComponent();
+            Main = main;
         }
-
+        MainWindow Main;
         private void Tat(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
     }
 }

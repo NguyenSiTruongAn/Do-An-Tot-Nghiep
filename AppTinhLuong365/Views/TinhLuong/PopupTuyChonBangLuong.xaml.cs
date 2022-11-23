@@ -52,13 +52,13 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.ChiTietLuong(Main, name, dep_name, ep_id, month, year, start_date, end_date));
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
             Main.title.Text = "Bảng lương nhân viên / Chi tiết lương nhân viên";
             Main.sidebar.SelectedIndex = -1;
         }
@@ -67,7 +67,7 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             
             Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, ep_id));
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
             Main.title.Text = "Danh sách nhân viên / Hồ sơ nhân viên";
             Main.sidebar.SelectedIndex = -1;
         }

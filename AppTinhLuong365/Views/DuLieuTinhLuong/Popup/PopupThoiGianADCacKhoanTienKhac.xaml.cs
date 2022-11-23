@@ -158,7 +158,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void lv_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -218,7 +218,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                             API_ThemMoiPhucLoiPhuCap api = JsonConvert.DeserializeObject<API_ThemMoiPhucLoiPhuCap>(UnicodeEncoding.UTF8.GetString(ee.Result));
                             if (api.data != null)
                             {
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         }
                         catch { }

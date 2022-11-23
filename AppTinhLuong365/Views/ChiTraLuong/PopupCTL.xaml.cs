@@ -91,7 +91,7 @@ namespace AppTinhLuong365.Views.ChiTraLuong
 
         private void Close(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private List<Item_detail_pay> _listItemDetailPay;
@@ -220,7 +220,7 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                     // Main.PopupSelection1.NavigationService.Navigate(
                     //     new Views.ChiTraLuong.Validation());
                     // Main.PopupSelection1.Visibility = Visibility.Visible;
-                    gridPopup.Children.Add(new Views.ChiTraLuong.Validation());
+                    gridPopup.Children.Add(new Views.ChiTraLuong.Validation(Main));
                     // item.validatepc = true;
                 }
             }
@@ -248,7 +248,7 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                         if (api.data != null)
                         {
                             Main.HomeSelectionPage.NavigationService.Navigate(new Views.ChiTraLuong.ChiTietChiTraLuong(Main, id));
-                            this.Visibility = Visibility.Collapsed;
+                            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                         }
                     };
                     web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/pay_wage.php",

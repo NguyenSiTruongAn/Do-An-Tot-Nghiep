@@ -35,7 +35,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         }
         private void Close_Click(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void TiepTuc(object sender, MouseButtonEventArgs e)
@@ -61,7 +61,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                             Main.sidebar.SelectedIndex = -1;
                             if (type == "1")
                                 pop.tb1.SelectedIndex = 1;
-                            this.Visibility = Visibility.Collapsed;
+                            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                         }
                     }
                     catch { }

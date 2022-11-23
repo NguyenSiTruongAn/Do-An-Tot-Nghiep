@@ -51,7 +51,7 @@ namespace AppTinhLuong365.Views.PhanQuyen
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void Save(object sender, MouseButtonEventArgs e)
@@ -79,7 +79,7 @@ namespace AppTinhLuong365.Views.PhanQuyen
                         if (api.data != null)
                         {
                             Main.HomeSelectionPage.NavigationService.Navigate(new Views.PhanQuyen.PhanQuyen(Main));
-                            this.Visibility = Visibility.Collapsed;
+                            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                         }
                     }
                     catch { }

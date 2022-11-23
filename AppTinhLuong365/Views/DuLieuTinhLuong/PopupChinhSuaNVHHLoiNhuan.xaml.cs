@@ -165,7 +165,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void SLChanged(object sender, TextChangedEventArgs e)
@@ -294,7 +294,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                             {
                                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.HoaHongLoiNhuan(Main));
                                 Main.sidebar.SelectedIndex = -1;
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         }
                         catch { }

@@ -51,7 +51,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                         {
                             Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.BaoHiem(Main));
                             Main.sidebar.SelectedIndex = 8;
-                            this.Visibility = Visibility.Collapsed;
+                            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                         }
                     }
                     catch { }
@@ -62,7 +62,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void Close_Click(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
     }
 }

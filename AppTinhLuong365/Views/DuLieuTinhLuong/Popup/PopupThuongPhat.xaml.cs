@@ -106,7 +106,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
         public List<string> Test { get; set; } = new List<string>() { "aa", "bb", "cc" };
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void dataGrid1_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -177,7 +177,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                             {
                                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.ThuongPhat(Main));
                                 Main.HomeSelectionPage.Visibility = Visibility.Visible;
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         }
                         catch { }
@@ -231,7 +231,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                             {
                                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.ThuongPhat(Main));
                                 Main.HomeSelectionPage.Visibility = Visibility.Visible;
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         }
                         catch { }

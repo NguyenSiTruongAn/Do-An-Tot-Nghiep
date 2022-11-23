@@ -224,7 +224,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
         private List<TextBlock> listTextBlock = new List<TextBlock>();
         private void Close_Click(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         
         }
 
@@ -388,7 +388,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                             {
                                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.HoSoNhanVien(Main, data.ep_id));
                                 Main.HomeSelectionPage.Visibility = Visibility.Visible;
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         };
                         web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/edit_cycle_pf.php", web.QueryString);
@@ -417,7 +417,7 @@ namespace AppTinhLuong365.Views.CaiDat.Popup
                                     Main.HomeSelectionPage.NavigationService.Navigate(new Views.CaiDat.CaiCaVaLichLamViec(Main));
                                     Main.HomeSelectionPage.Visibility = Visibility.Visible;
                                 }
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         };
                         web.UploadValuesTaskAsync("https://chamcong.24hpay.vn/service/update_cycle.php", web.QueryString);

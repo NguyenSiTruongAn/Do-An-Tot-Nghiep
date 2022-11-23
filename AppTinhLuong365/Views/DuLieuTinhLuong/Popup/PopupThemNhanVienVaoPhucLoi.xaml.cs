@@ -208,7 +208,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
                             if (api.data != null)
                             {
                                 Main.HomeSelectionPage.NavigationService.Navigate(new Views.DuLieuTinhLuong.PhucLoi(Main));
-                                this.Visibility = Visibility.Collapsed;
+                                Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
                             }
                         }
                         catch {  }
@@ -221,7 +221,7 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong.Popup
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
         }
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
