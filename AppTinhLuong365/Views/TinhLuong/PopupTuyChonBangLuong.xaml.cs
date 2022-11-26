@@ -33,8 +33,9 @@ namespace AppTinhLuong365.Views.TinhLuong
         private int year;
         private string start_date;
         private string end_date;
+        private int type;
 
-        public PopupTuyChonBangLuong(MainWindow main, string dataName, string dataDepName, string dataEpId, int selectedMonth, int selectedYear, DateTime? start_date, DateTime? end_date)
+        public PopupTuyChonBangLuong(MainWindow main, string dataName, string dataDepName, string dataEpId, int selectedMonth, int selectedYear, DateTime? start_date, DateTime? end_date, int type)
         {
             this.DataContext = this;
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             this.start_date = start_date+"";
             this.end_date = end_date+"";
             Main = main;
+            this.type = type;
         }
 
         MainWindow Main;
@@ -57,7 +59,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.ChiTietLuong(Main, name, dep_name, ep_id, month, year, start_date, end_date));
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.ChiTietLuong(Main, name, dep_name, ep_id, month, year, start_date, end_date, type));
             Main.PopupSelection.NavigationService.Navigate(null);Main.PopupSelection.Visibility = Visibility.Hidden;
             Main.title.Text = "Bảng lương nhân viên / Chi tiết lương nhân viên";
             Main.sidebar.SelectedIndex = -1;

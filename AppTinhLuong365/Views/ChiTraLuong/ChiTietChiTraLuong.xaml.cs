@@ -594,5 +594,11 @@ namespace AppTinhLuong365.Views.ChiTraLuong
                 else if (!allow && !c.IsChecked.Value) SelectedAll = false;
             }
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.ChiTraLuong.ChiTraLuong(Main));
+            Main.SideBarIndex = 13;
+        }
     }
 }

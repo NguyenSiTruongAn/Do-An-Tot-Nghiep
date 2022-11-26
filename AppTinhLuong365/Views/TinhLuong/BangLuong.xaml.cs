@@ -249,7 +249,7 @@ namespace AppTinhLuong365.Views.TinhLuong
                 Item_Bang_Luong data = (Item_Bang_Luong)p.DataContext;
                 var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id,
                     searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex, DatePickerStart.SelectedDate,
-                    DatePickerEnd.SelectedDate);
+                    DatePickerEnd.SelectedDate, 1);
                 var z = Mouse.GetPosition(Main.PopupSelection);
                 pop.Margin = new Thickness(z.X - 95, z.Y + 15, 0, 0);
                 Main.PopupSelection.NavigationService.Navigate(pop);

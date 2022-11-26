@@ -168,12 +168,16 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             Border col = sender as Border;
             if (col != null)
             {
-                Item_Bang_Luong item = (Item_Bang_Luong)col.DataContext;
-                int index = listBangLuong.FindIndex(x => x.ep_id == item.ep_id);
-                if (index > -1)
+                try
                 {
-                    listBangLuong[index].hover = 1;
+                    Item_Bang_Luong item = (Item_Bang_Luong)col.DataContext;
+                    int index = listBangLuong.FindIndex(x => x.ep_id == item.ep_id);
+                    if (index > -1)
+                    {
+                        listBangLuong[index].hover = 1;
+                    }
                 }
+                catch {  }
             }
             else if ((sender as Grid) != null)
             {
@@ -215,7 +219,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             Item_Bang_Luong data = (Item_Bang_Luong)p.DataContext;
             var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id,
                 searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex, DatePickerStart.SelectedDate,
-                DatePickerEnd.SelectedDate);
+                DatePickerEnd.SelectedDate, 3);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 95, z.Y + 15, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -1280,6 +1284,12 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
         {
             loading.Visibility = Visibility.Visible;
             xuatExcel();
+        }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.BaoCaoCongLuong.BaoCaoCongLuong(Main));
+            Main.SideBarIndex = 14;
         }
     }
 }

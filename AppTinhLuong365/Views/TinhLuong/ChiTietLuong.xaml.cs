@@ -57,8 +57,9 @@ namespace AppTinhLuong365.Views.TinhLuong
         private string year;
         private string start_date;
         private string end_date;
+        private int type;
 
-        public ChiTietLuong(MainWindow main, string name, string depName, string epId, int month, int year, string startDate, string endDate)
+        public ChiTietLuong(MainWindow main, string name, string depName, string epId, int month, int year, string startDate, string endDate, int type)
         {
             ItemList = new ObservableCollection<string>();
             for (var i = 1; i <= 12; i++)
@@ -77,6 +78,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
             InitializeComponent();
             this.DataContext = this;
+            this.type = type;
             Main = main;
             // string Month = DateTime.Now.ToString("MM");
             // string Year = DateTime.Now.ToString("yyyy");
@@ -461,6 +463,31 @@ namespace AppTinhLuong365.Views.TinhLuong
             pop.Margin = new Thickness(z.X - 615, z.Y, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
+        }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            if (type == 1)
+            {
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.TinhLuong.BangLuong(Main));
+                Main.SideBarIndex = 9;
+                Main.SideBarIndex = 10;
+            }
+            if(type == 2)
+            {
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.BaoCaoCongLuong.TongHopLuongNhanVienTheoChuKi(Main,DateTime.Now.ToString("MM"),DateTime.Now.ToString("yyyy")));
+                Main.SideBarIndex = -1;
+            }
+            if(type == 3)
+            {
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.BaoCaoCongLuong.TongHopThongTinBaoHiem(Main, DateTime.Now.ToString("MM"), DateTime.Now.ToString("yyyy")));
+                Main.SideBarIndex = -1;
+            }
+            if(type == 4)
+            {
+                Main.HomeSelectionPage.NavigationService.Navigate(new Views.BaoCaoCongLuong.TongHopThongTinThue(Main, DateTime.Now.ToString("MM"), DateTime.Now.ToString("yyyy")));
+                Main.SideBarIndex = -1;
+            }
         }
     }
 }

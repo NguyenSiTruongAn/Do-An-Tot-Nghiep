@@ -581,5 +581,11 @@ namespace AppTinhLuong365.Views.TinhLuong
         {
             Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=f30f0b61e761b8926941f232ea7cccb9." + Main.CurrentCompany.com_id + "." + Main.CurrentCompany.pass + "&link=https://phanmemsohoatailieu.timviec365.vn/tim-kiem-tep-tin.html?nv=" + ChiTietNV.ep_id);
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.PageNhapLuongCoBanVaCheDo(Main));
+            Main.SideBarIndex = 1;
+        }
     }
 }

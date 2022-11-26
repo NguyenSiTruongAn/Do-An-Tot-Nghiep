@@ -50,6 +50,12 @@
         </Style>
     </Page.Resources>
     <StackPanel Margin="20">
+        <Border Margin="0 0 0 15" HorizontalAlignment="Left" Background="Transparent" Cursor="Hand" MouseLeftButtonDown="TroLai">
+            <DockPanel>
+                <Path Data="{DynamicResource iconMuiTenTrai}" VerticalAlignment="Center" Fill="{DynamicResource #4C5BD4}"/>
+                <TextBlock Text="Trở về" FontSize="15" Margin="10 0 0 0"/>
+            </DockPanel>
+        </Border>
         <Grid>
             <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                 <Border.Effect>
@@ -169,8 +175,8 @@
                                                                    Text="{Binding name}"
                                                                    Foreground="{DynamicResource #4C5BD4}">
                                                         </TextBlock>
-                                                        <Border Background="Transparent">
-                                                            <Path Cursor="Hand" MouseLeftButtonDown="TuyChon"
+                                                        <Border Background="Transparent" MouseLeftButtonDown="TuyChon" Cursor="Hand">
+                                                            <Path Cursor="Hand"
                                                                   Data="{DynamicResource iconEdit}"
                                                                   Fill="{DynamicResource #4C5BD4}"
                                                                   VerticalAlignment="Center" Margin="10 0 0 0">

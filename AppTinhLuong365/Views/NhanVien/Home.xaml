@@ -107,12 +107,7 @@
                                 <TextBlock FontSize="40" Margin="24 10 0 0" Foreground="{DynamicResource #FFA72E}">
                                     <TextBlock.Style>
                                         <Style TargetType="TextBlock">
-                                            <Setter Property="Text" Value="{Binding listNV.sum_late}"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding listNV.sum_late}" Value="">
-                                                    <Setter Property="Text" Value="0"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
+                                            <Setter Property="Text" Value="{Binding camuon}"/>
                                         </Style>
                                     </TextBlock.Style>
                                 </TextBlock>

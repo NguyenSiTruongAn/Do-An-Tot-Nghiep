@@ -164,7 +164,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
             Item_Bang_Luong data = (Item_Bang_Luong)p.DataContext;
             var pop = new Views.TinhLuong.PopupTuyChonBangLuong(Main, data.name, data.dep_name, data.ep_id,
                 searchBarMonth.SelectedIndex, searchBarYear.SelectedIndex, DatePickerStart.SelectedDate,
-                DatePickerEnd.SelectedDate);
+                DatePickerEnd.SelectedDate, 4);
             var z = Mouse.GetPosition(Main.PopupSelection);
             pop.Margin = new Thickness(z.X - 95, z.Y + 15, 0, 0);
             Main.PopupSelection.NavigationService.Navigate(pop);
@@ -1217,6 +1217,12 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
         {
             loading.Visibility = Visibility.Visible;
             xuatExcel();
+        }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.BaoCaoCongLuong.BaoCaoCongLuong(Main));
+            Main.SideBarIndex = 14;
         }
     }
 }

@@ -337,12 +337,16 @@ namespace AppTinhLuong365.Views
             System.Windows.Controls.Border col = sender as System.Windows.Controls.Border;
             if (col != null)
             {
-                ItemEmp item = (ItemEmp)col.DataContext;
-                int index = listNhanVien.FindIndex(x => x.ep_id == item.ep_id);
-                if (index > -1)
+                try
                 {
-                    listNhanVien[index].hover = 1;
+                    ItemEmp item = (ItemEmp)col.DataContext;
+                    int index = listNhanVien.FindIndex(x => x.ep_id == item.ep_id);
+                    if (index > -1)
+                    {
+                        listNhanVien[index].hover = 1;
+                    }
                 }
+                catch { }
             }
             else if ((sender as Grid) != null)
             {
