@@ -499,5 +499,11 @@ namespace AppTinhLuong365.Views.NhanVien
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.Home(Main));
+            Main.SideBarIndexNV = 0;
+        }
     }
 }

@@ -26,6 +26,12 @@
     </Page.Resources>
 
     <StackPanel Background="{DynamicResource #F7F8FC}">
+        <Border Margin="0 0 0 15" HorizontalAlignment="Left" Background="Transparent" Cursor="Hand" MouseLeftButtonDown="TroLai">
+            <DockPanel>
+                <Path Data="{DynamicResource iconMuiTenTrai}" VerticalAlignment="Center" Fill="{DynamicResource #4C5BD4}"/>
+                <TextBlock Text="Trở về" FontSize="15" Margin="10 0 0 0"/>
+            </DockPanel>
+        </Border>
         <WrapPanel x:Name="Wrap_Border1" HorizontalAlignment="Right">
             <Border Style="{DynamicResource Style_Border_Wrap1}" Background="{DynamicResource #FFFFFF}" Width="160"
                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1" CornerRadius="10" Height="38">

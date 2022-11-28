@@ -347,9 +347,10 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
         }
 
         double tongluong=0, tongthue=0, tongbh = 0;
+        public WebClient web = new WebClient();
         private void getData(string month, string year)
         {
-            using (WebClient web = new WebClient())
+            using (web = new WebClient())
             {
                 loading.Visibility = Visibility.Visible;
                 web.QueryString.Add("token", Main.CurrentCompany.token);
@@ -401,6 +402,7 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_cong_luong.php",
                     web.QueryString);
+                web.Dispose();
             }
         }
 

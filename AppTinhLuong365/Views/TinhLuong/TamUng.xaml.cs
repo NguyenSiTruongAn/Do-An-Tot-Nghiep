@@ -232,5 +232,11 @@ namespace AppTinhLuong365.Views.TinhLuong
             }
             getData(month, year, id_nv);
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(Main));
+            Main.SideBarIndex = 0;
+        }
     }
 }

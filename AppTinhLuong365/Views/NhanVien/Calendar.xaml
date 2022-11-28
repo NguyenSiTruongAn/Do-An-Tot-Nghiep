@@ -46,6 +46,12 @@
     </Page.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="0 20 0 0">
+            <Border Margin="0 0 0 15" HorizontalAlignment="Left" Background="Transparent" Cursor="Hand" MouseLeftButtonDown="TroLai">
+                <DockPanel>
+                    <Path Data="{DynamicResource iconMuiTenTrai}" VerticalAlignment="Center" Fill="{DynamicResource #4C5BD4}"/>
+                    <TextBlock Text="Trở về" FontSize="15" Margin="10 0 0 0"/>
+                </DockPanel>
+            </Border>
             <Grid>
                 <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16" Grid.ColumnSpan="2" Margin="0,0,-0.4,0.4">
                     <Border.Effect>

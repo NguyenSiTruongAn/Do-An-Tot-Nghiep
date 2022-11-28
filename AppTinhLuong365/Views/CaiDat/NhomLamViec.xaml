@@ -23,6 +23,12 @@
     </Page.Resources>
     <Grid Background="{DynamicResource #F7F8FC}">
         <StackPanel Margin="20">
+            <Border Margin="0 0 0 15" HorizontalAlignment="Left" Background="Transparent" Cursor="Hand" MouseLeftButtonDown="TroLai">
+                <DockPanel>
+                    <Path Data="{DynamicResource iconMuiTenTrai}" VerticalAlignment="Center" Fill="{DynamicResource #4C5BD4}"/>
+                    <TextBlock Text="Trở về" FontSize="15" Margin="10 0 0 0"/>
+                </DockPanel>
+            </Border>
             <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="38" Width="118" CornerRadius="10" Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">
                     <Path Margin="10 0 20 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}" Fill="{DynamicResource #FFFFFF}"></Path>

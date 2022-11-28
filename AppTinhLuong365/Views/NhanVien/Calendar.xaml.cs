@@ -239,5 +239,11 @@ namespace AppTinhLuong365.Views.NhanVien
         {
             Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.Home(Main));
+            Main.SideBarIndexNV = 0;
+        }
     }
 }

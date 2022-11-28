@@ -524,5 +524,11 @@ namespace AppTinhLuong365.Views.PhanQuyen
             getData3(pagenumber);
             // b.Background = (Brush)bc.ConvertFrom("#4C5BD4");
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(Main));
+            Main.SideBarIndex = 0;
+        }
     }
 }

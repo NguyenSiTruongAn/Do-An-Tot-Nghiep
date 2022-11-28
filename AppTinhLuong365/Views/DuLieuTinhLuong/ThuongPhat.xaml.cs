@@ -894,5 +894,11 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
                     web.QueryString);
             }
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(Main));
+            Main.SideBarIndex = 0;
+        }
     }
 }

@@ -712,5 +712,11 @@ namespace AppTinhLuong365.Views.CaiDat
                 date = DateTime.Now.ToString("yyyy-MM-dd");
             getData4(date);
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(Main));
+            Main.SideBarIndex = 0;
+        }
     }
 }

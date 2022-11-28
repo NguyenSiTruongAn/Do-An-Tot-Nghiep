@@ -212,5 +212,11 @@ namespace AppTinhLuong365.Views.ChiTraLuong
             Main.HomeSelectionPage.NavigationService.Navigate(new Views.ChiTraLuong.ChiTietChiTraLuong(Main, data.pay_id));
             Main.title.Text = "Chi trả lương / Chi tiết chi trả lương";
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(Main));
+            Main.SideBarIndex = 0;
+        }
     }
 }

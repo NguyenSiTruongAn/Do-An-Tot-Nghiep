@@ -336,5 +336,11 @@ namespace AppTinhLuong365.Views.NhanVien
             DataGrid dg = sender as DataGrid;
             if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift)){var scroll = dg.GetFirstChildOfType<ScrollViewer>();scroll.ScrollToHorizontalOffset(scroll.HorizontalOffset - e.Delta);}else Main.scrollMain.ScrollToVerticalOffset(Main.scrollMain.VerticalOffset - e.Delta);
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.NhanVien.Home(Main));
+            Main.SideBarIndexNV = 0;
+        }
     }
 }

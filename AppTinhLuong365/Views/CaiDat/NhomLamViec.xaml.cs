@@ -792,5 +792,11 @@ namespace AppTinhLuong365.Views.CaiDat
         {
             getData1(PageNVChuaNhom.Count,"");
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(Main));
+            Main.SideBarIndex = 0;
+        }
     }
 }

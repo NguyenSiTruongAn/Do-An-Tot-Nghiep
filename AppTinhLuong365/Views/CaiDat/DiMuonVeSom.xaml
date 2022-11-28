@@ -59,526 +59,534 @@
         </Style>
     </Page.Resources>
 
-    <Grid Background="{DynamicResource #F7F8FC}">
-        <TabControl BorderThickness="0" Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
-            <TabItem Cursor="Hand" Header="Đi sớm về muộn">
-                <StackPanel Cursor="Arrow">
-                    <Grid Margin="20">
-                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
-                            </Border.Effect>
-                        </Border>
-                        <Border CornerRadius="16" Background="{DynamicResource #FFFFFF}">
-                            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="20 20 20 0">
-                                <WrapPanel x:Name="Wrap_Border">
-                                    <Border Style="{DynamicResource Style_Border_Wrap}">
-                                        <StackPanel Orientation="Vertical">
-                                            <TextBlock TextWrapping="WrapWithOverflow"
+    <StackPanel>
+        <Border Margin="0 0 0 15" HorizontalAlignment="Left" Background="Transparent" Cursor="Hand" MouseLeftButtonDown="TroLai">
+            <DockPanel>
+                <Path Data="{DynamicResource iconMuiTenTrai}" VerticalAlignment="Center" Fill="{DynamicResource #4C5BD4}"/>
+                <TextBlock Text="Trở về" FontSize="15" Margin="10 0 0 0"/>
+            </DockPanel>
+        </Border>
+        <Grid Background="{DynamicResource #F7F8FC}">
+            <TabControl BorderThickness="0" Background="{DynamicResource #F7F8FC}" ItemContainerStyle="{StaticResource TabItem1}">
+                <TabItem Cursor="Hand" Header="Đi sớm về muộn">
+                    <StackPanel Cursor="Arrow">
+                        <Grid Margin="20">
+                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                </Border.Effect>
+                            </Border>
+                            <Border CornerRadius="16" Background="{DynamicResource #FFFFFF}">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="20 20 20 0">
+                                    <WrapPanel x:Name="Wrap_Border">
+                                        <Border Style="{DynamicResource Style_Border_Wrap}">
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock TextWrapping="WrapWithOverflow"
                                                        Text="{DynamicResource textTDDMVS}"
                                                        Foreground="{DynamicResource #2E3467}" FontSize="24"
                                                        FontWeight="Bold">
-                                            </TextBlock>
-                                            <TextBlock Text="{DynamicResource textQLNVRV}" FontSize="15"
+                                                </TextBlock>
+                                                <TextBlock Text="{DynamicResource textQLNVRV}" FontSize="15"
                                                        Foreground="{DynamicResource #68798B}" FontWeight="DemiBold">
-                                            </TextBlock>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border Style="{DynamicResource Style_Border_Wrap}">
-                                        <WrapPanel x:Name="Wrap_Border1">
-                                            <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border Style="{DynamicResource Style_Border_Wrap}">
+                                            <WrapPanel x:Name="Wrap_Border1">
+                                                <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar CornerRadius="10" x:Name="searchBarMonth1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16"
+                                                    <tool:SearchBar CornerRadius="10" x:Name="searchBarMonth1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 Loaded="SearchBarMonth_OnLoaded" />
-                                            </Border>
-                                            <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
+                                                </Border>
+                                                <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar CornerRadius="10" x:Name="searchBarYear1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
+                                                    <tool:SearchBar CornerRadius="10" x:Name="searchBarYear1" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}" FontSize="16" FontWeight="DemiBold"
                                                                 ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}" Loaded="FrameworkElement_OnLoaded"/>
-                                            </Border>
-                                            <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
+                                                </Border>
+                                                <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar CornerRadius="10" x:Name="cbPhongBan" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}"
+                                                    <tool:SearchBar CornerRadius="10" x:Name="cbPhongBan" SelectionChanged="ChonPhong" Foreground="{DynamicResource #444}"
                                                                 FontSize="16" PlaceHolder="Phòng ban (tất cả)"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding listItem_dep,RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 DisplayMemberPath="dep_name" />
-                                            </Border>
-                                            <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
+                                                </Border>
+                                                <Border Width="160" Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
                                                     CornerRadius="10" Height="38">
-                                                <tool:SearchBar CornerRadius="10" x:Name="cbListNV" Foreground="{DynamicResource #444}"
+                                                    <tool:SearchBar CornerRadius="10" x:Name="cbListNV" Foreground="{DynamicResource #444}"
                                                                 FontSize="16" PlaceHolder="Tất cả nhân viên"
                                                                 FontWeight="DemiBold"
                                                                 ItemsSource="{Binding listEmployee, RelativeSource={RelativeSource AncestorType=Page}}"
                                                                 DisplayMemberPath="display_ep_name" />
-                                            </Border>
-                                            <Border Width="160" MouseLeftButtonDown="ThongKe" Cursor="Hand" Style="{DynamicResource Style_Border_Wrap1}"
+                                                </Border>
+                                                <Border Width="160" MouseLeftButtonDown="ThongKe" Cursor="Hand" Style="{DynamicResource Style_Border_Wrap1}"
                                                     BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0"
                                                     CornerRadius="10" Height="38"
                                                     Background="{DynamicResource #4C5BD4}">
-                                                <TextBlock Foreground="{DynamicResource #FFFFFF}"
+                                                    <TextBlock Foreground="{DynamicResource #FFFFFF}"
                                                            Text="{DynamicResource textstatistical}"
                                                            FontWeight="DemiBold" FontSize="16"
                                                            VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                </TextBlock>
-                                            </Border>
-                                        </WrapPanel>
-                                    </Border>
-                                </WrapPanel>
-                                <DataGrid x:Name="dataGrid" ItemsSource="{Binding listEpLate}"
+                                                    </TextBlock>
+                                                </Border>
+                                            </WrapPanel>
+                                        </Border>
+                                    </WrapPanel>
+                                    <DataGrid x:Name="dataGrid" ItemsSource="{Binding listEpLate}"
                                           Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 40 0 0" PreviewMouseWheel="dataGrid_PreviewMouseWheel">
-                                    <DataGrid.OpacityMask>
-                                        <VisualBrush>
-                                            <VisualBrush.Visual>
-                                                <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}"
+                                        <DataGrid.OpacityMask>
+                                            <VisualBrush>
+                                                <VisualBrush.Visual>
+                                                    <Border Width="{Binding ElementName=dataGrid,Path=ActualWidth}"
                                                         Height="{Binding ElementName=dataGrid,Path=ActualHeight}"
                                                         CornerRadius="10" Background="White">
-                                                </Border>
-                                            </VisualBrush.Visual>
-                                        </VisualBrush>
-                                    </DataGrid.OpacityMask>
-                                    <DataGrid.Columns>
-                                        <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Grid x:Name="gridHoTen">
-                                                        <WrapPanel VerticalAlignment="Center" Margin="25 0 0 0">
-                                                            <Border Width="45" Height="48" CornerRadius="40"
+                                                    </Border>
+                                                </VisualBrush.Visual>
+                                            </VisualBrush>
+                                        </DataGrid.OpacityMask>
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn Header="{DynamicResource textHoTen}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Grid x:Name="gridHoTen">
+                                                            <WrapPanel VerticalAlignment="Center" Margin="25 0 0 0">
+                                                                <Border Width="45" Height="48" CornerRadius="40"
                                                                     HorizontalAlignment="Left">
-                                                                <Border.Background>
-                                                                    <ImageBrush ImageSource="{Binding ts_image}"></ImageBrush>
-                                                                </Border.Background>
-                                                            </Border>
-                                                            <StackPanel Margin="10 0 0 0">
-                                                                <TextBlock FontSize="15" FontWeight="Bold"
+                                                                    <Border.Background>
+                                                                        <ImageBrush ImageSource="{Binding ts_image}"></ImageBrush>
+                                                                    </Border.Background>
+                                                                </Border>
+                                                                <StackPanel Margin="10 0 0 0">
+                                                                    <TextBlock FontSize="15" FontWeight="Bold"
                                                                            Text="{Binding ep_name}"
                                                                            Foreground="{DynamicResource #4C5BD4}">
-                                                                </TextBlock>
-                                                                <TextBlock Text="{Binding ep_id}" FontSize="15"
+                                                                    </TextBlock>
+                                                                    <TextBlock Text="{Binding ep_id}" FontSize="15"
                                                                            FontWeight="DemiBold"
                                                                            Foreground="{DynamicResource #68798B}">
-                                                                </TextBlock>
-                                                            </StackPanel>
-                                                        </WrapPanel>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textPhongBan}">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                    </TextBlock>
+                                                                </StackPanel>
+                                                            </WrapPanel>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="{DynamicResource textPhongBan}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
                                                                Text="{Binding dep_name}" FontSize="15"
                                                                FontWeight="DemiBold"
                                                                Foreground="{DynamicResource #68798B}">
-                                                    </TextBlock>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textThoiGian}">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="{DynamicResource textThoiGian}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
                                                                Text="{Binding ts_date}" FontSize="15"
                                                                FontWeight="DemiBold"
                                                                Foreground="{DynamicResource #68798B}">
-                                                    </TextBlock>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textCa}">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="{DynamicResource textCa}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
                                                                Text="{Binding shift_name}" FontSize="15"
                                                                FontWeight="DemiBold"
                                                                Foreground="{DynamicResource #68798B}">
-                                                    </TextBlock>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textMuonSom}">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                        <Border Margin="10 30 10 20" CornerRadius="20"
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="{DynamicResource textMuonSom}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                            <Border Margin="10 30 10 20" CornerRadius="20"
                                                                 Background="{DynamicResource #FEE5E5}">
-                                                            <Border.Style>
-                                                                <Style TargetType="Border">
-                                                                    <Style.Triggers>
-                                                                        <DataTrigger Binding="{Binding early}"
+                                                                <Border.Style>
+                                                                    <Style TargetType="Border">
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding early}"
                                                                             Value="0">
-                                                                            <Setter Property="Visibility"
+                                                                                <Setter Property="Visibility"
                                                                                 Value="Collapsed">
-                                                                            </Setter>
-                                                                        </DataTrigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </Border.Style>
-                                                            <TextBlock Padding="10" FontSize="15" FontWeight="DemiBold"
+                                                                                </Setter>
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Border.Style>
+                                                                <TextBlock Padding="10" FontSize="15" FontWeight="DemiBold"
                                                                        Foreground="{DynamicResource #FF5959}">
                                                                 <Run Text="Về sớm" />
                                                                 <Run Text="{Binding early}" />
                                                                 <Run Text="phút" />
                                                                 <Run Text="{Binding early_Second,Mode=OneWay}" />
                                                                 <Run Text="giây" />
-                                                            </TextBlock>
-                                                        </Border>
-                                                        <Border Margin="10 0 10 25" CornerRadius="20"
+                                                                </TextBlock>
+                                                            </Border>
+                                                            <Border Margin="10 0 10 25" CornerRadius="20"
                                                                 Background="{DynamicResource #FEE5E5}">
-                                                            <Border.Style>
-                                                                <Style TargetType="Border">
-                                                                    <Style.Triggers>
-                                                                        <DataTrigger Binding="{Binding late}" Value="0">
-                                                                            <Setter Property="Visibility"
+                                                                <Border.Style>
+                                                                    <Style TargetType="Border">
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding late}" Value="0">
+                                                                                <Setter Property="Visibility"
                                                                                 Value="Collapsed">
-                                                                            </Setter>
-                                                                        </DataTrigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </Border.Style>
-                                                            <TextBlock Padding="10" FontSize="15" FontWeight="DemiBold"
+                                                                                </Setter>
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Border.Style>
+                                                                <TextBlock Padding="10" FontSize="15" FontWeight="DemiBold"
                                                                        Foreground="{DynamicResource #FF5959}">
                                                                 <Run Text="Đi muộn" />
                                                                 <Run Text="{Binding late}" />
                                                                 <Run Text="phút" />
                                                                 <Run Text="{Binding late_Second,Mode=OneWay}" />
                                                                 <Run Text="giây" />
-                                                            </TextBlock>
-                                                        </Border>
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn Header="{DynamicResource textPhat}">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                </TextBlock>
+                                                            </Border>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Header="{DynamicResource textPhat}">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
                                                                Text="{Binding kq_phat}" FontSize="15"
                                                                FontWeight="DemiBold"
                                                                Foreground="{DynamicResource #68798B}">
-                                                    </TextBlock>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 0">
-                                    <Border Cursor="Hand" MouseLeftButtonDown="ve_page_1" x:Name="PageDau" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock Text="&lt;&lt;&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="PageTruoc" MouseLeftButtonDown="page_truoc_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock Text="&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="Page1" MouseLeftButtonDown="select_page_click1" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock x:Name="txtpage1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="Page2" MouseLeftButtonDown="select_page_click2" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock x:Name="txtpage2" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="Page3" MouseLeftButtonDown="select_page_click3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock x:Name="txtpage3" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="PageTiep" MouseLeftButtonDown="page_sau_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                    <Border Cursor="Hand" x:Name="PageCuoi" MouseLeftButtonDown="page_cuoi_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
-                                        <TextBlock Text=">>>" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
-                                    </Border>
-                                </DockPanel>
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 0">
+                                        <Border Cursor="Hand" MouseLeftButtonDown="ve_page_1" x:Name="PageDau" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                            <TextBlock Text="&lt;&lt;&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                        </Border>
+                                        <Border Cursor="Hand" x:Name="PageTruoc" MouseLeftButtonDown="page_truoc_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                            <TextBlock Text="&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                        </Border>
+                                        <Border Cursor="Hand" x:Name="Page1" MouseLeftButtonDown="select_page_click1" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                            <TextBlock x:Name="txtpage1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                        </Border>
+                                        <Border Cursor="Hand" x:Name="Page2" MouseLeftButtonDown="select_page_click2" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                            <TextBlock x:Name="txtpage2" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                        </Border>
+                                        <Border Cursor="Hand" x:Name="Page3" MouseLeftButtonDown="select_page_click3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                            <TextBlock x:Name="txtpage3" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                        </Border>
+                                        <Border Cursor="Hand" x:Name="PageTiep" MouseLeftButtonDown="page_sau_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                            <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                        </Border>
+                                        <Border Cursor="Hand" x:Name="PageCuoi" MouseLeftButtonDown="page_cuoi_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0">
+                                            <TextBlock Text=">>>" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/>
+                                        </Border>
+                                    </DockPanel>
 
-                            </StackPanel>
-                        </Border>
-                    </Grid>
-                    <Border MouseLeftButtonDown="XuatFileThongKe" Cursor="Hand" Margin="20 0 0 0" Width="210" Height="40" CornerRadius="5"
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                        <Border MouseLeftButtonDown="XuatFileThongKe" Cursor="Hand" Margin="20 0 0 0" Width="210" Height="40" CornerRadius="5"
                             Background="{DynamicResource #4C5BD4}" HorizontalAlignment="Left">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Path Margin="0 0 10 0" Data="{DynamicResource iconThongke}"
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Margin="0 0 10 0" Data="{DynamicResource iconThongke}"
                                   Fill="{DynamicResource #FFFFFF}">
-                            </Path>
-                            <TextBlock Text="Xuất file thống kê" FontSize="15" FontWeight="DemiBold"
-                                       Foreground="{DynamicResource #FFFFFF}">
-                            </TextBlock>
-                        </StackPanel>
-                    </Border>
-                </StackPanel>
-            </TabItem>
-            <TabItem Cursor="Hand" Header="Cài đặt đi sớm về muộn" Background="{DynamicResource #F7F8FC}">
-                <StackPanel Cursor="Arrow" Orientation="Vertical" Margin="20" Background="{DynamicResource #F7F8FC}">
-                    <WrapPanel x:Name="Wrap_Border2" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}"
-                                Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
-                                CornerRadius="10" Height="38">
-                            <tool:SearchBar CornerRadius="10" x:Name="searchBarMonth" Foreground="{DynamicResource #444}" FontSize="16"
-                                            FontWeight="DemiBold"
-                                            ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
-                                            Loaded="SearchBarMonth_OnLoaded" />
-                        </Border>
-                        <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}"
-                                Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
-                                CornerRadius="10" Height="38">
-                            <tool:SearchBar CornerRadius="10" x:Name="searchBarYear" Foreground="{DynamicResource #444}" FontSize="16"
-                                            FontWeight="DemiBold"
-                                            ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"
-                                            Loaded="FrameworkElement_OnLoaded" />
-                        </Border>
-                        <Border MouseLeftButtonDown="thongKe" Cursor="Hand" Style="{DynamicResource Style_Border_Wrap2}" Width="104"
-                                BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0" CornerRadius="10"
-                                Height="38" Background="{DynamicResource #4C5BD4}">
-                            <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}"
-                                       FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"
-                                       HorizontalAlignment="Center">
-                            </TextBlock>
-                        </Border>
-                        <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown"
-                                Style="{DynamicResource Style_Border_Wrap2}" Height="38" Width="118" CornerRadius="10"
-                                Background="{DynamicResource #4C5BD4}">
-                            <StackPanel Orientation="Horizontal">
-                                <Path Margin="10 0 15 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}"
-                                      Fill="{DynamicResource #FFFFFF}">
                                 </Path>
-                                <TextBlock VerticalAlignment="Center" Text="Thêm mới" FontSize="15"
-                                           FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}">
+                                <TextBlock Text="Xuất file thống kê" FontSize="15" FontWeight="DemiBold"
+                                       Foreground="{DynamicResource #FFFFFF}">
                                 </TextBlock>
                             </StackPanel>
                         </Border>
-                    </WrapPanel>
-                    <Grid Margin="0 20 0 0">
+                    </StackPanel>
+                </TabItem>
+                <TabItem Cursor="Hand" Header="Cài đặt đi sớm về muộn" Background="{DynamicResource #F7F8FC}">
+                    <StackPanel Cursor="Arrow" Orientation="Vertical" Margin="20" Background="{DynamicResource #F7F8FC}">
+                        <WrapPanel x:Name="Wrap_Border2" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}"
+                                Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
+                                CornerRadius="10" Height="38">
+                                <tool:SearchBar CornerRadius="10" x:Name="searchBarMonth" Foreground="{DynamicResource #444}" FontSize="16"
+                                            FontWeight="DemiBold"
+                                            ItemsSource="{Binding ItemList,RelativeSource={RelativeSource AncestorType=Page}}"
+                                            Loaded="SearchBarMonth_OnLoaded" />
+                            </Border>
+                            <Border Style="{DynamicResource Style_Border_Wrap2}" Background="{DynamicResource #FFFFFF}"
+                                Width="160" BorderBrush="{DynamicResource #ebebeb}" BorderThickness="1"
+                                CornerRadius="10" Height="38">
+                                <tool:SearchBar CornerRadius="10" x:Name="searchBarYear" Foreground="{DynamicResource #444}" FontSize="16"
+                                            FontWeight="DemiBold"
+                                            ItemsSource="{Binding YearList,RelativeSource={RelativeSource AncestorType=Page}}"
+                                            Loaded="FrameworkElement_OnLoaded" />
+                            </Border>
+                            <Border MouseLeftButtonDown="thongKe" Cursor="Hand" Style="{DynamicResource Style_Border_Wrap2}" Width="104"
+                                BorderBrush="{DynamicResource #ebebeb}" BorderThickness="0" CornerRadius="10"
+                                Height="38" Background="{DynamicResource #4C5BD4}">
+                                <TextBlock Foreground="{DynamicResource #FFFFFF}" Text="{DynamicResource textstatistical}"
+                                       FontWeight="DemiBold" FontSize="16" VerticalAlignment="Center"
+                                       HorizontalAlignment="Center">
+                                </TextBlock>
+                            </Border>
+                            <Border Cursor="Hand" MouseLeftButtonDown="Border_MouseLeftButtonDown"
+                                Style="{DynamicResource Style_Border_Wrap2}" Height="38" Width="118" CornerRadius="10"
+                                Background="{DynamicResource #4C5BD4}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Path Margin="10 0 15 0" VerticalAlignment="Center" Data="{DynamicResource iconPlus}"
+                                      Fill="{DynamicResource #FFFFFF}">
+                                    </Path>
+                                    <TextBlock VerticalAlignment="Center" Text="Thêm mới" FontSize="15"
+                                           FontWeight="DemiBold" Foreground="{DynamicResource #FFFFFF}">
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </WrapPanel>
+                        <Grid Margin="0 20 0 0">
+                            <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
+                                </Border.Effect>
+                            </Border>
+                            <Border Height="91" Padding="10 10 0 0" CornerRadius="16"
+                                Background="{DynamicResource #FFFFFF}">
+                                <TextBlock FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"
+                                       Text="Danh sách mức phạt đi muộn về sớm">
+                                </TextBlock>
+                            </Border>
+                        </Grid>
+                        <DataGrid PreviewMouseWheel="DataGrid_OnPreviewMouseWheel" x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding listLate}">
+                            <DataGrid.OpacityMask>
+                                <VisualBrush>
+                                    <VisualBrush.Visual>
+                                        <Border Width="{Binding ElementName=dataGrid1,Path=ActualWidth}"
+                                            Height="{Binding ElementName=dataGrid1,Path=ActualHeight}"
+                                            CornerRadius="10" Background="White">
+                                        </Border>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </DataGrid.OpacityMask>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="{DynamicResource textLoaiPhat}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <TextBlock HorizontalAlignment="Left" Margin="35 0 0 0" FontSize="15"
+                                                       FontWeight="Bold" Text="{Binding display_pm_type}"
+                                                       Style="{StaticResource TextRowCenter}">
+                                                </TextBlock>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textCaLamViecApDung}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
+                                                       Text="{Binding shift_name}"
+                                                       Style="{StaticResource TextRowCenter}">
+                                                </TextBlock>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textTuThang}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
+                                                       Text="{Binding display_pm_time_begin}"
+                                                       Style="{StaticResource TextRowCenter}">
+                                                </TextBlock>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textDenHetThang}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold" VerticalAlignment="Center">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Text" Value="{Binding display_pm_time_end}"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding display_pm_time_end}" Value="">
+                                                                    <Setter Property="Text" Value="----" />
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding pm_time_end}"
+                                                                         Value="{x:Null}">
+                                                                    <Setter Property="Text" Value="----" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textThoiGianTinhPhat}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
+                                                       Text="{Binding display_phat}"
+                                                       Style="{StaticResource TextRowCenter}">
+                                                </TextBlock>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textMucPhat}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border Background="Transparent">
+                                                <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
+                                                       Text="{Binding display_pm_monney}"
+                                                       Style="{StaticResource TextRowCenter}">
+                                                </TextBlock>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textSua}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" Cursor="Hand" Background="Transparent">
+                                                <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"
+                                                  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{DynamicResource textXoa}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown1" Cursor="Hand" Background="Transparent">
+                                                <Path Data="{DynamicResource iconXoa}" Fill="#f46c6c"
+                                                  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <!-- <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 0"> -->
+                        <!--     <Border Cursor="Hand" MouseLeftButtonDown="ve_page_1" x:Name="PageDau" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                        <!--         <TextBlock Text="&lt;&lt;&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
+                        <!--     </Border> -->
+                        <!--     <Border Cursor="Hand" x:Name="PageTruoc" MouseLeftButtonDown="page_truoc_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                        <!--         <TextBlock Text="&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
+                        <!--     </Border> -->
+                        <!--     <Border Cursor="Hand" x:Name="Page1" MouseLeftButtonDown="select_page_click1" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                        <!--         <TextBlock x:Name="txtpage1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
+                        <!--     </Border> -->
+                        <!--     <Border Cursor="Hand" x:Name="Page2" MouseLeftButtonDown="select_page_click2" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                        <!--         <TextBlock x:Name="txtpage2" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
+                        <!--     </Border> -->
+                        <!--     <Border Cursor="Hand" x:Name="Page3" MouseLeftButtonDown="select_page_click3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                        <!--         <TextBlock x:Name="txtpage3" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
+                        <!--     </Border> -->
+                        <!--     <Border Cursor="Hand" x:Name="PageTiep" MouseLeftButtonDown="page_sau_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                        <!--         <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
+                        <!--     </Border> -->
+                        <!--     <Border Cursor="Hand" x:Name="PageCuoi" MouseLeftButtonDown="page_cuoi_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
+                        <!--         <TextBlock Text=">>>" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
+                        <!--     </Border> -->
+                        <!-- </DockPanel> -->
+                    </StackPanel>
+                </TabItem>
+                <TabItem Cursor="Hand" Header="Hướng dẫn">
+                    <Grid Cursor="Arrow" Margin="20">
                         <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
                             </Border.Effect>
                         </Border>
-                        <Border Height="91" Padding="10 10 0 0" CornerRadius="16"
-                                Background="{DynamicResource #FFFFFF}">
-                            <TextBlock FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #2E3467}"
-                                       Text="Danh sách mức phạt đi muộn về sớm">
-                            </TextBlock>
-                        </Border>
-                    </Grid>
-                    <DataGrid PreviewMouseWheel="DataGrid_OnPreviewMouseWheel" x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" ItemsSource="{Binding listLate}">
-                        <DataGrid.OpacityMask>
-                            <VisualBrush>
-                                <VisualBrush.Visual>
-                                    <Border Width="{Binding ElementName=dataGrid1,Path=ActualWidth}"
-                                            Height="{Binding ElementName=dataGrid1,Path=ActualHeight}"
-                                            CornerRadius="10" Background="White">
-                                    </Border>
-                                </VisualBrush.Visual>
-                            </VisualBrush>
-                        </DataGrid.OpacityMask>
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn Header="{DynamicResource textLoaiPhat}">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <TextBlock HorizontalAlignment="Left" Margin="35 0 0 0" FontSize="15"
-                                                       FontWeight="Bold" Text="{Binding display_pm_type}"
-                                                       Style="{StaticResource TextRowCenter}">
-                                            </TextBlock>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textCaLamViecApDung}">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Border Background="Transparent">
-                                            <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
-                                                       Text="{Binding shift_name}"
-                                                       Style="{StaticResource TextRowCenter}">
-                                            </TextBlock>
-                                        </Border>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textTuThang}">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Border Background="Transparent">
-                                            <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
-                                                       Text="{Binding display_pm_time_begin}"
-                                                       Style="{StaticResource TextRowCenter}">
-                                            </TextBlock>
-                                        </Border>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textDenHetThang}">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Border Background="Transparent">
-                                            <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold" VerticalAlignment="Center">
-                                                <TextBlock.Style>
-                                                    <Style TargetType="TextBlock">
-                                                        <Setter Property="Text" Value="{Binding display_pm_time_end}"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding display_pm_time_end}" Value="">
-                                                                <Setter Property="Text" Value="----" />
-                                                            </DataTrigger>
-                                                            <DataTrigger Binding="{Binding pm_time_end}"
-                                                                         Value="{x:Null}">
-                                                                <Setter Property="Text" Value="----" />
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </TextBlock.Style>
-                                            </TextBlock>
-                                        </Border>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textThoiGianTinhPhat}">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Border Background="Transparent">
-                                            <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
-                                                       Text="{Binding display_phat}"
-                                                       Style="{StaticResource TextRowCenter}">
-                                            </TextBlock>
-                                        </Border>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textMucPhat}">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Border Background="Transparent">
-                                            <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Bold"
-                                                       Text="{Binding display_pm_monney}"
-                                                       Style="{StaticResource TextRowCenter}">
-                                            </TextBlock>
-                                        </Border>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textSua}">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Border MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown" Cursor="Hand" Background="Transparent">
-                                            <Path Data="{DynamicResource iconEdit}" Fill="{DynamicResource #68798B}"
-                                                  VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                        </Border>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="{DynamicResource textXoa}">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Border MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown1" Cursor="Hand" Background="Transparent">
-                                            <Path Data="{DynamicResource iconXoa}" Fill="#f46c6c"
-                                                  VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                        </Border>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <!-- <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10 0 0"> -->
-                    <!--     <Border Cursor="Hand" MouseLeftButtonDown="ve_page_1" x:Name="PageDau" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                    <!--         <TextBlock Text="&lt;&lt;&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                    <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="PageTruoc" MouseLeftButtonDown="page_truoc_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                    <!--         <TextBlock Text="&lt;" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                    <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="Page1" MouseLeftButtonDown="select_page_click1" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                    <!--         <TextBlock x:Name="txtpage1" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                    <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="Page2" MouseLeftButtonDown="select_page_click2" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                    <!--         <TextBlock x:Name="txtpage2" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                    <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="Page3" MouseLeftButtonDown="select_page_click3" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                    <!--         <TextBlock x:Name="txtpage3" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                    <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="PageTiep" MouseLeftButtonDown="page_sau_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                    <!--         <TextBlock Text=">" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                    <!--     </Border> -->
-                    <!--     <Border Cursor="Hand" x:Name="PageCuoi" MouseLeftButtonDown="page_cuoi_click" BorderThickness="1" BorderBrush="{DynamicResource #DDDDDD}" Background="Transparent" CornerRadius="10" Width="35" Height="35" Margin="0 0 10 0"> -->
-                    <!--         <TextBlock Text=">>>" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource #444}"/> -->
-                    <!--     </Border> -->
-                    <!-- </DockPanel> -->
-                </StackPanel>
-            </TabItem>
-            <TabItem Cursor="Hand" Header="Hướng dẫn">
-                <Grid Cursor="Arrow" Margin="20">
-                    <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16">
-                        <Border.Effect>
-                            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.1"></DropShadowEffect>
-                        </Border.Effect>
-                    </Border>
-                    <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16" Grid.ColumnSpan="2"
+                        <Border Background="{DynamicResource #FFFFFF}" CornerRadius="16" Grid.ColumnSpan="2"
                             Margin="0,0,0,-0.4">
-                        <StackPanel Margin="20">
-                            <TextBlock FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}">1. Đi muộn về sớm</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                            <StackPanel Margin="20">
+                                <TextBlock FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}">1. Đi muộn về sớm</TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 Đi muộn về sớm sẽ là mục thống kê danh sách những nhân viên bị phạt đi muộn/ về sớm trong từng tháng nhất định. Danh sách này sẽ được thống kê theo dạng bảng, bao gồm: Họ tên, Phòng ban, Thời gian, Ca, Muộn/sớm, Phạt.
-                            </TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 Việc thống kê rõ ràng và chi tiết sẽ giúp cho công ty, doanh nghiệp có thể quản lý sát sao hơn về vấn đề đi muộn/về sớm của nhân viên. Từ đó có được những chính sách cũng như cách thức quản lý sao  cho phù hợp nhất với tình hình hoạt động của công ty.
-                            </TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 Thanh tìm kiếm ở phía trên bảng danh sách sẽ là công cụ giúp bạn có thể thực hiện tìm kiếm thông tin đi muộn/về sớm của nhân viên nhanh hơn. Lựa chọn tháng, lựa chọn hoặc nhập tên nhân viên >> hệ thống sẽ trả lại kết quả tương ứng ngay sau đó. Các trường thông tin lựa chọn trên thanh search là không bắt buộc, do vậy bạn có thể tìm kiếm chỉ với 1 trường thông tin duy nhất được điền.
-                            </TextBlock>
-                            <TextBlock FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}">2. Cài đặt đi muộn về sớm</TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="18" FontWeight="Bold" Foreground="{DynamicResource #000}">2. Cài đặt đi muộn về sớm</TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 Cài đặt đi muộn về sớm sẽ giúp cho các công ty, doanh nghiệp và nhà quản lý có thể dễ dàng theo dõi tình hình đi làm của nhân viên. Cùng với đó là việc thống kê về những nhân viên đi muộn, về sớm với các mức phạt tương ứng và sự ảnh hưởng tới mức lương sau này.
-                            </TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 Để cài đặt đi muộn về sớm thì bạn sẽ thực hiện như sau:
-                            </TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 - Bước 1: Lựa chọn “Thêm mới", popup điền thông tin sẽ được hiện ra.
-                            </TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 - Bước 2: Điền các thông tin theo yêu cầu của biểu mẫu. Các thông tin được gắn dấu * sẽ là thông tin bắt buộc.
-                            </TextBlock>
-                            <Image Width="492" Source="/Views/CaiDat/Image/ms.png" Margin="0 20 0 5"></Image>
-                            <TextBlock FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center"
+                                </TextBlock>
+                                <Image Width="492" Source="/Views/CaiDat/Image/ms.png" Margin="0 20 0 5"></Image>
+                                <TextBlock FontSize="16" FontWeight="DemiBold" HorizontalAlignment="Center"
                                        Foreground="{DynamicResource #000}" TextWrapping="WrapWithOverflow">
                                 Cài đặt đi muộn về sớm
-                            </TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 Lý do phạt sẽ bao gồm lý do đi muộn hay về sớm. Tuỳ vào việc cài đặt mà doanh nghiệp sẽ chọn lý do tương ứng. Loại phạt sẽ bao gồm 2 phương thức chính là phạt tiền và phạt công. Với phạt công thì khi nhân viên đi muộn, về sớm sẽ bị tính vào số công thực tế đi làm của mình. Còn phạt tiền sẽ là bị trừ đi một con số cụ thể vào lương sau này.
-                            </TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 - Bước 3: Sau khi hoàn tất thông tin theo yêu cầu thì nhấn chọn “Lưu" để hệ thống cập nhật dữ liệu mới về cài đặt đi muộn về sớm.
-                            </TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 Quá trình thiết lập cài đặt này sẽ được áp dụng cho toàn thể nhân viên trong công ty. Các cài đặt khi được thêm mới thành công sẽ hiển thị trong bảng bên dưới với các cột thông tin như: Loại phạt, Từ tháng, Đến hết tháng, Thời gian tính phạt, Mức phạt, Sửa và Xoá.
-                            </TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 Các cài đặt sẽ được hiển thị trong bảng theo thời gian áp dụng, ví dụ là cài đặt đi muộn về sớm áp dụng từ tháng 10 thì để xem được danh sách cài đặt đó, bạn sẽ chọn tháng 10 ở trên thanh search phía trên bảng. Trong khi đó, nếu cài đặt của tháng 10 không được thiết lập tháng kết thúc thì các thông tin vẫn sẽ được lưu và áp dụng cho tháng 11, 12 sau đó. Vì thế mà tuỳ vào tháng áp dụng, kết thúc để xem được danh sách cài đặt đi muộn về sớm tương ứng.
-                            </TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 Đây cũng là một trong những chức năng của thanh search phía trên bảng danh sách cài đặt. Lựa chọn THÁNG, NĂM nhất định, bạn sẽ xem được các cài đặt đi muộn, về sớm tương ứng với tháng, năm đó.
-                            </TextBlock>
-                            <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
+                                </TextBlock>
+                                <TextBlock FontSize="16" Foreground="{DynamicResource #000}"
                                        TextWrapping="WrapWithOverflow">
                                 Mục sửa sẽ cho phép bạn điều chỉnh các thông tin của các cài đặt đi muộn, về sớm đã được thiết lập. Click vào biểu tượng chiếc bút, chỉnh sửa thông tin cần thiết, chọn “Lưu" hệ thống sẽ cập nhật dữ liệu mới. Còn nếu muốn xoá cài đặt nào thì bạn sẽ nhấp chuột vào biểu tượng thùng rác, xác nhận thao tác xoá, cài đặt đó sẽ bị mất khỏi danh sách được thiết lập.
-                            </TextBlock>
-                        </StackPanel>
-                    </Border>
-                </Grid>
-            </TabItem>
-        </TabControl>
-        <tool:LoadingSpinner x:Name="loading" Visibility="Collapsed" />
-    </Grid>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <tool:LoadingSpinner x:Name="loading" Visibility="Collapsed" />
+        </Grid>
+    </StackPanel>
 </Page>

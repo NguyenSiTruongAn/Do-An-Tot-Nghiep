@@ -975,5 +975,11 @@ namespace AppTinhLuong365.Views.CaiDat
             loading.Visibility = Visibility.Visible;
             xuatExcel();
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(Main));
+            Main.SideBarIndex = 0;
+        }
     }
 }

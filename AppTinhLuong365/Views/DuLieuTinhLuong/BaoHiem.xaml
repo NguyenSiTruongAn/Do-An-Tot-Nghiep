@@ -65,7 +65,13 @@
             </Style.Triggers>
         </Style>
     </Page.Resources>
-    <Grid>
+    <StackPanel>
+        <Border Margin="0 0 0 15" HorizontalAlignment="Left" Background="Transparent" Cursor="Hand" MouseLeftButtonDown="TroLai">
+            <DockPanel>
+                <Path Data="{DynamicResource iconMuiTenTrai}" VerticalAlignment="Center" Fill="{DynamicResource #4C5BD4}"/>
+                <TextBlock Text="Trở về" FontSize="15" Margin="10 0 0 0"/>
+            </DockPanel>
+        </Border>
         <StackPanel>
             <Border Cursor="Hand" MouseLeftButtonDown="TaoMoiBH" Background="{DynamicResource #4C5BD4}" Width="120" Height="38" HorizontalAlignment="Right" Margin="0 20" CornerRadius="10">
                 <Border.Style>
@@ -428,5 +434,5 @@
                 <TabItem Header="{DynamicResource textGuide}" BorderThickness="0" Background="Transparent"></TabItem>
             </TabControl>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 </Page>

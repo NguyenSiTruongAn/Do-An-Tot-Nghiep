@@ -1,4 +1,5 @@
 ﻿using AppTinhLuong365.Model.APIEntity;
+using AppTinhLuong365.Views.BaoCaoCongLuong;
 using AppTinhLuong365.Views.DuLieuTinhLuong;
 using Newtonsoft.Json;
 using System;
@@ -106,6 +107,7 @@ namespace AppTinhLuong365
             tblUserName.Text = CurrentEmployee.ep_name;
             CurrentImage = "https://chamcong.24hpay.vn/upload/employee/"+CurrentEmployee.ep_image;
             getData();
+
         }
         private int _sotb = 0;
         public int sotb
@@ -132,7 +134,7 @@ namespace AppTinhLuong365
                 
             }
         }
-
+        public BaoCaoCongLuong bc { get; set; }
         public DataLogin_Company CurrentCompany { get; set; }
         public DataLogin_Employee CurrentEmployee { get; set; }
         public int MainType { get; set; }
@@ -492,8 +494,8 @@ namespace AppTinhLuong365
                             title.Text = this.Title;
                             break;
                         case 14:
-                            HomeSelectionPage.NavigationService.Navigate(
-                                new Views.BaoCaoCongLuong.BaoCaoCongLuong(this));
+                            if (bc == null) bc = new Views.BaoCaoCongLuong.BaoCaoCongLuong(this);
+                            HomeSelectionPage.NavigationService.Navigate(bc);
                             this.Title = App.Current.Resources["textBaoCaoCongLuong"] as string;
                             title.Text = this.Title;
                             break;
@@ -832,6 +834,15 @@ namespace AppTinhLuong365
             this.PopupSelection.Visibility = Visibility.Visible;
             var z = Mouse.GetPosition(this.PopupSelection);
             pop.Margin = new Thickness(z.X - 448, z.Y + 30, 0, 0);
+        }
+
+        private void sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (bc == null) bc = new Views.BaoCaoCongLuong.BaoCaoCongLuong(this);
+            if (bc.web!=null && bc.web.IsBusy)
+            {
+                bc.web.Dispose();
+            }
         }
     }
 }

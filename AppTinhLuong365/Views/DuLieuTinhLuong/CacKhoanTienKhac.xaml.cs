@@ -674,5 +674,11 @@ namespace AppTinhLuong365.Views.DuLieuTinhLuong
             Main.PopupSelection.NavigationService.Navigate(new Views.DuLieuTinhLuong.Popup.PopupThongBaoXoaNVKhoiCKTK(Main, data.cls_id));
             Main.PopupSelection.Visibility = Visibility.Visible;
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(Main));
+            Main.SideBarIndex = 0;
+        }
     }
 }

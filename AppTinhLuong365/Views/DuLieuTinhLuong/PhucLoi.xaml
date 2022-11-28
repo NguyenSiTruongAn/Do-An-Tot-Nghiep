@@ -8,7 +8,13 @@
       d:DesignHeight="1450" d:DesignWidth="1042" Background="{DynamicResource #F7F8FC}"
       Title="PhucLoi" SizeChanged="Page_SizeChanged">
 
-    <Grid Margin="20">
+    <StackPanel Margin="20">
+        <Border Margin="0 0 0 15" HorizontalAlignment="Left" Background="Transparent" Cursor="Hand" MouseLeftButtonDown="TroLai">
+            <DockPanel>
+                <Path Data="{DynamicResource iconMuiTenTrai}" VerticalAlignment="Center" Fill="{DynamicResource #4C5BD4}"/>
+                <TextBlock Text="Trở về" FontSize="15" Margin="10 0 0 0"/>
+            </DockPanel>
+        </Border>
         <TabControl Background="{DynamicResource #F7F8FC}" BorderThickness="0" ItemContainerStyle="{StaticResource TabItem1}">
             <TabItem Header="{DynamicResource textPhucLoi}" Background="Transparent">
                 <StackPanel>
@@ -389,5 +395,5 @@
                 </StackPanel>
             </TabItem>
         </TabControl>
-    </Grid>
+    </StackPanel>
 </Page>

@@ -432,5 +432,12 @@ namespace AppTinhLuong365.Views.CaiDat
             else
                 e.CancelCommand();
         }
+
+        private void TroLai(object sender, MouseButtonEventArgs e)
+        {
+            Main.HomeSelectionPage.NavigationService.Navigate(new Views.TrangChu.Home(Main));
+            Main.title.Text = "Quản lý tài khoản nhân sự";
+            Main.SideBarIndex = 0;
+        }
     }
 }
