@@ -402,7 +402,6 @@ namespace AppTinhLuong365.Views.BaoCaoCongLuong
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/api_cong_luong.php",
                     web.QueryString);
-                web.Dispose();
             }
         }
 

@@ -494,7 +494,7 @@ namespace AppTinhLuong365
                             title.Text = this.Title;
                             break;
                         case 14:
-                            if (bc == null) bc = new Views.BaoCaoCongLuong.BaoCaoCongLuong(this);
+                            if (bc == null && MainType == 0) bc = new Views.BaoCaoCongLuong.BaoCaoCongLuong(this);
                             HomeSelectionPage.NavigationService.Navigate(bc);
                             this.Title = App.Current.Resources["textBaoCaoCongLuong"] as string;
                             title.Text = this.Title;
@@ -838,8 +838,9 @@ namespace AppTinhLuong365
 
         private void sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (bc == null) bc = new Views.BaoCaoCongLuong.BaoCaoCongLuong(this);
-            if (bc.web!=null && bc.web.IsBusy)
+            if (bc == null && MainType == 0) bc = new Views.BaoCaoCongLuong.BaoCaoCongLuong(this);
+            if(bc != null)
+            if (bc.web!=null && bc.web.IsBusy && MainType ==0)
             {
                 bc.web.Dispose();
             }
