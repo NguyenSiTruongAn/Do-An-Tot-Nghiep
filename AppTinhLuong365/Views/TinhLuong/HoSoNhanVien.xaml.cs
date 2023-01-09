@@ -575,7 +575,7 @@ namespace AppTinhLuong365.Views.TinhLuong
             var pop = new Views.CaiDat.Popup.PopupChinhSuaLichLamViec(Main, ChiTietNV.cycle, data1, DateTime.Now.ToString("MM"));
             Main.PopupSelection.NavigationService.Navigate(pop);
             Main.PopupSelection.Visibility = Visibility.Visible;
-        }
+        } 
 
         private void XemChiTiet(object sender, MouseButtonEventArgs e)
         {
@@ -584,7 +584,7 @@ namespace AppTinhLuong365.Views.TinhLuong
 
         private void TroLai(object sender, MouseButtonEventArgs e)
         {
-            Main.HomeSelectionPage.NavigationService.Navigate(new Views.PageNhapLuongCoBanVaCheDo(Main));
+            //Main.HomeSelectionPage.NavigationService.GoBack();
             Main.SideBarIndex = 1;
         }
     }

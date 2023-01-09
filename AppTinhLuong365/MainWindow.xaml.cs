@@ -1,4 +1,5 @@
 ﻿using AppTinhLuong365.Model.APIEntity;
+using AppTinhLuong365.Views;
 using AppTinhLuong365.Views.BaoCaoCongLuong;
 using AppTinhLuong365.Views.DuLieuTinhLuong;
 using Newtonsoft.Json;
@@ -135,6 +136,7 @@ namespace AppTinhLuong365
             }
         }
         public BaoCaoCongLuong bc { get; set; }
+        public PageNhapLuongCoBanVaCheDo nlcbvcd { get; set; }
         public DataLogin_Company CurrentCompany { get; set; }
         public DataLogin_Employee CurrentEmployee { get; set; }
         public int MainType { get; set; }
@@ -401,7 +403,8 @@ namespace AppTinhLuong365
                             title.Text = "Quản lý tài khoản nhân sự";
                             break;
                         case 1:
-                            HomeSelectionPage.NavigationService.Navigate(new Views.PageNhapLuongCoBanVaCheDo(this));
+                            if (nlcbvcd == null && MainType == 0) nlcbvcd = new Views.PageNhapLuongCoBanVaCheDo(this);
+                            HomeSelectionPage.NavigationService.Navigate(nlcbvcd);
                             this.Title = App.Current.Resources["textNhapLuongCoBanVaCheDo"] as string;
                             title.Text = "Danh sách nhân viên";
                             break;
