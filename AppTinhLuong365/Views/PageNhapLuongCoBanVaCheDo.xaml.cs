@@ -210,9 +210,26 @@ namespace AppTinhLuong365.Views
             }
         }
 
-        private void getData1(string dep_id, string date)
+        private async void getData1(string dep_id, string date)
         {
-            using (WebClient web = new WebClient())
+            Dictionary<string, string> form = new Dictionary<string, string>();
+            form.Add("id_comp", Main.CurrentCompany.com_id);
+            form.Add("token", Main.CurrentCompany.token);
+            form.Add("id_dep", dep_id);
+            form.Add("active", "true");
+            form.Add("start_date", date);
+            int x = DateTime.DaysInMonth(int.Parse(DateTime.Parse(date).ToString("yyyy")), int.Parse(DateTime.Parse(date).ToString("MM")));
+            form.Add("date", DateTime.Parse(date).ToString("yyyy") + "-" + DateTime.Parse(date).ToString("MM") + "-" + x);
+
+            HttpClient httpClient = new HttpClient();
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+            var respon = await httpClient.PostAsync("https://tinhluong.timviec365.vn/api_app/company/ep_by_time.php", new FormUrlEncodedContent(form));
+            API_DSNVTheoThoiGian api = JsonConvert.DeserializeObject<API_DSNVTheoThoiGian>(respon.Content.ReadAsStringAsync().Result);
+            if (api.data != null)
+            {
+                listNV = api.data.list;
+            }
+           /* using (WebClient web = new WebClient())
             {
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
                 web.QueryString.Add("token", Main.CurrentCompany.token);
@@ -241,7 +258,7 @@ namespace AppTinhLuong365.Views
                     //}
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/ep_by_time.php", web.QueryString);
-            }
+            }*/
         }
 
         private void ChonPhong(object sender, SelectionChangedEventArgs e)
