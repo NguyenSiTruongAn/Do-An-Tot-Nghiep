@@ -108,7 +108,7 @@
                     </DockPanel>
                 </Border>
             </Grid>
-            <TextBlock LineHeight="26" Margin="0 20 0 0" Text="{DynamicResource textTongQuanHeThong}" FontSize="18" Foreground="{DynamicResource #2E3467}" FontWeight="Bold"></TextBlock>
+            <TextBlock LineHeight="26" Margin="0 20 0 0" Text="Danh sách nhân viên chưa thiết lập lịch làm việc" FontSize="18" Foreground="{DynamicResource #2E3467}" FontWeight="Bold"></TextBlock>
             <DataGrid x:Name="dataGrid1" Style="{StaticResource DataGrid1}" SelectedIndex="0" Margin="0 5 0 0" ItemsSource="{Binding listNVChuaLLV}" PreviewMouseWheel="dataGrid1_PreviewMouseWheel">
                 <DataGrid.OpacityMask>
                     <VisualBrush>

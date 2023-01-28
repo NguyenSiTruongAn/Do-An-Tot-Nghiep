@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -272,9 +273,21 @@ namespace AppTinhLuong365.Views
             }
         }
 
-        private void getData2()
+        private async void getData2()
         {
-            using (WebClient web = new WebClient())
+            Dictionary<string, string> form = new Dictionary<string, string>();
+            form.Add("token", Main.CurrentCompany.token);
+            form.Add("id_comp", Main.CurrentCompany.com_id);
+
+            HttpClient httpClient = new HttpClient();
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+            var respon = await httpClient.PostAsync("https://tinhluong.timviec365.vn/api_app/company/list_dep.php", new FormUrlEncodedContent(form));
+            API_List_dep api = JsonConvert.DeserializeObject<API_List_dep>(respon.Content.ReadAsStringAsync().Result);
+            if (api.data != null)
+            {
+                listItem_dep = api.data.list;
+            }
+            /*using (WebClient web = new WebClient())
             {
                 web.QueryString.Add("token", Main.CurrentCompany.token);
                 web.QueryString.Add("id_comp", Main.CurrentCompany.com_id);
@@ -290,16 +303,10 @@ namespace AppTinhLuong365.Views
                         }
                     }
                     catch { }
-                    // foreach (EpLate item in listEpLate)
-                    // {
-                    //     if (item.ts_image != "/img/add.png")
-                    //     {
-                    //         item.ts_image = "https://chamcong.24hpay.vn/image/time_keeping/" + item.ts_image;
-                    //     }
-                    // }
+                    
                 };
                 web.UploadValuesTaskAsync("https://tinhluong.timviec365.vn/api_app/company/list_dep.php", web.QueryString);
-            }
+            }*/
         }
 
         private void Border_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
