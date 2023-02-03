@@ -76,13 +76,14 @@ namespace AppTinhLuong365.Views.TinhLuong
             string month = DateTime.Now.ToString("MM");
             string year = DateTime.Now.ToString("yyyy");
             string start_date = DateTime.Now.ToString("yyyy-MM-01");
-            string end_date = DateTime.Now.ToString("yyyy-MM-30");
+            int x = DateTime.DaysInMonth(int.Parse(DateTime.Now.ToString("yyyy")), int.Parse(DateTime.Now.ToString("MM")));
+            string end_date = DateTime.Now.ToString("yyyy-MM") + "-" + x;
             int d = Int32.Parse(month);
             int e = Int32.Parse(year);
             searchBarMonth.SelectedIndex = d - 1;
             searchBarYear.SelectedIndex = e - e + 1;
-            DateTime a = (DateTime.Parse(start_date));
-            DateTime b = (DateTime.Parse(end_date));
+            DateTime a = DateTime.Parse(start_date);
+            DateTime b = DateTime.Parse(end_date);
             DatePickerStart.SelectedDate = a;
             DatePickerEnd.SelectedDate = b;
             SearchBar.SelectedIndex = 0;
