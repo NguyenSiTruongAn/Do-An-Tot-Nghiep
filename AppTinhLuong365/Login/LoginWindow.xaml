@@ -37,14 +37,17 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Name="gridContent">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Login\Resources\Images\BG_LOGIN.png"/>
+            </Grid.Background>
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Background="{DynamicResource #FAFAFB}">
-                <ContentControl Content="{StaticResource vbWinLogin}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20" MaxWidth="489" MaxHeight="454.36"></ContentControl>
-            </Grid>
-            <Frame x:Name="LoginSelectionPage" Grid.Column="1" Margin="20" NavigationUIVisibility="Hidden"></Frame>
+            <Grid Background="{DynamicResource #FAFAFB}" Width="0">
+                <ContentControl Content="{StaticResource vbWinLogin}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20" Width="0" MaxWidth="489" MaxHeight="454.36"></ContentControl>
+            </Grid>-->
+            <Frame x:Name="LoginSelectionPage" Margin="20" NavigationUIVisibility="Hidden"></Frame>
         </Grid>
         <Frame x:Name="PopupSelectionPage" Grid.Row="1" NavigationUIVisibility="Hidden" MouseLeftButtonDown="ClickOutSidePopup" IsVisibleChanged="PopupSelectionPage_IsVisibleChanged"></Frame>
     </Grid>

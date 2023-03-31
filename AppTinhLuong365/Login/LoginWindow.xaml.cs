@@ -129,14 +129,14 @@ namespace AppTinhLuong365.Login
             if (this.WindowState == WindowState.Maximized) IsFull = 1;
 
 
-            if (this.ActualWidth >= 780)
+            /*if (this.ActualWidth >= 780)
             {
                 gridContent.ColumnDefinitions[0].Width = new GridLength(1,GridUnitType.Star);
             }
             else
             {
                 gridContent.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Pixel);
-            }
+            }*/
         }
         public void LogOut(int full,Window w = null)
         {
