@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Device.Location;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -267,7 +268,7 @@ namespace AppTinhLuong365.Login.Views.Login
 
         private void ForgotPass(object sender, MouseButtonEventArgs e)
         {
-            var z = new ForgotPasswordWindow(WinLogin);
+            /*var z = new ForgotPasswordWindow(WinLogin);
             z.Type = 1;
 
             z.IsFull = WinLogin.IsFull;
@@ -277,7 +278,8 @@ namespace AppTinhLuong365.Login.Views.Login
             z.Top = WinLogin.Top;
 
             WinLogin.Hide();
-            z.Show();
+            z.Show();*/
+            Process.Start("https://quanlychung.timviec365.vn/quen-mat-khau.html?type=1");
         }
         private void SelectedTypeLogin(object sender, MouseButtonEventArgs e)
         {
