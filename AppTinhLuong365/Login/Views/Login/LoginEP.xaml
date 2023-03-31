@@ -87,7 +87,7 @@
                                     <Path VerticalAlignment="Center" Data="{StaticResource iconEmail}" Stroke="{DynamicResource #4C5BD4}"></Path>
                                     <Grid Margin="10 0 0 0">
                                         <TextBox x:Name="txtEmail" FontSize="16" Foreground="{DynamicResource #474747}" CaretBrush="{DynamicResource #474747}" Background="Transparent" BorderThickness="0" LostFocus="txtEmail_LostFocus" TextChanged="txtEmail_TextChanged"></TextBox>
-                                        <TextBlock IsHitTestVisible="False" Margin="1 0 0 0" Text="Nhập email hoặc soó điện thoại" FontSize="16" Foreground="{DynamicResource #666666}">
+                                        <TextBlock IsHitTestVisible="False" Margin="1 0 0 0" Text="Nhập email hoặc số điện thoại" FontSize="16" Foreground="{DynamicResource #666666}">
                                             <TextBlock.Style>
                                                 <Style TargetType="TextBlock">
                                                     <Setter Property="Visibility" Value="Collapsed"/>
