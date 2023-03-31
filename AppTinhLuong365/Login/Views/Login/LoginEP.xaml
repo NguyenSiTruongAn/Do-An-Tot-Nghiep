@@ -79,7 +79,7 @@
                     <StackPanel  x:Name="Login_Account" Visibility="Visible">
                         <StackPanel Margin="0 40 0 0">
                             <TextBlock FontSize="16" FontWeight="Medium" Foreground="{DynamicResource #474747}">
-                    <Run Text="Email"></Run>
+                    <Run Text="Email hoặc số điện thoại"></Run>
                     <Run Text="*" Foreground="{DynamicResource #FF3333}"></Run>
                             </TextBlock>
                             <Border BorderThickness="1" BorderBrush="{DynamicResource #CCCCCC}" Margin="0 5 0 0" CornerRadius="20">
