@@ -161,9 +161,14 @@ namespace AppTinhLuong365.Login.Views.Login
                     AppTinhLuong365.Model.APIEntity.API_Login_Company api = JsonConvert.DeserializeObject<AppTinhLuong365.Model.APIEntity.API_Login_Company>(respon.Content.ReadAsStringAsync().Result);
                     if (api.data != null)
                     {
-                        if (ckSave.IsChecked == true)
+                        if (ckSave.IsChecked == true && TypeLogin == 0)
                         {
                             AppTinhLuong365.Properties.Settings.Default.ComPass = Pass;
+                            AppTinhLuong365.Properties.Settings.Default.Save();
+                        }
+                        else
+                        {
+                            AppTinhLuong365.Properties.Settings.Default.ComPass = "";
                             AppTinhLuong365.Properties.Settings.Default.Save();
                         }
                         if(TypeLogin == 0)

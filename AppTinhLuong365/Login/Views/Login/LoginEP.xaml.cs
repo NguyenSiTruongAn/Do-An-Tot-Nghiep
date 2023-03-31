@@ -161,9 +161,14 @@ namespace AppTinhLuong365.Login.Views.Login
                     AppTinhLuong365.Model.APIEntity.API_Login_Employee api = JsonConvert.DeserializeObject<AppTinhLuong365.Model.APIEntity.API_Login_Employee>(respon.Content.ReadAsStringAsync().Result);
                     if (api.data != null)
                     {
-                        if (ckSave.IsChecked == true)
+                        if (ckSave.IsChecked == true && TypeLogin == 0)
                         {
                             AppTinhLuong365.Properties.Settings.Default.EpPass = Pass;
+                            AppTinhLuong365.Properties.Settings.Default.Save();
+                        }
+                        else
+                        {
+                            AppTinhLuong365.Properties.Settings.Default.EpPass = "";
                             AppTinhLuong365.Properties.Settings.Default.Save();
                         }
                         if (TypeLogin == 0)
