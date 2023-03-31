@@ -92,7 +92,7 @@ namespace AppTinhLuong365.Login.Views.Login
         }
 
         Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
-        Regex regexSDT = new Regex(@"0(1\d{9}|9\d{8})", RegexOptions.CultureInvariant | RegexOptions.Singleline);
+        Regex regexSDT = new Regex(@"^((09|03|07|08|05)+([0-9]{8})\b)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
         //
         private void SignIn(object sender, MouseButtonEventArgs e)
         {
@@ -198,7 +198,7 @@ namespace AppTinhLuong365.Login.Views.Login
                     {
                         var n = new Notify();
                         n.Type = Notify.NotifyType.Error;
-                        n.setMessage("Đăng nhập không thành công");
+                        n.setMessage(api.error.message);
                         WinLogin.ShowPopup(n);
                     }
                 }

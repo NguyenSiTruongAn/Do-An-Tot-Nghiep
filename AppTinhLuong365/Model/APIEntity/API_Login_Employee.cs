@@ -43,6 +43,6 @@ namespace AppTinhLuong365.Model.APIEntity
         public bool result { get; set; }
         public int code { get; set; }
         public DataLogin_Employee data { get; set; }
-        public object error { get; set; }
+        public Error error { get; set; }
     }
 }
