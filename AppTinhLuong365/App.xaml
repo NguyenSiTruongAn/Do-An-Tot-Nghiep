@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AppTinhLuong365"
              xmlns:math="clr-namespace:AppTinhLuong365.Core"
-             StartupUri="Login\MainWindow.xaml">
+             StartupUri="Login\MainWindow.xaml" Startup="Application_Startup">
     <Application.Resources>
         <ResourceDictionary>
             <math:MathConvert x:Key="MathConvert"/>

@@ -49,6 +49,18 @@ namespace AppTinhLuong365.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string ComTypePass {
+            get {
+                return ((string)(this["ComTypePass"]));
+            }
+            set {
+                this["ComTypePass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string EpEmail {
             get {
@@ -68,6 +80,18 @@ namespace AppTinhLuong365.Properties {
             }
             set {
                 this["EpPass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string EpTypePass {
+            get {
+                return ((string)(this["EpTypePass"]));
+            }
+            set {
+                this["EpTypePass"] = value;
             }
         }
     }

@@ -49,7 +49,10 @@ namespace AppTinhLuong365.Login.Views.Login
             {
                 ckSave.IsChecked = true;
                 txtEmail.Text = AppTinhLuong365.Properties.Settings.Default.EpEmail;
-                txtPass.Password = AppTinhLuong365.Properties.Settings.Default.EpPass;
+                TypeLogin = int.Parse(AppTinhLuong365.Properties.Settings.Default.EpTypePass);
+                if(TypeLogin == 0)
+                    txtPass.Password = AppTinhLuong365.Properties.Settings.Default.EpPass;
+                TypeLogin = 1;
                 txtPass.GetType().GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(txtPass, new object[] { Pass.Length, 0 });
                 txtPass.Focus();
             }
@@ -58,7 +61,7 @@ namespace AppTinhLuong365.Login.Views.Login
             connectionSocket();
         }
         //
-        private int _TypeLogin = 0;
+        private int _TypeLogin = 1;
 
         public int TypeLogin
         {
@@ -162,14 +165,10 @@ namespace AppTinhLuong365.Login.Views.Login
                     AppTinhLuong365.Model.APIEntity.API_Login_Employee api = JsonConvert.DeserializeObject<AppTinhLuong365.Model.APIEntity.API_Login_Employee>(respon.Content.ReadAsStringAsync().Result);
                     if (api.data != null)
                     {
-                        if (ckSave.IsChecked == true && TypeLogin == 0)
+                        if (ckSave.IsChecked == true)
                         {
                             AppTinhLuong365.Properties.Settings.Default.EpPass = Pass;
-                            AppTinhLuong365.Properties.Settings.Default.Save();
-                        }
-                        else
-                        {
-                            AppTinhLuong365.Properties.Settings.Default.EpPass = "";
+                            AppTinhLuong365.Properties.Settings.Default.EpTypePass = TypeLogin.ToString();
                             AppTinhLuong365.Properties.Settings.Default.Save();
                         }
                         if (TypeLogin == 0)
@@ -397,7 +396,8 @@ namespace AppTinhLuong365.Login.Views.Login
                                 Pass = Password;
                                 txtEmail.Text = Email;
                                 Properties.Settings.Default.EpEmail = Email;
-                                Properties.Settings.Default.EpPass = "";
+                                Properties.Settings.Default.EpPass = Password;
+                                Properties.Settings.Default.EpTypePass = "1";
                                 Properties.Settings.Default.Save();
                                 runLogin();
                             });

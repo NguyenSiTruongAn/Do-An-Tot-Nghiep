@@ -50,7 +50,8 @@ namespace AppTinhLuong365.Login.Views.Login
             {
                 ckSave.IsChecked = true;
                 txtEmail.Text = AppTinhLuong365.Properties.Settings.Default.ComEmail;
-                txtPass.Password = AppTinhLuong365.Properties.Settings.Default.ComPass;
+                if(AppTinhLuong365.Properties.Settings.Default.ComTypePass == "0")
+                    txtPass.Password = AppTinhLuong365.Properties.Settings.Default.ComPass;
                 txtPass.GetType().GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(txtPass, new object[] { Pass.Length, 0 });
                 txtPass.Focus();
             }
@@ -59,7 +60,7 @@ namespace AppTinhLuong365.Login.Views.Login
             connectionSocket();
         }
         //
-        private int _TypeLogin = 0;
+        private int _TypeLogin = 1;
 
         public int TypeLogin
         {
@@ -162,16 +163,13 @@ namespace AppTinhLuong365.Login.Views.Login
                     AppTinhLuong365.Model.APIEntity.API_Login_Company api = JsonConvert.DeserializeObject<AppTinhLuong365.Model.APIEntity.API_Login_Company>(respon.Content.ReadAsStringAsync().Result);
                     if (api.data != null)
                     {
-                        if (ckSave.IsChecked == true && TypeLogin == 0)
+                        if (ckSave.IsChecked == true)
                         {
                             AppTinhLuong365.Properties.Settings.Default.ComPass = Pass;
+                            AppTinhLuong365.Properties.Settings.Default.ComTypePass = TypeLogin.ToString();
                             AppTinhLuong365.Properties.Settings.Default.Save();
                         }
-                        else
-                        {
-                            AppTinhLuong365.Properties.Settings.Default.ComPass = "";
-                            AppTinhLuong365.Properties.Settings.Default.Save();
-                        }
+                        
                         if(TypeLogin == 0)
                         {
                             api.data.pass = api.data.ToMD5(Pass);
@@ -392,7 +390,8 @@ namespace AppTinhLuong365.Login.Views.Login
                                 Pass = Password;
                                 txtEmail.Text = Email;
                                 Properties.Settings.Default.ComEmail = Email;
-                                Properties.Settings.Default.ComPass = "";
+                                Properties.Settings.Default.ComPass = Password;
+                                Properties.Settings.Default.ComTypePass = "1";
                                 Properties.Settings.Default.Save();
                                 runLogin();
                             });

@@ -76,7 +76,7 @@
                         </Border>
                     </DockPanel>
                     <Line X1="0" Y1="0" X2="{Binding ElementName=StLogin,Path=ActualWidth}" Y2="0" Stroke="#EEEEEE" StrokeThickness="2"/>
-                    <StackPanel x:Name="Login_Account" Visibility="Visible">
+                    <StackPanel x:Name="Login_Account" Visibility="Collapsed">
                         <StackPanel Margin="0 40 0 0">
                             <TextBlock FontSize="16" FontWeight="Medium" Foreground="{DynamicResource #474747}">
                     <Run Text="Email"></Run>
@@ -148,7 +148,7 @@
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel x:Name="spQRCode" Visibility="Collapsed">
+                <StackPanel x:Name="spQRCode" Visibility="Visible">
                     <Border Margin="0 40 0 20" Width="250" Height="250">
                         <Border.Background>
                             <ImageBrush x:Name="QrCodeImage"/>
