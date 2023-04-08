@@ -232,7 +232,7 @@ namespace AppTinhLuong365.Views.NhanVien
 
         private void DexuatLich(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("https://vanthu.timviec365.vn/tao-de-xuat-lich-lam-viec.html");
+            Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=81b016d57ec189daa8e04dd2d59a22c3." + Main.CurrentEmployee.ep_id + "." + Main.CurrentEmployee.pass + "&link=https://vanthu.timviec365.vn/tao-de-xuat-lich-lam-viec.html");
         }
 
         private void st_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

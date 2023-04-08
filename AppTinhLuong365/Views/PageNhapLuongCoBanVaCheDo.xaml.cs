@@ -167,7 +167,7 @@ namespace AppTinhLuong365.Views
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Process.Start("https://phanmemnhansu.timviec365.vn/bien-dong-nhan-su.html");
+            Process.Start("https://chamcong.timviec365.vn/thong-bao.html?s=f30f0b61e761b8926941f232ea7cccb9." + Main.CurrentCompany.com_id + "." + Main.CurrentCompany.pass + "&link=https://phanmemnhansu.timviec365.vn/bien-dong-nhan-su.html");
         }
         public class abc : INotifyPropertyChanged
         {
