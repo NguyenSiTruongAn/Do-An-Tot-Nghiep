@@ -130,7 +130,7 @@ namespace AppTinhLuong365.Login.Views.Login
                 allow = false;
                 tblValidateEmail.Text = "Không được để trống";
             }
-            else if (!regex.IsMatch(txtEmail.Text) && !regexSDT.IsMatch(txtEmail.Text))
+            else if (!regex.IsMatch(txtEmail.Text))
             {
                 allow = false;
                 tblValidateEmail.Text = "Nhập không đúng định dạng";
@@ -228,7 +228,7 @@ namespace AppTinhLuong365.Login.Views.Login
             {
                 tblValidateEmail.Text = "Không được để trống";
             }
-            else if (!regex.IsMatch(txtEmail.Text) && !regexSDT.IsMatch(txtEmail.Text))
+            else if (!regex.IsMatch(txtEmail.Text))
             {
                 tblValidateEmail.Text = "Nhập không đúng định dạng";
             }
@@ -248,7 +248,7 @@ namespace AppTinhLuong365.Login.Views.Login
             {
                 tblValidateEmail.Text = "Không được để trống";
             }
-            else if (!regex.IsMatch(txtEmail.Text) && !regexSDT.IsMatch(txtEmail.Text))
+            else if (!regex.IsMatch(txtEmail.Text))
             {
                 tblValidateEmail.Text = "Nhập không đúng định dạng";
             }
