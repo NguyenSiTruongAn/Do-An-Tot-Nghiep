@@ -40,6 +40,13 @@ namespace AppTinhLuong365.Login
 
         public enum LoginTypes { Employee, Company }
         public LoginTypes Type { get; set; }
+        private int _SizeScreen;
+
+        public int SizeScreen
+        {
+            get { return _SizeScreen; }
+            set { _SizeScreen = value; OnPropertyChanged(); }
+        }
 
         private int _IsFull = 0;
         public int IsFull
@@ -128,7 +135,18 @@ namespace AppTinhLuong365.Login
         {
             if (this.WindowState == WindowState.Maximized) IsFull = 1;
 
-
+            if(this.Width >= 1920)
+            {
+                SizeScreen = 1920;
+            }
+            else if(this.Width >= 1024)
+            {
+                SizeScreen = 1024;
+            }
+            else
+            {
+                SizeScreen = 768;
+            }
             /*if (this.ActualWidth >= 780)
             {
                 gridContent.ColumnDefinitions[0].Width = new GridLength(1,GridUnitType.Star);

@@ -37,9 +37,33 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Name="gridContent">
-            <Grid.Background>
-                <ImageBrush ImageSource="/Login\Resources\Images\BG_LOGIN.png"/>
-            </Grid.Background>
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SizeScreen}" Value="1920">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Login\Resources\Images\BG_LOGIN_1.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SizeScreen}" Value="1024">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Login\Resources\Images\BG_LOGIN_2.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SizeScreen}" Value="768">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/Login\Resources\Images\BG_LOGIN_3.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
             <!--<Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0"/>
                 <ColumnDefinition/>
