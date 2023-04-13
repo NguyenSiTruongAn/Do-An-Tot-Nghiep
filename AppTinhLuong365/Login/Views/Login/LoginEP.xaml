@@ -31,34 +31,35 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 20" CornerRadius="20" Background="White">
-                <Border.Style>
-                    <Style TargetType="Border">
-                        <Setter Property="Width" Value="524"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding WinLogin.SizeScreen}" Value="1920">
-                                <Setter Property="Width" Value="562"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-                <StackPanel Margin="20">
-                    <ContentControl Template="{StaticResource btnBack}" VerticalAlignment="Top" HorizontalAlignment="Left" MouseLeftButtonDown="GoBack"></ContentControl>
-                    <StackPanel x:Name="StLogin" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 0">
-                        <TextBlock Text="Cùng Doanh Nghiệp Chuyển Đổi Số, Phát Triển Bản Thân, Gây Dựng Tập Thể" TextAlignment="Center" Width="467" VerticalAlignment="Center" FontSize="20" TextWrapping="WrapWithOverflow" Foreground="#00285E" FontWeight="Bold" Margin="0 10 0 20">
-                            <TextBlock.Style>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding WinLogin.SizeScreen}" Value="768">
-                                            <Setter Property="Visibility" Value="Visible"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-                        <TextBlock Text="QUÉT MÃ QR" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
-                        <!--<DockPanel Height="50">
+            <StackPanel>
+                <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 20" CornerRadius="20" Background="White">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Width" Value="524"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding WinLogin.SizeScreen}" Value="1920">
+                                    <Setter Property="Width" Value="562"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <StackPanel Margin="20">
+                        <ContentControl Template="{StaticResource btnBack}" VerticalAlignment="Top" HorizontalAlignment="Left" MouseLeftButtonDown="GoBack"></ContentControl>
+                        <StackPanel x:Name="StLogin" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 0">
+                            <TextBlock Text="Cùng Doanh Nghiệp Chuyển Đổi Số, Phát Triển Bản Thân, Gây Dựng Tập Thể" TextAlignment="Center" Width="467" VerticalAlignment="Center" FontSize="20" TextWrapping="WrapWithOverflow" Foreground="#00285E" FontWeight="Bold" Margin="0 10 0 20">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding WinLogin.SizeScreen}" Value="768">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBlock Text="QUÉT MÃ QR" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                            <!--<DockPanel Height="50">
                         <StackPanel>
                             <Border Height="43" Cursor="Hand" Background="Transparent" MouseLeftButtonDown="SelectedTypeLogin">
                                 <TextBlock Text="QUÉT MÃ QR" VerticalAlignment="Center" Width="175" TextAlignment="Center"  FontWeight="DemiBold">
@@ -117,90 +118,100 @@
                         </Border>
                     </DockPanel>
                         <Line X1="0" Y1="0" X2="{Binding ElementName=StLogin,Path=ActualWidth}" Y2="0" Stroke="#EEEEEE" StrokeThickness="2"/>-->
-                        <StackPanel  x:Name="Login_Account" Visibility="Collapsed">
-                            <StackPanel Margin="0 40 0 0">
-                                <TextBlock FontSize="16" FontWeight="Medium" Foreground="{DynamicResource #474747}">
+                            <StackPanel  x:Name="Login_Account" Visibility="Collapsed">
+                                <StackPanel Margin="0 40 0 0">
+                                    <TextBlock FontSize="16" FontWeight="Medium" Foreground="{DynamicResource #474747}">
                     <Run Text="Email hoặc số điện thoại"></Run>
                     <Run Text="*" Foreground="{DynamicResource #FF3333}"></Run>
-                                </TextBlock>
-                                <Border BorderThickness="1" BorderBrush="{DynamicResource #CCCCCC}" Margin="0 5 0 0" CornerRadius="20">
-                                    <DockPanel Margin="20 12" VerticalAlignment="Center">
-                                        <Path VerticalAlignment="Center" Data="{StaticResource iconEmail}" Stroke="{DynamicResource #4C5BD4}"></Path>
-                                        <Grid Margin="10 0 0 0">
-                                            <TextBox x:Name="txtEmail" FontSize="16" Foreground="{DynamicResource #474747}" CaretBrush="{DynamicResource #474747}" Background="Transparent" BorderThickness="0" LostFocus="txtEmail_LostFocus" TextChanged="txtEmail_TextChanged"></TextBox>
-                                            <TextBlock IsHitTestVisible="False" Margin="1 0 0 0" Text="Nhập email hoặc số điện thoại" FontSize="16" Foreground="{DynamicResource #666666}">
-                                                <TextBlock.Style>
-                                                    <Style TargetType="TextBlock">
-                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding ElementName=txtEmail,Path=Text}" Value="">
-                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </TextBlock.Style>
-                                            </TextBlock>
-                                        </Grid>
-                                    </DockPanel>
-                                </Border>
-                                <TextBlock x:Name="tblValidateEmail" Style="{StaticResource tblValidateRight}"/>
-                            </StackPanel>
-                            <StackPanel Margin="0 20 0 0">
-                                <TextBlock FontSize="16" FontWeight="Medium" Foreground="{DynamicResource #474747}">
+                                    </TextBlock>
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource #CCCCCC}" Margin="0 5 0 0" CornerRadius="20">
+                                        <DockPanel Margin="20 12" VerticalAlignment="Center">
+                                            <Path VerticalAlignment="Center" Data="{StaticResource iconEmail}" Stroke="{DynamicResource #4C5BD4}"></Path>
+                                            <Grid Margin="10 0 0 0">
+                                                <TextBox x:Name="txtEmail" FontSize="16" Foreground="{DynamicResource #474747}" CaretBrush="{DynamicResource #474747}" Background="Transparent" BorderThickness="0" LostFocus="txtEmail_LostFocus" TextChanged="txtEmail_TextChanged"></TextBox>
+                                                <TextBlock IsHitTestVisible="False" Margin="1 0 0 0" Text="Nhập email hoặc số điện thoại" FontSize="16" Foreground="{DynamicResource #666666}">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding ElementName=txtEmail,Path=Text}" Value="">
+                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </Grid>
+                                        </DockPanel>
+                                    </Border>
+                                    <TextBlock x:Name="tblValidateEmail" Style="{StaticResource tblValidateRight}"/>
+                                </StackPanel>
+                                <StackPanel Margin="0 20 0 0">
+                                    <TextBlock FontSize="16" FontWeight="Medium" Foreground="{DynamicResource #474747}">
                     <Run Text="Mật khẩu"></Run>
                     <Run Text="*" Foreground="{DynamicResource #FF3333}"></Run>
-                                </TextBlock>
-                                <Border BorderThickness="1" BorderBrush="{DynamicResource #CCCCCC}" Margin="0 5 0 0" CornerRadius="20">
-                                    <DockPanel Margin="20 12" VerticalAlignment="Center">
-                                        <Path VerticalAlignment="Center" Data="{StaticResource iconPass}" Stroke="{DynamicResource #4C5BD4}"></Path>
-                                        <Grid Margin="10 0 0 0">
-                                            <PasswordBox x:Name="txtPass" FontSize="16" Foreground="{DynamicResource #474747}" CaretBrush="{DynamicResource #474747}" Background="Transparent" BorderThickness="0" PasswordChanged="txtPass_PasswordChanged" KeyDown="txtPass_KeyDown" LostFocus="txtPass_LostFocus"></PasswordBox>
-                                            <TextBlock IsHitTestVisible="False" Margin="1 0 0 0" Text="Nhập mật khẩu" FontSize="16" Foreground="{DynamicResource #666666}">
-                                                <TextBlock.Style>
-                                                    <Style TargetType="TextBlock">
-                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Pass}" Value="">
-                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </TextBlock.Style>
-                                            </TextBlock>
-                                        </Grid>
-                                    </DockPanel>
+                                    </TextBlock>
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource #CCCCCC}" Margin="0 5 0 0" CornerRadius="20">
+                                        <DockPanel Margin="20 12" VerticalAlignment="Center">
+                                            <Path VerticalAlignment="Center" Data="{StaticResource iconPass}" Stroke="{DynamicResource #4C5BD4}"></Path>
+                                            <Grid Margin="10 0 0 0">
+                                                <PasswordBox x:Name="txtPass" FontSize="16" Foreground="{DynamicResource #474747}" CaretBrush="{DynamicResource #474747}" Background="Transparent" BorderThickness="0" PasswordChanged="txtPass_PasswordChanged" KeyDown="txtPass_KeyDown" LostFocus="txtPass_LostFocus"></PasswordBox>
+                                                <TextBlock IsHitTestVisible="False" Margin="1 0 0 0" Text="Nhập mật khẩu" FontSize="16" Foreground="{DynamicResource #666666}">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Pass}" Value="">
+                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </Grid>
+                                        </DockPanel>
+                                    </Border>
+                                    <TextBlock x:Name="tblValidatePass" Style="{StaticResource tblValidateRight}"/>
+                                </StackPanel>
+                                <Grid  Margin="0 10 0 0">
+                                    <CheckBox x:Name="ckSave" IsChecked="True" Content="Lưu mật khẩu" Foreground="{DynamicResource #474747}" FontSize="16" Unchecked="ckSave_Unchecked"></CheckBox>
+                                    <Border Background="Transparent" Cursor="Hand" HorizontalAlignment="Right" MouseLeftButtonDown="ForgotPass">
+                                        <TextBlock Text="Quên mật khẩu ?" FontSize="16" FontWeight="Medium" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                                    </Border>
+                                </Grid>
+                                <Border Background="{DynamicResource #4C5BD4}" Cursor="Hand" Margin="0 20 0 0" CornerRadius="20" MouseLeftButtonDown="Login">
+                                    <TextBlock Text="Đăng nhập" FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
                                 </Border>
-                                <TextBlock x:Name="tblValidatePass" Style="{StaticResource tblValidateRight}"/>
+                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 15 0 0">
+                                    <TextBlock Text="{DynamicResource textAcc_Ques}" FontSize="16" Foreground="{DynamicResource #474747}"></TextBlock>
+                                    <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="SignIn">
+                                        <TextBlock Text="{DynamicResource textSignIn}" Margin="5 0 0 0" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource #FFA800}"></TextBlock>
+                                    </Border>
+                                </StackPanel>
                             </StackPanel>
-                            <Grid  Margin="0 10 0 0">
-                                <CheckBox x:Name="ckSave" IsChecked="True" Content="Lưu mật khẩu" Foreground="{DynamicResource #474747}" FontSize="16" Unchecked="ckSave_Unchecked"></CheckBox>
-                                <Border Background="Transparent" Cursor="Hand" HorizontalAlignment="Right" MouseLeftButtonDown="ForgotPass">
-                                    <TextBlock Text="Quên mật khẩu ?" FontSize="16" FontWeight="Medium" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                            <StackPanel x:Name="spQRCode" Visibility="Visible">
+                                <Border Margin="0 40 0 20" Width="250" Height="250">
+                                    <Border.Background>
+                                        <ImageBrush x:Name="QrCodeImage"/>
+                                    </Border.Background>
+                                    <tool:LoadingSpinner x:Name="loadding" Visibility="Collapsed"></tool:LoadingSpinner>
                                 </Border>
-                            </Grid>
-                            <Border Background="{DynamicResource #4C5BD4}" Cursor="Hand" Margin="0 20 0 0" CornerRadius="20" MouseLeftButtonDown="Login">
-                                <TextBlock Text="Đăng nhập" FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10" Foreground="{DynamicResource #FFFFFF}"></TextBlock>
-                            </Border>
-                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 15 0 0">
-                                <TextBlock Text="{DynamicResource textAcc_Ques}" FontSize="16" Foreground="{DynamicResource #474747}"></TextBlock>
-                                <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="SignIn">
-                                    <TextBlock Text="{DynamicResource textSignIn}" Margin="5 0 0 0" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource #FFA800}"></TextBlock>
+                                <TextBlock x:Name="guide1" Margin="0 0 0 0" Text="Sử dụng ứng dụng Chat365 để quét mã QR" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold" FontSize="16" Foreground="#474747" Visibility="Visible"></TextBlock>
+                                <TextBlock x:Name="guide2" Margin="0 20 0 0" Text="Hướng dẫn quét" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal" FontSize="16" Foreground="#4c5bd4" Cursor="Hand" Background="Transparent" MouseLeftButtonDown="GuideQrCode_MouseLeftButtonDown" Visibility="Visible"></TextBlock>
+                                <Border Background="Transparent" Cursor="Hand" HorizontalAlignment="Center" MouseLeftButtonDown="ForgotPass" Margin="0 20 0 0">
+                                    <TextBlock Text="Quên mật khẩu ?" FontSize="16" FontWeight="Medium" Foreground="#232F87"></TextBlock>
                                 </Border>
                             </StackPanel>
-                        </StackPanel>
-                        <StackPanel x:Name="spQRCode" Visibility="Visible">
-                            <Border Margin="0 40 0 20" Width="250" Height="250">
-                                <Border.Background>
-                                    <ImageBrush x:Name="QrCodeImage"/>
-                                </Border.Background>
-                                <tool:LoadingSpinner x:Name="loadding" Visibility="Collapsed"></tool:LoadingSpinner>
-                            </Border>
-                            <TextBlock x:Name="guide1" Margin="0 0 0 0" Text="Sử dụng ứng dụng Chat365 để quét mã QR" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold" FontSize="16" Foreground="#474747" Visibility="Visible"></TextBlock>
-                            <TextBlock x:Name="guide2" Margin="0 20 0 0" Text="Hướng dẫn quét" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal" FontSize="16" Foreground="#4c5bd4" Cursor="Hand" Background="Transparent" MouseLeftButtonDown="GuideQrCode_MouseLeftButtonDown" Visibility="Visible"></TextBlock>
                         </StackPanel>
                     </StackPanel>
+                </Border>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 15 0 0">
+                    <TextBlock Text="{DynamicResource textAcc_Ques}" FontSize="16" Foreground="{DynamicResource #474747}"></TextBlock>
+                    <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="SignIn">
+                        <TextBlock Text="{DynamicResource textSignIn}" Margin="5 0 0 0" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource #FFA800}"></TextBlock>
+                    </Border>
                 </StackPanel>
-            </Border>
+            </StackPanel>
         </DockPanel>
     </Grid>
 </Page>
