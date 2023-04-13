@@ -45,7 +45,7 @@
                 <StackPanel Margin="20">
                     <ContentControl Template="{StaticResource btnBack}" VerticalAlignment="Top" HorizontalAlignment="Left" MouseLeftButtonDown="GoBack"></ContentControl>
                     <StackPanel x:Name="StLogin" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 0">
-                        <TextBlock Text="Cung Doanh Nghiệp Chuyển Đổi Số, Phát Triển Bản Thân, Gây Dựng Tập Thể" TextAlignment="Center" Width="467" VerticalAlignment="Center" FontSize="20" TextWrapping="WrapWithOverflow" Foreground="#00285E" FontWeight="Bold" Margin="0 10 0 20">
+                        <TextBlock Text="Cùng Doanh Nghiệp Chuyển Đổi Số, Phát Triển Bản Thân, Gây Dựng Tập Thể" TextAlignment="Center" Width="467" VerticalAlignment="Center" FontSize="20" TextWrapping="WrapWithOverflow" Foreground="#00285E" FontWeight="Bold" Margin="0 10 0 20">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="Visibility" Value="Collapsed"/>
