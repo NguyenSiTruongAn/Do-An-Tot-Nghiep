@@ -10,7 +10,7 @@
       Title="LoginCom">
     <Grid>
         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Cung Doanh Nghiệp Chuyển Đổi Số, Phát Triển Bản Thân, Gây Dựng Tập Thể" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Foreground="#00285E" FontWeight="Bold">
+            <TextBlock Text="Cùng Doanh Nghiệp Chuyển Đổi Số, Phát Triển Bản Thân, Gây Dựng Tập Thể" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Foreground="#00285E" FontWeight="Bold">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Style.Triggers>
