@@ -10,27 +10,6 @@
       Title="LoginCom">
     <Grid Background="Transparent">
         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Bứt Phá Thành Công Trong Tương Lai Cùng Hệ Thống Chuyển Đổi Số 365" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Foreground="#00285E" FontWeight="Bold" Margin="0 0 52 0">
-                <TextBlock.Style>
-                    <Style TargetType="TextBlock">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding WinLogin.SizeScreen}" Value="1920">
-                                <Setter Property="FontSize" Value="32"/>
-                                <Setter Property="Width" Value="632"/>
-                                <Setter Property="Margin" Value="0 0 52 0"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding WinLogin.SizeScreen}" Value="1024">
-                                <Setter Property="FontSize" Value="22"/>
-                                <Setter Property="Width" Value="392"/>
-                                <Setter Property="Margin" Value="0 0 27 0"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding WinLogin.SizeScreen}" Value="768">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
             <StackPanel>
                 <Border VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 20" CornerRadius="20" Background="White">
                     <Border.Style>
@@ -46,19 +25,7 @@
                     <StackPanel Margin="20">
                         <ContentControl Template="{StaticResource btnBack}" VerticalAlignment="Top" HorizontalAlignment="Left" MouseLeftButtonDown="GoBack"></ContentControl>
                         <StackPanel x:Name="StLogin" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 0">
-                            <TextBlock Text="Bứt Phá Thành Công Trong Tương Lai Cùng Hệ Thống Chuyển Đổi Số 365" TextAlignment="Center" Width="467" VerticalAlignment="Center" FontSize="20" TextWrapping="WrapWithOverflow" Foreground="#00285E" FontWeight="Bold" Margin="0 10 0 20">
-                                <TextBlock.Style>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding WinLogin.SizeScreen}" Value="768">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                            <TextBlock Text="QUÉT MÃ QR" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
+                            <TextBlock Text="Đăng nhập với tài khoản công ty" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource #4C5BD4}"></TextBlock>
                             <!--<DockPanel Height="50">
                         <StackPanel>
                             <Border Height="43" Cursor="Hand" Background="Transparent" MouseLeftButtonDown="SelectedTypeLogin">
@@ -118,7 +85,7 @@
                         </Border>
                     </DockPanel>
                     <Line X1="0" Y1="0" X2="{Binding ElementName=StLogin,Path=ActualWidth}" Y2="0" Stroke="#EEEEEE" StrokeThickness="2"/>-->
-                            <StackPanel x:Name="Login_Account" Visibility="Collapsed">
+                            <StackPanel x:Name="Login_Account" Visibility="Visible">
                                 <StackPanel Margin="0 40 0 0">
                                     <TextBlock FontSize="16" FontWeight="Medium" Foreground="{DynamicResource #474747}">
                     <Run Text="Email"></Run>
@@ -190,27 +157,9 @@
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
-                        <StackPanel x:Name="spQRCode" Visibility="Visible">
-                            <Border Margin="0 40 0 20" Width="250" Height="250">
-                                <Border.Background>
-                                    <ImageBrush x:Name="QrCodeImage"/>
-                                </Border.Background>
-                                <tool:LoadingSpinner x:Name="loadding" Visibility="Collapsed"></tool:LoadingSpinner>
-                            </Border>
-                            <TextBlock x:Name="guide1" Margin="0 0 0 0" Text="Sử dụng ứng dụng Chat365 để quét mã QR" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="SemiBold" FontSize="16" Foreground="#474747" Visibility="Visible"></TextBlock>
-                            <TextBlock x:Name="guide2" Margin="0 20 0 0" Text="Hướng dẫn quét" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal" FontSize="16" Foreground="#4c5bd4" Cursor="Hand" Background="Transparent" MouseLeftButtonDown="GuideQrCode_MouseLeftButtonDown" Visibility="Visible"></TextBlock>
-                            <Border Background="Transparent" Cursor="Hand" HorizontalAlignment="Center" MouseLeftButtonDown="ForgotPass" Margin="0 20 0 0">
-                                <TextBlock Text="Quên mật khẩu ?" FontSize="16" FontWeight="Medium" Foreground="#232F87"></TextBlock>
-                            </Border>
-                        </StackPanel>
+                        
                     </StackPanel>
                 </Border>
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 15 0 0">
-                    <TextBlock Text="{DynamicResource textAcc_Ques}" FontSize="16" Foreground="{DynamicResource #474747}"></TextBlock>
-                    <Border Background="Transparent" Cursor="Hand" MouseLeftButtonDown="SignIn">
-                        <TextBlock Text="{DynamicResource textSignIn}" Margin="5 0 0 0" FontWeight="SemiBold" FontSize="16" Foreground="{DynamicResource #FFA800}"></TextBlock>
-                    </Border>
-                </StackPanel>
             </StackPanel>
         </DockPanel>
     </Grid>

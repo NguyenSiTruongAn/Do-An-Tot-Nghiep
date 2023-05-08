@@ -57,8 +57,7 @@ namespace AppTinhLuong365.Login.Views.Login
                 txtPass.Focus();
             }
             else txtEmail.Focus();
-            GetLocationEvent();
-            connectionSocket();
+            
         }
         //
         private int _TypeLogin = 1;
@@ -155,10 +154,6 @@ namespace AppTinhLuong365.Login.Views.Login
                     Dictionary<string, string> form = new Dictionary<string, string>();
                     form.Add("email", txtEmail.Text);
                     form.Add("pass", Pass);
-                    if (TypeLogin == 1)
-                    {
-                        form.Add("passtype", "1");
-                    }
                     HttpClient httpClient = new HttpClient();
                     System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
                     var respon = await httpClient.PostAsync("https://tinhluong.timviec365.vn/api_app/employe/login_emp.php", new FormUrlEncodedContent(form));
@@ -279,195 +274,6 @@ namespace AppTinhLuong365.Login.Views.Login
             WinLogin.Hide();
             z.Show();*/
             Process.Start("https://quanlychung.timviec365.vn/quen-mat-khau.html?type=1");
-        }
-        private void SelectedTypeLogin(object sender, MouseButtonEventArgs e)
-        {
-            TypeLogin = TypeLogin == 1 ? 0 : 1;
-            if (TypeLogin == 1)
-            {
-                spQRCode.Visibility = Visibility.Visible;
-                Login_Account.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                Login_Account.Visibility = Visibility.Visible;
-                spQRCode.Visibility = Visibility.Collapsed;
-            }
-        }
-        private static Random random = new Random();
-        public static string RandomString(int length)
-        {
-            const string chars = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-                .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
-        private ImageSource BitmapToImageSource(Bitmap bitmap)
-        {
-            using (MemoryStream memory = new MemoryStream())
-            {
-                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
-                memory.Position = 0;
-                BitmapImage bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.StreamSource = memory;
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapImage.EndInit();
-                return bitmapImage;
-            }
-        }
-        public class infoQR
-        {
-            public infoQR(string qRType, string idQR, string idComputer, string nameComputer, double? latitude, double? longitude, string time)
-            {
-                QRType = qRType;
-                this.idQR = idQR;
-                IdComputer = idComputer;
-                NameComputer = nameComputer;
-                this.latitude = latitude;
-                this.longitude = longitude;
-                Time = time;
-            }
-
-            public string QRType { get; set; }
-            public string idQR { get; set; }
-            public string IdComputer { get; set; }
-            public string NameComputer { get; set; }
-            public double? latitude { get; set; }
-            public double? longitude { get; set; }
-            public string Time { get; set; }
-
-        }
-        private void CreateQRCode(double? lat, double? lng)
-        {
-
-            try
-            {
-                string logo = Environment.GetEnvironmentVariable("APPDATA") + @"\Chat365\chat365_logo.png";
-                IdQR = RandomString(8);
-                string x = Base64Encode(IdQR);
-                string IdDevice = $"{RandomString(8)}-{RandomString(4)}-{RandomString(4)}-{RandomString(4)}-{RandomString(12)}";
-                string info = JsonConvert.SerializeObject(new infoQR("QRLoginPc", (x + "++"), IdDevice, $"{Environment.MachineName}-Windows", lat, lng, DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")));
-                QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
-                QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(info, QRCodeGenerator.ECCLevel.Q);
-                QRCode qRCode = new QRCode(qRCodeData);
-                Bitmap qRCodeImage = qRCode.GetGraphic(20);
-                //QRCodeWriter.CreateQrCode("Welcome to HungHa", 500, QRCodeWriter.QrErrorCorrectionLevel.Medium);
-                //var MyQRWithLogo = QRCodeWriter.CreateQrCodeWithLogo(info, logo, 500);
-
-                this.Dispatcher.Invoke(() =>
-                {
-                    //QrCodeImage.ImageSource = BitmapToImageSource(MyQRWithLogo.ToBitmap());
-                    QrCodeImage.ImageSource = BitmapToImageSource(qRCodeImage);
-                });
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-        public static string Base64Encode(string plainText)
-        {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
-        }
-        public static string Base64Decode(string base64EncodedData)
-        {
-            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
-            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
-        }
-        private void connectionSocket()
-        {
-            try
-            {
-                Socket = new ConnectSocket();
-                Socket.WIO.On("QRLogin", response =>
-                {
-                    try
-                    {
-                        string QrId = response.GetValue<string>(0);
-                        string Email = response.GetValue<string>(1).Replace("+", "");
-                        Email = Base64Decode(Email);
-                        string Password = response.GetValue<string>(2).Replace("+", "");
-                        Password = Base64Decode(Password);
-
-                        if (QrId == IdQR)
-                        {
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                Pass = Password;
-                                txtEmail.Text = Email;
-                                Properties.Settings.Default.EpEmail = Email;
-                                Properties.Settings.Default.EpPass = Password;
-                                Properties.Settings.Default.EpTypePass = "1";
-                                Properties.Settings.Default.Save();
-                                runLogin();
-                            });
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                });
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        GeoCoordinateWatcher watcher;
-        public void GetLocationEvent()
-        {
-            Task t = new Task(() =>
-            {
-                CreateQRCode(null, null);
-                this.watcher = new GeoCoordinateWatcher();
-                if (this.watcher.Status == GeoPositionStatus.NoData || this.watcher.Status == GeoPositionStatus.Ready)
-                {
-                    if (watcher.TryStart(false, TimeSpan.FromMilliseconds(20000)))
-                    {
-                        bool ck = true;
-                        while (ck)
-                        {
-                            latitude = this.watcher.Position.Location.Latitude;
-                            longitude = this.watcher.Position.Location.Longitude;
-                            if (latitude != double.NaN && longitude != double.NaN && latitude > 0 && longitude > 0)
-                            {
-                                CreateQRCode(latitude.Value, longitude.Value);
-                                ck = false;
-                            }
-                        }
-
-                    }
-
-                }
-                else
-                {
-                    latitude = null;
-                    longitude = null;
-                }
-            });
-            t.ContinueWith((p) =>
-            {
-
-                t.Dispose();
-                this.Dispatcher.Invoke(() =>
-                {
-                    loadding.Visibility = Visibility.Collapsed;
-                });
-
-            });
-            t.Start();
-        }
-
-        private void GuideQrCode_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            WinLogin.LoginSelectionPage.NavigationService.Navigate(new PageGuideQRCode(WinLogin));
-        }
-
-        private void MoreOption_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
         }
     }
 }
